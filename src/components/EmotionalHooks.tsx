@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 
 const EmotionalHooks = () => {
@@ -86,15 +85,15 @@ const EmotionalHooks = () => {
               {examples.map((example, index) => (
                 <div 
                   key={index}
-                  className={`absolute inset-0 transition-all duration-700 transform ${
+                  className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
                     currentExample === index 
-                      ? 'opacity-100 translate-y-0 scale-100' 
-                      : 'opacity-20 translate-y-8 scale-95'
+                      ? 'opacity-100 translate-y-0 scale-100 z-10' 
+                      : 'opacity-0 translate-y-4 scale-95 z-0'
                   }`}
                 >
                   <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl p-6 hover:bg-white/30 transition-all duration-300 shadow-xl">
                     <p className="text-lg text-gray-100 italic mb-2">"{example.quote}"</p>
-                    <p className={`text-sm text-${example.color}-400 font-medium`}>→ {example.destination}</p>
+                    <p className="text-sm text-purple-400 font-medium">→ {example.destination}</p>
                   </div>
                 </div>
               ))}
