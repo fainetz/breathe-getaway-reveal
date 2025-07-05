@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -11,14 +12,15 @@ const Hero = () => {
       {/* Navigation - exactly like AICM */}
       <nav className="relative z-50 py-6">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg"></div>
             <span className="text-2xl font-bold">Breathe & Getaway</span>
-          </div>
+          </Link>
           
           <div className="hidden md:flex items-center space-x-8">
             <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">How it works</a>
             <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
+            <Link to="/destinations" className="text-gray-300 hover:text-white transition-colors">Destinations</Link>
             <div className="relative group">
               <button className="text-gray-300 hover:text-white transition-colors flex items-center gap-1">
                 Vision
