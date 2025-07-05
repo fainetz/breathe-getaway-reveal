@@ -1,5 +1,34 @@
 
+import { useEffect, useRef } from 'react';
+
 const HowItWorks = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const stepsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const steps = entry.target.querySelectorAll('.step-card');
+            steps.forEach((step, index) => {
+              setTimeout(() => {
+                step.classList.add('animate-slide-in');
+              }, index * 200);
+            });
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (stepsRef.current) {
+      observer.observe(stepsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const steps = [
     {
       title: "Express Your Soul",
@@ -19,9 +48,9 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-32 px-6 relative">
+    <section id="how-it-works" className="py-32 px-6 relative overflow-hidden" ref={sectionRef}>
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 opacity-0 animate-fade-in">
           <h2 className="text-5xl md:text-6xl font-bold mb-8">
             How Soul-Travel Works
           </h2>
@@ -30,23 +59,36 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid md:grid-cols-3 gap-12" ref={stepsRef}>
           {steps.map((step, index) => (
-            <div key={index} className="text-center group">
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105">
-                <div className="text-6xl mb-6">{step.icon}</div>
-                <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{step.description}</p>
+            <div key={index} className="text-center group step-card opacity-0 transform translate-y-10">
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105 relative overflow-hidden">
+                {/* Animated background gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative z-10">
+                  <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">{step.icon}</div>
+                  <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
+                  <p className="text-gray-400 leading-relaxed">{step.description}</p>
+                </div>
               </div>
               {index < steps.length - 1 && (
                 <div className="hidden md:block absolute top-1/2 right-0 transform translate-x-6 -translate-y-1/2">
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-purple-500 to-transparent"></div>
+                  <div className="w-12 h-0.5 bg-gradient-to-r from-purple-500 to-transparent animate-pulse"></div>
                 </div>
               )}
             </div>
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        .animate-slide-in {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+          transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+      `}</style>
     </section>
   );
 };
