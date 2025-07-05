@@ -89,7 +89,11 @@ const Vision = () => {
               className={`absolute inset-0 transition-all duration-700 transform ${
                 currentCard === index
                   ? 'opacity-100 scale-100 translate-y-0 z-20'
-                  : 'opacity-20 scale-95 translate-y-4 z-10'
+                  : index === (currentCard + 1) % visionCards.length
+                  ? 'opacity-40 scale-95 translate-y-4 translate-x-8 z-10'
+                  : index === (currentCard - 1 + visionCards.length) % visionCards.length
+                  ? 'opacity-40 scale-95 translate-y-4 -translate-x-8 z-10'
+                  : 'opacity-10 scale-90 translate-y-8 z-0'
               }`}
             >
               <div className={`bg-white/25 backdrop-blur-xl border border-white/30 rounded-2xl p-8 mx-auto max-w-md h-full relative overflow-hidden group shadow-2xl`}>
