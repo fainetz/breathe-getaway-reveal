@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -8,6 +9,11 @@ const Features = () => {
   const slidesPerView = 3;
 
   const features = [
+    {
+      title: "AI-Powered Specific Search",
+      description: "Search for oddly specific things using AI - find flights with sunset views or hotels with vintage typewriters in the lobby.",
+      gradient: "from-cyan-500 to-blue-500"
+    },
     {
       title: "Emotional Intelligence",
       description: "AI that reads your mood, energy, and deepest travel desires to match you with transformative experiences.",
