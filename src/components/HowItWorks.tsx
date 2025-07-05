@@ -15,12 +15,12 @@ const HowItWorks = () => {
               setTimeout(() => {
                 step.classList.add('opacity-100', 'translate-y-0');
                 step.classList.remove('opacity-0', 'translate-y-10');
-              }, index * 200);
+              }, index * 300);
             });
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     if (stepsRef.current) {
@@ -49,33 +49,39 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-32 px-6 relative overflow-hidden" ref={sectionRef}>
-      <div className="max-w-6xl mx-auto">
+    <section id="how-it-works" className="py-32 px-6 relative overflow-hidden bg-gradient-to-b from-black via-gray-900/50 to-black" ref={sectionRef}>
+      {/* Enhanced background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+      
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-20 opacity-0 animate-fade-in">
-          <h2 className="text-5xl md:text-6xl font-bold mb-8">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
             How Soul-Travel Works
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Beyond destinations. Beyond filters. We read between the lines of what your heart truly seeks.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-12" ref={stepsRef}>
           {steps.map((step, index) => (
-            <div key={index} className="text-center group step-card opacity-0 transform translate-y-10 transition-all duration-700 ease-out">
-              <div className="bg-white/15 backdrop-blur-lg border border-white/20 rounded-3xl p-8 hover:bg-white/25 transition-all duration-500 hover:scale-105 relative overflow-hidden">
-                {/* Animated background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div key={index} className="text-center group step-card opacity-0 transform translate-y-10 transition-all duration-1000 ease-out">
+              <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-3xl p-8 hover:bg-white/30 transition-all duration-500 hover:scale-105 relative overflow-hidden shadow-2xl">
+                {/* Enhanced animated background gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/30 to-pink-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <div className="relative z-10">
-                  <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">{step.icon}</div>
-                  <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
-                  <p className="text-gray-300 leading-relaxed">{step.description}</p>
+                  <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500">{step.icon}</div>
+                  <h3 className="text-2xl font-bold mb-4 text-white">{step.title}</h3>
+                  <p className="text-gray-200 leading-relaxed">{step.description}</p>
                 </div>
               </div>
               {index < steps.length - 1 && (
                 <div className="hidden md:block absolute top-1/2 right-0 transform translate-x-6 -translate-y-1/2">
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-purple-500 to-transparent animate-pulse"></div>
+                  <div className="w-12 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 animate-pulse"></div>
                 </div>
               )}
             </div>
