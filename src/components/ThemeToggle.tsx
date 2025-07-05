@@ -8,13 +8,13 @@ const ThemeToggle = () => {
 
   return (
     <div className="flex items-center space-x-3">
-      <Sun className="w-4 h-4 text-gray-300" />
+      <Sun className="w-4 h-4 text-yellow-500" />
       <Switch
         checked={theme === 'dark'}
         onCheckedChange={toggleTheme}
-        className="data-[state=checked]:bg-gray-600 data-[state=unchecked]:bg-gray-300"
+        className="data-[state=checked]:bg-gray-700 data-[state=unchecked]:bg-yellow-400"
       />
-      <Moon className="w-4 h-4 text-gray-300" />
+      <Moon className="w-4 h-4 text-gray-700 dark:text-gray-300" />
     </div>
   );
 };

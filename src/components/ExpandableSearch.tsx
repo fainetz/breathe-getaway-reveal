@@ -48,7 +48,7 @@ const ExpandableSearch = () => {
       <div 
         className={`transition-all duration-500 ease-out ${
           shouldBeExpanded ? 'w-96' : 'w-32'
-        } h-12 bg-white/10 backdrop-blur-lg border border-white/20 rounded-full hover:bg-white/15 overflow-hidden`}
+        } h-12 bg-white/80 dark:bg-white/10 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-full hover:bg-white/90 dark:hover:bg-white/15 overflow-hidden transition-colors duration-300`}
         onMouseEnter={() => {
           setIsHovered(true);
           setIsExpanded(true);
@@ -62,8 +62,8 @@ const ExpandableSearch = () => {
       >
         {!shouldBeExpanded ? (
           <div className="w-full h-full flex items-center justify-center px-3">
-            <Search className="w-4 h-4 text-white mr-2" />
-            <span className="text-white text-sm font-medium">Search</span>
+            <Search className="w-4 h-4 text-gray-700 dark:text-white mr-2 transition-colors duration-300" />
+            <span className="text-gray-700 dark:text-white text-sm font-medium transition-colors duration-300">Search</span>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="w-full h-full flex items-center px-4">
@@ -72,14 +72,14 @@ const ExpandableSearch = () => {
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="How are you feeling about travel?"
-              className="flex-1 bg-transparent text-white placeholder-gray-400 focus:outline-none text-sm"
+              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm transition-colors duration-300"
               autoFocus={!isScrolled}
             />
             <button
               type="submit"
-              className="ml-2 p-1 rounded-full hover:bg-white/10 transition-colors"
+              className="ml-2 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
             >
-              <ArrowRight className="w-4 h-4 text-white" />
+              <ArrowRight className="w-4 h-4 text-gray-700 dark:text-white transition-colors duration-300" />
             </button>
           </form>
         )}

@@ -49,19 +49,19 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-32 px-6 relative overflow-hidden bg-gradient-to-b from-black via-gray-900/50 to-black" ref={sectionRef}>
+    <section id="how-it-works" className="py-32 px-6 relative overflow-hidden bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-gray-900/50 dark:to-black transition-colors duration-300" ref={sectionRef}>
       {/* Enhanced background effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-purple-500/20 dark:bg-purple-500/30 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-pink-500/15 dark:bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
       
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-20 opacity-0 animate-fade-in">
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:via-gray-100 dark:to-gray-300 bg-clip-text text-transparent transition-colors duration-300">
             How Soul-Travel Works
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
             Beyond destinations. Beyond filters. We read between the lines of what your heart truly seeks.
           </p>
         </div>
@@ -69,14 +69,14 @@ const HowItWorks = () => {
         <div className="grid md:grid-cols-3 gap-12" ref={stepsRef}>
           {steps.map((step, index) => (
             <div key={index} className="text-center group step-card opacity-0 transform translate-y-10 transition-all duration-1000 ease-out">
-              <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-3xl p-8 hover:bg-white/30 transition-all duration-500 hover:scale-105 relative overflow-hidden shadow-2xl">
+              <div className="bg-white/80 dark:bg-white/20 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-3xl p-8 hover:bg-white/90 dark:hover:bg-white/30 transition-all duration-500 hover:scale-105 relative overflow-hidden shadow-2xl">
                 {/* Enhanced animated background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/30 to-pink-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 dark:from-purple-500/30 dark:to-pink-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <div className="relative z-10">
                   <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500">{step.icon}</div>
-                  <h3 className="text-2xl font-bold mb-4 text-white">{step.title}</h3>
-                  <p className="text-gray-200 leading-relaxed">{step.description}</p>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white transition-colors duration-300">{step.title}</h3>
+                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed transition-colors duration-300">{step.description}</p>
                 </div>
               </div>
               {index < steps.length - 1 && (

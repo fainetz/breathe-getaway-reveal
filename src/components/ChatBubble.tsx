@@ -23,13 +23,13 @@ const ChatBubble = () => {
     <>
       {/* Chat Interface */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] bg-black/90 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl z-50">
-          <div className="p-4 border-b border-white/10">
+        <div className="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] bg-white/95 dark:bg-black/90 backdrop-blur-xl border border-gray-200 dark:border-white/20 rounded-2xl shadow-2xl z-50 transition-colors duration-300">
+          <div className="p-4 border-b border-gray-200 dark:border-white/10">
             <div className="flex items-center justify-between">
-              <h3 className="font-semibold">Travel Soul AI</h3>
+              <h3 className="font-semibold text-gray-900 dark:text-white transition-colors duration-300">Travel Soul AI</h3>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 ✕
               </button>
@@ -42,7 +42,7 @@ const ChatBubble = () => {
                 <div className={`max-w-[80%] p-3 rounded-xl ${
                   message.type === 'user' 
                     ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white' 
-                    : 'bg-white/10 text-gray-100'
+                    : 'bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-gray-100 transition-colors duration-300'
                 }`}>
                   {message.text}
                 </div>
@@ -50,14 +50,14 @@ const ChatBubble = () => {
             ))}
           </div>
           
-          <form onSubmit={handleSend} className="p-4 border-t border-white/10">
+          <form onSubmit={handleSend} className="p-4 border-t border-gray-200 dark:border-white/10">
             <div className="flex gap-2">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="How are you feeling about travel?"
-                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
+                className="flex-1 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-2 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-colors duration-300"
               />
               <button
                 type="submit"
