@@ -86,15 +86,18 @@ const Vision = () => {
           {visionCards.map((card, index) => (
             <div
               key={index}
-              className={`absolute inset-0 transition-all duration-700 transform ${
+              className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${
                 currentCard === index
                   ? 'opacity-100 scale-100 translate-y-0 z-20'
                   : index === (currentCard + 1) % visionCards.length
-                  ? 'opacity-40 scale-95 translate-y-4 translate-x-8 z-10'
+                  ? 'opacity-50 scale-95 translate-y-4 translate-x-8 z-10'
                   : index === (currentCard - 1 + visionCards.length) % visionCards.length
-                  ? 'opacity-40 scale-95 translate-y-4 -translate-x-8 z-10'
-                  : 'opacity-10 scale-90 translate-y-8 z-0'
+                  ? 'opacity-50 scale-95 translate-y-4 -translate-x-8 z-10'
+                  : 'opacity-20 scale-90 translate-y-8 z-0'
               }`}
+              style={{
+                transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
             >
               <div className={`bg-white/25 backdrop-blur-xl border border-white/30 rounded-2xl p-8 mx-auto max-w-md h-full relative overflow-hidden group shadow-2xl`}>
                 <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-30 transition-opacity duration-500`}></div>
