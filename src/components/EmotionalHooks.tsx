@@ -89,8 +89,8 @@ const EmotionalHooks = () => {
                       : 'opacity-30 translate-y-4 scale-95'
                   }`}
                 >
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/8 transition-all duration-300">
-                    <p className="text-lg text-gray-300 italic mb-2">"{example.quote}"</p>
+                  <div className="bg-white/15 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/25 transition-all duration-300">
+                    <p className="text-lg text-gray-200 italic mb-2">"{example.quote}"</p>
                     <p className={`text-sm text-${example.color}-400 font-medium`}>→ {example.destination}</p>
                   </div>
                 </div>
@@ -111,28 +111,28 @@ const EmotionalHooks = () => {
           </div>
 
           <div className={`space-y-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 group hover:bg-white/8 transition-all duration-500">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+            <div className="bg-white/15 backdrop-blur-lg border border-white/20 rounded-3xl p-8 group hover:bg-white/25 transition-all duration-500">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
               <div className="relative z-10">
                 <h3 className="text-3xl font-bold mb-6">Beyond Booking</h3>
-                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                <p className="text-gray-200 text-lg leading-relaxed mb-6">
                   We don't just find you flights and hotels. We interpret your emotions, understand your needs, and craft experiences that heal, inspire, and transform.
                 </p>
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse"></div>
                   <div>
                     <p className="font-semibold">Soul-Curated</p>
-                    <p className="text-sm text-gray-400">Every trip designed for your inner journey</p>
+                    <p className="text-sm text-gray-300">Every trip designed for your inner journey</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 group hover:bg-white/8 transition-all duration-500 hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+            <div className="bg-white/15 backdrop-blur-lg border border-white/20 rounded-3xl p-8 group hover:bg-white/25 transition-all duration-500 hover:scale-105">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
               <div className="relative z-10">
                 <h3 className="text-2xl font-bold mb-4">Transformative Travel</h3>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-gray-200 leading-relaxed">
                   Return home not just with photos, but with a renewed sense of self and purpose.
                 </p>
               </div>

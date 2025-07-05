@@ -90,12 +90,12 @@ const Features = () => {
               {features.map((feature, index) => (
                 <div key={index} className="w-1/3 flex-shrink-0 px-4">
                   <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/8 transition-all duration-500 hover:scale-105 h-full relative overflow-hidden">
-                      <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                    <div className="bg-white/15 backdrop-blur-lg border border-white/20 rounded-2xl p-8 hover:bg-white/25 transition-all duration-500 hover:scale-105 h-full relative overflow-hidden">
+                      <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
                       <div className="relative z-10">
                         <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300`}></div>
                         <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-                        <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                        <p className="text-gray-200 leading-relaxed">{feature.description}</p>
                       </div>
                     </div>
                   </div>
@@ -107,13 +107,13 @@ const Features = () => {
           {/* Navigation Buttons */}
           <button 
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full p-3 hover:bg-white/20 transition-all duration-300"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full p-3 hover:bg-white/30 transition-all duration-300"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button 
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full p-3 hover:bg-white/20 transition-all duration-300"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full p-3 hover:bg-white/30 transition-all duration-300"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -136,12 +136,12 @@ const Features = () => {
         <div className="lg:hidden grid md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
             <div key={index} className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/8 transition-all duration-500 hover:scale-105 h-full relative overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+              <div className="bg-white/15 backdrop-blur-lg border border-white/20 rounded-2xl p-8 hover:bg-white/25 transition-all duration-500 hover:scale-105 h-full relative overflow-hidden">
+                <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
                 <div className="relative z-10">
                   <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300`}></div>
                   <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                  <p className="text-gray-200 leading-relaxed">{feature.description}</p>
                 </div>
               </div>
             </div>

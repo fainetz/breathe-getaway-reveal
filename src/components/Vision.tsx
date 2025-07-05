@@ -96,12 +96,12 @@ const Vision = () => {
                   : 'opacity-20 scale-90 translate-y-8'
               }`}
             >
-              <div className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 mx-auto max-w-md h-full relative overflow-hidden group`}>
-                <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+              <div className={`bg-white/15 backdrop-blur-lg border border-white/20 rounded-2xl p-8 mx-auto max-w-md h-full relative overflow-hidden group`}>
+                <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
                 <div className="relative z-10 flex flex-col items-center justify-center h-full">
                   <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">{card.icon}</div>
                   <h3 className="text-2xl font-bold mb-4">{card.title}</h3>
-                  <p className="text-gray-400 leading-relaxed text-center">{card.description}</p>
+                  <p className="text-gray-300 leading-relaxed text-center">{card.description}</p>
                 </div>
               </div>
             </div>

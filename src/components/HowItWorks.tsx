@@ -63,14 +63,14 @@ const HowItWorks = () => {
         <div className="grid md:grid-cols-3 gap-12" ref={stepsRef}>
           {steps.map((step, index) => (
             <div key={index} className="text-center group step-card opacity-0 transform translate-y-10 transition-all duration-700 ease-out">
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105 relative overflow-hidden">
+              <div className="bg-white/15 backdrop-blur-lg border border-white/20 rounded-3xl p-8 hover:bg-white/25 transition-all duration-500 hover:scale-105 relative overflow-hidden">
                 {/* Animated background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <div className="relative z-10">
                   <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">{step.icon}</div>
                   <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{step.description}</p>
+                  <p className="text-gray-300 leading-relaxed">{step.description}</p>
                 </div>
               </div>
               {index < steps.length - 1 && (
