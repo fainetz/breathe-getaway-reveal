@@ -4,23 +4,103 @@ import { useRef, useMemo, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import { useTheme } from '../contexts/ThemeContext';
 
-// Simplified floating particles component
-const FloatingParticles = ({ theme }: { theme: 'light' | 'dark' }) => {
+// Wave component that creates animated wave geometry
+const Waves = ({ theme }: { theme: 'light' | 'dark' }) => {
+  const meshRef = useRef<THREE.Mesh>(null);
+  const materialRef = useRef<THREE.ShaderMaterial>(null);
+
+  // Create wave geometry
+  const geometry = useMemo(() => {
+    const geo = new THREE.PlaneGeometry(20, 6, 100, 20);
+    geo.rotateX(-Math.PI / 2);
+    return geo;
+  }, []);
+
+  // Shader material for wave effect
+  const shaderMaterial = useMemo(() => {
+    return new THREE.ShaderMaterial({
+      uniforms: {
+        time: { value: 0 },
+        color: { value: new THREE.Color(theme === 'light' ? '#6366f1' : '#8b5cf6') },
+        opacity: { value: theme === 'light' ? 0.4 : 0.3 }
+      },
+      vertexShader: `
+        uniform float time;
+        varying vec3 vPosition;
+        
+        void main() {
+          vPosition = position;
+          vec3 pos = position;
+          
+          // Create wave motion
+          float wave1 = sin(pos.x * 0.3 + time * 2.0) * 0.5;
+          float wave2 = sin(pos.x * 0.1 + time * 1.5) * 0.3;
+          float wave3 = sin(pos.z * 0.2 + time * 1.8) * 0.2;
+          
+          pos.y += wave1 + wave2 + wave3;
+          
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform vec3 color;
+        uniform float opacity;
+        varying vec3 vPosition;
+        
+        void main() {
+          float alpha = opacity * (1.0 - abs(vPosition.z) / 3.0);
+          gl_FragColor = vec4(color, alpha);
+        }
+      `,
+      transparent: true,
+      side: THREE.DoubleSide
+    });
+  }, [theme]);
+
+  useFrame((state) => {
+    if (materialRef.current) {
+      materialRef.current.uniforms.time.value = state.clock.elapsedTime;
+      materialRef.current.uniforms.color.value.setHex(
+        theme === 'light' ? 0x6366f1 : 0x8b5cf6
+      );
+      materialRef.current.uniforms.opacity.value = theme === 'light' ? 0.4 : 0.3;
+    }
+  });
+
+  return (
+    <mesh 
+      ref={meshRef} 
+      geometry={geometry} 
+      material={shaderMaterial}
+      position={[0, -4, 2]}
+    >
+      <primitive object={shaderMaterial} ref={materialRef} attach="material" />
+    </mesh>
+  );
+};
+
+// Simple wave particles for added effect
+const WaveParticles = ({ theme }: { theme: 'light' | 'dark' }) => {
   const particlesRef = useRef<THREE.Points>(null);
   
   const particlesGeometry = useMemo(() => {
-    const positions = new Float32Array(100 * 3); // Reduced from 200 to 100
-    for (let i = 0; i < 100; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 30;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 30;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 30;
+    const positions = new Float32Array(50 * 3);
+    for (let i = 0; i < 50; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 20;
+      positions[i * 3 + 1] = -3 + Math.random() * 2;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
     }
     return positions;
   }, []);
 
   useFrame((state) => {
     if (particlesRef.current) {
-      particlesRef.current.rotation.y = state.clock.elapsedTime * 0.02;
+      const positions = particlesRef.current.geometry.attributes.position.array as Float32Array;
+      for (let i = 0; i < 50; i++) {
+        const y = i * 3 + 1;
+        positions[y] = -3 + Math.sin(state.clock.elapsedTime + positions[i * 3]) * 0.5;
+      }
+      particlesRef.current.geometry.attributes.position.needsUpdate = true;
     }
   });
 
@@ -29,43 +109,18 @@ const FloatingParticles = ({ theme }: { theme: 'light' | 'dark' }) => {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={100}
+          count={50}
           array={particlesGeometry}
           itemSize={3}
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.05}
-        color={theme === 'light' ? "#6366f1" : "#8b5cf6"}
+        size={0.03}
+        color={theme === 'light' ? "#3b82f6" : "#60a5fa"}
         transparent
         opacity={theme === 'light' ? 0.6 : 0.4}
       />
     </points>
-  );
-};
-
-// Simplified floating shape component
-const FloatingShape = ({ position, color, theme }: { position: [number, number, number], color: string, theme: 'light' | 'dark' }) => {
-  const meshRef = useRef<THREE.Mesh>(null);
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.elapsedTime * 0.2;
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.1;
-      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime + position[0]) * 0.3;
-    }
-  });
-
-  return (
-    <mesh ref={meshRef} position={position}>
-      <sphereGeometry args={[0.3, 8, 8]} />
-      <meshBasicMaterial
-        color={color}
-        transparent
-        opacity={theme === 'light' ? 0.4 : 0.3}
-        wireframe
-      />
-    </mesh>
   );
 };
 
@@ -88,20 +143,15 @@ const ThreeBackground = () => {
     }
   }, []);
 
-  const shapes = useMemo(() => [
-    { position: [-4, 1, -3] as [number, number, number], color: theme === 'light' ? '#6366f1' : '#8b5cf6' },
-    { position: [3, -1, -2] as [number, number, number], color: theme === 'light' ? '#d946ef' : '#ec4899' },
-    { position: [-2, -2, -4] as [number, number, number], color: theme === 'light' ? '#3b82f6' : '#3b82f6' },
-  ], [theme]);
-
   // CSS fallback when WebGL is not available
   if (!hasWebGL) {
     return (
       <div className="fixed inset-0 z-0">
-        <div className={`absolute inset-0 ${theme === 'light' ? 'bg-gradient-to-br from-purple-100/60 via-transparent to-pink-100/60' : 'bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20'}`}>
-          <div className={`absolute top-1/4 left-1/4 w-32 h-32 ${theme === 'light' ? 'bg-purple-400/30' : 'bg-purple-500/20'} rounded-full blur-xl animate-pulse`}></div>
-          <div className={`absolute top-3/4 right-1/4 w-24 h-24 ${theme === 'light' ? 'bg-pink-400/30' : 'bg-pink-500/20'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '1s' }}></div>
-          <div className={`absolute top-1/2 left-3/4 w-28 h-28 ${theme === 'light' ? 'bg-blue-400/30' : 'bg-blue-500/20'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '2s' }}></div>
+        <div className={`absolute inset-0 ${theme === 'light' ? 'bg-gradient-to-t from-blue-100/60 via-transparent to-transparent' : 'bg-gradient-to-t from-blue-900/20 via-transparent to-transparent'}`}>
+          <div className="absolute bottom-0 left-0 right-0 h-32 overflow-hidden">
+            <div className={`absolute bottom-0 left-0 right-0 h-16 ${theme === 'light' ? 'bg-gradient-to-r from-blue-400/30 via-purple-400/30 to-blue-400/30' : 'bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-blue-500/20'} animate-pulse`}></div>
+            <div className={`absolute bottom-2 left-0 right-0 h-12 ${theme === 'light' ? 'bg-gradient-to-r from-purple-400/20 via-blue-400/20 to-purple-400/20' : 'bg-gradient-to-r from-purple-500/15 via-blue-500/15 to-purple-500/15'} animate-pulse`} style={{ animationDelay: '1s' }}></div>
+          </div>
         </div>
       </div>
     );
@@ -110,7 +160,7 @@ const ThreeBackground = () => {
   return (
     <div className="fixed inset-0 z-0">
       <Canvas
-        camera={{ position: [0, 0, 8], fov: 60 }}
+        camera={{ position: [0, 2, 8], fov: 60 }}
         style={{ background: 'transparent' }}
         gl={{ 
           antialias: false, 
@@ -128,16 +178,8 @@ const ThreeBackground = () => {
             <ambientLight intensity={0.2} />
             <pointLight position={[5, 5, 5]} intensity={0.3} color={theme === 'light' ? "#6366f1" : "#8b5cf6"} />
             
-            {shapes.map((shape, index) => (
-              <FloatingShape
-                key={index}
-                position={shape.position}
-                color={shape.color}
-                theme={theme}
-              />
-            ))}
-            
-            <FloatingParticles theme={theme} />
+            <Waves theme={theme} />
+            <WaveParticles theme={theme} />
           </>
         )}
       </Canvas>
