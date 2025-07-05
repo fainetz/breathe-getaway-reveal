@@ -5,7 +5,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const Features = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const slidesPerView = 3;
 
@@ -48,17 +47,6 @@ const Features = () => {
   ];
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -86,13 +74,13 @@ const Features = () => {
   };
 
   return (
-    <section id="features" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300" ref={sectionRef}>
+    <section id="features" className="py-32 px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300" ref={sectionRef}>
       <div className="max-w-7xl mx-auto">
-        <div className={`text-center mb-12 sm:mb-16 lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-black dark:text-white transition-colors duration-300">
+        <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 text-black dark:text-white transition-colors duration-300">
             Travel That Understands You
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed transition-colors duration-300 px-4 sm:px-0">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
             Every feature designed to bridge the gap between where you are and where your soul needs to be.
           </p>
         </div>
@@ -149,16 +137,16 @@ const Features = () => {
           </div>
         </div>
 
-        {/* Mobile/Tablet: Vertical Stack with Better Spacing */}
-        <div className="lg:hidden space-y-6">
+        {/* Mobile/Tablet: Grid Layout */}
+        <div className="lg:hidden grid md:grid-cols-2 gap-8 px-4">
           {features.map((feature, index) => (
             <div key={index} className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-              <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-lg touch-manipulation">
-                <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-20`}></div>
+              <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 hover:bg-white dark:hover:bg-white/25 transition-all duration-500 hover:scale-102 h-full relative overflow-hidden shadow-lg">
+                <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
                 <div className="relative z-10">
-                  <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6`}></div>
-                  <h3 className="text-xl sm:text-2xl font-bold mb-4 text-black dark:text-white transition-colors duration-300">{feature.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-base sm:text-lg transition-colors duration-300">{feature.description}</p>
+                  <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300`}></div>
+                  <h3 className="text-xl font-bold mb-4 text-black dark:text-white transition-colors duration-300">{feature.title}</h3>
+                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed transition-colors duration-300">{feature.description}</p>
                 </div>
               </div>
             </div>
