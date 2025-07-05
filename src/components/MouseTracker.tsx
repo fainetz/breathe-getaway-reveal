@@ -6,67 +6,94 @@ interface MousePosition {
   y: number;
 }
 
-interface Particle {
+interface FloatingShape {
   id: number;
   x: number;
   y: number;
   vx: number;
   vy: number;
-  life: number;
-  maxLife: number;
+  size: number;
+  color: string;
+  opacity: number;
+  targetX: number;
+  targetY: number;
 }
 
 const MouseTracker = () => {
   const [mousePos, setMousePos] = useState<MousePosition>({ x: 0, y: 0 });
-  const [particles, setParticles] = useState<Particle[]>([]);
+  const [shapes, setShapes] = useState<FloatingShape[]>([]);
   const animationRef = useRef<number>();
-  const lastMousePos = useRef<MousePosition>({ x: 0, y: 0 });
+  const mouseInfluence = useRef<MousePosition>({ x: 0, y: 0 });
 
   useEffect(() => {
+    // Initialize floating shapes
+    const initialShapes = Array.from({ length: 3 }, (_, i) => ({
+      id: i,
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      size: 200 + Math.random() * 400,
+      color: ['rgba(147, 51, 234, 0.08)', 'rgba(219, 39, 119, 0.06)', 'rgba(59, 130, 246, 0.05)'][i],
+      opacity: 0.3 + Math.random() * 0.4,
+      targetX: Math.random() * window.innerWidth,
+      targetY: Math.random() * window.innerHeight,
+    }));
+    setShapes(initialShapes);
+
     const handleMouseMove = (e: MouseEvent) => {
       const newPos = { x: e.clientX, y: e.clientY };
       setMousePos(newPos);
-
-      // Create particles when mouse moves fast enough
-      const speed = Math.sqrt(
-        Math.pow(newPos.x - lastMousePos.current.x, 2) + 
-        Math.pow(newPos.y - lastMousePos.current.y, 2)
-      );
-
-      if (speed > 5) {
-        const newParticle: Particle = {
-          id: Date.now() + Math.random(),
-          x: newPos.x,
-          y: newPos.y,
-          vx: (Math.random() - 0.5) * 2,
-          vy: (Math.random() - 0.5) * 2,
-          life: 100,
-          maxLife: 100,
-        };
-
-        setParticles(prev => [...prev.slice(-15), newParticle]);
-      }
-
-      lastMousePos.current = newPos;
+      
+      // Slowly update mouse influence with dampening
+      mouseInfluence.current.x += (newPos.x - mouseInfluence.current.x) * 0.02;
+      mouseInfluence.current.y += (newPos.y - mouseInfluence.current.y) * 0.02;
     };
 
-    const animateParticles = () => {
-      setParticles(prev => 
-        prev.map(particle => ({
-          ...particle,
-          x: particle.x + particle.vx,
-          y: particle.y + particle.vy,
-          life: particle.life - 1,
-          vx: particle.vx * 0.98,
-          vy: particle.vy * 0.98,
-        })).filter(particle => particle.life > 0)
+    const animateShapes = () => {
+      setShapes(prev => 
+        prev.map(shape => {
+          // Calculate attraction to mouse (very subtle)
+          const mouseAttraction = {
+            x: (mouseInfluence.current.x - shape.x) * 0.0001,
+            y: (mouseInfluence.current.y - shape.y) * 0.0001,
+          };
+
+          // Update velocity with mouse influence and natural drift
+          const newVx = shape.vx + mouseAttraction.x + (Math.random() - 0.5) * 0.001;
+          const newVy = shape.vy + mouseAttraction.y + (Math.random() - 0.5) * 0.001;
+
+          // Apply velocity dampening
+          const dampedVx = newVx * 0.995;
+          const dampedVy = newVy * 0.995;
+
+          // Update position
+          let newX = shape.x + dampedVx;
+          let newY = shape.y + dampedVy;
+
+          // Bounce off edges gently
+          if (newX < -shape.size / 2 || newX > window.innerWidth + shape.size / 2) {
+            newX = shape.x - dampedVx;
+          }
+          if (newY < -shape.size / 2 || newY > window.innerHeight + shape.size / 2) {
+            newY = shape.y - dampedVy;
+          }
+
+          return {
+            ...shape,
+            x: newX,
+            y: newY,
+            vx: dampedVx,
+            vy: dampedVy,
+          };
+        })
       );
 
-      animationRef.current = requestAnimationFrame(animateParticles);
+      animationRef.current = requestAnimationFrame(animateShapes);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    animationRef.current = requestAnimationFrame(animateParticles);
+    animationRef.current = requestAnimationFrame(animateShapes);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
@@ -78,25 +105,27 @@ const MouseTracker = () => {
 
   return (
     <>
-      {/* Mouse spotlight effect */}
+      {/* Subtle mouse glow - slower and more diffused */}
       <div
-        className="fixed inset-0 pointer-events-none z-10 transition-opacity duration-300"
+        className="fixed inset-0 pointer-events-none z-10 transition-all duration-1000 ease-out"
         style={{
-          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(147, 51, 234, 0.15), rgba(219, 39, 119, 0.1) 40%, transparent 80%)`,
+          background: `radial-gradient(800px circle at ${mousePos.x}px ${mousePos.y}px, rgba(147, 51, 234, 0.03), rgba(219, 39, 119, 0.02) 60%, transparent 80%)`,
         }}
       />
 
-      {/* Particle system */}
-      <div className="fixed inset-0 pointer-events-none z-20">
-        {particles.map(particle => (
+      {/* Floating background shapes */}
+      <div className="fixed inset-0 pointer-events-none z-5">
+        {shapes.map(shape => (
           <div
-            key={particle.id}
-            className="absolute w-1 h-1 bg-purple-400 rounded-full"
+            key={shape.id}
+            className="absolute rounded-full blur-3xl transition-all duration-2000 ease-out"
             style={{
-              left: particle.x,
-              top: particle.y,
-              opacity: particle.life / particle.maxLife,
-              transform: `scale(${particle.life / particle.maxLife})`,
+              left: shape.x - shape.size / 2,
+              top: shape.y - shape.size / 2,
+              width: shape.size,
+              height: shape.size,
+              background: shape.color,
+              opacity: shape.opacity,
             }}
           />
         ))}

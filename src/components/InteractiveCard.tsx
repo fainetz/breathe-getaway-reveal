@@ -1,4 +1,3 @@
-
 import { useState, useRef } from 'react';
 import { MapPin, Navigation } from 'lucide-react';
 
@@ -48,26 +47,26 @@ const InteractiveCard = ({ destination, index, isVisible }: InteractiveCardProps
   return (
     <div
       ref={cardRef}
-      className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      className={`group transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       style={{ transitionDelay: `${index * 100}ms` }}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div 
-        className="relative bg-gray-900/40 backdrop-blur-lg border border-gray-700/50 rounded-xl overflow-hidden transition-all duration-500 hover:border-gray-500/40"
+        className="relative bg-gray-900/40 backdrop-blur-lg border border-gray-700/50 rounded-xl overflow-hidden transition-all duration-1000 ease-out hover:border-gray-500/40"
         style={{
           transform: isHovered 
-            ? `perspective(1000px) rotateX(${(mousePos.y - 150) * 0.1}deg) rotateY(${(mousePos.x - 150) * 0.1}deg) translateZ(20px)` 
+            ? `perspective(1000px) rotateX(${(mousePos.y - 150) * 0.03}deg) rotateY(${(mousePos.x - 150) * 0.03}deg) translateZ(10px)` 
             : 'none',
         }}
       >
-        {/* Interactive glow effect */}
+        {/* Slower, more subtle glow effect */}
         {isHovered && (
           <div
-            className="absolute inset-0 opacity-30 pointer-events-none transition-opacity duration-300"
+            className="absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 ease-out"
             style={{
-              background: `radial-gradient(300px circle at ${mousePos.x}px ${mousePos.y}px, rgba(147, 51, 234, 0.3), transparent 70%)`,
+              background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(147, 51, 234, 0.15), transparent 70%)`,
             }}
           />
         )}
@@ -77,7 +76,7 @@ const InteractiveCard = ({ destination, index, isVisible }: InteractiveCardProps
           <img
             src={`https://images.unsplash.com/${destination.image}?w=300&h=200&fit=crop`}
             alt={destination.name}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
           <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm rounded-full px-2 py-1 text-xs text-gray-200">
@@ -122,7 +121,7 @@ const InteractiveCard = ({ destination, index, isVisible }: InteractiveCardProps
             ))}
           </div>
 
-          <button className="w-full bg-white/10 hover:bg-white/20 border border-gray-600/40 hover:border-gray-500/60 py-2 rounded-lg text-sm font-medium text-white hover:text-gray-100 transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-lg">
+          <button className="w-full bg-white/10 hover:bg-white/20 border border-gray-600/40 hover:border-gray-500/60 py-2 rounded-lg text-sm font-medium text-white hover:text-gray-100 transition-all duration-500 ease-out flex items-center justify-center gap-2 group-hover:shadow-lg">
             <Navigation className="w-3 h-3" />
             Discover Journey
           </button>
