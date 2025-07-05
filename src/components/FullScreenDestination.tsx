@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { X, ChevronUp, ChevronDown, MapPin, Calendar, DollarSign, Plane, Clock } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 
@@ -35,6 +34,7 @@ const FullScreenDestination = ({
   const [isVisible, setIsVisible] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const aboutSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isOpen && destination) {
@@ -108,6 +108,15 @@ const FullScreenDestination = ({
     }, 300);
   };
 
+  const scrollToAboutSection = () => {
+    if (aboutSectionRef.current) {
+      aboutSectionRef.current.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   if (!isOpen || !destination) return null;
 
   const currentDestination = destinations[currentIndex] || destination;
@@ -168,9 +177,22 @@ const FullScreenDestination = ({
         </span>
       </div>
 
+      {/* Fixed Action Buttons */}
+      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 flex gap-4 max-w-2xl w-full px-8">
+        <button className="flex-1 bg-neutral-700/60 hover:bg-neutral-600/80 border border-neutral-600/40 text-neutral-200 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm">
+          View Available Flights
+        </button>
+        <button 
+          onClick={scrollToAboutSection}
+          className="flex-1 bg-white/10 hover:bg-white/20 border border-neutral-500/40 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+        >
+          View Details
+        </button>
+      </div>
+
       {/* Scrollable Main Content */}
       <ScrollArea className="relative z-20 h-full">
-        <div className="min-h-screen flex items-center justify-center p-8">
+        <div className="min-h-screen flex items-center justify-center p-8 pb-32">
           <div className={`max-w-4xl w-full transition-all duration-500 ease-out ${
             isVisible 
               ? 'opacity-100 translate-y-0' 
@@ -246,7 +268,7 @@ const FullScreenDestination = ({
             </div>
 
             {/* Extended Description Section */}
-            <div className="bg-neutral-800/30 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-8 mb-12">
+            <div ref={aboutSectionRef} className="bg-neutral-800/30 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-8 mb-12">
               <h3 className="text-2xl font-semibold text-white mb-4">About This Experience</h3>
               <p className="text-neutral-300 text-lg leading-relaxed mb-6">
                 {currentDestination.description}
@@ -313,16 +335,6 @@ const FullScreenDestination = ({
                   {tag}
                 </span>
               ))}
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex gap-4 max-w-2xl mx-auto mb-16">
-              <button className="flex-1 bg-neutral-700/60 hover:bg-neutral-600/80 border border-neutral-600/40 text-neutral-200 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105">
-                View Available Flights
-              </button>
-              <button className="flex-1 bg-white/10 hover:bg-white/20 border border-neutral-500/40 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105">
-                View Details
-              </button>
             </div>
           </div>
         </div>
