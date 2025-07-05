@@ -11,15 +11,21 @@ const ExpandableSearch = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 100); // Collapse after scrolling 100px
+      const shouldScroll = scrollY > 100;
+      setIsScrolled(shouldScroll);
+      
+      // Auto-collapse when scrolling if not hovered
+      if (shouldScroll && !isHovered) {
+        setIsExpanded(false);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHovered]);
 
   // Determine if should be expanded based on scroll and hover state
-  const shouldBeExpanded = !isScrolled || isHovered;
+  const shouldBeExpanded = (!isScrolled && isExpanded) || isHovered;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,7 +37,7 @@ const ExpandableSearch = () => {
     <div className={`fixed z-50 transition-all duration-500 ease-in-out ${
       isScrolled 
         ? 'bottom-8 left-1/2 transform -translate-x-1/2' // Center bottom when scrolled
-        : 'top-80 left-8' // Under hero text content when not scrolled
+        : 'top-96 left-8' // Under hero text content when not scrolled
     }`}>
       <div 
         className={`transition-all duration-300 ease-in-out ${

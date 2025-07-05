@@ -6,7 +6,7 @@ import ThreeBackground from './ThreeBackground';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex flex-col px-6">
+    <section className="relative h-screen flex flex-col px-6">
       {/* 3D Background */}
       <ThreeBackground />
       
@@ -35,11 +35,11 @@ const Hero = () => {
         </div>
       </nav>
 
-      {/* Main Content - Left aligned like AICM */}
-      <div className="relative z-10 flex-1 flex items-center">
+      {/* Main Content - Left aligned and more compact */}
+      <div className="relative z-10 flex-1 flex items-center pt-8">
         <div className="max-w-7xl mx-auto w-full">
           <div className="max-w-2xl">
-            <h1 className="text-6xl md:text-7xl font-bold leading-tight text-white mb-8">
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight text-white mb-6">
               The Smarter,
               <br />
               <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -49,7 +49,7 @@ const Hero = () => {
               Escape Discovery
             </h1>
             
-            <p className="text-xl text-gray-300 leading-relaxed max-w-xl mb-12">
+            <p className="text-lg text-gray-300 leading-relaxed max-w-xl mb-8">
               Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
             </p>
           </div>
