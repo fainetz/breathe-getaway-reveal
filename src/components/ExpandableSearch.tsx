@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Search, ArrowRight } from 'lucide-react';
 
@@ -39,15 +40,15 @@ const ExpandableSearch = () => {
   };
 
   return (
-    <div className={`fixed z-50 transition-all duration-500 ease-in-out ${
+    <div className={`fixed z-50 transition-all duration-700 ease-out ${
       isScrolled 
         ? 'bottom-8 left-1/2 transform -translate-x-1/2' // Center bottom when scrolled
         : 'bottom-32 left-8' // Under hero content when not scrolled
     }`}>
       <div 
-        className={`transition-all duration-300 ease-in-out ${
-          shouldBeExpanded ? 'w-96' : 'w-12'
-        } h-12 bg-white/10 backdrop-blur-lg border border-white/20 rounded-full hover:bg-white/15`}
+        className={`transition-all duration-500 ease-out ${
+          shouldBeExpanded ? 'w-96' : 'w-32'
+        } h-12 bg-white/10 backdrop-blur-lg border border-white/20 rounded-full hover:bg-white/15 overflow-hidden`}
         onMouseEnter={() => {
           setIsHovered(true);
           setIsExpanded(true);
@@ -60,8 +61,9 @@ const ExpandableSearch = () => {
         }}
       >
         {!shouldBeExpanded ? (
-          <div className="w-full h-full flex items-center justify-center">
-            <Search className="w-5 h-5 text-white" />
+          <div className="w-full h-full flex items-center justify-center px-3">
+            <Search className="w-4 h-4 text-white mr-2" />
+            <span className="text-white text-sm font-medium">Search</span>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="w-full h-full flex items-center px-4">
