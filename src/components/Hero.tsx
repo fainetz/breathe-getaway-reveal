@@ -1,5 +1,6 @@
+
 import { useState } from 'react';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X, Compass } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThreeBackground from './ThreeBackground';
 import ThemeToggle from './ThemeToggle';
@@ -23,9 +24,11 @@ const Hero = () => {
       {/* Navigation - mobile responsive */}
       <nav className="relative z-50 py-4">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg"></div>
-            <span className="text-lg sm:text-xl font-bold text-black dark:text-white transition-colors duration-300">
+          <Link to="/" className="flex items-center space-x-2 group">
+            <div className="w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg relative overflow-hidden">
+              <Compass className="w-4 h-4 sm:w-5 sm:h-5 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-spin" style={{ animationDuration: '20s' }} />
+            </div>
+            <span className="text-lg sm:text-xl font-bold text-black dark:text-white transition-colors duration-300 group-hover:scale-105 transition-transform">
               <span className="hidden sm:inline">Breathe & Getaway</span>
               <span className="sm:hidden">B&G</span>
             </span>
@@ -33,7 +36,7 @@ const Hero = () => {
           
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 text-black dark:text-white"
+            className="md:hidden p-2 text-black dark:text-white hover:scale-110 transition-transform duration-200"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -41,13 +44,22 @@ const Hero = () => {
           
           {/* Desktop navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <a href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors text-sm">How it works</a>
-            <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors text-sm">Features</a>
-            <Link to="/destinations" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors text-sm">Destinations</Link>
+            <a href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
+              How it works
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
+              Features
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <Link to="/destinations" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
+              Destinations
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
             <div className="relative group">
-              <button className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors flex items-center gap-1 text-sm">
+              <button className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 flex items-center gap-1 text-sm hover:scale-105">
                 Vision
-                <ChevronDown className="w-3 h-3" />
+                <ChevronDown className="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" />
               </button>
             </div>
             <ThemeToggle />
@@ -56,12 +68,12 @@ const Hero = () => {
 
         {/* Mobile navigation menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-black/95 backdrop-blur-lg border-b border-gray-200 dark:border-white/20 py-4 px-4">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-black/95 backdrop-blur-lg border-b border-gray-200 dark:border-white/20 py-4 px-4 animate-fade-in">
             <div className="flex flex-col space-y-4">
-              <a href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors py-2">How it works</a>
-              <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors py-2">Features</a>
-              <Link to="/destinations" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors py-2">Destinations</Link>
-              <button className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors flex items-center gap-1 py-2">
+              <a href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors py-2 hover:translate-x-2 transition-transform duration-200">How it works</a>
+              <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors py-2 hover:translate-x-2 transition-transform duration-200">Features</a>
+              <Link to="/destinations" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors py-2 hover:translate-x-2 transition-transform duration-200">Destinations</Link>
+              <button className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors flex items-center gap-1 py-2 hover:translate-x-2 transition-transform duration-200">
                 Vision
                 <ChevronDown className="w-3 h-3" />
               </button>
@@ -77,17 +89,17 @@ const Hero = () => {
       <div className="relative z-10 flex-1 flex items-center pt-4 sm:pt-8">
         <div className="max-w-7xl mx-auto w-full">
           <div className="max-w-2xl text-center sm:text-left mx-auto sm:mx-0">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white mb-4 sm:mb-6 transition-colors duration-300">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white mb-4 sm:mb-6 transition-colors duration-300 animate-fade-in">
               The Smarter,
               <br />
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
                 AI-Powered
               </span>
               <br />
               Escape Discovery
             </h1>
             
-            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl mb-6 sm:mb-8 transition-colors duration-300 px-4 sm:px-0">
+            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl mb-6 sm:mb-8 transition-colors duration-300 px-4 sm:px-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
               Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
             </p>
           </div>
