@@ -57,17 +57,17 @@ const Vision = () => {
   }, [isVisible, visionCards.length]);
 
   return (
-    <section id="vision" className="py-32 px-6 relative overflow-hidden bg-gradient-to-b from-gray-900 via-black to-gray-900 dark:from-black dark:via-gray-900/40 dark:to-black transition-colors duration-300" ref={sectionRef}>
+    <section id="vision" className="py-32 px-6 relative overflow-hidden bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 dark:from-gray-900 dark:via-black dark:to-gray-900 transition-colors duration-300" ref={sectionRef}>
       {/* Enhanced animated background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-transparent to-pink-900/30 animate-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 dark:from-purple-900/30 via-transparent to-pink-900/20 dark:to-pink-900/30 animate-pulse"></div>
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <div className={`transition-all duration-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-          <h2 className="text-5xl md:text-7xl font-bold mb-12 leading-tight text-white">
+          <h2 className="text-5xl md:text-7xl font-bold mb-12 leading-tight text-black dark:text-white transition-colors duration-300">
             The Future of 
             <br />
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
@@ -75,7 +75,7 @@ const Vision = () => {
             </span>
           </h2>
           
-          <p className="text-2xl text-gray-200 leading-relaxed mb-16">
+          <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed mb-16 transition-colors duration-300">
             Imagine a world where every journey is perfectly aligned with your inner landscape. 
             Where AI doesn't just understand destinations, but understands you.
           </p>
@@ -100,12 +100,12 @@ const Vision = () => {
                 transitionProperty: 'opacity, transform'
               }}
             >
-              <div className={`bg-white/25 backdrop-blur-xl border border-white/30 rounded-2xl p-8 mx-auto max-w-md h-full relative overflow-hidden group shadow-2xl`}>
+              <div className={`bg-white/90 dark:bg-white/25 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-2xl p-8 mx-auto max-w-md h-full relative overflow-hidden group shadow-2xl transition-colors duration-300`}>
                 <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-30 transition-opacity duration-500`}></div>
                 <div className="relative z-10 flex flex-col items-center justify-center h-full">
                   <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500">{card.icon}</div>
-                  <h3 className="text-2xl font-bold mb-4 text-white">{card.title}</h3>
-                  <p className="text-gray-200 leading-relaxed text-center">{card.description}</p>
+                  <h3 className="text-2xl font-bold mb-4 text-black dark:text-white transition-colors duration-300">{card.title}</h3>
+                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-center transition-colors duration-300">{card.description}</p>
                 </div>
               </div>
             </div>
@@ -121,7 +121,7 @@ const Vision = () => {
               className={`w-4 h-4 rounded-full transition-all duration-300 ${
                 currentCard === index 
                   ? 'bg-purple-500 scale-125 shadow-lg shadow-purple-500/50' 
-                  : 'bg-white/40 hover:bg-white/60 hover:scale-110'
+                  : 'bg-gray-400 dark:bg-white/40 hover:bg-gray-600 dark:hover:bg-white/60 hover:scale-110'
               }`}
             />
           ))}

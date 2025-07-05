@@ -77,7 +77,7 @@ const EmotionalHooks = () => {
             <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight text-black dark:text-white transition-colors duration-300">
               When Words 
               <br />
-              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+              <span className="text-gray-700 dark:text-gray-300">
                 Become Journeys
               </span>
             </h2>
@@ -94,7 +94,7 @@ const EmotionalHooks = () => {
                 >
                   <div className="bg-white/80 dark:bg-white/20 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-2xl p-6 hover:bg-white/90 dark:hover:bg-white/30 transition-all duration-300 shadow-xl">
                     <p className="text-lg text-gray-700 dark:text-gray-100 italic mb-2 transition-colors duration-300">"{example.quote}"</p>
-                    <p className="text-sm text-purple-600 dark:text-purple-400 font-medium transition-colors duration-300">→ {example.destination}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 font-medium transition-colors duration-300">→ {example.destination}</p>
                   </div>
                 </div>
               ))}
@@ -106,7 +106,7 @@ const EmotionalHooks = () => {
                 <div
                   key={index}
                   className={`h-1.5 rounded-full transition-all duration-500 ${
-                    currentExample === index ? 'bg-purple-400 w-8 shadow-lg shadow-purple-400/50' : 'bg-gray-400 dark:bg-white/40 w-4'
+                    currentExample === index ? 'bg-gray-600 dark:bg-gray-400 w-8 shadow-lg' : 'bg-gray-400 dark:bg-white/40 w-4'
                   }`}
                 />
               ))}
