@@ -86,10 +86,10 @@ const Features = () => {
   };
 
   return (
-    <section id="features" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300" ref={sectionRef}>
+    <section id="features" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300 shadow-2xl dark:shadow-gray-900/60" ref={sectionRef}>
       <div className="max-w-7xl mx-auto">
         <div className={`text-center mb-12 sm:mb-16 lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-black dark:text-white transition-colors duration-300">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-black dark:text-white transition-colors duration-300 drop-shadow-lg">
             Travel That Understands You
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed transition-colors duration-300 px-4 sm:px-0">
@@ -107,11 +107,11 @@ const Features = () => {
               {features.map((feature, index) => (
                 <div key={index} className="w-1/3 flex-shrink-0">
                   <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-                    <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 hover:bg-white dark:hover:bg-white/25 transition-all duration-500 hover:scale-102 h-full relative overflow-hidden shadow-lg">
+                    <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 hover:bg-white dark:hover:bg-white/25 transition-all duration-500 hover:scale-102 h-full relative overflow-hidden shadow-xl hover:shadow-2xl dark:shadow-black/30 dark:hover:shadow-black/50">
                       <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
                       <div className="relative z-10">
-                        <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300`}></div>
-                        <h3 className="text-xl font-bold mb-4 text-black dark:text-white transition-colors duration-300">{feature.title}</h3>
+                        <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}></div>
+                        <h3 className="text-xl font-bold mb-4 text-black dark:text-white transition-colors duration-300 drop-shadow-sm">{feature.title}</h3>
                         <p className="text-gray-700 dark:text-gray-200 leading-relaxed transition-colors duration-300">{feature.description}</p>
                       </div>
                     </div>
@@ -124,13 +124,13 @@ const Features = () => {
           {/* Navigation Buttons */}
           <button 
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-3 hover:bg-white dark:hover:bg-white/30 transition-all duration-300 text-black dark:text-white"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-3 hover:bg-white dark:hover:bg-white/30 transition-all duration-300 text-black dark:text-white shadow-lg hover:shadow-xl"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button 
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-3 hover:bg-white dark:hover:bg-white/30 transition-all duration-300 text-black dark:text-white"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-3 hover:bg-white dark:hover:bg-white/30 transition-all duration-300 text-black dark:text-white shadow-lg hover:shadow-xl"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -141,8 +141,8 @@ const Features = () => {
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  currentSlide === index ? 'bg-purple-500 scale-125' : 'bg-gray-400 dark:bg-white/30 hover:bg-gray-600 dark:hover:bg-white/50'
+                className={`w-3 h-3 rounded-full transition-all duration-300 shadow-md ${
+                  currentSlide === index ? 'bg-purple-500 scale-125 shadow-purple-500/50' : 'bg-gray-400 dark:bg-white/30 hover:bg-gray-600 dark:hover:bg-white/50'
                 }`}
               />
             ))}
@@ -153,11 +153,11 @@ const Features = () => {
         <div className="lg:hidden space-y-6">
           {features.map((feature, index) => (
             <div key={index} className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-              <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-lg touch-manipulation">
+              <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-xl dark:shadow-black/30 touch-manipulation">
                 <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-20`}></div>
                 <div className="relative z-10">
-                  <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6`}></div>
-                  <h3 className="text-xl sm:text-2xl font-bold mb-4 text-black dark:text-white transition-colors duration-300">{feature.title}</h3>
+                  <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 shadow-lg`}></div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-4 text-black dark:text-white transition-colors duration-300 drop-shadow-sm">{feature.title}</h3>
                   <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-base sm:text-lg transition-colors duration-300">{feature.description}</p>
                 </div>
               </div>
