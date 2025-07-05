@@ -57,7 +57,7 @@ const Vision = () => {
   }, [isVisible, visionCards.length]);
 
   return (
-    <section id="vision" className="py-32 px-6 relative overflow-hidden bg-gradient-to-b from-black via-gray-900/40 to-black" ref={sectionRef}>
+    <section id="vision" className="py-32 px-6 relative overflow-hidden bg-gradient-to-b from-gray-900 via-black to-gray-900 dark:from-black dark:via-gray-900/40 dark:to-black transition-colors duration-300" ref={sectionRef}>
       {/* Enhanced animated background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-transparent to-pink-900/30 animate-pulse"></div>
@@ -67,7 +67,7 @@ const Vision = () => {
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <div className={`transition-all duration-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-          <h2 className="text-5xl md:text-7xl font-bold mb-12 leading-tight">
+          <h2 className="text-5xl md:text-7xl font-bold mb-12 leading-tight text-white">
             The Future of 
             <br />
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
@@ -128,7 +128,7 @@ const Vision = () => {
         </div>
 
         <div className={`transition-all duration-1200 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-          <button className="bg-gradient-to-r from-purple-500 to-pink-500 px-12 py-4 rounded-full text-xl font-semibold hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105 group relative overflow-hidden">
+          <button className="bg-gradient-to-r from-purple-500 to-pink-500 px-12 py-4 rounded-full text-xl font-semibold hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105 group relative overflow-hidden text-white">
             <span className="relative z-10">Join the Revolution</span>
             <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
