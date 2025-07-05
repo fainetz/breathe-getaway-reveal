@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { MapPin, Navigation } from 'lucide-react';
 
@@ -188,11 +187,10 @@ const Destinations = () => {
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Hero Section */}
-      <section className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-black via-purple-900/30 to-black" ref={sectionRef}>
+      <section className="py-24 px-6 relative overflow-hidden bg-black" ref={sectionRef}>
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-pink-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+          <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-pink-500/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
         
         <div className="max-w-6xl mx-auto text-center relative z-10">
@@ -200,7 +198,7 @@ const Destinations = () => {
             <h1 className="text-6xl md:text-7xl font-bold mb-8 leading-tight">
               Destinations That
               <br />
-              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-300 via-pink-200 to-gray-200 bg-clip-text text-transparent">
                 Understand You
               </span>
             </h1>
@@ -221,7 +219,7 @@ const Destinations = () => {
                 onClick={() => setActiveCategory(category.id)}
                 className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                   activeCategory === category.id
-                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/30'
+                    ? 'bg-purple-600/20 text-white border border-purple-500/30'
                     : 'bg-gray-800/60 text-gray-300 hover:bg-gray-700/80 hover:text-white border border-gray-600/40'
                 }`}
               >
@@ -268,7 +266,7 @@ const Destinations = () => {
                       <h3 className="text-sm font-bold text-white group-hover:text-gray-200 transition-colors leading-tight">
                         {destination.name}
                       </h3>
-                      <span className="text-sm font-bold text-blue-400 ml-2">
+                      <span className="text-sm font-bold text-gray-200 ml-2">
                         {destination.price}
                       </span>
                     </div>
