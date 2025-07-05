@@ -1,6 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { MapPin, Navigation } from 'lucide-react';
+import { MapPin, Navigation, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Destinations = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -187,6 +188,17 @@ const Destinations = () => {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      {/* Back Button */}
+      <div className="fixed top-6 left-6 z-50">
+        <Link 
+          to="/" 
+          className="flex items-center gap-2 bg-gray-900/80 backdrop-blur-lg border border-gray-700/50 rounded-full px-4 py-2 text-sm font-medium text-white hover:bg-gray-800/80 hover:border-gray-600/50 transition-all duration-300"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Home
+        </Link>
+      </div>
+
       {/* Hero Section */}
       <section className="py-24 px-6 relative overflow-hidden bg-black" ref={sectionRef}>
         <div className="absolute inset-0">
