@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { X, ChevronUp, ChevronDown, MapPin, Calendar, DollarSign } from 'lucide-react';
-import { ScrollArea } from './ui/scroll-area';
+import { X, ChevronUp, ChevronDown, MapPin, Calendar, DollarSign, Plane, Clock } from 'lucide-react';
 
 interface Destination {
   id: number;
@@ -32,11 +31,16 @@ const FullScreenDestination = ({
   onNavigate 
 }: FullScreenDestinationProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     if (isOpen && destination) {
       const index = destinations.findIndex(d => d.id === destination.id);
       setCurrentIndex(index !== -1 ? index : 0);
+      // Smooth entrance animation
+      setTimeout(() => setIsVisible(true), 100);
+    } else {
+      setIsVisible(false);
     }
   }, [destination, destinations, isOpen]);
 
@@ -58,15 +62,23 @@ const FullScreenDestination = ({
   }, [isOpen, currentIndex]);
 
   const navigateNext = () => {
-    const nextIndex = (currentIndex + 1) % destinations.length;
-    setCurrentIndex(nextIndex);
-    onNavigate(destinations[nextIndex]);
+    setIsVisible(false);
+    setTimeout(() => {
+      const nextIndex = (currentIndex + 1) % destinations.length;
+      setCurrentIndex(nextIndex);
+      onNavigate(destinations[nextIndex]);
+      setIsVisible(true);
+    }, 200);
   };
 
   const navigatePrevious = () => {
-    const prevIndex = currentIndex === 0 ? destinations.length - 1 : currentIndex - 1;
-    setCurrentIndex(prevIndex);
-    onNavigate(destinations[prevIndex]);
+    setIsVisible(false);
+    setTimeout(() => {
+      const prevIndex = currentIndex === 0 ? destinations.length - 1 : currentIndex - 1;
+      setCurrentIndex(prevIndex);
+      onNavigate(destinations[prevIndex]);
+      setIsVisible(true);
+    }, 200);
   };
 
   if (!isOpen || !destination) return null;
@@ -74,117 +86,135 @@ const FullScreenDestination = ({
   const currentDestination = destinations[currentIndex] || destination;
 
   return (
-    <div className="fixed inset-0 z-50 bg-neutral-900/95 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 bg-neutral-900 overflow-hidden">
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-neutral-800 via-neutral-900 to-black opacity-80"></div>
+      
       {/* Close Button */}
       <button
         onClick={onClose}
-        className="absolute top-6 right-6 z-20 bg-neutral-800/80 hover:bg-neutral-700/80 border border-neutral-600/50 rounded-full p-2 text-neutral-200 hover:text-white transition-all duration-300 ease-in"
+        className="absolute top-8 right-8 z-30 bg-neutral-800/60 hover:bg-neutral-700/80 backdrop-blur-sm border border-neutral-600/30 rounded-full p-3 text-neutral-300 hover:text-white transition-all duration-300 ease-out"
       >
         <X className="w-6 h-6" />
       </button>
 
-      {/* Vertical Navigation Buttons */}
+      {/* Navigation Buttons */}
       <button
         onClick={navigatePrevious}
-        className="absolute right-6 top-1/3 -translate-y-1/2 z-20 bg-neutral-800/80 hover:bg-neutral-700/80 border border-neutral-600/50 rounded-full p-3 text-neutral-200 hover:text-white transition-all duration-300 ease-in"
+        className="absolute right-8 top-1/3 -translate-y-1/2 z-30 bg-neutral-800/60 hover:bg-neutral-700/80 backdrop-blur-sm border border-neutral-600/30 rounded-full p-3 text-neutral-300 hover:text-white transition-all duration-300 ease-out"
       >
         <ChevronUp className="w-6 h-6" />
       </button>
 
       <button
         onClick={navigateNext}
-        className="absolute right-6 bottom-1/3 translate-y-1/2 z-20 bg-neutral-800/80 hover:bg-neutral-700/80 border border-neutral-600/50 rounded-full p-3 text-neutral-200 hover:text-white transition-all duration-300 ease-in"
+        className="absolute right-8 bottom-1/3 translate-y-1/2 z-30 bg-neutral-800/60 hover:bg-neutral-700/80 backdrop-blur-sm border border-neutral-600/30 rounded-full p-3 text-neutral-300 hover:text-white transition-all duration-300 ease-out"
       >
         <ChevronDown className="w-6 h-6" />
       </button>
 
-      {/* Scrollable Content */}
-      <ScrollArea className="h-full w-full">
-        <div className="min-h-screen flex items-center justify-center p-6">
-          <div className="max-w-7xl w-full bg-neutral-800/60 backdrop-blur-lg border border-neutral-600/30 rounded-2xl overflow-hidden transition-all duration-500 ease-in">
-            <div className="grid lg:grid-cols-2 min-h-[80vh]">
-              {/* Image Section - Left */}
-              <div className="relative">
-                <img
-                  src={`https://images.unsplash.com/${currentDestination.image}?w=800&h=800&fit=crop`}
-                  alt={currentDestination.name}
-                  className="w-full h-full object-cover transition-all duration-700 ease-in"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-neutral-900/20"></div>
-                <div className="absolute bottom-6 left-6">
-                  <div className="bg-neutral-800/60 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium text-neutral-100 border border-neutral-600/30">
-                    {currentDestination.mood}
-                  </div>
-                </div>
+      {/* Navigation Indicator */}
+      <div className="absolute bottom-8 right-8 z-30 bg-neutral-800/60 backdrop-blur-sm border border-neutral-600/30 rounded-full px-4 py-2">
+        <span className="text-neutral-300 text-sm font-medium">
+          {currentIndex + 1}/{destinations.length}
+        </span>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-20 h-full flex items-center justify-center p-8">
+        <div className={`max-w-4xl w-full transition-all duration-500 ease-out ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          
+          {/* Header Section */}
+          <div className="text-center mb-12">
+            <h1 className="text-7xl md:text-8xl font-bold text-white mb-6 leading-none tracking-tight">
+              {currentDestination.name}
+            </h1>
+            <div className="flex items-center justify-center text-neutral-300 mb-8">
+              <MapPin className="w-6 h-6 mr-3" />
+              <span className="text-2xl font-light">{currentDestination.location}</span>
+            </div>
+            
+            {/* Mood Badge */}
+            <div className="inline-block bg-neutral-700/40 border border-neutral-600/30 rounded-full px-6 py-3 mb-8">
+              <span className="text-neutral-200 text-lg font-medium">{currentDestination.mood}</span>
+            </div>
+          </div>
+
+          {/* Key Info Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+            <div className="bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-neutral-700/40">
+              <Plane className="w-8 h-8 text-neutral-400 mx-auto mb-3" />
+              <div className="text-neutral-400 text-sm mb-1">Flight Time</div>
+              <div className="text-white text-lg font-semibold">3h 45m from MSP</div>
+            </div>
+            
+            <div className="bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-neutral-700/40">
+              <Clock className="w-8 h-8 text-neutral-400 mx-auto mb-3" />
+              <div className="text-neutral-400 text-sm mb-1">Check-in</div>
+              <div className="text-white text-lg font-semibold">less than a minute</div>
+            </div>
+            
+            <div className="bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-neutral-700/40">
+              <Calendar className="w-8 h-8 text-neutral-400 mx-auto mb-3" />
+              <div className="text-neutral-400 text-sm mb-1">Duration</div>
+              <div className="text-white text-lg font-semibold">{currentDestination.duration}</div>
+            </div>
+            
+            <div className="bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-neutral-700/40">
+              <DollarSign className="w-8 h-8 text-neutral-400 mx-auto mb-3" />
+              <div className="text-neutral-400 text-sm mb-1">Starting from</div>
+              <div className="text-white text-lg font-semibold">{currentDestination.price}</div>
+            </div>
+          </div>
+
+          {/* Experience Metrics */}
+          <div className="grid grid-cols-2 gap-6 mb-12">
+            <div className="bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-neutral-300 text-lg font-medium">Nature Immersion</span>
+                <span className="text-white text-sm">9/10</span>
               </div>
-
-              {/* Content Section - Right */}
-              <div className="p-8 lg:p-12 flex flex-col justify-center space-y-8">
-                <div>
-                  <h1 className="text-4xl lg:text-5xl font-bold text-neutral-100 mb-4 leading-tight transition-all duration-300 ease-in">
-                    {currentDestination.name}
-                  </h1>
-                  <div className="flex items-center text-neutral-300 mb-6">
-                    <MapPin className="w-5 h-5 mr-2" />
-                    <span className="text-lg">{currentDestination.location}</span>
-                  </div>
-                </div>
-
-                <p className="text-neutral-300 text-lg leading-relaxed">
-                  {currentDestination.description}
-                </p>
-
-                {/* Details Grid */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-neutral-700/40 backdrop-blur-sm border border-neutral-600/30 rounded-xl p-4 transition-all duration-300 ease-in hover:bg-neutral-700/60">
-                    <div className="flex items-center text-neutral-400 mb-2">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      <span className="text-sm">Duration</span>
-                    </div>
-                    <p className="text-neutral-100 font-semibold">{currentDestination.duration}</p>
-                  </div>
-                  <div className="bg-neutral-700/40 backdrop-blur-sm border border-neutral-600/30 rounded-xl p-4 transition-all duration-300 ease-in hover:bg-neutral-700/60">
-                    <div className="flex items-center text-neutral-400 mb-2">
-                      <DollarSign className="w-4 h-4 mr-2" />
-                      <span className="text-sm">Starting from</span>
-                    </div>
-                    <p className="text-neutral-100 font-semibold">{currentDestination.price}</p>
-                  </div>
-                </div>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {currentDestination.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="bg-neutral-700/30 border border-neutral-600/40 text-neutral-200 px-3 py-1 rounded-full text-sm transition-all duration-300 ease-in hover:bg-neutral-600/40"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* CTA Button */}
-                <button className="w-full bg-neutral-700 hover:bg-neutral-600 text-neutral-100 font-semibold py-4 rounded-xl transition-all duration-300 ease-in shadow-lg hover:shadow-neutral-900/50 border border-neutral-600/30">
-                  Book This Journey
-                </button>
-
-                {/* Navigation Indicator */}
-                <div className="flex justify-center space-x-2 pt-4">
-                  {destinations.map((_, index) => (
-                    <div
-                      key={index}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ease-in ${
-                        index === currentIndex ? 'bg-neutral-400' : 'bg-neutral-600'
-                      }`}
-                    />
-                  ))}
-                </div>
+              <div className="w-full bg-neutral-700 rounded-full h-2">
+                <div className="bg-gradient-to-r from-green-400 to-green-600 h-2 rounded-full" style={{ width: '90%' }}></div>
+              </div>
+            </div>
+            
+            <div className="bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-neutral-300 text-lg font-medium">Digital Detox</span>
+                <span className="text-white text-sm">8/10</span>
+              </div>
+              <div className="w-full bg-neutral-700 rounded-full h-2">
+                <div className="bg-gradient-to-r from-blue-400 to-blue-600 h-2 rounded-full" style={{ width: '80%' }}></div>
               </div>
             </div>
           </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {currentDestination.tags.map((tag) => (
+              <span
+                key={tag}
+                className="bg-neutral-700/30 border border-neutral-600/40 text-neutral-200 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:bg-neutral-600/40 hover:scale-105"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex gap-4 max-w-2xl mx-auto">
+            <button className="flex-1 bg-neutral-700/60 hover:bg-neutral-600/80 border border-neutral-600/40 text-neutral-200 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105">
+              View Available Flights
+            </button>
+            <button className="flex-1 bg-white/10 hover:bg-white/20 border border-neutral-500/40 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105">
+              View Details
+            </button>
+          </div>
         </div>
-      </ScrollArea>
+      </div>
     </div>
   );
 };
