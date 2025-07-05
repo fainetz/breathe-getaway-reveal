@@ -69,7 +69,7 @@ const Destinations = () => {
       name: "Patagonia Wild",
       location: "Torres del Paine, Chile",
       category: "adventure",
-      image: "photo-1578662996442-48f60103fc96",
+      image: "photo-1470071459604-3b5ec3a7fe05",
       price: "$2,499",
       duration: "8 days",
       description: "Reconnect with raw nature and your wild spirit",
@@ -87,6 +87,78 @@ const Destinations = () => {
       description: "Heal your heart with rolling hills and fine wine",
       mood: "Need Healing",
       tags: ["Wine", "Countryside", "Cooking"]
+    },
+    {
+      id: 7,
+      name: "Iceland Solitude",
+      location: "Reykjavik, Iceland",
+      category: "adventure",
+      image: "photo-1482938289607-e9573fc25ebb",
+      price: "$2,299",
+      duration: "6 days",
+      description: "Find solitude among glaciers and geysers",
+      mood: "Need Escape",
+      tags: ["Glaciers", "Hot Springs", "Northern Lights"]
+    },
+    {
+      id: 8,
+      name: "Morocco Mystique",
+      location: "Marrakech, Morocco",
+      category: "cultural",
+      image: "photo-1466442929976-97f336a657be",
+      price: "$1,599",
+      duration: "5 days",
+      description: "Immerse in ancient traditions and vibrant markets",
+      mood: "Seeking Adventure",
+      tags: ["Markets", "Architecture", "Cuisine"]
+    },
+    {
+      id: 9,
+      name: "Swiss Alps Retreat",
+      location: "Zermatt, Switzerland",
+      category: "healing",
+      image: "photo-1509316975850-ff9c5deb0cd9",
+      price: "$2,699",
+      duration: "7 days",
+      description: "Alpine serenity with mountain meditation and spa treatments",
+      mood: "Need Reset",
+      tags: ["Mountains", "Spa", "Fresh Air"]
+    },
+    {
+      id: 10,
+      name: "Stargazing Desert",
+      location: "Atacama, Chile",
+      category: "adventure",
+      image: "photo-1470813740244-df37b8c1edcb",
+      price: "$1,999",
+      duration: "5 days",
+      description: "Connect with the cosmos under the clearest skies on Earth",
+      mood: "Seeking Wonder",
+      tags: ["Stargazing", "Desert", "Astronomy"]
+    },
+    {
+      id: 11,
+      name: "Amalfi Coast Romance",
+      location: "Positano, Italy",
+      category: "romantic",
+      image: "photo-1570077188670-e3a8d69ac5ff",
+      price: "$2,199",
+      duration: "5 days",
+      description: "Coastal charm with intimate moments and Mediterranean bliss",
+      mood: "Feeling Romantic",
+      tags: ["Coast", "Luxury", "Dining"]
+    },
+    {
+      id: 12,
+      name: "Amazon Wellness",
+      location: "Iquitos, Peru",
+      category: "healing",
+      image: "photo-1509316975850-ff9c5deb0cd9",
+      price: "$1,899",
+      duration: "8 days",
+      description: "Jungle healing with ancient plant medicine traditions",
+      mood: "Deep Healing",
+      tags: ["Jungle", "Shamanic", "Nature"]
     }
   ];
 
@@ -118,8 +190,8 @@ const Destinations = () => {
       {/* Hero Section */}
       <section className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-black via-gray-900/50 to-black" ref={sectionRef}>
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-indigo-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
         
         <div className="max-w-6xl mx-auto text-center relative z-10">
@@ -127,7 +199,7 @@ const Destinations = () => {
             <h1 className="text-6xl md:text-7xl font-bold mb-8 leading-tight">
               Destinations That
               <br />
-              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-slate-300 bg-clip-text text-transparent">
                 Understand You
               </span>
             </h1>
@@ -148,7 +220,7 @@ const Destinations = () => {
                 onClick={() => setActiveCategory(category.id)}
                 className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                   activeCategory === category.id
-                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/30'
+                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/30'
                     : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
                 }`}
               >
@@ -163,66 +235,66 @@ const Destinations = () => {
       {/* Destination Cards */}
       <section className="pb-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredDestinations.map((destination, index) => (
               <div
                 key={destination.id}
                 className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
+                <div className="bg-gray-900/40 backdrop-blur-lg border border-gray-700/50 rounded-xl overflow-hidden hover:bg-gray-800/60 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-500/30">
                   {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-36 overflow-hidden">
                     <img
-                      src={`https://images.unsplash.com/${destination.image}?w=400&h=300&fit=crop`}
+                      src={`https://images.unsplash.com/${destination.image}?w=300&h=200&fit=crop`}
                       alt={destination.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute top-4 right-4 bg-black/30 backdrop-blur-sm rounded-full px-3 py-1 text-sm">
+                    <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm rounded-full px-2 py-1 text-xs">
                       {destination.duration}
                     </div>
-                    <div className="absolute bottom-4 left-4">
-                      <div className="bg-purple-500/80 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-medium">
+                    <div className="absolute bottom-3 left-3">
+                      <div className="bg-blue-600/80 backdrop-blur-sm rounded-full px-2 py-1 text-xs font-medium">
                         {destination.mood}
                       </div>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
+                  <div className="p-4">
+                    <div className="flex items-start justify-between mb-2">
+                      <h3 className="text-sm font-bold text-white group-hover:text-blue-300 transition-colors leading-tight">
                         {destination.name}
                       </h3>
-                      <span className="text-lg font-bold text-purple-400">
+                      <span className="text-sm font-bold text-blue-400 ml-2">
                         {destination.price}
                       </span>
                     </div>
                     
-                    <div className="flex items-center text-gray-400 mb-3">
-                      <MapPin className="w-4 h-4 mr-1" />
-                      <span className="text-sm">{destination.location}</span>
+                    <div className="flex items-center text-gray-400 mb-2">
+                      <MapPin className="w-3 h-3 mr-1" />
+                      <span className="text-xs">{destination.location}</span>
                     </div>
 
-                    <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                    <p className="text-gray-300 text-xs leading-relaxed mb-3 line-clamp-2">
                       {destination.description}
                     </p>
 
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-1 mb-3">
                       {destination.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="bg-white/10 text-xs px-2 py-1 rounded-full text-gray-300"
+                          className="bg-gray-700/50 text-xs px-2 py-1 rounded-full text-gray-300"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
-                      <Navigation className="w-4 h-4" />
+                    <button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 py-2 rounded-lg text-sm font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+                      <Navigation className="w-3 h-3" />
                       Discover Journey
                     </button>
                   </div>
