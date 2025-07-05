@@ -13,7 +13,8 @@ const HowItWorks = () => {
             const steps = entry.target.querySelectorAll('.step-card');
             steps.forEach((step, index) => {
               setTimeout(() => {
-                step.classList.add('animate-slide-in');
+                step.classList.add('opacity-100', 'translate-y-0');
+                step.classList.remove('opacity-0', 'translate-y-10');
               }, index * 200);
             });
           }
@@ -61,7 +62,7 @@ const HowItWorks = () => {
 
         <div className="grid md:grid-cols-3 gap-12" ref={stepsRef}>
           {steps.map((step, index) => (
-            <div key={index} className="text-center group step-card opacity-0 transform translate-y-10">
+            <div key={index} className="text-center group step-card opacity-0 transform translate-y-10 transition-all duration-700 ease-out">
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105 relative overflow-hidden">
                 {/* Animated background gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -81,14 +82,6 @@ const HowItWorks = () => {
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        .animate-slide-in {
-          opacity: 1 !important;
-          transform: translateY(0) !important;
-          transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-      `}</style>
     </section>
   );
 };
