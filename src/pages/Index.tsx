@@ -6,6 +6,7 @@ import EmotionalHooks from '../components/EmotionalHooks';
 import Vision from '../components/Vision';
 import Footer from '../components/Footer';
 import ChatBubble from '../components/ChatBubble';
+import ExpandableSearch from '../components/ExpandableSearch';
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <div id="resultsSection" className="min-h-0"></div>
       <Footer />
       <ChatBubble />
+      <ExpandableSearch />
     </div>
   );
 };
