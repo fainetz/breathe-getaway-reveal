@@ -2,12 +2,16 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ThreeBackground from './ThreeBackground';
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex flex-col px-6">
-      {/* Black background - space for future 3D content */}
-      <div className="absolute inset-0 bg-black"></div>
+      {/* 3D Background */}
+      <ThreeBackground />
+      
+      {/* Black background overlay with transparency for 3D visibility */}
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-[1px]"></div>
       
       {/* Navigation - exactly like AICM */}
       <nav className="relative z-50 py-6">
