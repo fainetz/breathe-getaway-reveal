@@ -1,10 +1,8 @@
-
 import { useState } from 'react';
 import { ChevronDown, Menu, X, Compass } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThreeBackground from './ThreeBackground';
 import ThemeToggle from './ThemeToggle';
-import WaveAnimation from './WaveAnimation';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Hero = () => {
@@ -105,9 +103,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      
-      {/* Wave Animation at bottom */}
-      <WaveAnimation />
     </section>
   );
 };
