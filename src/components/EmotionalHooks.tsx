@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 
 const EmotionalHooks = () => {
@@ -88,7 +89,7 @@ const EmotionalHooks = () => {
                   className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
                     currentExample === index 
                       ? 'opacity-100 translate-y-0 scale-100 z-10' 
-                      : 'opacity-0 translate-y-4 scale-95 z-0'
+                      : 'opacity-15 translate-y-2 scale-98 z-0'
                   }`}
                 >
                   <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl p-6 hover:bg-white/30 transition-all duration-300 shadow-xl">
