@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Search, ArrowRight } from 'lucide-react';
 
@@ -13,14 +14,9 @@ const ExpandableSearch = () => {
       const shouldScroll = scrollY > 100;
       setIsScrolled(shouldScroll);
       
-      // Keep expanded if at top of landing page (hero section)
-      const isAtHeroSection = scrollY <= 100;
-      
-      // Auto-collapse when scrolling if not hovered and not at hero section
-      if (shouldScroll && !isHovered && !isAtHeroSection) {
+      // Auto-collapse when scrolling if not hovered
+      if (shouldScroll && !isHovered) {
         setIsExpanded(false);
-      } else if (isAtHeroSection) {
-        setIsExpanded(true);
       }
     };
 
@@ -29,8 +25,7 @@ const ExpandableSearch = () => {
   }, [isHovered]);
 
   // Determine if should be expanded based on scroll and hover state
-  const isAtHeroSection = !isScrolled;
-  const shouldBeExpanded = isAtHeroSection || isHovered;
+  const shouldBeExpanded = (!isScrolled && isExpanded) || isHovered;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
