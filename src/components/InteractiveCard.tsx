@@ -1,5 +1,6 @@
-import { useState, useRef } from 'react';
-import { MapPin, Navigation } from 'lucide-react';
+
+import { useState } from 'react';
+import { MapPin, Navigation, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Destination {
   id: number;
@@ -18,65 +19,35 @@ interface InteractiveCardProps {
   destination: Destination;
   index: number;
   isVisible: boolean;
+  onCardClick: (destination: Destination) => void;
 }
 
-const InteractiveCard = ({ destination, index, isVisible }: InteractiveCardProps) => {
+const InteractiveCard = ({ destination, index, isVisible, onCardClick }: InteractiveCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const cardRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!cardRef.current) return;
-    
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    setMousePos({ x, y });
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setMousePos({ x: 0, y: 0 });
+  const handleClick = () => {
+    onCardClick(destination);
   };
 
   return (
     <div
-      ref={cardRef}
-      className={`group transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      className={`group transition-all duration-1000 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       style={{ transitionDelay: `${index * 100}ms` }}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={handleClick}
     >
       <div 
-        className="relative bg-gray-900/40 backdrop-blur-lg border border-gray-700/50 rounded-xl overflow-hidden transition-all duration-1000 ease-out hover:border-gray-500/40"
-        style={{
-          transform: isHovered 
-            ? `perspective(1000px) rotateX(${(mousePos.y - 150) * 0.03}deg) rotateY(${(mousePos.x - 150) * 0.03}deg) translateZ(10px)` 
-            : 'none',
-        }}
+        className={`relative bg-gray-900/40 backdrop-blur-lg border border-gray-700/50 rounded-xl overflow-hidden transition-all duration-500 ease-out hover:border-gray-500/40 hover:scale-105 hover:shadow-2xl hover:shadow-purple-900/20 ${
+          isHovered ? 'transform-gpu' : ''
+        }`}
       >
-        {/* Slower, more subtle glow effect */}
-        {isHovered && (
-          <div
-            className="absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 ease-out"
-            style={{
-              background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(147, 51, 234, 0.15), transparent 70%)`,
-            }}
-          />
-        )}
-
         {/* Image */}
         <div className="relative h-36 overflow-hidden">
           <img
             src={`https://images.unsplash.com/${destination.image}?w=300&h=200&fit=crop`}
             alt={destination.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
           <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm rounded-full px-2 py-1 text-xs text-gray-200">

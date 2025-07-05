@@ -3,10 +3,26 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MouseTracker from '../components/MouseTracker';
 import InteractiveCard from '../components/InteractiveCard';
+import FullScreenDestination from '../components/FullScreenDestination';
+
+interface Destination {
+  id: number;
+  name: string;
+  location: string;
+  category: string;
+  image: string;
+  price: string;
+  duration: string;
+  description: string;
+  mood: string;
+  tags: string[];
+}
 
 const Destinations = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeCategory, setActiveCategory] = useState('all');
+  const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
+  const [isFullScreenOpen, setIsFullScreenOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   const categories = [
@@ -168,6 +184,20 @@ const Destinations = () => {
     ? destinations 
     : destinations.filter(dest => dest.category === activeCategory);
 
+  const handleCardClick = (destination: Destination) => {
+    setSelectedDestination(destination);
+    setIsFullScreenOpen(true);
+  };
+
+  const handleCloseFullScreen = () => {
+    setIsFullScreenOpen(false);
+    setSelectedDestination(null);
+  };
+
+  const handleNavigateDestination = (destination: Destination) => {
+    setSelectedDestination(destination);
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -258,11 +288,21 @@ const Destinations = () => {
                 destination={destination}
                 index={index}
                 isVisible={isVisible}
+                onCardClick={handleCardClick}
               />
             ))}
           </div>
         </div>
       </section>
+
+      {/* Full Screen Destination View */}
+      <FullScreenDestination
+        destination={selectedDestination!}
+        destinations={filteredDestinations}
+        isOpen={isFullScreenOpen}
+        onClose={handleCloseFullScreen}
+        onNavigate={handleNavigateDestination}
+      />
     </div>
   );
 };
