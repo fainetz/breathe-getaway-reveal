@@ -10,7 +10,7 @@ import ExpandableSearch from '../components/ExpandableSearch';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white dark:bg-black dark:text-white light:bg-white light:text-black overflow-x-hidden transition-colors duration-300">
       <Hero />
       <HowItWorks />
       <Features />
