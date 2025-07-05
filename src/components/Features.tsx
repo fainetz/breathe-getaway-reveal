@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -82,20 +81,20 @@ const Features = () => {
 
         {/* Desktop: Horizontal Sliding Carousel */}
         <div className="hidden lg:block relative">
-          <div className="overflow-hidden px-8">
+          <div className="overflow-hidden px-12">
             <div 
-              className="flex transition-transform duration-500 ease-in-out gap-8"
+              className="flex transition-transform duration-500 ease-in-out gap-6"
               style={{ transform: `translateX(-${currentSlide * (100 / slidesPerView)}%)` }}
             >
               {features.map((feature, index) => (
                 <div key={index} className="w-1/3 flex-shrink-0">
                   <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-                    <div className="bg-white/15 backdrop-blur-lg border border-white/20 rounded-2xl p-10 hover:bg-white/25 transition-all duration-500 hover:scale-105 h-full relative overflow-hidden">
+                    <div className="bg-white/15 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/25 transition-all duration-500 hover:scale-102 h-full relative overflow-hidden">
                       <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
                       <div className="relative z-10">
-                        <div className={`w-14 h-14 bg-gradient-to-r ${feature.gradient} rounded-xl mb-8 group-hover:scale-110 transition-transform duration-300`}></div>
-                        <h3 className="text-2xl font-bold mb-6">{feature.title}</h3>
-                        <p className="text-gray-200 leading-relaxed text-lg">{feature.description}</p>
+                        <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300`}></div>
+                        <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
+                        <p className="text-gray-200 leading-relaxed">{feature.description}</p>
                       </div>
                     </div>
                   </div>
@@ -133,15 +132,15 @@ const Features = () => {
         </div>
 
         {/* Mobile/Tablet: Grid Layout */}
-        <div className="lg:hidden grid md:grid-cols-2 gap-10 px-4">
+        <div className="lg:hidden grid md:grid-cols-2 gap-8 px-4">
           {features.map((feature, index) => (
             <div key={index} className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-              <div className="bg-white/15 backdrop-blur-lg border border-white/20 rounded-2xl p-10 hover:bg-white/25 transition-all duration-500 hover:scale-105 h-full relative overflow-hidden">
+              <div className="bg-white/15 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/25 transition-all duration-500 hover:scale-102 h-full relative overflow-hidden">
                 <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
                 <div className="relative z-10">
-                  <div className={`w-14 h-14 bg-gradient-to-r ${feature.gradient} rounded-xl mb-8 group-hover:scale-110 transition-transform duration-300`}></div>
-                  <h3 className="text-2xl font-bold mb-6">{feature.title}</h3>
-                  <p className="text-gray-200 leading-relaxed text-lg">{feature.description}</p>
+                  <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300`}></div>
+                  <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
+                  <p className="text-gray-200 leading-relaxed">{feature.description}</p>
                 </div>
               </div>
             </div>
