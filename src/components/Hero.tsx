@@ -4,15 +4,20 @@ import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThreeBackground from './ThreeBackground';
 import ThemeToggle from './ThemeToggle';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Hero = () => {
+  const { theme } = useTheme();
+  
   return (
     <section className="relative h-screen flex flex-col px-6">
       {/* 3D Background */}
       <ThreeBackground />
       
-      {/* Background overlay that adapts to theme */}
-      <div className="absolute inset-0 bg-white/90 dark:bg-black/80 backdrop-blur-[1px] transition-colors duration-300"></div>
+      {/* Background overlay that adapts to theme - lighter overlay for light mode to show 3D background */}
+      <div className={`absolute inset-0 backdrop-blur-[1px] transition-colors duration-300 ${
+        theme === 'light' ? 'bg-white/70' : 'bg-black/80'
+      }`}></div>
       
       {/* Navigation - smaller and more compact */}
       <nav className="relative z-50 py-4">
