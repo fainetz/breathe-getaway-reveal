@@ -50,7 +50,7 @@ const Vision = () => {
     if (isVisible) {
       const interval = setInterval(() => {
         setCurrentCard((prev) => (prev + 1) % visionCards.length);
-      }, 5000);
+      }, 8000); // Increased from 5000ms to 8000ms for much slower card switching
 
       return () => clearInterval(interval);
     }
@@ -81,22 +81,23 @@ const Vision = () => {
           </p>
         </div>
 
-        {/* Enhanced Interactive Card Carousel */}
+        {/* Enhanced Interactive Card Carousel with much slower opacity transitions */}
         <div className="relative mb-16 h-80">
           {visionCards.map((card, index) => (
             <div
               key={index}
-              className={`absolute inset-0 transition-all duration-2000 transform ${
+              className={`absolute inset-0 transform ${
                 currentCard === index
                   ? 'opacity-100 scale-100 translate-y-0 z-20'
                   : index === (currentCard + 1) % visionCards.length
-                  ? 'opacity-40 scale-95 translate-y-4 translate-x-8 z-10'
+                  ? 'opacity-20 scale-95 translate-y-4 translate-x-8 z-10'
                   : index === (currentCard - 1 + visionCards.length) % visionCards.length
-                  ? 'opacity-40 scale-95 translate-y-4 -translate-x-8 z-10'
+                  ? 'opacity-20 scale-95 translate-y-4 -translate-x-8 z-10'
                   : 'opacity-0 scale-90 translate-y-8 z-0'
               }`}
               style={{
-                transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                transition: 'all 3000ms cubic-bezier(0.25, 0.1, 0.25, 1)', // Much slower 3 second transition with gentle easing
+                transitionProperty: 'opacity, transform'
               }}
             >
               <div className={`bg-white/25 backdrop-blur-xl border border-white/30 rounded-2xl p-8 mx-auto max-w-md h-full relative overflow-hidden group shadow-2xl`}>
