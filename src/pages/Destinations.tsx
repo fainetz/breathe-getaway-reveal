@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { MapPin, Navigation } from 'lucide-react';
 
@@ -219,7 +220,7 @@ const Destinations = () => {
                 onClick={() => setActiveCategory(category.id)}
                 className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                   activeCategory === category.id
-                    ? 'bg-purple-600/20 text-white border border-purple-500/30'
+                    ? 'bg-blue-800/30 text-white border border-blue-600/50'
                     : 'bg-gray-800/60 text-gray-300 hover:bg-gray-700/80 hover:text-white border border-gray-600/40'
                 }`}
               >
