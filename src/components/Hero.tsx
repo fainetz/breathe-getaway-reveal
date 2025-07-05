@@ -13,22 +13,22 @@ const Hero = () => {
       {/* Black background overlay with transparency for 3D visibility */}
       <div className="absolute inset-0 bg-black/80 backdrop-blur-[1px]"></div>
       
-      {/* Navigation - exactly like AICM */}
-      <nav className="relative z-50 py-6">
+      {/* Navigation - smaller and more compact */}
+      <nav className="relative z-50 py-4">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg"></div>
-            <span className="text-2xl font-bold">Breathe & Getaway</span>
+            <div className="w-7 h-7 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg"></div>
+            <span className="text-xl font-bold">Breathe & Getaway</span>
           </Link>
           
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">How it works</a>
-            <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
-            <Link to="/destinations" className="text-gray-300 hover:text-white transition-colors">Destinations</Link>
+          <div className="hidden md:flex items-center space-x-6">
+            <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors text-sm">How it works</a>
+            <a href="#features" className="text-gray-300 hover:text-white transition-colors text-sm">Features</a>
+            <Link to="/destinations" className="text-gray-300 hover:text-white transition-colors text-sm">Destinations</Link>
             <div className="relative group">
-              <button className="text-gray-300 hover:text-white transition-colors flex items-center gap-1">
+              <button className="text-gray-300 hover:text-white transition-colors flex items-center gap-1 text-sm">
                 Vision
-                <ChevronDown className="w-4 h-4" />
+                <ChevronDown className="w-3 h-3" />
               </button>
             </div>
           </div>
