@@ -31,7 +31,7 @@ const ExpandableSearch = () => {
     <div className={`fixed z-50 transition-all duration-500 ease-in-out ${
       isScrolled 
         ? 'bottom-8 left-1/2 transform -translate-x-1/2' // Center bottom when scrolled
-        : 'top-20 left-8' // Under header when not scrolled (top-20 instead of top-24)
+        : 'top-80 left-8' // Under hero text content when not scrolled
     }`}>
       <div 
         className={`transition-all duration-300 ease-in-out ${
