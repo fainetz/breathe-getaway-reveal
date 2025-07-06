@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -100,7 +99,7 @@ const Hero = () => {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white mb-4 sm:mb-6 transition-colors duration-300 animate-fade-in">
               The Smarter,
               <br />
-              <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent animate-pulse">
+              <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
                 AI-Powered
               </span>
               <br />
