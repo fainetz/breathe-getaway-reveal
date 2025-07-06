@@ -1,5 +1,6 @@
+
 import { useState } from 'react';
-import { ChevronDown, Menu, X, Compass } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThreeBackground from './ThreeBackground';
 import ThemeToggle from './ThemeToggle';
@@ -14,7 +15,7 @@ const Hero = () => {
       {/* 3D Background */}
       <ThreeBackground />
       
-      {/* Background overlay that adapts to theme - lighter overlay for light mode to show 3D background */}
+      {/* Background overlay that adapts to theme */}
       <div className={`absolute inset-0 backdrop-blur-[1px] transition-colors duration-300 ${
         theme === 'light' ? 'bg-white/70' : 'bg-black/80'
       }`}></div>
@@ -23,8 +24,14 @@ const Hero = () => {
       <nav className="relative z-50 py-4">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg relative overflow-hidden">
-              <Compass className="w-4 h-4 sm:w-5 sm:h-5 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-spin" style={{ animationDuration: '20s' }} />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 relative overflow-hidden rounded-lg">
+              <img 
+                src="/lovable-uploads/3a90338f-3b9b-4d7f-a769-846168db9d31.png" 
+                alt="Breathe & Getaway Logo"
+                className={`w-full h-full object-contain transition-all duration-300 group-hover:scale-105 ${
+                  theme === 'dark' ? 'brightness-0 invert' : ''
+                }`}
+              />
             </div>
             <span className="text-lg sm:text-xl font-bold text-black dark:text-white transition-colors duration-300 group-hover:scale-105 transition-transform">
               <span className="hidden sm:inline">Breathe & Getaway</span>
@@ -44,15 +51,15 @@ const Hero = () => {
           <div className="hidden md:flex items-center space-x-6">
             <a href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
               How it works
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
               Features
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <Link to="/destinations" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
               Destinations
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <div className="relative group">
               <button className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 flex items-center gap-1 text-sm hover:scale-105">
@@ -90,7 +97,7 @@ const Hero = () => {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white mb-4 sm:mb-6 transition-colors duration-300 animate-fade-in">
               The Smarter,
               <br />
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
+              <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent animate-pulse">
                 AI-Powered
               </span>
               <br />

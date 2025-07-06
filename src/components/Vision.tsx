@@ -11,19 +11,19 @@ const Vision = () => {
       icon: "🌍",
       title: "Global Discovery",
       description: "Access to hidden gems and transformative experiences across all continents.",
-      gradient: "from-blue-500 to-teal-500"
+      gradient: "from-blue-500 to-cyan-500"
     },
     {
       icon: "🤖", 
       title: "Emotional AI",
       description: "Technology that reads between the lines of your deepest travel desires.",
-      gradient: "from-purple-500 to-pink-500"
+      gradient: "from-blue-600 to-indigo-500"
     },
     {
       icon: "✨",
       title: "Serendipity Engine", 
       description: "Calculated magic that puts you in the right place at the perfect moment.",
-      gradient: "from-orange-500 to-red-500"
+      gradient: "from-indigo-500 to-blue-600"
     }
   ];
 
@@ -50,19 +50,18 @@ const Vision = () => {
     if (isVisible) {
       const interval = setInterval(() => {
         setCurrentCard((prev) => (prev + 1) % visionCards.length);
-      }, 8000); // Increased from 5000ms to 8000ms for much slower card switching
+      }, 8000);
 
       return () => clearInterval(interval);
     }
   }, [isVisible, visionCards.length]);
 
   return (
-    <section id="vision" className="py-32 px-6 relative overflow-hidden bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 dark:from-gray-900 dark:via-black dark:to-gray-900 transition-colors duration-300" ref={sectionRef}>
-      {/* Enhanced animated background */}
+    <section id="vision" className="py-32 px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300" ref={sectionRef}>
+      {/* Subtle background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 dark:from-purple-900/30 via-transparent to-pink-900/20 dark:to-pink-900/30 animate-pulse"></div>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -70,7 +69,7 @@ const Vision = () => {
           <h2 className="text-5xl md:text-7xl font-bold mb-12 leading-tight text-black dark:text-white transition-colors duration-300">
             The Future of 
             <br />
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500 bg-clip-text text-transparent">
               Conscious Travel
             </span>
           </h2>
@@ -81,7 +80,7 @@ const Vision = () => {
           </p>
         </div>
 
-        {/* Enhanced Interactive Card Carousel with much slower opacity transitions */}
+        {/* Simplified Card Carousel */}
         <div className="relative mb-16 h-80">
           {visionCards.map((card, index) => (
             <div
@@ -96,12 +95,12 @@ const Vision = () => {
                   : 'opacity-0 scale-90 translate-y-8 z-0'
               }`}
               style={{
-                transition: 'all 3000ms cubic-bezier(0.25, 0.1, 0.25, 1)', // Much slower 3 second transition with gentle easing
+                transition: 'all 3000ms cubic-bezier(0.25, 0.1, 0.25, 1)',
                 transitionProperty: 'opacity, transform'
               }}
             >
-              <div className={`bg-white/90 dark:bg-white/25 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-2xl p-8 mx-auto max-w-md h-full relative overflow-hidden group shadow-2xl transition-colors duration-300`}>
-                <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-30 transition-opacity duration-500`}></div>
+              <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-gray-200 dark:border-gray-700 rounded-2xl p-8 mx-auto max-w-md h-full relative overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-500">
+                <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                 <div className="relative z-10 flex flex-col items-center justify-center h-full">
                   <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500">{card.icon}</div>
                   <h3 className="text-2xl font-bold mb-4 text-black dark:text-white transition-colors duration-300">{card.title}</h3>
@@ -112,7 +111,7 @@ const Vision = () => {
           ))}
         </div>
 
-        {/* Enhanced Card Navigation Dots */}
+        {/* Simplified Navigation Dots */}
         <div className="flex justify-center space-x-3 mb-16">
           {visionCards.map((_, index) => (
             <button
@@ -120,7 +119,7 @@ const Vision = () => {
               onClick={() => setCurrentCard(index)}
               className={`w-4 h-4 rounded-full transition-all duration-300 ${
                 currentCard === index 
-                  ? 'bg-purple-500 scale-125 shadow-lg shadow-purple-500/50' 
+                  ? 'bg-blue-500 scale-125 shadow-lg shadow-blue-500/50' 
                   : 'bg-gray-400 dark:bg-white/40 hover:bg-gray-600 dark:hover:bg-white/60 hover:scale-110'
               }`}
             />
@@ -128,9 +127,9 @@ const Vision = () => {
         </div>
 
         <div className={`transition-all duration-1200 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-          <button className="bg-gradient-to-r from-purple-500 to-pink-500 px-12 py-4 rounded-full text-xl font-semibold hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105 group relative overflow-hidden text-white">
+          <button className="bg-gradient-to-r from-blue-500 to-indigo-600 px-12 py-4 rounded-full text-xl font-semibold hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105 group relative overflow-hidden text-white">
             <span className="relative z-10">Join the Revolution</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
         </div>
       </div>
