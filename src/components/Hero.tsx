@@ -27,7 +27,7 @@ const Hero = () => {
             <div className="w-8 h-8 sm:w-10 sm:h-10 relative overflow-hidden rounded-lg">
               <img 
                 src={theme === 'dark' 
-                  ? "/lovable-uploads/06d30aba-bf87-4b11-ad56-860979ba2ed6.png"
+                  ? "/lovable-uploads/62358993-d15b-4b81-9c51-49ab4c2e8d79.png"
                   : "/lovable-uploads/3a90338f-3b9b-4d7f-a769-846168db9d31.png"
                 }
                 alt="Breathe & Getaway Logo"
