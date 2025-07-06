@@ -1,3 +1,4 @@
+
 import { useTheme } from '../contexts/ThemeContext';
 
 const Footer = () => {
@@ -14,11 +15,12 @@ const Footer = () => {
             <div className="flex items-center space-x-2 mb-4 sm:mb-6 group">
               <div className="w-8 h-8 relative overflow-hidden rounded-lg shadow-lg">
                 <img 
-                  src="/lovable-uploads/3a90338f-3b9b-4d7f-a769-846168db9d31.png" 
+                  src={theme === 'dark' 
+                    ? "/lovable-uploads/06d30aba-bf87-4b11-ad56-860979ba2ed6.png"
+                    : "/lovable-uploads/3a90338f-3b9b-4d7f-a769-846168db9d31.png"
+                  }
                   alt="Breathe & Getaway Logo"
-                  className={`w-full h-full object-contain transition-all duration-300 group-hover:scale-105 ${
-                    theme === 'dark' ? 'brightness-0 invert' : ''
-                  }`}
+                  className="w-full h-full object-contain transition-all duration-300 group-hover:scale-105"
                 />
               </div>
               <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300 group-hover:scale-105 transition-transform drop-shadow-sm">

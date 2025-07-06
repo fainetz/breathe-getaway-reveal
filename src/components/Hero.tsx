@@ -26,11 +26,12 @@ const Hero = () => {
           <Link to="/" className="flex items-center space-x-2 group">
             <div className="w-8 h-8 sm:w-10 sm:h-10 relative overflow-hidden rounded-lg">
               <img 
-                src="/lovable-uploads/3a90338f-3b9b-4d7f-a769-846168db9d31.png" 
+                src={theme === 'dark' 
+                  ? "/lovable-uploads/06d30aba-bf87-4b11-ad56-860979ba2ed6.png"
+                  : "/lovable-uploads/3a90338f-3b9b-4d7f-a769-846168db9d31.png"
+                }
                 alt="Breathe & Getaway Logo"
-                className={`w-full h-full object-contain transition-all duration-300 group-hover:scale-105 ${
-                  theme === 'dark' ? 'brightness-0 invert' : ''
-                }`}
+                className="w-full h-full object-contain transition-all duration-300 group-hover:scale-105"
               />
             </div>
             <span className="text-lg sm:text-xl font-bold text-black dark:text-white transition-colors duration-300 group-hover:scale-105 transition-transform">
