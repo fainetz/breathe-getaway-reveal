@@ -17,7 +17,7 @@ const Footer = () => {
                   src="/lovable-uploads/3a90338f-3b9b-4d7f-a769-846168db9d31.png" 
                   alt="Breathe & Getaway Logo"
                   className={`w-full h-full object-contain transition-all duration-300 group-hover:scale-105 ${
-                    theme === 'dark' ? 'filter brightness-0 invert contrast-200' : ''
+                    theme === 'dark' ? 'brightness-0 invert' : ''
                   }`}
                 />
               </div>
