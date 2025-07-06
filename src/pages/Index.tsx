@@ -7,7 +7,6 @@ import Vision from '../components/Vision';
 import Footer from '../components/Footer';
 import ChatBubble from '../components/ChatBubble';
 import ExpandableSearch from '../components/ExpandableSearch';
-import FloatingTravelElements from '../components/FloatingTravelElements';
 
 const Index = () => {
   return (
@@ -21,7 +20,6 @@ const Index = () => {
       <Footer />
       <ChatBubble />
       <ExpandableSearch />
-      <FloatingTravelElements />
     </div>
   );
 };
