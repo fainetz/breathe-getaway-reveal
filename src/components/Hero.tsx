@@ -31,7 +31,9 @@ const Hero = () => {
                   : "/lovable-uploads/3a90338f-3b9b-4d7f-a769-846168db9d31.png"
                 }
                 alt="Breathe & Getaway Logo"
-                className="w-full h-full object-contain transition-all duration-300 group-hover:scale-105"
+                className={`w-full h-full object-contain transition-all duration-300 group-hover:scale-105 ${
+                  theme === 'dark' ? 'scale-90' : ''
+                }`}
               />
             </div>
             <span className="text-lg sm:text-xl font-bold text-black dark:text-white transition-colors duration-300 group-hover:scale-105 transition-transform">
