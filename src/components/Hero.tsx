@@ -49,20 +49,20 @@ const Hero = () => {
       {/* Navigation - mobile responsive */}
       <nav className="relative z-50 py-4">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 relative overflow-hidden rounded-lg">
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 relative overflow-hidden rounded-lg animate-pulse">
               <img 
                 src={theme === 'dark' 
                   ? "/lovable-uploads/62358993-d15b-4b81-9c51-49ab4c2e8d79.png"
                   : "/lovable-uploads/3a90338f-3b9b-4d7f-a769-846168db9d31.png"
                 }
                 alt="Breathe & Getaway Logo"
-                className={`w-full h-full object-contain transition-all duration-300 group-hover:scale-105 ${
+                className={`w-full h-full object-contain transition-all duration-300 group-hover:scale-105 animate-[breathing_3s_ease-in-out_infinite] ${
                   theme === 'dark' ? 'scale-90' : ''
                 }`}
               />
             </div>
-            <span className="text-lg sm:text-xl font-bold text-black dark:text-white transition-colors duration-300 group-hover:scale-105 transition-transform">
+            <span className="text-lg sm:text-xl font-bold text-black dark:text-white transition-colors duration-300 group-hover:scale-105 transition-transform whitespace-nowrap">
               <span className="hidden sm:inline">Breathe & Getaway</span>
               <span className="sm:hidden">B&G</span>
             </span>

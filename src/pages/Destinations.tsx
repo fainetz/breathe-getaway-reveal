@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import MouseTracker from '../components/MouseTracker';
 import InteractiveCard from '../components/InteractiveCard';
 import FullScreenDestination from '../components/FullScreenDestination';
+import ThreeBackground from '../components/ThreeBackground';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface Destination {
   id: number;
@@ -19,6 +21,7 @@ interface Destination {
 }
 
 const Destinations = () => {
+  const { theme } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
@@ -218,7 +221,15 @@ const Destinations = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white overflow-x-hidden relative transition-colors duration-300">
+      {/* 3D Background - same as home page */}
+      <ThreeBackground />
+      
+      {/* Background overlay that adapts to theme - same as home page */}
+      <div className={`absolute inset-0 backdrop-blur-[1px] transition-colors duration-300 ${
+        theme === 'light' ? 'bg-white/70' : 'bg-black/80'
+      }`}></div>
+
       {/* Interactive mouse effects */}
       <MouseTracker />
 
@@ -226,7 +237,11 @@ const Destinations = () => {
       <div className="fixed top-6 left-6 z-50">
         <Link 
           to="/" 
-          className="flex items-center gap-2 bg-gray-900/80 backdrop-blur-lg border border-gray-700/50 rounded-full px-4 py-2 text-sm font-medium text-white hover:bg-gray-800/80 hover:border-gray-600/50 transition-all duration-300"
+          className={`flex items-center gap-2 backdrop-blur-lg border rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+            theme === 'light'
+              ? 'bg-white/80 border-gray-300/50 text-gray-900 hover:bg-white/90 hover:border-gray-400/50'
+              : 'bg-gray-900/80 border-gray-700/50 text-white hover:bg-gray-800/80 hover:border-gray-600/50'
+          }`}
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Home
@@ -234,10 +249,10 @@ const Destinations = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="py-24 px-6 relative overflow-hidden bg-black" ref={sectionRef}>
+      <section className="py-24 px-6 relative overflow-hidden" ref={sectionRef}>
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-pink-500/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-blue-600/5 dark:bg-purple-600/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-indigo-500/4 dark:bg-pink-500/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
         
         <div className="max-w-6xl mx-auto text-center relative z-10">
@@ -245,11 +260,17 @@ const Destinations = () => {
             <h1 className="text-6xl md:text-7xl font-bold mb-8 leading-tight">
               Destinations That
               <br />
-              <span className="bg-gradient-to-r from-purple-300 via-pink-200 to-gray-200 bg-clip-text text-transparent">
+              <span className={`bg-gradient-to-r bg-clip-text text-transparent ${
+                theme === 'light' 
+                  ? 'from-blue-600 via-indigo-600 to-purple-600'
+                  : 'from-purple-300 via-pink-200 to-gray-200'
+              }`}>
                 Understand You
               </span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
+            <p className={`text-xl max-w-3xl mx-auto leading-relaxed mb-12 ${
+              theme === 'light' ? 'text-gray-600' : 'text-gray-300'
+            }`}>
               Each destination is curated to match your emotional state and inner journey. Where will your soul find its next adventure?
             </p>
           </div>
@@ -257,7 +278,7 @@ const Destinations = () => {
       </section>
 
       {/* Category Filter */}
-      <section className="py-12 px-6">
+      <section className="py-12 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-wrap justify-center gap-4 mb-16">
             {categories.map((category) => (
@@ -266,8 +287,12 @@ const Destinations = () => {
                 onClick={() => setActiveCategory(category.id)}
                 className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105 ${
                   activeCategory === category.id
-                    ? 'bg-blue-800/30 text-white border border-blue-600/50 shadow-lg shadow-blue-600/20'
-                    : 'bg-gray-800/60 text-gray-300 hover:bg-gray-700/80 hover:text-white border border-gray-600/40'
+                    ? theme === 'light'
+                      ? 'bg-blue-100 text-blue-800 border border-blue-200 shadow-lg shadow-blue-200/50'
+                      : 'bg-blue-800/30 text-white border border-blue-600/50 shadow-lg shadow-blue-600/20'
+                    : theme === 'light'
+                      ? 'bg-gray-100/80 text-gray-700 hover:bg-gray-200/80 hover:text-gray-900 border border-gray-200/60'
+                      : 'bg-gray-800/60 text-gray-300 hover:bg-gray-700/80 hover:text-white border border-gray-600/40'
                 }`}
               >
                 <span className="text-lg">{category.emoji}</span>
@@ -279,7 +304,7 @@ const Destinations = () => {
       </section>
 
       {/* Destination Cards */}
-      <section className="pb-24 px-6">
+      <section className="pb-24 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredDestinations.map((destination, index) => (
