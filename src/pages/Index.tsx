@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import ChatBubble from '../components/ChatBubble';
 import ExpandableSearch from '../components/ExpandableSearch';
 import TravelChatInterface from '../components/TravelChatInterface';
+import FloatingCart from '../components/FloatingCart';
 
 const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -35,6 +36,7 @@ const Index = () => {
       <Footer />
       <ChatBubble />
       <ExpandableSearch onSearchSubmit={handleSearchSubmit} />
+      <FloatingCart />
       <TravelChatInterface 
         isOpen={isChatOpen} 
         onClose={handleChatClose}

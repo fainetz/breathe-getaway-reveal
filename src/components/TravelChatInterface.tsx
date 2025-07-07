@@ -1,6 +1,5 @@
-
 import { useState, useEffect, useRef } from 'react';
-import { X, Send, MapPin, Clock, DollarSign, Minimize2, Maximize2, Plane } from 'lucide-react';
+import { X, Send, MapPin, Clock, DollarSign, Minimize2, Maximize2, Plane, ShoppingCart } from 'lucide-react';
 
 interface TravelChatInterfaceProps {
   isOpen: boolean;
@@ -26,12 +25,20 @@ interface Destination {
   tags: string[];
 }
 
+interface CartItem {
+  id: string;
+  destination: Destination;
+  quantity: number;
+  addedAt: Date;
+}
+
 const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInterfaceProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isChatMinimized, setIsChatMinimized] = useState(false);
   const [currentDestinations, setCurrentDestinations] = useState<Destination[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const mockDestinations: Destination[] = [
@@ -64,6 +71,14 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
     }
   ];
 
+  // Load cart from localStorage
+  useEffect(() => {
+    const savedCart = localStorage.getItem('travel-cart');
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+
   useEffect(() => {
     if (initialPrompt && isOpen) {
       handleSendMessage(initialPrompt);
@@ -91,18 +106,75 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
     // Simulate API call
     setTimeout(() => {
+      let botResponse = '';
+      
+      // Check if this is a "Learn More" request about a destination
+      const learnMoreMatch = text.match(/learn more about (.*)/i);
+      if (learnMoreMatch) {
+        const destinationName = learnMoreMatch[1];
+        const destination = mockDestinations.find(d => 
+          d.name.toLowerCase().includes(destinationName.toLowerCase())
+        );
+        
+        if (destination) {
+          botResponse = `Let me tell you more about ${destination.name}! This incredible ${destination.location} destination offers ${destination.description.toLowerCase()} Perfect for travelers seeking ${destination.tags.join(', ').toLowerCase()} experiences. The area is known for its stunning natural beauty and authentic cultural experiences. Would you like to know about specific activities, best times to visit, or local cuisine?`;
+        } else {
+          botResponse = `I'd love to tell you more! Could you clarify which destination you're interested in learning about?`;
+        }
+      } else {
+        botResponse = `Perfect! I found some incredible destinations that match your vibe. Here are my top recommendations:`;
+      }
+
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: `Perfect! I found some incredible destinations that match your vibe. Here are my top recommendations:`,
+        text: botResponse,
         isUser: false,
         timestamp: new Date(),
-        destinations: mockDestinations
+        destinations: learnMoreMatch ? undefined : mockDestinations
       };
 
       setMessages(prev => [...prev, botMessage]);
-      setCurrentDestinations(mockDestinations);
+      if (!learnMoreMatch) {
+        setCurrentDestinations(mockDestinations);
+      }
       setIsLoading(false);
     }, 1500);
+  };
+
+  const handleLearnMore = (destination: Destination) => {
+    handleSendMessage(`Learn more about ${destination.name}`);
+  };
+
+  const handleAddToCart = (destination: Destination) => {
+    const savedCart = localStorage.getItem('travel-cart');
+    const currentCart = savedCart ? JSON.parse(savedCart) : [];
+    
+    const existingItem = currentCart.find((item: CartItem) => item.destination.id === destination.id);
+    
+    let newCart;
+    if (existingItem) {
+      newCart = currentCart.map((item: CartItem) => 
+        item.destination.id === destination.id 
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+    } else {
+      const newItem: CartItem = {
+        id: Date.now().toString(),
+        destination,
+        quantity: 1,
+        addedAt: new Date()
+      };
+      newCart = [...currentCart, newItem];
+    }
+    
+    localStorage.setItem('travel-cart', JSON.stringify(newCart));
+    setCart(newCart);
+    window.dispatchEvent(new Event('cartUpdated'));
+  };
+
+  const getCartItemCount = () => {
+    return cart.reduce((total, item) => total + item.quantity, 0);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -136,6 +208,17 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
               </div>
             )}
             <div className="flex items-center gap-2">
+              {/* Cart Icon */}
+              <div className="relative">
+                <button className="p-2 rounded-xl hover:bg-white/10 transition-all duration-200 text-white/80 hover:text-white">
+                  <ShoppingCart className="w-5 h-5" />
+                </button>
+                {getCartItemCount() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {getCartItemCount()}
+                  </span>
+                )}
+              </div>
               <button
                 onClick={() => setIsChatMinimized(!isChatMinimized)}
                 className="p-2 rounded-xl hover:bg-white/10 transition-all duration-200 text-white/80 hover:text-white"
@@ -151,77 +234,73 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
             </div>
           </div>
 
-          {!isChatMinimized && (
-            <>
-              {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-6">
-                {messages.length === 0 && (
-                  <div className="text-center text-white/80 mt-20">
-                    <div className="mb-6">
-                      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                        <Plane className="w-8 h-8 text-white" />
-                      </div>
-                      <h3 className="text-lg font-semibold mb-2">Ready for your next adventure?</h3>
-                      <p className="text-sm text-white/60">Tell me how you're feeling or what kind of experience you're craving!</p>
-                    </div>
+          {/* Messages */}
+          <div className="flex-1 overflow-y-auto p-6 space-y-6">
+            {messages.length === 0 && (
+              <div className="text-center text-white/80 mt-20">
+                <div className="mb-6">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                    <Plane className="w-8 h-8 text-white" />
                   </div>
-                )}
-
-                {messages.map((message) => (
-                  <div key={message.id} className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
-                    <div className={`max-w-xs ${message.isUser ? 'order-2' : 'order-1'}`}>
-                      <div className={`px-4 py-3 rounded-2xl text-sm font-medium ${
-                        message.isUser 
-                          ? 'bg-white text-gray-900 ml-4 shadow-lg' 
-                          : 'bg-white/20 backdrop-blur-sm text-white mr-4 border border-white/20'
-                      }`}>
-                        <p className="leading-relaxed">{message.text}</p>
-                        <p className={`text-xs mt-2 opacity-60 ${
-                          message.isUser ? 'text-gray-600' : 'text-white/60'
-                        }`}>
-                          {message.timestamp.toLocaleTimeString()}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
-                {isLoading && (
-                  <div className="flex justify-start">
-                    <div className="bg-white/20 backdrop-blur-sm border border-white/20 rounded-2xl px-4 py-3 mr-4">
-                      <div className="flex space-x-2">
-                        <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                <div ref={messagesEndRef} />
+                  <h3 className="text-lg font-semibold mb-2">Ready for your next adventure?</h3>
+                  <p className="text-sm text-white/60">Tell me how you're feeling or what kind of experience you're craving!</p>
+                </div>
               </div>
+            )}
 
-              {/* Input */}
-              <div className="border-t border-white/20 p-6">
-                <form onSubmit={handleSubmit} className="flex space-x-3">
-                  <input
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="What's calling to you today?"
-                    className="flex-1 px-4 py-3 text-sm bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl focus:ring-2 focus:ring-white/30 focus:border-white/40 text-white placeholder-white/60 transition-all duration-200"
-                    disabled={isLoading}
-                  />
-                  <button
-                    type="submit"
-                    disabled={isLoading || !inputValue.trim()}
-                    className="px-4 py-3 bg-white text-gray-900 rounded-xl hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center font-medium shadow-lg"
-                  >
-                    <Send className="w-4 h-4" />
-                  </button>
-                </form>
+            {messages.map((message) => (
+              <div key={message.id} className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
+                <div className={`max-w-xs ${message.isUser ? 'order-2' : 'order-1'}`}>
+                  <div className={`px-4 py-3 rounded-2xl text-sm font-medium ${
+                    message.isUser 
+                      ? 'bg-white text-gray-900 ml-4 shadow-lg' 
+                      : 'bg-white/20 backdrop-blur-sm text-white mr-4 border border-white/20'
+                  }`}>
+                    <p className="leading-relaxed">{message.text}</p>
+                    <p className={`text-xs mt-2 opacity-60 ${
+                      message.isUser ? 'text-gray-600' : 'text-white/60'
+                    }`}>
+                      {message.timestamp.toLocaleTimeString()}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </>
-          )}
+            ))}
+
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-white/20 backdrop-blur-sm border border-white/20 rounded-2xl px-4 py-3 mr-4">
+                  <div className="flex space-x-2">
+                    <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                    <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  </div>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Input */}
+          <div className="border-t border-white/20 p-6">
+            <form onSubmit={handleSubmit} className="flex space-x-3">
+              <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="What's calling to you today?"
+                className="flex-1 px-4 py-3 text-sm bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl focus:ring-2 focus:ring-white/30 focus:border-white/40 text-white placeholder-white/60 transition-all duration-200"
+                disabled={isLoading}
+              />
+              <button
+                type="submit"
+                disabled={isLoading || !inputValue.trim()}
+                className="px-4 py-3 bg-white text-gray-900 rounded-xl hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center font-medium shadow-lg"
+              >
+                <Send className="w-4 h-4" />
+              </button>
+            </form>
+          </div>
         </div>
 
         {/* Results Section - Right Side (2/3) */}
@@ -272,10 +351,17 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                           ))}
                         </div>
                         <div className="flex gap-3">
-                          <button className="flex-1 bg-white text-gray-900 font-semibold py-3 px-6 rounded-xl hover:bg-white/90 transition-all duration-200 shadow-lg">
-                            View Flights
+                          <button 
+                            onClick={() => handleAddToCart(destination)}
+                            className="flex-1 bg-white text-gray-900 font-semibold py-3 px-6 rounded-xl hover:bg-white/90 transition-all duration-200 shadow-lg flex items-center justify-center gap-2"
+                          >
+                            <ShoppingCart className="w-4 h-4" />
+                            Add Flight to Cart
                           </button>
-                          <button className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
+                          <button 
+                            onClick={() => handleLearnMore(destination)}
+                            className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200"
+                          >
                             Learn More
                           </button>
                         </div>
