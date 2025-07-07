@@ -84,7 +84,6 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
     }
   ];
 
-  // Generate flight-specific details based on destination
   const getFlightDetails = (destination: Destination) => {
     const flightTimes = ['6:30 AM', '11:45 AM', '3:20 PM', '8:15 PM'];
     const airlines = ['Delta', 'United', 'American', 'Emirates'];
@@ -99,7 +98,6 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
     };
   };
 
-  // Convert chat destination to full-screen destination format
   const convertToFullScreenDestination = (destination: Destination) => {
     return {
       id: parseInt(destination.id),
@@ -137,7 +135,6 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
     navigate('/cart');
   };
 
-  // Load cart from localStorage
   useEffect(() => {
     const savedCart = localStorage.getItem('travel-cart');
     if (savedCart) {
@@ -240,6 +237,13 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
     window.dispatchEvent(new Event('cartUpdated'));
   };
 
+  const handleFullScreenAddToCart = (destination: any) => {
+    const chatDestination = currentDestinations.find(d => d.id === destination.id.toString());
+    if (chatDestination) {
+      handleAddToCart(chatDestination);
+    }
+  };
+
   const getCartItemCount = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
   };
@@ -253,7 +257,6 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
   return (
     <div className="fixed inset-0 z-50">
-      {/* Tropical Pool Background */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -264,9 +267,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       </div>
 
       <div className="relative z-10 h-full flex">
-        {/* Chat Section - Left Side (1/3 or minimized) */}
         <div className={`${isChatMinimized ? 'w-16' : 'w-1/3'} transition-all duration-300 ease-out bg-white/10 backdrop-blur-xl border-r border-white/20 flex flex-col`}>
-          {/* Chat Header */}
           <div className="flex items-center justify-between p-6 border-b border-white/20">
             {!isChatMinimized && (
               <div className="flex-1">
@@ -275,7 +276,6 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
               </div>
             )}
             <div className="flex items-center gap-2">
-              {/* Cart Icon - Now Clickable */}
               <div className="relative">
                 <button 
                   onClick={handleCartClick}
@@ -305,7 +305,6 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
             </div>
           </div>
 
-          {/* Minimized Chat Indicator - Clickable to expand */}
           {isChatMinimized && (
             <div 
               className="flex-1 flex flex-col items-center justify-center p-4 cursor-pointer hover:bg-white/5 transition-all duration-200"
@@ -325,7 +324,6 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
             </div>
           )}
 
-          {/* Messages - Only visible when not minimized */}
           {!isChatMinimized && (
             <div className="flex-1 overflow-y-auto p-6 space-y-6">
               {messages.length === 0 && (
@@ -374,7 +372,6 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
             </div>
           )}
 
-          {/* Input - Only visible when not minimized */}
           {!isChatMinimized && (
             <div className="border-t border-white/20 p-6">
               <form onSubmit={handleSubmit} className="flex space-x-3">
@@ -398,15 +395,12 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
           )}
         </div>
 
-        {/* Results Section - Right Side (2/3 or expanded when chat minimized) */}
         <div className={`${isChatMinimized ? 'flex-1' : 'w-2/3'} transition-all duration-300 ease-out bg-white/5 backdrop-blur-xl flex flex-col overflow-hidden`}>
-          {/* Results Header */}
           <div className="p-8 border-b border-white/20">
             <h2 className="text-2xl font-bold text-white mb-2">Available Flights</h2>
             <p className="text-white/70">Flight recommendations based on your conversation</p>
           </div>
 
-          {/* Results Content */}
           <div className="flex-1 overflow-y-auto p-8">
             {currentDestinations.length === 0 ? (
               <div className="flex items-center justify-center h-full text-center">
@@ -429,7 +423,6 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                       onClick={() => handleCardClick(destination)}
                     >
                       <div className="flex">
-                        {/* Flight Image with Overlay Info */}
                         <div className="relative w-48 h-40">
                           <img 
                             src={destination.image} 
@@ -438,17 +431,14 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                           
-                          {/* Flight Number & Airline */}
                           <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm rounded-lg px-2 py-1">
                             <span className="text-xs font-medium text-white">{flightDetails.airline} {flightDetails.flightNumber}</span>
                           </div>
 
-                          {/* Flight Duration */}
                           <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm rounded-lg px-2 py-1">
                             <span className="text-xs font-medium text-white">{flightDetails.flightTime}</span>
                           </div>
                           
-                          {/* Departure Time */}
                           <div className="absolute bottom-3 left-3">
                             <div className="bg-neutral-800/70 backdrop-blur-sm rounded-lg px-2 py-1">
                               <span className="text-xs font-medium text-white">Departs {flightDetails.departure}</span>
@@ -466,7 +456,6 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                             <span className="font-medium">{destination.location}</span>
                           </div>
 
-                          {/* Flight Details Grid */}
                           <div className="grid grid-cols-2 gap-3 mb-4">
                             <div className="flex items-center text-white/80 text-sm">
                               <Plane className="w-4 h-4 mr-2 text-blue-400" />
@@ -486,7 +475,6 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                             </div>
                           </div>
 
-                          {/* Flight Tags */}
                           <div className="flex flex-wrap gap-2 mb-4">
                             <span className="bg-blue-800/30 border border-blue-600/40 text-xs px-3 py-1 rounded-full text-blue-300">
                               Free Baggage
@@ -531,7 +519,6 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
         </div>
       </div>
 
-      {/* Full Screen Flight Details */}
       {selectedDestination && (
         <FullScreenDestination
           destination={convertToFullScreenDestination(selectedDestination)}
@@ -539,6 +526,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
           isOpen={isFullScreenOpen}
           onClose={handleCloseFullScreen}
           onNavigate={handleNavigateDestination}
+          onAddToCart={handleFullScreenAddToCart}
         />
       )}
     </div>
