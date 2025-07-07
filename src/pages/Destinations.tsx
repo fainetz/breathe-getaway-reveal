@@ -250,10 +250,6 @@ const Destinations = () => {
 
       {/* Hero Section */}
       <section className="py-24 px-6 relative overflow-hidden" ref={sectionRef}>
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-blue-600/5 dark:bg-purple-600/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-indigo-500/4 dark:bg-pink-500/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
         
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
