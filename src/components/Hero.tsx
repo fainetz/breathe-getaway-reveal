@@ -37,7 +37,7 @@ const Hero = () => {
   const itemCount = getCartItemCount();
   
   return (
-    <section className="relative h-screen flex flex-col px-4 sm:px-6">
+    <section className="relative h-[80vh] sm:h-screen flex flex-col px-4 sm:px-6">
       {/* 3D Background */}
       <ThreeBackground />
       
@@ -153,11 +153,11 @@ const Hero = () => {
         )}
       </nav>
 
-      {/* Main Content - Mobile responsive */}
-      <div className="relative z-10 flex-1 flex items-center pt-4 sm:pt-8">
+      {/* Main Content - Mobile responsive with reduced height */}
+      <div className="relative z-10 flex-1 flex items-center pt-2 sm:pt-8 pb-16 sm:pb-0">
         <div className="max-w-7xl mx-auto w-full">
           <div className="max-w-2xl text-center sm:text-left mx-auto sm:mx-0">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white mb-4 sm:mb-6 transition-colors duration-300 animate-fade-in">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white mb-3 sm:mb-6 transition-colors duration-300 animate-fade-in">
               The Smarter,
               <br />
               <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
@@ -167,7 +167,7 @@ const Hero = () => {
               Escape Discovery
             </h1>
             
-            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl mb-6 sm:mb-8 transition-colors duration-300 px-4 sm:px-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl mb-4 sm:mb-8 transition-colors duration-300 px-4 sm:px-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
               Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
             </p>
           </div>
