@@ -114,11 +114,11 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
   return (
     <div className="fixed inset-0 z-50">
-      {/* Beach Background */}
+      {/* Tropical Pool Background */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/lovable-uploads/e8a542e9-5910-4c5c-9a7f-60d3bbc4ef9d.png')`
+          backgroundImage: `url('/lovable-uploads/442e1967-777c-43e6-9246-91b620e2151b.png')`
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-black/40 backdrop-blur-[1px]"></div>
