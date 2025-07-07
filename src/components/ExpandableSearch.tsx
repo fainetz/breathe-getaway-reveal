@@ -59,10 +59,10 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       isScrolled 
         ? isMobile 
           ? 'bottom-4 right-4 left-4' // Full width on mobile when scrolled
-          : 'bottom-8 right-8' // Moved to right side
+          : 'bottom-8 right-1/3' // Positioned to the right but not all the way
         : isMobile
           ? 'bottom-20 right-4 left-4' // Full width on mobile at hero
-          : 'bottom-32 right-8' // Moved to right side at hero
+          : 'bottom-32 right-1/3' // Positioned to the right but not all the way at hero
     }`}>
       <div 
         className={`transition-all duration-500 ease-out ${
