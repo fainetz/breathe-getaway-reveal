@@ -2,6 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import { X, Send, MapPin, Clock, DollarSign, Minimize2, Maximize2, Plane, ShoppingCart, Calendar, MessageCircle, ChevronLeft, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import FullScreenDestination from './FullScreenDestination';
+import santoriniSunset from '../assets/santorini-sunset.jpg';
+import tokyoBeachSunset from '../assets/tokyo-beach-sunset.jpg';
+import baliSunset from '../assets/bali-sunset.jpg';
 
 interface TravelChatInterfaceProps {
   isOpen: boolean;
@@ -56,7 +59,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       name: 'MSP to Santorini',
       location: 'Santorini, Greece',
       price: '$899',
-      image: '/lovable-uploads/06d30aba-bf87-4b11-ad56-860979ba2ed6.png',
+      image: santoriniSunset,
       description: 'Direct flight to the stunning Greek island with breathtaking sunset views over the Aegean Sea.',
       tags: ['Direct Flight', 'Sunset Views', 'Mediterranean'],
       flightDestination: 'Santorini, Greece',
@@ -67,7 +70,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       name: 'MSP to Tokyo',
       location: 'Tokyo, Japan',
       price: '$1,299',
-      image: '/lovable-uploads/3a90338f-3b9b-4d7f-a769-846168db9d31.png',
+      image: tokyoBeachSunset,
       description: 'Experience authentic Japanese culture in the bustling capital city with convenient connections.',
       tags: ['Cultural', 'Modern City', 'Premium Service'],
       flightDestination: 'Tokyo, Japan',
@@ -78,7 +81,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       name: 'MSP to Bali',
       location: 'Denpasar, Indonesia',
       price: '$1,150',
-      image: '/lovable-uploads/62358993-d15b-4b81-9c51-49ab4c2e8d79.png',
+      image: baliSunset,
       description: 'Fly to the tropical paradise of Bali with stunning rice terraces and spiritual wellness experiences.',
       tags: ['Tropical Paradise', 'Wellness', 'Island Life'],
       flightDestination: 'Bali, Indonesia',
@@ -106,7 +109,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       name: destination.flightDestination || destination.location,
       location: destination.location,
       category: 'flight',
-      image: destination.image.replace('/lovable-uploads/', ''),
+      image: destination.image,
       price: destination.price,
       duration: '5 days', // Default duration
       description: destination.description,
