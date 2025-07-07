@@ -48,7 +48,7 @@ const Hero = () => {
       
       {/* Navigation - mobile responsive */}
       <nav className="relative z-50 py-4">
-        <div className="flex items-center justify-between max-w-7xl mx-auto pl-2">
+        <div className="flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="w-8 h-8 sm:w-10 sm:h-10 relative overflow-hidden rounded-lg">
               <img 
