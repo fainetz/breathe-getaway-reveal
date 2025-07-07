@@ -1,5 +1,6 @@
+
 import { useState } from 'react';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThreeBackground from './ThreeBackground';
 import ThemeToggle from './ThemeToggle';
@@ -8,6 +9,32 @@ import { useTheme } from '../contexts/ThemeContext';
 const Hero = () => {
   const { theme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [cart, setCart] = useState([]);
+
+  // Load cart items to show count
+  useState(() => {
+    const loadCart = () => {
+      const savedCart = localStorage.getItem('travel-cart');
+      if (savedCart) {
+        setCart(JSON.parse(savedCart));
+      }
+    };
+
+    loadCart();
+    window.addEventListener('storage', loadCart);
+    window.addEventListener('cartUpdated', loadCart);
+
+    return () => {
+      window.removeEventListener('storage', loadCart);
+      window.removeEventListener('cartUpdated', loadCart);
+    };
+  }, []);
+
+  const getCartItemCount = () => {
+    return cart.reduce((total, item) => total + item.quantity, 0);
+  };
+
+  const itemCount = getCartItemCount();
   
   return (
     <section className="relative h-screen flex flex-col px-4 sm:px-6">
@@ -50,7 +77,18 @@ const Hero = () => {
           </button>
           
           {/* Desktop navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
+            <Link to="/cart" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group flex items-center gap-2 pr-2">
+              <div className="relative">
+                <ShoppingCart className="w-4 h-4" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold text-[10px]">
+                    {itemCount}
+                  </span>
+                )}
+              </div>
+              <span className="absolute bottom-0 right-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
             <a href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
               How it works
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
@@ -77,6 +115,17 @@ const Hero = () => {
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-black/95 backdrop-blur-lg border-b border-gray-200 dark:border-white/20 py-4 px-4 animate-fade-in">
             <div className="flex flex-col space-y-4">
+              <Link to="/cart" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors py-2 hover:translate-x-2 transition-transform duration-200 flex items-center gap-2">
+                <div className="relative">
+                  <ShoppingCart className="w-4 h-4" />
+                  {itemCount > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold text-[10px]">
+                      {itemCount}
+                    </span>
+                  )}
+                </div>
+                Cart
+              </Link>
               <a href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors py-2 hover:translate-x-2 transition-transform duration-200">How it works</a>
               <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors py-2 hover:translate-x-2 transition-transform duration-200">Features</a>
               <Link to="/destinations" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors py-2 hover:translate-x-2 transition-transform duration-200">Destinations</Link>
