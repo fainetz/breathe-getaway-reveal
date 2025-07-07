@@ -77,39 +77,48 @@ const Hero = () => {
           </button>
           
           {/* Desktop navigation */}
-          <div className="hidden md:flex items-center justify-between flex-1 ml-8">
-            <div className="flex items-center space-x-8">
-              <a href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
-                How it works
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
-                Features
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <Link to="/destinations" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
-                Destinations
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-              <div className="relative group">
-                <button className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 flex items-center gap-1 text-sm hover:scale-105">
-                  Vision
-                  <ChevronDown className="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" />
-                </button>
-              </div>
-              <ThemeToggle />
+          <div className="hidden md:flex items-center space-x-8">
+            <a href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
+              How it works
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
+              Features
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <Link to="/destinations" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
+              Destinations
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <div className="relative group">
+              <button className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 flex items-center gap-1 text-sm hover:scale-105">
+                Vision
+                <ChevronDown className="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" />
+              </button>
             </div>
+            <ThemeToggle />
             
-            <Link to="/cart" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group flex items-center gap-2">
+            {/* Subtle gap before cart */}
+            <div className="w-4"></div>
+            
+            {/* Modern cart with theme-appropriate styling */}
+            <Link to="/cart" className="relative group p-2 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-black/5 dark:hover:bg-white/5 backdrop-blur-sm">
               <div className="relative">
-                <ShoppingCart className="w-4 h-4" />
+                <ShoppingCart className={`w-5 h-5 transition-colors duration-300 ${
+                  theme === 'dark' 
+                    ? 'text-white/90 group-hover:text-white' 
+                    : 'text-black/90 group-hover:text-black'
+                }`} />
                 {itemCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold text-[10px]">
+                  <span className={`absolute -top-2 -right-2 rounded-full h-4 w-4 flex items-center justify-center font-bold text-[10px] transition-all duration-300 ${
+                    theme === 'dark'
+                      ? 'bg-white text-black'
+                      : 'bg-black text-white'
+                  }`}>
                     {itemCount}
                   </span>
                 )}
               </div>
-              <span className="absolute bottom-0 right-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </div>
         </div>
