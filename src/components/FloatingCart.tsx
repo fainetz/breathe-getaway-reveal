@@ -58,10 +58,10 @@ const FloatingCart = () => {
   return (
     <button
       onClick={handleCartClick}
-      className="fixed bottom-20 right-6 w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center z-40 border-2 border-white/20"
+      className="fixed top-6 right-6 w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center z-50 border-2 border-white/20"
     >
       <div className="relative">
-        <ShoppingCart className="w-6 h-6 text-white" />
+        <ShoppingCart className="w-5 h-5 text-white" />
         <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
           {itemCount}
         </span>
