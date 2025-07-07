@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThreeBackground from './ThreeBackground';
@@ -12,7 +12,7 @@ const Hero = () => {
   const [cart, setCart] = useState([]);
 
   // Load cart items to show count
-  useState(() => {
+  useEffect(() => {
     const loadCart = () => {
       const savedCart = localStorage.getItem('travel-cart');
       if (savedCart) {
@@ -77,8 +77,30 @@ const Hero = () => {
           </button>
           
           {/* Desktop navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/cart" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group flex items-center gap-2 pr-2">
+          <div className="hidden md:flex items-center justify-between flex-1 ml-8">
+            <div className="flex items-center space-x-8">
+              <a href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
+                How it works
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
+                Features
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <Link to="/destinations" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
+                Destinations
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+              <div className="relative group">
+                <button className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 flex items-center gap-1 text-sm hover:scale-105">
+                  Vision
+                  <ChevronDown className="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" />
+                </button>
+              </div>
+              <ThemeToggle />
+            </div>
+            
+            <Link to="/cart" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group flex items-center gap-2">
               <div className="relative">
                 <ShoppingCart className="w-4 h-4" />
                 {itemCount > 0 && (
@@ -89,25 +111,6 @@ const Hero = () => {
               </div>
               <span className="absolute bottom-0 right-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </Link>
-            <a href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
-              How it works
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
-              Features
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <Link to="/destinations" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 text-sm hover:scale-105 relative group">
-              Destinations
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <div className="relative group">
-              <button className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 flex items-center gap-1 text-sm hover:scale-105">
-                Vision
-                <ChevronDown className="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" />
-              </button>
-            </div>
-            <ThemeToggle />
           </div>
         </div>
 
