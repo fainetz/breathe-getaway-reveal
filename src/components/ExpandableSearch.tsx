@@ -47,26 +47,15 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
   const shouldBeExpanded = isAtHeroSection || isHovered;
 
  const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  if (!prompt.trim()) return;
+   e.preventDefault();
+   if (!prompt.trim()) return;
 
-  try {
-    const response = await fetch("http://localhost:5000/results?data=" + encodeURIComponent(JSON.stringify({ preferences: prompt })), {
-      method: "GET",
-      headers: {
-        "X-Requested-With": "XMLHttpRequest"
-      },
-      mode: "cors"  // <- this is critical
-    });
-    
-
-    const result = await response.json();
-    console.log('✅ Got flight results:', result);
-    setResults(result); // Optional: Only if you're displaying results
-  } catch (err) {
-    console.error('❌ Fetch failed:', err);
-  }
-};
+   // Use the provided onSearchSubmit function instead of trying to fetch from localhost
+   if (onSearchSubmit) {
+     onSearchSubmit(prompt);
+     setPrompt(''); // Clear the input after submission
+   }
+ };
 
 
   return (
