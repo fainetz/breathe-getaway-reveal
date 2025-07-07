@@ -53,18 +53,18 @@ const FloatingCart = () => {
 
   const itemCount = getCartItemCount();
 
-  if (itemCount === 0) return null;
-
   return (
     <button
       onClick={handleCartClick}
-      className="fixed top-6 right-6 w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center z-50 border-2 border-white/20"
+      className="fixed top-8 right-8 w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 flex items-center justify-center z-50 border-4 border-white/30 backdrop-blur-sm"
     >
       <div className="relative">
-        <ShoppingCart className="w-5 h-5 text-white" />
-        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
-          {itemCount}
-        </span>
+        <ShoppingCart className="w-6 h-6 text-white" />
+        {itemCount > 0 && (
+          <span className="absolute -top-3 -right-3 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold shadow-lg">
+            {itemCount}
+          </span>
+        )}
       </div>
     </button>
   );
