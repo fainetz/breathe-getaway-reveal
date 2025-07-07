@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Search, ArrowRight } from 'lucide-react';
-import ExpandableSearch from '@/components/ExpandableSearch';
+
 
 
 interface ExpandableSearchProps {
