@@ -114,6 +114,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
   };
 
   const handleCardClick = (destination: Destination) => {
+    console.log('Flight card clicked:', destination.name);
     setSelectedDestination(destination);
     setIsFullScreenOpen(true);
   };
@@ -419,7 +420,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                   return (
                     <div 
                       key={destination.id} 
-                      className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl cursor-pointer"
+                      className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl cursor-pointer hover:scale-[1.02]"
                       onClick={() => handleCardClick(destination)}
                     >
                       <div className="flex">
