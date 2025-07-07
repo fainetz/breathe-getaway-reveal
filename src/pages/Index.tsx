@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Hero from '../components/Hero';
 import HowItWorks from '../components/HowItWorks';
@@ -9,19 +8,27 @@ import Footer from '../components/Footer';
 import FeatureRequestBox from '../components/FeatureRequestBox';
 import ExpandableSearch from '../components/ExpandableSearch';
 import TravelChatInterface from '../components/TravelChatInterface';
+import BackToChatButton from '../components/BackToChatButton';
 
 const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatPrompt, setChatPrompt] = useState('');
+  const [hasChatHistory, setHasChatHistory] = useState(false);
 
   const handleSearchSubmit = (query: string) => {
     setChatPrompt(query);
     setIsChatOpen(true);
+    setHasChatHistory(true);
   };
 
   const handleChatClose = () => {
     setIsChatOpen(false);
     setChatPrompt('');
+    // Keep hasChatHistory true so the back button remains visible
+  };
+
+  const handleBackToChat = () => {
+    setIsChatOpen(true);
   };
 
   return (
@@ -35,6 +42,10 @@ const Index = () => {
       <Footer />
       <FeatureRequestBox />
       <ExpandableSearch onSearchSubmit={handleSearchSubmit} />
+      <BackToChatButton 
+        onBackToChat={handleBackToChat} 
+        hasChatHistory={hasChatHistory && !isChatOpen} 
+      />
       <TravelChatInterface 
         isOpen={isChatOpen} 
         onClose={handleChatClose}
