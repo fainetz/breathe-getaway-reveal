@@ -508,7 +508,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                               className="flex-1 bg-white text-gray-900 font-semibold py-3 px-6 rounded-xl hover:bg-white/90 transition-all duration-200 shadow-lg flex items-center justify-center gap-2"
                             >
                               <ShoppingCart className="w-4 h-4" />
-                              Add to Cart
+                              Book Flight
                             </button>
                             <button 
                               onClick={(e) => {
