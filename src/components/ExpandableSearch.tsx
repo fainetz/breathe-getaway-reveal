@@ -65,16 +65,16 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
     <div className={`fixed z-50 transition-all duration-700 ease-out ${
       isScrolled 
         ? isMobile 
-          ? 'bottom-4 left-4 right-20' // Leave space for feature button on mobile when scrolled
+          ? 'bottom-4 left-1/2 -translate-x-1/2' // Centered on mobile when scrolled
           : 'bottom-8 left-1/2 -translate-x-1/2' // Centered when scrolled on desktop
         : isMobile
-          ? 'bottom-20 left-4 right-20' // Leave space for feature button on mobile at hero
+          ? 'bottom-20 left-1/2 -translate-x-1/2' // Centered on mobile at hero
           : 'bottom-32 left-20 sm:left-24' // Positioned to align with "find" in the sub-heading
     }`}>
-      <div 
+        <div 
         className={`transition-all duration-500 ease-out ${
           isMobile 
-            ? 'w-full' // Always full width on mobile
+            ? 'w-80 max-w-[calc(100vw-2rem)]' // Fixed width on mobile with max-width constraint
             : shouldBeExpanded ? 'w-96' : 'w-32'
         } h-12 bg-white/80 dark:bg-white/10 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-full hover:bg-white/90 dark:hover:bg-white/15 overflow-hidden transition-colors duration-300`}
         onMouseEnter={() => {
@@ -109,7 +109,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder={isMobile ? "How do you feel?" : "How are you feeling about travel?"}
-              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm transition-colors duration-300"
+              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm transition-colors duration-300 text-[16px]"
               autoFocus={!isScrolled && !isMobile}
             />
             <button
