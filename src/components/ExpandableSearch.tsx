@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Search, ArrowRight } from 'lucide-react';
+import ExpandableSearch from '@/components/ExpandableSearch';
+
 
 interface ExpandableSearchProps {
   onSearchSubmit?: (query: string) => void;
@@ -12,6 +14,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
   const [isMobile, setIsMobile] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [results, setResults] = useState<any>(null); // Adjust type as needed
+  
 
   useEffect(() => {
     const checkMobile = () => {
