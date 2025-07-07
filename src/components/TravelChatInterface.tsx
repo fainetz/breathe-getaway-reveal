@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { X, Send, MapPin, Clock, DollarSign, Minimize2, Maximize2 } from 'lucide-react';
+import { X, Send, MapPin, Clock, DollarSign, Minimize2, Maximize2, Plane } from 'lucide-react';
 
 interface TravelChatInterfaceProps {
   isOpen: boolean;
@@ -93,7 +93,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
     setTimeout(() => {
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: `I found some amazing destinations based on "${text}". Here are my top recommendations that match your vibe:`,
+        text: `Perfect! I found some incredible destinations that match your vibe. Here are my top recommendations:`,
         isUser: false,
         timestamp: new Date(),
         destinations: mockDestinations
@@ -113,30 +113,40 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm">
-      <div className="absolute inset-0 flex">
-        {/* Chat Section - Left Side */}
-        <div className={`${isChatMinimized ? 'w-16' : 'w-1/2'} transition-all duration-300 ease-out bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 flex flex-col`}>
+    <div className="fixed inset-0 z-50">
+      {/* Beach Background */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('/lovable-uploads/e8a542e9-5910-4c5c-9a7f-60d3bbc4ef9d.png')`
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-black/40 backdrop-blur-[1px]"></div>
+      </div>
+
+      <div className="relative z-10 h-full flex">
+        {/* Chat Section - Left Side (1/3) */}
+        <div className={`${isChatMinimized ? 'w-16' : 'w-1/3'} transition-all duration-300 ease-out bg-white/10 backdrop-blur-xl border-r border-white/20 flex flex-col`}>
           {/* Chat Header */}
-          <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-between p-6 border-b border-white/20">
             {!isChatMinimized && (
               <div className="flex-1">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">AI Travel Agent</h2>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Let's find your perfect destination</p>
+                <h2 className="text-xl font-bold text-white mb-1">AI Travel Concierge</h2>
+                <p className="text-sm text-white/70">Your personal travel curator</p>
               </div>
             )}
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setIsChatMinimized(!isChatMinimized)}
-                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="p-2 rounded-xl hover:bg-white/10 transition-all duration-200 text-white/80 hover:text-white"
               >
-                {isChatMinimized ? <Maximize2 className="w-4 h-4" /> : <Minimize2 className="w-4 h-4" />}
+                {isChatMinimized ? <Maximize2 className="w-5 h-5" /> : <Minimize2 className="w-5 h-5" />}
               </button>
               <button
                 onClick={onClose}
-                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="p-2 rounded-xl hover:bg-white/10 transition-all duration-200 text-white/80 hover:text-white"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5" />
               </button>
             </div>
           </div>
@@ -144,25 +154,30 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
           {!isChatMinimized && (
             <>
               {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              <div className="flex-1 overflow-y-auto p-6 space-y-6">
                 {messages.length === 0 && (
-                  <div className="text-center text-gray-500 dark:text-gray-400 mt-20">
-                    <p className="text-base mb-2">👋 Hi! I'm your AI travel companion</p>
-                    <p className="text-sm">Tell me how you're feeling or what kind of experience you're looking for!</p>
+                  <div className="text-center text-white/80 mt-20">
+                    <div className="mb-6">
+                      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                        <Plane className="w-8 h-8 text-white" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2">Ready for your next adventure?</h3>
+                      <p className="text-sm text-white/60">Tell me how you're feeling or what kind of experience you're craving!</p>
+                    </div>
                   </div>
                 )}
 
                 {messages.map((message) => (
                   <div key={message.id} className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
                     <div className={`max-w-xs ${message.isUser ? 'order-2' : 'order-1'}`}>
-                      <div className={`px-3 py-2 rounded-2xl text-sm ${
+                      <div className={`px-4 py-3 rounded-2xl text-sm font-medium ${
                         message.isUser 
-                          ? 'bg-blue-500 text-white ml-4' 
-                          : 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white mr-4'
+                          ? 'bg-white text-gray-900 ml-4 shadow-lg' 
+                          : 'bg-white/20 backdrop-blur-sm text-white mr-4 border border-white/20'
                       }`}>
-                        <p>{message.text}</p>
-                        <p className={`text-xs mt-1 opacity-70 ${
-                          message.isUser ? 'text-blue-100' : 'text-gray-500 dark:text-gray-400'
+                        <p className="leading-relaxed">{message.text}</p>
+                        <p className={`text-xs mt-2 opacity-60 ${
+                          message.isUser ? 'text-gray-600' : 'text-white/60'
                         }`}>
                           {message.timestamp.toLocaleTimeString()}
                         </p>
@@ -173,11 +188,11 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
                 {isLoading && (
                   <div className="flex justify-start">
-                    <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl px-3 py-2 mr-4">
-                      <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="bg-white/20 backdrop-blur-sm border border-white/20 rounded-2xl px-4 py-3 mr-4">
+                      <div className="flex space-x-2">
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                       </div>
                     </div>
                   </div>
@@ -186,20 +201,20 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
               </div>
 
               {/* Input */}
-              <div className="border-t border-gray-200 dark:border-gray-700 p-4">
-                <form onSubmit={handleSubmit} className="flex space-x-2">
+              <div className="border-t border-white/20 p-6">
+                <form onSubmit={handleSubmit} className="flex space-x-3">
                   <input
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Ask me anything about travel..."
-                    className="flex-1 px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                    placeholder="What's calling to you today?"
+                    className="flex-1 px-4 py-3 text-sm bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl focus:ring-2 focus:ring-white/30 focus:border-white/40 text-white placeholder-white/60 transition-all duration-200"
                     disabled={isLoading}
                   />
                   <button
                     type="submit"
                     disabled={isLoading || !inputValue.trim()}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center"
+                    className="px-4 py-3 bg-white text-gray-900 rounded-xl hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center font-medium shadow-lg"
                   >
                     <Send className="w-4 h-4" />
                   </button>
@@ -209,52 +224,60 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
           )}
         </div>
 
-        {/* Results Section - Right Side */}
-        <div className={`${isChatMinimized ? 'flex-1' : 'w-1/2'} transition-all duration-300 ease-out bg-gray-50 dark:bg-gray-950 flex flex-col overflow-hidden`}>
+        {/* Results Section - Right Side (2/3) */}
+        <div className={`${isChatMinimized ? 'flex-1' : 'w-2/3'} transition-all duration-300 ease-out bg-white/5 backdrop-blur-xl flex flex-col overflow-hidden`}>
           {/* Results Header */}
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Recommended Destinations</h2>
-            <p className="text-gray-600 dark:text-gray-400">Based on your conversation with our AI travel agent</p>
+          <div className="p-8 border-b border-white/20">
+            <h2 className="text-2xl font-bold text-white mb-2">Curated Destinations</h2>
+            <p className="text-white/70">Handpicked experiences based on your conversation</p>
           </div>
 
           {/* Results Content */}
-          <div className="flex-1 overflow-y-auto p-6">
+          <div className="flex-1 overflow-y-auto p-8">
             {currentDestinations.length === 0 ? (
               <div className="flex items-center justify-center h-full text-center">
-                <div>
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center">
-                    <MapPin className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                <div className="max-w-md">
+                  <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                    <MapPin className="w-12 h-12 text-white/60" />
                   </div>
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Start a conversation</h3>
-                  <p className="text-gray-600 dark:text-gray-400">Tell our AI about your travel preferences and we'll show you personalized destination recommendations here.</p>
+                  <h3 className="text-2xl font-bold text-white mb-4">Your Journey Awaits</h3>
+                  <p className="text-white/70 text-lg leading-relaxed">Share your travel dreams with our AI concierge and discover personalized destination recommendations crafted just for you.</p>
                 </div>
               </div>
             ) : (
-              <div className="space-y-6">
+              <div className="grid gap-8">
                 {currentDestinations.map((destination) => (
-                  <div key={destination.id} className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow">
+                  <div key={destination.id} className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl">
                     <div className="flex">
                       <img 
                         src={destination.image} 
                         alt={destination.name}
-                        className="w-40 h-32 object-cover"
+                        className="w-48 h-40 object-cover"
                       />
-                      <div className="flex-1 p-4">
-                        <div className="flex items-start justify-between mb-2">
-                          <h4 className="font-semibold text-gray-900 dark:text-white">{destination.name}</h4>
-                          <span className="text-lg font-bold text-green-600 dark:text-green-400">{destination.price}</span>
+                      <div className="flex-1 p-6">
+                        <div className="flex items-start justify-between mb-3">
+                          <h4 className="text-xl font-bold text-white">{destination.name}</h4>
+                          <span className="text-xl font-bold text-green-400 bg-green-400/20 px-3 py-1 rounded-lg backdrop-blur-sm">{destination.price}</span>
                         </div>
-                        <div className="flex items-center text-gray-600 dark:text-gray-400 mb-2">
-                          <MapPin className="w-4 h-4 mr-1" />
-                          <span className="text-sm">{destination.location}</span>
+                        <div className="flex items-center text-white/80 mb-3">
+                          <MapPin className="w-4 h-4 mr-2" />
+                          <span className="font-medium">{destination.location}</span>
                         </div>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">{destination.description}</p>
-                        <div className="flex flex-wrap gap-1">
+                        <p className="text-white/70 mb-4 leading-relaxed">{destination.description}</p>
+                        <div className="flex flex-wrap gap-2 mb-4">
                           {destination.tags.map((tag) => (
-                            <span key={tag} className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs rounded-full">
+                            <span key={tag} className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white/90 text-sm rounded-full border border-white/20 font-medium">
                               {tag}
                             </span>
                           ))}
+                        </div>
+                        <div className="flex gap-3">
+                          <button className="flex-1 bg-white text-gray-900 font-semibold py-3 px-6 rounded-xl hover:bg-white/90 transition-all duration-200 shadow-lg">
+                            View Flights
+                          </button>
+                          <button className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
+                            Learn More
+                          </button>
                         </div>
                       </div>
                     </div>
