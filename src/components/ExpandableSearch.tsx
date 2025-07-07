@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Search, ArrowRight } from 'lucide-react';
 
@@ -62,7 +61,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           : 'bottom-8 left-1/2 -translate-x-1/2' // Centered when scrolled on desktop
         : isMobile
           ? 'bottom-20 left-4 right-4' // Full width on mobile at hero
-          : 'bottom-32 left-4 sm:left-6' // Aligned with text content at hero
+          : 'bottom-32 left-20 sm:left-24' // Positioned to align with "find" in the sub-heading
     }`}>
       <div 
         className={`transition-all duration-500 ease-out ${
