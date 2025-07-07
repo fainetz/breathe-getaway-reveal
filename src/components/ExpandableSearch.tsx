@@ -58,11 +58,11 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
     <div className={`fixed z-50 transition-all duration-700 ease-out ${
       isScrolled 
         ? isMobile 
-          ? 'bottom-4 right-4 left-4' // Full width on mobile when scrolled
-          : 'bottom-8 right-1/3' // Positioned to the right but not all the way
+          ? 'bottom-4 left-4 right-4' // Full width on mobile when scrolled
+          : 'bottom-8 left-1/2 -translate-x-1/2' // Centered when scrolled on desktop
         : isMobile
-          ? 'bottom-20 right-4 left-4' // Full width on mobile at hero
-          : 'bottom-32 right-1/3' // Positioned to the right but not all the way at hero
+          ? 'bottom-20 left-4 right-4' // Full width on mobile at hero
+          : 'bottom-32 left-4 sm:left-6' // Aligned with text content at hero
     }`}>
       <div 
         className={`transition-all duration-500 ease-out ${
