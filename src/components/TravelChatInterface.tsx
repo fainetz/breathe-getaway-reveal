@@ -1,6 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { X, Send, MapPin, Clock, DollarSign, Minimize2, Maximize2, Plane, ShoppingCart, Calendar } from 'lucide-react';
+import FullScreenDestination from './FullScreenDestination';
 
 interface TravelChatInterfaceProps {
   isOpen: boolean;
@@ -24,6 +25,8 @@ interface Destination {
   image: string;
   description: string;
   tags: string[];
+  flightDestination?: string;
+  airportCode?: string;
 }
 
 interface CartItem {
@@ -40,35 +43,43 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
   const [isChatMinimized, setIsChatMinimized] = useState(false);
   const [currentDestinations, setCurrentDestinations] = useState<Destination[]>([]);
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
+  const [isFullScreenOpen, setIsFullScreenOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const mockDestinations: Destination[] = [
     {
       id: '1',
-      name: 'Santorini Sunset Villa',
+      name: 'MSP to Santorini',
       location: 'Santorini, Greece',
-      price: '$299/night',
+      price: '$899',
       image: '/lovable-uploads/06d30aba-bf87-4b11-ad56-860979ba2ed6.png',
-      description: 'A breathtaking villa with panoramic sunset views over the Aegean Sea.',
-      tags: ['Romantic', 'Sunset Views', 'Luxury']
+      description: 'Direct flight to the stunning Greek island with breathtaking sunset views over the Aegean Sea.',
+      tags: ['Direct Flight', 'Sunset Views', 'Mediterranean'],
+      flightDestination: 'Santorini, Greece',
+      airportCode: 'JTR'
     },
     {
       id: '2',
-      name: 'Kyoto Temple Stay',
-      location: 'Kyoto, Japan',
-      price: '$180/night',
+      name: 'MSP to Tokyo',
+      location: 'Tokyo, Japan',
+      price: '$1,299',
       image: '/lovable-uploads/3a90338f-3b9b-4d7f-a769-846168db9d31.png',
-      description: 'Experience authentic Japanese culture in a traditional temple setting.',
-      tags: ['Cultural', 'Meditation', 'Traditional']
+      description: 'Experience authentic Japanese culture in the bustling capital city with convenient connections.',
+      tags: ['Cultural', 'Modern City', 'Premium Service'],
+      flightDestination: 'Tokyo, Japan',
+      airportCode: 'NRT'
     },
     {
       id: '3',
-      name: 'Bali Rice Terrace Resort',
-      location: 'Ubud, Bali',
-      price: '$150/night',
+      name: 'MSP to Bali',
+      location: 'Denpasar, Indonesia',
+      price: '$1,150',
       image: '/lovable-uploads/62358993-d15b-4b81-9c51-49ab4c2e8d79.png',
-      description: 'Wake up to stunning rice terrace views in the heart of Bali.',
-      tags: ['Nature', 'Peaceful', 'Wellness']
+      description: 'Fly to the tropical paradise of Bali with stunning rice terraces and spiritual wellness experiences.',
+      tags: ['Tropical Paradise', 'Wellness', 'Island Life'],
+      flightDestination: 'Bali, Indonesia',
+      airportCode: 'DPS'
     }
   ];
 
@@ -85,6 +96,40 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       flightTime: flightDurations[destinationIndex % flightDurations.length],
       flightNumber: `${airlines[destinationIndex % airlines.length].substring(0, 2).toUpperCase()}${1000 + destinationIndex}`
     };
+  };
+
+  // Convert chat destination to full-screen destination format
+  const convertToFullScreenDestination = (destination: Destination) => {
+    return {
+      id: parseInt(destination.id),
+      name: destination.flightDestination || destination.location,
+      location: destination.location,
+      category: 'flight',
+      image: destination.image.replace('/lovable-uploads/', ''),
+      price: destination.price,
+      duration: '5 days', // Default duration
+      description: destination.description,
+      mood: 'Ready to Fly',
+      tags: destination.tags
+    };
+  };
+
+  const handleCardClick = (destination: Destination) => {
+    setSelectedDestination(destination);
+    setIsFullScreenOpen(true);
+  };
+
+  const handleCloseFullScreen = () => {
+    setIsFullScreenOpen(false);
+    setSelectedDestination(null);
+  };
+
+  const handleNavigateDestination = (destination: any) => {
+    // Convert back to chat destination format if needed
+    const chatDestination = currentDestinations.find(d => d.id === destination.id.toString());
+    if (chatDestination) {
+      setSelectedDestination(chatDestination);
+    }
   };
 
   // Load cart from localStorage
@@ -129,16 +174,17 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       if (learnMoreMatch) {
         const destinationName = learnMoreMatch[1];
         const destination = mockDestinations.find(d => 
-          d.name.toLowerCase().includes(destinationName.toLowerCase())
+          d.name.toLowerCase().includes(destinationName.toLowerCase()) ||
+          d.location.toLowerCase().includes(destinationName.toLowerCase())
         );
         
         if (destination) {
-          botResponse = `Let me tell you more about ${destination.name}! This incredible ${destination.location} destination offers ${destination.description.toLowerCase()} Perfect for travelers seeking ${destination.tags.join(', ').toLowerCase()} experiences. The area is known for its stunning natural beauty and authentic cultural experiences. Would you like to know about specific activities, best times to visit, or local cuisine?`;
+          botResponse = `Let me tell you more about the flight to ${destination.flightDestination}! ${destination.description} This route offers ${destination.tags.join(', ').toLowerCase()} experiences. The flight typically includes premium amenities and arrives at ${destination.airportCode} airport. Would you like to know about specific flight times, airline options, or ground transportation?`;
         } else {
-          botResponse = `I'd love to tell you more! Could you clarify which destination you're interested in learning about?`;
+          botResponse = `I'd love to tell you more! Could you clarify which flight destination you're interested in learning about?`;
         }
       } else {
-        botResponse = `Perfect! I found some incredible flight destinations that match your vibe. Here are my top recommendations with available flights:`;
+        botResponse = `Perfect! I found some incredible flight destinations that match your vibe. Here are my top flight recommendations with available routes:`;
       }
 
       const botMessage: Message = {
@@ -344,7 +390,11 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                 {currentDestinations.map((destination) => {
                   const flightDetails = getFlightDetails(destination);
                   return (
-                    <div key={destination.id} className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl">
+                    <div 
+                      key={destination.id} 
+                      className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl cursor-pointer"
+                      onClick={() => handleCardClick(destination)}
+                    >
                       <div className="flex">
                         {/* Flight Image with Overlay Info */}
                         <div className="relative w-48 h-40">
@@ -418,14 +468,20 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
                           <div className="flex gap-3">
                             <button 
-                              onClick={() => handleAddToCart(destination)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleAddToCart(destination);
+                              }}
                               className="flex-1 bg-white text-gray-900 font-semibold py-3 px-6 rounded-xl hover:bg-white/90 transition-all duration-200 shadow-lg flex items-center justify-center gap-2"
                             >
                               <ShoppingCart className="w-4 h-4" />
                               Book Flight
                             </button>
                             <button 
-                              onClick={() => handleLearnMore(destination)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleLearnMore(destination);
+                              }}
                               className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200"
                             >
                               Flight Details
@@ -441,6 +497,17 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
           </div>
         </div>
       </div>
+
+      {/* Full Screen Flight Details */}
+      {selectedDestination && (
+        <FullScreenDestination
+          destination={convertToFullScreenDestination(selectedDestination)}
+          destinations={currentDestinations.map(convertToFullScreenDestination)}
+          isOpen={isFullScreenOpen}
+          onClose={handleCloseFullScreen}
+          onNavigate={handleNavigateDestination}
+        />
+      )}
     </div>
   );
 };
