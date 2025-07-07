@@ -6,7 +6,7 @@ import Features from '../components/Features';
 import EmotionalHooks from '../components/EmotionalHooks';
 import Vision from '../components/Vision';
 import Footer from '../components/Footer';
-import ChatBubble from '../components/ChatBubble';
+import FeatureRequestBox from '../components/FeatureRequestBox';
 import ExpandableSearch from '../components/ExpandableSearch';
 import TravelChatInterface from '../components/TravelChatInterface';
 
@@ -33,7 +33,7 @@ const Index = () => {
       <Vision />
       <div id="resultsSection" className="min-h-0"></div>
       <Footer />
-      <ChatBubble />
+      <FeatureRequestBox />
       <ExpandableSearch onSearchSubmit={handleSearchSubmit} />
       <TravelChatInterface 
         isOpen={isChatOpen} 

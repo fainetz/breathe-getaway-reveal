@@ -1,6 +1,6 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { X, Send, MapPin, Clock, DollarSign, Minimize2, Maximize2, Plane, ShoppingCart, Calendar } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import FullScreenDestination from './FullScreenDestination';
 
 interface TravelChatInterfaceProps {
@@ -46,6 +46,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
   const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
   const [isFullScreenOpen, setIsFullScreenOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const mockDestinations: Destination[] = [
     {
@@ -130,6 +131,10 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
     if (chatDestination) {
       setSelectedDestination(chatDestination);
     }
+  };
+
+  const handleCartClick = () => {
+    navigate('/cart');
   };
 
   // Load cart from localStorage
@@ -270,9 +275,12 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
               </div>
             )}
             <div className="flex items-center gap-2">
-              {/* Cart Icon */}
+              {/* Cart Icon - Now Clickable */}
               <div className="relative">
-                <button className="p-2 rounded-xl hover:bg-white/10 transition-all duration-200 text-white/80 hover:text-white">
+                <button 
+                  onClick={handleCartClick}
+                  className="p-2 rounded-xl hover:bg-white/10 transition-all duration-200 text-white/80 hover:text-white"
+                >
                   <ShoppingCart className="w-5 h-5" />
                 </button>
                 {getCartItemCount() > 0 && (
@@ -296,73 +304,77 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
             </div>
           </div>
 
-          {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-6 space-y-6">
-            {messages.length === 0 && (
-              <div className="text-center text-white/80 mt-20">
-                <div className="mb-6">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                    <Plane className="w-8 h-8 text-white" />
+          {/* Messages - Always visible even when minimized */}
+          {!isChatMinimized && (
+            <div className="flex-1 overflow-y-auto p-6 space-y-6">
+              {messages.length === 0 && (
+                <div className="text-center text-white/80 mt-20">
+                  <div className="mb-6">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                      <Plane className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">Ready for your next adventure?</h3>
+                    <p className="text-sm text-white/60">Tell me how you're feeling or what kind of experience you're craving!</p>
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">Ready for your next adventure?</h3>
-                  <p className="text-sm text-white/60">Tell me how you're feeling or what kind of experience you're craving!</p>
                 </div>
-              </div>
-            )}
+              )}
 
-            {messages.map((message) => (
-              <div key={message.id} className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-xs ${message.isUser ? 'order-2' : 'order-1'}`}>
-                  <div className={`px-4 py-3 rounded-2xl text-sm font-medium ${
-                    message.isUser 
-                      ? 'bg-white text-gray-900 ml-4 shadow-lg' 
-                      : 'bg-white/20 backdrop-blur-sm text-white mr-4 border border-white/20'
-                  }`}>
-                    <p className="leading-relaxed">{message.text}</p>
-                    <p className={`text-xs mt-2 opacity-60 ${
-                      message.isUser ? 'text-gray-600' : 'text-white/60'
+              {messages.map((message) => (
+                <div key={message.id} className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`max-w-xs ${message.isUser ? 'order-2' : 'order-1'}`}>
+                    <div className={`px-4 py-3 rounded-2xl text-sm font-medium ${
+                      message.isUser 
+                        ? 'bg-white text-gray-900 ml-4 shadow-lg' 
+                        : 'bg-white/20 backdrop-blur-sm text-white mr-4 border border-white/20'
                     }`}>
-                      {message.timestamp.toLocaleTimeString()}
-                    </p>
+                      <p className="leading-relaxed">{message.text}</p>
+                      <p className={`text-xs mt-2 opacity-60 ${
+                        message.isUser ? 'text-gray-600' : 'text-white/60'
+                      }`}>
+                        {message.timestamp.toLocaleTimeString()}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
 
-            {isLoading && (
-              <div className="flex justify-start">
-                <div className="bg-white/20 backdrop-blur-sm border border-white/20 rounded-2xl px-4 py-3 mr-4">
-                  <div className="flex space-x-2">
-                    <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                    <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="bg-white/20 backdrop-blur-sm border border-white/20 rounded-2xl px-4 py-3 mr-4">
+                    <div className="flex space-x-2">
+                      <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+          )}
 
-          {/* Input */}
-          <div className="border-t border-white/20 p-6">
-            <form onSubmit={handleSubmit} className="flex space-x-3">
-              <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                placeholder="What's calling to you today?"
-                className="flex-1 px-4 py-3 text-sm bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl focus:ring-2 focus:ring-white/30 focus:border-white/40 text-white placeholder-white/60 transition-all duration-200"
-                disabled={isLoading}
-              />
-              <button
-                type="submit"
-                disabled={isLoading || !inputValue.trim()}
-                className="px-4 py-3 bg-white text-gray-900 rounded-xl hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center font-medium shadow-lg"
-              >
-                <Send className="w-4 h-4" />
-              </button>
-            </form>
-          </div>
+          {/* Input - Always visible even when minimized */}
+          {!isChatMinimized && (
+            <div className="border-t border-white/20 p-6">
+              <form onSubmit={handleSubmit} className="flex space-x-3">
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  placeholder="What's calling to you today?"
+                  className="flex-1 px-4 py-3 text-sm bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl focus:ring-2 focus:ring-white/30 focus:border-white/40 text-white placeholder-white/60 transition-all duration-200"
+                  disabled={isLoading}
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading || !inputValue.trim()}
+                  className="px-4 py-3 bg-white text-gray-900 rounded-xl hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center font-medium shadow-lg"
+                >
+                  <Send className="w-4 h-4" />
+                </button>
+              </form>
+            </div>
+          )}
         </div>
 
         {/* Results Section - Right Side (2/3) */}
