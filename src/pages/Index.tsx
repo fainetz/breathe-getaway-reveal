@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import Hero from '../components/Hero';
 import HowItWorks from '../components/HowItWorks';
 import Features from '../components/Features';
@@ -7,8 +8,22 @@ import Vision from '../components/Vision';
 import Footer from '../components/Footer';
 import ChatBubble from '../components/ChatBubble';
 import ExpandableSearch from '../components/ExpandableSearch';
+import TravelChatInterface from '../components/TravelChatInterface';
 
 const Index = () => {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [chatPrompt, setChatPrompt] = useState('');
+
+  const handleSearchSubmit = (query: string) => {
+    setChatPrompt(query);
+    setIsChatOpen(true);
+  };
+
+  const handleChatClose = () => {
+    setIsChatOpen(false);
+    setChatPrompt('');
+  };
+
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white overflow-x-hidden transition-colors duration-300">
       <Hero />
@@ -19,7 +34,12 @@ const Index = () => {
       <div id="resultsSection" className="min-h-0"></div>
       <Footer />
       <ChatBubble />
-      <ExpandableSearch />
+      <ExpandableSearch onSearchSubmit={handleSearchSubmit} />
+      <TravelChatInterface 
+        isOpen={isChatOpen} 
+        onClose={handleChatClose}
+        initialPrompt={chatPrompt}
+      />
     </div>
   );
 };
