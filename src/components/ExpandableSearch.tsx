@@ -8,6 +8,7 @@ const ExpandableSearch = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [prompt, setPrompt] = useState('');
+  const [results, setResults] = useState<any>(null); // Adjust type as needed
 
   useEffect(() => {
     const checkMobile = () => {
@@ -42,10 +43,27 @@ const ExpandableSearch = () => {
   const isAtHeroSection = !isScrolled;
   const shouldBeExpanded = isAtHeroSection || isHovered;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Search prompt:', prompt);
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!prompt.trim()) return;
+
+  try {
+    const response = await fetch("http://localhost:5000/results?data=" + encodeURIComponent(JSON.stringify({ preferences: prompt })), {
+      method: "GET",
+      headers: {
+        "X-Requested-With": "XMLHttpRequest"
+      },
+      mode: "cors"  // <- this is critical
+    });
+    
+
+    const result = await response.json();
+    console.log('✅ Got flight results:', result);
+    setResults(result); // Optional: Only if you're displaying results
+  } catch (err) {
+    console.error('❌ Fetch failed:', err);
+  }
+};
 
   return (
     <div className={`fixed z-50 transition-all duration-700 ease-out ${
