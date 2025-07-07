@@ -331,8 +331,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                   return (
                     <div 
                       key={destination.id} 
-                      className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl active:scale-95"
-                      onClick={() => handleCardClick(destination)}
+                      className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl"
                     >
                       <div className="relative h-32">
                         <img 
@@ -382,8 +381,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              handleLearnMore(destination);
-                              setShowDestinations(false);
+                              handleCardClick(destination);
                             }}
                             className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white font-medium py-2 px-3 rounded-lg transition-all duration-200 text-sm"
                           >
@@ -569,8 +567,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                         return (
                           <div 
                             key={destination.id} 
-                            className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl cursor-pointer hover:scale-[1.02]"
-                            onClick={() => handleCardClick(destination)}
+                            className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl"
                           >
                             <div className="flex">
                               <div className="relative w-48 h-40">
@@ -651,7 +648,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                                   <button 
                                     onClick={(e) => {
                                       e.stopPropagation();
-                                      handleLearnMore(destination);
+                                      handleCardClick(destination);
                                     }}
                                     className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200"
                                   >
