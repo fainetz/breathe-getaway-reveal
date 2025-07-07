@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { X, Send, MapPin, Clock, DollarSign, Minimize2, Maximize2, Plane, ShoppingCart, Calendar } from 'lucide-react';
+import { X, Send, MapPin, Clock, DollarSign, Minimize2, Maximize2, Plane, ShoppingCart, Calendar, MessageCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import FullScreenDestination from './FullScreenDestination';
 
@@ -264,7 +264,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       </div>
 
       <div className="relative z-10 h-full flex">
-        {/* Chat Section - Left Side (1/3) */}
+        {/* Chat Section - Left Side (1/3 or minimized) */}
         <div className={`${isChatMinimized ? 'w-16' : 'w-1/3'} transition-all duration-300 ease-out bg-white/10 backdrop-blur-xl border-r border-white/20 flex flex-col`}>
           {/* Chat Header */}
           <div className="flex items-center justify-between p-6 border-b border-white/20">
@@ -292,6 +292,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
               <button
                 onClick={() => setIsChatMinimized(!isChatMinimized)}
                 className="p-2 rounded-xl hover:bg-white/10 transition-all duration-200 text-white/80 hover:text-white"
+                title={isChatMinimized ? "Expand Chat" : "Minimize Chat"}
               >
                 {isChatMinimized ? <Maximize2 className="w-5 h-5" /> : <Minimize2 className="w-5 h-5" />}
               </button>
@@ -304,7 +305,27 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
             </div>
           </div>
 
-          {/* Messages - Always visible even when minimized */}
+          {/* Minimized Chat Indicator - Clickable to expand */}
+          {isChatMinimized && (
+            <div 
+              className="flex-1 flex flex-col items-center justify-center p-4 cursor-pointer hover:bg-white/5 transition-all duration-200"
+              onClick={() => setIsChatMinimized(false)}
+              title="Click to expand chat"
+            >
+              <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 mb-4 hover:bg-white/30 transition-all duration-200">
+                <MessageCircle className="w-8 h-8 text-white" />
+              </div>
+              <div className="text-white/60 text-xs text-center">
+                <p className="font-medium mb-1">Chat</p>
+                <p>Click to expand</p>
+              </div>
+              {messages.length > 0 && (
+                <div className="mt-4 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+              )}
+            </div>
+          )}
+
+          {/* Messages - Only visible when not minimized */}
           {!isChatMinimized && (
             <div className="flex-1 overflow-y-auto p-6 space-y-6">
               {messages.length === 0 && (
@@ -353,7 +374,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
             </div>
           )}
 
-          {/* Input - Always visible even when minimized */}
+          {/* Input - Only visible when not minimized */}
           {!isChatMinimized && (
             <div className="border-t border-white/20 p-6">
               <form onSubmit={handleSubmit} className="flex space-x-3">
@@ -377,7 +398,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
           )}
         </div>
 
-        {/* Results Section - Right Side (2/3) */}
+        {/* Results Section - Right Side (2/3 or expanded when chat minimized) */}
         <div className={`${isChatMinimized ? 'flex-1' : 'w-2/3'} transition-all duration-300 ease-out bg-white/5 backdrop-blur-xl flex flex-col overflow-hidden`}>
           {/* Results Header */}
           <div className="p-8 border-b border-white/20">
