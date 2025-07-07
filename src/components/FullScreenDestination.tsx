@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { X, ChevronUp, ChevronDown, MapPin, Calendar, DollarSign, Plane, Clock } from 'lucide-react';
+import { X, ChevronUp, ChevronDown, MapPin, Calendar, DollarSign, Plane, Clock, ShoppingCart } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 
 interface Destination {
@@ -15,12 +15,20 @@ interface Destination {
   tags: string[];
 }
 
+interface CartItem {
+  id: string;
+  destination: any;
+  quantity: number;
+  addedAt: Date;
+}
+
 interface FullScreenDestinationProps {
   destination: Destination;
   destinations: Destination[];
   isOpen: boolean;
   onClose: () => void;
   onNavigate: (destination: Destination) => void;
+  onAddToCart?: (destination: Destination) => void;
 }
 
 const FullScreenDestination = ({ 
@@ -28,7 +36,8 @@ const FullScreenDestination = ({
   destinations, 
   isOpen, 
   onClose, 
-  onNavigate 
+  onNavigate,
+  onAddToCart 
 }: FullScreenDestinationProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -117,6 +126,12 @@ const FullScreenDestination = ({
     }
   };
 
+  const handleAddToCart = () => {
+    if (onAddToCart && currentDestination) {
+      onAddToCart(currentDestination);
+    }
+  };
+
   if (!isOpen || !destination) return null;
 
   const currentDestination = destinations[currentIndex] || destination;
@@ -177,10 +192,14 @@ const FullScreenDestination = ({
         </span>
       </div>
 
-      {/* Fixed Action Buttons */}
+      {/* Fixed Action Buttons - Updated */}
       <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 flex gap-4 max-w-2xl w-full px-8">
-        <button className="flex-1 bg-neutral-700/60 hover:bg-neutral-600/80 border border-neutral-600/40 text-neutral-200 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm">
-          View Available Flights
+        <button 
+          onClick={handleAddToCart}
+          className="flex-1 bg-white text-gray-900 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm hover:bg-white/90 flex items-center justify-center gap-3"
+        >
+          <ShoppingCart className="w-5 h-5" />
+          Add Flight to Cart
         </button>
         <button 
           onClick={scrollToAboutSection}

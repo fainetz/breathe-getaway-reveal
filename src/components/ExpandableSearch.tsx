@@ -1,8 +1,11 @@
-
 import { useState, useEffect } from 'react';
 import { Search, ArrowRight } from 'lucide-react';
 
-const ExpandableSearch = () => {
+interface ExpandableSearchProps {
+  onSearchSubmit?: (query: string) => void;
+}
+
+const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -43,7 +46,7 @@ const ExpandableSearch = () => {
   const isAtHeroSection = !isScrolled;
   const shouldBeExpanded = isAtHeroSection || isHovered;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+ const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   if (!prompt.trim()) return;
 
@@ -65,15 +68,16 @@ const ExpandableSearch = () => {
   }
 };
 
+
   return (
     <div className={`fixed z-50 transition-all duration-700 ease-out ${
       isScrolled 
         ? isMobile 
           ? 'bottom-4 left-4 right-4' // Full width on mobile when scrolled
-          : 'bottom-8 left-1/2 transform -translate-x-1/2'
+          : 'bottom-8 left-1/2 -translate-x-1/2' // Centered when scrolled on desktop
         : isMobile
           ? 'bottom-20 left-4 right-4' // Full width on mobile at hero
-          : 'bottom-32 left-8'
+          : 'bottom-32 left-20 sm:left-24' // Positioned to align with "find" in the sub-heading
     }`}>
       <div 
         className={`transition-all duration-500 ease-out ${
