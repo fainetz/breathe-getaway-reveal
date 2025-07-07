@@ -1,5 +1,6 @@
+
 import { useState, useEffect, useRef } from 'react';
-import { X, Send, MapPin, Clock, DollarSign, Minimize2, Maximize2, Plane, ShoppingCart } from 'lucide-react';
+import { X, Send, MapPin, Clock, DollarSign, Minimize2, Maximize2, Plane, ShoppingCart, Calendar } from 'lucide-react';
 
 interface TravelChatInterfaceProps {
   isOpen: boolean;
@@ -71,6 +72,21 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
     }
   ];
 
+  // Generate flight-specific details based on destination
+  const getFlightDetails = (destination: Destination) => {
+    const flightTimes = ['6:30 AM', '11:45 AM', '3:20 PM', '8:15 PM'];
+    const airlines = ['Delta', 'United', 'American', 'Emirates'];
+    const flightDurations = ['8h 45m', '12h 30m', '6h 15m', '14h 20m'];
+    const destinationIndex = parseInt(destination.id) || 0;
+    
+    return {
+      departure: flightTimes[destinationIndex % flightTimes.length],
+      airline: airlines[destinationIndex % airlines.length],
+      flightTime: flightDurations[destinationIndex % flightDurations.length],
+      flightNumber: `${airlines[destinationIndex % airlines.length].substring(0, 2).toUpperCase()}${1000 + destinationIndex}`
+    };
+  };
+
   // Load cart from localStorage
   useEffect(() => {
     const savedCart = localStorage.getItem('travel-cart');
@@ -122,7 +138,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
           botResponse = `I'd love to tell you more! Could you clarify which destination you're interested in learning about?`;
         }
       } else {
-        botResponse = `Perfect! I found some incredible destinations that match your vibe. Here are my top recommendations:`;
+        botResponse = `Perfect! I found some incredible flight destinations that match your vibe. Here are my top recommendations with available flights:`;
       }
 
       const botMessage: Message = {
@@ -307,8 +323,8 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
         <div className={`${isChatMinimized ? 'flex-1' : 'w-2/3'} transition-all duration-300 ease-out bg-white/5 backdrop-blur-xl flex flex-col overflow-hidden`}>
           {/* Results Header */}
           <div className="p-8 border-b border-white/20">
-            <h2 className="text-2xl font-bold text-white mb-2">Curated Destinations</h2>
-            <p className="text-white/70">Handpicked experiences based on your conversation</p>
+            <h2 className="text-2xl font-bold text-white mb-2">Available Flights</h2>
+            <p className="text-white/70">Flight recommendations based on your conversation</p>
           </div>
 
           {/* Results Content */}
@@ -317,58 +333,109 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
               <div className="flex items-center justify-center h-full text-center">
                 <div className="max-w-md">
                   <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
-                    <MapPin className="w-12 h-12 text-white/60" />
+                    <Plane className="w-12 h-12 text-white/60" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">Your Journey Awaits</h3>
-                  <p className="text-white/70 text-lg leading-relaxed">Share your travel dreams with our AI concierge and discover personalized destination recommendations crafted just for you.</p>
+                  <h3 className="text-2xl font-bold text-white mb-4">Your Flight Awaits</h3>
+                  <p className="text-white/70 text-lg leading-relaxed">Share your travel dreams with our AI concierge and discover personalized flight recommendations crafted just for you.</p>
                 </div>
               </div>
             ) : (
               <div className="grid gap-8">
-                {currentDestinations.map((destination) => (
-                  <div key={destination.id} className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl">
-                    <div className="flex">
-                      <img 
-                        src={destination.image} 
-                        alt={destination.name}
-                        className="w-48 h-40 object-cover"
-                      />
-                      <div className="flex-1 p-6">
-                        <div className="flex items-start justify-between mb-3">
-                          <h4 className="text-xl font-bold text-white">{destination.name}</h4>
-                          <span className="text-xl font-bold text-green-400 bg-green-400/20 px-3 py-1 rounded-lg backdrop-blur-sm">{destination.price}</span>
+                {currentDestinations.map((destination) => {
+                  const flightDetails = getFlightDetails(destination);
+                  return (
+                    <div key={destination.id} className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl">
+                      <div className="flex">
+                        {/* Flight Image with Overlay Info */}
+                        <div className="relative w-48 h-40">
+                          <img 
+                            src={destination.image} 
+                            alt={destination.name}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                          
+                          {/* Flight Number & Airline */}
+                          <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm rounded-lg px-2 py-1">
+                            <span className="text-xs font-medium text-white">{flightDetails.airline} {flightDetails.flightNumber}</span>
+                          </div>
+
+                          {/* Flight Duration */}
+                          <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm rounded-lg px-2 py-1">
+                            <span className="text-xs font-medium text-white">{flightDetails.flightTime}</span>
+                          </div>
+                          
+                          {/* Departure Time */}
+                          <div className="absolute bottom-3 left-3">
+                            <div className="bg-neutral-800/70 backdrop-blur-sm rounded-lg px-2 py-1">
+                              <span className="text-xs font-medium text-white">Departs {flightDetails.departure}</span>
+                            </div>
+                          </div>
                         </div>
-                        <div className="flex items-center text-white/80 mb-3">
-                          <MapPin className="w-4 h-4 mr-2" />
-                          <span className="font-medium">{destination.location}</span>
-                        </div>
-                        <p className="text-white/70 mb-4 leading-relaxed">{destination.description}</p>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {destination.tags.map((tag) => (
-                            <span key={tag} className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white/90 text-sm rounded-full border border-white/20 font-medium">
-                              {tag}
+
+                        <div className="flex-1 p-6">
+                          <div className="flex items-start justify-between mb-3">
+                            <h4 className="text-xl font-bold text-white">{destination.name}</h4>
+                            <span className="text-xl font-bold text-green-400 bg-green-400/20 px-3 py-1 rounded-lg backdrop-blur-sm">{destination.price}</span>
+                          </div>
+                          <div className="flex items-center text-white/80 mb-3">
+                            <MapPin className="w-4 h-4 mr-2" />
+                            <span className="font-medium">{destination.location}</span>
+                          </div>
+
+                          {/* Flight Details Grid */}
+                          <div className="grid grid-cols-2 gap-3 mb-4">
+                            <div className="flex items-center text-white/80 text-sm">
+                              <Plane className="w-4 h-4 mr-2 text-blue-400" />
+                              <span>Direct Flight</span>
+                            </div>
+                            <div className="flex items-center text-white/80 text-sm">
+                              <Clock className="w-4 h-4 mr-2 text-green-400" />
+                              <span>On Time</span>
+                            </div>
+                            <div className="flex items-center text-white/80 text-sm">
+                              <Calendar className="w-4 h-4 mr-2 text-purple-400" />
+                              <span>Flexible Dates</span>
+                            </div>
+                            <div className="flex items-center text-white/80 text-sm">
+                              <span className="w-4 h-4 mr-2 text-orange-400 font-bold text-xs">✈</span>
+                              <span>Premium Economy</span>
+                            </div>
+                          </div>
+
+                          {/* Flight Tags */}
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            <span className="bg-blue-800/30 border border-blue-600/40 text-xs px-3 py-1 rounded-full text-blue-300">
+                              Free Baggage
                             </span>
-                          ))}
-                        </div>
-                        <div className="flex gap-3">
-                          <button 
-                            onClick={() => handleAddToCart(destination)}
-                            className="flex-1 bg-white text-gray-900 font-semibold py-3 px-6 rounded-xl hover:bg-white/90 transition-all duration-200 shadow-lg flex items-center justify-center gap-2"
-                          >
-                            <ShoppingCart className="w-4 h-4" />
-                            Add Flight to Cart
-                          </button>
-                          <button 
-                            onClick={() => handleLearnMore(destination)}
-                            className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200"
-                          >
-                            Learn More
-                          </button>
+                            <span className="bg-green-800/30 border border-green-600/40 text-xs px-3 py-1 rounded-full text-green-300">
+                              Refundable
+                            </span>
+                            <span className="bg-purple-800/30 border border-purple-600/40 text-xs px-3 py-1 rounded-full text-purple-300">
+                              Wi-Fi
+                            </span>
+                          </div>
+
+                          <div className="flex gap-3">
+                            <button 
+                              onClick={() => handleAddToCart(destination)}
+                              className="flex-1 bg-white text-gray-900 font-semibold py-3 px-6 rounded-xl hover:bg-white/90 transition-all duration-200 shadow-lg flex items-center justify-center gap-2"
+                            >
+                              <ShoppingCart className="w-4 h-4" />
+                              Book Flight
+                            </button>
+                            <button 
+                              onClick={() => handleLearnMore(destination)}
+                              className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200"
+                            >
+                              Flight Details
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
