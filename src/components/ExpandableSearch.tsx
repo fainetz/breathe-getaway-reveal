@@ -92,14 +92,21 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           }
         }}
         onClick={(e) => {
-          // Only handle container clicks if the click wasn't on the input
-          if (e.target === e.currentTarget && isMobile && !shouldBeExpanded) {
+          // On mobile, if collapsed, expand and focus input
+          if (isMobile && !shouldBeExpanded) {
             setIsExpanded(true);
+            // Focus the input after expansion
+            setTimeout(() => {
+              const input = e.currentTarget.querySelector('input');
+              if (input) {
+                input.focus();
+              }
+            }, 100);
           }
         }}
-        onTouchStart={(e) => {
-          // Only handle container touches if the touch wasn't on the input
-          if (e.target === e.currentTarget && isMobile && !shouldBeExpanded) {
+        onTouchStart={() => {
+          // On mobile, if collapsed, expand
+          if (isMobile && !shouldBeExpanded) {
             setIsExpanded(true);
           }
         }}
