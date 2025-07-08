@@ -13,7 +13,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [prompt, setPrompt] = useState('');
-  const [results, setResults] = useState<any>(null); // Adjust type as needed
+  const [results, setResults] = useState<any>(null);
   
 
   useEffect(() => {
