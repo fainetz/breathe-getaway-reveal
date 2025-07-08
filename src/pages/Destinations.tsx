@@ -41,7 +41,7 @@ const Destinations = () => {
       location: "Ubud, Indonesia",
       category: "healing",
       type: "hotel",
-      image: "/lovable-uploads/223f6e4e-7c4d-4398-80d1-f058166444dc.png", // Keep original
+      image: "/lovable-uploads/1533e217-0961-4fb1-b5e1-f06df6a6bf74.png", // Luxury hotel interior with tropical view
       price: "$89",
       duration: "per night",
       description: "Find inner peace among rice terraces and ancient temples in this transformative wellness retreat",
@@ -129,7 +129,7 @@ const Destinations = () => {
       location: "Reykjavik, Iceland",
       category: "adventure",
       type: "destination",
-      image: "",
+      image: "/lovable-uploads/495f63b6-10b4-4636-9eaa-039faf98b098.png", // Overwater dining with stormy sky
       price: "$2,299",
       duration: "6 days",
       description: "Find solitude among glaciers and geysers",
@@ -186,7 +186,7 @@ const Destinations = () => {
       location: "Maldives",
       category: "luxury",
       type: "hotel",
-      image: "/lovable-uploads/ad07406b-a9d4-4803-9be6-3a4aea774619.png", // Overwater bungalow
+      image: "/lovable-uploads/364e2553-6bc1-48c9-b72f-ce670d007e17.png", // Resort pathway with mountains
       price: "$199",
       duration: "per night",
       description: "Private overwater villa with infinity pool and direct ocean access",
@@ -201,7 +201,7 @@ const Destinations = () => {
       location: "Zermatt, Switzerland",
       category: "mountain",
       type: "hotel",
-      image: "/lovable-uploads/d4177c1c-c8c7-467b-b5ce-e3ac443525b8.png", // Modern hotel with pool and city view
+      image: "/lovable-uploads/33c21689-4a63-4d20-b050-b566ede4b771.png", // Rooftop pool with city lights
       price: "$149",
       duration: "per night",
       description: "Alpine luxury hotel with panoramic mountain views and world-class spa",
@@ -216,7 +216,7 @@ const Destinations = () => {
       location: "Santorini, Greece",
       category: "romantic",
       type: "hotel",
-      image: "/lovable-uploads/40732476-5f3d-426e-b486-daf165370855.png", // Luxury pool sunset
+      image: "/lovable-uploads/80ab770e-b0fd-4df8-9d27-2021f7dca01a.png", // City rooftop infinity pool
       price: "$129",
       duration: "per night",
       description: "Cliffside luxury resort with infinity pools overlooking the Aegean Sea",
@@ -262,7 +262,7 @@ const Destinations = () => {
       location: "Norway Fjords",
       category: "adventure",
       type: "cruise",
-      image: "",
+      image: "/lovable-uploads/44271e40-b9f9-4b74-a5b9-9f414e3a5eac.png", // Aerial view of hotel pools
       price: "$3,499",
       duration: "10 nights",
       description: "Arctic expedition cruise to witness the spectacular Northern Lights phenomenon",
