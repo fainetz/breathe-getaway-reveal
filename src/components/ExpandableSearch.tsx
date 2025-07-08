@@ -122,9 +122,17 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
               }}
               onFocus={() => console.log('Input focused')}
               onBlur={() => console.log('Input blurred')}
-              onClick={() => console.log('Input clicked')}
+              onClick={(e) => {
+                console.log('Input clicked');
+                e.stopPropagation();
+              }}
+              onTouchStart={(e) => {
+                console.log('Input touch start');
+                e.stopPropagation();
+              }}
               placeholder={isMobile ? "How do you feel?" : "How are you feeling about travel?"}
-              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm transition-colors duration-300 text-[16px] pointer-events-auto"
+              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm transition-colors duration-300 pointer-events-auto"
+              style={{ fontSize: '16px' }}
               autoFocus={!isScrolled && !isMobile}
             />
             <button
