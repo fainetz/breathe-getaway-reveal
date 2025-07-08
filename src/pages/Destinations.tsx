@@ -37,7 +37,7 @@ const Destinations = () => {
       name: "Bali Soul Sanctuary",
       location: "Ubud, Indonesia",
       category: "healing",
-      image: "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=800&h=600&fit=crop",
+      image: "/lovable-uploads/223f6e4e-7c4d-4398-80d1-f058166444dc.png", // Luxury tropical resort with pool
       price: "$1,299",
       duration: "7 days",
       description: "Find inner peace among rice terraces and ancient temples in this transformative wellness retreat",
@@ -51,7 +51,7 @@ const Destinations = () => {
       name: "Northern Lights Quest",
       location: "Tromsø, Norway",
       category: "adventure",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
+      image: "", // No arctic image available yet
       price: "$2,199",
       duration: "5 days",
       description: "Chase aurora dreams in the Arctic wilderness with expert guides and luxury accommodations",
@@ -65,7 +65,7 @@ const Destinations = () => {
       name: "Kyoto Mindfulness",
       location: "Kyoto, Japan",
       category: "cultural",
-      image: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&h=600&fit=crop",
+      image: "/lovable-uploads/c87d30ab-2ea7-4fe4-b3ba-6ac362719695.png", // Cherry blossoms in Japan with boats
       price: "$1,899",
       duration: "6 days",
       description: "Discover zen through tea ceremonies and temple walks in Japan's ancient capital",
@@ -79,7 +79,7 @@ const Destinations = () => {
       name: "Santorini Sunset",
       location: "Santorini, Greece",
       category: "romantic",
-      image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&h=600&fit=crop",
+      image: "", // No Greek island image available yet
       price: "$1,699",
       duration: "4 days",
       description: "Romance awakens with Aegean sunsets and wine",
@@ -92,7 +92,7 @@ const Destinations = () => {
       name: "Patagonia Wild",
       location: "Torres del Paine, Chile",
       category: "adventure",
-      image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=600&fit=crop",
+      image: "", // No mountain wilderness image available yet
       price: "$2,499",
       duration: "8 days",
       description: "Reconnect with raw nature and your wild spirit",
@@ -105,7 +105,7 @@ const Destinations = () => {
       name: "Tuscany Healing",
       location: "Val d'Orcia, Italy",
       category: "healing",
-      image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&h=600&fit=crop",
+      image: "", // No Italian countryside image available yet
       price: "$1,799",
       duration: "6 days",
       description: "Heal your heart with rolling hills and fine wine",
@@ -118,7 +118,7 @@ const Destinations = () => {
       name: "Iceland Solitude",
       location: "Reykjavik, Iceland",
       category: "adventure",
-      image: "https://images.unsplash.com/photo-1482938289607-e9573fc25abb?w=800&h=600&fit=crop",
+      image: "", // No Iceland image available yet
       price: "$2,299",
       duration: "6 days",
       description: "Find solitude among glaciers and geysers",
@@ -131,7 +131,7 @@ const Destinations = () => {
       name: "Morocco Mystique",
       location: "Marrakech, Morocco",
       category: "cultural",
-      image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=800&h=600&fit=crop",
+      image: "", // No Moroccan image available yet
       price: "$1,599",
       duration: "5 days",
       description: "Immerse in ancient traditions and vibrant markets",
@@ -144,7 +144,7 @@ const Destinations = () => {
       name: "Swiss Alps Retreat",
       location: "Zermatt, Switzerland",
       category: "healing",
-      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=800&h=600&fit=crop",
+      image: "", // No mountain image available yet
       price: "$2,699",
       duration: "7 days",
       description: "Alpine serenity with mountain meditation and spa treatments",
@@ -157,7 +157,7 @@ const Destinations = () => {
       name: "Stargazing Desert",
       location: "Atacama, Chile",
       category: "adventure",
-      image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=800&h=600&fit=crop",
+      image: "", // No desert image available yet
       price: "$1,999",
       duration: "5 days",
       description: "Connect with the cosmos under the clearest skies on Earth",
@@ -170,7 +170,7 @@ const Destinations = () => {
       name: "Amalfi Coast Romance",
       location: "Positano, Italy",
       category: "romantic",
-      image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop",
+      image: "/lovable-uploads/a7fab89d-dbcb-4845-8318-72e3f843227c.png", // Aerial view of beautiful beach
       price: "$2,199",
       duration: "5 days",
       description: "Coastal charm with intimate moments and Mediterranean bliss",
@@ -183,7 +183,7 @@ const Destinations = () => {
       name: "Amazon Wellness",
       location: "Iquitos, Peru",
       category: "healing",
-      image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop",
+      image: "", // No jungle image available yet
       price: "$1,899",
       duration: "8 days",
       description: "Jungle healing with ancient plant medicine traditions",
@@ -270,11 +270,15 @@ const Destinations = () => {
       {currentHero && (
         <section className="relative h-[80vh] overflow-hidden" ref={heroRef}>
           <div className="absolute inset-0">
-            <img 
-              src={currentHero.image} 
-              alt={currentHero.name}
-              className="w-full h-full object-cover"
-            />
+            {currentHero.image ? (
+              <img 
+                src={currentHero.image} 
+                alt={currentHero.name}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-neutral-800 via-neutral-900 to-black"></div>
+            )}
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
           </div>
@@ -380,11 +384,24 @@ const Destinations = () => {
                     className="flex-none w-72 bg-gray-900/80 backdrop-blur-sm rounded-lg overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer group/card border border-gray-800/50"
                   >
                     <div className="relative h-40">
-                      <img 
-                        src={destination.image} 
-                        alt={destination.name}
-                        className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-300"
-                      />
+                      {destination.image ? (
+                        <img 
+                          src={destination.image} 
+                          alt={destination.name}
+                          className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center group-hover/card:scale-105 transition-transform duration-300">
+                          <div className="text-center">
+                            <div className="w-12 h-12 mx-auto mb-2 opacity-30">
+                              <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                              </svg>
+                            </div>
+                            <p className="text-xs text-neutral-400">Image Coming Soon</p>
+                          </div>
+                        </div>
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent group-hover/card:scale-105 transition-transform duration-300"></div>
                       
                       {destination.rating && (
