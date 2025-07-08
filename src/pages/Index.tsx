@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
 import HowItWorks from '../components/HowItWorks';
 import Features from '../components/Features';
@@ -8,62 +9,24 @@ import Vision from '../components/Vision';
 import Footer from '../components/Footer';
 import FeatureRequestBox from '../components/FeatureRequestBox';
 import ExpandableSearch from '../components/ExpandableSearch';
-import TravelChatInterface from '../components/TravelChatInterface';
 import BackToChatButton from '../components/BackToChatButton';
 
 const Index = () => {
-  const [isChatOpen, setIsChatOpen] = useState(false);
-  const [chatPrompt, setChatPrompt] = useState('');
+  const navigate = useNavigate();
   const [hasChatHistory, setHasChatHistory] = useState(false);
 
   const handleSearchSubmit = (query: string) => {
     console.log('Search submitted:', query);
-    setChatPrompt(query);
-    setIsChatOpen(true);
     setHasChatHistory(true);
-    
-    // Reset zoom when opening chat interface on mobile
-    if (window.innerWidth <= 768) {
-      // Multiple zoom reset approaches for better effectiveness
-      const viewport = document.querySelector('meta[name="viewport"]');
-      if (viewport) {
-        // Set aggressive viewport to prevent zoom
-        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
-        
-        // Immediate zoom resets
-        document.documentElement.style.zoom = '1';
-        document.body.style.zoom = '1';
-        
-        // Try setting zoom on window if available
-        if ('zoom' in document.body.style) {
-          (document.body.style as any).zoom = 1;
-        }
-        
-        // Force scroll to top to reset any viewport shifts
-        window.scrollTo(0, 0);
-        
-        // Reset after a brief delay and restore original viewport
-        setTimeout(() => {
-          viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, user-scalable=yes');
-          window.scrollTo(0, 0);
-        }, 150);
-      }
-    }
-  };
-
-  const handleChatClose = () => {
-    console.log('Chat closed, hasChatHistory remains:', true);
-    setIsChatOpen(false);
-    setChatPrompt('');
-    // Keep hasChatHistory true so the back button remains visible
+    navigate(`/chat?q=${encodeURIComponent(query)}`);
   };
 
   const handleBackToChat = () => {
     console.log('Back to chat clicked');
-    setIsChatOpen(true);
+    navigate('/chat');
   };
 
-  console.log('Index state - isChatOpen:', isChatOpen, 'hasChatHistory:', hasChatHistory);
+  console.log('Index state - hasChatHistory:', hasChatHistory);
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white overflow-x-hidden transition-colors duration-300">
@@ -78,12 +41,7 @@ const Index = () => {
       <ExpandableSearch onSearchSubmit={handleSearchSubmit} />
       <BackToChatButton 
         onBackToChat={handleBackToChat} 
-        hasChatHistory={hasChatHistory && !isChatOpen} 
-      />
-      <TravelChatInterface 
-        isOpen={isChatOpen} 
-        onClose={handleChatClose}
-        initialPrompt={chatPrompt}
+        hasChatHistory={hasChatHistory} 
       />
     </div>
   );

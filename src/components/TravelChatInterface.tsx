@@ -193,11 +193,16 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       
       // Check if this is a "Learn More" request about a destination
       const learnMoreMatch = text.match(/learn more about (.*)/i);
-      // Check if user is asking for flights specifically - only very explicit requests
-      const flightRequest = text.toLowerCase().includes('show flight options') || 
-                           text.toLowerCase().includes('view flight options') ||
-                           text.toLowerCase().includes('see flight options') ||
-                           text.toLowerCase().includes('flight options');
+      // Check if user is asking for flights - broader detection
+      const flightRequest = text.toLowerCase().includes('flight') || 
+                           text.toLowerCase().includes('destination') ||
+                           text.toLowerCase().includes('travel') ||
+                           text.toLowerCase().includes('trip') ||
+                           text.toLowerCase().includes('vacation') ||
+                           text.toLowerCase().includes('getaway') ||
+                           text.toLowerCase().includes('escape') ||
+                           text.toLowerCase().includes('adventure') ||
+                           text.toLowerCase().includes('journey');
       
       if (learnMoreMatch) {
         const destinationName = learnMoreMatch[1];
