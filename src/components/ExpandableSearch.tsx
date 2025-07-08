@@ -97,7 +97,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           }
         }}
       >
-        {!shouldBeExpanded && !isMobile ? (
+        {!shouldBeExpanded ? (
           <div className="w-full h-full flex items-center justify-center px-3">
             <Search className="w-4 h-4 text-gray-700 dark:text-white mr-2 transition-colors duration-300" />
             <span className="text-gray-700 dark:text-white text-sm font-medium transition-colors duration-300">Search</span>
