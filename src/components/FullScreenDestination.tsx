@@ -8,12 +8,16 @@ interface Destination {
   name: string;
   location: string;
   category: string;
+  type: 'hotel' | 'destination' | 'cruise';
   image: string;
   price: string;
   duration: string;
   description: string;
   mood: string;
   tags: string[];
+  rating?: number;
+  featured?: boolean;
+  comingSoon?: boolean;
 }
 
 interface CartItem {

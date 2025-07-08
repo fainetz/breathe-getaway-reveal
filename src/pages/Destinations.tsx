@@ -9,6 +9,7 @@ interface Destination {
   name: string;
   location: string;
   category: string;
+  type: 'hotel' | 'destination' | 'cruise';
   image: string;
   price: string;
   duration: string;
@@ -17,6 +18,7 @@ interface Destination {
   tags: string[];
   rating?: number;
   featured?: boolean;
+  comingSoon?: boolean;
 }
 
 interface CategoryRow {
@@ -32,12 +34,14 @@ const Destinations = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   const destinations: Destination[] = [
+    // DESTINATIONS
     {
       id: 1,
       name: "Bali Soul Sanctuary",
       location: "Ubud, Indonesia",
       category: "healing",
-      image: "/lovable-uploads/223f6e4e-7c4d-4398-80d1-f058166444dc.png", // Luxury tropical resort with pool
+      type: "destination",
+      image: "/lovable-uploads/223f6e4e-7c4d-4398-80d1-f058166444dc.png", // Keep original
       price: "$1,299",
       duration: "7 days",
       description: "Find inner peace among rice terraces and ancient temples in this transformative wellness retreat",
@@ -51,7 +55,8 @@ const Destinations = () => {
       name: "Northern Lights Quest",
       location: "Tromsø, Norway",
       category: "adventure",
-      image: "", // No arctic image available yet
+      type: "destination",
+      image: "",
       price: "$2,199",
       duration: "5 days",
       description: "Chase aurora dreams in the Arctic wilderness with expert guides and luxury accommodations",
@@ -65,7 +70,8 @@ const Destinations = () => {
       name: "Kyoto Mindfulness",
       location: "Kyoto, Japan",
       category: "cultural",
-      image: "/lovable-uploads/c87d30ab-2ea7-4fe4-b3ba-6ac362719695.png", // Cherry blossoms in Japan with boats
+      type: "destination",
+      image: "/lovable-uploads/9c5debbc-9089-442d-babf-ae82a2684501.png", // Tropical boat scene
       price: "$1,899",
       duration: "6 days",
       description: "Discover zen through tea ceremonies and temple walks in Japan's ancient capital",
@@ -79,7 +85,8 @@ const Destinations = () => {
       name: "Santorini Sunset",
       location: "Santorini, Greece",
       category: "romantic",
-      image: "", // No Greek island image available yet
+      type: "destination",
+      image: "/lovable-uploads/6b7f673a-c32c-4c6e-9496-bf8f5b86ec9a.png", // Amalfi Coast sunset
       price: "$1,699",
       duration: "4 days",
       description: "Romance awakens with Aegean sunsets and wine",
@@ -92,7 +99,8 @@ const Destinations = () => {
       name: "Patagonia Wild",
       location: "Torres del Paine, Chile",
       category: "adventure",
-      image: "", // No mountain wilderness image available yet
+      type: "destination",
+      image: "",
       price: "$2,499",
       duration: "8 days",
       description: "Reconnect with raw nature and your wild spirit",
@@ -105,7 +113,8 @@ const Destinations = () => {
       name: "Tuscany Healing",
       location: "Val d'Orcia, Italy",
       category: "healing",
-      image: "", // No Italian countryside image available yet
+      type: "destination",
+      image: "/lovable-uploads/b6902c70-0899-4bb8-b8ae-a982867eac3c.png", // European riverside city
       price: "$1,799",
       duration: "6 days",
       description: "Heal your heart with rolling hills and fine wine",
@@ -118,7 +127,8 @@ const Destinations = () => {
       name: "Iceland Solitude",
       location: "Reykjavik, Iceland",
       category: "adventure",
-      image: "", // No Iceland image available yet
+      type: "destination",
+      image: "",
       price: "$2,299",
       duration: "6 days",
       description: "Find solitude among glaciers and geysers",
@@ -131,7 +141,8 @@ const Destinations = () => {
       name: "Morocco Mystique",
       location: "Marrakech, Morocco",
       category: "cultural",
-      image: "", // No Moroccan image available yet
+      type: "destination",
+      image: "/lovable-uploads/a3d874ac-cf9d-49d9-8c6a-05b9ea62da47.png", // Cinque Terre colorful houses
       price: "$1,599",
       duration: "5 days",
       description: "Immerse in ancient traditions and vibrant markets",
@@ -141,36 +152,11 @@ const Destinations = () => {
     },
     {
       id: 9,
-      name: "Swiss Alps Retreat",
-      location: "Zermatt, Switzerland",
-      category: "healing",
-      image: "", // No mountain image available yet
-      price: "$2,699",
-      duration: "7 days",
-      description: "Alpine serenity with mountain meditation and spa treatments",
-      mood: "Need Reset",
-      tags: ["Mountains", "Spa", "Fresh Air"],
-      rating: 4.9
-    },
-    {
-      id: 10,
-      name: "Stargazing Desert",
-      location: "Atacama, Chile",
-      category: "adventure",
-      image: "", // No desert image available yet
-      price: "$1,999",
-      duration: "5 days",
-      description: "Connect with the cosmos under the clearest skies on Earth",
-      mood: "Seeking Wonder",
-      tags: ["Stargazing", "Desert", "Astronomy"],
-      rating: 4.6
-    },
-    {
-      id: 11,
       name: "Amalfi Coast Romance",
       location: "Positano, Italy",
       category: "romantic",
-      image: "/lovable-uploads/a7fab89d-dbcb-4845-8318-72e3f843227c.png", // Aerial view of beautiful beach
+      type: "destination",
+      image: "/lovable-uploads/4bedad66-82e6-44d2-a571-8ac9e6a3973d.png", // Tropical resort with palm trees
       price: "$2,199",
       duration: "5 days",
       description: "Coastal charm with intimate moments and Mediterranean bliss",
@@ -179,17 +165,110 @@ const Destinations = () => {
       rating: 4.8
     },
     {
-      id: 12,
+      id: 10,
       name: "Amazon Wellness",
       location: "Iquitos, Peru",
       category: "healing",
-      image: "", // No jungle image available yet
+      type: "destination",
+      image: "",
       price: "$1,899",
       duration: "8 days",
       description: "Jungle healing with ancient plant medicine traditions",
       mood: "Deep Healing",
       tags: ["Jungle", "Shamanic", "Nature"],
       rating: 4.3
+    },
+    // HOTELS
+    {
+      id: 11,
+      name: "Maldives Overwater Villa",
+      location: "Maldives",
+      category: "luxury",
+      type: "hotel",
+      image: "/lovable-uploads/ad07406b-a9d4-4803-9be6-3a4aea774619.png", // Overwater bungalow
+      price: "$2,999",
+      duration: "5 nights",
+      description: "Private overwater villa with infinity pool and direct ocean access",
+      mood: "Ultimate Luxury",
+      tags: ["Overwater", "Private Pool", "Ocean"],
+      rating: 4.9,
+      comingSoon: true
+    },
+    {
+      id: 12,
+      name: "Swiss Alps Retreat",
+      location: "Zermatt, Switzerland",
+      category: "mountain",
+      type: "hotel",
+      image: "/lovable-uploads/d4177c1c-c8c7-467b-b5ce-e3ac443525b8.png", // Modern hotel with pool and city view
+      price: "$3,299",
+      duration: "4 nights",
+      description: "Alpine luxury hotel with panoramic mountain views and world-class spa",
+      mood: "Mountain Serenity",
+      tags: ["Mountains", "Spa", "Luxury"],
+      rating: 4.8,
+      comingSoon: true
+    },
+    {
+      id: 13,
+      name: "Santorini Cliff Resort",
+      location: "Santorini, Greece",
+      category: "romantic",
+      type: "hotel",
+      image: "/lovable-uploads/40732476-5f3d-426e-b486-daf165370855.png", // Luxury pool sunset
+      price: "$2,499",
+      duration: "3 nights",
+      description: "Cliffside luxury resort with infinity pools overlooking the Aegean Sea",
+      mood: "Romantic Escape",
+      tags: ["Cliffside", "Infinity Pool", "Sunset"],
+      rating: 4.7,
+      comingSoon: true
+    },
+    // CRUISES
+    {
+      id: 14,
+      name: "Mediterranean Discovery",
+      location: "Barcelona to Rome",
+      category: "cultural",
+      type: "cruise",
+      image: "",
+      price: "$1,899",
+      duration: "7 nights",
+      description: "Explore ancient civilizations and stunning coastlines aboard a luxury cruise ship",
+      mood: "Cultural Exploration",
+      tags: ["Mediterranean", "History", "Luxury"],
+      rating: 4.6,
+      comingSoon: true
+    },
+    {
+      id: 15,
+      name: "Caribbean Paradise",
+      location: "Miami to Caribbean",
+      category: "relaxation",
+      type: "cruise",
+      image: "",
+      price: "$1,299",
+      duration: "5 nights",
+      description: "Island hopping adventure with pristine beaches and crystal-clear waters",
+      mood: "Tropical Bliss",
+      tags: ["Caribbean", "Beaches", "Island Hopping"],
+      rating: 4.5,
+      comingSoon: true
+    },
+    {
+      id: 16,
+      name: "Northern Lights Expedition",
+      location: "Norway Fjords",
+      category: "adventure",
+      type: "cruise",
+      image: "",
+      price: "$3,499",
+      duration: "10 nights",
+      description: "Arctic expedition cruise to witness the spectacular Northern Lights phenomenon",
+      mood: "Arctic Wonder",
+      tags: ["Northern Lights", "Fjords", "Expedition"],
+      rating: 4.8,
+      comingSoon: true
     }
   ];
 
@@ -200,24 +279,23 @@ const Destinations = () => {
       destinations: destinations.filter(dest => dest.rating && dest.rating >= 4.7)
     },
     {
-      title: "Healing Retreats",
-      destinations: destinations.filter(dest => dest.category === 'healing')
+      title: "Destinations",
+      destinations: destinations.filter(dest => dest.type === 'destination')
     },
     {
-      title: "Adventure Awaits",
-      destinations: destinations.filter(dest => dest.category === 'adventure')
+      title: "Hotels",
+      destinations: destinations.filter(dest => dest.type === 'hotel')
     },
     {
-      title: "Cultural Immersion",
-      destinations: destinations.filter(dest => dest.category === 'cultural')
-    },
-    {
-      title: "Romantic Escapes",
-      destinations: destinations.filter(dest => dest.category === 'romantic')
+      title: "Cruises",
+      destinations: destinations.filter(dest => dest.type === 'cruise')
     }
   ];
 
   const handleCardClick = (destination: Destination) => {
+    // Don't allow clicking on coming soon items
+    if (destination.comingSoon) return;
+    
     setSelectedDestination(destination);
     setIsFullScreenOpen(true);
   };
@@ -377,12 +455,16 @@ const Destinations = () => {
                 className="flex gap-4 overflow-x-auto scrollbar-hide px-6 md:px-12 pb-4"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
-                {row.destinations.map((destination) => (
-                  <div
-                    key={destination.id}
-                    onClick={() => handleCardClick(destination)}
-                    className="flex-none w-72 bg-gray-900/80 backdrop-blur-sm rounded-lg overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer group/card border border-gray-800/50"
-                  >
+                 {row.destinations.map((destination) => (
+                   <div
+                     key={destination.id}
+                     onClick={() => handleCardClick(destination)}
+                     className={`flex-none w-72 bg-gray-900/80 backdrop-blur-sm rounded-lg overflow-hidden transition-all duration-300 group/card border border-gray-800/50 ${
+                       destination.comingSoon 
+                         ? 'cursor-not-allowed opacity-75' 
+                         : 'cursor-pointer hover:scale-105'
+                     }`}
+                   >
                     <div className="relative h-40">
                       {destination.image ? (
                         <img 
@@ -411,9 +493,16 @@ const Destinations = () => {
                         </div>
                       )}
 
-                      <div className="absolute top-3 right-3 bg-green-500/90 backdrop-blur-sm rounded px-2 py-1">
-                        <span className="text-xs font-bold">{destination.price}</span>
-                      </div>
+                       <div className="absolute top-3 right-3 flex flex-col gap-1">
+                         {destination.comingSoon && (
+                           <div className="bg-orange-500/90 backdrop-blur-sm rounded px-2 py-1">
+                             <span className="text-xs font-bold">COMING SOON</span>
+                           </div>
+                         )}
+                         <div className="bg-green-500/90 backdrop-blur-sm rounded px-2 py-1">
+                           <span className="text-xs font-bold">{destination.price}</span>
+                         </div>
+                       </div>
                     </div>
 
                     <div className="p-4">

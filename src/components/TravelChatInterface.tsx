@@ -120,12 +120,16 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       name: destination.flightDestination || destination.location,
       location: destination.location,
       category: 'flight',
+      type: 'destination' as const,
       image: destination.image,
       price: destination.price,
       duration: '5 days', // Default duration
       description: destination.description,
       mood: 'Ready to Fly',
-      tags: destination.tags
+      tags: destination.tags,
+      rating: 4.5,
+      featured: false,
+      comingSoon: false
     };
   };
 
