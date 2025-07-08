@@ -497,7 +497,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
               )}
 
               {!isChatMinimized && (
-                <ScrollArea className="flex-1">
+                <ScrollArea className="flex-1 h-0">
                   <div className="p-4 md:p-6 space-y-4 md:space-y-6">
                     {messages.length === 0 && (
                       <div className="text-center text-white/80 mt-10 md:mt-20">
