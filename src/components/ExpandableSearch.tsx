@@ -107,9 +107,15 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
             <input
               type="text"
               value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
+              onChange={(e) => {
+                console.log('Input change:', e.target.value);
+                setPrompt(e.target.value);
+              }}
+              onFocus={() => console.log('Input focused')}
+              onBlur={() => console.log('Input blurred')}
+              onClick={() => console.log('Input clicked')}
               placeholder={isMobile ? "How do you feel?" : "How are you feeling about travel?"}
-              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm transition-colors duration-300 text-[16px]"
+              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm transition-colors duration-300 text-[16px] pointer-events-auto"
               autoFocus={!isScrolled && !isMobile}
             />
             <button
