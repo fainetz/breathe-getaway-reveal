@@ -264,7 +264,10 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       setMessages(prev => [...prev, botMessage]);
       if (shouldShowDestinations) {
         // *** REPLACE: Use your API data instead of mockDestinations ***
-        setCurrentDestinations(mockDestinations);
+        // Sleek staggered animation for flight results
+        setTimeout(() => {
+          setCurrentDestinations(mockDestinations);
+        }, 800); // Dramatic pause before results appear
         // *** REMOVED: Automatic redirect to flight results ***
         // Users now need to manually click "View Flight Results" button
       }
@@ -372,14 +375,18 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
             {/* Mobile destinations list */}
             <div className="flex-1 overflow-y-auto p-4">
-              <div className="space-y-4">
-                {currentDestinations.map((destination) => {
-                  const flightDetails = getFlightDetails(destination);
-                  return (
-                    <div 
-                      key={destination.id} 
-                      className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl"
-                    >
+               <div className="space-y-4">
+                 {currentDestinations.map((destination, index) => {
+                   const flightDetails = getFlightDetails(destination);
+                   return (
+                     <div 
+                       key={destination.id} 
+                       className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl animate-slide-up opacity-0"
+                       style={{ 
+                         animationDelay: `${index * 150}ms`,
+                         animationFillMode: 'forwards'
+                       }}
+                     >
                       <div className="relative h-32">
                         <img 
                           src={destination.image} 
@@ -658,14 +665,18 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                       </div>
                     </div>
                   ) : (
-                    <div className="grid gap-8">
-                      {currentDestinations.map((destination) => {
-                        const flightDetails = getFlightDetails(destination);
-                        return (
-                          <div 
-                            key={destination.id} 
-                            className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl"
-                          >
+                     <div className="grid gap-8">
+                       {currentDestinations.map((destination, index) => {
+                         const flightDetails = getFlightDetails(destination);
+                         return (
+                           <div 
+                             key={destination.id} 
+                             className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl animate-slide-up opacity-0"
+                             style={{ 
+                               animationDelay: `${index * 200}ms`,
+                               animationFillMode: 'forwards'
+                             }}
+                           >
                             <div className="flex">
                               <div className="relative w-48 h-40">
                                 <img 
