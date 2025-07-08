@@ -161,7 +161,8 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
   useEffect(() => {
     if (initialPrompt && isOpen) {
-      handleSendMessage(initialPrompt);
+      // Set the initial prompt in the input field instead of auto-sending
+      setInputValue(initialPrompt);
     }
   }, [initialPrompt, isOpen]);
 
