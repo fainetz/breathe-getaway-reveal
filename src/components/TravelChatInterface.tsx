@@ -448,14 +448,14 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
           <>
             {/* Chat Panel - Mobile: Full width, Desktop: 1/3 */}
             <div className={`${isChatMinimized && !isMobile ? 'w-16' : isMobile ? 'flex-1' : 'w-1/3'} transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-white/5 backdrop-blur-xl ${isMobile ? '' : 'border-r border-white/10'} flex flex-col`}>
-              <div className="flex items-center justify-between p-6 md:p-8 border-b border-white/10">
+              <div className="flex items-center justify-between p-4 md:p-6 border-b border-white/10">
                 {!isChatMinimized && (
                   <div className="flex-1 animate-fade-in">
-                    <h2 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-tight">AI Travel Concierge</h2>
-                    <p className="text-sm md:text-base text-white/60 font-medium">Your personal travel curator</p>
+                    <h2 className="text-lg md:text-xl font-bold text-white mb-1 tracking-tight">AI Travel Concierge</h2>
+                    <p className="text-sm text-white/60 font-medium">Your personal travel curator</p>
                   </div>
                 )}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <div className="relative">
                     <button 
                       onClick={handleCartClick}
@@ -508,7 +508,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
               {!isChatMinimized && (
                 <ScrollArea className="flex-1 h-0 chat-scroll">
-                  <div className="px-6 md:px-8 py-8 md:py-12 space-y-8 md:space-y-12">
+                  <div className="px-4 md:px-6 py-6 md:py-8 space-y-6 md:space-y-8">
                     {messages.length === 0 && !showCinematicPause && (
                       <div className="text-center text-white/80 pt-16 md:pt-24 animate-fade-in">
                         <div className="mb-12">
@@ -538,12 +538,12 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                         className={`flex ${message.isUser ? 'justify-end' : 'justify-start'} animate-fade-in`}
                         style={{ animationDelay: `${index * 0.1}s` }}
                       >
-                        <div className={`max-w-[85%] md:max-w-sm ${message.isUser ? 'order-2' : 'order-1'}`}>
-                          <div className={`px-6 md:px-8 py-4 md:py-6 rounded-3xl text-base md:text-lg font-medium transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.02] ${
-                            message.isUser 
-                              ? 'bg-white text-gray-900 ml-4 md:ml-6 shadow-2xl border border-white/20' 
-                              : 'bg-white/10 backdrop-blur-xl text-white mr-4 md:mr-6 border border-white/20 shadow-xl'
-                          }`}>
+                         <div className={`max-w-[85%] md:max-w-xs ${message.isUser ? 'order-2' : 'order-1'}`}>
+                           <div className={`px-4 md:px-6 py-3 md:py-4 rounded-2xl text-sm md:text-base font-medium transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.01] ${
+                             message.isUser 
+                               ? 'bg-white text-gray-900 ml-3 md:ml-4 shadow-xl border border-white/20' 
+                               : 'bg-white/10 backdrop-blur-xl text-white mr-3 md:mr-4 border border-white/20 shadow-lg'
+                           }`}>
                             <p className="leading-relaxed">{message.text}</p>
                             <p className={`text-sm mt-3 opacity-60 ${
                               message.isUser ? 'text-gray-600' : 'text-white/60'
@@ -588,7 +588,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
               )}
 
               {!isChatMinimized && (
-                <div className="border-t border-white/10 p-6 md:p-8">
+                <div className="border-t border-white/10 p-4 md:p-6">
                   <form onSubmit={handleSubmit} className="flex items-center gap-4">
                     <input
                       type="text"
