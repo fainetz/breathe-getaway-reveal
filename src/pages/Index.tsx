@@ -24,19 +24,29 @@ const Index = () => {
     
     // Reset zoom when opening chat interface on mobile
     if (window.innerWidth <= 768) {
-      // Force zoom reset by manipulating viewport
+      // Multiple zoom reset approaches for better effectiveness
       const viewport = document.querySelector('meta[name="viewport"]');
       if (viewport) {
-        const currentContent = viewport.getAttribute('content') || '';
-        viewport.setAttribute('content', currentContent + ', user-scalable=no');
+        // Set aggressive viewport to prevent zoom
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+        
+        // Immediate zoom resets
+        document.documentElement.style.zoom = '1';
+        document.body.style.zoom = '1';
+        
+        // Try setting zoom on window if available
+        if ('zoom' in document.body.style) {
+          (document.body.style as any).zoom = 1;
+        }
+        
+        // Force scroll to top to reset any viewport shifts
+        window.scrollTo(0, 0);
+        
+        // Reset after a brief delay and restore original viewport
         setTimeout(() => {
-          viewport.setAttribute('content', currentContent);
-          // Additional zoom reset attempts
-          document.body.style.zoom = '1';
-          if (window.visualViewport) {
-            window.scrollTo(0, 0);
-          }
-        }, 100);
+          viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, user-scalable=yes');
+          window.scrollTo(0, 0);
+        }, 150);
       }
     }
   };
