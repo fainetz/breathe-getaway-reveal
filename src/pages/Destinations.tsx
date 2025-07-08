@@ -41,7 +41,7 @@ const Destinations = () => {
       location: "Ubud, Indonesia",
       category: "healing",
       type: "hotel",
-      image: "/lovable-uploads/1533e217-0961-4fb1-b5e1-f06df6a6bf74.png", // Luxury hotel interior with tropical view
+      image: "/lovable-uploads/c97afd70-299c-4687-8cb8-ee96dfe468d6.png", // Infinity pool with umbrellas overlooking ocean
       price: "$89/per night",
       duration: "nightly",
       description: "Find inner peace among rice terraces and ancient temples in this transformative wellness retreat",
@@ -186,7 +186,7 @@ const Destinations = () => {
       location: "Maldives",
       category: "luxury",
       type: "hotel",
-      image: "/lovable-uploads/364e2553-6bc1-48c9-b72f-ce670d007e17.png", // Resort pathway with mountains
+      image: "/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png", // Tropical infinity pool at sunset with palm trees
       price: "$199/per night",
       duration: "nightly",
       description: "Private overwater villa with infinity pool and direct ocean access",
@@ -324,7 +324,7 @@ const Destinations = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setHeroIndex((prev) => (prev + 1) % featuredDestinations.length);
-    }, 6000);
+    }, 8000); // Increased from 6s to 8s for smoother experience
     return () => clearInterval(interval);
   }, [featuredDestinations.length]);
 
@@ -347,16 +347,17 @@ const Destinations = () => {
 
       {/* Hero Section - Netflix Style */}
       {currentHero && (
-        <section className="relative h-[80vh] overflow-hidden" ref={heroRef}>
-          <div className="absolute inset-0">
+        <section className="relative h-[80vh] overflow-hidden transition-all duration-1000 ease-in-out" ref={heroRef}>
+          <div className="absolute inset-0 transition-all duration-1000 ease-in-out">
             {currentHero.image ? (
               <img 
                 src={currentHero.image} 
                 alt={currentHero.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-all duration-1000 ease-in-out"
+                key={heroIndex} // Force re-render for smooth transition
               />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-neutral-800 via-neutral-900 to-black"></div>
+              <div className="w-full h-full bg-gradient-to-br from-neutral-800 via-neutral-900 to-black transition-all duration-1000 ease-in-out"></div>
             )}
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -367,7 +368,7 @@ const Destinations = () => {
               <div className="flex items-center gap-2 mb-4">
                 <Star className="w-5 h-5 text-yellow-400 fill-current" />
                 <span className="text-sm font-medium">{currentHero.rating} • {currentHero.duration}</span>
-                <span className="text-xs bg-red-600 px-2 py-1 rounded">FEATURED</span>
+                <span className="text-xs bg-red-600 px-2 py-1 rounded">SUGGESTED</span>
               </div>
               
               <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
@@ -464,11 +465,11 @@ const Destinations = () => {
               </button>
 
               {/* Scrollable Row */}
-              <div 
-                id={`row-${rowIndex}`}
-                className="flex gap-4 overflow-x-auto scrollbar-hide px-6 md:px-12 pb-4"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-              >
+               <div 
+                 id={`row-${rowIndex}`}
+                 className="flex gap-4 overflow-x-auto scrollbar-hide px-6 md:px-12 pb-4 scroll-smooth"
+                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+               >
                  {row.destinations.map((destination) => (
                    <div
                      key={destination.id}
