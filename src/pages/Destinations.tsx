@@ -57,7 +57,7 @@ const Destinations = () => {
       location: "Tromsø, Norway",
       category: "adventure",
       type: "destination",
-      image: "",
+      image: "/lovable-uploads/c3e077fc-fb5b-4df6-9b8c-75bcc742e307.png", // Tropical sunset with palm trees
       price: "$2,199",
       duration: "5 days",
       description: "Chase aurora dreams in the Arctic wilderness with expert guides and luxury accommodations",
@@ -101,7 +101,7 @@ const Destinations = () => {
       location: "Torres del Paine, Chile",
       category: "adventure",
       type: "destination",
-      image: "",
+      image: "/lovable-uploads/a993028f-ad55-4fcd-bf8e-60a2820594d1.png", // Modern hotel city view
       price: "$2,499",
       duration: "8 days",
       description: "Reconnect with raw nature and your wild spirit",
@@ -171,7 +171,7 @@ const Destinations = () => {
       location: "Iquitos, Peru",
       category: "healing",
       type: "destination",
-      image: "",
+      image: "/lovable-uploads/73d68dec-aaff-4cb1-9f42-798bc090860f.png", // Infinity pool ocean sunset
       price: "$1,899",
       duration: "8 days",
       description: "Jungle healing with ancient plant medicine traditions",
@@ -232,7 +232,7 @@ const Destinations = () => {
       location: "Barcelona to Rome",
       category: "cultural",
       type: "cruise",
-      image: "",
+      image: "/lovable-uploads/c442bea5-cadc-4e64-8f52-41dfc17b1f5d.png", // Cruise ship deck at sunset
       price: "$1,899",
       duration: "7 nights",
       description: "Explore ancient civilizations and stunning coastlines aboard a luxury cruise ship",
@@ -247,7 +247,7 @@ const Destinations = () => {
       location: "Miami to Caribbean",
       category: "relaxation",
       type: "cruise",
-      image: "",
+      image: "/lovable-uploads/917e68fa-9122-40f5-b1f0-77cb18b946e3.png", // Tropical resort pool
       price: "$1,299",
       duration: "5 nights",
       description: "Island hopping adventure with pristine beaches and crystal-clear waters",
@@ -276,7 +276,7 @@ const Destinations = () => {
   const featuredDestinations = destinations.filter(dest => dest.featured);
   const categoryRows: CategoryRow[] = [
     {
-      title: "Trending Now",
+      title: "Suggested",
       destinations: destinations.filter(dest => dest.rating && dest.rating >= 4.7)
     },
     {
