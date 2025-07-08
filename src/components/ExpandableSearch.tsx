@@ -92,16 +92,14 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           }
         }}
         onClick={(e) => {
-          console.log('Container clicked on mobile:', isMobile, 'shouldBeExpanded:', shouldBeExpanded);
-          if (isMobile && !shouldBeExpanded) {
-            console.log('Expanding search bar');
+          // Only handle container clicks if the click wasn't on the input
+          if (e.target === e.currentTarget && isMobile && !shouldBeExpanded) {
             setIsExpanded(true);
           }
         }}
         onTouchStart={(e) => {
-          console.log('Touch start on container');
-          if (isMobile && !shouldBeExpanded) {
-            console.log('Touch expanding search bar');
+          // Only handle container touches if the touch wasn't on the input
+          if (e.target === e.currentTarget && isMobile && !shouldBeExpanded) {
             setIsExpanded(true);
           }
         }}
