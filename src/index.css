@@ -198,4 +198,14 @@ All colors MUST be HSL.
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--foreground) / 0.2) hsl(var(--background) / 0.1);
   }
+
+  /* Hide scrollbars for Netflix-style rows */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
