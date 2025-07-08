@@ -21,6 +21,24 @@ const Index = () => {
     setChatPrompt(query);
     setIsChatOpen(true);
     setHasChatHistory(true);
+    
+    // Reset zoom when opening chat interface on mobile
+    if (window.innerWidth <= 768) {
+      // Force zoom reset by manipulating viewport
+      const viewport = document.querySelector('meta[name="viewport"]');
+      if (viewport) {
+        const currentContent = viewport.getAttribute('content') || '';
+        viewport.setAttribute('content', currentContent + ', user-scalable=no');
+        setTimeout(() => {
+          viewport.setAttribute('content', currentContent);
+          // Additional zoom reset attempts
+          document.body.style.zoom = '1';
+          if (window.visualViewport) {
+            window.scrollTo(0, 0);
+          }
+        }, 100);
+      }
+    }
   };
 
   const handleChatClose = () => {
