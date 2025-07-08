@@ -42,8 +42,8 @@ const Destinations = () => {
       category: "healing",
       type: "hotel",
       image: "/lovable-uploads/223f6e4e-7c4d-4398-80d1-f058166444dc.png", // Keep original
-      price: "$1,299",
-      duration: "7 days",
+      price: "$89",
+      duration: "per night",
       description: "Find inner peace among rice terraces and ancient temples in this transformative wellness retreat",
       mood: "Seeking Balance",
       tags: ["Meditation", "Yoga", "Spa"],
@@ -187,8 +187,8 @@ const Destinations = () => {
       category: "luxury",
       type: "hotel",
       image: "/lovable-uploads/ad07406b-a9d4-4803-9be6-3a4aea774619.png", // Overwater bungalow
-      price: "$2,999",
-      duration: "5 nights",
+      price: "$199",
+      duration: "per night",
       description: "Private overwater villa with infinity pool and direct ocean access",
       mood: "Ultimate Luxury",
       tags: ["Overwater", "Private Pool", "Ocean"],
@@ -202,8 +202,8 @@ const Destinations = () => {
       category: "mountain",
       type: "hotel",
       image: "/lovable-uploads/d4177c1c-c8c7-467b-b5ce-e3ac443525b8.png", // Modern hotel with pool and city view
-      price: "$3,299",
-      duration: "4 nights",
+      price: "$149",
+      duration: "per night",
       description: "Alpine luxury hotel with panoramic mountain views and world-class spa",
       mood: "Mountain Serenity",
       tags: ["Mountains", "Spa", "Luxury"],
@@ -217,8 +217,8 @@ const Destinations = () => {
       category: "romantic",
       type: "hotel",
       image: "/lovable-uploads/40732476-5f3d-426e-b486-daf165370855.png", // Luxury pool sunset
-      price: "$2,499",
-      duration: "3 nights",
+      price: "$129",
+      duration: "per night",
       description: "Cliffside luxury resort with infinity pools overlooking the Aegean Sea",
       mood: "Romantic Escape",
       tags: ["Cliffside", "Infinity Pool", "Sunset"],
