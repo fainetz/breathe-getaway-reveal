@@ -109,8 +109,26 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder={isMobile ? "How do you feel?" : "How are you feeling about travel?"}
-              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm transition-colors duration-300"
+              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-base md:text-sm transition-all duration-300 focus:scale-105"
               autoFocus={!isScrolled && !isMobile}
+              onFocus={(e) => {
+                if (isMobile) {
+                  // Smooth scroll to center the input
+                  e.target.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center', 
+                    inline: 'nearest' 
+                  });
+                }
+              }}
+              onBlur={(e) => {
+                if (isMobile) {
+                  // Reset any zoom and scroll back to normal position
+                  setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }, 100);
+                }
+              }}
             />
             <button
               type="submit"

@@ -526,8 +526,27 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       placeholder="What's calling to you today?"
-                      className="flex-1 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl focus:ring-2 focus:ring-white/30 focus:border-white/40 text-white placeholder-white/60 transition-all duration-200"
+                      className="flex-1 px-3 md:px-4 py-2 md:py-3 text-base md:text-sm bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl focus:ring-2 focus:ring-white/30 focus:border-white/40 text-white placeholder-white/60 transition-all duration-300 focus:scale-105"
                       disabled={isLoading}
+                      onFocus={(e) => {
+                        if (window.innerWidth < 768) {
+                          // Smooth scroll to center the input
+                          e.target.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'center', 
+                            inline: 'nearest' 
+                          });
+                        }
+                      }}
+                      onBlur={() => {
+                        if (window.innerWidth < 768) {
+                          // Reset any zoom and scale after losing focus
+                          setTimeout(() => {
+                            document.documentElement.style.zoom = '1';
+                            document.body.style.zoom = '1';
+                          }, 100);
+                        }
+                      }}
                     />
                     <button
                       type="submit"
