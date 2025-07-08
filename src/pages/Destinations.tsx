@@ -40,7 +40,7 @@ const Destinations = () => {
       name: "Bali Soul Sanctuary",
       location: "Ubud, Indonesia",
       category: "healing",
-      type: "destination",
+      type: "hotel",
       image: "/lovable-uploads/223f6e4e-7c4d-4398-80d1-f058166444dc.png", // Keep original
       price: "$1,299",
       duration: "7 days",
@@ -48,7 +48,8 @@ const Destinations = () => {
       mood: "Seeking Balance",
       tags: ["Meditation", "Yoga", "Spa"],
       rating: 4.9,
-      featured: true
+      featured: true,
+      comingSoon: true
     },
     {
       id: 2,
