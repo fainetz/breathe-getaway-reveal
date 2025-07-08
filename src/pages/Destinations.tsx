@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, ChevronLeft, ChevronRight, Play, Info, Star } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, Play, Info, Star, InfoIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FullScreenDestination from '../components/FullScreenDestination';
 import { useTheme } from '../contexts/ThemeContext';
@@ -42,8 +42,8 @@ const Destinations = () => {
       category: "healing",
       type: "hotel",
       image: "/lovable-uploads/1533e217-0961-4fb1-b5e1-f06df6a6bf74.png", // Luxury hotel interior with tropical view
-      price: "$89",
-      duration: "per night",
+      price: "$89/per night",
+      duration: "nightly",
       description: "Find inner peace among rice terraces and ancient temples in this transformative wellness retreat",
       mood: "Seeking Balance",
       tags: ["Meditation", "Yoga", "Spa"],
@@ -57,7 +57,7 @@ const Destinations = () => {
       location: "Tromsø, Norway",
       category: "adventure",
       type: "destination",
-      image: "/lovable-uploads/c3e077fc-fb5b-4df6-9b8c-75bcc742e307.png", // Tropical sunset with palm trees
+      image: "/lovable-uploads/462239f6-9a27-4b7d-a660-d8474967fd14.png", // Northern Lights aurora over snowy landscape
       price: "$2,199",
       duration: "5 days",
       description: "Chase aurora dreams in the Arctic wilderness with expert guides and luxury accommodations",
@@ -187,8 +187,8 @@ const Destinations = () => {
       category: "luxury",
       type: "hotel",
       image: "/lovable-uploads/364e2553-6bc1-48c9-b72f-ce670d007e17.png", // Resort pathway with mountains
-      price: "$199",
-      duration: "per night",
+      price: "$199/per night",
+      duration: "nightly",
       description: "Private overwater villa with infinity pool and direct ocean access",
       mood: "Ultimate Luxury",
       tags: ["Overwater", "Private Pool", "Ocean"],
@@ -202,8 +202,8 @@ const Destinations = () => {
       category: "mountain",
       type: "hotel",
       image: "/lovable-uploads/33c21689-4a63-4d20-b050-b566ede4b771.png", // Rooftop pool with city lights
-      price: "$149",
-      duration: "per night",
+      price: "$149/per night",
+      duration: "nightly",
       description: "Alpine luxury hotel with panoramic mountain views and world-class spa",
       mood: "Mountain Serenity",
       tags: ["Mountains", "Spa", "Luxury"],
@@ -217,8 +217,8 @@ const Destinations = () => {
       category: "romantic",
       type: "hotel",
       image: "/lovable-uploads/80ab770e-b0fd-4df8-9d27-2021f7dca01a.png", // City rooftop infinity pool
-      price: "$129",
-      duration: "per night",
+      price: "$129/per night",
+      duration: "nightly",
       description: "Cliffside luxury resort with infinity pools overlooking the Aegean Sea",
       mood: "Romantic Escape",
       tags: ["Cliffside", "Infinity Pool", "Sunset"],
@@ -430,7 +430,20 @@ const Destinations = () => {
         {categoryRows.map((row, rowIndex) => (
           <section key={rowIndex} className="mb-12">
             <div className="px-6 md:px-12 mb-6">
-              <h2 className="text-xl md:text-2xl font-bold">{row.title}</h2>
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl md:text-2xl font-bold">{row.title}</h2>
+                {(row.title === "Hotels" || row.title === "Cruises") && (
+                  <div className="group relative">
+                    <InfoIcon className="w-4 h-4 text-gray-400 hover:text-white cursor-help" />
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                      <div className="bg-black/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 text-sm text-white whitespace-nowrap">
+                        {row.title} will be sold by Breathe and Getaway soon
+                      </div>
+                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black/90 border-r border-b border-white/20 rotate-45"></div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
             
             <div className="relative group">
