@@ -161,8 +161,8 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
   useEffect(() => {
     if (initialPrompt && isOpen) {
-      // Set the initial prompt in the input field instead of auto-sending
-      setInputValue(initialPrompt);
+      // Send the initial prompt as the first message
+      handleSendMessage(initialPrompt);
     }
   }, [initialPrompt, isOpen]);
 
@@ -188,9 +188,16 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
     // Simulate API call
     setTimeout(() => {
       let botResponse = '';
+      let shouldShowDestinations = false;
       
       // Check if this is a "Learn More" request about a destination
       const learnMoreMatch = text.match(/learn more about (.*)/i);
+      // Check if user is asking for flights specifically
+      const flightRequest = text.toLowerCase().includes('flight') || 
+                           text.toLowerCase().includes('flights') || 
+                           text.toLowerCase().includes('book') ||
+                           text.toLowerCase().includes('show me options');
+      
       if (learnMoreMatch) {
         const destinationName = learnMoreMatch[1];
         const destination = mockDestinations.find(d => 
@@ -203,8 +210,13 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
         } else {
           botResponse = `I'd love to tell you more! Could you clarify which flight destination you're interested in learning about?`;
         }
-      } else {
+      } else if (flightRequest) {
+        // Only show flight results when specifically requested
         botResponse = `Perfect! I found some incredible flight destinations that match your vibe. Here are my top flight recommendations with available routes:`;
+        shouldShowDestinations = true;
+      } else {
+        // General response that offers options instead of auto-showing flights
+        botResponse = `I love that energy! Based on what you're feeling, I can help you in several ways:\n\n✈️ **Show flight options** - I'll find destinations that match your mood\n🗣️ **Chat more** - Let's explore what kind of experience you're craving\n🎯 **Get specific** - Tell me about budget, dates, or preferred activities\n\nWhat sounds most appealing to you right now?`;
       }
 
       const botMessage: Message = {
@@ -212,11 +224,11 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
         text: botResponse,
         isUser: false,
         timestamp: new Date(),
-        destinations: learnMoreMatch ? undefined : mockDestinations
+        destinations: shouldShowDestinations ? mockDestinations : undefined
       };
 
       setMessages(prev => [...prev, botMessage]);
-      if (!learnMoreMatch) {
+      if (shouldShowDestinations) {
         setCurrentDestinations(mockDestinations);
         if (isMobile) {
           setShowDestinations(true);
