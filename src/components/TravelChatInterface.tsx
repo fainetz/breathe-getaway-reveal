@@ -257,9 +257,8 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       if (shouldShowDestinations) {
         // *** REPLACE: Use your API data instead of mockDestinations ***
         setCurrentDestinations(mockDestinations);
-        if (isMobile) {
-          setShowDestinations(true);
-        }
+        // *** REMOVED: Automatic redirect to flight results ***
+        // Users now need to manually click "View Flight Results" button
       }
       setIsLoading(false);
     }, 1500); // *** REMOVE: This delay is only for demo purposes ***
