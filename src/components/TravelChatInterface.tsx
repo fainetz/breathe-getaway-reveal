@@ -51,6 +51,8 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
   const [isFullScreenOpen, setIsFullScreenOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showDestinations, setShowDestinations] = useState(false);
+  const [showCinematicPause, setShowCinematicPause] = useState(false);
+  const [inputFocused, setInputFocused] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
@@ -192,7 +194,13 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
-    setIsLoading(true);
+    setShowCinematicPause(true);
+    
+    // Cinematic pause - let the message breathe
+    setTimeout(() => {
+      setIsLoading(true);
+      setShowCinematicPause(false);
+    }, 800);
 
     // *** REPLACE WITH YOUR CHATBOT API CALL ***
     // TODO: Replace this setTimeout with your actual chatbot API call
@@ -437,24 +445,24 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
         ) : (
           <>
             {/* Chat Panel - Mobile: Full width, Desktop: 1/3 */}
-            <div className={`${isChatMinimized && !isMobile ? 'w-16' : isMobile ? 'flex-1' : 'w-1/3'} transition-all duration-300 ease-out bg-white/10 backdrop-blur-xl ${isMobile ? '' : 'border-r border-white/20'} flex flex-col`}>
-              <div className="flex items-center justify-between p-4 md:p-6 border-b border-white/20">
+            <div className={`${isChatMinimized && !isMobile ? 'w-16' : isMobile ? 'flex-1' : 'w-1/3'} transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-white/5 backdrop-blur-xl ${isMobile ? '' : 'border-r border-white/10'} flex flex-col`}>
+              <div className="flex items-center justify-between p-6 md:p-8 border-b border-white/10">
                 {!isChatMinimized && (
-                  <div className="flex-1">
-                    <h2 className="text-lg md:text-xl font-bold text-white mb-1">AI Travel Concierge</h2>
-                    <p className="text-xs md:text-sm text-white/70">Your personal travel curator</p>
+                  <div className="flex-1 animate-fade-in">
+                    <h2 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-tight">AI Travel Concierge</h2>
+                    <p className="text-sm md:text-base text-white/60 font-medium">Your personal travel curator</p>
                   </div>
                 )}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <div className="relative">
                     <button 
                       onClick={handleCartClick}
-                      className="p-2 rounded-xl hover:bg-white/10 transition-all duration-200 text-white/80 hover:text-white"
+                      className="p-3 rounded-2xl hover:bg-white/10 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] text-white/70 hover:text-white hover:scale-110"
                     >
-                      <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" />
+                      <ShoppingCart className="w-5 h-5 md:w-6 md:h-6" />
                     </button>
                     {getCartItemCount() > 0 && (
-                      <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 md:h-5 md:w-5 flex items-center justify-center">
+                      <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 md:h-6 md:w-6 flex items-center justify-center font-semibold animate-scale-in shadow-lg">
                         {getCartItemCount()}
                       </span>
                     )}
@@ -462,7 +470,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                   {!isMobile && (
                     <button
                       onClick={() => setIsChatMinimized(!isChatMinimized)}
-                      className="p-2 rounded-xl hover:bg-white/10 transition-all duration-200 text-white/80 hover:text-white"
+                      className="p-3 rounded-2xl hover:bg-white/10 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] text-white/70 hover:text-white hover:scale-110"
                       title={isChatMinimized ? "Expand Chat" : "Minimize Chat"}
                     >
                       {isChatMinimized ? <Maximize2 className="w-5 h-5" /> : <Minimize2 className="w-5 h-5" />}
@@ -470,9 +478,9 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                   )}
                   <button
                     onClick={onClose}
-                    className="p-2 rounded-xl hover:bg-white/10 transition-all duration-200 text-white/80 hover:text-white"
+                    className="p-3 rounded-2xl hover:bg-white/10 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] text-white/70 hover:text-white hover:scale-110"
                   >
-                    <X className="w-4 h-4 md:w-5 md:h-5" />
+                    <X className="w-5 h-5 md:w-6 md:h-6" />
                   </button>
                 </div>
               </div>
@@ -498,29 +506,44 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
               {!isChatMinimized && (
                 <ScrollArea className="flex-1 h-0">
-                  <div className="p-4 md:p-6 space-y-4 md:space-y-6">
-                    {messages.length === 0 && (
-                      <div className="text-center text-white/80 mt-10 md:mt-20">
-                        <div className="mb-6">
-                          <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                            <Plane className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                  <div className="px-6 md:px-8 py-8 md:py-12 space-y-8 md:space-y-12">
+                    {messages.length === 0 && !showCinematicPause && (
+                      <div className="text-center text-white/80 pt-16 md:pt-24 animate-fade-in">
+                        <div className="mb-12">
+                          <div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-8 rounded-3xl bg-white/10 backdrop-blur-sm flex items-center justify-center shadow-xl animate-scale-in">
+                            <Plane className="w-10 h-10 md:w-12 md:h-12 text-white animate-pulse" />
                           </div>
-                          <h3 className="text-base md:text-lg font-semibold mb-2">Ready for your next adventure?</h3>
-                          <p className="text-xs md:text-sm text-white/60">Tell me how you're feeling or what kind of experience you're craving!</p>
+                          <h3 className="text-xl md:text-2xl font-bold mb-4 tracking-tight">Ready for your next adventure?</h3>
+                          <p className="text-base md:text-lg text-white/60 font-medium leading-relaxed">Tell me how you're feeling or what kind of experience you're craving!</p>
                         </div>
                       </div>
                     )}
 
-                    {messages.map((message) => (
-                      <div key={message.id} className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
-                        <div className={`max-w-[85%] md:max-w-xs ${message.isUser ? 'order-2' : 'order-1'}`}>
-                          <div className={`px-3 md:px-4 py-2 md:py-3 rounded-2xl text-xs md:text-sm font-medium ${
+                    {showCinematicPause && (
+                      <div className="flex justify-center py-16 animate-fade-in">
+                        <div className="text-center">
+                          <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center animate-pulse">
+                            <MessageCircle className="w-8 h-8 text-white" />
+                          </div>
+                          <p className="text-lg text-white/70 font-medium">Processing your travel dreams...</p>
+                        </div>
+                      </div>
+                    )}
+
+                    {messages.map((message, index) => (
+                      <div 
+                        key={message.id} 
+                        className={`flex ${message.isUser ? 'justify-end' : 'justify-start'} animate-fade-in`}
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                      >
+                        <div className={`max-w-[85%] md:max-w-sm ${message.isUser ? 'order-2' : 'order-1'}`}>
+                          <div className={`px-6 md:px-8 py-4 md:py-6 rounded-3xl text-base md:text-lg font-medium transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.02] ${
                             message.isUser 
-                              ? 'bg-white text-gray-900 ml-2 md:ml-4 shadow-lg' 
-                              : 'bg-white/20 backdrop-blur-sm text-white mr-2 md:mr-4 border border-white/20'
+                              ? 'bg-white text-gray-900 ml-4 md:ml-6 shadow-2xl border border-white/20' 
+                              : 'bg-white/10 backdrop-blur-xl text-white mr-4 md:mr-6 border border-white/20 shadow-xl'
                           }`}>
                             <p className="leading-relaxed">{message.text}</p>
-                            <p className={`text-xs mt-2 opacity-60 ${
+                            <p className={`text-sm mt-3 opacity-60 ${
                               message.isUser ? 'text-gray-600' : 'text-white/60'
                             }`}>
                               {message.timestamp.toLocaleTimeString()}
@@ -532,24 +555,27 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
                     {/* Mobile: Show destinations button */}
                     {isMobile && currentDestinations.length > 0 && (
-                      <div className="flex justify-center">
+                      <div className="flex justify-center pt-8 animate-slide-up">
                         <button
                           onClick={() => setShowDestinations(true)}
-                          className="bg-white text-gray-900 font-medium py-3 px-6 rounded-xl hover:bg-white/90 transition-all duration-200 shadow-lg flex items-center gap-2"
+                          className="bg-white text-gray-900 font-semibold py-4 px-8 rounded-2xl hover:bg-white/95 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-2xl flex items-center gap-3 hover:scale-110 hover:shadow-2xl"
                         >
-                          <Plane className="w-4 h-4" />
+                          <Plane className="w-5 h-5" />
                           View {currentDestinations.length} Flight Options
                         </button>
                       </div>
                     )}
 
                     {isLoading && (
-                      <div className="flex justify-start">
-                        <div className="bg-white/20 backdrop-blur-sm border border-white/20 rounded-2xl px-3 md:px-4 py-2 md:py-3 mr-2 md:mr-4">
-                          <div className="flex space-x-2">
-                            <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce"></div>
-                            <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                            <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      <div className="flex justify-center py-8 animate-fade-in">
+                        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl px-8 py-6 shadow-2xl">
+                          <div className="flex items-center gap-4">
+                            <div className="flex space-x-2">
+                              <div className="w-3 h-3 bg-white/80 rounded-full animate-bounce"></div>
+                              <div className="w-3 h-3 bg-white/80 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }}></div>
+                              <div className="w-3 h-3 bg-white/80 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
+                            </div>
+                            <span className="text-white/80 font-medium">Curating your perfect flights...</span>
                           </div>
                         </div>
                       </div>
@@ -560,16 +586,22 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
               )}
 
               {!isChatMinimized && (
-                <div className="border-t border-white/20 p-4 md:p-6">
-                  <form onSubmit={handleSubmit} className="flex space-x-2 md:space-x-3">
+                <div className="border-t border-white/10 p-6 md:p-8">
+                  <form onSubmit={handleSubmit} className="flex items-center gap-4">
                     <input
                       type="text"
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       placeholder="What's calling to you today?"
-                      className="flex-1 px-3 md:px-4 py-2 md:py-3 text-base md:text-sm bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl focus:ring-2 focus:ring-white/30 focus:border-white/40 text-white placeholder-white/60 transition-all duration-300 focus:scale-105"
+                      className={`flex-1 px-6 md:px-8 py-4 md:py-6 text-base bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl text-white placeholder-white/50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] font-medium leading-relaxed shadow-xl ${
+                        inputFocused 
+                          ? 'bg-white/15 border-white/40 shadow-2xl scale-[1.02] ring-2 ring-white/20' 
+                          : 'hover:bg-white/12 hover:border-white/30'
+                      } ${isLoading ? 'opacity-60 cursor-not-allowed' : ''}`}
+                      style={{ fontSize: 'max(16px, 1rem)' }}
                       disabled={isLoading}
                       onFocus={(e) => {
+                        setInputFocused(true);
                         if (window.innerWidth < 768) {
                           // Smooth scroll to center the input
                           e.target.scrollIntoView({ 
@@ -580,6 +612,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                         }
                       }}
                       onBlur={() => {
+                        setInputFocused(false);
                         if (window.innerWidth < 768) {
                           // Reset any zoom and scale after losing focus
                           setTimeout(() => {
@@ -592,9 +625,13 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                     <button
                       type="submit"
                       disabled={isLoading || !inputValue.trim()}
-                      className="px-3 md:px-4 py-2 md:py-3 bg-white text-gray-900 rounded-xl hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center font-medium shadow-lg"
+                      className={`px-6 md:px-8 py-4 md:py-6 bg-white text-gray-900 rounded-2xl font-semibold transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-xl flex items-center justify-center min-w-[60px] md:min-w-[80px] ${
+                        isLoading || !inputValue.trim() 
+                          ? 'opacity-40 cursor-not-allowed scale-95' 
+                          : 'hover:bg-white/95 hover:scale-110 hover:shadow-2xl active:scale-95'
+                      }`}
                     >
-                      <Send className="w-3 h-3 md:w-4 md:h-4" />
+                      <Send className="w-5 h-5 md:w-6 md:h-6" />
                     </button>
                   </form>
                 </div>
