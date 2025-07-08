@@ -327,12 +327,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
   return (
     <div className="fixed inset-0 z-50">
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('/lovable-uploads/442e1967-777c-43e6-9246-91b620e2151b.png')`
-        }}
-      >
+      <div className="absolute inset-0 chat-background">
         <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-black/40 backdrop-blur-[1px]"></div>
       </div>
 
@@ -512,7 +507,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
               )}
 
               {!isChatMinimized && (
-                <ScrollArea className="flex-1 h-0">
+                <ScrollArea className="flex-1 h-0 chat-scroll">
                   <div className="px-6 md:px-8 py-8 md:py-12 space-y-8 md:space-y-12">
                     {messages.length === 0 && !showCinematicPause && (
                       <div className="text-center text-white/80 pt-16 md:pt-24 animate-fade-in">

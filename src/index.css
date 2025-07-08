@@ -163,4 +163,39 @@ All colors MUST be HSL.
   .animate-glow {
     animation: glow 2s ease-in-out infinite;
   }
+
+  /* Chat background */
+  .chat-background {
+    background-image: url('/lovable-uploads/442e1967-777c-43e6-9246-91b620e2151b.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: hsl(var(--background));
+  }
+
+  /* Custom scrollbar styling */
+  .chat-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .chat-scroll::-webkit-scrollbar-track {
+    background: hsl(var(--background) / 0.1);
+    border-radius: 10px;
+  }
+
+  .chat-scroll::-webkit-scrollbar-thumb {
+    background: hsl(var(--foreground) / 0.2);
+    border-radius: 10px;
+    transition: background 0.2s ease;
+  }
+
+  .chat-scroll::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--foreground) / 0.3);
+  }
+
+  /* Firefox scrollbar */
+  .chat-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--foreground) / 0.2) hsl(var(--background) / 0.1);
+  }
 }
