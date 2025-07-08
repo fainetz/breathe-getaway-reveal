@@ -526,7 +526,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       placeholder="What's calling to you today?"
-                      className="flex-1 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl focus:ring-2 focus:ring-white/30 focus:border-white/40 text-white placeholder-white/60 transition-all duration-200"
+                      className="flex-1 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl focus:ring-2 focus:ring-white/30 focus:border-white/40 text-white placeholder-white/60 transition-all duration-200 text-[16px]"
                       disabled={isLoading}
                     />
                     <button
