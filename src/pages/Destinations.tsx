@@ -252,12 +252,14 @@ const Destinations = () => {
   const currentHero = featuredDestinations[heroIndex];
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-950 via-black to-neutral-900 text-white overflow-x-hidden">
+      {/* Ambient background pattern */}
+      <div className="fixed inset-0 opacity-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent pointer-events-none"></div>
       {/* Back Button */}
       <div className="fixed top-6 left-6 z-50">
         <Link 
           to="/" 
-          className="flex items-center gap-2 bg-black/60 backdrop-blur-lg border border-white/20 rounded-full px-4 py-2 text-sm font-medium text-white hover:bg-black/80 transition-all duration-300"
+          className="flex items-center gap-2 bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-5 py-3 text-sm font-medium text-white hover:bg-black/60 hover:border-white/20 transition-all duration-300 shadow-2xl"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Home
