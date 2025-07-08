@@ -25,9 +25,9 @@ const FeatureRequestBox = () => {
 
   return (
     <>
-      {/* Feature Request Interface - Hidden on mobile */}
+      {/* Feature Request Interface */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] bg-white/95 dark:bg-black/90 backdrop-blur-xl border border-gray-200 dark:border-white/20 rounded-2xl shadow-2xl z-50 transition-colors duration-300 hidden md:block">
+        <div className="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] bg-white/95 dark:bg-black/90 backdrop-blur-xl border border-gray-200 dark:border-white/20 rounded-2xl shadow-2xl z-50 transition-colors duration-300">
           <div className="p-4 border-b border-gray-200 dark:border-white/10">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -98,10 +98,10 @@ const FeatureRequestBox = () => {
         </div>
       )}
 
-      {/* Floating Feature Request Button - Hidden on mobile */}
+      {/* Floating Feature Request Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center z-40 group hidden md:flex"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center z-40 group"
       >
         {isOpen ? (
           <X className="w-6 h-6 text-white" />
