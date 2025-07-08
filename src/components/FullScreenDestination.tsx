@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { X, ChevronUp, ChevronDown, MapPin, Calendar, DollarSign, Plane, Clock, ShoppingCart } from 'lucide-react';
+import { X, ChevronUp, ChevronDown, MapPin, Calendar, DollarSign, Plane, Clock, Search } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { ScrollArea } from './ui/scroll-area';
 
 interface Destination {
@@ -39,6 +40,7 @@ const FullScreenDestination = ({
   onNavigate,
   onAddToCart 
 }: FullScreenDestinationProps) => {
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
@@ -126,10 +128,9 @@ const FullScreenDestination = ({
     }
   };
 
-  const handleAddToCart = () => {
-    if (onAddToCart && currentDestination) {
-      onAddToCart(currentDestination);
-    }
+  const handleSearchFlights = () => {
+    const destinationPrompt = `I want to plan a trip to ${currentDestination.name} in ${currentDestination.location}. This is a ${currentDestination.duration} ${currentDestination.category} experience for ${currentDestination.price}. ${currentDestination.description}`;
+    navigate(`/chat?q=${encodeURIComponent(destinationPrompt)}`);
   };
 
   if (!isOpen || !destination) return null;
@@ -195,11 +196,11 @@ const FullScreenDestination = ({
       {/* Fixed Action Buttons - Updated */}
       <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 flex gap-4 max-w-2xl w-full px-8">
         <button 
-          onClick={handleAddToCart}
+          onClick={handleSearchFlights}
           className="flex-1 bg-white text-gray-900 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm hover:bg-white/90 flex items-center justify-center gap-3"
         >
-          <ShoppingCart className="w-5 h-5" />
-          Add Flight to Cart
+          <Search className="w-5 h-5" />
+          Search for Flights
         </button>
         <button 
           onClick={scrollToAboutSection}
