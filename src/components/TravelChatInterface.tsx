@@ -54,6 +54,10 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
+  // *** REPLACE WITH YOUR API DATA ***
+  // This mock data should be replaced with your flight search API response
+  // Structure: Array of Destination objects with id, name, location, price, image, description, tags, etc.
+  // TODO: Replace this with: const destinations = await yourFlightAPI.search(searchQuery);
   const mockDestinations: Destination[] = [
     {
       id: '1',
@@ -90,6 +94,10 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
     }
   ];
 
+  // *** REPLACE WITH YOUR FLIGHT DETAILS API ***
+  // This function generates mock flight details for display
+  // TODO: Replace with actual flight details from your API response
+  // Your API should return: departure time, airline, flight duration, flight number
   const getFlightDetails = (destination: Destination) => {
     const flightTimes = ['6:30 AM', '11:45 AM', '3:20 PM', '8:15 PM'];
     const airlines = ['Delta', 'United', 'American', 'Emirates'];
@@ -186,10 +194,19 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
     setInputValue('');
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    // *** REPLACE WITH YOUR CHATBOT API CALL ***
+    // TODO: Replace this setTimeout with your actual chatbot API call
+    // Example: const response = await yourChatbotAPI.sendMessage(text);
+    // const botResponse = response.message;
+    // const shouldShowDestinations = response.triggerFlightSearch;
+    
+    setTimeout(async () => {
       let botResponse = '';
       let shouldShowDestinations = false;
+      
+      // *** REPLACE THIS LOGIC WITH YOUR CHATBOT'S RESPONSE LOGIC ***
+      // This section determines how the bot responds to user messages
+      // You can replace this with your own natural language processing
       
       // Check if this is a "Learn More" request about a destination
       const learnMoreMatch = text.match(/learn more about (.*)/i);
@@ -206,6 +223,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       
       if (learnMoreMatch) {
         const destinationName = learnMoreMatch[1];
+        // *** REPLACE: Use your API data instead of mockDestinations ***
         const destination = mockDestinations.find(d => 
           d.name.toLowerCase().includes(destinationName.toLowerCase()) ||
           d.location.toLowerCase().includes(destinationName.toLowerCase())
@@ -217,11 +235,13 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
           botResponse = `I'd love to tell you more! Could you clarify which flight destination you're interested in learning about?`;
         }
       } else if (flightRequest) {
-        // Only show flight results when specifically requested
+        // *** TRIGGER FLIGHT SEARCH - REPLACE WITH YOUR API CALL ***
+        // TODO: const flightResults = await yourFlightAPI.search(text);
+        // TODO: setCurrentDestinations(flightResults);
         botResponse = `Perfect! I found some incredible flight destinations that match your vibe. Here are my top flight recommendations with available routes:`;
         shouldShowDestinations = true;
       } else {
-        // General response that offers options instead of auto-showing flights
+        // *** REPLACE WITH YOUR CHATBOT'S DEFAULT RESPONSE LOGIC ***
         botResponse = `I love that energy! Based on what you're feeling, I can help you in several ways:\n\n✈️ **Show flight options** - I'll find destinations that match your mood\n🗣️ **Chat more** - Let's explore what kind of experience you're craving\n🎯 **Get specific** - Tell me about budget, dates, or preferred activities\n\nWhat sounds most appealing to you right now?`;
       }
 
@@ -230,18 +250,19 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
         text: botResponse,
         isUser: false,
         timestamp: new Date(),
-        destinations: shouldShowDestinations ? mockDestinations : undefined
+        destinations: shouldShowDestinations ? mockDestinations : undefined // *** REPLACE: Use your API data ***
       };
 
       setMessages(prev => [...prev, botMessage]);
       if (shouldShowDestinations) {
+        // *** REPLACE: Use your API data instead of mockDestinations ***
         setCurrentDestinations(mockDestinations);
         if (isMobile) {
           setShowDestinations(true);
         }
       }
       setIsLoading(false);
-    }, 1500);
+    }, 1500); // *** REMOVE: This delay is only for demo purposes ***
   };
 
   const handleLearnMore = (destination: Destination) => {
