@@ -28,21 +28,30 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
   }, []);
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const shouldScroll = scrollY > 100;
-      setIsScrolled(shouldScroll);
-      
-      const isAtHeroSection = scrollY <= 100;
-      
-      if (shouldScroll && !isHovered && !isAtHeroSection) {
-        setIsExpanded(false);
-      } else if (isAtHeroSection) {
-        setIsExpanded(true);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          const shouldScroll = scrollY > 100;
+          setIsScrolled(shouldScroll);
+          
+          const isAtHeroSection = scrollY <= 100;
+          
+          if (shouldScroll && !isHovered && !isAtHeroSection) {
+            setIsExpanded(false);
+          } else if (isAtHeroSection) {
+            setIsExpanded(true);
+          }
+          
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHovered]);
 
@@ -62,7 +71,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
 
   return (
-    <div className={`fixed z-50 transition-transform duration-200 ease-out ${
+    <div className={`fixed z-50 transition-transform duration-150 ease-out ${
       !isScrolled 
         ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-4' // Hero position
         : isMobile 
@@ -70,12 +79,12 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           : 'bottom-6 left-1/2 -translate-x-1/2' // Desktop collapsed position
     }`}>
       <div 
-        className={`h-[52px] relative overflow-hidden transition-all duration-200 ease-out ${
+        className={`w-96 h-[52px] relative overflow-hidden transition-transform duration-150 ease-out origin-center ${
           !isScrolled 
-            ? 'w-96 sm:w-[400px]' // Hero width
+            ? 'scale-100' // Hero scale
             : isMobile 
-              ? 'w-full' // Mobile collapsed width
-              : shouldBeExpanded ? 'w-96' : 'w-32' // Desktop collapsed width
+              ? 'scale-100' // Mobile scale
+              : shouldBeExpanded ? 'scale-100' : 'scale-[0.33]' // Desktop collapsed scale
         }`}
         onMouseEnter={() => {
           if (!isMobile && isScrolled) {
@@ -96,7 +105,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
         }}
       >
         {/* Simplified background */}
-        <div className="absolute inset-0 bg-white/90 dark:bg-black/90 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg transition-shadow duration-200">
+        <div className="absolute inset-0 bg-white/95 dark:bg-gray-900/95 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md">
         </div>
 
         {/* Collapsed state for desktop when scrolled */}
