@@ -233,31 +233,17 @@ const Hero = ({ onSearchSubmit }: HeroProps) => {
               Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
             </p>
 
-            {/* Integrated Search Bar */}
+            {/* Search placeholder - actual search handled by ExpandableSearch */}
             <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
-              <form onSubmit={handleSearchSubmit} className="max-w-md mx-auto bg-white/80 dark:bg-white/10 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-full p-1 shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="flex items-center px-4 py-3">
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="How are you feeling about travel?"
-                    className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-base transition-all duration-300"
-                    onFocus={(e) => {
-                      e.target.placeholder = "I'm feeling adventurous...";
-                    }}
-                    onBlur={(e) => {
-                      e.target.placeholder = "How are you feeling about travel?";
-                    }}
-                  />
-                  <button 
-                    type="submit"
-                    className="ml-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-2 rounded-full hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 hover:scale-105 shadow-md"
-                  >
-                    <Search className="w-4 h-4" />
-                  </button>
+              <div className="max-w-md mx-auto h-[52px] bg-gradient-to-r from-white/90 to-white/95 dark:from-white/15 dark:to-white/20 backdrop-blur-xl border border-white/30 dark:border-white/30 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative flex items-center px-6 py-4 h-full">
+                  <Search className="w-5 h-5 text-gray-400 dark:text-gray-500 mr-3" />
+                  <span className="text-gray-500 dark:text-gray-400 text-base font-medium">
+                    How are you feeling about travel?
+                  </span>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
 

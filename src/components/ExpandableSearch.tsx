@@ -63,55 +63,64 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
   return (
     <div className={`fixed z-50 transition-all duration-700 ease-out ${
-      isScrolled 
-        ? isMobile 
-          ? 'bottom-4 left-4 right-20' // Leave space for feature button on mobile when scrolled
-          : 'bottom-8 left-1/2 -translate-x-1/2' // Centered when scrolled on desktop
-        : 'opacity-0 pointer-events-none' // Hidden when at hero section since search is integrated
+      !isScrolled 
+        ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-8' // Hero position
+        : isMobile 
+          ? 'bottom-4 left-4 right-20' // Mobile collapsed position
+          : 'bottom-8 left-1/2 -translate-x-1/2' // Desktop collapsed position
     }`}>
       <div 
-        className={`transition-all duration-500 ease-out ${
-          isMobile 
-            ? 'w-full' // Always full width on mobile
-            : shouldBeExpanded ? 'w-96' : 'w-32'
-        } h-12 bg-white/80 dark:bg-white/10 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-full hover:bg-white/90 dark:hover:bg-white/15 overflow-hidden transition-colors duration-300`}
+        className={`transition-all duration-700 ease-out ${
+          !isScrolled 
+            ? 'w-96 sm:w-[400px]' // Hero width
+            : isMobile 
+              ? 'w-full' // Mobile collapsed width
+              : shouldBeExpanded ? 'w-96' : 'w-32' // Desktop collapsed width
+        } h-[52px] relative overflow-hidden`}
         onMouseEnter={() => {
-          if (!isMobile) {
+          if (!isMobile && isScrolled) {
             setIsHovered(true);
             setIsExpanded(true);
           }
         }}
         onMouseLeave={() => {
-          if (!isMobile) {
+          if (!isMobile && isScrolled) {
             setIsHovered(false);
-            if (isScrolled) {
-              setIsExpanded(false);
-            }
+            setIsExpanded(false);
           }
         }}
         onClick={() => {
-          if (isMobile && !shouldBeExpanded) {
+          if (isMobile && isScrolled && !shouldBeExpanded) {
             setIsExpanded(true);
           }
         }}
       >
-        {!shouldBeExpanded && !isMobile ? (
-          <div className="w-full h-full flex items-center justify-center px-3">
-            <Search className="w-4 h-4 text-gray-700 dark:text-white mr-2 transition-colors duration-300" />
-            <span className="text-gray-700 dark:text-white text-sm font-medium transition-colors duration-300">Search</span>
+        {/* Modern glass background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/90 to-white/95 dark:from-white/15 dark:to-white/20 backdrop-blur-xl border border-white/30 dark:border-white/30 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+        </div>
+
+        {/* Collapsed state for desktop when scrolled */}
+        {isScrolled && !shouldBeExpanded && !isMobile ? (
+          <div className="relative w-full h-full flex items-center justify-center px-4">
+            <Search className="w-5 h-5 text-gray-600 dark:text-gray-400 mr-2 transition-colors duration-300" />
+            <span className="text-gray-600 dark:text-gray-400 text-sm font-medium transition-colors duration-300">Search</span>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="w-full h-full flex items-center px-4">
+          <form onSubmit={handleSubmit} className="relative w-full h-full flex items-center px-6">
+            <Search className="w-5 h-5 text-gray-400 dark:text-gray-500 mr-3 flex-shrink-0" />
             <input
               type="text"
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              placeholder={isMobile ? "How do you feel?" : "How are you feeling about travel?"}
-              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-base md:text-sm transition-all duration-300 focus:scale-105"
-              autoFocus={!isScrolled && !isMobile}
+              placeholder={!isScrolled ? "How are you feeling about travel?" : isMobile ? "How do you feel?" : "How are you feeling about travel?"}
+              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-base font-medium transition-all duration-300 focus:scale-[1.01]"
+              autoFocus={!isScrolled}
               onFocus={(e) => {
+                if (!isScrolled) {
+                  e.target.placeholder = "I'm feeling adventurous...";
+                }
                 if (isMobile) {
-                  // Smooth scroll to center the input
                   e.target.scrollIntoView({ 
                     behavior: 'smooth', 
                     block: 'center', 
@@ -120,8 +129,10 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
                 }
               }}
               onBlur={(e) => {
+                if (!isScrolled) {
+                  e.target.placeholder = "How are you feeling about travel?";
+                }
                 if (isMobile) {
-                  // Reset any zoom and scroll back to normal position
                   setTimeout(() => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }, 100);
@@ -130,9 +141,9 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
             />
             <button
               type="submit"
-              className="ml-2 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors touch-manipulation"
+              className="ml-3 p-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-full hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0"
             >
-              <ArrowRight className="w-4 h-4 text-gray-700 dark:text-white transition-colors duration-300" />
+              <ArrowRight className="w-4 h-4" />
             </button>
           </form>
         )}
