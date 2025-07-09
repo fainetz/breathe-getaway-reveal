@@ -1,14 +1,16 @@
-
 import { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, ShoppingCart, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThreeBackground from './ThreeBackground';
 import ThemeToggle from './ThemeToggle';
+import ExpandableSearch from './ExpandableSearch';
 import { useTheme } from '../contexts/ThemeContext';
 
-interface HeroProps {}
+interface HeroProps {
+  onSearchSubmit?: (query: string) => void;
+}
 
-const Hero = () => {
+const Hero = ({ onSearchSubmit }: HeroProps) => {
   const { theme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cart, setCart] = useState([]);
@@ -222,6 +224,11 @@ const Hero = () => {
             <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl mb-6 sm:mb-8 transition-colors duration-300 mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
               Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
             </p>
+
+            {/* Search bar positioned under the text */}
+            <div className="relative z-50 mb-8 sm:mb-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+              <ExpandableSearch onSearchSubmit={onSearchSubmit} />
+            </div>
 
           </div>
 
