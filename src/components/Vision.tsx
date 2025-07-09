@@ -62,8 +62,8 @@ const Vision = () => {
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-5">
           <img 
-            src="/lovable-uploads/42f30823-7039-463f-8b34-fa31699595d9.png" 
-            alt="Background" 
+            src="/lovable-uploads/5da0882d-c336-4a6c-b816-25ff575ea341.png" 
+            alt="Tropical pool and mountains background" 
             className="w-full h-full object-cover"
           />
         </div>

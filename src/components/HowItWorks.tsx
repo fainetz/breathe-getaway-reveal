@@ -54,8 +54,8 @@ const HowItWorks = () => {
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-8">
           <img 
-            src="/lovable-uploads/8d6a6c2b-d70c-435c-8c9e-c54d7a53dd2c.png" 
-            alt="Background" 
+            src="/lovable-uploads/18aa8cb3-7178-47f3-b218-3aa6b8687db5.png" 
+            alt="Beach paradise background" 
             className="w-full h-full object-cover"
           />
         </div>

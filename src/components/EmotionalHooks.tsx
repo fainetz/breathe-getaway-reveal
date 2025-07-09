@@ -69,8 +69,8 @@ const EmotionalHooks = () => {
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <img 
-            src="/lovable-uploads/f4bf928d-7ee0-4675-9452-9a4ca78e0176.png" 
-            alt="Background" 
+            src="/lovable-uploads/e2c6c5a8-65a5-4005-976d-25a14867e43e.png" 
+            alt="Luxury pool resort background" 
             className="w-full h-full object-cover"
           />
         </div>

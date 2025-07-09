@@ -41,7 +41,7 @@ const Destinations = () => {
       location: "Ubud, Indonesia",
       category: "healing",
       type: "hotel",
-      image: "/lovable-uploads/0decbeaa-5a20-4502-9bc8-f34891b33dfc.png", // Tropical ocean dining at sunset
+      image: "/lovable-uploads/5f365107-6261-4234-b664-965c3aea763b.png", // Tropical evening with palm trees and deck
       price: "$89/per night",
       duration: "nightly",
       description: "Find inner peace among rice terraces and ancient temples in this transformative wellness retreat",
@@ -53,36 +53,66 @@ const Destinations = () => {
     },
     {
       id: 2,
-      name: "Maldives Paradise",
-      location: "Maldives",
+      name: "Santorini Dreams",
+      location: "Santorini, Greece",
       category: "luxury",
       type: "destination",
-      image: "/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png", // Illuminated boardwalk over water
+      image: "/lovable-uploads/92794f25-53c0-4644-af8d-3e9343c68684.png", // Santorini white buildings at sunset
       price: "$2,199",
       duration: "5 days",
-      description: "Experience ultimate luxury in overwater villas with pristine waters and world-class amenities",
+      description: "Experience ultimate luxury with stunning cliffside views and pristine Aegean waters",
       mood: "Craving Luxury",
-      tags: ["Overwater", "Snorkeling", "Spa"],
+      tags: ["Cliffside", "Sunset", "Luxury"],
       rating: 4.8,
       featured: true
     },
     {
       id: 3,
-      name: "Tropical Infinity",
-      location: "Bali, Indonesia",
+      name: "Tropical Beach Paradise",
+      location: "Turks & Caicos",
       category: "relaxation",
       type: "destination",
-      image: "/lovable-uploads/f4bf928d-7ee0-4675-9452-9a4ca78e0176.png", // Tropical beach with palm trees at dusk
+      image: "/lovable-uploads/18aa8cb3-7178-47f3-b218-3aa6b8687db5.png", // Beautiful beach with umbrellas at sunset
       price: "$1,899",
       duration: "6 days",
-      description: "Unwind in paradise with infinity pools, sunset views, and tropical serenity",
+      description: "Unwind on pristine beaches with crystal clear waters and spectacular sunset views",
       mood: "Need Relaxation",
-      tags: ["Infinity Pool", "Sunset", "Paradise"],
+      tags: ["Beach", "Sunset", "Paradise"],
       rating: 4.7,
       featured: true
     },
     {
       id: 4,
+      name: "Mountain Pool Resort",
+      location: "Bali, Indonesia", 
+      category: "luxury",
+      type: "destination",
+      image: "/lovable-uploads/5da0882d-c336-4a6c-b816-25ff575ea341.png", // Tropical resort with infinity pool and mountains
+      price: "$2,499",
+      duration: "7 days",
+      description: "Luxury resort experience with infinity pools surrounded by lush tropical mountains",
+      mood: "Seeking Serenity",
+      tags: ["Infinity Pool", "Mountains", "Luxury"],
+      rating: 4.9,
+      featured: true
+    },
+    {
+      id: 5,
+      name: "Luxury Pool Sanctuary",
+      location: "Tulum, Mexico",
+      category: "luxury",
+      type: "destination", 
+      image: "/lovable-uploads/e2c6c5a8-65a5-4005-976d-25a14867e43e.png", // Luxury resort pool with palm trees at sunset
+      price: "$1,799",
+      duration: "5 days",
+      description: "Exclusive beachfront resort with pristine pools and tropical luxury",
+      mood: "Ultimate Relaxation",
+      tags: ["Pool", "Tropical", "Beachfront"],
+      rating: 4.8,
+      featured: true
+    },
+    {
+      id: 114,
       name: "Santorini Sunset",
       location: "Santorini, Greece",
       category: "romantic",
@@ -96,7 +126,7 @@ const Destinations = () => {
       rating: 4.6
     },
     {
-      id: 5,
+      id: 115,
       name: "Patagonia Wild",
       location: "Torres del Paine, Chile",
       category: "adventure",
