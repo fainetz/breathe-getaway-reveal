@@ -127,12 +127,12 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
               type="text"
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              placeholder={!isScrolled ? "How are you feeling about travel?" : isMobile ? "How do you feel?" : "How are you feeling about travel?"}
+              placeholder={!isScrolled ? "I just got broken up with, take me somewhere..." : isMobile ? "Take me somewhere..." : "I just got broken up with, take me somewhere..."}
               className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-base font-medium transition-all duration-300 focus:scale-[1.01]"
               autoFocus={!isScrolled}
               onFocus={(e) => {
                 if (!isScrolled) {
-                  e.target.placeholder = "I'm feeling adventurous...";
+                  e.target.placeholder = "I need healing, adventure, or just an escape...";
                 }
                 if (isMobile) {
                   e.target.scrollIntoView({ 
@@ -144,7 +144,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
               }}
               onBlur={(e) => {
                 if (!isScrolled) {
-                  e.target.placeholder = "How are you feeling about travel?";
+                  e.target.placeholder = "I just got broken up with, take me somewhere...";
                 }
                 if (isMobile) {
                   setTimeout(() => {
