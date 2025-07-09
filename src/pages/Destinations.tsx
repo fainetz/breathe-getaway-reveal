@@ -368,7 +368,7 @@ const Destinations = () => {
               <div className="flex items-center gap-2 mb-4">
                 <Star className="w-5 h-5 text-yellow-400 fill-current" />
                 <span className="text-sm font-medium">{currentHero.rating} • {currentHero.duration}</span>
-                <span className="text-xs bg-red-600 px-2 py-1 rounded">SUGGESTED</span>
+                <span className="text-xs bg-blue-600 px-2 py-1 rounded">SUGGESTED</span>
               </div>
               
               <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
