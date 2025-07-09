@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, ShoppingCart } from 'lucide-react';
+import { ChevronDown, Menu, X, ShoppingCart, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThreeBackground from './ThreeBackground';
 import ThemeToggle from './ThemeToggle';
@@ -10,6 +10,38 @@ const Hero = () => {
   const { theme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cart, setCart] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Category slides data
+  const categorySlides = [
+    {
+      id: 'flights',
+      title: 'Flight Destinations',
+      description: 'Discover amazing destinations worldwide',
+      image: '/lovable-uploads/6b7f673a-c32c-4c6e-9496-bf8f5b86ec9a.png',
+      label: 'FLIGHTS',
+      labelColor: 'bg-blue-600/90',
+      comingSoon: false
+    },
+    {
+      id: 'hotels',
+      title: 'Hotels',
+      description: 'Luxury accommodations and resorts',
+      image: '/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png',
+      label: 'HOTELS',
+      labelColor: 'bg-green-600/90',
+      comingSoon: true
+    },
+    {
+      id: 'cruises',
+      title: 'Cruises',
+      description: 'Ocean adventures and island hopping',
+      image: '/lovable-uploads/c442bea5-cadc-4e64-8f52-41dfc17b1f5d.png',
+      label: 'CRUISES',
+      labelColor: 'bg-purple-600/90',
+      comingSoon: true
+    }
+  ];
 
   // Load cart items to show count
   useEffect(() => {
@@ -30,8 +62,25 @@ const Hero = () => {
     };
   }, []);
 
+  // Auto-slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % categorySlides.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [categorySlides.length]);
+
   const getCartItemCount = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % categorySlides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + categorySlides.length) % categorySlides.length);
   };
 
   const itemCount = getCartItemCount();
@@ -153,11 +202,11 @@ const Hero = () => {
         )}
       </nav>
 
-      {/* Main Content - Three Category Cards */}
+      {/* Main Content - Sleek Sliding Carousel */}
       <div className="relative z-10 flex-1 flex items-center pt-2 sm:pt-8 pb-16 sm:pb-0">
-        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto w-full h-full flex flex-col">
           {/* Title */}
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-8 sm:mb-12 flex-shrink-0">
             <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white mb-3 sm:mb-6 transition-colors duration-300 animate-fade-in">
               The Smarter,
               <br />
@@ -173,88 +222,91 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* Category Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
-            {/* Flight Destinations Card */}
-            <Link to="/destinations" className="group relative overflow-hidden rounded-xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 hover:scale-105 transition-all duration-300">
-              <div className="aspect-[4/3] relative">
-                <img 
-                  src="/lovable-uploads/6b7f673a-c32c-4c6e-9496-bf8f5b86ec9a.png"
-                  alt="Flight Destinations"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          {/* Sleek Carousel Container */}
+          <div className="relative flex-1 max-w-5xl mx-auto w-full group">
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl"
+            >
+              <ChevronLeft className="w-6 h-6 text-white" />
+            </button>
+
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl"
+            >
+              <ChevronRight className="w-6 h-6 text-white" />
+            </button>
+
+            {/* Slide Indicators */}
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 flex gap-3">
+              {categorySlides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentSlide 
+                      ? 'bg-white shadow-lg' 
+                      : 'bg-white/40 hover:bg-white/60'
+                  }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                
-                {/* Category Label */}
-                <div className="absolute top-4 left-4">
-                  <div className="bg-blue-600/90 backdrop-blur-sm rounded-full px-3 py-1">
-                    <span className="text-sm font-bold text-white">FLIGHTS</span>
-                  </div>
-                </div>
+              ))}
+            </div>
 
-                {/* Content */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Flight Destinations</h3>
-                  <p className="text-gray-300 text-sm">Discover amazing destinations worldwide</p>
-                </div>
+            {/* Sliding Cards Container */}
+            <div className="relative w-full h-[400px] sm:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
+              <div 
+                className="flex transition-transform duration-700 ease-in-out h-full"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {categorySlides.map((slide, index) => (
+                  <div key={slide.id} className="w-full h-full flex-shrink-0 relative">
+                    <Link to="/destinations" className="block w-full h-full group/slide">
+                      {/* Background Image */}
+                      <img 
+                        src={slide.image}
+                        alt={slide.title}
+                        className="w-full h-full object-cover group-hover/slide:scale-105 transition-transform duration-700"
+                      />
+                      
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+                      
+                      {/* Category Label */}
+                      <div className="absolute top-6 left-6 flex items-center gap-3">
+                        <div className={`${slide.labelColor} backdrop-blur-sm rounded-full px-4 py-2`}>
+                          <span className="text-sm font-bold text-white">{slide.label}</span>
+                        </div>
+                        {slide.comingSoon && (
+                          <div className="bg-gradient-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-full px-4 py-2 border border-slate-600/30">
+                            <span className="text-sm font-bold text-slate-300">COMING SOON</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Content */}
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 group-hover/slide:translate-y-[-4px] transition-transform duration-300">
+                          {slide.title}
+                        </h2>
+                        <p className="text-gray-300 text-lg sm:text-xl max-w-2xl group-hover/slide:translate-y-[-4px] transition-transform duration-300 delay-75">
+                          {slide.description}
+                        </p>
+                        
+                        {/* CTA Button */}
+                        <div className="mt-6 group-hover/slide:translate-y-[-4px] transition-transform duration-300 delay-150">
+                          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 text-white font-semibold hover:bg-white/30 transition-all duration-300">
+                            <span>Explore {slide.title}</span>
+                            <ChevronRight className="w-5 h-5" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                ))}
               </div>
-            </Link>
-
-            {/* Hotels Card */}
-            <Link to="/destinations" className="group relative overflow-hidden rounded-xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 hover:scale-105 transition-all duration-300">
-              <div className="aspect-[4/3] relative">
-                <img 
-                  src="/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png"
-                  alt="Hotels"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                
-                {/* Category Label */}
-                <div className="absolute top-4 left-4 flex items-center gap-2">
-                  <div className="bg-green-600/90 backdrop-blur-sm rounded-full px-3 py-1">
-                    <span className="text-sm font-bold text-white">HOTELS</span>
-                  </div>
-                  <div className="bg-gradient-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-full px-3 py-1 border border-slate-600/30">
-                    <span className="text-sm font-bold text-slate-300">COMING SOON</span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Hotels</h3>
-                  <p className="text-gray-300 text-sm">Luxury accommodations and resorts</p>
-                </div>
-              </div>
-            </Link>
-
-            {/* Cruises Card */}
-            <Link to="/destinations" className="group relative overflow-hidden rounded-xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 hover:scale-105 transition-all duration-300">
-              <div className="aspect-[4/3] relative">
-                <img 
-                  src="/lovable-uploads/c442bea5-cadc-4e64-8f52-41dfc17b1f5d.png"
-                  alt="Cruises"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                
-                {/* Category Label */}
-                <div className="absolute top-4 left-4 flex items-center gap-2">
-                  <div className="bg-purple-600/90 backdrop-blur-sm rounded-full px-3 py-1">
-                    <span className="text-sm font-bold text-white">CRUISES</span>
-                  </div>
-                  <div className="bg-gradient-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-full px-3 py-1 border border-slate-600/30">
-                    <span className="text-sm font-bold text-slate-300">COMING SOON</span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Cruises</h3>
-                  <p className="text-gray-300 text-sm">Ocean adventures and island hopping</p>
-                </div>
-              </div>
-            </Link>
+            </div>
           </div>
         </div>
       </div>
