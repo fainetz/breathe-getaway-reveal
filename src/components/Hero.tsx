@@ -88,7 +88,7 @@ const Hero = () => {
   const itemCount = getCartItemCount();
   
   return (
-    <section className="relative h-[80vh] sm:h-screen flex flex-col px-4 sm:px-6">
+    <section className="relative h-[70vh] sm:h-screen flex flex-col px-4 sm:px-6 pb-20 sm:pb-8">
       {/* 3D Background */}
       <ThreeBackground />
       
@@ -226,7 +226,7 @@ const Hero = () => {
           </div>
 
           {/* Sleek Carousel Container */}
-          <div className="relative flex-1 max-w-5xl mx-auto w-full group max-h-[350px] sm:max-h-[400px]">
+          <div className="relative flex-1 max-w-5xl mx-auto w-full group max-h-[280px] sm:max-h-[400px]">
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
@@ -258,7 +258,7 @@ const Hero = () => {
             </div>
 
             {/* Sliding Cards Container */}
-            <div className="relative w-full h-[350px] sm:h-[400px] overflow-hidden rounded-2xl shadow-2xl">
+            <div className="relative w-full h-[280px] sm:h-[400px] overflow-hidden rounded-2xl shadow-2xl">
               <div 
                 className="flex transition-transform duration-700 ease-in-out h-full"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -289,19 +289,19 @@ const Hero = () => {
                       </div>
 
                       {/* Content */}
-                      <div className="absolute bottom-6 left-6 right-6">
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 group-hover/slide:translate-y-[-4px] transition-transform duration-300">
+                      <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
+                        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-3 group-hover/slide:translate-y-[-4px] transition-transform duration-300">
                           {slide.title}
                         </h2>
-                        <p className="text-gray-300 text-lg sm:text-xl max-w-2xl group-hover/slide:translate-y-[-4px] transition-transform duration-300 delay-75">
+                        <p className="text-gray-300 text-base sm:text-xl max-w-2xl group-hover/slide:translate-y-[-4px] transition-transform duration-300 delay-75">
                           {slide.description}
                         </p>
                         
                         {/* CTA Button */}
-                        <div className="mt-6 group-hover/slide:translate-y-[-4px] transition-transform duration-300 delay-150">
-                          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 text-white font-semibold hover:bg-white/30 transition-all duration-300">
+                        <div className="mt-3 sm:mt-6 group-hover/slide:translate-y-[-4px] transition-transform duration-300 delay-150">
+                          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 sm:px-6 sm:py-3 text-white font-semibold hover:bg-white/30 transition-all duration-300 text-sm sm:text-base">
                             <span>Explore {slide.title}</span>
-                            <ChevronRight className="w-5 h-5" />
+                            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                           </div>
                         </div>
                       </div>
