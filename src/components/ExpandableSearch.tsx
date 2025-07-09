@@ -75,7 +75,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       !isScrolled 
         ? isMobile 
           ? 'top-[35%] left-4 right-4' // Mobile hero position - more centered
-          : 'top-[45%] left-1/2 -translate-x-1/2' // Desktop hero position - reduced spacing
+          : 'top-[50%] left-1/2 -translate-x-1/2' // Desktop hero position
         : isMobile 
           ? 'bottom-6 left-4 right-4' // Mobile collapsed position
           : 'bottom-6 left-1/2 -translate-x-1/2' // Desktop collapsed position
@@ -127,12 +127,12 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
               type="text"
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              placeholder={!isScrolled ? "How are you feeling about travel?" : isMobile ? "How do you feel?" : "How are you feeling about travel?"}
+              placeholder={!isScrolled ? "Need escape..." : isMobile ? "Escape..." : "Need escape..."}
               className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-base font-medium transition-all duration-300 focus:scale-[1.01]"
               autoFocus={!isScrolled}
               onFocus={(e) => {
                 if (!isScrolled) {
-                  e.target.placeholder = "I'm feeling adventurous...";
+                  e.target.placeholder = "Heartbroken, excited, adventurous...";
                 }
                 if (isMobile) {
                   e.target.scrollIntoView({ 
@@ -144,7 +144,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
               }}
               onBlur={(e) => {
                 if (!isScrolled) {
-                  e.target.placeholder = "How are you feeling about travel?";
+                  e.target.placeholder = "Need escape...";
                 }
                 if (isMobile) {
                   setTimeout(() => {
