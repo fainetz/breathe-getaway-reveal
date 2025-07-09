@@ -331,9 +331,9 @@ const Destinations = () => {
   const currentHero = featuredDestinations[heroIndex];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-950 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-950 via-black to-neutral-900 text-white overflow-x-hidden">
       {/* Ambient background pattern */}
-      <div className="fixed inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-500/30 via-blue-600/10 to-transparent pointer-events-none"></div>
+      <div className="fixed inset-0 opacity-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent pointer-events-none"></div>
       {/* Back Button */}
       <div className="fixed top-6 left-6 z-50">
         <Link 
