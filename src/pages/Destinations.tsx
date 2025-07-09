@@ -53,31 +53,31 @@ const Destinations = () => {
     },
     {
       id: 2,
-      name: "Northern Lights Quest",
-      location: "Tromsø, Norway",
-      category: "adventure",
+      name: "Maldives Paradise",
+      location: "Maldives",
+      category: "luxury",
       type: "destination",
-      image: "/lovable-uploads/462239f6-9a27-4b7d-a660-d8474967fd14.png", // Northern Lights aurora over snowy landscape
+      image: "/lovable-uploads/2a140d0b-7b6c-40c8-9aab-663da4cc8f70.png", // Maldives overwater villas with infinity pool at night
       price: "$2,199",
       duration: "5 days",
-      description: "Chase aurora dreams in the Arctic wilderness with expert guides and luxury accommodations",
-      mood: "Craving Wonder",
-      tags: ["Aurora", "Dog Sledding", "Ice Hotel"],
+      description: "Experience ultimate luxury in overwater villas with pristine waters and world-class amenities",
+      mood: "Craving Luxury",
+      tags: ["Overwater", "Snorkeling", "Spa"],
       rating: 4.8,
       featured: true
     },
     {
       id: 3,
-      name: "Kyoto Mindfulness",
-      location: "Kyoto, Japan",
-      category: "cultural",
+      name: "Tropical Infinity",
+      location: "Bali, Indonesia",
+      category: "relaxation",
       type: "destination",
-      image: "/lovable-uploads/9c5debbc-9089-442d-babf-ae82a2684501.png", // Tropical boat scene
+      image: "/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png", // Tropical infinity pool at sunset with palm trees
       price: "$1,899",
       duration: "6 days",
-      description: "Discover zen through tea ceremonies and temple walks in Japan's ancient capital",
-      mood: "Need Clarity",
-      tags: ["Temples", "Tea Ceremony", "Gardens"],
+      description: "Unwind in paradise with infinity pools, sunset views, and tropical serenity",
+      mood: "Need Relaxation",
+      tags: ["Infinity Pool", "Sunset", "Paradise"],
       rating: 4.7,
       featured: true
     },
@@ -324,16 +324,16 @@ const Destinations = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setHeroIndex((prev) => (prev + 1) % featuredDestinations.length);
-    }, 8000); // Increased from 6s to 8s for smoother experience
+    }, 10000); // Increased to 10s for smoother, more relaxed transitions
     return () => clearInterval(interval);
   }, [featuredDestinations.length]);
 
   const currentHero = featuredDestinations[heroIndex];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-950 via-black to-neutral-900 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-950 text-white overflow-x-hidden">
       {/* Ambient background pattern */}
-      <div className="fixed inset-0 opacity-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent pointer-events-none"></div>
+      <div className="fixed inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-500/30 via-blue-600/10 to-transparent pointer-events-none"></div>
       {/* Back Button */}
       <div className="fixed top-6 left-6 z-50">
         <Link 
@@ -347,17 +347,17 @@ const Destinations = () => {
 
       {/* Hero Section - Netflix Style */}
       {currentHero && (
-        <section className="relative h-[80vh] overflow-hidden transition-all duration-1000 ease-in-out" ref={heroRef}>
-          <div className="absolute inset-0 transition-all duration-1000 ease-in-out">
+        <section className="relative h-[80vh] overflow-hidden transition-all duration-1500 ease-in-out" ref={heroRef}>
+          <div className="absolute inset-0 transition-all duration-1500 ease-in-out">
             {currentHero.image ? (
               <img 
                 src={currentHero.image} 
                 alt={currentHero.name}
-                className="w-full h-full object-cover transition-all duration-1000 ease-in-out"
+                className="w-full h-full object-cover transition-all duration-1500 ease-in-out transform"
                 key={heroIndex} // Force re-render for smooth transition
               />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-neutral-800 via-neutral-900 to-black transition-all duration-1000 ease-in-out"></div>
+              <div className="w-full h-full bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-900 transition-all duration-1500 ease-in-out"></div>
             )}
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
