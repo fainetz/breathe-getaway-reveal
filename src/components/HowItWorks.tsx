@@ -67,7 +67,7 @@ const HowItWorks = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-20 opacity-0 animate-fade-in">
           <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:via-gray-100 dark:to-gray-300 bg-clip-text text-transparent transition-colors duration-300 drop-shadow-lg">
-            How Soul-Travel Works
+            How It Works
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
             Beyond destinations. Beyond filters. We read between the lines of what your heart truly seeks.
