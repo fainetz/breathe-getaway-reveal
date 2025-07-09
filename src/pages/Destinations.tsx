@@ -408,8 +408,8 @@ const Destinations = () => {
                 {/* Badges */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {currentHero?.comingSoon && (
-                    <div className="bg-gradient-to-r from-purple-500 to-pink-500 backdrop-blur-sm rounded-full px-3 py-1">
-                      <span className="text-sm font-bold text-white">COMING SOON</span>
+                    <div className="bg-gradient-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-full px-3 py-1 border border-slate-600/30">
+                      <span className="text-sm font-bold text-slate-300">COMING SOON</span>
                     </div>
                   )}
                   <div className="bg-blue-600/90 backdrop-blur-sm rounded-full px-3 py-1">
@@ -461,8 +461,8 @@ const Destinations = () => {
               <div className="flex items-center gap-2">
                 <h2 className="text-xl md:text-2xl font-bold">{row.title}</h2>
                 {row.destinations.some(dest => dest.comingSoon) && (
-                  <div className="bg-gradient-to-r from-purple-500 to-pink-500 backdrop-blur-sm rounded-full px-3 py-1">
-                    <span className="text-sm font-bold text-white">COMING SOON</span>
+                  <div className="bg-gradient-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-full px-3 py-1 border border-slate-600/30">
+                    <span className="text-sm font-bold text-slate-300">COMING SOON</span>
                   </div>
                 )}
                 {(row.title === "Hotels" || row.title === "Cruises") && (
