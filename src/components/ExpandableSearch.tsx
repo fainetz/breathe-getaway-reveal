@@ -62,7 +62,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
 
   return (
-    <div className={`fixed z-50 transition-all duration-700 ease-out ${
+    <div className={`fixed z-50 transition-all duration-300 ease-out will-change-transform ${
       !isScrolled 
         ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-8' // Hero position
         : isMobile 
@@ -70,7 +70,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           : 'bottom-8 left-1/2 -translate-x-1/2' // Desktop collapsed position
     }`}>
       <div 
-        className={`transition-all duration-700 ease-out ${
+        className={`transition-all duration-300 ease-out will-change-transform ${
           !isScrolled 
             ? 'w-96 sm:w-[400px]' // Hero width
             : isMobile 
