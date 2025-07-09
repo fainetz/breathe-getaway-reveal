@@ -345,95 +345,114 @@ const Destinations = () => {
         </Link>
       </div>
 
-      {/* Hero Section - Horizontal Scrollable */}
-      <section className="pt-20 pb-8">
-        <div className="px-6 md:px-12 mb-6">
+      {/* Hero Section - Full Screen Swipeable */}
+      <section className="h-screen pt-20 relative overflow-hidden">
+        <div className="absolute top-24 left-6 md:left-12 z-30">
           <h2 className="text-2xl md:text-3xl font-bold">Suggested</h2>
         </div>
         
-        <div className="relative group">
-          {/* Left Arrow */}
+        <div className="relative h-full group">
+          {/* Navigation Arrows */}
           <button
-            onClick={() => scrollRow('left', -1)}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 z-20 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all duration-300"
+            onClick={() => setHeroIndex(heroIndex === 0 ? featuredDestinations.length - 1 : heroIndex - 1)}
+            className="absolute left-6 top-1/2 transform -translate-y-1/2 z-30 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 opacity-70 hover:opacity-100 transition-all duration-300"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
 
-          {/* Right Arrow */}
           <button
-            onClick={() => scrollRow('right', -1)}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all duration-300"
+            onClick={() => setHeroIndex((heroIndex + 1) % featuredDestinations.length)}
+            className="absolute right-6 top-1/2 transform -translate-y-1/2 z-30 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 opacity-70 hover:opacity-100 transition-all duration-300"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
-          {/* Scrollable Row */}
-          <div 
-            id="row--1"
-            className="flex gap-4 overflow-x-auto scrollbar-hide px-6 md:px-12 pb-4 scroll-smooth"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {featuredDestinations.map((destination) => (
-              <div
-                key={destination.id}
-                onClick={() => handleCardClick(destination)}
-                className={`flex-none w-80 h-64 bg-gray-900/80 backdrop-blur-sm rounded-lg overflow-hidden transition-all duration-300 group/card border border-gray-800/50 ${
-                  destination.comingSoon 
-                    ? 'cursor-not-allowed opacity-75' 
-                    : 'cursor-pointer hover:scale-105'
+          {/* Dots Indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex gap-2">
+            {featuredDestinations.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setHeroIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === heroIndex ? 'bg-white' : 'bg-white/40'
                 }`}
-              >
-                <div className="relative h-full">
-                  {destination.image ? (
-                    <img 
-                      src={destination.image} 
-                      alt={destination.name}
-                      className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-300"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center group-hover/card:scale-105 transition-transform duration-300">
-                      <div className="text-center">
-                        <div className="w-12 h-12 mx-auto mb-2 opacity-30">
-                          <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                          </svg>
-                        </div>
-                        <p className="text-xs text-neutral-400">Image Coming Soon</p>
-                      </div>
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent group-hover/card:scale-105 transition-transform duration-300"></div>
-                  
-                  {destination.rating && (
-                    <div className="absolute top-3 left-3 flex items-center gap-1 bg-black/60 backdrop-blur-sm rounded px-2 py-1">
-                      <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                      <span className="text-xs font-medium">{destination.rating}</span>
-                    </div>
-                  )}
+              />
+            ))}
+          </div>
 
-                  <div className="absolute top-3 right-3 flex flex-col gap-1">
-                    {destination.comingSoon && (
-                      <div className="bg-orange-500/90 backdrop-blur-sm rounded px-2 py-1">
-                        <span className="text-xs font-bold">COMING SOON</span>
-                      </div>
-                    )}
-                    <div className="bg-blue-600/90 backdrop-blur-sm rounded px-2 py-1">
-                      <span className="text-xs font-bold">SUGGESTED</span>
+          {/* Full Screen Card */}
+          <div className="relative h-full w-full">
+            <div className="absolute inset-0">
+              {currentHero?.image ? (
+                <img 
+                  src={currentHero.image} 
+                  alt={currentHero.name}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-4 opacity-30">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                      </svg>
                     </div>
-                    <div className="bg-green-500/90 backdrop-blur-sm rounded px-2 py-1">
-                      <span className="text-xs font-bold">{destination.price}</span>
-                    </div>
-                  </div>
-
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="font-bold text-xl mb-1 line-clamp-1">{destination.name}</h3>
-                    <p className="text-gray-300 text-sm mb-2">{destination.location}</p>
-                    <p className="text-gray-400 text-sm line-clamp-2">{destination.description}</p>
+                    <p className="text-neutral-400">Image Coming Soon</p>
                   </div>
                 </div>
+              )}
+            </div>
+
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+
+            {/* Content Overlay */}
+            <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-12">
+              <div className="max-w-2xl">
+                {/* Badges */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {currentHero?.comingSoon && (
+                    <div className="bg-orange-500/90 backdrop-blur-sm rounded-full px-3 py-1">
+                      <span className="text-sm font-bold">COMING SOON</span>
+                    </div>
+                  )}
+                  <div className="bg-blue-600/90 backdrop-blur-sm rounded-full px-3 py-1">
+                    <span className="text-sm font-bold">SUGGESTED</span>
+                  </div>
+                  {currentHero?.rating && (
+                    <div className="flex items-center gap-1 bg-black/60 backdrop-blur-sm rounded-full px-3 py-1">
+                      <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                      <span className="text-sm font-medium">{currentHero.rating}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Title and Location */}
+                <h1 className="text-4xl md:text-6xl font-bold mb-3">{currentHero?.name}</h1>
+                <p className="text-xl md:text-2xl text-gray-300 mb-4">{currentHero?.location}</p>
+                
+                {/* Description */}
+                <p className="text-lg text-gray-400 mb-6 max-w-xl">{currentHero?.description}</p>
+                
+                {/* Price and CTA */}
+                <div className="flex items-center gap-4">
+                  <div className="bg-green-500/90 backdrop-blur-sm rounded-full px-4 py-2">
+                    <span className="text-lg font-bold">{currentHero?.price}</span>
+                  </div>
+                  <button
+                    onClick={() => currentHero && handleCardClick(currentHero)}
+                    disabled={currentHero?.comingSoon}
+                    className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                      currentHero?.comingSoon 
+                        ? 'bg-gray-500/50 text-gray-400 cursor-not-allowed' 
+                        : 'bg-white text-black hover:bg-gray-200 hover:scale-105'
+                    }`}
+                  >
+                    {currentHero?.comingSoon ? 'Coming Soon' : 'Explore Now'}
+                  </button>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
