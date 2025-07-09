@@ -226,10 +226,10 @@ const Hero = () => {
           </div>
 
           {/* Large Space for Search Bar */}
-          <div className="h-16 sm:h-24 flex-shrink-0"></div>
+          <div className="h-12 sm:h-16 flex-shrink-0"></div>
 
           {/* Sleek Carousel Container */}
-          <div className="relative flex-1 max-w-5xl mx-auto w-full group max-h-[280px] sm:max-h-[380px] mt-8 sm:mt-12">
+          <div className="relative flex-1 max-w-5xl mx-auto w-full group max-h-[280px] sm:max-h-[380px] mt-4 sm:mt-6">
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
