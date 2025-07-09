@@ -102,21 +102,23 @@ const Cart = () => {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950">
-      <div className="container mx-auto px-4 py-4 sm:py-8">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-950 dark:to-neutral-900">
+      <div className="container mx-auto px-4 py-6 sm:py-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-8 sm:mb-8">
           <Button
             variant="ghost"
             onClick={() => navigate('/')}
-            className="text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900 self-start"
+            className="text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100/80 dark:hover:bg-neutral-800/80 self-start rounded-xl px-4 py-3 backdrop-blur-sm"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Button>
           <div className="flex items-center gap-3">
-            <ShoppingCart className="w-6 sm:w-8 h-6 sm:h-8 text-neutral-900 dark:text-neutral-100" />
-            <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-neutral-100">Your Travel Cart</h1>
+            <div className="p-2 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl shadow-lg">
+              <ShoppingCart className="w-5 sm:w-6 h-5 sm:h-6 text-white" />
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-neutral-900 to-neutral-700 dark:from-neutral-100 dark:to-neutral-300 bg-clip-text text-transparent">Your Travel Cart</h1>
           </div>
         </div>
 
@@ -124,14 +126,16 @@ const Cart = () => {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {cart.length === 0 ? (
-              <Card className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+              <Card className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-800/50 shadow-xl rounded-2xl">
                 <CardContent className="p-8 sm:p-12 text-center">
-                  <ShoppingCart className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-4 text-neutral-400 dark:text-neutral-600" />
-                  <h3 className="text-lg sm:text-xl font-semibold mb-2 text-neutral-900 dark:text-neutral-100">Your cart is empty</h3>
-                  <p className="text-neutral-600 dark:text-neutral-400 mb-6 text-sm sm:text-base">Start exploring amazing destinations to fill your cart!</p>
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-6 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-2xl flex items-center justify-center">
+                    <ShoppingCart className="w-10 sm:w-12 h-10 sm:h-12 text-blue-500 dark:text-blue-400" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3 text-neutral-900 dark:text-neutral-100">Your cart is empty</h3>
+                  <p className="text-neutral-600 dark:text-neutral-400 mb-8 text-sm sm:text-base leading-relaxed max-w-sm mx-auto">Start exploring amazing destinations to fill your cart with unforgettable experiences!</p>
                   <Button 
                     onClick={() => navigate('/')} 
-                    className="bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:hover:bg-neutral-200 text-white dark:text-neutral-900"
+                    className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl px-8 py-3 font-semibold"
                   >
                     Explore Destinations
                   </Button>
@@ -139,80 +143,86 @@ const Cart = () => {
               </Card>
             ) : (
               cart.map((item) => (
-              <Card key={item.id} className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                <CardContent className="p-0">
-                  <div className="flex flex-col sm:flex-row">
-                    <img 
-                      src={item.destination.image} 
-                      alt={item.destination.name}
-                      className="w-full sm:w-48 h-48 sm:h-36 object-cover rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none"
-                    />
-                    <div className="flex-1 p-4 sm:p-6">
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-3">
-                        <div className="flex-1">
-                          <h4 className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-1">{item.destination.name}</h4>
-                          <p className="text-neutral-600 dark:text-neutral-400 text-sm">{item.destination.location}</p>
-                        </div>
-                        <button
-                          onClick={() => removeFromCart(item.id)}
-                          className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 self-start"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+              <Card key={item.id} className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl overflow-hidden">
+                  <CardContent className="p-0">
+                    <div className="flex flex-col sm:flex-row">
+                      <div className="relative overflow-hidden">
+                        <img 
+                          src={item.destination.image} 
+                          alt={item.destination.name}
+                          className="w-full sm:w-48 h-56 sm:h-40 object-cover transition-transform duration-300 hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                       </div>
+                      <div className="flex-1 p-5 sm:p-6">
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-4">
+                          <div className="flex-1">
+                            <h4 className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-2">{item.destination.name}</h4>
+                            <div className="flex items-center gap-2 mb-3">
+                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                              <p className="text-neutral-600 dark:text-neutral-400 text-sm font-medium">{item.destination.location}</p>
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => removeFromCart(item.id)}
+                            className="p-3 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-xl transition-all duration-200 text-red-400 hover:text-red-600 dark:hover:text-red-400 self-start group"
+                          >
+                            <Trash2 className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+                          </button>
+                        </div>
                         
-                        <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-4 line-clamp-2">{item.destination.description}</p>
+                        <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-5 line-clamp-2 leading-relaxed">{item.destination.description}</p>
                         
-                        <div className="flex flex-wrap gap-2 mb-4">
+                        <div className="flex flex-wrap gap-2 mb-6">
                           {item.destination.tags.map((tag) => (
-                            <span key={tag} className="px-3 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-xs rounded-full border border-neutral-200 dark:border-neutral-700">
+                            <span key={tag} className="px-3 py-1.5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 text-blue-700 dark:text-blue-300 text-xs font-medium rounded-full border border-blue-200/50 dark:border-blue-800/50">
                               {tag}
                             </span>
                           ))}
                         </div>
 
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                          <span className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-neutral-100">{item.destination.price}</span>
-                          <div className="flex items-center gap-2">
-                            <button
-                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                              className="w-8 h-8 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-full flex items-center justify-center text-neutral-700 dark:text-neutral-300 font-bold"
-                            >
-                              -
-                            </button>
-                            <span className="w-8 text-center font-semibold text-neutral-900 dark:text-neutral-100">{item.quantity}</span>
-                            <button
-                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              className="w-8 h-8 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-full flex items-center justify-center text-neutral-700 dark:text-neutral-300 font-bold"
-                            >
-                              +
-                            </button>
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                            <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{item.destination.price}</div>
+                            <div className="flex items-center gap-3 bg-neutral-50 dark:bg-neutral-800/50 rounded-xl p-2">
+                              <button
+                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                className="w-10 h-10 bg-white dark:bg-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-600 rounded-lg flex items-center justify-center text-neutral-700 dark:text-neutral-300 font-bold shadow-sm hover:shadow-md transition-all duration-200"
+                              >
+                                -
+                              </button>
+                              <span className="w-8 text-center font-bold text-lg text-neutral-900 dark:text-neutral-100">{item.quantity}</span>
+                              <button
+                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                className="w-10 h-10 bg-white dark:bg-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-600 rounded-lg flex items-center justify-center text-neutral-700 dark:text-neutral-300 font-bold shadow-sm hover:shadow-md transition-all duration-200"
+                              >
+                                +
+                              </button>
+                            </div>
                           </div>
-                        </div>
                           
-                        <div className="flex items-center gap-2 sm:gap-3">
+                          <div className="flex items-center gap-3">
                             <button
                               onClick={() => handleReaction(item.id, 'like')}
-                              className={`flex items-center gap-1 px-3 py-1 rounded-full transition-colors ${
+                              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium ${
                                 item.userReaction === 'like' 
-                                  ? 'bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800' 
-                                  : 'bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700'
+                                  ? 'bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 text-rose-600 dark:text-rose-400 border-2 border-rose-200 dark:border-rose-800 shadow-sm' 
+                                  : 'bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400 border-2 border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600'
                               }`}
                             >
                               <Heart className="w-4 h-4" />
-                              <span className="text-sm">{item.likes || 0}</span>
+                              <span className="text-sm font-semibold">{item.likes || 0}</span>
                             </button>
                             <button
                               onClick={() => handleReaction(item.id, 'dislike')}
-                              className={`flex items-center gap-1 px-3 py-1 rounded-full transition-colors ${
+                              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium ${
                                 item.userReaction === 'dislike' 
-                                  ? 'bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800' 
-                                  : 'bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700'
+                                  ? 'bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-950/30 dark:to-red-950/30 text-orange-600 dark:text-orange-400 border-2 border-orange-200 dark:border-orange-800 shadow-sm' 
+                                  : 'bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400 border-2 border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600'
                               }`}
                             >
                               <ThumbsDown className="w-4 h-4" />
-                              <span className="text-sm">{item.dislikes || 0}</span>
+                              <span className="text-sm font-semibold">{item.dislikes || 0}</span>
                             </button>
                           </div>
                         </div>
@@ -227,38 +237,44 @@ const Cart = () => {
           {/* Order Summary */}
           {cart.length > 0 && (
             <div className="lg:col-span-1">
-              <Card className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 sticky top-4 sm:top-8">
-                <CardHeader>
-                  <CardTitle className="text-neutral-900 dark:text-neutral-100 text-lg sm:text-xl">Order Summary</CardTitle>
+              <Card className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-800/50 shadow-xl rounded-2xl sticky top-4 sm:top-8">
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-neutral-900 dark:text-neutral-100 text-xl sm:text-2xl font-bold flex items-center gap-3">
+                    <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg"></div>
+                    Order Summary
+                  </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-2">
+                <CardContent className="space-y-6">
+                  <div className="space-y-3">
                     {cart.map((item) => (
-                      <div key={item.id} className="flex justify-between text-sm">
-                        <span className="text-neutral-600 dark:text-neutral-400">{item.destination.name} x{item.quantity}</span>
-                        <span className="text-neutral-900 dark:text-neutral-100">${(parseFloat(item.destination.price.replace(/[^0-9.]/g, '')) * item.quantity).toFixed(2)}</span>
+                      <div key={item.id} className="flex justify-between items-center py-2 px-3 bg-neutral-50 dark:bg-neutral-800/50 rounded-xl">
+                        <span className="text-neutral-600 dark:text-neutral-400 font-medium">{item.destination.name} x{item.quantity}</span>
+                        <span className="text-neutral-900 dark:text-neutral-100 font-bold">${(parseFloat(item.destination.price.replace(/[^0-9.]/g, '')) * item.quantity).toFixed(2)}</span>
                       </div>
                     ))}
                   </div>
                   
-                  <div className="border-t border-neutral-200 dark:border-neutral-800 pt-4">
-                    <div className="flex justify-between text-base sm:text-lg font-bold">
-                      <span className="text-neutral-900 dark:text-neutral-100">Total</span>
-                      <span className="text-neutral-900 dark:text-neutral-100">${getTotalPrice().toFixed(2)}</span>
+                  <div className="border-t border-neutral-200 dark:border-neutral-800 pt-6">
+                    <div className="flex justify-between items-center p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-xl border border-green-200/50 dark:border-green-800/50">
+                      <span className="text-neutral-900 dark:text-neutral-100 text-lg font-bold">Total</span>
+                      <span className="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">${getTotalPrice().toFixed(2)}</span>
                     </div>
                   </div>
                   
                   <Button 
                     onClick={handleCheckout}
-                    className="w-full bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-semibold py-3 transition-all duration-200"
+                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white font-bold py-4 transition-all duration-300 hover:shadow-xl rounded-xl text-lg"
                   >
-                    <CreditCard className="w-4 h-4 mr-2" />
+                    <CreditCard className="w-5 h-5 mr-3" />
                     Proceed to Checkout
                   </Button>
                   
-                  <p className="text-xs text-neutral-500 dark:text-neutral-500 text-center mt-4">
-                    Secure checkout powered by industry-leading encryption
-                  </p>
+                  <div className="flex items-center justify-center gap-2 pt-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <p className="text-xs text-neutral-500 dark:text-neutral-500 text-center">
+                      Secure checkout powered by industry-leading encryption
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             </div>
