@@ -205,7 +205,7 @@ const Hero = () => {
       </nav>
 
       {/* Main Content - Premium Layout */}
-      <div className="relative z-10 flex-1 flex items-center pt-4 sm:pt-8 pb-8 sm:pb-16">
+      <div className="relative z-10 flex-1 flex items-center pt-4 sm:pt-8 pb-12 sm:pb-20">
         <div className="max-w-7xl mx-auto w-full h-full flex flex-col">
           {/* Title */}
           <div className="text-center mb-6 sm:mb-8 flex-shrink-0">
@@ -229,7 +229,7 @@ const Hero = () => {
           <div className="h-16 sm:h-16 flex-shrink-0"></div>
 
           {/* Sleek Carousel Container */}
-          <div className="relative flex-1 max-w-5xl mx-auto w-full group max-h-[280px] sm:max-h-[380px] mt-8 sm:mt-6">
+          <div className="relative flex-1 max-w-5xl mx-auto w-full group mt-2 sm:mt-4">
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
