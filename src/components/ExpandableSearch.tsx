@@ -71,7 +71,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
 
   return (
-    <div className={`fixed z-50 transition-transform duration-150 ease-out ${
+    <div className={`fixed z-40 transition-transform duration-150 ease-out ${
       !isScrolled 
         ? isMobile 
           ? 'top-[35%] left-4 right-4' // Mobile hero position - more centered
