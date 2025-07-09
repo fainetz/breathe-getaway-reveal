@@ -48,7 +48,7 @@ const Destinations = () => {
       mood: "Seeking Balance",
       tags: ["Meditation", "Yoga", "Spa"],
       rating: 4.9,
-      featured: true,
+      featured: false,
       comingSoon: true
     },
     {
