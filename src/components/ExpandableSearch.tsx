@@ -75,7 +75,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       !isScrolled 
         ? isMobile 
           ? 'top-[35%] left-4 right-4' // Mobile hero position - more centered
-          : 'top-[48%] left-1/2 -translate-x-1/2' // Desktop hero position
+          : 'top-[50%] left-1/2 -translate-x-1/2' // Desktop hero position
         : isMobile 
           ? 'bottom-6 left-4 right-4' // Mobile collapsed position
           : 'bottom-6 left-1/2 -translate-x-1/2' // Desktop collapsed position
