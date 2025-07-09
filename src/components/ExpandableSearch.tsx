@@ -73,15 +73,19 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
   return (
     <div className={`fixed z-50 transition-transform duration-150 ease-out ${
       !isScrolled 
-        ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-4' // Hero position
+        ? isMobile 
+          ? 'top-1/2 left-4 right-4 -translate-y-1/2' // Mobile hero position
+          : 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-4' // Desktop hero position
         : isMobile 
-          ? 'bottom-4 left-4 right-4' // Mobile collapsed position
+          ? 'bottom-6 left-4 right-4' // Mobile collapsed position
           : 'bottom-6 left-1/2 -translate-x-1/2' // Desktop collapsed position
     }`}>
       <div 
         className={`${
           isMobile ? 'w-full' : 'w-96'
-        } h-[52px] relative overflow-hidden transition-transform duration-150 ease-out origin-center ${
+        } ${
+          isMobile ? 'h-[48px]' : 'h-[52px]'
+        } relative overflow-hidden transition-transform duration-150 ease-out origin-center ${
           !isScrolled 
             ? 'scale-100' // Hero scale
             : isMobile 
