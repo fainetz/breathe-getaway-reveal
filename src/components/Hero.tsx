@@ -208,8 +208,8 @@ const Hero = () => {
       <div className="relative z-10 flex-1 flex items-center pt-4 sm:pt-8 pb-8 sm:pb-16">
         <div className="max-w-7xl mx-auto w-full h-full flex flex-col">
           {/* Title */}
-          <div className="text-center mb-8 sm:mb-12 flex-shrink-0">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white mb-4 sm:mb-6 transition-colors duration-300 animate-fade-in">
+          <div className="text-center mb-6 sm:mb-8 flex-shrink-0">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white mb-3 sm:mb-4 transition-colors duration-300 animate-fade-in">
               The Smarter,
               <br />
               <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
@@ -219,14 +219,17 @@ const Hero = () => {
               Escape Discovery
             </h1>
             
-            <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl mb-6 sm:mb-8 transition-colors duration-300 mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl mb-4 sm:mb-6 transition-colors duration-300 mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
               Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
             </p>
 
           </div>
 
+          {/* Large Space for Search Bar */}
+          <div className="h-16 sm:h-24 flex-shrink-0"></div>
+
           {/* Sleek Carousel Container */}
-          <div className="relative flex-1 max-w-5xl mx-auto w-full group max-h-[350px] sm:max-h-[400px]">
+          <div className="relative flex-1 max-w-5xl mx-auto w-full group max-h-[280px] sm:max-h-[320px] mt-8 sm:mt-12">
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
@@ -258,7 +261,7 @@ const Hero = () => {
             </div>
 
             {/* Sliding Cards Container */}
-            <div className="relative w-full h-[350px] sm:h-[400px] overflow-hidden rounded-2xl shadow-2xl">
+            <div className="relative w-full h-[280px] sm:h-[320px] overflow-hidden rounded-2xl shadow-2xl">
               <div 
                 className="flex transition-transform duration-700 ease-in-out h-full"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
