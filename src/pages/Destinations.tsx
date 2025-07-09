@@ -412,7 +412,7 @@ const Destinations = () => {
                 {/* Badges */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {currentHero?.comingSoon && (
-                    <div className="bg-orange-500/90 backdrop-blur-sm rounded-full px-3 py-1">
+                    <div className="bg-violet-600/90 backdrop-blur-sm rounded-full px-3 py-1">
                       <span className="text-sm font-bold">COMING SOON</span>
                     </div>
                   )}
@@ -465,7 +465,7 @@ const Destinations = () => {
               <div className="flex items-center gap-2">
                 <h2 className="text-xl md:text-2xl font-bold">{row.title}</h2>
                 {row.destinations.some(dest => dest.comingSoon) && (
-                  <div className="bg-orange-500/90 backdrop-blur-sm rounded-full px-3 py-1">
+                  <div className="bg-violet-600/90 backdrop-blur-sm rounded-full px-3 py-1">
                     <span className="text-sm font-bold">COMING SOON</span>
                   </div>
                 )}
