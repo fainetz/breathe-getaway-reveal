@@ -345,86 +345,98 @@ const Destinations = () => {
         </Link>
       </div>
 
-      {/* Hero Section - Netflix Style */}
-      {currentHero && (
-        <section className="relative h-[80vh] overflow-hidden transition-all duration-1500 ease-in-out" ref={heroRef}>
-          <div className="absolute inset-0 transition-all duration-1500 ease-in-out">
-            {currentHero.image ? (
-              <img 
-                src={currentHero.image} 
-                alt={currentHero.name}
-                className="w-full h-full object-cover transition-all duration-1500 ease-in-out transform"
-                key={heroIndex} // Force re-render for smooth transition
-              />
-            ) : (
-              <div className="w-full h-full bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-900 transition-all duration-1500 ease-in-out"></div>
-            )}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          </div>
+      {/* Hero Section - Horizontal Scrollable */}
+      <section className="pt-20 pb-8">
+        <div className="px-6 md:px-12 mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold">Suggested</h2>
+        </div>
+        
+        <div className="relative group">
+          {/* Left Arrow */}
+          <button
+            onClick={() => scrollRow('left', -1)}
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 z-20 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all duration-300"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
 
-          <div className="relative z-10 h-full flex items-center px-6 md:px-12">
-            <div className="max-w-xl">
-              <div className="flex items-center gap-2 mb-4">
-                <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                <span className="text-sm font-medium">{currentHero.rating} • {currentHero.duration}</span>
-                <span className="text-xs bg-blue-600 px-2 py-1 rounded">SUGGESTED</span>
-              </div>
-              
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
-                {currentHero.name}
-              </h1>
-              
-              <p className="text-lg md:text-xl text-gray-200 mb-6 leading-relaxed">
-                {currentHero.description}
-              </p>
+          {/* Right Arrow */}
+          <button
+            onClick={() => scrollRow('right', -1)}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all duration-300"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
 
-              <div className="flex flex-wrap gap-2 mb-8">
-                {currentHero.tags.map((tag, index) => (
-                  <span key={index} className="text-sm bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex gap-4">
-                <button 
-                  onClick={() => handleCardClick(currentHero)}
-                  className="flex items-center gap-3 bg-white text-black px-8 py-3 rounded font-semibold hover:bg-white/90 transition-all duration-200"
-                >
-                  <Play className="w-5 h-5 fill-current" />
-                  Explore Now
-                </button>
-                <button 
-                  onClick={() => handleCardClick(currentHero)}
-                  className="flex items-center gap-3 bg-white/20 backdrop-blur-sm border border-white/30 px-8 py-3 rounded font-semibold hover:bg-white/30 transition-all duration-200"
-                >
-                  <Info className="w-5 h-5" />
-                  More Info
-                </button>
-              </div>
-
-              <div className="flex items-center gap-2 mt-8">
-                <span className="text-2xl font-bold text-green-400">{currentHero.price}</span>
-                <span className="text-gray-300">• {currentHero.location}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Hero Navigation Dots */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
-            {featuredDestinations.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setHeroIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === heroIndex ? 'bg-white' : 'bg-white/30'
+          {/* Scrollable Row */}
+          <div 
+            id="row--1"
+            className="flex gap-4 overflow-x-auto scrollbar-hide px-6 md:px-12 pb-4 scroll-smooth"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {featuredDestinations.map((destination) => (
+              <div
+                key={destination.id}
+                onClick={() => handleCardClick(destination)}
+                className={`flex-none w-80 h-64 bg-gray-900/80 backdrop-blur-sm rounded-lg overflow-hidden transition-all duration-300 group/card border border-gray-800/50 ${
+                  destination.comingSoon 
+                    ? 'cursor-not-allowed opacity-75' 
+                    : 'cursor-pointer hover:scale-105'
                 }`}
-              />
+              >
+                <div className="relative h-full">
+                  {destination.image ? (
+                    <img 
+                      src={destination.image} 
+                      alt={destination.name}
+                      className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center group-hover/card:scale-105 transition-transform duration-300">
+                      <div className="text-center">
+                        <div className="w-12 h-12 mx-auto mb-2 opacity-30">
+                          <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                          </svg>
+                        </div>
+                        <p className="text-xs text-neutral-400">Image Coming Soon</p>
+                      </div>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent group-hover/card:scale-105 transition-transform duration-300"></div>
+                  
+                  {destination.rating && (
+                    <div className="absolute top-3 left-3 flex items-center gap-1 bg-black/60 backdrop-blur-sm rounded px-2 py-1">
+                      <Star className="w-3 h-3 text-yellow-400 fill-current" />
+                      <span className="text-xs font-medium">{destination.rating}</span>
+                    </div>
+                  )}
+
+                  <div className="absolute top-3 right-3 flex flex-col gap-1">
+                    {destination.comingSoon && (
+                      <div className="bg-orange-500/90 backdrop-blur-sm rounded px-2 py-1">
+                        <span className="text-xs font-bold">COMING SOON</span>
+                      </div>
+                    )}
+                    <div className="bg-blue-600/90 backdrop-blur-sm rounded px-2 py-1">
+                      <span className="text-xs font-bold">SUGGESTED</span>
+                    </div>
+                    <div className="bg-green-500/90 backdrop-blur-sm rounded px-2 py-1">
+                      <span className="text-xs font-bold">{destination.price}</span>
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h3 className="font-bold text-xl mb-1 line-clamp-1">{destination.name}</h3>
+                    <p className="text-gray-300 text-sm mb-2">{destination.location}</p>
+                    <p className="text-gray-400 text-sm line-clamp-2">{destination.description}</p>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* Content Rows - Netflix Style */}
       <div className="pb-12">
