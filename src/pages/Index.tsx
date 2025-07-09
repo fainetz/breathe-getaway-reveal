@@ -30,7 +30,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white overflow-x-hidden transition-colors duration-300">
-      <Hero />
+      <Hero onSearchSubmit={handleSearchSubmit} />
       <HowItWorks />
       <Features />
       <EmotionalHooks />

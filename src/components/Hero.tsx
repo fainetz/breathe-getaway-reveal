@@ -1,16 +1,21 @@
 
 import { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, ShoppingCart, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronDown, Menu, X, ShoppingCart, ChevronLeft, ChevronRight, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThreeBackground from './ThreeBackground';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from '../contexts/ThemeContext';
 
-const Hero = () => {
+interface HeroProps {
+  onSearchSubmit?: (query: string) => void;
+}
+
+const Hero = ({ onSearchSubmit }: HeroProps) => {
   const { theme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cart, setCart] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Category slides data
   const categorySlides = [
@@ -81,6 +86,13 @@ const Hero = () => {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + categorySlides.length) % categorySlides.length);
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim() && onSearchSubmit) {
+      onSearchSubmit(searchQuery);
+    }
   };
 
   const itemCount = getCartItemCount();
@@ -202,12 +214,12 @@ const Hero = () => {
         )}
       </nav>
 
-      {/* Main Content - Sleek Sliding Carousel */}
-      <div className="relative z-10 flex-1 flex items-center pt-2 sm:pt-8 pb-24 sm:pb-40">
+      {/* Main Content - Premium Layout */}
+      <div className="relative z-10 flex-1 flex items-center pt-4 sm:pt-8 pb-8 sm:pb-16">
         <div className="max-w-7xl mx-auto w-full h-full flex flex-col">
           {/* Title */}
-          <div className="text-center mb-6 sm:mb-8 flex-shrink-0">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white mb-3 sm:mb-6 transition-colors duration-300 animate-fade-in">
+          <div className="text-center mb-8 sm:mb-12 flex-shrink-0">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white mb-4 sm:mb-6 transition-colors duration-300 animate-fade-in">
               The Smarter,
               <br />
               <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
@@ -217,13 +229,40 @@ const Hero = () => {
               Escape Discovery
             </h1>
             
-            <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl mb-4 sm:mb-6 transition-colors duration-300 mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl mb-6 sm:mb-8 transition-colors duration-300 mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
               Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
             </p>
+
+            {/* Integrated Search Bar */}
+            <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
+              <form onSubmit={handleSearchSubmit} className="max-w-md mx-auto bg-white/80 dark:bg-white/10 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-full p-1 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="flex items-center px-4 py-3">
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="How are you feeling about travel?"
+                    className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-base transition-all duration-300"
+                    onFocus={(e) => {
+                      e.target.placeholder = "I'm feeling adventurous...";
+                    }}
+                    onBlur={(e) => {
+                      e.target.placeholder = "How are you feeling about travel?";
+                    }}
+                  />
+                  <button 
+                    type="submit"
+                    className="ml-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-2 rounded-full hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 hover:scale-105 shadow-md"
+                  >
+                    <Search className="w-4 h-4" />
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
 
           {/* Sleek Carousel Container */}
-          <div className="relative flex-1 max-w-5xl mx-auto w-full group max-h-[450px] sm:max-h-[500px]">
+          <div className="relative flex-1 max-w-5xl mx-auto w-full group max-h-[350px] sm:max-h-[400px]">
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
@@ -255,7 +294,7 @@ const Hero = () => {
             </div>
 
             {/* Sliding Cards Container */}
-            <div className="relative w-full h-[400px] sm:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
+            <div className="relative w-full h-[350px] sm:h-[400px] overflow-hidden rounded-2xl shadow-2xl">
               <div 
                 className="flex transition-transform duration-700 ease-in-out h-full"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
