@@ -454,7 +454,7 @@ const Destinations = () => {
       </section>
 
       {/* Content Rows - Netflix Style */}
-      <div className="pb-12">
+      <div className="pb-12 pt-16">
         {categoryRows.map((row, rowIndex) => (
           <section key={rowIndex} className="mb-12">
             <div className="px-6 md:px-12 mb-6">
