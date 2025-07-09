@@ -346,7 +346,7 @@ const Destinations = () => {
       </div>
 
       {/* Hero Section - Full Screen Swipeable */}
-      <section className="h-screen pt-20 relative overflow-hidden">
+      <section className="h-screen relative overflow-hidden">
         <div className="absolute top-24 left-6 md:left-12 z-30">
           <h2 className="text-2xl md:text-3xl font-bold">Suggested</h2>
         </div>
