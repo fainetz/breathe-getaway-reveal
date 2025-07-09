@@ -75,7 +75,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       !isScrolled 
         ? isMobile 
           ? 'top-[35%] left-4 right-4' // Mobile hero position - more centered
-          : 'top-[50%] left-1/2 -translate-x-1/2' // Desktop hero position
+          : 'top-[48%] left-1/2 -translate-x-1/2' // Desktop hero position
         : isMobile 
           ? 'bottom-6 left-4 right-4' // Mobile collapsed position
           : 'bottom-6 left-1/2 -translate-x-1/2' // Desktop collapsed position
@@ -127,12 +127,12 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
               type="text"
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              placeholder={!isScrolled ? "Need escape..." : isMobile ? "Escape..." : "Need escape..."}
+              placeholder={!isScrolled ? "I just got broken up with, take me somewhere..." : isMobile ? "Take me somewhere..." : "I just got broken up with, take me somewhere..."}
               className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-base font-medium transition-all duration-300 focus:scale-[1.01]"
               autoFocus={!isScrolled}
               onFocus={(e) => {
                 if (!isScrolled) {
-                  e.target.placeholder = "Heartbroken, excited, adventurous...";
+                  e.target.placeholder = "I need healing, adventure, or just an escape...";
                 }
                 if (isMobile) {
                   e.target.scrollIntoView({ 
@@ -144,7 +144,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
               }}
               onBlur={(e) => {
                 if (!isScrolled) {
-                  e.target.placeholder = "Need escape...";
+                  e.target.placeholder = "I just got broken up with, take me somewhere...";
                 }
                 if (isMobile) {
                   setTimeout(() => {
