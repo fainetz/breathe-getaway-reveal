@@ -57,7 +57,7 @@ const Vision = () => {
   }, [isVisible, visionCards.length]);
 
   return (
-    <section id="vision" className="pt-40 pb-32 sm:pt-44 sm:pb-32 px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300" ref={sectionRef}>
+    <section id="vision" className="py-32 px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300" ref={sectionRef}>
       {/* Enhanced background with image */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-5">
