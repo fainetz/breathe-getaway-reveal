@@ -219,12 +219,9 @@ const Hero = () => {
               Escape Discovery
             </h1>
             
-            <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl mb-8 sm:mb-12 transition-colors duration-300 mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl mb-6 sm:mb-8 transition-colors duration-300 mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
               Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
             </p>
-
-            {/* Search bar space on mobile */}
-            <div className="h-16 sm:h-0 mb-4 sm:mb-0"></div>
 
           </div>
 
