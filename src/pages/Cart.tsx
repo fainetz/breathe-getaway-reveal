@@ -103,32 +103,32 @@ const Cart = () => {
 
   return (
     <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-4 sm:py-8">
         {/* Header */}
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6 sm:mb-8">
           <Button
             variant="ghost"
             onClick={() => navigate('/')}
-            className="text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900"
+            className="text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900 self-start"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Button>
           <div className="flex items-center gap-3">
-            <ShoppingCart className="w-8 h-8 text-neutral-900 dark:text-neutral-100" />
-            <h1 className="text-3xl font-bold text-neutral-900 dark:text-neutral-100">Your Travel Cart</h1>
+            <ShoppingCart className="w-6 sm:w-8 h-6 sm:h-8 text-neutral-900 dark:text-neutral-100" />
+            <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-neutral-100">Your Travel Cart</h1>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Cart Items */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {cart.length === 0 ? (
               <Card className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                <CardContent className="p-12 text-center">
-                  <ShoppingCart className="w-16 h-16 mx-auto mb-4 text-neutral-400 dark:text-neutral-600" />
-                  <h3 className="text-xl font-semibold mb-2 text-neutral-900 dark:text-neutral-100">Your cart is empty</h3>
-                  <p className="text-neutral-600 dark:text-neutral-400 mb-6">Start exploring amazing destinations to fill your cart!</p>
+                <CardContent className="p-8 sm:p-12 text-center">
+                  <ShoppingCart className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-4 text-neutral-400 dark:text-neutral-600" />
+                  <h3 className="text-lg sm:text-xl font-semibold mb-2 text-neutral-900 dark:text-neutral-100">Your cart is empty</h3>
+                  <p className="text-neutral-600 dark:text-neutral-400 mb-6 text-sm sm:text-base">Start exploring amazing destinations to fill your cart!</p>
                   <Button 
                     onClick={() => navigate('/')} 
                     className="bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:hover:bg-neutral-200 text-white dark:text-neutral-900"
@@ -139,27 +139,27 @@ const Cart = () => {
               </Card>
             ) : (
               cart.map((item) => (
-                <Card key={item.id} className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                  <CardContent className="p-0">
-                    <div className="flex">
-                      <img 
-                        src={item.destination.image} 
-                        alt={item.destination.name}
-                        className="w-48 h-36 object-cover rounded-l-lg"
-                      />
-                      <div className="flex-1 p-6">
-                        <div className="flex justify-between items-start mb-3">
-                          <div>
-                            <h4 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-1">{item.destination.name}</h4>
-                            <p className="text-neutral-600 dark:text-neutral-400">{item.destination.location}</p>
-                          </div>
-                          <button
-                            onClick={() => removeFromCart(item.id)}
-                            className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </button>
+              <Card key={item.id} className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                <CardContent className="p-0">
+                  <div className="flex flex-col sm:flex-row">
+                    <img 
+                      src={item.destination.image} 
+                      alt={item.destination.name}
+                      className="w-full sm:w-48 h-48 sm:h-36 object-cover rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none"
+                    />
+                    <div className="flex-1 p-4 sm:p-6">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-3">
+                        <div className="flex-1">
+                          <h4 className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-1">{item.destination.name}</h4>
+                          <p className="text-neutral-600 dark:text-neutral-400 text-sm">{item.destination.location}</p>
                         </div>
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 self-start"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
                         
                         <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-4 line-clamp-2">{item.destination.description}</p>
                         
@@ -171,27 +171,27 @@ const Cart = () => {
                           ))}
                         </div>
 
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-4">
-                            <span className="text-xl font-bold text-neutral-900 dark:text-neutral-100">{item.destination.price}</span>
-                            <div className="flex items-center gap-2">
-                              <button
-                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                className="w-8 h-8 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-full flex items-center justify-center text-neutral-700 dark:text-neutral-300 font-bold"
-                              >
-                                -
-                              </button>
-                              <span className="w-8 text-center font-semibold text-neutral-900 dark:text-neutral-100">{item.quantity}</span>
-                              <button
-                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                className="w-8 h-8 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-full flex items-center justify-center text-neutral-700 dark:text-neutral-300 font-bold"
-                              >
-                                +
-                              </button>
-                            </div>
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                          <span className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-neutral-100">{item.destination.price}</span>
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                              className="w-8 h-8 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-full flex items-center justify-center text-neutral-700 dark:text-neutral-300 font-bold"
+                            >
+                              -
+                            </button>
+                            <span className="w-8 text-center font-semibold text-neutral-900 dark:text-neutral-100">{item.quantity}</span>
+                            <button
+                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              className="w-8 h-8 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-full flex items-center justify-center text-neutral-700 dark:text-neutral-300 font-bold"
+                            >
+                              +
+                            </button>
                           </div>
+                        </div>
                           
-                          <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2 sm:gap-3">
                             <button
                               onClick={() => handleReaction(item.id, 'like')}
                               className={`flex items-center gap-1 px-3 py-1 rounded-full transition-colors ${
@@ -227,9 +227,9 @@ const Cart = () => {
           {/* Order Summary */}
           {cart.length > 0 && (
             <div className="lg:col-span-1">
-              <Card className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 sticky top-8">
+              <Card className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 sticky top-4 sm:top-8">
                 <CardHeader>
-                  <CardTitle className="text-neutral-900 dark:text-neutral-100 text-xl">Order Summary</CardTitle>
+                  <CardTitle className="text-neutral-900 dark:text-neutral-100 text-lg sm:text-xl">Order Summary</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
@@ -242,7 +242,7 @@ const Cart = () => {
                   </div>
                   
                   <div className="border-t border-neutral-200 dark:border-neutral-800 pt-4">
-                    <div className="flex justify-between text-lg font-bold">
+                    <div className="flex justify-between text-base sm:text-lg font-bold">
                       <span className="text-neutral-900 dark:text-neutral-100">Total</span>
                       <span className="text-neutral-900 dark:text-neutral-100">${getTotalPrice().toFixed(2)}</span>
                     </div>

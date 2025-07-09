@@ -233,35 +233,35 @@ const Hero = () => {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl hidden sm:block"
             >
               <ChevronLeft className="w-6 h-6 text-white" />
             </button>
 
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl hidden sm:block"
             >
               <ChevronRight className="w-6 h-6 text-white" />
             </button>
 
-            {/* Slide Indicators */}
-            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 flex gap-3">
+            {/* Slide Indicators - Outside image on mobile, inside on desktop */}
+            <div className="flex justify-center mt-4 sm:absolute sm:bottom-6 sm:left-1/2 sm:transform sm:-translate-x-1/2 sm:mt-0 z-30 gap-3">
               {categorySlides.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                     index === currentSlide 
-                      ? 'bg-white shadow-lg' 
-                      : 'bg-white/40 hover:bg-white/60'
+                      ? 'bg-blue-500 sm:bg-white shadow-lg scale-125' 
+                      : 'bg-gray-400 sm:bg-white/40 hover:bg-gray-600 sm:hover:bg-white/60'
                   }`}
                 />
               ))}
             </div>
 
             {/* Sliding Cards Container */}
-            <div className="relative w-full h-[280px] sm:h-[380px] overflow-hidden rounded-2xl shadow-2xl">
+            <div className="relative w-full h-[240px] sm:h-[380px] overflow-hidden rounded-2xl shadow-2xl">
               <div 
                 className="flex transition-transform duration-700 ease-in-out h-full"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -280,31 +280,31 @@ const Hero = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
                       
                       {/* Category Label */}
-                      <div className="absolute top-6 left-6 flex items-center gap-3">
-                        <div className={`${slide.labelColor} backdrop-blur-sm rounded-full px-4 py-2`}>
-                          <span className="text-sm font-bold text-white">{slide.label}</span>
+                      <div className="absolute top-4 sm:top-6 left-4 sm:left-6 flex items-center gap-2 sm:gap-3">
+                        <div className={`${slide.labelColor} backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2`}>
+                          <span className="text-xs sm:text-sm font-bold text-white">{slide.label}</span>
                         </div>
                         {slide.comingSoon && (
-                          <div className="bg-gradient-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-full px-4 py-2 border border-slate-600/30">
-                            <span className="text-sm font-bold text-slate-300">COMING SOON</span>
+                          <div className="bg-gradient-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-slate-600/30">
+                            <span className="text-xs sm:text-sm font-bold text-slate-300">COMING SOON</span>
                           </div>
                         )}
                       </div>
 
                       {/* Content */}
-                      <div className="absolute bottom-6 left-6 right-6">
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 group-hover/slide:translate-y-[-4px] transition-transform duration-300">
+                      <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
+                        <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 group-hover/slide:translate-y-[-4px] transition-transform duration-300">
                           {slide.title}
                         </h2>
-                        <p className="text-gray-300 text-lg sm:text-xl max-w-2xl group-hover/slide:translate-y-[-4px] transition-transform duration-300 delay-75">
+                        <p className="text-gray-300 text-sm sm:text-lg md:text-xl max-w-2xl group-hover/slide:translate-y-[-4px] transition-transform duration-300 delay-75">
                           {slide.description}
                         </p>
                         
                         {/* CTA Button */}
-                        <div className="mt-6 group-hover/slide:translate-y-[-4px] transition-transform duration-300 delay-150">
-                          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 text-white font-semibold hover:bg-white/30 transition-all duration-300">
-                            <span>Explore {slide.title}</span>
-                            <ChevronRight className="w-5 h-5" />
+                        <div className="mt-3 sm:mt-6 group-hover/slide:translate-y-[-4px] transition-transform duration-300 delay-150">
+                          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 text-white font-semibold hover:bg-white/30 transition-all duration-300">
+                            <span className="text-sm sm:text-base">Explore {slide.title}</span>
+                            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                           </div>
                         </div>
                       </div>
