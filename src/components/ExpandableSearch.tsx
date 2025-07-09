@@ -62,7 +62,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
 
   return (
-    <div className={`fixed z-50 transition-all duration-300 ease-out will-change-transform ${
+    <div className={`fixed z-50 transition-transform duration-200 ease-out ${
       !isScrolled 
         ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-4' // Hero position
         : isMobile 
@@ -70,13 +70,13 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           : 'bottom-6 left-1/2 -translate-x-1/2' // Desktop collapsed position
     }`}>
       <div 
-        className={`transition-all duration-300 ease-out will-change-transform ${
+        className={`h-[52px] relative overflow-hidden transition-all duration-200 ease-out ${
           !isScrolled 
             ? 'w-96 sm:w-[400px]' // Hero width
             : isMobile 
               ? 'w-full' // Mobile collapsed width
               : shouldBeExpanded ? 'w-96' : 'w-32' // Desktop collapsed width
-        } h-[52px] relative overflow-hidden`}
+        }`}
         onMouseEnter={() => {
           if (!isMobile && isScrolled) {
             setIsHovered(true);
@@ -95,9 +95,8 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           }
         }}
       >
-        {/* Modern glass background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/90 to-white/95 dark:from-white/15 dark:to-white/20 backdrop-blur-xl border border-white/30 dark:border-white/30 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+        {/* Simplified background */}
+        <div className="absolute inset-0 bg-white/90 dark:bg-black/90 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg transition-shadow duration-200">
         </div>
 
         {/* Collapsed state for desktop when scrolled */}
