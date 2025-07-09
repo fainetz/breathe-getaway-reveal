@@ -104,8 +104,8 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           }
         }}
       >
-        {/* Simplified background */}
-        <div className="absolute inset-0 bg-white/95 dark:bg-gray-900/95 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md">
+        {/* Simplified background with blur */}
+        <div className="absolute inset-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md">
         </div>
 
         {/* Collapsed state for desktop when scrolled */}
