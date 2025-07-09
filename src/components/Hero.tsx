@@ -153,10 +153,11 @@ const Hero = () => {
         )}
       </nav>
 
-      {/* Main Content - Mobile responsive with reduced height */}
+      {/* Main Content - Three Category Cards */}
       <div className="relative z-10 flex-1 flex items-center pt-2 sm:pt-8 pb-16 sm:pb-0">
-        <div className="max-w-7xl mx-auto w-full">
-          <div className="max-w-2xl text-center sm:text-left mx-auto sm:mx-0">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6">
+          {/* Title */}
+          <div className="text-center mb-8 sm:mb-12">
             <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white mb-3 sm:mb-6 transition-colors duration-300 animate-fade-in">
               The Smarter,
               <br />
@@ -167,9 +168,93 @@ const Hero = () => {
               Escape Discovery
             </h1>
             
-            <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl mb-4 sm:mb-8 transition-colors duration-300 px-4 sm:px-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl mb-4 sm:mb-8 transition-colors duration-300 mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
               Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
             </p>
+          </div>
+
+          {/* Category Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+            {/* Flight Destinations Card */}
+            <Link to="/destinations" className="group relative overflow-hidden rounded-xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 hover:scale-105 transition-all duration-300">
+              <div className="aspect-[4/3] relative">
+                <img 
+                  src="/lovable-uploads/6b7f673a-c32c-4c6e-9496-bf8f5b86ec9a.png"
+                  alt="Flight Destinations"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                
+                {/* Category Label */}
+                <div className="absolute top-4 left-4">
+                  <div className="bg-blue-600/90 backdrop-blur-sm rounded-full px-3 py-1">
+                    <span className="text-sm font-bold text-white">FLIGHTS</span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Flight Destinations</h3>
+                  <p className="text-gray-300 text-sm">Discover amazing destinations worldwide</p>
+                </div>
+              </div>
+            </Link>
+
+            {/* Hotels Card */}
+            <Link to="/destinations" className="group relative overflow-hidden rounded-xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 hover:scale-105 transition-all duration-300">
+              <div className="aspect-[4/3] relative">
+                <img 
+                  src="/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png"
+                  alt="Hotels"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                
+                {/* Category Label */}
+                <div className="absolute top-4 left-4 flex items-center gap-2">
+                  <div className="bg-green-600/90 backdrop-blur-sm rounded-full px-3 py-1">
+                    <span className="text-sm font-bold text-white">HOTELS</span>
+                  </div>
+                  <div className="bg-gradient-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-full px-3 py-1 border border-slate-600/30">
+                    <span className="text-sm font-bold text-slate-300">COMING SOON</span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Hotels</h3>
+                  <p className="text-gray-300 text-sm">Luxury accommodations and resorts</p>
+                </div>
+              </div>
+            </Link>
+
+            {/* Cruises Card */}
+            <Link to="/destinations" className="group relative overflow-hidden rounded-xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 hover:scale-105 transition-all duration-300">
+              <div className="aspect-[4/3] relative">
+                <img 
+                  src="/lovable-uploads/c442bea5-cadc-4e64-8f52-41dfc17b1f5d.png"
+                  alt="Cruises"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                
+                {/* Category Label */}
+                <div className="absolute top-4 left-4 flex items-center gap-2">
+                  <div className="bg-purple-600/90 backdrop-blur-sm rounded-full px-3 py-1">
+                    <span className="text-sm font-bold text-white">CRUISES</span>
+                  </div>
+                  <div className="bg-gradient-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-full px-3 py-1 border border-slate-600/30">
+                    <span className="text-sm font-bold text-slate-300">COMING SOON</span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Cruises</h3>
+                  <p className="text-gray-300 text-sm">Ocean adventures and island hopping</p>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
