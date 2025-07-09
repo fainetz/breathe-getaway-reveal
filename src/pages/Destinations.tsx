@@ -280,7 +280,7 @@ const Destinations = () => {
       destinations: destinations.filter(dest => dest.rating && dest.rating >= 4.7)
     },
     {
-      title: "Destinations",
+      title: "Flight Destinations",
       destinations: destinations.filter(dest => dest.type === 'destination')
     },
     {
@@ -464,6 +464,11 @@ const Destinations = () => {
             <div className="px-6 md:px-12 mb-6">
               <div className="flex items-center gap-2">
                 <h2 className="text-xl md:text-2xl font-bold">{row.title}</h2>
+                {row.destinations.some(dest => dest.comingSoon) && (
+                  <div className="bg-orange-500/90 backdrop-blur-sm rounded-full px-3 py-1">
+                    <span className="text-sm font-bold">COMING SOON</span>
+                  </div>
+                )}
                 {(row.title === "Hotels" || row.title === "Cruises") && (
                   <div className="group relative">
                     <InfoIcon className="w-4 h-4 text-gray-400 hover:text-white cursor-help" />
@@ -539,12 +544,7 @@ const Destinations = () => {
                         </div>
                       )}
 
-                       <div className="absolute top-3 right-3 flex flex-col gap-1">
-                         {destination.comingSoon && (
-                           <div className="bg-orange-500/90 backdrop-blur-sm rounded px-2 py-1">
-                             <span className="text-xs font-bold">COMING SOON</span>
-                           </div>
-                         )}
+                       <div className="absolute top-3 right-3">
                          <div className="bg-green-500/90 backdrop-blur-sm rounded px-2 py-1">
                            <span className="text-xs font-bold">{destination.price}</span>
                          </div>
