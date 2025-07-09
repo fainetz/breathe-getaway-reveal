@@ -75,7 +75,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       !isScrolled 
         ? isMobile 
           ? 'top-[28%] left-4 right-4' // Mobile hero position - adjusted to avoid carousel
-          : 'top-[30%] left-1/2 -translate-x-1/2' // Desktop hero position - lowered from 35%
+          : 'top-[42%] left-1/2 -translate-x-1/2' // Desktop hero position - between subtitle and carousel
         : isMobile 
           ? 'bottom-6 left-4 right-4' // Mobile collapsed position
           : 'bottom-6 left-1/2 -translate-x-1/2' // Desktop collapsed position
