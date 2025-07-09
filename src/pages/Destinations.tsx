@@ -276,10 +276,6 @@ const Destinations = () => {
   const featuredDestinations = destinations.filter(dest => dest.featured);
   const categoryRows: CategoryRow[] = [
     {
-      title: "Suggested",
-      destinations: destinations.filter(dest => dest.rating && dest.rating >= 4.7)
-    },
-    {
       title: "Flight Destinations",
       destinations: destinations.filter(dest => dest.type === 'destination')
     },
@@ -348,7 +344,7 @@ const Destinations = () => {
       {/* Hero Section - Full Screen Swipeable */}
       <section className="h-screen relative overflow-hidden">
         <div className="absolute top-24 left-6 md:left-12 z-30">
-          <h2 className="text-2xl md:text-3xl font-bold">Suggested</h2>
+          <h2 className="text-2xl md:text-3xl font-bold">Featured</h2>
         </div>
         
         <div className="relative h-full group">
@@ -417,7 +413,7 @@ const Destinations = () => {
                     </div>
                   )}
                   <div className="bg-blue-600/90 backdrop-blur-sm rounded-full px-3 py-1">
-                    <span className="text-sm font-bold">SUGGESTED</span>
+                    <span className="text-sm font-bold">FEATURED</span>
                   </div>
                   {currentHero?.rating && (
                     <div className="flex items-center gap-1 bg-black/60 backdrop-blur-sm rounded-full px-3 py-1">
