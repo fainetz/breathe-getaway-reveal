@@ -88,7 +88,7 @@ const Hero = () => {
   const itemCount = getCartItemCount();
   
   return (
-    <section className="relative h-[70vh] sm:h-screen flex flex-col px-4 sm:px-6 pb-20 sm:pb-8">
+    <section className="relative h-[80vh] sm:h-screen flex flex-col px-4 sm:px-6 pb-20 sm:pb-8">
       {/* 3D Background */}
       <ThreeBackground />
       
@@ -226,7 +226,7 @@ const Hero = () => {
           </div>
 
           {/* Sleek Carousel Container */}
-          <div className="relative flex-1 max-w-5xl mx-auto w-full group max-h-[280px] sm:max-h-[400px]">
+          <div className="relative flex-1 max-w-5xl mx-auto w-full group max-h-[280px] sm:max-h-[400px] mb-16 sm:mb-0">
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
