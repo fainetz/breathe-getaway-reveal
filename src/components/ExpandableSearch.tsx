@@ -74,8 +74,8 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
     <div className={`fixed z-50 transition-transform duration-150 ease-out ${
       !isScrolled 
         ? isMobile 
-          ? 'top-[40%] left-4 right-4' // Mobile hero position - higher than before
-          : 'top-[45%] left-1/2 -translate-x-1/2' // Desktop hero position - higher than before
+          ? 'top-[30%] left-4 right-4' // Mobile hero position - above carousel
+          : 'top-[35%] left-1/2 -translate-x-1/2' // Desktop hero position - above carousel
         : isMobile 
           ? 'bottom-6 left-4 right-4' // Mobile collapsed position
           : 'bottom-6 left-1/2 -translate-x-1/2' // Desktop collapsed position
