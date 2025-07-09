@@ -64,10 +64,10 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
   return (
     <div className={`fixed z-50 transition-all duration-300 ease-out will-change-transform ${
       !isScrolled 
-        ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-8' // Hero position
+        ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-4' // Hero position
         : isMobile 
-          ? 'bottom-4 left-4 right-20' // Mobile collapsed position
-          : 'bottom-8 left-1/2 -translate-x-1/2' // Desktop collapsed position
+          ? 'bottom-6 left-4 right-4' // Mobile collapsed position
+          : 'bottom-6 left-1/2 -translate-x-1/2' // Desktop collapsed position
     }`}>
       <div 
         className={`transition-all duration-300 ease-out will-change-transform ${
