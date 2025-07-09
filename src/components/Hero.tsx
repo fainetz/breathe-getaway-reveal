@@ -245,21 +245,6 @@ const Hero = () => {
               <ChevronRight className="w-6 h-6 text-white" />
             </button>
 
-            {/* Slide Indicators - Outside image on mobile, inside on desktop */}
-            <div className="flex justify-center mt-4 sm:absolute sm:bottom-6 sm:left-1/2 sm:transform sm:-translate-x-1/2 sm:mt-0 z-30 gap-3">
-              {categorySlides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-                    index === currentSlide 
-                      ? 'bg-blue-500 sm:bg-white shadow-lg scale-125' 
-                      : 'bg-gray-400 sm:bg-white/40 hover:bg-gray-600 sm:hover:bg-white/60'
-                  }`}
-                />
-              ))}
-            </div>
-
             {/* Sliding Cards Container */}
             <div className="relative w-full h-[240px] sm:h-[380px] overflow-hidden rounded-2xl shadow-2xl">
               <div 
@@ -312,6 +297,36 @@ const Hero = () => {
                   </div>
                 ))}
               </div>
+              
+              {/* Desktop Slide Indicators - Inside image */}
+              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 gap-3 hidden sm:flex">
+                {categorySlides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentSlide 
+                        ? 'bg-white shadow-lg' 
+                        : 'bg-white/40 hover:bg-white/60'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile Slide Indicators - Outside and below image */}
+            <div className="flex justify-center mt-6 sm:hidden gap-3">
+              {categorySlides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentSlide 
+                      ? 'bg-blue-500 shadow-lg scale-125' 
+                      : 'bg-gray-400 hover:bg-gray-600'
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
