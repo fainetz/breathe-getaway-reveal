@@ -41,7 +41,7 @@ const Destinations = () => {
       location: "Ubud, Indonesia",
       category: "healing",
       type: "hotel",
-      image: "/lovable-uploads/c97afd70-299c-4687-8cb8-ee96dfe468d6.png", // Infinity pool with umbrellas overlooking ocean
+      image: "/lovable-uploads/0decbeaa-5a20-4502-9bc8-f34891b33dfc.png", // Tropical ocean dining at sunset
       price: "$89/per night",
       duration: "nightly",
       description: "Find inner peace among rice terraces and ancient temples in this transformative wellness retreat",
@@ -57,7 +57,7 @@ const Destinations = () => {
       location: "Maldives",
       category: "luxury",
       type: "destination",
-      image: "/lovable-uploads/2a140d0b-7b6c-40c8-9aab-663da4cc8f70.png", // Maldives overwater villas with infinity pool at night
+      image: "/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png", // Illuminated boardwalk over water
       price: "$2,199",
       duration: "5 days",
       description: "Experience ultimate luxury in overwater villas with pristine waters and world-class amenities",
@@ -72,7 +72,7 @@ const Destinations = () => {
       location: "Bali, Indonesia",
       category: "relaxation",
       type: "destination",
-      image: "/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png", // Tropical infinity pool at sunset with palm trees
+      image: "/lovable-uploads/f4bf928d-7ee0-4675-9452-9a4ca78e0176.png", // Tropical beach with palm trees at dusk
       price: "$1,899",
       duration: "6 days",
       description: "Unwind in paradise with infinity pools, sunset views, and tropical serenity",
@@ -186,7 +186,7 @@ const Destinations = () => {
       location: "Maldives",
       category: "luxury",
       type: "hotel",
-      image: "/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png", // Tropical infinity pool at sunset with palm trees
+      image: "/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png", // Illuminated boardwalk over water
       price: "$199/per night",
       duration: "nightly",
       description: "Private overwater villa with infinity pool and direct ocean access",
@@ -197,31 +197,31 @@ const Destinations = () => {
     },
     {
       id: 12,
-      name: "Swiss Alps Retreat",
-      location: "Zermatt, Switzerland",
-      category: "mountain",
+      name: "Infinity City Escape",
+      location: "Dubai, UAE",
+      category: "luxury",
       type: "hotel",
-      image: "/lovable-uploads/33c21689-4a63-4d20-b050-b566ede4b771.png", // Rooftop pool with city lights
+      image: "/lovable-uploads/9f082fcd-2f60-40ba-a703-582f95955704.png", // Luxury infinity pool with city skyline at night
       price: "$149/per night",
       duration: "nightly",
-      description: "Alpine luxury hotel with panoramic mountain views and world-class spa",
-      mood: "Mountain Serenity",
-      tags: ["Mountains", "Spa", "Luxury"],
+      description: "Luxury hotel with infinity pool overlooking stunning city skyline",
+      mood: "Urban Luxury",
+      tags: ["City Views", "Infinity Pool", "Luxury"],
       rating: 4.8,
       comingSoon: true
     },
     {
       id: 13,
-      name: "Santorini Cliff Resort",
-      location: "Santorini, Greece",
-      category: "romantic",
+      name: "Rooftop Paradise",
+      location: "Singapore",
+      category: "luxury",
       type: "hotel",
-      image: "/lovable-uploads/80ab770e-b0fd-4df8-9d27-2021f7dca01a.png", // City rooftop infinity pool
+      image: "/lovable-uploads/ed0f836a-d91b-4585-8176-c12b7bb44d35.png", // Luxury rooftop pool with city skyline at night
       price: "$129/per night",
       duration: "nightly",
-      description: "Cliffside luxury resort with infinity pools overlooking the Aegean Sea",
-      mood: "Romantic Escape",
-      tags: ["Cliffside", "Infinity Pool", "Sunset"],
+      description: "Rooftop infinity pool with panoramic city views and premium amenities",
+      mood: "Skyline Serenity",
+      tags: ["Rooftop", "City Views", "Infinity Pool"],
       rating: 4.7,
       comingSoon: true
     },
@@ -232,7 +232,7 @@ const Destinations = () => {
       location: "Barcelona to Rome",
       category: "cultural",
       type: "cruise",
-      image: "/lovable-uploads/c442bea5-cadc-4e64-8f52-41dfc17b1f5d.png", // Cruise ship deck at sunset
+      image: "/lovable-uploads/6a2f9c54-bbe6-4609-b27d-841996453813.png", // Cruise ship deck at sunset
       price: "$1,899",
       duration: "7 nights",
       description: "Explore ancient civilizations and stunning coastlines aboard a luxury cruise ship",
@@ -243,31 +243,31 @@ const Destinations = () => {
     },
     {
       id: 15,
-      name: "Caribbean Paradise",
-      location: "Miami to Caribbean",
+      name: "Resort Paradise",
+      location: "Greek Islands",
       category: "relaxation",
       type: "cruise",
-      image: "/lovable-uploads/917e68fa-9122-40f5-b1f0-77cb18b946e3.png", // Tropical resort pool
+      image: "/lovable-uploads/d1709257-3423-4d5d-98ba-75b2212febd3.png", // Resort with mountains and palm trees at dusk
       price: "$1,299",
       duration: "5 nights",
       description: "Island hopping adventure with pristine beaches and crystal-clear waters",
       mood: "Tropical Bliss",
-      tags: ["Caribbean", "Beaches", "Island Hopping"],
+      tags: ["Greek Islands", "Beaches", "Island Hopping"],
       rating: 4.5,
       comingSoon: true
     },
     {
       id: 16,
-      name: "Northern Lights Expedition",
-      location: "Norway Fjords",
-      category: "adventure",
+      name: "Urban Resort Experience",
+      location: "Miami Beach",
+      category: "luxury",
       type: "cruise",
-      image: "/lovable-uploads/44271e40-b9f9-4b74-a5b9-9f414e3a5eac.png", // Aerial view of hotel pools
+      image: "/lovable-uploads/c076f873-5dcf-4eed-a632-26076d325426.png", // Aerial view of hotel pools
       price: "$3,499",
       duration: "10 nights",
-      description: "Arctic expedition cruise to witness the spectacular Northern Lights phenomenon",
-      mood: "Arctic Wonder",
-      tags: ["Northern Lights", "Fjords", "Expedition"],
+      description: "Luxury resort experience with multiple pools and urban amenities",
+      mood: "Urban Paradise",
+      tags: ["Pools", "Urban", "Luxury"],
       rating: 4.8,
       comingSoon: true
     }

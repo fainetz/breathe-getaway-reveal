@@ -50,8 +50,16 @@ const HowItWorks = () => {
 
   return (
     <section id="how-it-works" className="py-32 px-6 relative overflow-hidden bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-gray-900/50 dark:to-black transition-colors duration-300 shadow-2xl dark:shadow-gray-900/50" ref={sectionRef}>
-      {/* Subtle background effects */}
+      {/* Enhanced background effects with image */}
       <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-full h-full opacity-8">
+          <img 
+            src="/lovable-uploads/8d6a6c2b-d70c-435c-8c9e-c54d7a53dd2c.png" 
+            alt="Background" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/95 via-gray-100/95 to-gray-50/95 dark:from-black/95 dark:via-gray-900/95 dark:to-black/95"></div>
         <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-blue-500/20 dark:bg-blue-500/30 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-indigo-500/15 dark:bg-indigo-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>

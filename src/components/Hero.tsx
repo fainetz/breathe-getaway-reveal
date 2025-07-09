@@ -23,7 +23,7 @@ const Hero = ({ onSearchSubmit }: HeroProps) => {
       id: 'flights',
       title: 'Flight Destinations',
       description: 'Discover amazing destinations worldwide',
-      image: '/lovable-uploads/6b7f673a-c32c-4c6e-9496-bf8f5b86ec9a.png',
+      image: '/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png',
       label: 'FLIGHTS',
       labelColor: 'bg-blue-600/90',
       comingSoon: false
@@ -32,7 +32,7 @@ const Hero = ({ onSearchSubmit }: HeroProps) => {
       id: 'hotels',
       title: 'Hotels',
       description: 'Luxury accommodations and resorts',
-      image: '/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png',
+      image: '/lovable-uploads/9f082fcd-2f60-40ba-a703-582f95955704.png',
       label: 'HOTELS',
       labelColor: 'bg-green-600/90',
       comingSoon: true
@@ -41,7 +41,7 @@ const Hero = ({ onSearchSubmit }: HeroProps) => {
       id: 'cruises',
       title: 'Cruises',
       description: 'Ocean adventures and island hopping',
-      image: '/lovable-uploads/c442bea5-cadc-4e64-8f52-41dfc17b1f5d.png',
+      image: '/lovable-uploads/6a2f9c54-bbe6-4609-b27d-841996453813.png',
       label: 'CRUISES',
       labelColor: 'bg-purple-600/90',
       comingSoon: true

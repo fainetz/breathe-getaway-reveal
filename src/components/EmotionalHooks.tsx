@@ -65,8 +65,16 @@ const EmotionalHooks = () => {
 
   return (
     <section className="py-32 px-6 relative overflow-hidden bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-gray-900/30 dark:to-black transition-colors duration-300" ref={sectionRef}>
-      {/* Subtle blue background */}
+      {/* Background with overlaid images */}
       <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+          <img 
+            src="/lovable-uploads/f4bf928d-7ee0-4675-9452-9a4ca78e0176.png" 
+            alt="Background" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-50/90 via-gray-100/90 to-gray-50/90 dark:from-black/90 dark:via-gray-900/90 dark:to-black/90"></div>
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 dark:bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/20 dark:bg-indigo-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
       </div>

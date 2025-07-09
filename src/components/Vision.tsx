@@ -58,8 +58,16 @@ const Vision = () => {
 
   return (
     <section id="vision" className="py-32 px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300" ref={sectionRef}>
-      {/* Subtle background */}
+      {/* Enhanced background with image */}
       <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+          <img 
+            src="/lovable-uploads/42f30823-7039-463f-8b34-fa31699595d9.png" 
+            alt="Background" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 bg-white/90 dark:bg-black/90"></div>
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
       </div>
