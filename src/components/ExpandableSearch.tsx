@@ -67,7 +67,9 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
         ? isMobile 
           ? 'bottom-4 left-4 right-20' // Leave space for feature button on mobile when scrolled
           : 'bottom-8 left-1/2 -translate-x-1/2' // Centered when scrolled on desktop
-        : 'opacity-0 pointer-events-none' // Hidden when at hero section since search is integrated
+        : isMobile
+          ? 'bottom-20 left-4 right-20' // Leave space for feature button on mobile at hero
+          : 'bottom-32 left-20 sm:left-24' // Positioned to align with "find" in the sub-heading
     }`}>
       <div 
         className={`transition-all duration-500 ease-out ${
