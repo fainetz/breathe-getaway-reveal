@@ -1,21 +1,18 @@
 
 import { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, ShoppingCart, ChevronLeft, ChevronRight, Search } from 'lucide-react';
+import { ChevronDown, Menu, X, ShoppingCart, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThreeBackground from './ThreeBackground';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from '../contexts/ThemeContext';
 
-interface HeroProps {
-  onSearchSubmit?: (query: string) => void;
-}
+interface HeroProps {}
 
-const Hero = ({ onSearchSubmit }: HeroProps) => {
+const Hero = () => {
   const { theme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cart, setCart] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [searchQuery, setSearchQuery] = useState('');
 
   // Category slides data
   const categorySlides = [
@@ -86,13 +83,6 @@ const Hero = ({ onSearchSubmit }: HeroProps) => {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + categorySlides.length) % categorySlides.length);
-  };
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim() && onSearchSubmit) {
-      onSearchSubmit(searchQuery);
-    }
   };
 
   const itemCount = getCartItemCount();
@@ -233,18 +223,6 @@ const Hero = ({ onSearchSubmit }: HeroProps) => {
               Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
             </p>
 
-            {/* Search placeholder - actual search handled by ExpandableSearch */}
-            <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
-              <div className="max-w-md mx-auto h-[52px] bg-gradient-to-r from-white/90 to-white/95 dark:from-white/15 dark:to-white/20 backdrop-blur-xl border border-white/30 dark:border-white/30 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative flex items-center px-6 py-4 h-full">
-                  <Search className="w-5 h-5 text-gray-400 dark:text-gray-500 mr-3" />
-                  <span className="text-gray-500 dark:text-gray-400 text-base font-medium">
-                    How are you feeling about travel?
-                  </span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Sleek Carousel Container */}
