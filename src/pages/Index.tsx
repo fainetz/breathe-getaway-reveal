@@ -30,7 +30,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white overflow-x-hidden transition-colors duration-300">
-      <Hero onSearchSubmit={handleSearchSubmit} />
+      <Hero />
       <HowItWorks />
       <Features />
       <EmotionalHooks />
@@ -38,7 +38,7 @@ const Index = () => {
       <div id="resultsSection" className="min-h-0"></div>
       <Footer />
       <FeatureRequestBox />
-      
+      <ExpandableSearch onSearchSubmit={handleSearchSubmit} />
       <BackToChatButton 
         onBackToChat={handleBackToChat} 
         hasChatHistory={hasChatHistory} 
