@@ -84,7 +84,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
             ? 'scale-100' // Hero scale
             : isMobile 
               ? 'scale-100' // Mobile scale
-              : shouldBeExpanded ? 'scale-100' : 'scale-[0.5]' // Desktop collapsed scale
+              : shouldBeExpanded ? 'scale-100' : 'scale-[0.65]' // Desktop collapsed scale
         }`}
         onMouseEnter={() => {
           if (!isMobile && isScrolled) {
