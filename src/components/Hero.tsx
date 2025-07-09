@@ -23,7 +23,7 @@ const Hero = ({ onSearchSubmit }: HeroProps) => {
       id: 'flights',
       title: 'Flight Destinations',
       description: 'Discover amazing destinations worldwide',
-      image: '/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png',
+      image: '/lovable-uploads/92794f25-53c0-4644-af8d-3e9343c68684.png', // Santorini white buildings at sunset
       label: 'FLIGHTS',
       labelColor: 'bg-blue-600/90',
       comingSoon: false
@@ -32,7 +32,7 @@ const Hero = ({ onSearchSubmit }: HeroProps) => {
       id: 'hotels',
       title: 'Hotels',
       description: 'Luxury accommodations and resorts',
-      image: '/lovable-uploads/9f082fcd-2f60-40ba-a703-582f95955704.png',
+      image: '/lovable-uploads/e2c6c5a8-65a5-4005-976d-25a14867e43e.png', // Luxury resort pool with palm trees at sunset
       label: 'HOTELS',
       labelColor: 'bg-green-600/90',
       comingSoon: true
@@ -41,7 +41,7 @@ const Hero = ({ onSearchSubmit }: HeroProps) => {
       id: 'cruises',
       title: 'Cruises',
       description: 'Ocean adventures and island hopping',
-      image: '/lovable-uploads/6a2f9c54-bbe6-4609-b27d-841996453813.png',
+      image: '/lovable-uploads/18aa8cb3-7178-47f3-b218-3aa6b8687db5.png', // Beautiful beach with umbrellas at sunset
       label: 'CRUISES',
       labelColor: 'bg-purple-600/90',
       comingSoon: true
