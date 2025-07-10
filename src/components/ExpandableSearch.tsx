@@ -34,7 +34,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrollY = window.scrollY;
-          const shouldScroll = scrollY > 100;
+          const shouldScroll = scrollY > 20;
           setIsScrolled(shouldScroll);
           
           const isAtHeroSection = scrollY <= 100;
@@ -77,21 +77,17 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           ? 'top-[35%] left-4 right-4' // Mobile hero position - more centered
           : 'top-[50%] left-1/2 -translate-x-1/2' // Desktop hero position
         : isMobile 
-          ? 'bottom-6 left-4 right-4' // Mobile collapsed position
+          ? 'bottom-6 left-1/2 -translate-x-1/2' // Mobile collapsed position
           : 'bottom-6 left-1/2 -translate-x-1/2' // Desktop collapsed position
     }`}>
       <div 
-        className={`${
-          isMobile ? 'w-full' : 'w-96'
-        } ${
-          isMobile ? 'h-[48px]' : 'h-[52px]'
-        } relative overflow-hidden transition-transform duration-150 ease-out origin-center ${
-          !isScrolled 
-            ? 'scale-100' // Hero scale
-            : isMobile 
-              ? 'scale-100' // Mobile scale
-              : shouldBeExpanded ? 'scale-100' : 'scale-[0.65]' // Desktop collapsed scale
-        }`}
+  className={`${
+    isMobile ? 'w-full' : 'w-96'
+  } ${
+    isMobile ? 'h-[48px]' : 'h-[52px]'
+  } relative overflow-hidden transition-transform duration-150 ease-out origin-center ${
+    shouldBeExpanded ? 'scale-100' : 'scale-[0.65]'
+  }`}
         onMouseEnter={() => {
           if (!isMobile && isScrolled) {
             setIsHovered(true);
