@@ -34,10 +34,10 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrollY = window.scrollY;
-          const shouldScroll = scrollY > 70;
+          const shouldScroll = scrollY > 100; // Increased threshold for Safari
           setIsScrolled(shouldScroll);
           
-          const isAtHeroSection = scrollY <= 100;
+          const isAtHeroSection = scrollY <= 150; // More generous hero section
           
           if (shouldScroll && !isHovered && !isAtHeroSection) {
             setIsExpanded(false);
@@ -52,7 +52,14 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    // Handle Safari viewport changes
+    window.addEventListener('resize', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, [isHovered]);
 
   const isAtHeroSection = !isScrolled;
@@ -71,13 +78,13 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
 
   return (
-    <div className={`fixed z-40 transition-transform duration-500 ease-out ${
+    <div className={`fixed z-40 transition-transform duration-300 ease-out ${
       !isScrolled 
         ? isMobile 
-          ? 'top-[35%] left-4 right-4' // Mobile hero position - more centered
+          ? 'top-[35vh] left-4 right-4' // Use vh for Safari compatibility
           : 'top-[50%] left-1/2 -translate-x-1/2' // Desktop hero position
         : isMobile 
-          ? 'bottom-6 left-1/2 -translate-x-1/2' // Mobile collapsed position
+          ? 'bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2' // Respect safe area
           : 'bottom-6 left-1/2 -translate-x-1/2' // Desktop collapsed position
     }`}>
       <div 
@@ -85,8 +92,8 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
     isMobile ? 'w-full' : 'w-96'
   } ${
     isMobile ? 'h-[48px]' : 'h-[52px]'
-  } relative overflow-hidden transition-transform duration-500 ease-out origin-center ${
-    shouldBeExpanded ? 'scale-100' : 'scale-[0.65]'
+  } relative overflow-hidden transition-all duration-300 ease-out origin-center ${
+    shouldBeExpanded ? 'scale-100' : 'scale-[0.75]'
   }`}
         onMouseEnter={() => {
           if (!isMobile && isScrolled) {
