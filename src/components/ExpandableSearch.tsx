@@ -14,6 +14,8 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
   const [isMobile, setIsMobile] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [results, setResults] = useState<any>(null); // Adjust type as needed
+  const [isUserTyping, setIsUserTyping] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   
 
   useEffect(() => {
@@ -39,7 +41,8 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           
           const isAtHeroSection = scrollY <= 150; // More generous hero section
           
-          if (shouldScroll && !isHovered && !isAtHeroSection) {
+          // Prevent collapse when user is actively typing or focused
+          if (shouldScroll && !isHovered && !isAtHeroSection && !isFocused && !isUserTyping) {
             setIsExpanded(false);
           } else if (isAtHeroSection) {
             setIsExpanded(true);
@@ -60,10 +63,21 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-  }, [isHovered]);
+  }, [isHovered, isFocused, isUserTyping]);
+
+  // Add typing timeout effect
+  useEffect(() => {
+    if (isUserTyping) {
+      const timeout = setTimeout(() => {
+        setIsUserTyping(false);
+      }, 2000); // Stop considering as typing after 2 seconds
+      
+      return () => clearTimeout(timeout);
+    }
+  }, [isUserTyping]);
 
   const isAtHeroSection = !isScrolled;
-  const shouldBeExpanded = isAtHeroSection || isHovered;
+  const shouldBeExpanded = isAtHeroSection || isHovered || isFocused || isUserTyping;
 
  const handleSubmit = async (e: React.FormEvent) => {
    e.preventDefault();
@@ -129,11 +143,15 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
             <input
               type="text"
               value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
+              onChange={(e) => {
+                setPrompt(e.target.value);
+                setIsUserTyping(true); // Mark as typing when user inputs text
+              }}
               placeholder={!isScrolled ? "Need escape..." : isMobile ? "Escape..." : "Need escape..."}
               className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-base font-medium transition-all duration-300 focus:scale-[1.01]"
               autoFocus={!isScrolled}
               onFocus={(e) => {
+                setIsFocused(true); // Mark as focused
                 if (!isScrolled) {
                   e.target.placeholder = "Heartbroken, excited, adventurous...";
                 }
@@ -146,6 +164,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
                 }
               }}
               onBlur={(e) => {
+                setIsFocused(false); // Remove focus state
                 if (!isScrolled) {
                   e.target.placeholder = "Need escape...";
                 }
