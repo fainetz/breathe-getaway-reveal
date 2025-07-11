@@ -34,7 +34,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrollY = window.scrollY;
-          const shouldScroll = scrollY > 100; // Increased threshold for Safari
+          const shouldScroll = scrollY > 50; // Increased threshold for Safari
           setIsScrolled(shouldScroll);
           
           const isAtHeroSection = scrollY <= 150; // More generous hero section
@@ -78,7 +78,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
 
   return (
-    <div className={`fixed z-40 transition-transform duration-300 ease-out ${
+    <div className={`fixed z-40 transition-transform duration-500 ease-out ${
       !isScrolled 
         ? isMobile 
           ? 'top-[35vh] left-4 right-4' // Use vh for Safari compatibility
@@ -92,7 +92,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
     isMobile ? 'w-full' : 'w-96'
   } ${
     isMobile ? 'h-[48px]' : 'h-[52px]'
-  } relative overflow-hidden transition-all duration-300 ease-out origin-center ${
+  } relative overflow-hidden transition-all duration-500 ease-out origin-center ${
     shouldBeExpanded ? 'scale-100' : 'scale-[0.75]'
   }`}
         onMouseEnter={() => {
