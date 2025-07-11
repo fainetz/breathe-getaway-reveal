@@ -82,7 +82,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       !isScrolled 
         ? isMobile 
           ? 'top-[31vh] left-4 right-4' // Use vh for Safari compatibility
-          : 'top-[50%] left-1/2 -translate-x-1/2' // Desktop hero position
+          : 'top-[45%] left-1/2 -translate-x-1/2' // Desktop hero position
         : isMobile 
           ? 'bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2' // Respect safe area
           : 'bottom-8 left-1/2 -translate-x-1/2' // Desktop collapsed position - moved up
