@@ -34,7 +34,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrollY = window.scrollY;
-          const shouldScroll = scrollY > 40;
+          const shouldScroll = scrollY > 70;
           setIsScrolled(shouldScroll);
           
           const isAtHeroSection = scrollY <= 100;
@@ -71,7 +71,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
 
   return (
-    <div className={`fixed z-40 transition-transform duration-150 ease-out ${
+    <div className={`fixed z-40 transition-transform duration-500 ease-out ${
       !isScrolled 
         ? isMobile 
           ? 'top-[35%] left-4 right-4' // Mobile hero position - more centered
@@ -108,7 +108,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       >
         {/* Simplified background with blur */}
         <div className="absolute inset-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md">
-        </div>
+        </div> 
 
         {/* Collapsed state for desktop when scrolled */}
         {isScrolled && !shouldBeExpanded && !isMobile ? (
