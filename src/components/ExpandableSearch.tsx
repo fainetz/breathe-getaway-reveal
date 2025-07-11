@@ -85,7 +85,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           : 'top-[50%] left-1/2 -translate-x-1/2' // Desktop hero position
         : isMobile 
           ? 'bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2' // Respect safe area
-          : 'bottom-6 left-1/2 -translate-x-1/2' // Desktop collapsed position
+          : 'bottom-8 left-1/2 -translate-x-1/2' // Desktop collapsed position - moved up
     }`}>
       <div 
   className={`${
