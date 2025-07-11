@@ -34,7 +34,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrollY = window.scrollY;
-          const shouldScroll = scrollY > 20;
+          const shouldScroll = scrollY > 40;
           setIsScrolled(shouldScroll);
           
           const isAtHeroSection = scrollY <= 100;
@@ -85,7 +85,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
     isMobile ? 'w-full' : 'w-96'
   } ${
     isMobile ? 'h-[48px]' : 'h-[52px]'
-  } relative overflow-hidden transition-transform duration-150 ease-out origin-center ${
+  } relative overflow-hidden transition-transform duration-500 ease-out origin-center ${
     shouldBeExpanded ? 'scale-100' : 'scale-[0.65]'
   }`}
         onMouseEnter={() => {
