@@ -81,7 +81,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
     <div className={`fixed z-40 transition-transform duration-500 ease-out ${
       !isScrolled 
         ? isMobile 
-          ? 'top-[28vh] left-4 right-4' // Use vh for Safari compatibility
+          ? 'top-[31vh] left-4 right-4' // Use vh for Safari compatibility
           : 'top-[50%] left-1/2 -translate-x-1/2' // Desktop hero position
         : isMobile 
           ? 'bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2' // Respect safe area
