@@ -29,7 +29,7 @@ const Index = () => {
   console.log('Index state - hasChatHistory:', hasChatHistory);
 
   return (
-    <div className="min-h-screen min-h-dvh bg-white dark:bg-black text-black dark:text-white overflow-x-hidden transition-colors duration-300" style={{ paddingTop: 'env(safe-area-inset-top)', paddingLeft: 'env(safe-area-inset-left)', paddingRight: 'env(safe-area-inset-right)', paddingBottom: 'env(safe-area-inset-bottom)' }}>
+    <div className="min-h-screen min-h-dvh bg-white dark:bg-black text-black dark:text-white overflow-x-hidden transition-colors duration-300">
       <Hero />
       <HowItWorks />
       <Features />
