@@ -114,13 +114,13 @@ const Features = () => {
               {features.map((feature, index) => (
                 <div key={index} className="w-1/3 flex-shrink-0">
                   <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-                    <div className="bg-white/90 dark:bg-white/20 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 hover:bg-white/95 dark:hover:bg-white/30 transition-all duration-500 hover:scale-102 h-full relative overflow-hidden shadow-xl hover:shadow-2xl dark:shadow-black/30 dark:hover:shadow-black/50">
+                    <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 hover:bg-white/30 dark:hover:bg-white/10 transition-all duration-500 hover:scale-102 h-full relative overflow-hidden shadow-xl hover:shadow-2xl dark:shadow-black/30 dark:hover:shadow-black/50">
                       {/* Background Image */}
                       <div className="absolute inset-0 rounded-2xl overflow-hidden">
                         <img 
                           src={feature.image} 
                           alt={`${feature.title} background`}
-                          className="w-full h-full object-cover opacity-35 group-hover:opacity-50 transition-opacity duration-700 scale-105 group-hover:scale-100"
+                          className="w-full h-full object-cover opacity-60 group-hover:opacity-75 transition-opacity duration-700 scale-105 group-hover:scale-100"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent group-hover:from-black/30 group-hover:via-black/10 transition-all duration-500"></div>
                       </div>
@@ -186,7 +186,7 @@ const Features = () => {
                     <div className={`absolute ${isEven ? 'right-0 top-full' : 'left-0 top-full'} w-0.5 h-8 bg-gradient-to-b ${feature.gradient} opacity-30 transform ${isEven ? 'translate-x-2' : '-translate-x-2'} translate-y-4`}></div>
                   )}
                   
-                  <div className="bg-white/90 dark:bg-white/20 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98">
+                  <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98">
                     {/* Background Image */}
                     <div className="absolute inset-0 rounded-2xl overflow-hidden">
                       <img 

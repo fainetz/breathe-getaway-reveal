@@ -80,13 +80,13 @@ const HowItWorks = () => {
         <div className="grid md:grid-cols-3 gap-12" ref={stepsRef}>
           {steps.map((step, index) => (
             <div key={index} className="text-center group step-card opacity-0 transform translate-y-10 transition-all duration-1000 ease-out relative">
-              <div className="bg-white/90 dark:bg-white/25 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-3xl p-8 hover:bg-white/95 dark:hover:bg-white/35 transition-all duration-500 hover:scale-105 relative overflow-hidden shadow-2xl hover:shadow-3xl dark:shadow-black/50 dark:hover:shadow-black/70 h-full">
+              <div className="bg-white/30 dark:bg-white/10 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-3xl p-8 hover:bg-white/40 dark:hover:bg-white/15 transition-all duration-500 hover:scale-105 relative overflow-hidden shadow-2xl hover:shadow-3xl dark:shadow-black/50 dark:hover:shadow-black/70 h-full">
                 {/* Background Image */}
                 <div className="absolute inset-0 rounded-3xl overflow-hidden">
                   <img 
                     src={step.image} 
                     alt={`${step.title} background`}
-                    className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-700 scale-105 group-hover:scale-100"
+                    className="w-full h-full object-cover opacity-70 group-hover:opacity-85 transition-opacity duration-700 scale-105 group-hover:scale-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/40 group-hover:via-black/10 transition-all duration-500"></div>
                 </div>
