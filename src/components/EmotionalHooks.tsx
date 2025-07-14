@@ -64,7 +64,7 @@ const EmotionalHooks = () => {
   }, [isVisible, examples.length]);
 
   return (
-    <section className="py-16 px-6 relative overflow-hidden bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-gray-900/30 dark:to-black transition-colors duration-300" ref={sectionRef}>
+    <section className="py-32 px-6 relative overflow-hidden bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-gray-900/30 dark:to-black transition-colors duration-300" ref={sectionRef}>
       {/* Background with overlaid images */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
