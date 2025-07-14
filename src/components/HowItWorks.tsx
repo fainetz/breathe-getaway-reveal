@@ -34,17 +34,20 @@ const HowItWorks = () => {
     {
       title: "Express Your Soul",
       description: "Tell us how you're feeling, what you're seeking, or what you need to escape from.",
-      icon: "💭"
+      icon: "💭",
+      image: "/lovable-uploads/de22e8da-fe87-45d1-935d-98454288fb98.png" // Tropical sunset with pool
     },
     {
       title: "AI Understands You", 
       description: "Our emotional intelligence AI processes your deepest travel desires and intentions.",
-      icon: "🧠"
+      icon: "🧠",
+      image: "/lovable-uploads/d1152bbf-7697-443b-b12b-64d4dad5bbc9.png" // Luxury resort pool
     },
     {
       title: "Curated Just for You",
       description: "Receive personalized trips that match your emotional state and wanderlust needs.",
-      icon: "✨"
+      icon: "✨",
+      image: "/lovable-uploads/78652967-c3b7-4fde-891f-87bb8f204e5d.png" // Ocean view terrace
     }
   ];
 
@@ -74,22 +77,43 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12" ref={stepsRef}>
+        <div className="grid md:grid-cols-3 gap-8" ref={stepsRef}>
           {steps.map((step, index) => (
-            <div key={index} className="text-center group step-card opacity-0 transform translate-y-10 transition-all duration-1000 ease-out">
-              <div className="bg-white/80 dark:bg-white/20 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-3xl p-8 hover:bg-white/90 dark:hover:bg-white/30 transition-all duration-500 hover:scale-105 relative overflow-hidden shadow-2xl hover:shadow-3xl dark:shadow-black/50 dark:hover:shadow-black/70">
-                {/* Subtle blue gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 dark:from-blue-500/30 dark:to-indigo-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div key={index} className="group step-card opacity-0 transform translate-y-10 transition-all duration-1000 ease-out relative">
+              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 shadow-xl hover:shadow-2xl dark:shadow-black/30 dark:hover:shadow-black/50 h-full">
+                {/* Featured Image */}
+                <div className="aspect-[16/10] overflow-hidden relative">
+                  <img 
+                    src={step.image} 
+                    alt={`${step.title} - Beautiful travel destination`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
+                  
+                  {/* Floating Icon */}
+                  <div className="absolute top-4 left-4 w-16 h-16 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500">
+                    <span className="text-3xl">{step.icon}</span>
+                  </div>
+                  
+                  {/* Step Number */}
+                  <div className="absolute top-4 right-4 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+                    {index + 1}
+                  </div>
+                </div>
                 
-                <div className="relative z-10">
-                  <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-lg">{step.icon}</div>
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white transition-colors duration-300 drop-shadow-md">{step.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed transition-colors duration-300">{step.description}</p>
+                {/* Content Below Image */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white transition-colors duration-300">{step.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">{step.description}</p>
                 </div>
               </div>
+              
+              {/* Connection Arrow */}
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 right-0 transform translate-x-6 -translate-y-1/2">
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-blue-400 to-indigo-400 animate-pulse drop-shadow-sm"></div>
+                <div className="hidden md:block absolute top-1/3 -right-4 transform translate-x-1/2">
+                  <div className="w-8 h-0.5 bg-gradient-to-r from-blue-400 to-indigo-400 relative">
+                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-indigo-400 rotate-45 translate-x-1"></div>
+                  </div>
                 </div>
               )}
             </div>

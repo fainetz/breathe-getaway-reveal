@@ -35,7 +35,7 @@ const Index = () => {
       <Features />
       <EmotionalHooks />
       <Vision />
-      <div id="resultsSection" className="min-h-0"></div>
+      
       <Footer />
       <FeatureRequestBox />
       <ExpandableSearch onSearchSubmit={handleSearchSubmit} />

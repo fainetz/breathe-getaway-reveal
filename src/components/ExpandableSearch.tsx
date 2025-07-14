@@ -14,8 +14,6 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
   const [isMobile, setIsMobile] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [results, setResults] = useState<any>(null); // Adjust type as needed
-  const [isUserTyping, setIsUserTyping] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
   
 
   useEffect(() => {
@@ -41,8 +39,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           
           const isAtHeroSection = scrollY <= 150; // More generous hero section
           
-          // Prevent collapse when user is actively typing or focused
-          if (shouldScroll && !isHovered && !isAtHeroSection && !isFocused && !isUserTyping) {
+          if (shouldScroll && !isHovered && !isAtHeroSection) {
             setIsExpanded(false);
           } else if (isAtHeroSection) {
             setIsExpanded(true);
@@ -63,21 +60,10 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-  }, [isHovered, isFocused, isUserTyping]);
-
-  // Add typing timeout effect
-  useEffect(() => {
-    if (isUserTyping) {
-      const timeout = setTimeout(() => {
-        setIsUserTyping(false);
-      }, 2000); // Stop considering as typing after 2 seconds
-      
-      return () => clearTimeout(timeout);
-    }
-  }, [isUserTyping]);
+  }, [isHovered]);
 
   const isAtHeroSection = !isScrolled;
-  const shouldBeExpanded = isAtHeroSection || isHovered || isFocused || isUserTyping;
+  const shouldBeExpanded = isAtHeroSection || isHovered;
 
  const handleSubmit = async (e: React.FormEvent) => {
    e.preventDefault();
@@ -96,7 +82,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       !isScrolled 
         ? isMobile 
           ? 'top-[31vh] left-4 right-4' // Use vh for Safari compatibility
-          : 'top-[50%] left-1/2 -translate-x-1/2' // Desktop hero position
+          : 'top-[45%] left-1/2 -translate-x-1/2' // Desktop hero position
         : isMobile 
           ? 'bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2' // Respect safe area
           : 'bottom-8 left-1/2 -translate-x-1/2' // Desktop collapsed position - moved up
@@ -143,15 +129,11 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
             <input
               type="text"
               value={prompt}
-              onChange={(e) => {
-                setPrompt(e.target.value);
-                setIsUserTyping(true); // Mark as typing when user inputs text
-              }}
+              onChange={(e) => setPrompt(e.target.value)}
               placeholder={!isScrolled ? "Need escape..." : isMobile ? "Escape..." : "Need escape..."}
               className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-base font-medium transition-all duration-300 focus:scale-[1.01]"
               autoFocus={!isScrolled}
               onFocus={(e) => {
-                setIsFocused(true); // Mark as focused
                 if (!isScrolled) {
                   e.target.placeholder = "Heartbroken, excited, adventurous...";
                 }
@@ -164,7 +146,6 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
                 }
               }}
               onBlur={(e) => {
-                setIsFocused(false); // Remove focus state
                 if (!isScrolled) {
                   e.target.placeholder = "Need escape...";
                 }

@@ -13,37 +13,44 @@ const Features = () => {
     {
       title: "AI-Powered Specific Search",
       description: "Search for oddly specific things using AI - find flights with sunset views or hotels with vintage typewriters in the lobby.",
-      gradient: "from-cyan-500 to-blue-500"
+      gradient: "from-cyan-500 to-blue-500",
+      image: "/lovable-uploads/0053af0d-a0ad-4139-8bc0-a64ca1528b2a.png" // Purple sunset resort pool
     },
     {
       title: "Emotional Intelligence",
       description: "AI that reads your mood, energy, and deepest travel desires to match you with transformative experiences.",
-      gradient: "from-purple-500 to-blue-500"
+      gradient: "from-purple-500 to-blue-500",
+      image: "/lovable-uploads/0dc11131-7ad2-467b-88b7-7d5120397092.png" // Luxury airline seat
     },
     {
       title: "Instant Everything", 
       description: "From flights to hidden gems, we handle every detail so you can focus on your journey within.",
-      gradient: "from-pink-500 to-purple-500"
+      gradient: "from-pink-500 to-purple-500",
+      image: "/lovable-uploads/994e9973-6cc4-4250-a3a2-4c9fc2ec20ce.png" // Tropical deck
     },
     {
       title: "Curated Authenticity",
       description: "Skip the tourist traps. Find experiences that resonate with your soul and create lasting memories.",
-      gradient: "from-blue-500 to-teal-500"
+      gradient: "from-blue-500 to-teal-500",
+      image: "/lovable-uploads/994e9973-6cc4-4250-a3a2-4c9fc2ec20ce.png" // Tropical deck
     },
     {
       title: "Serendipitous Discovery",
       description: "Uncover places and experiences you never knew existed but were exactly what you needed.",
-      gradient: "from-teal-500 to-green-500"
+      gradient: "from-teal-500 to-green-500",
+      image: "/lovable-uploads/264831c8-4688-46a5-bfce-dc57131449c3.png" // Beach bungalows aerial
     },
     {
       title: "Last-Minute Magic",
       description: "Spontaneous escapes made simple. Perfect for when you need to disappear into adventure.",
-      gradient: "from-orange-500 to-pink-500"
+      gradient: "from-orange-500 to-pink-500",
+      image: "/lovable-uploads/83792962-df4f-4e4f-9bc7-6927edff4c7e.png" // Infinity pool deck
     },
     {
       title: "Mindful Travel",
       description: "Every recommendation considers your mental space and what will truly nourish your spirit.",
-      gradient: "from-indigo-500 to-purple-500"
+      gradient: "from-indigo-500 to-purple-500",
+      image: "/lovable-uploads/c3271852-58f4-467c-bb3f-a20c29a0e7ef.png" // Modern desert suite
     }
   ];
 
@@ -86,7 +93,7 @@ const Features = () => {
   };
 
   return (
-    <section id="features" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300 shadow-2xl dark:shadow-gray-900/60" ref={sectionRef}>
+    <section id="features" className="py-16 px-4 sm:px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300 shadow-2xl dark:shadow-gray-900/60" ref={sectionRef}>
       <div className="max-w-7xl mx-auto">
         <div className={`text-center mb-12 sm:mb-16 lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-black dark:text-white transition-colors duration-300 drop-shadow-lg">
@@ -107,12 +114,26 @@ const Features = () => {
               {features.map((feature, index) => (
                 <div key={index} className="w-1/3 flex-shrink-0">
                   <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-                    <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 hover:bg-white dark:hover:bg-white/25 transition-all duration-500 hover:scale-102 h-full relative overflow-hidden shadow-xl hover:shadow-2xl dark:shadow-black/30 dark:hover:shadow-black/50">
-                      <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
-                      <div className="relative z-10">
-                        <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}></div>
-                        <h3 className="text-xl font-bold mb-4 text-black dark:text-white transition-colors duration-300 drop-shadow-sm">{feature.title}</h3>
-                        <p className="text-gray-700 dark:text-gray-200 leading-relaxed transition-colors duration-300">{feature.description}</p>
+                    <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl overflow-hidden hover:scale-102 transition-all duration-500 shadow-xl hover:shadow-2xl dark:shadow-black/30 dark:hover:shadow-black/50 h-full">
+                      {/* Featured Image */}
+                      <div className="aspect-[16/10] overflow-hidden relative">
+                        <img 
+                          src={feature.image} 
+                          alt={`${feature.title} - Beautiful travel destination`}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
+                        
+                        {/* Gradient Icon */}
+                        <div className={`absolute top-4 left-4 w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                          <div className="w-6 h-6 bg-white/30 rounded-md"></div>
+                        </div>
+                      </div>
+                      
+                      {/* Content */}
+                      <div className="p-6">
+                        <h3 className="text-lg font-bold mb-3 text-black dark:text-white transition-colors duration-300">{feature.title}</h3>
+                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">{feature.description}</p>
                       </div>
                     </div>
                   </div>
@@ -169,28 +190,34 @@ const Features = () => {
                     <div className={`absolute ${isEven ? 'right-0 top-full' : 'left-0 top-full'} w-0.5 h-8 bg-gradient-to-b ${feature.gradient} opacity-30 transform ${isEven ? 'translate-x-2' : '-translate-x-2'} translate-y-4`}></div>
                   )}
                   
-                  <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98">
-                    {/* Animated gradient background */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-30 group-active:opacity-40 transition-all duration-500`}></div>
-                    
-                    {/* Floating gradient orb */}
-                    <div className={`absolute -top-4 ${isEven ? '-right-4' : '-left-4'} w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-full opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-500 blur-xl`}></div>
-                    
-                    <div className="relative z-10">
-                      <div className={`w-14 h-14 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex items-center justify-center`}>
-                        <div className={`w-6 h-6 bg-white/30 rounded-md group-hover:bg-white/50 transition-colors duration-300`}></div>
-                      </div>
+                  <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl overflow-hidden transition-all duration-500 shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98 h-full">
+                    {/* Featured Image */}
+                    <div className="aspect-[16/10] overflow-hidden relative">
+                      <img 
+                        src={feature.image} 
+                        alt={`${feature.title} - Beautiful travel destination`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
                       
-                      <h3 className="text-xl sm:text-2xl font-bold mb-4 text-black dark:text-white transition-all duration-300 drop-shadow-sm group-hover:translate-x-1">
+                      {/* Gradient Icon */}
+                      <div className={`absolute top-4 ${isEven ? 'right-4' : 'left-4'} w-14 h-14 bg-gradient-to-r ${feature.gradient} rounded-xl shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex items-center justify-center`}>
+                        <div className="w-6 h-6 bg-white/30 rounded-md group-hover:bg-white/50 transition-colors duration-300"></div>
+                      </div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="p-6 sm:p-8">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-4 text-black dark:text-white transition-all duration-300">
                         {feature.title}
                       </h3>
                       
-                      <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-base sm:text-lg transition-all duration-300 group-hover:translate-x-1">
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg transition-all duration-300 mb-6">
                         {feature.description}
                       </p>
                       
                       {/* Progress indicator */}
-                      <div className="mt-6 flex items-center space-x-1">
+                      <div className="flex items-center space-x-1">
                         {Array.from({ length: 7 }).map((_, dotIndex) => (
                           <div 
                             key={dotIndex}
