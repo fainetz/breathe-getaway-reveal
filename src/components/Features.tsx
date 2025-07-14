@@ -14,43 +14,43 @@ const Features = () => {
       title: "AI-Powered Specific Search",
       description: "Search for oddly specific things using AI - find flights with sunset views or hotels with vintage typewriters in the lobby.",
       gradient: "from-cyan-500 to-blue-500",
-      image: "/lovable-uploads/93b2ffa1-23b5-4fc2-a959-5441fa3fc6da.png" // European village at night
+      image: "/lovable-uploads/8aaee396-e247-44b9-b6ad-45ebd8cd05ad.png" // Tropical beach with palms
     },
     {
       title: "Emotional Intelligence",
       description: "AI that reads your mood, energy, and deepest travel desires to match you with transformative experiences.",
       gradient: "from-purple-500 to-blue-500",
-      image: "/lovable-uploads/2ecebcb2-693c-430b-8c67-111a9ee6eead.png" // Luxury resort with mountains
+      image: "/lovable-uploads/d6c60fea-5284-439d-9c11-0600830cd5f9.png" // Resort with infinity pool
     },
     {
       title: "Instant Everything", 
       description: "From flights to hidden gems, we handle every detail so you can focus on your journey within.",
       gradient: "from-pink-500 to-purple-500",
-      image: "/lovable-uploads/d4094bb5-5435-49f3-a075-70d9c35b93ce.png" // Tokyo skyline
+      image: "/lovable-uploads/ff53620f-7317-4a56-84aa-61e862e0dd8c.png" // Pool overlooking ocean
     },
     {
       title: "Curated Authenticity",
       description: "Skip the tourist traps. Find experiences that resonate with your soul and create lasting memories.",
       gradient: "from-blue-500 to-teal-500",
-      image: "/lovable-uploads/866f50c1-e4b0-4389-9339-917882af6b27.png" // Santorini sunset
+      image: "/lovable-uploads/57f5647a-5920-4701-b706-edb140d29176.png" // Tropical infinity pool
     },
     {
       title: "Serendipitous Discovery",
       description: "Uncover places and experiences you never knew existed but were exactly what you needed.",
       gradient: "from-teal-500 to-green-500",
-      image: "/lovable-uploads/008178d3-1079-46e1-9e49-3eaa601e8f33.png" // Tropical resort with pool
+      image: "/lovable-uploads/304fb7fd-94bf-425c-88b9-025053a73ef4.png" // Night pool scene
     },
     {
       title: "Last-Minute Magic",
       description: "Spontaneous escapes made simple. Perfect for when you need to disappear into adventure.",
       gradient: "from-orange-500 to-pink-500",
-      image: "/lovable-uploads/714c97fb-6e3a-4bf5-b96e-7392ee44ab02.png" // Tropical beach
+      image: "/lovable-uploads/2ed0f8bc-aa55-49f3-84b3-ce18e26a4b74.png" // Mountain resort view
     },
     {
       title: "Mindful Travel",
       description: "Every recommendation considers your mental space and what will truly nourish your spirit.",
       gradient: "from-indigo-500 to-purple-500",
-      image: "/lovable-uploads/93b2ffa1-23b5-4fc2-a959-5441fa3fc6da.png" // European village at night
+      image: "/lovable-uploads/6cf16bac-b5ef-4ca9-bfd9-a473f55c3a8b.png" // Luxury hotel interior
     }
   ];
 
@@ -114,22 +114,26 @@ const Features = () => {
               {features.map((feature, index) => (
                 <div key={index} className="w-1/3 flex-shrink-0">
                   <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-                    <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 hover:bg-white/30 dark:hover:bg-white/10 transition-all duration-500 hover:scale-102 h-full relative overflow-hidden shadow-xl hover:shadow-2xl dark:shadow-black/30 dark:hover:shadow-black/50">
-                      {/* Background Image */}
-                      <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                    <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl overflow-hidden hover:scale-102 transition-all duration-500 shadow-xl hover:shadow-2xl dark:shadow-black/30 dark:hover:shadow-black/50">
+                      {/* Featured Image */}
+                      <div className="aspect-[4/3] overflow-hidden relative">
                         <img 
                           src={feature.image} 
-                          alt={`${feature.title} background`}
-                          className="w-full h-full object-cover opacity-60 group-hover:opacity-75 transition-opacity duration-700 scale-105 group-hover:scale-100"
+                          alt={`${feature.title} - Beautiful travel destination`}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent group-hover:from-black/30 group-hover:via-black/10 transition-all duration-500"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                        
+                        {/* Gradient Icon */}
+                        <div className={`absolute top-4 left-4 w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                          <div className="w-6 h-6 bg-white/30 rounded-md"></div>
+                        </div>
                       </div>
                       
-                      <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-500`}></div>
-                      <div className="relative z-10">
-                        <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}></div>
-                        <h3 className="text-xl font-bold mb-4 text-black dark:text-white transition-colors duration-300 drop-shadow-sm group-hover:text-gray-900 dark:group-hover:text-white">{feature.title}</h3>
-                        <p className="text-gray-700 dark:text-gray-200 leading-relaxed transition-colors duration-300 group-hover:text-gray-800 dark:group-hover:text-gray-100">{feature.description}</p>
+                      {/* Content */}
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold mb-3 text-black dark:text-white transition-colors duration-300">{feature.title}</h3>
+                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">{feature.description}</p>
                       </div>
                     </div>
                   </div>
@@ -186,33 +190,29 @@ const Features = () => {
                     <div className={`absolute ${isEven ? 'right-0 top-full' : 'left-0 top-full'} w-0.5 h-8 bg-gradient-to-b ${feature.gradient} opacity-30 transform ${isEven ? 'translate-x-2' : '-translate-x-2'} translate-y-4`}></div>
                   )}
                   
-                  <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98">
-                    {/* Background Image */}
-                    <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                  <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl overflow-hidden transition-all duration-500 shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98">
+                    {/* Featured Image */}
+                    <div className="aspect-[4/3] overflow-hidden relative">
                       <img 
                         src={feature.image} 
-                        alt={`${feature.title} background`}
-                        className="w-full h-full object-cover opacity-40 group-hover:opacity-60 group-active:opacity-70 transition-opacity duration-700 scale-105 group-hover:scale-100"
+                        alt={`${feature.title} - Beautiful travel destination`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/40 group-hover:via-black/10 transition-all duration-500"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                      
+                      {/* Gradient Icon */}
+                      <div className={`absolute top-4 ${isEven ? 'right-4' : 'left-4'} w-14 h-14 bg-gradient-to-r ${feature.gradient} rounded-xl shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex items-center justify-center`}>
+                        <div className="w-6 h-6 bg-white/30 rounded-md group-hover:bg-white/50 transition-colors duration-300"></div>
+                      </div>
                     </div>
                     
-                    {/* Animated gradient background */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-15 group-hover:opacity-25 group-active:opacity-35 transition-all duration-500`}></div>
-                    
-                    {/* Floating gradient orb */}
-                    <div className={`absolute -top-4 ${isEven ? '-right-4' : '-left-4'} w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-full opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-500 blur-xl`}></div>
-                    
-                    <div className="relative z-10">
-                      <div className={`w-14 h-14 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex items-center justify-center`}>
-                        <div className={`w-6 h-6 bg-white/30 rounded-md group-hover:bg-white/50 transition-colors duration-300`}></div>
-                      </div>
-                      
-                      <h3 className="text-xl sm:text-2xl font-bold mb-4 text-black dark:text-white transition-all duration-300 drop-shadow-sm group-hover:translate-x-1 group-hover:text-gray-900 dark:group-hover:text-white">
+                    {/* Content */}
+                    <div className="p-6 sm:p-8">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-4 text-black dark:text-white transition-all duration-300">
                         {feature.title}
                       </h3>
                       
-                      <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-base sm:text-lg transition-all duration-300 group-hover:translate-x-1 group-hover:text-gray-800 dark:group-hover:text-gray-100">
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg transition-all duration-300">
                         {feature.description}
                       </p>
                       
