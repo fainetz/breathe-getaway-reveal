@@ -34,17 +34,20 @@ const HowItWorks = () => {
     {
       title: "Express Your Soul",
       description: "Tell us how you're feeling, what you're seeking, or what you need to escape from.",
-      icon: "💭"
+      icon: "💭",
+      image: "/lovable-uploads/714c97fb-6e3a-4bf5-b96e-7392ee44ab02.png" // Tropical beach
     },
     {
       title: "AI Understands You", 
       description: "Our emotional intelligence AI processes your deepest travel desires and intentions.",
-      icon: "🧠"
+      icon: "🧠",
+      image: "/lovable-uploads/d4094bb5-5435-49f3-a075-70d9c35b93ce.png" // Tokyo skyline
     },
     {
       title: "Curated Just for You",
       description: "Receive personalized trips that match your emotional state and wanderlust needs.",
-      icon: "✨"
+      icon: "✨",
+      image: "/lovable-uploads/866f50c1-e4b0-4389-9339-917882af6b27.png" // Santorini sunset
     }
   ];
 
@@ -76,15 +79,25 @@ const HowItWorks = () => {
 
         <div className="grid md:grid-cols-3 gap-12" ref={stepsRef}>
           {steps.map((step, index) => (
-            <div key={index} className="text-center group step-card opacity-0 transform translate-y-10 transition-all duration-1000 ease-out">
-              <div className="bg-white/80 dark:bg-white/20 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-3xl p-8 hover:bg-white/90 dark:hover:bg-white/30 transition-all duration-500 hover:scale-105 relative overflow-hidden shadow-2xl hover:shadow-3xl dark:shadow-black/50 dark:hover:shadow-black/70">
-                {/* Subtle blue gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 dark:from-blue-500/30 dark:to-indigo-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div key={index} className="text-center group step-card opacity-0 transform translate-y-10 transition-all duration-1000 ease-out relative">
+              <div className="bg-white/90 dark:bg-white/25 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-3xl p-8 hover:bg-white/95 dark:hover:bg-white/35 transition-all duration-500 hover:scale-105 relative overflow-hidden shadow-2xl hover:shadow-3xl dark:shadow-black/50 dark:hover:shadow-black/70 h-full">
+                {/* Background Image */}
+                <div className="absolute inset-0 rounded-3xl overflow-hidden">
+                  <img 
+                    src={step.image} 
+                    alt={`${step.title} background`}
+                    className="w-full h-full object-cover opacity-0 group-hover:opacity-30 transition-opacity duration-700 scale-110 group-hover:scale-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+                
+                {/* Enhanced gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 dark:from-blue-500/20 dark:to-indigo-500/20 group-hover:from-blue-500/20 group-hover:to-indigo-500/20 dark:group-hover:from-blue-500/30 dark:group-hover:to-indigo-500/30 transition-all duration-500 rounded-3xl"></div>
                 
                 <div className="relative z-10">
                   <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-lg">{step.icon}</div>
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white transition-colors duration-300 drop-shadow-md">{step.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed transition-colors duration-300">{step.description}</p>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white transition-colors duration-300 drop-shadow-md group-hover:text-white dark:group-hover:text-white">{step.title}</h3>
+                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed transition-colors duration-300 group-hover:text-gray-100 dark:group-hover:text-gray-100">{step.description}</p>
                 </div>
               </div>
               {index < steps.length - 1 && (
