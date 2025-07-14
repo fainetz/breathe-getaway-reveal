@@ -120,12 +120,12 @@ const Features = () => {
                         <img 
                           src={feature.image} 
                           alt={`${feature.title} background`}
-                          className="w-full h-full object-cover opacity-0 group-hover:opacity-25 transition-opacity duration-700 scale-110 group-hover:scale-100"
+                          className="w-full h-full object-cover opacity-35 group-hover:opacity-50 transition-opacity duration-700 scale-105 group-hover:scale-100"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent group-hover:from-black/30 group-hover:via-black/10 transition-all duration-500"></div>
                       </div>
                       
-                      <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-15 transition-opacity duration-500`}></div>
+                      <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-500`}></div>
                       <div className="relative z-10">
                         <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}></div>
                         <h3 className="text-xl font-bold mb-4 text-black dark:text-white transition-colors duration-300 drop-shadow-sm group-hover:text-gray-900 dark:group-hover:text-white">{feature.title}</h3>
@@ -192,13 +192,13 @@ const Features = () => {
                       <img 
                         src={feature.image} 
                         alt={`${feature.title} background`}
-                        className="w-full h-full object-cover opacity-0 group-hover:opacity-30 group-active:opacity-40 transition-opacity duration-700 scale-110 group-hover:scale-100"
+                        className="w-full h-full object-cover opacity-40 group-hover:opacity-60 group-active:opacity-70 transition-opacity duration-700 scale-105 group-hover:scale-100"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/40 group-hover:via-black/10 transition-all duration-500"></div>
                     </div>
                     
                     {/* Animated gradient background */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-20 group-active:opacity-30 transition-all duration-500`}></div>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-15 group-hover:opacity-25 group-active:opacity-35 transition-all duration-500`}></div>
                     
                     {/* Floating gradient orb */}
                     <div className={`absolute -top-4 ${isEven ? '-right-4' : '-left-4'} w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-full opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-500 blur-xl`}></div>
