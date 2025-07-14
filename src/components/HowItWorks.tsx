@@ -80,30 +80,32 @@ const HowItWorks = () => {
         <div className="grid md:grid-cols-3 gap-8" ref={stepsRef}>
           {steps.map((step, index) => (
             <div key={index} className="group step-card opacity-0 transform translate-y-10 transition-all duration-1000 ease-out relative">
-              {/* Main Image Container */}
-              <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3] shadow-2xl group-hover:shadow-3xl transition-all duration-500">
-                <img 
-                  src={step.image} 
-                  alt={`${step.title} - Beautiful travel destination`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                
-                {/* Floating Icon */}
-                <div className="absolute top-4 left-4 w-16 h-16 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500">
-                  <span className="text-3xl">{step.icon}</span>
+              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 shadow-xl hover:shadow-2xl dark:shadow-black/30 dark:hover:shadow-black/50 h-full">
+                {/* Featured Image */}
+                <div className="aspect-[16/10] overflow-hidden relative">
+                  <img 
+                    src={step.image} 
+                    alt={`${step.title} - Beautiful travel destination`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
+                  
+                  {/* Floating Icon */}
+                  <div className="absolute top-4 left-4 w-16 h-16 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500">
+                    <span className="text-3xl">{step.icon}</span>
+                  </div>
+                  
+                  {/* Step Number */}
+                  <div className="absolute top-4 right-4 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+                    {index + 1}
+                  </div>
                 </div>
                 
-                {/* Step Number */}
-                <div className="absolute top-4 right-4 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
-                  {index + 1}
+                {/* Content Below Image */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white transition-colors duration-300">{step.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">{step.description}</p>
                 </div>
-              </div>
-              
-              {/* Content Below Image */}
-              <div className="text-center">
-                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white transition-colors duration-300">{step.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">{step.description}</p>
               </div>
               
               {/* Connection Arrow */}
