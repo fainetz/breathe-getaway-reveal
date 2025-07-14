@@ -26,7 +26,7 @@ const Features = () => {
       title: "Instant Everything", 
       description: "From flights to hidden gems, we handle every detail so you can focus on your journey within.",
       gradient: "from-pink-500 to-purple-500",
-      image: "/lovable-uploads/c3271852-58f4-467c-bb3f-a20c29a0e7ef.png" // Modern desert suite
+      image: "/lovable-uploads/994e9973-6cc4-4250-a3a2-4c9fc2ec20ce.png" // Tropical deck
     },
     {
       title: "Curated Authenticity",
@@ -50,7 +50,7 @@ const Features = () => {
       title: "Mindful Travel",
       description: "Every recommendation considers your mental space and what will truly nourish your spirit.",
       gradient: "from-indigo-500 to-purple-500",
-      image: "/lovable-uploads/6cf16bac-b5ef-4ca9-bfd9-a473f55c3a8b.png" // Luxury hotel interior
+      image: "/lovable-uploads/c3271852-58f4-467c-bb3f-a20c29a0e7ef.png" // Modern desert suite
     }
   ];
 
