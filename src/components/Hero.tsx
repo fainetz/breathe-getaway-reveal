@@ -44,15 +44,6 @@ const Hero = () => {
       comingSoon: true
     },
     {
-      id: 'chateau-river-village',
-      title: 'Château River Village',
-      description: 'Enchanting riverside town with medieval charm and luxury accommodations',
-      image: '/lovable-uploads/1b34fb02-ef92-4f9c-abad-7c07f22e9457.png',
-      label: 'FLIGHT DESTINATION',
-      labelColor: 'bg-gradient-to-r from-purple-500 to-pink-600',
-      comingSoon: false
-    },
-    {
       id: 'desert-mountain-retreat',
       title: 'Desert Mountain Retreat',
       description: 'Serene mountain sanctuary with breathtaking desert landscapes and luxury amenities',
