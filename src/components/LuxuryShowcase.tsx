@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, MapPin, Star, X, Brain, Zap, Settings } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import DraggableDialogContent from './DraggableDialogContent';
 
 const LuxuryShowcase = () => {
   const [hoveredImage, setHoveredImage] = useState<number | null>(null);
@@ -179,17 +180,12 @@ const LuxuryShowcase = () => {
                 </div>
               </DialogTrigger>
               <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 top-auto bottom-0 sm:top-[50%] sm:bottom-auto data-[state=open]:animate-slide-up-mobile sm:data-[state=open]:animate-slide-up data-[state=closed]:animate-slide-down-mobile sm:data-[state=closed]:animate-slide-down">
-                <div className="relative">
+                <DraggableDialogContent>
                   {/* Subtle Background Pattern */}
                   <div className="absolute inset-0 opacity-30">
                     <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(148,163,184,0.08),transparent_70%)]"></div>
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(100,116,139,0.08),transparent_70%)]"></div>
-                  </div>
-
-                  {/* Mobile drag handle */}
-                  <div className="sm:hidden flex justify-center pt-3 pb-2">
-                    <div className="w-12 h-1 bg-white/20 rounded-full"></div>
                   </div>
 
                   {/* Header */}
@@ -317,7 +313,7 @@ const LuxuryShowcase = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </DraggableDialogContent>
               </DialogContent>
             </Dialog>
           </div>
@@ -380,19 +376,14 @@ const LuxuryShowcase = () => {
                         </div>
                       </div>
                     </DialogTrigger>
-                  <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 top-auto bottom-0 sm:top-[50%] sm:bottom-auto data-[state=open]:animate-slide-up-mobile sm:data-[state=open]:animate-slide-up data-[state=closed]:animate-slide-down-mobile sm:data-[state=closed]:animate-slide-down">
-                    <div className="relative">
-                      {/* Subtle Background Pattern */}
-                      <div className="absolute inset-0 opacity-30">
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(148,163,184,0.08),transparent_70%)]"></div>
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(100,116,139,0.08),transparent_70%)]"></div>
-                      </div>
-
-                      {/* Mobile drag handle */}
-                      <div className="sm:hidden flex justify-center pt-3 pb-2">
-                        <div className="w-12 h-1 bg-white/20 rounded-full"></div>
-                      </div>
+                   <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 top-auto bottom-0 sm:top-[50%] sm:bottom-auto data-[state=open]:animate-slide-up-mobile sm:data-[state=open]:animate-slide-up data-[state=closed]:animate-slide-down-mobile sm:data-[state=closed]:animate-slide-down">
+                     <DraggableDialogContent>
+                       {/* Subtle Background Pattern */}
+                       <div className="absolute inset-0 opacity-30">
+                         <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
+                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(148,163,184,0.08),transparent_70%)]"></div>
+                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(100,116,139,0.08),transparent_70%)]"></div>
+                       </div>
 
                       {/* Header */}
                       <div className="relative p-4 sm:p-6 lg:p-10 pb-4 sm:pb-6 lg:pb-8 border-b border-white/5">
@@ -519,8 +510,8 @@ const LuxuryShowcase = () => {
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </DialogContent>
+                     </DraggableDialogContent>
+                   </DialogContent>
                   </Dialog>
                 </div>
               );
