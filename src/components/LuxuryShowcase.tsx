@@ -7,33 +7,36 @@ const LuxuryShowcase = () => {
   const showcaseImages = [
     {
       id: 1,
-      image: '/lovable-uploads/3f81b31d-0911-4669-829d-e28da3084ad5.png',
-      title: 'AI Hotel Discovery',
-      subtitle: 'Smart matching based on your preferences',
-      location: 'Personalized Results',
-      rating: 5.0,
-      price: 'Best Prices',
-      category: 'Hotel Booking'
+      image: '/lovable-uploads/5935897b-1c16-4e4f-8a47-50073b06561d.png',
+      title: 'Luxury Retreat Finder',
+      subtitle: 'Our AI analyzes thousands of luxury retreat options, considering your travel history, preferences, and budget constraints. Machine learning algorithms evaluate amenities, location exclusivity, and seasonal availability to curate the perfect getaway experience.',
+      location: 'Worldwide',
+      rating: 4.8,
+      price: 'Exclusive Deals',
+      category: 'Retreat Planning',
+      details: 'Advanced algorithms scan luxury retreat databases, analyzing guest reviews, seasonal pricing, and amenity compatibility with your preferences. The AI considers factors like privacy levels, activity preferences, and dietary requirements to match you with retreats that exceed expectations.'
     },
     {
       id: 2,
       image: '/lovable-uploads/e741e714-0f47-4218-abfd-18a2af844425.png',
       title: 'Flight & Seat Selection',
-      subtitle: 'AI finds perfect flights with your preferred seating',
+      subtitle: 'Smart flight AI processes millions of route combinations, seat maps, and airline policies to find your ideal journey. The system learns from your travel patterns and preferences to recommend optimal flight times, seat selections, and connection strategies.',
       location: 'Global Routes',
       rating: 4.9,
       price: 'Optimized Fares',
-      category: 'Flight Search'
+      category: 'Flight Search',
+      details: 'Machine learning models analyze flight patterns, price fluctuations, and seat availability across multiple airlines. The AI considers your seating preferences, meal requirements, and schedule flexibility to secure the best flights at optimal prices.'
     },
     {
       id: 3,
-      image: '/lovable-uploads/5935897b-1c16-4e4f-8a47-50073b06561d.png',
-      title: 'Luxury Retreat Finder',
-      subtitle: 'Curated experiences tailored to your desires',
-      location: 'Worldwide',
-      rating: 4.8,
-      price: 'Exclusive Deals',
-      category: 'Retreat Planning'
+      image: '/lovable-uploads/3f81b31d-0911-4669-829d-e28da3084ad5.png',
+      title: 'AI Hotel Discovery',
+      subtitle: 'Intelligent hotel matching leverages natural language processing to understand your accommodation preferences. The AI evaluates room types, amenities, location advantages, and guest satisfaction scores to present hotels that align perfectly with your luxury standards.',
+      location: 'Personalized Results',
+      rating: 5.0,
+      price: 'Best Prices',
+      category: 'Hotel Booking',
+      details: 'Deep learning algorithms process hotel features, guest reviews, and location data to predict your satisfaction score for each property. The AI considers your check-in preferences, room requirements, and desired amenities to curate a personalized selection of luxury accommodations.'
     }
   ];
 
@@ -149,7 +152,7 @@ const LuxuryShowcase = () => {
                     </div>
                   </div>
                   <h4 className="text-lg font-bold text-white mb-1">{item.title}</h4>
-                  <p className="text-white/70 text-sm mb-2">{item.subtitle}</p>
+                  <p className="text-white/70 text-sm mb-2 line-clamp-3">{item.subtitle.substring(0, 120)}...</p>
                   <div className="flex items-center justify-between">
                     <span className="text-white font-semibold text-sm">{item.price}</span>
                     <button 
