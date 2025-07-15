@@ -21,7 +21,7 @@ const Hero = () => {
       title: 'Sunset Palm Resort',
       description: 'Ultimate tropical luxury with infinity pools and palm-fringed paradise',
       image: '/lovable-uploads/ec79ecde-c51a-4448-9b2d-5328f1399e1d.png',
-      label: 'TROPICAL LUXURY',
+      label: 'HOTEL',
       labelColor: 'bg-gradient-to-r from-amber-500 to-orange-600',
       comingSoon: true
     },
@@ -30,16 +30,16 @@ const Hero = () => {
       title: 'Azure Beach Club',
       description: 'Pristine white sands meet crystal-clear waters in this exclusive retreat',
       image: '/lovable-uploads/349adef3-59ea-405e-bc62-d704ea49bf62.png',
-      label: 'BEACHFRONT PARADISE',
+      label: 'DESTINATION',
       labelColor: 'bg-gradient-to-r from-blue-500 to-cyan-600',
-      comingSoon: true
+      comingSoon: false
     },
     {
       id: 'overwater-villa-resort',
       title: 'Overwater Villa Resort',
       description: 'Rustic elegance meets tropical luxury in stunning overwater suites',
       image: '/lovable-uploads/b6b55919-61a6-4bd8-8d89-0db513eac417.png',
-      label: 'MALDIVIAN STYLE',
+      label: 'HOTEL',
       labelColor: 'bg-gradient-to-r from-emerald-500 to-teal-600',
       comingSoon: true
     },
@@ -48,9 +48,9 @@ const Hero = () => {
       title: 'Château River Village',
       description: 'Enchanting riverside town with medieval charm and luxury accommodations',
       image: '/lovable-uploads/1b34fb02-ef92-4f9c-abad-7c07f22e9457.png',
-      label: 'EUROPEAN ROMANCE',
+      label: 'DESTINATION',
       labelColor: 'bg-gradient-to-r from-purple-500 to-pink-600',
-      comingSoon: true
+      comingSoon: false
     }
   ];
 
