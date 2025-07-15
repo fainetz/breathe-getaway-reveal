@@ -14,12 +14,13 @@ const DraggableDialogContent: React.FC<DraggableDialogContentProps> = ({ childre
   const updatePosition = (deltaY: number) => {
     if (!contentRef.current) return;
     
-    // Ultra-smooth resistance with better curve
-    const resistance = deltaY > 0 ? Math.min(deltaY * 0.4, 120) : 0;
-    const opacity = deltaY > 0 ? Math.max(0.7, 1 - (deltaY * 0.0008)) : 1;
+    // Follow finger position directly with slight resistance
+    const resistance = deltaY > 0 ? deltaY * 0.8 : 0;
+    const opacity = deltaY > 0 ? Math.max(0.3, 1 - (deltaY * 0.002)) : 1;
+    const scale = deltaY > 0 ? Math.max(0.85, 1 - (deltaY * 0.0003)) : 1;
     
     // Use transform only for better performance
-    contentRef.current.style.transform = `translate3d(0, ${resistance}px, 0) scale(${Math.max(0.98, 1 - deltaY * 0.0001)})`;
+    contentRef.current.style.transform = `translate3d(0, ${resistance}px, 0) scale(${scale})`;
     contentRef.current.style.opacity = `${opacity}`;
   };
 
