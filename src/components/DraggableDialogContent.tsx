@@ -75,11 +75,22 @@ const DraggableDialogContent: React.FC<DraggableDialogContentProps> = ({ childre
     
     // Close dialog if dragged down enough (lower threshold for easier closing)
     if (deltaY > 60) {
-      // Find and trigger close
+      // Find and trigger close using DialogClose or ESC key
       const dialogContent = contentRef.current?.closest('[role="dialog"]');
-      const closeButton = dialogContent?.querySelector('button[aria-label="Close"]') as HTMLButtonElement;
+      let closeButton = dialogContent?.querySelector('[data-radix-dialog-close]') as HTMLButtonElement;
       
-      if (closeButton) {
+      if (!closeButton) {
+        // Fallback: trigger ESC key to close dialog
+        const escEvent = new KeyboardEvent('keydown', {
+          key: 'Escape',
+          code: 'Escape',
+          keyCode: 27,
+          which: 27,
+          bubbles: true,
+          cancelable: true
+        });
+        document.dispatchEvent(escEvent);
+      } else {
         closeButton.click();
       }
     } else {
@@ -124,6 +135,15 @@ const DraggableDialogContent: React.FC<DraggableDialogContentProps> = ({ childre
         <div className="w-10 h-1 bg-white/50 rounded-full shadow-sm"></div>
       </div>
 
+      {/* Hidden DialogClose for programmatic access */}
+      <DialogClose asChild>
+        <button 
+          className="hidden" 
+          data-radix-dialog-close 
+          aria-label="Close"
+        />
+      </DialogClose>
+      
       <div data-scrollable>{children}</div>
     </div>
   );
