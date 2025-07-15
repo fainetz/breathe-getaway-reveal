@@ -49,13 +49,13 @@ const LuxuryShowcase = () => {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 rounded-full mb-6">
-            <span className="text-sm font-semibold text-amber-800 dark:text-amber-200">LUXURY COLLECTION</span>
+          <div className="inline-block px-4 py-2 bg-gradient-to-r from-slate-100 to-gray-100 dark:from-slate-800/30 dark:to-gray-800/30 rounded-full mb-6">
+            <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">LUXURY COLLECTION</span>
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-6">
             Where Dreams
             <br />
-            <span className="bg-gradient-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-slate-600 to-gray-700 bg-clip-text text-transparent">
               Meet Reality
             </span>
           </h2>
@@ -183,7 +183,7 @@ const LuxuryShowcase = () => {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <button className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
+          <button className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-slate-600 to-gray-700 hover:from-slate-700 hover:to-gray-800 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
             <span>Explore All Destinations</span>
             <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
