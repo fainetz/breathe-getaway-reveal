@@ -7,7 +7,7 @@ const LuxuryShowcase = () => {
   const showcaseImages = [
     {
       id: 1,
-      image: '/lovable-uploads/3b801eab-1dcf-49ec-8a37-c1a0d4dcc314.png',
+      image: '/lovable-uploads/00edbb5d-91bb-4546-8c70-9a4853c66fd0.png',
       title: 'Maldives Luxury Resort',
       subtitle: 'Overwater Bungalows & Infinity Views',
       location: 'Maldives',
