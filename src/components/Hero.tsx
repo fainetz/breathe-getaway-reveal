@@ -22,7 +22,7 @@ const Hero = () => {
       description: 'Ultimate tropical luxury with infinity pools and palm-fringed paradise',
       image: '/lovable-uploads/ec79ecde-c51a-4448-9b2d-5328f1399e1d.png',
       label: 'HOTEL',
-      labelColor: 'bg-gradient-to-r from-slate-600 to-gray-700',
+      labelColor: 'bg-gradient-to-r from-slate-700 to-slate-800',
       comingSoon: true
     },
     {
