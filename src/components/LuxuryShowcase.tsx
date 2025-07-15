@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, MapPin, Star, X, Brain, Zap, Settings } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 const LuxuryShowcase = () => {
   const [hoveredImage, setHoveredImage] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const showcaseImages = [
     {
@@ -74,12 +76,40 @@ const LuxuryShowcase = () => {
     '/lovable-uploads/d29d3ffd-9214-4505-bd42-d66b6741152e.png', // Sunset deck
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative py-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section 
+      ref={sectionRef}
+      className="relative py-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900 transition-colors duration-300 overflow-hidden"
+    >
+      {/* Animated background elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="inline-block px-4 py-2 bg-gradient-to-r from-slate-100 to-gray-100 dark:from-slate-800/30 dark:to-gray-800/30 rounded-full mb-6">
             <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">LUXURY FEATURES</span>
           </div>
@@ -99,49 +129,50 @@ const LuxuryShowcase = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           
           {/* Large Featured Image */}
-          <div className="lg:row-span-2">
+          <div className={`lg:row-span-2 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
             <Dialog>
               <DialogTrigger asChild>
                 <div 
-                  className="relative h-[600px] rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
+                  className="relative h-[600px] rounded-3xl overflow-hidden group cursor-pointer shadow-2xl hover:shadow-3xl transition-all duration-700 hover:scale-[1.02] transform-gpu"
                   onMouseEnter={() => setHoveredImage(0)}
                   onMouseLeave={() => setHoveredImage(null)}
                 >
                   <img 
                     src={showcaseImages[0].image}
                     alt={showcaseImages[0].title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:brightness-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-700"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
                   
                   {/* Floating Badge */}
-                  <div className="absolute top-6 left-6">
-                    <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30">
+                  <div className="absolute top-6 left-6 transition-all duration-500 group-hover:scale-110 group-hover:translate-x-2">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30 group-hover:bg-white/30 group-hover:border-white/50 transition-all duration-500">
                       <span className="text-white font-semibold text-sm">{showcaseImages[0].category}</span>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <MapPin className="w-4 h-4 text-white/80" />
-                      <span className="text-white/90 text-sm">{showcaseImages[0].location}</span>
+                  <div className="absolute bottom-6 left-6 right-6 transition-all duration-500 group-hover:translate-y-[-4px]">
+                    <div className="flex items-center gap-2 mb-3 transition-all duration-500 group-hover:translate-x-2">
+                      <MapPin className="w-4 h-4 text-white/80 group-hover:text-white transition-colors duration-500" />
+                      <span className="text-white/90 text-sm group-hover:text-white transition-colors duration-500">{showcaseImages[0].location}</span>
                       <div className="flex items-center gap-1 ml-4">
-                        <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                        <span className="text-white/90 text-sm">{showcaseImages[0].rating}</span>
+                        <Star className="w-4 h-4 text-yellow-400 fill-yellow-400 group-hover:scale-110 transition-transform duration-500" />
+                        <span className="text-white/90 text-sm group-hover:text-white transition-colors duration-500">{showcaseImages[0].rating}</span>
                       </div>
                     </div>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">{showcaseImages[0].title}</h3>
-                    <p className="text-white/80 mb-4">{showcaseImages[0].subtitle}</p>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 transition-all duration-500 group-hover:translate-x-2">{showcaseImages[0].title}</h3>
+                    <p className="text-white/80 mb-4 transition-all duration-500 group-hover:text-white/90 group-hover:translate-x-2">{showcaseImages[0].subtitle}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-white font-semibold">{showcaseImages[0].price}</span>
+                      <span className="text-white font-semibold transition-all duration-500 group-hover:translate-x-2 group-hover:scale-105">{showcaseImages[0].price}</span>
                       <div 
-                        className={`flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 text-white font-semibold transition-all duration-300 ${
-                          hoveredImage === 0 ? 'bg-white/30 translate-x-2' : ''
+                        className={`flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 text-white font-semibold transition-all duration-500 hover:bg-white/30 hover:scale-105 ${
+                          hoveredImage === 0 ? 'bg-white/30 translate-x-2 scale-105' : ''
                         }`}
                       >
                         Explore
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className={`w-4 h-4 transition-transform duration-500 ${hoveredImage === 0 ? 'translate-x-1' : ''}`} />
                       </div>
                     </div>
                   </div>
@@ -296,53 +327,59 @@ const LuxuryShowcase = () => {
             {showcaseImages.slice(1).map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <Dialog key={item.id}>
-                  <DialogTrigger asChild>
-                    <div 
-                      className="relative h-[280px] rounded-2xl overflow-hidden group cursor-pointer shadow-xl"
-                      onMouseEnter={() => setHoveredImage(index + 1)}
-                      onMouseLeave={() => setHoveredImage(null)}
+                <div 
+                  key={item.id}
+                  className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+                  style={{ transitionDelay: `${(index + 1) * 200 + 500}ms` }}
+                >
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <div 
+                        className="relative h-[280px] rounded-2xl overflow-hidden group cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-700 hover:scale-[1.03] transform-gpu"
+                        onMouseEnter={() => setHoveredImage(index + 1)}
+                        onMouseLeave={() => setHoveredImage(null)}
                     >
-                      <img 
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                      
-                      {/* Badge */}
-                      <div className="absolute top-4 left-4">
-                        <div className="bg-black/30 backdrop-blur-sm rounded-full px-3 py-1">
-                          <span className="text-white font-medium text-xs">{item.category}</span>
+                        <img 
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:brightness-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/60 transition-all duration-700"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                        
+                        {/* Badge */}
+                        <div className="absolute top-4 left-4 transition-all duration-500 group-hover:scale-110 group-hover:translate-x-1">
+                          <div className="bg-black/30 backdrop-blur-sm rounded-full px-3 py-1 group-hover:bg-black/40 group-hover:border group-hover:border-white/20 transition-all duration-500">
+                            <span className="text-white font-medium text-xs">{item.category}</span>
+                          </div>
                         </div>
-                      </div>
 
-                      {/* Content */}
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <div className="flex items-center gap-2 mb-2">
-                          <MapPin className="w-3 h-3 text-white/70" />
-                          <span className="text-white/80 text-xs">{item.location}</span>
-                          <div className="flex items-center gap-1 ml-2">
-                            <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
-                            <span className="text-white/80 text-xs">{item.rating}</span>
+                        {/* Content */}
+                        <div className="absolute bottom-4 left-4 right-4 transition-all duration-500 group-hover:translate-y-[-2px]">
+                          <div className="flex items-center gap-2 mb-2 transition-all duration-500 group-hover:translate-x-1">
+                            <MapPin className="w-3 h-3 text-white/70 group-hover:text-white transition-colors duration-500" />
+                            <span className="text-white/80 text-xs group-hover:text-white transition-colors duration-500">{item.location}</span>
+                            <div className="flex items-center gap-1 ml-2">
+                              <Star className="w-3 h-3 text-yellow-400 fill-yellow-400 group-hover:scale-110 transition-transform duration-500" />
+                              <span className="text-white/80 text-xs group-hover:text-white transition-colors duration-500">{item.rating}</span>
+                            </div>
                           </div>
-                        </div>
-                        <h4 className="text-lg font-bold text-white mb-1">{item.title}</h4>
-                        <p className="text-white/70 text-sm mb-2 line-clamp-3">{item.subtitle.substring(0, 120)}...</p>
-                        <div className="flex items-center justify-between">
-                          <span className="text-white font-semibold text-sm">{item.price}</span>
-                          <div 
-                            className={`flex items-center gap-1 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm font-medium transition-all duration-300 ${
-                              hoveredImage === index + 1 ? 'bg-white/30 translate-x-1' : ''
-                            }`}
-                          >
-                            View
-                            <ArrowRight className="w-3 h-3" />
+                          <h4 className="text-lg font-bold text-white mb-1 transition-all duration-500 group-hover:translate-x-1">{item.title}</h4>
+                          <p className="text-white/70 text-sm mb-2 line-clamp-3 transition-all duration-500 group-hover:text-white/80 group-hover:translate-x-1">{item.subtitle.substring(0, 120)}...</p>
+                          <div className="flex items-center justify-between">
+                            <span className="text-white font-semibold text-sm transition-all duration-500 group-hover:translate-x-1 group-hover:scale-105">{item.price}</span>
+                            <div 
+                              className={`flex items-center gap-1 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm font-medium transition-all duration-500 hover:bg-white/30 hover:scale-105 ${
+                                hoveredImage === index + 1 ? 'bg-white/30 translate-x-1 scale-105' : ''
+                              }`}
+                            >
+                              View
+                              <ArrowRight className={`w-3 h-3 transition-transform duration-500 ${hoveredImage === index + 1 ? 'translate-x-0.5' : ''}`} />
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </DialogTrigger>
+                    </DialogTrigger>
                   <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 animate-slide-up-mobile sm:animate-slide-up">
                     <div className="relative">
                       {/* Subtle Background Pattern */}
@@ -484,7 +521,8 @@ const LuxuryShowcase = () => {
                       </div>
                     </div>
                   </DialogContent>
-                </Dialog>
+                  </Dialog>
+                </div>
               );
             })}
           </div>
@@ -493,22 +531,28 @@ const LuxuryShowcase = () => {
         {/* Bottom Image Strip */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {additionalImages.map((image, index) => (
-            <div key={index} className="relative h-[200px] rounded-xl overflow-hidden group cursor-pointer shadow-lg">
+            <div 
+              key={index} 
+              className={`relative h-[200px] rounded-xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-all duration-700 hover:scale-[1.02] transform-gpu ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${index * 150 + 800}ms` }}
+            >
               <img 
                 src={image}
                 alt={`Luxury detail ${index + 1}`}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
               />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
             </div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-16">
-          <button className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-slate-600 to-gray-700 hover:from-slate-700 hover:to-gray-800 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
-            <span>Try AI Travel Planning</span>
-            <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+        <div className={`text-center mt-16 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <button className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-slate-600 to-gray-700 hover:from-slate-700 hover:to-gray-800 text-white font-semibold px-8 py-4 rounded-full transition-all duration-500 shadow-xl hover:shadow-2xl hover:scale-105 transform-gpu">
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-400/20 to-gray-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+            <span className="relative z-10">Try AI Travel Planning</span>
+            <ArrowRight className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-1 relative z-10" />
           </button>
         </div>
       </div>
