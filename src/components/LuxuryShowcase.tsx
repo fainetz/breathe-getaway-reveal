@@ -147,33 +147,33 @@ const LuxuryShowcase = () => {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className="max-w-7xl max-h-[95vh] overflow-hidden bg-black/10 dark:bg-white/5 backdrop-blur-3xl border border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] rounded-[32px] p-0">
+              <DialogContent className="max-w-7xl max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-[40px] p-0">
                 <div className="relative">
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-20">
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-purple-600/30"></div>
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(120,119,198,0.3),transparent_50%)]"></div>
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(168,85,247,0.3),transparent_50%)]"></div>
+                  {/* Subtle Background Pattern */}
+                  <div className="absolute inset-0 opacity-30">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(148,163,184,0.08),transparent_70%)]"></div>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(100,116,139,0.08),transparent_70%)]"></div>
                   </div>
 
                   {/* Header */}
-                  <div className="relative p-8 pb-6 border-b border-white/10">
-                    <div className="flex items-center gap-6">
+                  <div className="relative p-10 pb-8 border-b border-white/5">
+                    <div className="flex items-center gap-8">
                       <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-2xl blur-lg opacity-60"></div>
-                        <div className="relative bg-white/10 backdrop-blur-2xl rounded-2xl p-4 border border-white/20">
-                          <Brain className="w-12 h-12 text-white" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-300/20 to-gray-400/20 rounded-3xl blur-2xl opacity-40"></div>
+                        <div className="relative bg-white/10 backdrop-blur-3xl rounded-3xl p-5 border border-white/10">
+                          <Brain className="w-14 h-14 text-white/90" />
                         </div>
                       </div>
                       <div className="flex-1">
-                        <h1 className="text-4xl font-bold text-white mb-2">{showcaseImages[0].title}</h1>
-                        <div className="flex items-center gap-3">
-                          <div className="px-4 py-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20">
-                            <span className="text-white/90 font-medium">{showcaseImages[0].category}</span>
+                        <h1 className="text-5xl font-light text-white/95 mb-3 tracking-tight">{showcaseImages[0].title}</h1>
+                        <div className="flex items-center gap-4">
+                          <div className="px-6 py-3 bg-white/5 backdrop-blur-2xl rounded-2xl border border-white/10">
+                            <span className="text-white/80 font-medium text-lg">{showcaseImages[0].category}</span>
                           </div>
-                          <div className="flex items-center gap-2 text-white/80">
-                            <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                            <span className="font-medium">{showcaseImages[0].rating}</span>
+                          <div className="flex items-center gap-3 text-white/70">
+                            <Star className="w-5 h-5 text-amber-300/80 fill-amber-300/80" />
+                            <span className="font-medium text-lg">{showcaseImages[0].rating}</span>
                           </div>
                         </div>
                       </div>
@@ -181,44 +181,44 @@ const LuxuryShowcase = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="relative p-8 max-h-[calc(95vh-200px)] overflow-y-auto">
-                    <div className="space-y-10">
+                  <div className="relative p-10 max-h-[calc(95vh-220px)] overflow-y-auto">
+                    <div className="space-y-12">
                       {/* Hero Image */}
-                      <div className="relative h-[400px] rounded-3xl overflow-hidden group">
+                      <div className="relative h-[420px] rounded-[32px] overflow-hidden group">
                         <img 
                           src={showcaseImages[0].image}
                           alt={showcaseImages[0].title}
-                          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                          className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-transparent to-purple-500/20 mix-blend-overlay"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/20 via-transparent to-slate-900/20 mix-blend-overlay"></div>
                         
-                        {/* Floating Stats */}
-                        <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                          <div className="bg-black/30 backdrop-blur-2xl rounded-2xl px-6 py-4 border border-white/20">
-                            <div className="text-white font-semibold text-lg">{showcaseImages[0].price}</div>
-                            <div className="text-white/70 text-sm">Pricing Tier</div>
+                        {/* Floating Elements */}
+                        <div className="absolute bottom-8 left-8 right-8 flex items-center justify-between">
+                          <div className="bg-black/20 backdrop-blur-3xl rounded-3xl px-8 py-6 border border-white/10">
+                            <div className="text-white/95 font-medium text-xl mb-1">{showcaseImages[0].price}</div>
+                            <div className="text-white/60 text-sm">Pricing Model</div>
                           </div>
-                          <div className="bg-black/30 backdrop-blur-2xl rounded-2xl px-6 py-4 border border-white/20">
-                            <div className="text-white font-semibold text-lg">{showcaseImages[0].location}</div>
-                            <div className="text-white/70 text-sm">Coverage</div>
+                          <div className="bg-black/20 backdrop-blur-3xl rounded-3xl px-8 py-6 border border-white/10">
+                            <div className="text-white/95 font-medium text-xl mb-1">{showcaseImages[0].location}</div>
+                            <div className="text-white/60 text-sm">Global Reach</div>
                           </div>
                         </div>
                       </div>
 
                       {/* Main Content Grid */}
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                         {/* Left Column */}
-                        <div className="space-y-6">
+                        <div className="space-y-8">
                           {/* Overview */}
                           <div className="relative group">
-                            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-blue-600/10 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
-                            <div className="relative bg-white/5 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
-                              <div className="flex items-center gap-3 mb-6">
-                                <div className="w-1 h-8 bg-gradient-to-b from-cyan-400 to-blue-600 rounded-full"></div>
-                                <h3 className="text-2xl font-bold text-white">Overview</h3>
+                            <div className="absolute inset-0 bg-gradient-to-br from-slate-400/8 to-gray-500/8 rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                            <div className="relative bg-white/3 backdrop-blur-3xl rounded-[32px] p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                              <div className="flex items-center gap-4 mb-8">
+                                <div className="w-1 h-10 bg-gradient-to-b from-slate-300 to-gray-400 rounded-full opacity-60"></div>
+                                <h3 className="text-3xl font-light text-white/95">Overview</h3>
                               </div>
-                              <p className="text-white/80 leading-relaxed text-lg">
+                              <p className="text-white/70 leading-relaxed text-lg font-light">
                                 {showcaseImages[0].details}
                               </p>
                             </div>
@@ -226,17 +226,17 @@ const LuxuryShowcase = () => {
 
                           {/* Features */}
                           <div className="relative group">
-                            <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-pink-600/10 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
-                            <div className="relative bg-white/5 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
-                              <div className="flex items-center gap-3 mb-6">
-                                <div className="w-1 h-8 bg-gradient-to-b from-purple-400 to-pink-600 rounded-full"></div>
-                                <h3 className="text-2xl font-bold text-white">Key Features</h3>
+                            <div className="absolute inset-0 bg-gradient-to-br from-gray-400/8 to-slate-500/8 rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                            <div className="relative bg-white/3 backdrop-blur-3xl rounded-[32px] p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                              <div className="flex items-center gap-4 mb-8">
+                                <div className="w-1 h-10 bg-gradient-to-b from-gray-300 to-slate-400 rounded-full opacity-60"></div>
+                                <h3 className="text-3xl font-light text-white/95">Key Features</h3>
                               </div>
-                              <div className="space-y-4">
+                              <div className="space-y-5">
                                 {showcaseImages[0].features.map((feature, index) => (
-                                  <div key={index} className="group/item flex items-center gap-4 p-4 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-                                    <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full shadow-lg"></div>
-                                    <span className="text-white/90 font-medium">{feature}</span>
+                                  <div key={index} className="group/item flex items-center gap-5 p-5 bg-white/2 backdrop-blur-2xl rounded-3xl border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-400">
+                                    <div className="w-2 h-2 bg-gradient-to-r from-slate-300 to-gray-400 rounded-full opacity-60"></div>
+                                    <span className="text-white/80 font-light text-lg">{feature}</span>
                                   </div>
                                 ))}
                               </div>
@@ -245,35 +245,35 @@ const LuxuryShowcase = () => {
                         </div>
 
                         {/* Right Column */}
-                        <div className="space-y-6">
+                        <div className="space-y-8">
                           {/* How It Works */}
                           <div className="relative group">
-                            <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/10 to-teal-600/10 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
-                            <div className="relative bg-white/5 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
-                              <div className="flex items-center gap-3 mb-6">
-                                <div className="w-1 h-8 bg-gradient-to-b from-emerald-400 to-teal-600 rounded-full"></div>
-                                <h3 className="text-2xl font-bold text-white">How It Works</h3>
+                            <div className="absolute inset-0 bg-gradient-to-br from-slate-500/8 to-gray-400/8 rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                            <div className="relative bg-white/3 backdrop-blur-3xl rounded-[32px] p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                              <div className="flex items-center gap-4 mb-8">
+                                <div className="w-1 h-10 bg-gradient-to-b from-gray-300 to-slate-400 rounded-full opacity-60"></div>
+                                <h3 className="text-3xl font-light text-white/95">How It Works</h3>
                               </div>
-                              <p className="text-white/80 leading-relaxed text-lg">
+                              <p className="text-white/70 leading-relaxed text-lg font-light">
                                 {showcaseImages[0].howItWorks}
                               </p>
                             </div>
                           </div>
 
                           {/* Performance Stats */}
-                          <div className="grid grid-cols-2 gap-4">
+                          <div className="grid grid-cols-2 gap-6">
                             <div className="relative group">
-                              <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-                              <div className="relative bg-white/5 backdrop-blur-2xl rounded-2xl p-6 border border-white/10 text-center">
-                                <div className="text-3xl font-bold text-white mb-2">99.9%</div>
-                                <div className="text-white/70 text-sm">Accuracy</div>
+                              <div className="absolute inset-0 bg-gradient-to-br from-slate-400/10 to-gray-400/10 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                              <div className="relative bg-white/3 backdrop-blur-3xl rounded-3xl p-8 border border-white/5 text-center">
+                                <div className="text-4xl font-light text-white/95 mb-3">99.9%</div>
+                                <div className="text-white/60 text-sm font-light">AI Accuracy</div>
                               </div>
                             </div>
                             <div className="relative group">
-                              <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-                              <div className="relative bg-white/5 backdrop-blur-2xl rounded-2xl p-6 border border-white/10 text-center">
-                                <div className="text-3xl font-bold text-white mb-2">&lt;2s</div>
-                                <div className="text-white/70 text-sm">Response</div>
+                              <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 to-slate-400/10 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                              <div className="relative bg-white/3 backdrop-blur-3xl rounded-3xl p-8 border border-white/5 text-center">
+                                <div className="text-4xl font-light text-white/95 mb-3">&lt;2s</div>
+                                <div className="text-white/60 text-sm font-light">Response Time</div>
                               </div>
                             </div>
                           </div>
@@ -338,33 +338,33 @@ const LuxuryShowcase = () => {
                       </div>
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="max-w-7xl max-h-[95vh] overflow-hidden bg-black/10 dark:bg-white/5 backdrop-blur-3xl border border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] rounded-[32px] p-0">
+                  <DialogContent className="max-w-7xl max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-[40px] p-0">
                     <div className="relative">
-                      {/* Background Pattern */}
-                      <div className="absolute inset-0 opacity-20">
-                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-purple-600/30"></div>
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(120,119,198,0.3),transparent_50%)]"></div>
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(168,85,247,0.3),transparent_50%)]"></div>
+                      {/* Subtle Background Pattern */}
+                      <div className="absolute inset-0 opacity-30">
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(148,163,184,0.08),transparent_70%)]"></div>
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(100,116,139,0.08),transparent_70%)]"></div>
                       </div>
 
                       {/* Header */}
-                      <div className="relative p-8 pb-6 border-b border-white/10">
-                        <div className="flex items-center gap-6">
+                      <div className="relative p-10 pb-8 border-b border-white/5">
+                        <div className="flex items-center gap-8">
                           <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-2xl blur-lg opacity-60"></div>
-                            <div className="relative bg-white/10 backdrop-blur-2xl rounded-2xl p-4 border border-white/20">
-                              <IconComponent className="w-12 h-12 text-white" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-slate-300/20 to-gray-400/20 rounded-3xl blur-2xl opacity-40"></div>
+                            <div className="relative bg-white/10 backdrop-blur-3xl rounded-3xl p-5 border border-white/10">
+                              <IconComponent className="w-14 h-14 text-white/90" />
                             </div>
                           </div>
                           <div className="flex-1">
-                            <h1 className="text-4xl font-bold text-white mb-2">{item.title}</h1>
-                            <div className="flex items-center gap-3">
-                              <div className="px-4 py-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20">
-                                <span className="text-white/90 font-medium">{item.category}</span>
+                            <h1 className="text-5xl font-light text-white/95 mb-3 tracking-tight">{item.title}</h1>
+                            <div className="flex items-center gap-4">
+                              <div className="px-6 py-3 bg-white/5 backdrop-blur-2xl rounded-2xl border border-white/10">
+                                <span className="text-white/80 font-medium text-lg">{item.category}</span>
                               </div>
-                              <div className="flex items-center gap-2 text-white/80">
-                                <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                                <span className="font-medium">{item.rating}</span>
+                              <div className="flex items-center gap-3 text-white/70">
+                                <Star className="w-5 h-5 text-amber-300/80 fill-amber-300/80" />
+                                <span className="font-medium text-lg">{item.rating}</span>
                               </div>
                             </div>
                           </div>
@@ -372,44 +372,44 @@ const LuxuryShowcase = () => {
                       </div>
 
                       {/* Content */}
-                      <div className="relative p-8 max-h-[calc(95vh-200px)] overflow-y-auto">
-                        <div className="space-y-10">
+                      <div className="relative p-10 max-h-[calc(95vh-220px)] overflow-y-auto">
+                        <div className="space-y-12">
                           {/* Hero Image */}
-                          <div className="relative h-[400px] rounded-3xl overflow-hidden group">
+                          <div className="relative h-[420px] rounded-[32px] overflow-hidden group">
                             <img 
                               src={item.image}
                               alt={item.title}
-                              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                              className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-                            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-transparent to-purple-500/20 mix-blend-overlay"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/20 via-transparent to-slate-900/20 mix-blend-overlay"></div>
                             
-                            {/* Floating Stats */}
-                            <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                              <div className="bg-black/30 backdrop-blur-2xl rounded-2xl px-6 py-4 border border-white/20">
-                                <div className="text-white font-semibold text-lg">{item.price}</div>
-                                <div className="text-white/70 text-sm">Pricing Tier</div>
+                            {/* Floating Elements */}
+                            <div className="absolute bottom-8 left-8 right-8 flex items-center justify-between">
+                              <div className="bg-black/20 backdrop-blur-3xl rounded-3xl px-8 py-6 border border-white/10">
+                                <div className="text-white/95 font-medium text-xl mb-1">{item.price}</div>
+                                <div className="text-white/60 text-sm">Pricing Model</div>
                               </div>
-                              <div className="bg-black/30 backdrop-blur-2xl rounded-2xl px-6 py-4 border border-white/20">
-                                <div className="text-white font-semibold text-lg">{item.location}</div>
-                                <div className="text-white/70 text-sm">Coverage</div>
+                              <div className="bg-black/20 backdrop-blur-3xl rounded-3xl px-8 py-6 border border-white/10">
+                                <div className="text-white/95 font-medium text-xl mb-1">{item.location}</div>
+                                <div className="text-white/60 text-sm">Global Reach</div>
                               </div>
                             </div>
                           </div>
 
                           {/* Main Content Grid */}
-                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                             {/* Left Column */}
-                            <div className="space-y-6">
+                            <div className="space-y-8">
                               {/* Overview */}
                               <div className="relative group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-blue-600/10 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
-                                <div className="relative bg-white/5 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
-                                  <div className="flex items-center gap-3 mb-6">
-                                    <div className="w-1 h-8 bg-gradient-to-b from-cyan-400 to-blue-600 rounded-full"></div>
-                                    <h3 className="text-2xl font-bold text-white">Overview</h3>
+                                <div className="absolute inset-0 bg-gradient-to-br from-slate-400/8 to-gray-500/8 rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                                <div className="relative bg-white/3 backdrop-blur-3xl rounded-[32px] p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                                  <div className="flex items-center gap-4 mb-8">
+                                    <div className="w-1 h-10 bg-gradient-to-b from-slate-300 to-gray-400 rounded-full opacity-60"></div>
+                                    <h3 className="text-3xl font-light text-white/95">Overview</h3>
                                   </div>
-                                  <p className="text-white/80 leading-relaxed text-lg">
+                                  <p className="text-white/70 leading-relaxed text-lg font-light">
                                     {item.details}
                                   </p>
                                 </div>
@@ -417,17 +417,17 @@ const LuxuryShowcase = () => {
 
                               {/* Features */}
                               <div className="relative group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-pink-600/10 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
-                                <div className="relative bg-white/5 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
-                                  <div className="flex items-center gap-3 mb-6">
-                                    <div className="w-1 h-8 bg-gradient-to-b from-purple-400 to-pink-600 rounded-full"></div>
-                                    <h3 className="text-2xl font-bold text-white">Key Features</h3>
+                                <div className="absolute inset-0 bg-gradient-to-br from-gray-400/8 to-slate-500/8 rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                                <div className="relative bg-white/3 backdrop-blur-3xl rounded-[32px] p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                                  <div className="flex items-center gap-4 mb-8">
+                                    <div className="w-1 h-10 bg-gradient-to-b from-gray-300 to-slate-400 rounded-full opacity-60"></div>
+                                    <h3 className="text-3xl font-light text-white/95">Key Features</h3>
                                   </div>
-                                  <div className="space-y-4">
+                                  <div className="space-y-5">
                                     {item.features.map((feature, featureIndex) => (
-                                      <div key={featureIndex} className="group/item flex items-center gap-4 p-4 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-                                        <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full shadow-lg"></div>
-                                        <span className="text-white/90 font-medium">{feature}</span>
+                                      <div key={featureIndex} className="group/item flex items-center gap-5 p-5 bg-white/2 backdrop-blur-2xl rounded-3xl border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-400">
+                                        <div className="w-2 h-2 bg-gradient-to-r from-slate-300 to-gray-400 rounded-full opacity-60"></div>
+                                        <span className="text-white/80 font-light text-lg">{feature}</span>
                                       </div>
                                     ))}
                                   </div>
@@ -436,35 +436,35 @@ const LuxuryShowcase = () => {
                             </div>
 
                             {/* Right Column */}
-                            <div className="space-y-6">
+                            <div className="space-y-8">
                               {/* How It Works */}
                               <div className="relative group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/10 to-teal-600/10 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
-                                <div className="relative bg-white/5 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
-                                  <div className="flex items-center gap-3 mb-6">
-                                    <div className="w-1 h-8 bg-gradient-to-b from-emerald-400 to-teal-600 rounded-full"></div>
-                                    <h3 className="text-2xl font-bold text-white">How It Works</h3>
+                                <div className="absolute inset-0 bg-gradient-to-br from-slate-500/8 to-gray-400/8 rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                                <div className="relative bg-white/3 backdrop-blur-3xl rounded-[32px] p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                                  <div className="flex items-center gap-4 mb-8">
+                                    <div className="w-1 h-10 bg-gradient-to-b from-gray-300 to-slate-400 rounded-full opacity-60"></div>
+                                    <h3 className="text-3xl font-light text-white/95">How It Works</h3>
                                   </div>
-                                  <p className="text-white/80 leading-relaxed text-lg">
+                                  <p className="text-white/70 leading-relaxed text-lg font-light">
                                     {item.howItWorks}
                                   </p>
                                 </div>
                               </div>
 
                               {/* Performance Stats */}
-                              <div className="grid grid-cols-2 gap-4">
+                              <div className="grid grid-cols-2 gap-6">
                                 <div className="relative group">
-                                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-                                  <div className="relative bg-white/5 backdrop-blur-2xl rounded-2xl p-6 border border-white/10 text-center">
-                                    <div className="text-3xl font-bold text-white mb-2">99.9%</div>
-                                    <div className="text-white/70 text-sm">Accuracy</div>
+                                  <div className="absolute inset-0 bg-gradient-to-br from-slate-400/10 to-gray-400/10 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                                  <div className="relative bg-white/3 backdrop-blur-3xl rounded-3xl p-8 border border-white/5 text-center">
+                                    <div className="text-4xl font-light text-white/95 mb-3">99.9%</div>
+                                    <div className="text-white/60 text-sm font-light">AI Accuracy</div>
                                   </div>
                                 </div>
                                 <div className="relative group">
-                                  <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-                                  <div className="relative bg-white/5 backdrop-blur-2xl rounded-2xl p-6 border border-white/10 text-center">
-                                    <div className="text-3xl font-bold text-white mb-2">&lt;2s</div>
-                                    <div className="text-white/70 text-sm">Response</div>
+                                  <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 to-slate-400/10 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                                  <div className="relative bg-white/3 backdrop-blur-3xl rounded-3xl p-8 border border-white/5 text-center">
+                                    <div className="text-4xl font-light text-white/95 mb-3">&lt;2s</div>
+                                    <div className="text-white/60 text-sm font-light">Response Time</div>
                                   </div>
                                 </div>
                               </div>
