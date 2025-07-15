@@ -7,33 +7,33 @@ const LuxuryShowcase = () => {
   const showcaseImages = [
     {
       id: 1,
-      image: '/lovable-uploads/00edbb5d-91bb-4546-8c70-9a4853c66fd0.png',
-      title: 'Maldives Luxury Resort',
-      subtitle: 'Overwater Bungalows & Infinity Views',
-      location: 'Maldives',
+      image: '/lovable-uploads/3f81b31d-0911-4669-829d-e28da3084ad5.png',
+      title: 'AI Hotel Discovery',
+      subtitle: 'Smart matching based on your preferences',
+      location: 'Personalized Results',
       rating: 5.0,
-      price: 'From $899/night',
-      category: 'Ultra Luxury'
+      price: 'Best Prices',
+      category: 'Hotel Booking'
     },
     {
       id: 2,
-      image: '/lovable-uploads/37d54649-724a-4949-a90c-e7ce7a18e976.png',
-      title: 'Night Pool Paradise',
-      subtitle: 'Evening Bliss Under Starlit Skies',
-      location: 'Bali, Indonesia',
+      image: '/lovable-uploads/e741e714-0f47-4218-abfd-18a2af844425.png',
+      title: 'Flight & Seat Selection',
+      subtitle: 'AI finds perfect flights with your preferred seating',
+      location: 'Global Routes',
       rating: 4.9,
-      price: 'From $649/night',
-      category: 'Premium Resort'
+      price: 'Optimized Fares',
+      category: 'Flight Search'
     },
     {
       id: 3,
-      image: '/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png',
-      title: 'Mountain Desert Retreat',
-      subtitle: 'Elevated Luxury with Panoramic Views',
-      location: 'California, USA',
+      image: '/lovable-uploads/5935897b-1c16-4e4f-8a47-50073b06561d.png',
+      title: 'Luxury Retreat Finder',
+      subtitle: 'Curated experiences tailored to your desires',
+      location: 'Worldwide',
       rating: 4.8,
-      price: 'From $549/night',
-      category: 'Desert Luxury'
+      price: 'Exclusive Deals',
+      category: 'Retreat Planning'
     }
   ];
 
@@ -50,17 +50,17 @@ const LuxuryShowcase = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-block px-4 py-2 bg-gradient-to-r from-slate-100 to-gray-100 dark:from-slate-800/30 dark:to-gray-800/30 rounded-full mb-6">
-            <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">LUXURY COLLECTION</span>
+            <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">LUXURY FEATURES</span>
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-6">
-            Where Dreams
+            AI-Powered
             <br />
             <span className="bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
-              Meet Reality
+              Luxury Travel
             </span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Discover handpicked luxury destinations that redefine the art of travel. Each location curated for the discerning traveler.
+            Experience intelligent luxury travel planning. Our AI analyzes your preferences, reviews, and requirements to find your perfect match.
           </p>
         </div>
 
@@ -184,7 +184,7 @@ const LuxuryShowcase = () => {
         {/* CTA */}
         <div className="text-center mt-16">
           <button className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-slate-600 to-gray-700 hover:from-slate-700 hover:to-gray-800 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
-            <span>Explore All Destinations</span>
+            <span>Try AI Travel Planning</span>
             <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>
