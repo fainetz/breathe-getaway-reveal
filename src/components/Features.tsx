@@ -6,7 +6,10 @@ const Features = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
   const slidesPerView = 3;
 
   const features = [
@@ -85,6 +88,35 @@ const Features = () => {
     setCurrentSlide((prev) => (prev - 1 + Math.ceil(features.length / slidesPerView)) % Math.ceil(features.length / slidesPerView));
   };
 
+  const scrollLeft = () => {
+    if (mobileScrollRef.current) {
+      mobileScrollRef.current.scrollBy({ left: -320, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (mobileScrollRef.current) {
+      mobileScrollRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+    }
+  };
+
+  const handleMobileScroll = () => {
+    if (mobileScrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = mobileScrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    const scrollContainer = mobileScrollRef.current;
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleMobileScroll);
+      handleMobileScroll(); // Initial check
+      return () => scrollContainer.removeEventListener('scroll', handleMobileScroll);
+    }
+  }, []);
+
   return (
     <section id="features" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300 shadow-2xl dark:shadow-gray-900/60" ref={sectionRef}>
       <div className="max-w-7xl mx-auto">
@@ -152,8 +184,32 @@ const Features = () => {
         </div>
 
         {/* Mobile/Tablet: Horizontal Scrolling Layout */}
-        <div className="lg:hidden">
-          <div className="overflow-x-auto pb-4 scrollbar-hide">
+        <div className="lg:hidden relative">
+          {/* Left Arrow */}
+          <button 
+            onClick={scrollLeft}
+            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-3 shadow-lg transition-all duration-300 ${
+              canScrollLeft ? 'opacity-100 hover:bg-white dark:hover:bg-white/30' : 'opacity-0 pointer-events-none'
+            }`}
+          >
+            <ChevronLeft className="w-5 h-5 text-black dark:text-white" />
+          </button>
+
+          {/* Right Arrow */}
+          <button 
+            onClick={scrollRight}
+            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-3 shadow-lg transition-all duration-300 ${
+              canScrollRight ? 'opacity-100 hover:bg-white dark:hover:bg-white/30' : 'opacity-0 pointer-events-none'
+            }`}
+          >
+            <ChevronRight className="w-5 h-5 text-black dark:text-white" />
+          </button>
+
+          <div 
+            ref={mobileScrollRef}
+            className="overflow-x-auto pb-4 scrollbar-hide px-12"
+            onScroll={handleMobileScroll}
+          >
             <div className="flex gap-4 w-max">
               {features.map((feature, index) => (
                 <div key={index} className="w-80 flex-shrink-0">
