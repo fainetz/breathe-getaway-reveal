@@ -1,4 +1,5 @@
 import { useTheme } from '../contexts/ThemeContext';
+import { Linkedin, Instagram } from 'lucide-react';
 
 const Footer = () => {
   const { theme } = useTheme();
@@ -33,11 +34,24 @@ const Footer = () => {
               An AI-driven travel discovery platform that connects your emotions to transformative journeys around the world.
             </p>
             <div className="flex space-x-4">
+              <a 
+                href="https://www.linkedin.com/in/fainet-zewdu-01456a32b" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gray-200 dark:bg-white/5 rounded-full flex items-center justify-center hover:bg-blue-100 dark:hover:bg-blue-900/20 transition-all duration-300 cursor-pointer touch-manipulation hover:scale-110 shadow-md hover:shadow-lg group"
+              >
+                <Linkedin className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300" />
+              </a>
+              <a 
+                href="https://www.instagram.com/breathe.n.getaway/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gray-200 dark:bg-white/5 rounded-full flex items-center justify-center hover:bg-pink-100 dark:hover:bg-pink-900/20 transition-all duration-300 cursor-pointer touch-manipulation hover:scale-110 shadow-md hover:shadow-lg group"
+              >
+                <Instagram className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors duration-300" />
+              </a>
               <div className="w-10 h-10 bg-gray-200 dark:bg-white/5 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-white/10 transition-all duration-300 cursor-pointer touch-manipulation hover:scale-110 hover:rotate-12 shadow-md hover:shadow-lg">
                 📧
-              </div>
-              <div className="w-10 h-10 bg-gray-200 dark:bg-white/5 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-white/10 transition-all duration-300 cursor-pointer touch-manipulation hover:scale-110 hover:-rotate-12 shadow-md hover:shadow-lg">
-                🐦
               </div>
             </div>
           </div>
