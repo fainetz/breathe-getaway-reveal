@@ -148,7 +148,18 @@ All colors MUST be HSL.
   @keyframes slide-up {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-up-mobile {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
     }
     to {
       opacity: 1;
@@ -175,6 +186,10 @@ All colors MUST be HSL.
 
   .animate-slide-up {
     animation: slide-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-slide-up-mobile {
+    animation: slide-up-mobile 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
   .animate-glow {

@@ -147,7 +147,7 @@ const LuxuryShowcase = () => {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 animate-slide-up">
+              <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 animate-slide-up-mobile sm:animate-slide-up">
                 <div className="relative">
                   {/* Subtle Background Pattern */}
                   <div className="absolute inset-0 opacity-30">
@@ -343,7 +343,7 @@ const LuxuryShowcase = () => {
                       </div>
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 animate-slide-up">
+                  <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 animate-slide-up-mobile sm:animate-slide-up">
                     <div className="relative">
                       {/* Subtle Background Pattern */}
                       <div className="absolute inset-0 opacity-30">

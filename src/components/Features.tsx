@@ -151,65 +151,48 @@ const Features = () => {
           </div>
         </div>
 
-        {/* Mobile/Tablet: Dynamic Staggered Layout */}
+        {/* Mobile/Tablet: Horizontal Scrolling Layout */}
         <div className="lg:hidden">
-          {features.map((feature, index) => {
-            const isEven = index % 2 === 0;
-            const isLast = index === features.length - 1;
-            
-            return (
-              <div 
-                key={index} 
-                className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} ${
-                  isEven ? 'mb-8' : 'mb-12'
-                }`} 
-                style={{ transitionDelay: `${index * 150}ms` }}
-              >
-                <div className={`relative ${isEven ? 'mr-4' : 'ml-4'} ${isLast ? 'mb-0' : ''}`}>
-                  {/* Connecting line for flow */}
-                  {!isLast && (
-                    <div className={`absolute ${isEven ? 'right-0 top-full' : 'left-0 top-full'} w-0.5 h-8 bg-gradient-to-b ${feature.gradient} opacity-30 transform ${isEven ? 'translate-x-2' : '-translate-x-2'} translate-y-4`}></div>
-                  )}
-                  
-                  <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98">
-                    {/* Animated gradient background */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-30 group-active:opacity-40 transition-all duration-500`}></div>
-                    
-                    {/* Floating gradient orb */}
-                    <div className={`absolute -top-4 ${isEven ? '-right-4' : '-left-4'} w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-full opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-500 blur-xl`}></div>
-                    
-                    <div className="relative z-10">
-                      <div className={`w-14 h-14 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex items-center justify-center`}>
-                        <div className={`w-6 h-6 bg-white/30 rounded-md group-hover:bg-white/50 transition-colors duration-300`}></div>
-                      </div>
+          <div className="overflow-x-auto pb-4 scrollbar-hide">
+            <div className="flex gap-4 w-max">
+              {features.map((feature, index) => (
+                <div key={index} className="w-80 flex-shrink-0">
+                  <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
+                    <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98 h-full">
+                      <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-30 group-active:opacity-40 transition-all duration-500`}></div>
                       
-                      <h3 className="text-xl sm:text-2xl font-bold mb-4 text-black dark:text-white transition-all duration-300 drop-shadow-sm group-hover:translate-x-1">
-                        {feature.title}
-                      </h3>
-                      
-                      <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-base sm:text-lg transition-all duration-300 group-hover:translate-x-1">
-                        {feature.description}
-                      </p>
-                      
-                      {/* Progress indicator */}
-                      <div className="mt-6 flex items-center space-x-1">
-                        {Array.from({ length: 7 }).map((_, dotIndex) => (
-                          <div 
-                            key={dotIndex}
-                            className={`h-1 rounded-full transition-all duration-500 ${
-                              dotIndex <= index 
-                                ? `bg-gradient-to-r ${feature.gradient} w-3` 
-                                : 'bg-gray-300 dark:bg-white/20 w-1'
-                            }`}
-                          />
-                        ))}
+                      <div className="relative z-10">
+                        <div className={`w-14 h-14 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex items-center justify-center`}>
+                          <div className={`w-6 h-6 bg-white/30 rounded-md group-hover:bg-white/50 transition-colors duration-300`}></div>
+                        </div>
+                        
+                        <h3 className="text-xl sm:text-2xl font-bold mb-4 text-black dark:text-white transition-all duration-300 drop-shadow-sm group-hover:translate-x-1">
+                          {feature.title}
+                        </h3>
+                        
+                        <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-base sm:text-lg transition-all duration-300 group-hover:translate-x-1">
+                          {feature.description}
+                        </p>
+                        
+                        <div className="mt-6 flex items-center space-x-1">
+                          {Array.from({ length: 7 }).map((_, dotIndex) => (
+                            <div 
+                              key={dotIndex}
+                              className={`h-1 rounded-full transition-all duration-500 ${
+                                dotIndex <= index 
+                                  ? `bg-gradient-to-r ${feature.gradient} w-3` 
+                                  : 'bg-gray-300 dark:bg-white/20 w-1'
+                              }`}
+                            />
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
