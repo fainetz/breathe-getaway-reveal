@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowRight, MapPin, Star } from 'lucide-react';
+import { ArrowRight, MapPin, Star, X, Brain, Zap, Settings } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 const LuxuryShowcase = () => {
   const [hoveredImage, setHoveredImage] = useState<number | null>(null);
@@ -14,7 +15,16 @@ const LuxuryShowcase = () => {
       rating: 4.8,
       price: 'Exclusive Deals',
       category: 'Retreat Planning',
-      details: 'Advanced algorithms scan luxury retreat databases, analyzing guest reviews, seasonal pricing, and amenity compatibility with your preferences. The AI considers factors like privacy levels, activity preferences, and dietary requirements to match you with retreats that exceed expectations.'
+      details: 'Advanced algorithms scan luxury retreat databases, analyzing guest reviews, seasonal pricing, and amenity compatibility with your preferences. The AI considers factors like privacy levels, activity preferences, and dietary requirements to match you with retreats that exceed expectations.',
+      icon: Brain,
+      features: [
+        'AI-powered preference analysis',
+        'Real-time availability checking',
+        'Personalized retreat matching',
+        'Budget optimization algorithms',
+        'Location exclusivity scoring'
+      ],
+      howItWorks: 'Our machine learning models analyze your travel history, preferences, and budget to create a unique profile. The AI then scans thousands of luxury retreat options, evaluating factors like amenities, location, seasonal pricing, and guest reviews to present you with curated options that perfectly match your desires.'
     },
     {
       id: 2,
@@ -25,7 +35,16 @@ const LuxuryShowcase = () => {
       rating: 4.9,
       price: 'Optimized Fares',
       category: 'Flight Search',
-      details: 'Machine learning models analyze flight patterns, price fluctuations, and seat availability across multiple airlines. The AI considers your seating preferences, meal requirements, and schedule flexibility to secure the best flights at optimal prices.'
+      details: 'Machine learning models analyze flight patterns, price fluctuations, and seat availability across multiple airlines. The AI considers your seating preferences, meal requirements, and schedule flexibility to secure the best flights at optimal prices.',
+      icon: Zap,
+      features: [
+        'Smart seat selection algorithms',
+        'Multi-airline price comparison',
+        'Route optimization analysis',
+        'Personalized flight recommendations',
+        'Real-time availability tracking'
+      ],
+      howItWorks: 'Our AI processes millions of flight combinations, analyzing seat maps, airline policies, and pricing trends. The system learns your preferences for departure times, seating arrangements, and connection preferences to recommend the perfect flight options within your budget.'
     },
     {
       id: 3,
@@ -36,7 +55,16 @@ const LuxuryShowcase = () => {
       rating: 5.0,
       price: 'Best Prices',
       category: 'Hotel Booking',
-      details: 'Deep learning algorithms process hotel features, guest reviews, and location data to predict your satisfaction score for each property. The AI considers your check-in preferences, room requirements, and desired amenities to curate a personalized selection of luxury accommodations.'
+      details: 'Deep learning algorithms process hotel features, guest reviews, and location data to predict your satisfaction score for each property. The AI considers your check-in preferences, room requirements, and desired amenities to curate a personalized selection of luxury accommodations.',
+      icon: Settings,
+      features: [
+        'Natural language preference processing',
+        'Satisfaction score prediction',
+        'Amenity compatibility matching',
+        'Location advantage analysis',
+        'Personalized hotel curation'
+      ],
+      howItWorks: 'Our intelligent hotel matching system uses natural language processing to understand your accommodation preferences from simple descriptions. The AI evaluates thousands of hotels, analyzing room types, amenities, and guest reviews to predict your satisfaction and present only the properties that align with your luxury standards.'
     }
   ];
 
@@ -72,101 +100,251 @@ const LuxuryShowcase = () => {
           
           {/* Large Featured Image */}
           <div className="lg:row-span-2">
-            <div 
-              className="relative h-[600px] rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
-              onMouseEnter={() => setHoveredImage(0)}
-              onMouseLeave={() => setHoveredImage(null)}
-            >
-              <img 
-                src={showcaseImages[0].image}
-                alt={showcaseImages[0].title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-              
-              {/* Floating Badge */}
-              <div className="absolute top-6 left-6">
-                <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30">
-                  <span className="text-white font-semibold text-sm">{showcaseImages[0].category}</span>
-                </div>
-              </div>
+            <Dialog>
+              <DialogTrigger asChild>
+                <div 
+                  className="relative h-[600px] rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
+                  onMouseEnter={() => setHoveredImage(0)}
+                  onMouseLeave={() => setHoveredImage(null)}
+                >
+                  <img 
+                    src={showcaseImages[0].image}
+                    alt={showcaseImages[0].title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  
+                  {/* Floating Badge */}
+                  <div className="absolute top-6 left-6">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30">
+                      <span className="text-white font-semibold text-sm">{showcaseImages[0].category}</span>
+                    </div>
+                  </div>
 
-              {/* Content */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="flex items-center gap-2 mb-3">
-                  <MapPin className="w-4 h-4 text-white/80" />
-                  <span className="text-white/90 text-sm">{showcaseImages[0].location}</span>
-                  <div className="flex items-center gap-1 ml-4">
-                    <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                    <span className="text-white/90 text-sm">{showcaseImages[0].rating}</span>
+                  {/* Content */}
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <MapPin className="w-4 h-4 text-white/80" />
+                      <span className="text-white/90 text-sm">{showcaseImages[0].location}</span>
+                      <div className="flex items-center gap-1 ml-4">
+                        <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                        <span className="text-white/90 text-sm">{showcaseImages[0].rating}</span>
+                      </div>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">{showcaseImages[0].title}</h3>
+                    <p className="text-white/80 mb-4">{showcaseImages[0].subtitle}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-white font-semibold">{showcaseImages[0].price}</span>
+                      <div 
+                        className={`flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 text-white font-semibold transition-all duration-300 ${
+                          hoveredImage === 0 ? 'bg-white/30 translate-x-2' : ''
+                        }`}
+                      >
+                        Explore
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">{showcaseImages[0].title}</h3>
-                <p className="text-white/80 mb-4">{showcaseImages[0].subtitle}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-white font-semibold">{showcaseImages[0].price}</span>
-                  <button 
-                    className={`flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 text-white font-semibold transition-all duration-300 ${
-                      hoveredImage === 0 ? 'bg-white/30 translate-x-2' : ''
-                    }`}
-                  >
-                    Explore
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+              </DialogTrigger>
+              <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                <DialogHeader>
+                  <DialogTitle className="flex items-center gap-3 text-2xl mb-4">
+                    <Brain className="w-8 h-8 text-blue-600" />
+                    {showcaseImages[0].title}
+                  </DialogTitle>
+                </DialogHeader>
+                
+                <div className="space-y-6">
+                  {/* Hero Image */}
+                  <div className="relative h-64 rounded-xl overflow-hidden">
+                    <img 
+                      src={showcaseImages[0].image}
+                      alt={showcaseImages[0].title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 inline-block">
+                        <span className="text-white font-semibold text-sm">{showcaseImages[0].category}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Overview */}
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Overview</h3>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {showcaseImages[0].details}
+                    </p>
+                  </div>
+
+                  {/* How It Works */}
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">How It Works</h3>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {showcaseImages[0].howItWorks}
+                    </p>
+                  </div>
+
+                  {/* Features */}
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Key Features</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {showcaseImages[0].features.map((feature, index) => (
+                        <div key={index} className="flex items-center gap-2 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                          <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                          <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Stats */}
+                  <div className="grid grid-cols-3 gap-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-600">{showcaseImages[0].rating}</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Rating</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-600">{showcaseImages[0].location}</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Coverage</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-600">{showcaseImages[0].price}</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Pricing</div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </DialogContent>
+            </Dialog>
           </div>
 
           {/* Two Medium Images */}
           <div className="space-y-8">
-            {showcaseImages.slice(1).map((item, index) => (
-              <div 
-                key={item.id}
-                className="relative h-[280px] rounded-2xl overflow-hidden group cursor-pointer shadow-xl"
-                onMouseEnter={() => setHoveredImage(index + 1)}
-                onMouseLeave={() => setHoveredImage(null)}
-              >
-                <img 
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                
-                {/* Badge */}
-                <div className="absolute top-4 left-4">
-                  <div className="bg-black/30 backdrop-blur-sm rounded-full px-3 py-1">
-                    <span className="text-white font-medium text-xs">{item.category}</span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <MapPin className="w-3 h-3 text-white/70" />
-                    <span className="text-white/80 text-xs">{item.location}</span>
-                    <div className="flex items-center gap-1 ml-2">
-                      <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
-                      <span className="text-white/80 text-xs">{item.rating}</span>
-                    </div>
-                  </div>
-                  <h4 className="text-lg font-bold text-white mb-1">{item.title}</h4>
-                  <p className="text-white/70 text-sm mb-2 line-clamp-3">{item.subtitle.substring(0, 120)}...</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-white font-semibold text-sm">{item.price}</span>
-                    <button 
-                      className={`flex items-center gap-1 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm font-medium transition-all duration-300 ${
-                        hoveredImage === index + 1 ? 'bg-white/30 translate-x-1' : ''
-                      }`}
+            {showcaseImages.slice(1).map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <Dialog key={item.id}>
+                  <DialogTrigger asChild>
+                    <div 
+                      className="relative h-[280px] rounded-2xl overflow-hidden group cursor-pointer shadow-xl"
+                      onMouseEnter={() => setHoveredImage(index + 1)}
+                      onMouseLeave={() => setHoveredImage(null)}
                     >
-                      View
-                      <ArrowRight className="w-3 h-3" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
+                      <img 
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                      
+                      {/* Badge */}
+                      <div className="absolute top-4 left-4">
+                        <div className="bg-black/30 backdrop-blur-sm rounded-full px-3 py-1">
+                          <span className="text-white font-medium text-xs">{item.category}</span>
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <MapPin className="w-3 h-3 text-white/70" />
+                          <span className="text-white/80 text-xs">{item.location}</span>
+                          <div className="flex items-center gap-1 ml-2">
+                            <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                            <span className="text-white/80 text-xs">{item.rating}</span>
+                          </div>
+                        </div>
+                        <h4 className="text-lg font-bold text-white mb-1">{item.title}</h4>
+                        <p className="text-white/70 text-sm mb-2 line-clamp-3">{item.subtitle.substring(0, 120)}...</p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-white font-semibold text-sm">{item.price}</span>
+                          <div 
+                            className={`flex items-center gap-1 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm font-medium transition-all duration-300 ${
+                              hoveredImage === index + 1 ? 'bg-white/30 translate-x-1' : ''
+                            }`}
+                          >
+                            View
+                            <ArrowRight className="w-3 h-3" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle className="flex items-center gap-3 text-2xl mb-4">
+                        <IconComponent className="w-8 h-8 text-blue-600" />
+                        {item.title}
+                      </DialogTitle>
+                    </DialogHeader>
+                    
+                    <div className="space-y-6">
+                      {/* Hero Image */}
+                      <div className="relative h-64 rounded-xl overflow-hidden">
+                        <img 
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 inline-block">
+                            <span className="text-white font-semibold text-sm">{item.category}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Overview */}
+                      <div>
+                        <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Overview</h3>
+                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                          {item.details}
+                        </p>
+                      </div>
+
+                      {/* How It Works */}
+                      <div>
+                        <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">How It Works</h3>
+                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                          {item.howItWorks}
+                        </p>
+                      </div>
+
+                      {/* Features */}
+                      <div>
+                        <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Key Features</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          {item.features.map((feature, featureIndex) => (
+                            <div key={featureIndex} className="flex items-center gap-2 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                              <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Stats */}
+                      <div className="grid grid-cols-3 gap-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl">
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-blue-600">{item.rating}</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">Rating</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-blue-600">{item.location}</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">Coverage</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-blue-600">{item.price}</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">Pricing</div>
+                        </div>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              );
+            })}
           </div>
         </div>
 
