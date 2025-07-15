@@ -179,7 +179,8 @@ const LuxuryShowcase = () => {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 top-auto bottom-0 sm:top-[50%] sm:bottom-auto data-[state=open]:animate-slide-up-mobile sm:data-[state=open]:animate-slide-up data-[state=closed]:animate-slide-down-mobile sm:data-[state=closed]:animate-slide-down">
+              <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 top-auto bottom-0 sm:top-[50%] sm:bottom-auto data-[state=open]:animate-slide-up-mobile sm:data-[state=open]:animate-slide-up data-[state=closed]:animate-slide-down-mobile sm:data-[state=closed]:animate-slide-down [&>button]:hidden">
+                <DialogTitle className="sr-only">{showcaseImages[0].title}</DialogTitle>
                 <DraggableDialogContent>
                   {/* Subtle Background Pattern */}
                   <div className="absolute inset-0 opacity-30">
@@ -376,7 +377,8 @@ const LuxuryShowcase = () => {
                         </div>
                       </div>
                     </DialogTrigger>
-                   <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 top-auto bottom-0 sm:top-[50%] sm:bottom-auto data-[state=open]:animate-slide-up-mobile sm:data-[state=open]:animate-slide-up data-[state=closed]:animate-slide-down-mobile sm:data-[state=closed]:animate-slide-down">
+                   <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 top-auto bottom-0 sm:top-[50%] sm:bottom-auto data-[state=open]:animate-slide-up-mobile sm:data-[state=open]:animate-slide-up data-[state=closed]:animate-slide-down-mobile sm:data-[state=closed]:animate-slide-down [&>button]:hidden">
+                     <DialogTitle className="sr-only">{item.title}</DialogTitle>
                      <DraggableDialogContent>
                        {/* Subtle Background Pattern */}
                        <div className="absolute inset-0 opacity-30">
