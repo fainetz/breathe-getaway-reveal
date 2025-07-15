@@ -21,7 +21,7 @@ const Hero = () => {
       title: 'Sunset Palm Resort',
       description: 'Ultimate tropical luxury with infinity pools and palm-fringed paradise',
       image: '/lovable-uploads/ec79ecde-c51a-4448-9b2d-5328f1399e1d.png',
-      label: 'HOTEL',
+      label: 'HOTELS',
       labelColor: 'bg-gradient-to-r from-emerald-600 to-teal-700',
       comingSoon: true
     },
@@ -35,13 +35,13 @@ const Hero = () => {
       comingSoon: false
     },
     {
-      id: 'overwater-villa-resort',
-      title: 'Overwater Villa Resort',
-      description: 'Rustic elegance meets tropical luxury in stunning overwater suites',
-      image: '/lovable-uploads/b6b55919-61a6-4bd8-8d89-0db513eac417.png',
-      label: 'HOTEL',
-      labelColor: 'bg-gradient-to-r from-emerald-600 to-teal-700',
-      comingSoon: true
+      id: 'santorini-village',
+      title: 'Santorini Village',
+      description: 'Iconic whitewashed buildings and stunning sunsets over the Aegean Sea',
+      image: '/lovable-uploads/01acecfb-4a5e-4651-8343-d178f52a9ff1.png',
+      label: 'FLIGHT DESTINATION',
+      labelColor: 'bg-gradient-to-r from-blue-500 to-cyan-600',
+      comingSoon: false
     },
     {
       id: 'desert-mountain-retreat',
