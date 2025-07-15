@@ -14,34 +14,43 @@ const Hero = () => {
   const [cart, setCart] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Category slides data
+  // Premium resort category slides with new luxury images
   const categorySlides = [
     {
-      id: 'flights',
-      title: 'Flight Destinations',
-      description: 'Discover amazing destinations worldwide',
-      image: '/lovable-uploads/92794f25-53c0-4644-af8d-3e9343c68684.png', // Santorini white buildings at sunset
-      label: 'FLIGHTS',
-      labelColor: 'bg-blue-600/90',
+      id: 'luxury-resorts',
+      title: 'Luxury Beach Resorts',
+      description: 'Exclusive overwater villas and infinity pools at sunset',
+      image: '/lovable-uploads/1df059f2-3338-4c1e-9b43-920c5f83c6c6.png', // Sunset pool with palm trees
+      label: 'LUXURY RESORTS',
+      labelColor: 'bg-gradient-to-r from-amber-500 to-orange-600',
       comingSoon: false
     },
     {
-      id: 'hotels',
-      title: 'Hotels',
-      description: 'Luxury accommodations and resorts',
-      image: '/lovable-uploads/e2c6c5a8-65a5-4005-976d-25a14867e43e.png', // Luxury resort pool with palm trees at sunset
-      label: 'HOTELS',
-      labelColor: 'bg-green-600/90',
-      comingSoon: true
+      id: 'tropical-escapes',
+      title: 'Tropical Paradise',
+      description: 'Private beaches with crystal clear waters and pristine nature',
+      image: '/lovable-uploads/351a480e-1c69-4de6-9ab3-92d54304b347.png', // Wooden deck pool area
+      label: 'TROPICAL ESCAPES',
+      labelColor: 'bg-gradient-to-r from-emerald-500 to-teal-600',
+      comingSoon: false
     },
     {
-      id: 'cruises',
-      title: 'Cruises',
-      description: 'Ocean adventures and island hopping',
-      image: '/lovable-uploads/18aa8cb3-7178-47f3-b218-3aa6b8687db5.png', // Beautiful beach with umbrellas at sunset
-      label: 'CRUISES',
-      labelColor: 'bg-purple-600/90',
-      comingSoon: true
+      id: 'premium-pools',
+      title: 'Premium Pool Experiences',
+      description: 'World-class resort pools with breathtaking sunset views',
+      image: '/lovable-uploads/a1939138-01b7-4cbe-9f90-8b139ea94e68.png', // Resort pool at sunset
+      label: 'PREMIUM POOLS',
+      labelColor: 'bg-gradient-to-r from-blue-500 to-indigo-600',
+      comingSoon: false
+    },
+    {
+      id: 'hillside-retreats',
+      title: 'Hillside Retreats',
+      description: 'Elevated luxury with panoramic ocean and mountain views',
+      image: '/lovable-uploads/fa2414f2-0d6f-41ad-ad6f-18027a8df53a.png', // Hillside pool view
+      label: 'HILLSIDE RETREATS',
+      labelColor: 'bg-gradient-to-r from-purple-500 to-pink-600',
+      comingSoon: false
     }
   ];
 

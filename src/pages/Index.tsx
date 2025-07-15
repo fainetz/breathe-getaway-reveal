@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
 import HowItWorks from '../components/HowItWorks';
 import Features from '../components/Features';
+import LuxuryShowcase from '../components/LuxuryShowcase';
 import EmotionalHooks from '../components/EmotionalHooks';
 import Vision from '../components/Vision';
 import Footer from '../components/Footer';
@@ -31,8 +32,9 @@ const Index = () => {
   return (
     <div className="min-h-screen min-h-dvh bg-white dark:bg-black text-black dark:text-white overflow-x-hidden transition-colors duration-300">
       <Hero />
-      <HowItWorks />
       <Features />
+      <LuxuryShowcase />
+      <HowItWorks />
       <EmotionalHooks />
       <Vision />
       <div id="resultsSection" className="min-h-0"></div>
