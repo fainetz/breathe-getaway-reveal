@@ -167,6 +167,28 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes slide-down {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(60px);
+    }
+  }
+
+  @keyframes slide-down-mobile {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+  }
+
   @keyframes glow {
     0%, 100% {
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
@@ -190,6 +212,14 @@ All colors MUST be HSL.
 
   .animate-slide-up-mobile {
     animation: slide-up-mobile 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-slide-down {
+    animation: slide-down 0.5s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+  }
+
+  .animate-slide-down-mobile {
+    animation: slide-down-mobile 0.6s cubic-bezier(0.4, 0, 0.6, 1) forwards;
   }
 
   .animate-glow {
