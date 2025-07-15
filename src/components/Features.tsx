@@ -89,9 +89,11 @@ const Features = () => {
     <section id="features" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300 shadow-2xl dark:shadow-gray-900/60" ref={sectionRef}>
       <div className="max-w-7xl mx-auto">
         <div className={`text-center mb-12 sm:mb-16 lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-black dark:text-white transition-colors duration-300 drop-shadow-lg">
-            Travel That Understands You
-          </h2>
+          <div className="overflow-x-auto lg:overflow-visible">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-black dark:text-white transition-colors duration-300 drop-shadow-lg whitespace-nowrap lg:whitespace-normal">
+              Travel That Understands You
+            </h2>
+          </div>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed transition-colors duration-300 px-4 sm:px-0">
             Every feature designed to bridge the gap between where you are and where your soul needs to be.
           </p>
