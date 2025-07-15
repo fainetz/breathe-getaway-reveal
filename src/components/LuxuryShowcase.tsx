@@ -147,72 +147,102 @@ const LuxuryShowcase = () => {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                <DialogHeader>
-                  <DialogTitle className="flex items-center gap-3 text-2xl mb-4">
-                    <Brain className="w-8 h-8 text-blue-600" />
-                    {showcaseImages[0].title}
+              <DialogContent className="max-w-5xl max-h-[85vh] overflow-hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-white/20 shadow-2xl">
+                <DialogHeader className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-t-xl"></div>
+                  <DialogTitle className="relative flex items-center gap-4 text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+                    <div className="p-3 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl shadow-lg">
+                      <Brain className="w-8 h-8 text-white" />
+                    </div>
+                    <div>
+                      <h2>{showcaseImages[0].title}</h2>
+                      <p className="text-sm font-normal text-gray-500 dark:text-gray-400 mt-1">{showcaseImages[0].category}</p>
+                    </div>
                   </DialogTitle>
                 </DialogHeader>
                 
-                <div className="space-y-6">
-                  {/* Hero Image */}
-                  <div className="relative h-64 rounded-xl overflow-hidden">
+                <div className="overflow-y-auto max-h-[calc(85vh-120px)] space-y-8 pr-2">
+                  {/* Hero Section */}
+                  <div className="relative h-80 rounded-2xl overflow-hidden shadow-2xl">
                     <img 
                       src={showcaseImages[0].image}
                       alt={showcaseImages[0].title}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 inline-block">
-                        <span className="text-white font-semibold text-sm">{showcaseImages[0].category}</span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <div className="flex items-center gap-6">
+                        <div className="bg-white/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/30">
+                          <span className="text-white font-semibold text-sm">{showcaseImages[0].category}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-white/90">
+                          <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                          <span className="font-medium">{showcaseImages[0].rating} Rating</span>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Overview */}
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Overview</h3>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                      {showcaseImages[0].details}
-                    </p>
-                  </div>
-
-                  {/* How It Works */}
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">How It Works</h3>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                      {showcaseImages[0].howItWorks}
-                    </p>
-                  </div>
-
-                  {/* Features */}
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Key Features</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {showcaseImages[0].features.map((feature, index) => (
-                        <div key={index} className="flex items-center gap-2 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                  {/* Content Grid */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {/* Left Column */}
+                    <div className="space-y-6">
+                      {/* Overview */}
+                      <div className="bg-gradient-to-br from-white/60 to-white/40 dark:from-gray-800/60 dark:to-gray-800/40 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-lg">
+                        <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
                           <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                          <span className="text-gray-700 dark:text-gray-300">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                          Overview
+                        </h3>
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                          {showcaseImages[0].details}
+                        </p>
+                      </div>
 
-                  {/* Stats */}
-                  <div className="grid grid-cols-3 gap-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-600">{showcaseImages[0].rating}</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Rating</div>
+                      {/* Stats */}
+                      <div className="grid grid-cols-3 gap-4">
+                        <div className="bg-gradient-to-br from-blue-50/80 to-indigo-50/80 dark:from-blue-900/30 dark:to-indigo-900/30 backdrop-blur-md rounded-xl p-4 border border-blue-200/20 text-center">
+                          <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{showcaseImages[0].rating}</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Rating</div>
+                        </div>
+                        <div className="bg-gradient-to-br from-green-50/80 to-emerald-50/80 dark:from-green-900/30 dark:to-emerald-900/30 backdrop-blur-md rounded-xl p-4 border border-green-200/20 text-center">
+                          <div className="text-lg font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Global</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Coverage</div>
+                        </div>
+                        <div className="bg-gradient-to-br from-purple-50/80 to-pink-50/80 dark:from-purple-900/30 dark:to-pink-900/30 backdrop-blur-md rounded-xl p-4 border border-purple-200/20 text-center">
+                          <div className="text-lg font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Premium</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Pricing</div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-600">{showcaseImages[0].location}</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Coverage</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-600">{showcaseImages[0].price}</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Pricing</div>
+
+                    {/* Right Column */}
+                    <div className="space-y-6">
+                      {/* How It Works */}
+                      <div className="bg-gradient-to-br from-white/60 to-white/40 dark:from-gray-800/60 dark:to-gray-800/40 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-lg">
+                        <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+                          <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
+                          How It Works
+                        </h3>
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                          {showcaseImages[0].howItWorks}
+                        </p>
+                      </div>
+
+                      {/* Features */}
+                      <div className="bg-gradient-to-br from-white/60 to-white/40 dark:from-gray-800/60 dark:to-gray-800/40 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-lg">
+                        <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+                          <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                          Key Features
+                        </h3>
+                        <div className="space-y-3">
+                          {showcaseImages[0].features.map((feature, index) => (
+                            <div key={index} className="flex items-center gap-3 p-3 bg-white/40 dark:bg-gray-700/40 backdrop-blur-sm rounded-lg border border-white/10">
+                              <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
+                              <span className="text-gray-800 dark:text-gray-200 font-medium">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -272,72 +302,102 @@ const LuxuryShowcase = () => {
                       </div>
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                    <DialogHeader>
-                      <DialogTitle className="flex items-center gap-3 text-2xl mb-4">
-                        <IconComponent className="w-8 h-8 text-blue-600" />
-                        {item.title}
+                  <DialogContent className="max-w-5xl max-h-[85vh] overflow-hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-white/20 shadow-2xl">
+                    <DialogHeader className="relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-t-xl"></div>
+                      <DialogTitle className="relative flex items-center gap-4 text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+                        <div className="p-3 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl shadow-lg">
+                          <IconComponent className="w-8 h-8 text-white" />
+                        </div>
+                        <div>
+                          <h2>{item.title}</h2>
+                          <p className="text-sm font-normal text-gray-500 dark:text-gray-400 mt-1">{item.category}</p>
+                        </div>
                       </DialogTitle>
                     </DialogHeader>
                     
-                    <div className="space-y-6">
-                      {/* Hero Image */}
-                      <div className="relative h-64 rounded-xl overflow-hidden">
+                    <div className="overflow-y-auto max-h-[calc(85vh-120px)] space-y-8 pr-2">
+                      {/* Hero Section */}
+                      <div className="relative h-80 rounded-2xl overflow-hidden shadow-2xl">
                         <img 
                           src={item.image}
                           alt={item.title}
                           className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <div className="absolute bottom-4 left-4 right-4">
-                          <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 inline-block">
-                            <span className="text-white font-semibold text-sm">{item.category}</span>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                        <div className="absolute bottom-6 left-6 right-6">
+                          <div className="flex items-center gap-6">
+                            <div className="bg-white/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/30">
+                              <span className="text-white font-semibold text-sm">{item.category}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-white/90">
+                              <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                              <span className="font-medium">{item.rating} Rating</span>
+                            </div>
                           </div>
                         </div>
                       </div>
 
-                      {/* Overview */}
-                      <div>
-                        <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Overview</h3>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                          {item.details}
-                        </p>
-                      </div>
-
-                      {/* How It Works */}
-                      <div>
-                        <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">How It Works</h3>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                          {item.howItWorks}
-                        </p>
-                      </div>
-
-                      {/* Features */}
-                      <div>
-                        <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Key Features</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {item.features.map((feature, featureIndex) => (
-                            <div key={featureIndex} className="flex items-center gap-2 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                      {/* Content Grid */}
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        {/* Left Column */}
+                        <div className="space-y-6">
+                          {/* Overview */}
+                          <div className="bg-gradient-to-br from-white/60 to-white/40 dark:from-gray-800/60 dark:to-gray-800/40 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-lg">
+                            <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
                               <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                              <span className="text-gray-700 dark:text-gray-300">{feature}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
+                              Overview
+                            </h3>
+                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                              {item.details}
+                            </p>
+                          </div>
 
-                      {/* Stats */}
-                      <div className="grid grid-cols-3 gap-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl">
-                        <div className="text-center">
-                          <div className="text-2xl font-bold text-blue-600">{item.rating}</div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400">Rating</div>
+                          {/* Stats */}
+                          <div className="grid grid-cols-3 gap-4">
+                            <div className="bg-gradient-to-br from-blue-50/80 to-indigo-50/80 dark:from-blue-900/30 dark:to-indigo-900/30 backdrop-blur-md rounded-xl p-4 border border-blue-200/20 text-center">
+                              <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{item.rating}</div>
+                              <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Rating</div>
+                            </div>
+                            <div className="bg-gradient-to-br from-green-50/80 to-emerald-50/80 dark:from-green-900/30 dark:to-emerald-900/30 backdrop-blur-md rounded-xl p-4 border border-green-200/20 text-center">
+                              <div className="text-lg font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Global</div>
+                              <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Coverage</div>
+                            </div>
+                            <div className="bg-gradient-to-br from-purple-50/80 to-pink-50/80 dark:from-purple-900/30 dark:to-pink-900/30 backdrop-blur-md rounded-xl p-4 border border-purple-200/20 text-center">
+                              <div className="text-lg font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Premium</div>
+                              <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Pricing</div>
+                            </div>
+                          </div>
                         </div>
-                        <div className="text-center">
-                          <div className="text-2xl font-bold text-blue-600">{item.location}</div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400">Coverage</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-2xl font-bold text-blue-600">{item.price}</div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400">Pricing</div>
+
+                        {/* Right Column */}
+                        <div className="space-y-6">
+                          {/* How It Works */}
+                          <div className="bg-gradient-to-br from-white/60 to-white/40 dark:from-gray-800/60 dark:to-gray-800/40 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-lg">
+                            <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+                              <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
+                              How It Works
+                            </h3>
+                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                              {item.howItWorks}
+                            </p>
+                          </div>
+
+                          {/* Features */}
+                          <div className="bg-gradient-to-br from-white/60 to-white/40 dark:from-gray-800/60 dark:to-gray-800/40 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-lg">
+                            <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+                              <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                              Key Features
+                            </h3>
+                            <div className="space-y-3">
+                              {item.features.map((feature, featureIndex) => (
+                                <div key={featureIndex} className="flex items-center gap-3 p-3 bg-white/40 dark:bg-gray-700/40 backdrop-blur-sm rounded-lg border border-white/10">
+                                  <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
+                                  <span className="text-gray-800 dark:text-gray-200 font-medium">{feature}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
