@@ -15,7 +15,7 @@ const Features = () => {
   const features = [
     {
       title: "AI Hotel Discovery",
-      description: "Every recommendation considers your mental space and what will truly nourish your spirit.",
+      description: "Search for oddly specific things using AI - find flights with sunset views or hotels with vintage typewriters in the lobby.",
       gradient: "from-cyan-500 to-blue-500"
     },
     {
@@ -45,7 +45,7 @@ const Features = () => {
     },
     {
       title: "Luxury Retreat Finder",
-      description: "Search for oddly specific things using AI - find flights with sunset views or hotels with vintage typewriters in the lobby.",
+      description: "Every recommendation considers your mental space and what will truly nourish your spirit.",
       gradient: "from-indigo-500 to-purple-500"
     }
   ];
