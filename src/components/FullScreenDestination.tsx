@@ -47,6 +47,7 @@ const FullScreenDestination = ({
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [isEntering, setIsEntering] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const aboutSectionRef = useRef<HTMLDivElement>(null);
@@ -55,10 +56,13 @@ const FullScreenDestination = ({
     if (isOpen && destination) {
       const index = destinations.findIndex(d => d.id === destination.id);
       setCurrentIndex(index !== -1 ? index : 0);
-      // Smooth entrance animation
-      setTimeout(() => setIsVisible(true), 100);
+      setIsEntering(true);
+      // Orchestrated entrance animation
+      setTimeout(() => setIsVisible(true), 150);
+      setTimeout(() => setIsEntering(false), 1200);
     } else {
       setIsVisible(false);
+      setIsEntering(false);
     }
   }, [destination, destinations, isOpen]);
 
@@ -217,87 +221,121 @@ const FullScreenDestination = ({
       {/* Scrollable Main Content */}
       <ScrollArea className="relative z-20 h-full">
         <div className="min-h-screen flex items-center justify-center p-8 pb-32">
-          <div className={`max-w-4xl w-full transition-all duration-500 ease-out ${
+          <div className={`max-w-4xl w-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             isVisible 
-              ? 'opacity-100 translate-y-0' 
+              ? 'opacity-100 translate-y-0 scale-100' 
               : scrollDirection === 'down' 
-                ? 'opacity-0 -translate-y-8' 
-                : 'opacity-0 translate-y-8'
+                ? 'opacity-0 -translate-y-12 scale-95' 
+                : 'opacity-0 translate-y-12 scale-95'
           }`}>
             
             {/* Header Section */}
             <div className="text-center mb-12">
-              <h1 className="text-7xl md:text-8xl font-bold text-white mb-6 leading-none tracking-tight">
+              <h1 className={`text-7xl md:text-8xl font-bold text-white mb-6 leading-none tracking-tight transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              } ${isEntering ? 'delay-100' : ''}`}>
                 {currentDestination.name}
               </h1>
-              <div className="flex items-center justify-center text-neutral-300 mb-8">
+              <div className={`flex items-center justify-center text-neutral-300 mb-8 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+              } ${isEntering ? 'delay-300' : ''}`}>
                 <MapPin className="w-6 h-6 mr-3" />
                 <span className="text-2xl font-light">{currentDestination.location}</span>
               </div>
               
               {/* Mood Badge */}
-              <div className="inline-block bg-neutral-700/40 border border-neutral-600/30 rounded-full px-6 py-3 mb-8">
+              <div className={`inline-block bg-neutral-700/40 border border-neutral-600/30 rounded-full px-6 py-3 mb-8 transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
+              } ${isEntering ? 'delay-500' : ''}`}>
                 <span className="text-neutral-200 text-lg font-medium">{currentDestination.mood}</span>
               </div>
             </div>
 
             {/* Key Info Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              <div className="bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-neutral-700/40">
-                <Plane className="w-8 h-8 text-neutral-400 mx-auto mb-3" />
+            <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } ${isEntering ? 'delay-700' : ''}`}>
+              <div className={`bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 text-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-neutral-700/40 hover:scale-105 hover:-translate-y-2 ${
+                isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
+              } ${isEntering ? 'delay-[800ms]' : ''}`}>
+                <Plane className="w-8 h-8 text-neutral-400 mx-auto mb-3 transition-transform duration-300 group-hover:scale-110" />
                 <div className="text-neutral-400 text-sm mb-1">Flight Time</div>
                 <div className="text-white text-lg font-semibold">3h 45m from MSP</div>
               </div>
               
-              <div className="bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-neutral-700/40">
-                <Clock className="w-8 h-8 text-neutral-400 mx-auto mb-3" />
+              <div className={`bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 text-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-neutral-700/40 hover:scale-105 hover:-translate-y-2 ${
+                isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
+              } ${isEntering ? 'delay-[900ms]' : ''}`}>
+                <Clock className="w-8 h-8 text-neutral-400 mx-auto mb-3 transition-transform duration-300 group-hover:scale-110" />
                 <div className="text-neutral-400 text-sm mb-1">Check-in</div>
                 <div className="text-white text-lg font-semibold">less than a minute</div>
               </div>
               
-              <div className="bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-neutral-700/40">
-                <Calendar className="w-8 h-8 text-neutral-400 mx-auto mb-3" />
+              <div className={`bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 text-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-neutral-700/40 hover:scale-105 hover:-translate-y-2 ${
+                isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
+              } ${isEntering ? 'delay-[1000ms]' : ''}`}>
+                <Calendar className="w-8 h-8 text-neutral-400 mx-auto mb-3 transition-transform duration-300 group-hover:scale-110" />
                 <div className="text-neutral-400 text-sm mb-1">Duration</div>
                 <div className="text-white text-lg font-semibold">{currentDestination.duration}</div>
               </div>
               
-              <div className="bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-neutral-700/40">
-                <DollarSign className="w-8 h-8 text-neutral-400 mx-auto mb-3" />
+              <div className={`bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 text-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-neutral-700/40 hover:scale-105 hover:-translate-y-2 ${
+                isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
+              } ${isEntering ? 'delay-[1100ms]' : ''}`}>
+                <DollarSign className="w-8 h-8 text-neutral-400 mx-auto mb-3 transition-transform duration-300 group-hover:scale-110" />
                 <div className="text-neutral-400 text-sm mb-1">Starting from</div>
                 <div className="text-white text-lg font-semibold">{currentDestination.price}</div>
               </div>
             </div>
 
             {/* Experience Metrics */}
-            <div className="grid grid-cols-2 gap-6 mb-12">
-              <div className="bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6">
+            <div className={`grid grid-cols-2 gap-6 mb-12 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            } ${isEntering ? 'delay-[1200ms]' : ''}`}>
+              <div className={`bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 transition-all duration-500 hover:bg-neutral-700/40 hover:scale-105 ${
+                isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
+              } ${isEntering ? 'delay-[1300ms]' : ''}`}>
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-neutral-300 text-lg font-medium">Nature Immersion</span>
                   <span className="text-white text-sm">9/10</span>
                 </div>
-                <div className="w-full bg-neutral-700 rounded-full h-2">
-                  <div className="bg-gradient-to-r from-green-400 to-green-600 h-2 rounded-full" style={{ width: '90%' }}></div>
+                <div className="w-full bg-neutral-700 rounded-full h-2 overflow-hidden">
+                  <div className={`bg-gradient-to-r from-green-400 to-green-600 h-2 rounded-full transition-all duration-1000 ease-out ${
+                    isVisible ? 'w-[90%]' : 'w-0'
+                  } ${isEntering ? 'delay-[1500ms]' : ''}`}></div>
                 </div>
               </div>
               
-              <div className="bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6">
+              <div className={`bg-neutral-800/40 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-6 transition-all duration-500 hover:bg-neutral-700/40 hover:scale-105 ${
+                isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+              } ${isEntering ? 'delay-[1400ms]' : ''}`}>
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-neutral-300 text-lg font-medium">Digital Detox</span>
                   <span className="text-white text-sm">8/10</span>
                 </div>
-                <div className="w-full bg-neutral-700 rounded-full h-2">
-                  <div className="bg-gradient-to-r from-blue-400 to-blue-600 h-2 rounded-full" style={{ width: '80%' }}></div>
+                <div className="w-full bg-neutral-700 rounded-full h-2 overflow-hidden">
+                  <div className={`bg-gradient-to-r from-blue-400 to-blue-600 h-2 rounded-full transition-all duration-1000 ease-out ${
+                    isVisible ? 'w-[80%]' : 'w-0'
+                  } ${isEntering ? 'delay-[1600ms]' : ''}`}></div>
                 </div>
               </div>
             </div>
 
             {/* Extended Description Section */}
-            <div ref={aboutSectionRef} className="bg-neutral-800/30 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-8 mb-12">
-              <h3 className="text-2xl font-semibold text-white mb-4">About This Experience</h3>
-              <p className="text-neutral-300 text-lg leading-relaxed mb-6">
+            <div ref={aboutSectionRef} className={`bg-neutral-800/30 backdrop-blur-sm border border-neutral-600/30 rounded-2xl p-8 mb-12 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-neutral-800/40 ${
+              isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-98'
+            } ${isEntering ? 'delay-[1700ms]' : ''}`}>
+              <h3 className={`text-2xl font-semibold text-white mb-4 transition-all duration-600 ease-out ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              } ${isEntering ? 'delay-[1800ms]' : ''}`}>About This Experience</h3>
+              <p className={`text-neutral-300 text-lg leading-relaxed mb-6 transition-all duration-600 ease-out ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              } ${isEntering ? 'delay-[1900ms]' : ''}`}>
                 {currentDestination.description}
               </p>
-              <p className="text-neutral-400 leading-relaxed">
+              <p className={`text-neutral-400 leading-relaxed transition-all duration-600 ease-out ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              } ${isEntering ? 'delay-[2000ms]' : ''}`}>
                 Immerse yourself in a transformative journey that speaks to your soul. This carefully curated experience offers the perfect blend of adventure, relaxation, and personal growth. Whether you're seeking healing, wonder, or simply a change of pace, this destination provides the ideal backdrop for your next chapter.
               </p>
             </div>
