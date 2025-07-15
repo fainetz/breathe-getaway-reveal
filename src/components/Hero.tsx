@@ -22,7 +22,7 @@ const Hero = () => {
       description: 'Ultimate tropical luxury with infinity pools and palm-fringed paradise',
       image: '/lovable-uploads/ec79ecde-c51a-4448-9b2d-5328f1399e1d.png',
       label: 'HOTEL',
-      labelColor: 'bg-gradient-to-r from-slate-700 to-slate-800',
+      labelColor: 'bg-gradient-to-r from-emerald-600 to-teal-700',
       comingSoon: true
     },
     {
@@ -40,7 +40,7 @@ const Hero = () => {
       description: 'Rustic elegance meets tropical luxury in stunning overwater suites',
       image: '/lovable-uploads/b6b55919-61a6-4bd8-8d89-0db513eac417.png',
       label: 'HOTEL',
-      labelColor: 'bg-gradient-to-r from-emerald-500 to-teal-600',
+      labelColor: 'bg-gradient-to-r from-emerald-600 to-teal-700',
       comingSoon: true
     },
     {
@@ -51,6 +51,15 @@ const Hero = () => {
       label: 'FLIGHT DESTINATION',
       labelColor: 'bg-gradient-to-r from-purple-500 to-pink-600',
       comingSoon: false
+    },
+    {
+      id: 'desert-mountain-retreat',
+      title: 'Desert Mountain Retreat',
+      description: 'Serene mountain sanctuary with breathtaking desert landscapes and luxury amenities',
+      image: '/lovable-uploads/7db62447-03ed-4252-9041-e865fded8997.png',
+      label: 'RETREAT',
+      labelColor: 'bg-gradient-to-r from-amber-600 to-orange-700',
+      comingSoon: true
     }
   ];
 
