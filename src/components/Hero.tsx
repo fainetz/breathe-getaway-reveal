@@ -22,7 +22,7 @@ const Hero = () => {
       description: 'Ultimate tropical luxury with infinity pools and palm-fringed paradise',
       image: '/lovable-uploads/ec79ecde-c51a-4448-9b2d-5328f1399e1d.png',
       label: 'HOTEL',
-      labelColor: 'bg-gradient-to-r from-amber-500 to-orange-600',
+      labelColor: 'bg-gradient-to-r from-slate-600 to-gray-700',
       comingSoon: true
     },
     {
@@ -30,7 +30,7 @@ const Hero = () => {
       title: 'Azure Beach Club',
       description: 'Pristine white sands meet crystal-clear waters in this exclusive retreat',
       image: '/lovable-uploads/349adef3-59ea-405e-bc62-d704ea49bf62.png',
-      label: 'DESTINATION',
+      label: 'FLIGHT DESTINATION',
       labelColor: 'bg-gradient-to-r from-blue-500 to-cyan-600',
       comingSoon: false
     },
@@ -48,7 +48,7 @@ const Hero = () => {
       title: 'Château River Village',
       description: 'Enchanting riverside town with medieval charm and luxury accommodations',
       image: '/lovable-uploads/1b34fb02-ef92-4f9c-abad-7c07f22e9457.png',
-      label: 'DESTINATION',
+      label: 'FLIGHT DESTINATION',
       labelColor: 'bg-gradient-to-r from-purple-500 to-pink-600',
       comingSoon: false
     }
