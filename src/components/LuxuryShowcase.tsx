@@ -55,7 +55,7 @@ const LuxuryShowcase = () => {
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-6">
             Where Dreams
             <br />
-            <span className="bg-gradient-to-r from-slate-600 to-gray-700 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
               Meet Reality
             </span>
           </h2>
