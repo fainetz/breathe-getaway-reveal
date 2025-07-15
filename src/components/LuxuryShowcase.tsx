@@ -9,22 +9,22 @@ const LuxuryShowcase = () => {
     {
       id: 1,
       image: '/lovable-uploads/5935897b-1c16-4e4f-8a47-50073b06561d.png',
-      title: 'AI Hotel Discovery',
-      subtitle: 'Intelligent hotel matching leverages natural language processing to understand your accommodation preferences. The AI evaluates room types, amenities, location advantages, and guest satisfaction scores to present hotels that align perfectly with your luxury standards.',
-      location: 'Personalized Results',
-      rating: 5.0,
-      price: 'Best Prices',
-      category: 'Hotel Booking',
-      details: 'Deep learning algorithms process hotel features, guest reviews, and location data to predict your satisfaction score for each property. The AI considers your check-in preferences, room requirements, and desired amenities to curate a personalized selection of luxury accommodations.',
+      title: 'Luxury Retreat Finder',
+      subtitle: 'Our AI analyzes thousands of luxury retreat options, considering your travel history, preferences, and budget constraints. Machine learning algorithms evaluate amenities, location exclusivity, and seasonal availability to curate the perfect getaway experience.',
+      location: 'Worldwide',
+      rating: 4.8,
+      price: 'Exclusive Deals',
+      category: 'Retreat Planning',
+      details: 'Advanced algorithms scan luxury retreat databases, analyzing guest reviews, seasonal pricing, and amenity compatibility with your preferences. The AI considers factors like privacy levels, activity preferences, and dietary requirements to match you with retreats that exceed expectations.',
       icon: Brain,
       features: [
-        'Natural language preference processing',
-        'Satisfaction score prediction',
-        'Amenity compatibility matching',
-        'Location advantage analysis',
-        'Personalized hotel curation'
+        'AI-powered preference analysis',
+        'Real-time availability checking',
+        'Personalized retreat matching',
+        'Budget optimization algorithms',
+        'Location exclusivity scoring'
       ],
-      howItWorks: 'Our intelligent hotel matching system uses natural language processing to understand your accommodation preferences from simple descriptions. The AI evaluates thousands of hotels, analyzing room types, amenities, and guest reviews to predict your satisfaction and present only the properties that align with your luxury standards.'
+      howItWorks: 'Our machine learning models analyze your travel history, preferences, and budget to create a unique profile. The AI then scans thousands of luxury retreat options, evaluating factors like amenities, location, seasonal pricing, and guest reviews to present you with curated options that perfectly match your desires.'
     },
     {
       id: 2,
@@ -49,22 +49,22 @@ const LuxuryShowcase = () => {
     {
       id: 3,
       image: '/lovable-uploads/3f81b31d-0911-4669-829d-e28da3084ad5.png',
-      title: 'Luxury Retreat Finder',
-      subtitle: 'Our AI analyzes thousands of luxury retreat options, considering your travel history, preferences, and budget constraints. Machine learning algorithms evaluate amenities, location exclusivity, and seasonal availability to curate the perfect getaway experience.',
-      location: 'Worldwide',
-      rating: 4.8,
-      price: 'Exclusive Deals',
-      category: 'Retreat Planning',
-      details: 'Advanced algorithms scan luxury retreat databases, analyzing guest reviews, seasonal pricing, and amenity compatibility with your preferences. The AI considers factors like privacy levels, activity preferences, and dietary requirements to match you with retreats that exceed expectations.',
+      title: 'AI Hotel Discovery',
+      subtitle: 'Intelligent hotel matching leverages natural language processing to understand your accommodation preferences. The AI evaluates room types, amenities, location advantages, and guest satisfaction scores to present hotels that align perfectly with your luxury standards.',
+      location: 'Personalized Results',
+      rating: 5.0,
+      price: 'Best Prices',
+      category: 'Hotel Booking',
+      details: 'Deep learning algorithms process hotel features, guest reviews, and location data to predict your satisfaction score for each property. The AI considers your check-in preferences, room requirements, and desired amenities to curate a personalized selection of luxury accommodations.',
       icon: Settings,
       features: [
-        'AI-powered preference analysis',
-        'Real-time availability checking',
-        'Personalized retreat matching',
-        'Budget optimization algorithms',
-        'Location exclusivity scoring'
+        'Natural language preference processing',
+        'Satisfaction score prediction',
+        'Amenity compatibility matching',
+        'Location advantage analysis',
+        'Personalized hotel curation'
       ],
-      howItWorks: 'Our machine learning models analyze your travel history, preferences, and budget to create a unique profile. The AI then scans thousands of luxury retreat options, evaluating factors like amenities, location, seasonal pricing, and guest reviews to present you with curated options that perfectly match your desires.'
+      howItWorks: 'Our intelligent hotel matching system uses natural language processing to understand your accommodation preferences from simple descriptions. The AI evaluates thousands of hotels, analyzing room types, amenities, and guest reviews to predict your satisfaction and present only the properties that align with your luxury standards.'
     }
   ];
 
@@ -147,7 +147,7 @@ const LuxuryShowcase = () => {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 animate-prance-in">
+              <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 animate-slide-up-mobile sm:animate-slide-up">
                 <div className="relative">
                   {/* Subtle Background Pattern */}
                   <div className="absolute inset-0 opacity-30">
@@ -343,7 +343,7 @@ const LuxuryShowcase = () => {
                       </div>
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 animate-prance-in">
+                  <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 animate-slide-up-mobile sm:animate-slide-up">
                     <div className="relative">
                       {/* Subtle Background Pattern */}
                       <div className="absolute inset-0 opacity-30">
