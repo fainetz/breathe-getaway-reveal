@@ -14,11 +14,12 @@ const DraggableDialogContent: React.FC<DraggableDialogContentProps> = ({ childre
   const updatePosition = (deltaY: number) => {
     if (!contentRef.current) return;
     
-    // Smooth resistance curve - less aggressive
-    const resistance = deltaY > 0 ? Math.min(deltaY * 0.6, 150) : 0;
-    const opacity = deltaY > 0 ? Math.max(0.5, 1 - (deltaY * 0.001)) : 1;
+    // Ultra-smooth resistance with better curve
+    const resistance = deltaY > 0 ? Math.min(deltaY * 0.4, 120) : 0;
+    const opacity = deltaY > 0 ? Math.max(0.7, 1 - (deltaY * 0.0008)) : 1;
     
-    contentRef.current.style.transform = `translate3d(0, ${resistance}px, 0)`;
+    // Use transform only for better performance
+    contentRef.current.style.transform = `translate3d(0, ${resistance}px, 0) scale(${Math.max(0.98, 1 - deltaY * 0.0001)})`;
     contentRef.current.style.opacity = `${opacity}`;
   };
 
