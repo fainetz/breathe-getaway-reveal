@@ -7,83 +7,99 @@ interface DraggableDialogContentProps {
 
 const DraggableDialogContent: React.FC<DraggableDialogContentProps> = ({ children }) => {
   const [startY, setStartY] = useState(0);
-  const [currentY, setCurrentY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const [dragOffset, setDragOffset] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number>();
+
+  const updatePosition = (deltaY: number) => {
+    if (!contentRef.current) return;
+    
+    // Smooth resistance curve - less aggressive
+    const resistance = deltaY > 0 ? Math.min(deltaY * 0.6, 150) : 0;
+    const opacity = deltaY > 0 ? Math.max(0.5, 1 - (deltaY * 0.001)) : 1;
+    
+    contentRef.current.style.transform = `translate3d(0, ${resistance}px, 0)`;
+    contentRef.current.style.opacity = `${opacity}`;
+  };
 
   const handleTouchStart = (e: React.TouchEvent) => {
     const touch = e.touches[0];
     setStartY(touch.clientY);
-    setCurrentY(touch.clientY);
     setIsDragging(true);
-    setDragOffset(0);
+    
+    // Cancel any ongoing animation
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+    
+    // Remove transitions for immediate response
+    if (contentRef.current) {
+      contentRef.current.style.transition = 'none';
+    }
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging) return;
     
+    e.preventDefault(); // Prevent scroll
     const touch = e.touches[0];
     const deltaY = touch.clientY - startY;
     
-    // Only allow dragging down
-    if (deltaY > 0) {
-      setCurrentY(touch.clientY);
-      setDragOffset(deltaY);
-      
-      // Apply transform for visual feedback with resistance
-      if (contentRef.current) {
-        const resistance = Math.min(deltaY * 0.8, 200); // Add resistance and cap movement
-        contentRef.current.style.transform = `translateY(${resistance}px)`;
-        contentRef.current.style.opacity = `${Math.max(0.3, 1 - deltaY / 400)}`;
-      }
+    // Use requestAnimationFrame for smooth updates
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
     }
+    
+    animationRef.current = requestAnimationFrame(() => {
+      updatePosition(deltaY);
+    });
   };
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = (e: React.TouchEvent) => {
     if (!isDragging) return;
     
-    const deltaY = currentY - startY;
+    const touch = e.changedTouches[0];
+    const deltaY = touch.clientY - startY;
     setIsDragging(false);
-    setDragOffset(0);
     
-    // Reset transform with animation
-    if (contentRef.current) {
-      contentRef.current.style.transform = '';
-      contentRef.current.style.opacity = '';
-      contentRef.current.style.transition = 'transform 0.3s ease-out, opacity 0.3s ease-out';
-      
-      // Remove transition after animation
-      setTimeout(() => {
-        if (contentRef.current) {
-          contentRef.current.style.transition = '';
-        }
-      }, 300);
+    // Cancel animation frame
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
     }
     
-    // Close dialog if dragged down enough (more than 80px) or with sufficient velocity
-    if (deltaY > 80) {
-      // Find the dialog close button more reliably
+    // Add smooth transition back
+    if (contentRef.current) {
+      contentRef.current.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+    }
+    
+    // Close dialog if dragged down enough (lower threshold for easier closing)
+    if (deltaY > 60) {
+      // Find and trigger close
       const dialogContent = contentRef.current?.closest('[role="dialog"]');
       const closeButton = dialogContent?.querySelector('button[aria-label="Close"]') as HTMLButtonElement;
       
       if (closeButton) {
         closeButton.click();
-      } else {
-        // Fallback: dispatch escape key
-        const escEvent = new KeyboardEvent('keydown', { key: 'Escape' });
-        document.dispatchEvent(escEvent);
       }
+    } else {
+      // Spring back smoothly
+      updatePosition(0);
+      
+      // Remove transition after spring back
+      setTimeout(() => {
+        if (contentRef.current) {
+          contentRef.current.style.transition = '';
+        }
+      }, 400);
     }
   };
 
-  // Also handle the entire dialog content area for swipe down
+  // Handle swipe on content area only when at scroll top
   const handleContentTouchStart = (e: React.TouchEvent) => {
-    // Only start drag if we're at the top of the scrollable content
     const target = e.target as HTMLElement;
     const scrollableElement = target.closest('[data-scrollable]') as HTMLElement;
     
-    if (!scrollableElement || scrollableElement.scrollTop === 0) {
+    if (!scrollableElement || scrollableElement.scrollTop <= 5) {
       handleTouchStart(e);
     }
   };
@@ -91,19 +107,20 @@ const DraggableDialogContent: React.FC<DraggableDialogContentProps> = ({ childre
   return (
     <div 
       ref={contentRef}
-      className="relative transition-none"
+      className="relative will-change-transform"
       onTouchStart={handleContentTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      style={{ touchAction: 'pan-y' }}
     >
       {/* Mobile drag handle */}
       <div 
-        className="sm:hidden flex justify-center pt-3 pb-2 cursor-grab active:cursor-grabbing touch-pan-y"
+        className="sm:hidden flex justify-center pt-4 pb-3 cursor-grab active:cursor-grabbing"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="w-12 h-1.5 bg-white/40 rounded-full hover:bg-white/60 transition-colors duration-200 shadow-sm"></div>
+        <div className="w-10 h-1 bg-white/50 rounded-full shadow-sm"></div>
       </div>
 
       <div data-scrollable>{children}</div>
