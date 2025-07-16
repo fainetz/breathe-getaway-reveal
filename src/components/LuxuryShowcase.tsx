@@ -189,10 +189,10 @@ const LuxuryShowcase = () => {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className={`max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
+              <DialogContent className={`max-w-[95vw] sm:max-w-4xl lg:max-w-6xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden border shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
                 isMobile 
-                  ? 'rounded-t-[32px] top-auto bottom-0 data-[state=open]:animate-slide-up-mobile data-[state=closed]:animate-slide-down-mobile' 
-                  : 'rounded-[40px] top-[50%] bottom-auto data-[state=open]:animate-scale-in data-[state=closed]:animate-scale-out'
+                  ? 'bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] top-auto bottom-0 data-[state=open]:animate-slide-up-mobile data-[state=closed]:animate-slide-down-mobile' 
+                  : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-2xl top-[50%] bottom-auto data-[state=open]:animate-scale-in data-[state=closed]:animate-scale-out'
               }`}>
                 <DialogTitle className="sr-only">{showcaseImages[0].title}</DialogTitle>
                 {isMobile ? (
@@ -331,26 +331,18 @@ const LuxuryShowcase = () => {
                   </div>
                   </DraggableDialogContent>
                 ) : (
-                  <div className="p-4 sm:p-6 lg:p-10">
-                    {/* Desktop Version - Direct content without drag wrapper */}
-                    {/* Subtle Background Pattern */}
-                    <div className="absolute inset-0 opacity-30">
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(148,163,184,0.08),transparent_70%)]"></div>
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(100,116,139,0.08),transparent_70%)]"></div>
-                    </div>
-
+                  <div className="bg-white dark:bg-gray-900">
+                    {/* Desktop Version - Clean design with proper contrast */}
                     {/* Header */}
-                    <div className="relative pb-4 sm:pb-6 lg:pb-8 border-b border-white/5">
-                      <div className="flex items-center gap-4 sm:gap-6 lg:gap-8">
+                    <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+                      <div className="flex items-center gap-6">
                         <div className="relative">
-                          <div className="absolute inset-0 bg-gradient-to-br from-slate-300/20 to-gray-400/20 rounded-2xl sm:rounded-3xl blur-2xl opacity-40"></div>
-                          <div className="relative bg-white/10 backdrop-blur-3xl rounded-2xl sm:rounded-3xl p-3 sm:p-4 lg:p-5 border border-white/10">
-                            <Brain className="w-8 h-8 sm:w-10 sm:h-10 lg:w-14 lg:h-14 text-white/90" />
+                          <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-4 shadow-lg">
+                            <Brain className="w-12 h-12 text-white" />
                           </div>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <h1 className="text-xl sm:text-2xl lg:text-5xl font-light text-white/95 mb-2 sm:mb-3 tracking-tight truncate">{showcaseImages[0].title}</h1>
+                        <div className="flex-1">
+                          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{showcaseImages[0].title}</h1>
                           <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
                             <div className="px-3 py-1.5 sm:px-4 sm:py-2 lg:px-6 lg:py-3 bg-white/5 backdrop-blur-2xl rounded-xl sm:rounded-2xl border border-white/10">
                               <span className="text-white/80 font-medium text-sm sm:text-base lg:text-lg">{showcaseImages[0].category}</span>
@@ -539,23 +531,24 @@ const LuxuryShowcase = () => {
                         </div>
                       </div>
                     </DialogTrigger>
-                   <DialogContent className={`max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
+                   <DialogContent className={`max-w-[95vw] sm:max-w-4xl lg:max-w-6xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden border shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
                      isMobile 
-                       ? 'rounded-t-[32px] top-auto bottom-0 data-[state=open]:animate-slide-up-mobile data-[state=closed]:animate-slide-down-mobile' 
-                       : 'rounded-[40px] top-[50%] bottom-auto data-[state=open]:animate-scale-in data-[state=closed]:animate-scale-out'
+                       ? 'bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] top-auto bottom-0 data-[state=open]:animate-slide-up-mobile data-[state=closed]:animate-slide-down-mobile' 
+                       : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-2xl top-[50%] bottom-auto data-[state=open]:animate-scale-in data-[state=closed]:animate-scale-out'
                    }`}>
                       <DialogTitle className="sr-only">{item.title}</DialogTitle>
                       {isMobile ? (
                         <DraggableDialogContent>
-                       {/* Subtle Background Pattern */}
-                       <div className="absolute inset-0 opacity-30">
-                         <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
-                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(148,163,184,0.08),transparent_70%)]"></div>
-                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(100,116,139,0.08),transparent_70%)]"></div>
-                       </div>
+                          {/* Mobile Version - with drag wrapper and fixed header */}
+                          {/* Subtle Background Pattern */}
+                          <div className="absolute inset-0 opacity-30">
+                            <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(148,163,184,0.08),transparent_70%)]"></div>
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(100,116,139,0.08),transparent_70%)]"></div>
+                          </div>
 
-                      {/* Header */}
-                      <div className="relative p-4 sm:p-6 lg:p-10 pb-4 sm:pb-6 lg:pb-8 border-b border-white/5">
+                          {/* Header */}
+                          <div className="relative p-4 sm:p-6 lg:p-10 pb-4 sm:pb-6 lg:pb-8 border-b border-white/10 bg-white/5 backdrop-blur-sm sticky top-0 z-10">
                         <div className="flex items-center gap-4 sm:gap-6 lg:gap-8">
                           <div className="relative">
                             <div className="absolute inset-0 bg-gradient-to-br from-slate-300/20 to-gray-400/20 rounded-2xl sm:rounded-3xl blur-2xl opacity-40"></div>
@@ -579,7 +572,7 @@ const LuxuryShowcase = () => {
                       </div>
 
                       {/* Content */}
-                      <div className="relative p-4 sm:p-6 lg:p-10 max-h-[calc(90vh-120px)] sm:max-h-[calc(95vh-220px)] overflow-y-auto">
+                       <div className="relative p-4 sm:p-6 lg:p-10 max-h-[calc(90vh-180px)] overflow-y-auto" data-scrollable>
                         <div className="space-y-6 sm:space-y-8 lg:space-y-12">
                           {/* Hero Image */}
                           <div className="relative h-48 sm:h-64 lg:h-[420px] rounded-2xl sm:rounded-3xl lg:rounded-[32px] overflow-hidden group">
@@ -814,10 +807,28 @@ const LuxuryShowcase = () => {
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                      )}
-                   </DialogContent>
+                           </div>
+                         </div>
+                        </DraggableDialogContent>
+                       ) : (
+                         <div className="p-6 bg-white dark:bg-gray-900 max-h-[calc(85vh-100px)] overflow-y-auto">
+                           <div className="flex items-center gap-4 mb-6">
+                             <IconComponent className="w-8 h-8 text-blue-600" />
+                             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{item.title}</h2>
+                           </div>
+                           <img src={item.image} alt={item.title} className="w-full h-64 object-cover rounded-lg mb-6" />
+                           <p className="text-gray-600 dark:text-gray-300 mb-4">{item.details}</p>
+                           <div className="space-y-2">
+                             {item.features.map((feature, idx) => (
+                               <div key={idx} className="flex items-center gap-2">
+                                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                 <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                               </div>
+                             ))}
+                           </div>
+                         </div>
+                       )}
+                    </DialogContent>
                   </Dialog>
                 </div>
               );
