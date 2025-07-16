@@ -12,15 +12,15 @@ const LuxuryModal: React.FC<LuxuryModalProps> = ({ isOpen, onClose, children }) 
 
   return (
     <div 
-      className="fixed inset-0 z-[9999] flex items-center justify-center"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
       onClick={onClose}
     >
       <div 
         className="relative bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden"
         style={{ 
-          width: '95vw', 
-          height: '95vh',
+          width: 'min(95vw, 1600px)', 
+          height: 'min(95vh, 1000px)',
           maxWidth: 'none',
           maxHeight: 'none'
         }}
@@ -28,9 +28,9 @@ const LuxuryModal: React.FC<LuxuryModalProps> = ({ isOpen, onClose, children }) 
       >
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors"
+          className="absolute top-8 right-8 z-10 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full p-3 transition-colors shadow-lg"
         >
-          <X className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+          <X className="w-7 h-7 text-gray-600 dark:text-gray-300" />
         </button>
         {children}
       </div>
