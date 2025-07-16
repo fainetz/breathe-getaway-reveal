@@ -204,58 +204,64 @@ const LuxuryShowcase = () => {
                     </div>
                   </DraggableDialogContent>
                 ) : (
-                  <div className="max-h-[90vh] overflow-y-auto">
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-10 p-10">
-                      {/* Left Column - Image and Overview */}
-                      <div className="space-y-6">
-                        <div className="flex items-center gap-4">
-                          <Brain className="w-10 h-10 text-blue-600" />
-                          <div>
-                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{showcaseImages[0].title}</h2>
-                            <p className="text-gray-500 dark:text-gray-400">{showcaseImages[0].category}</p>
-                          </div>
+                  <div className="h-[85vh] flex flex-col">
+                    {/* Header */}
+                    <div className="flex items-center gap-6 p-8 border-b border-gray-200 dark:border-gray-700">
+                      <Brain className="w-12 h-12 text-blue-600" />
+                      <div>
+                        <h2 className="text-4xl font-bold text-gray-900 dark:text-white">{showcaseImages[0].title}</h2>
+                        <p className="text-xl text-gray-500 dark:text-gray-400 mt-2">{showcaseImages[0].category}</p>
+                      </div>
+                      <div className="ml-auto flex items-center gap-6">
+                        <div className="flex items-center gap-2">
+                          <Star className="w-6 h-6 text-yellow-400 fill-yellow-400" />
+                          <span className="text-xl font-semibold text-gray-900 dark:text-white">{showcaseImages[0].rating}</span>
                         </div>
+                        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full font-bold text-lg">
+                          {showcaseImages[0].price}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Main Content */}
+                    <div className="flex-1 grid grid-cols-2 gap-12 p-8 overflow-y-auto">
+                      {/* Left Column */}
+                      <div className="space-y-8">
                         <img 
                           src={showcaseImages[0].image} 
                           alt={showcaseImages[0].title} 
-                          className="w-full h-80 object-cover rounded-xl shadow-lg" 
+                          className="w-full h-96 object-cover rounded-2xl shadow-xl" 
                         />
-                        <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
-                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">How It Works</h3>
-                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{showcaseImages[0].howItWorks}</p>
+                        
+                        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl">
+                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">How It Works</h3>
+                          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">{showcaseImages[0].howItWorks}</p>
                         </div>
                       </div>
 
-                      {/* Right Column - Details and Features */}
-                      <div className="space-y-6">
+                      {/* Right Column */}
+                      <div className="space-y-8">
                         <div>
-                          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">About This Feature</h3>
-                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">{showcaseImages[0].details}</p>
+                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">About This Feature</h3>
+                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-xl">{showcaseImages[0].details}</p>
                         </div>
                         
                         <div>
-                          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Key Features</h3>
+                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Key Features</h3>
                           <div className="space-y-4">
                             {showcaseImages[0].features.map((feature, idx) => (
-                              <div key={idx} className="flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                <div className="w-3 h-3 bg-blue-500 rounded-full mt-1 flex-shrink-0"></div>
-                                <span className="text-gray-700 dark:text-gray-300 leading-relaxed">{feature}</span>
+                              <div key={idx} className="flex items-start gap-6 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <span className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">{feature}</span>
                               </div>
                             ))}
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                          <div className="flex items-center gap-2">
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <span className="text-gray-900 dark:text-white font-semibold">{showcaseImages[0].rating}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <MapPin className="w-5 h-5 text-gray-500" />
-                            <span className="text-gray-600 dark:text-gray-400">{showcaseImages[0].location}</span>
-                          </div>
-                          <div className="ml-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full font-semibold">
-                            {showcaseImages[0].price}
+                        <div className="flex items-center gap-6 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                          <div className="flex items-center gap-3">
+                            <MapPin className="w-6 h-6 text-gray-500" />
+                            <span className="text-gray-600 dark:text-gray-400 text-lg">{showcaseImages[0].location}</span>
                           </div>
                         </div>
                       </div>
@@ -349,58 +355,64 @@ const LuxuryShowcase = () => {
                           </div>
                         </DraggableDialogContent>
                       ) : (
-                        <div className="max-h-[90vh] overflow-y-auto">
-                          <div className="grid grid-cols-1 xl:grid-cols-2 gap-10 p-10 min-h-full">
-                            {/* Left Column - Image and Overview */}
-                            <div className="space-y-6">
-                              <div className="flex items-center gap-4">
-                                <IconComponent className="w-10 h-10 text-blue-600" />
-                                <div>
-                                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{item.title}</h2>
-                                  <p className="text-gray-500 dark:text-gray-400">{item.category}</p>
-                                </div>
+                        <div className="h-[85vh] flex flex-col">
+                          {/* Header */}
+                          <div className="flex items-center gap-6 p-8 border-b border-gray-200 dark:border-gray-700">
+                            <IconComponent className="w-12 h-12 text-blue-600" />
+                            <div>
+                              <h2 className="text-4xl font-bold text-gray-900 dark:text-white">{item.title}</h2>
+                              <p className="text-xl text-gray-500 dark:text-gray-400 mt-2">{item.category}</p>
+                            </div>
+                            <div className="ml-auto flex items-center gap-6">
+                              <div className="flex items-center gap-2">
+                                <Star className="w-6 h-6 text-yellow-400 fill-yellow-400" />
+                                <span className="text-xl font-semibold text-gray-900 dark:text-white">{item.rating}</span>
                               </div>
+                              <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full font-bold text-lg">
+                                {item.price}
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Main Content */}
+                          <div className="flex-1 grid grid-cols-2 gap-12 p-8 overflow-y-auto">
+                            {/* Left Column */}
+                            <div className="space-y-8">
                               <img 
                                 src={item.image} 
                                 alt={item.title} 
-                                className="w-full h-80 object-cover rounded-xl shadow-lg" 
+                                className="w-full h-96 object-cover rounded-2xl shadow-xl" 
                               />
-                              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
-                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">How It Works</h3>
-                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{item.howItWorks}</p>
+                              
+                              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl">
+                                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">How It Works</h3>
+                                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">{item.howItWorks}</p>
                               </div>
                             </div>
 
-                            {/* Right Column - Details and Features */}
-                            <div className="space-y-6">
+                            {/* Right Column */}
+                            <div className="space-y-8">
                               <div>
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">About This Feature</h3>
-                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">{item.details}</p>
+                                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">About This Feature</h3>
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-xl">{item.details}</p>
                               </div>
                               
                               <div>
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Key Features</h3>
+                                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Key Features</h3>
                                 <div className="space-y-4">
                                   {item.features.map((feature, idx) => (
-                                    <div key={idx} className="flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                      <div className="w-3 h-3 bg-blue-500 rounded-full mt-1 flex-shrink-0"></div>
-                                      <span className="text-gray-700 dark:text-gray-300 leading-relaxed">{feature}</span>
+                                    <div key={idx} className="flex items-start gap-6 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                      <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
+                                      <span className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">{feature}</span>
                                     </div>
                                   ))}
                                 </div>
                               </div>
 
-                              <div className="flex items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                                <div className="flex items-center gap-2">
-                                  <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                                  <span className="text-gray-900 dark:text-white font-semibold">{item.rating}</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                  <MapPin className="w-5 h-5 text-gray-500" />
-                                  <span className="text-gray-600 dark:text-gray-400">{item.location}</span>
-                                </div>
-                                <div className="ml-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full font-semibold">
-                                  {item.price}
+                              <div className="flex items-center gap-6 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                                <div className="flex items-center gap-3">
+                                  <MapPin className="w-6 h-6 text-gray-500" />
+                                  <span className="text-gray-600 dark:text-gray-400 text-lg">{item.location}</span>
                                 </div>
                               </div>
                             </div>
