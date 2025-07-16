@@ -90,13 +90,15 @@ const Features = () => {
 
   const scrollLeft = () => {
     if (mobileScrollRef.current) {
-      mobileScrollRef.current.scrollBy({ left: -320, behavior: 'smooth' });
+      // Panel width (320px) + gap (16px) = 336px
+      mobileScrollRef.current.scrollBy({ left: -336, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (mobileScrollRef.current) {
-      mobileScrollRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+      // Panel width (320px) + gap (16px) = 336px
+      mobileScrollRef.current.scrollBy({ left: 336, behavior: 'smooth' });
     }
   };
 
@@ -121,11 +123,9 @@ const Features = () => {
     <section id="features" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300 shadow-2xl dark:shadow-gray-900/60" ref={sectionRef}>
       <div className="max-w-7xl mx-auto">
         <div className={`text-center mb-12 sm:mb-16 lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="overflow-x-auto lg:overflow-visible">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-black dark:text-white transition-colors duration-300 drop-shadow-lg whitespace-nowrap lg:whitespace-normal">
-              Travel That Understands You
-            </h2>
-          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-black dark:text-white transition-colors duration-300 drop-shadow-lg px-4 sm:px-0">
+            Travel That Understands You
+          </h2>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed transition-colors duration-300 px-4 sm:px-0">
             Every feature designed to bridge the gap between where you are and where your soul needs to be.
           </p>
@@ -207,12 +207,13 @@ const Features = () => {
 
           <div 
             ref={mobileScrollRef}
-            className="overflow-x-auto pb-4 scrollbar-hide px-12"
+            className="overflow-x-auto pb-4 scrollbar-hide px-12 scroll-smooth"
             onScroll={handleMobileScroll}
+            style={{ scrollSnapType: 'x mandatory' }}
           >
             <div className="flex gap-4 w-max">
               {features.map((feature, index) => (
-                <div key={index} className="w-80 flex-shrink-0">
+                <div key={index} className="w-80 flex-shrink-0" style={{ scrollSnapAlign: 'start' }}>
                   <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
                     <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98 h-full">
                       <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-30 group-active:opacity-40 transition-all duration-500`}></div>
