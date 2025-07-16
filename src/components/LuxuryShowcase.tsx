@@ -189,10 +189,10 @@ const LuxuryShowcase = () => {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className={`max-w-[95vw] sm:max-w-4xl lg:max-w-6xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden border shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
+              <DialogContent className={`border shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
                 isMobile 
-                  ? 'bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] top-auto bottom-0 data-[state=open]:animate-slide-up-mobile data-[state=closed]:animate-slide-down-mobile' 
-                  : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-2xl top-[50%] bottom-auto data-[state=open]:animate-scale-in data-[state=closed]:animate-scale-out'
+                  ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] top-auto bottom-0 data-[state=open]:animate-slide-up-mobile data-[state=closed]:animate-slide-down-mobile overflow-hidden' 
+                  : 'max-w-[90vw] max-h-[90vh] bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-2xl top-[50%] bottom-auto data-[state=open]:animate-scale-in data-[state=closed]:animate-scale-out'
               }`}>
                 <DialogTitle className="sr-only">{showcaseImages[0].title}</DialogTitle>
                 {isMobile ? (
@@ -204,8 +204,8 @@ const LuxuryShowcase = () => {
                     </div>
                   </DraggableDialogContent>
                 ) : (
-                  <div className="max-h-[calc(85vh-100px)] overflow-y-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+                  <div className="max-h-[90vh] overflow-y-auto">
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-10 p-10">
                       {/* Left Column - Image and Overview */}
                       <div className="space-y-6">
                         <div className="flex items-center gap-4">
@@ -334,10 +334,10 @@ const LuxuryShowcase = () => {
                         </div>
                       </div>
                     </DialogTrigger>
-                   <DialogContent className={`max-w-[95vw] sm:max-w-4xl lg:max-w-6xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden border shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
+                   <DialogContent className={`border shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
                      isMobile 
-                       ? 'bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] top-auto bottom-0 data-[state=open]:animate-slide-up-mobile data-[state=closed]:animate-slide-down-mobile' 
-                       : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-2xl top-[50%] bottom-auto data-[state=open]:animate-scale-in data-[state=closed]:animate-scale-out'
+                       ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] top-auto bottom-0 data-[state=open]:animate-slide-up-mobile data-[state=closed]:animate-slide-down-mobile overflow-hidden' 
+                       : 'max-w-[90vw] max-h-[90vh] bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-2xl top-[50%] bottom-auto data-[state=open]:animate-scale-in data-[state=closed]:animate-scale-out'
                    }`}>
                       <DialogTitle className="sr-only">{item.title}</DialogTitle>
                       {isMobile ? (
@@ -349,8 +349,8 @@ const LuxuryShowcase = () => {
                           </div>
                         </DraggableDialogContent>
                       ) : (
-                        <div className="max-h-[calc(85vh-100px)] overflow-y-auto">
-                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+                        <div className="max-h-[90vh] overflow-y-auto">
+                          <div className="grid grid-cols-1 xl:grid-cols-2 gap-10 p-10 min-h-full">
                             {/* Left Column - Image and Overview */}
                             <div className="space-y-6">
                               <div className="flex items-center gap-4">
