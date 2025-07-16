@@ -189,11 +189,23 @@ const LuxuryShowcase = () => {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className={`${
-                isMobile 
-                  ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] overflow-hidden' 
-                  : '!max-w-none !w-[95vw] !max-h-none !h-[95vh] bg-white dark:bg-gray-900 rounded-3xl border-0 shadow-2xl'
-              } p-0 [&>button]:hidden`}>
+              <DialogContent 
+                style={isMobile ? {} : { 
+                  position: 'fixed',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '95vw',
+                  height: '95vh',
+                  maxWidth: 'none',
+                  maxHeight: 'none'
+                }}
+                className={`${
+                  isMobile 
+                    ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] overflow-hidden' 
+                    : 'bg-white dark:bg-gray-900 rounded-3xl border-0 shadow-2xl'
+                } p-0 [&>button]:hidden`}
+              >
                 <DialogTitle className="sr-only">{showcaseImages[0].title}</DialogTitle>
                 <DialogDescription className="sr-only">Detailed information about {showcaseImages[0].title}</DialogDescription>
                 {isMobile ? (
@@ -341,11 +353,23 @@ const LuxuryShowcase = () => {
                         </div>
                       </div>
                     </DialogTrigger>
-                   <DialogContent className={`${
-                     isMobile 
-                       ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] overflow-hidden' 
-                       : '!max-w-none !w-[95vw] !max-h-none !h-[95vh] bg-white dark:bg-gray-900 rounded-3xl border-0 shadow-2xl'
-                   } p-0 [&>button]:hidden`}>
+                   <DialogContent 
+                     style={isMobile ? {} : { 
+                       position: 'fixed',
+                       top: '50%',
+                       left: '50%',
+                       transform: 'translate(-50%, -50%)',
+                       width: '95vw',
+                       height: '95vh',
+                       maxWidth: 'none',
+                       maxHeight: 'none'
+                     }}
+                     className={`${
+                       isMobile 
+                         ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] overflow-hidden' 
+                         : 'bg-white dark:bg-gray-900 rounded-3xl border-0 shadow-2xl'
+                     } p-0 [&>button]:hidden`}
+                   >
                       <DialogTitle className="sr-only">{item.title}</DialogTitle>
                       <DialogDescription className="sr-only">Detailed information about {item.title}</DialogDescription>
                       {isMobile ? (
