@@ -38,7 +38,8 @@ const LuxuryShowcase = () => {
       rating: 4.9,
       price: 'Optimized Fares',
       category: 'Flight Search',
-      details: 'Machine learning models analyze flight patterns, price fluctuations, and seat availability across multiple airlines. The AI considers your seating preferences, meal requirements, and schedule flexibility to secure the best flights at optimal prices.',
+      isNew: true,
+      details: 'Machine learning models analyze flight patterns, price fluctuations, and seat availability across multiple airlines. The AI considers your seating preferences, meal requirements, and schedule flexibility to secure the best flights at optimal prices. We also ensure you get a window seat on the side where the sun sets during your flight for the most breathtaking views.',
       icon: Zap,
       features: [
         'Smart seat selection algorithms',
@@ -345,10 +346,15 @@ const LuxuryShowcase = () => {
                         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
                         
                         {/* Badge */}
-                        <div className="absolute top-4 left-4 transition-all duration-500 group-hover:scale-110 group-hover:translate-x-1">
+                        <div className="absolute top-4 left-4 transition-all duration-500 group-hover:scale-110 group-hover:translate-x-1 flex gap-2">
                           <div className="bg-black/30 backdrop-blur-sm rounded-full px-3 py-1 group-hover:bg-black/40 group-hover:border group-hover:border-white/20 transition-all duration-500">
                             <span className="text-white font-medium text-xs">{item.category}</span>
                           </div>
+                          {item.isNew && (
+                            <div className="bg-gradient-to-r from-orange-500 to-red-500 backdrop-blur-sm rounded-full px-2 py-1 border border-orange-400/30 group-hover:scale-105 transition-all duration-500">
+                              <span className="text-white font-bold text-xs">NEW</span>
+                            </div>
+                          )}
                         </div>
 
                         {/* Content */}
