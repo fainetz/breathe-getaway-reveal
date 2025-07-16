@@ -18,6 +18,7 @@ const LuxuryShowcase = () => {
       rating: 5.0,
       price: 'Best Prices',
       category: 'Hotel Booking',
+      comingSoon: true,
       details: 'Deep learning algorithms process hotel features, guest reviews, and location data to predict your satisfaction score for each property. The AI considers your check-in preferences, room requirements, and desired amenities to curate a personalized selection of luxury accommodations.',
       icon: Brain,
       features: [
@@ -59,6 +60,7 @@ const LuxuryShowcase = () => {
       rating: 4.8,
       price: 'Exclusive Deals',
       category: 'Retreat Planning',
+      comingSoon: true,
       details: 'Advanced algorithms scan luxury retreat databases, analyzing guest reviews, seasonal pricing, and amenity compatibility with your preferences. The AI considers factors like privacy levels, activity preferences, and dietary requirements to match you with retreats that exceed expectations.',
       icon: Settings,
       features: [
@@ -147,11 +149,16 @@ const LuxuryShowcase = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-700"></div>
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
                   
-                  {/* Floating Badge */}
-                  <div className="absolute top-6 left-6 transition-all duration-500 group-hover:scale-110 group-hover:translate-x-2">
+                  {/* Floating Badges */}
+                  <div className="absolute top-6 left-6 transition-all duration-500 group-hover:scale-110 group-hover:translate-x-2 flex gap-3">
                     <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30 group-hover:bg-white/30 group-hover:border-white/50 transition-all duration-500">
                       <span className="text-white font-semibold text-sm">{showcaseImages[0].category}</span>
                     </div>
+                    {showcaseImages[0].comingSoon && (
+                      <div className="bg-gradient-to-r from-purple-600 to-blue-600 backdrop-blur-sm rounded-full px-3 py-2 border border-purple-400/30 group-hover:scale-105 transition-all duration-500">
+                        <span className="text-white font-bold text-sm">COMING SOON</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Content */}
@@ -353,6 +360,11 @@ const LuxuryShowcase = () => {
                           {item.isNew && (
                             <div className="bg-gradient-to-r from-orange-500 to-red-500 backdrop-blur-sm rounded-full px-2 py-1 border border-orange-400/30 group-hover:scale-105 transition-all duration-500">
                               <span className="text-white font-bold text-xs">NEW</span>
+                            </div>
+                          )}
+                          {item.comingSoon && (
+                            <div className="bg-gradient-to-r from-purple-600 to-blue-600 backdrop-blur-sm rounded-full px-2 py-1 border border-purple-400/30 group-hover:scale-105 transition-all duration-500">
+                              <span className="text-white font-bold text-xs">COMING SOON</span>
                             </div>
                           )}
                         </div>
