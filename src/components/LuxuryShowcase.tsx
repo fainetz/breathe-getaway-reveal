@@ -191,8 +191,8 @@ const LuxuryShowcase = () => {
               </DialogTrigger>
               <DialogContent className={`border shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
                 isMobile 
-                  ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] top-auto bottom-0 data-[state=open]:animate-slide-up-mobile data-[state=closed]:animate-slide-down-mobile overflow-hidden' 
-                  : 'max-w-[90vw] max-h-[90vh] bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-2xl top-[50%] bottom-auto data-[state=open]:animate-scale-in data-[state=closed]:animate-scale-out'
+                  ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] overflow-hidden' 
+                  : 'max-w-[1200px] max-h-[90vh] w-[90vw] bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-2xl'
               }`}>
                 <DialogTitle className="sr-only">{showcaseImages[0].title}</DialogTitle>
                 {isMobile ? (
@@ -336,8 +336,8 @@ const LuxuryShowcase = () => {
                     </DialogTrigger>
                    <DialogContent className={`border shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
                      isMobile 
-                       ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] top-auto bottom-0 data-[state=open]:animate-slide-up-mobile data-[state=closed]:animate-slide-down-mobile overflow-hidden' 
-                       : 'max-w-[90vw] max-h-[90vh] bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-2xl top-[50%] bottom-auto data-[state=open]:animate-scale-in data-[state=closed]:animate-scale-out'
+                       ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] overflow-hidden' 
+                       : 'max-w-[1200px] max-h-[90vh] w-[90vw] bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-2xl'
                    }`}>
                       <DialogTitle className="sr-only">{item.title}</DialogTitle>
                       {isMobile ? (
