@@ -2,11 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, MapPin, Star, X, Brain, Zap, Settings } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import DraggableDialogContent from './DraggableDialogContent';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const LuxuryShowcase = () => {
   const [hoveredImage, setHoveredImage] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
 
   const showcaseImages = [
     {
@@ -187,9 +189,14 @@ const LuxuryShowcase = () => {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 top-auto bottom-0 sm:top-[50%] sm:bottom-auto data-[state=open]:animate-slide-up-mobile sm:data-[state=open]:animate-slide-up data-[state=closed]:animate-slide-down-mobile sm:data-[state=closed]:animate-slide-down [&>button]:hidden">
+              <DialogContent className={`max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
+                isMobile 
+                  ? 'rounded-t-[32px] top-auto bottom-0 data-[state=open]:animate-slide-up-mobile data-[state=closed]:animate-slide-down-mobile' 
+                  : 'rounded-[40px] top-[50%] bottom-auto data-[state=open]:animate-scale-in data-[state=closed]:animate-scale-out'
+              }`}>
                 <DialogTitle className="sr-only">{showcaseImages[0].title}</DialogTitle>
-                <DraggableDialogContent>
+                {isMobile ? (
+                  <DraggableDialogContent>
                   {/* Subtle Background Pattern */}
                   <div className="absolute inset-0 opacity-30">
                     <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
@@ -322,7 +329,144 @@ const LuxuryShowcase = () => {
                       </div>
                     </div>
                   </div>
-                </DraggableDialogContent>
+                  </DraggableDialogContent>
+                ) : (
+                  <div className="p-4 sm:p-6 lg:p-10">
+                    {/* Desktop Version - Direct content without drag wrapper */}
+                    {/* Subtle Background Pattern */}
+                    <div className="absolute inset-0 opacity-30">
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(148,163,184,0.08),transparent_70%)]"></div>
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(100,116,139,0.08),transparent_70%)]"></div>
+                    </div>
+
+                    {/* Header */}
+                    <div className="relative pb-4 sm:pb-6 lg:pb-8 border-b border-white/5">
+                      <div className="flex items-center gap-4 sm:gap-6 lg:gap-8">
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-gradient-to-br from-slate-300/20 to-gray-400/20 rounded-2xl sm:rounded-3xl blur-2xl opacity-40"></div>
+                          <div className="relative bg-white/10 backdrop-blur-3xl rounded-2xl sm:rounded-3xl p-3 sm:p-4 lg:p-5 border border-white/10">
+                            <Brain className="w-8 h-8 sm:w-10 sm:h-10 lg:w-14 lg:h-14 text-white/90" />
+                          </div>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h1 className="text-xl sm:text-2xl lg:text-5xl font-light text-white/95 mb-2 sm:mb-3 tracking-tight truncate">{showcaseImages[0].title}</h1>
+                          <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+                            <div className="px-3 py-1.5 sm:px-4 sm:py-2 lg:px-6 lg:py-3 bg-white/5 backdrop-blur-2xl rounded-xl sm:rounded-2xl border border-white/10">
+                              <span className="text-white/80 font-medium text-sm sm:text-base lg:text-lg">{showcaseImages[0].category}</span>
+                            </div>
+                            <div className="flex items-center gap-2 sm:gap-3 text-white/70">
+                              <Star className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300/80 fill-amber-300/80" />
+                              <span className="font-medium text-sm sm:text-base lg:text-lg">{showcaseImages[0].rating}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="relative pt-6 sm:pt-8 lg:pt-10 max-h-[calc(95vh-220px)] overflow-y-auto">
+                      <div className="space-y-6 sm:space-y-8 lg:space-y-12">
+                        {/* Hero Image */}
+                        <div className="relative h-48 sm:h-64 lg:h-[420px] rounded-2xl sm:rounded-3xl lg:rounded-[32px] overflow-hidden group">
+                          <img 
+                            src={showcaseImages[0].image}
+                            alt={showcaseImages[0].title}
+                            className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/20 via-transparent to-slate-900/20 mix-blend-overlay"></div>
+                          
+                          {/* Floating Elements */}
+                          <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-8 lg:left-8 lg:right-8 flex items-center justify-between gap-2 sm:gap-4">
+                            <div className="bg-black/20 backdrop-blur-3xl rounded-2xl sm:rounded-3xl px-3 py-2 sm:px-4 sm:py-3 lg:px-8 lg:py-6 border border-white/10">
+                              <div className="text-white/95 font-medium text-sm sm:text-base lg:text-xl mb-1">{showcaseImages[0].price}</div>
+                              <div className="text-white/60 text-xs sm:text-sm">Pricing Model</div>
+                            </div>
+                            <div className="bg-black/20 backdrop-blur-3xl rounded-2xl sm:rounded-3xl px-3 py-2 sm:px-4 sm:py-3 lg:px-8 lg:py-6 border border-white/10">
+                              <div className="text-white/95 font-medium text-sm sm:text-base lg:text-xl mb-1">{showcaseImages[0].location}</div>
+                              <div className="text-white/60 text-xs sm:text-sm">Global Reach</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Rest of content - same as mobile but without drag wrapper */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10">
+                          {/* Left Column */}
+                          <div className="space-y-4 sm:space-y-6 lg:space-y-8">
+                            {/* Overview */}
+                            <div className="relative group">
+                              <div className="absolute inset-0 bg-gradient-to-br from-slate-400/8 to-gray-500/8 rounded-2xl sm:rounded-3xl lg:rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                              <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl lg:rounded-[32px] p-4 sm:p-6 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
+                                  <div className="w-0.5 sm:w-1 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-slate-300 to-gray-400 rounded-full opacity-60"></div>
+                                  <h3 className="text-lg sm:text-xl lg:text-3xl font-light text-white/95">Overview</h3>
+                                </div>
+                                <p className="text-white/70 leading-relaxed text-sm sm:text-base lg:text-lg font-light">
+                                  {showcaseImages[0].details}
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* Features */}
+                            <div className="relative group">
+                              <div className="absolute inset-0 bg-gradient-to-br from-gray-400/8 to-slate-500/8 rounded-2xl sm:rounded-3xl lg:rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                              <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl lg:rounded-[32px] p-4 sm:p-6 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
+                                  <div className="w-0.5 sm:w-1 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-gray-300 to-slate-400 rounded-full opacity-60"></div>
+                                  <h3 className="text-lg sm:text-xl lg:text-3xl font-light text-white/95">Key Features</h3>
+                                </div>
+                                <div className="space-y-3 sm:space-y-4 lg:space-y-5">
+                                  {showcaseImages[0].features.map((feature, index) => (
+                                    <div key={index} className="group/item flex items-center gap-3 sm:gap-4 lg:gap-5 p-3 sm:p-4 lg:p-5 bg-white/2 backdrop-blur-2xl rounded-2xl sm:rounded-3xl border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-400">
+                                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-slate-300 to-gray-400 rounded-full opacity-60 flex-shrink-0"></div>
+                                      <span className="text-white/80 font-light text-sm sm:text-base lg:text-lg">{feature}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Right Column */}
+                          <div className="space-y-4 sm:space-y-6 lg:space-y-8">
+                            {/* How It Works */}
+                            <div className="relative group">
+                              <div className="absolute inset-0 bg-gradient-to-br from-slate-500/8 to-gray-400/8 rounded-2xl sm:rounded-3xl lg:rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                              <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl lg:rounded-[32px] p-4 sm:p-6 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
+                                  <div className="w-0.5 sm:w-1 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-gray-300 to-slate-400 rounded-full opacity-60"></div>
+                                  <h3 className="text-lg sm:text-xl lg:text-3xl font-light text-white/95">How It Works</h3>
+                                </div>
+                                <p className="text-white/70 leading-relaxed text-sm sm:text-base lg:text-lg font-light">
+                                  {showcaseImages[0].howItWorks}
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* Performance Stats */}
+                            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
+                              <div className="relative group">
+                                <div className="absolute inset-0 bg-gradient-to-br from-slate-400/10 to-gray-400/10 rounded-2xl sm:rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                                <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/5 text-center">
+                                  <div className="text-2xl sm:text-3xl lg:text-4xl font-light text-white/95 mb-2 sm:mb-3">99.9%</div>
+                                  <div className="text-white/60 text-xs sm:text-sm font-light">AI Accuracy</div>
+                                </div>
+                              </div>
+                              <div className="relative group">
+                                <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 to-slate-400/10 rounded-2xl sm:rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                                <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/5 text-center">
+                                  <div className="text-2xl sm:text-3xl lg:text-4xl font-light text-white/95 mb-2 sm:mb-3">&lt;2s</div>
+                                  <div className="text-white/60 text-xs sm:text-sm font-light">Response Time</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </DialogContent>
             </Dialog>
           </div>
@@ -395,9 +539,14 @@ const LuxuryShowcase = () => {
                         </div>
                       </div>
                     </DialogTrigger>
-                   <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 top-auto bottom-0 sm:top-[50%] sm:bottom-auto data-[state=open]:animate-slide-up-mobile sm:data-[state=open]:animate-slide-up data-[state=closed]:animate-slide-down-mobile sm:data-[state=closed]:animate-slide-down [&>button]:hidden">
-                     <DialogTitle className="sr-only">{item.title}</DialogTitle>
-                     <DraggableDialogContent>
+                   <DialogContent className={`max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
+                     isMobile 
+                       ? 'rounded-t-[32px] top-auto bottom-0 data-[state=open]:animate-slide-up-mobile data-[state=closed]:animate-slide-down-mobile' 
+                       : 'rounded-[40px] top-[50%] bottom-auto data-[state=open]:animate-scale-in data-[state=closed]:animate-scale-out'
+                   }`}>
+                      <DialogTitle className="sr-only">{item.title}</DialogTitle>
+                      {isMobile ? (
+                        <DraggableDialogContent>
                        {/* Subtle Background Pattern */}
                        <div className="absolute inset-0 opacity-30">
                          <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
@@ -530,7 +679,144 @@ const LuxuryShowcase = () => {
                           </div>
                         </div>
                       </div>
-                     </DraggableDialogContent>
+                      </DraggableDialogContent>
+                      ) : (
+                        <div className="p-4 sm:p-6 lg:p-10">
+                          {/* Desktop Version - Direct content without drag wrapper */}
+                          {/* Subtle Background Pattern */}
+                          <div className="absolute inset-0 opacity-30">
+                            <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(148,163,184,0.08),transparent_70%)]"></div>
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(100,116,139,0.08),transparent_70%)]"></div>
+                          </div>
+
+                          {/* Header */}
+                          <div className="relative pb-4 sm:pb-6 lg:pb-8 border-b border-white/5">
+                            <div className="flex items-center gap-4 sm:gap-6 lg:gap-8">
+                              <div className="relative">
+                                <div className="absolute inset-0 bg-gradient-to-br from-slate-300/20 to-gray-400/20 rounded-2xl sm:rounded-3xl blur-2xl opacity-40"></div>
+                                <div className="relative bg-white/10 backdrop-blur-3xl rounded-2xl sm:rounded-3xl p-3 sm:p-4 lg:p-5 border border-white/10">
+                                  <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 lg:w-14 lg:h-14 text-white/90" />
+                                </div>
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <h1 className="text-xl sm:text-2xl lg:text-5xl font-light text-white/95 mb-2 sm:mb-3 tracking-tight truncate">{item.title}</h1>
+                                <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+                                  <div className="px-3 py-1.5 sm:px-4 sm:py-2 lg:px-6 lg:py-3 bg-white/5 backdrop-blur-2xl rounded-xl sm:rounded-2xl border border-white/10">
+                                    <span className="text-white/80 font-medium text-sm sm:text-base lg:text-lg">{item.category}</span>
+                                  </div>
+                                  <div className="flex items-center gap-2 sm:gap-3 text-white/70">
+                                    <Star className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300/80 fill-amber-300/80" />
+                                    <span className="font-medium text-sm sm:text-base lg:text-lg">{item.rating}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Content */}
+                          <div className="relative pt-6 sm:pt-8 lg:pt-10 max-h-[calc(95vh-220px)] overflow-y-auto">
+                            <div className="space-y-6 sm:space-y-8 lg:space-y-12">
+                              {/* Hero Image */}
+                              <div className="relative h-48 sm:h-64 lg:h-[420px] rounded-2xl sm:rounded-3xl lg:rounded-[32px] overflow-hidden group">
+                                <img 
+                                  src={item.image}
+                                  alt={item.title}
+                                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                                <div className="absolute inset-0 bg-gradient-to-r from-gray-900/20 via-transparent to-slate-900/20 mix-blend-overlay"></div>
+                                
+                                {/* Floating Elements */}
+                                <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-8 lg:left-8 lg:right-8 flex items-center justify-between gap-2 sm:gap-4">
+                                  <div className="bg-black/20 backdrop-blur-3xl rounded-2xl sm:rounded-3xl px-3 py-2 sm:px-4 sm:py-3 lg:px-8 lg:py-6 border border-white/10">
+                                    <div className="text-white/95 font-medium text-sm sm:text-base lg:text-xl mb-1">{item.price}</div>
+                                    <div className="text-white/60 text-xs sm:text-sm">Pricing Model</div>
+                                  </div>
+                                  <div className="bg-black/20 backdrop-blur-3xl rounded-2xl sm:rounded-3xl px-3 py-2 sm:px-4 sm:py-3 lg:px-8 lg:py-6 border border-white/10">
+                                    <div className="text-white/95 font-medium text-sm sm:text-base lg:text-xl mb-1">{item.location}</div>
+                                    <div className="text-white/60 text-xs sm:text-sm">Global Reach</div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Rest of content */}
+                              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10">
+                                {/* Left Column */}
+                                <div className="space-y-4 sm:space-y-6 lg:space-y-8">
+                                  {/* Overview */}
+                                  <div className="relative group">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-slate-400/8 to-gray-500/8 rounded-2xl sm:rounded-3xl lg:rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                                    <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl lg:rounded-[32px] p-4 sm:p-6 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                                      <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
+                                        <div className="w-0.5 sm:w-1 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-slate-300 to-gray-400 rounded-full opacity-60"></div>
+                                        <h3 className="text-lg sm:text-xl lg:text-3xl font-light text-white/95">Overview</h3>
+                                      </div>
+                                      <p className="text-white/70 leading-relaxed text-sm sm:text-base lg:text-lg font-light">
+                                        {item.details}
+                                      </p>
+                                    </div>
+                                  </div>
+
+                                  {/* Features */}
+                                  <div className="relative group">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-gray-400/8 to-slate-500/8 rounded-2xl sm:rounded-3xl lg:rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                                    <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl lg:rounded-[32px] p-4 sm:p-6 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                                      <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
+                                        <div className="w-0.5 sm:w-1 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-gray-300 to-slate-400 rounded-full opacity-60"></div>
+                                        <h3 className="text-lg sm:text-xl lg:text-3xl font-light text-white/95">Key Features</h3>
+                                      </div>
+                                      <div className="space-y-3 sm:space-y-4 lg:space-y-5">
+                                        {item.features.map((feature, featureIndex) => (
+                                          <div key={featureIndex} className="group/item flex items-center gap-3 sm:gap-4 lg:gap-5 p-3 sm:p-4 lg:p-5 bg-white/2 backdrop-blur-2xl rounded-2xl sm:rounded-3xl border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-400">
+                                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-slate-300 to-gray-400 rounded-full opacity-60 flex-shrink-0"></div>
+                                            <span className="text-white/80 font-light text-sm sm:text-base lg:text-lg">{feature}</span>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                {/* Right Column */}
+                                <div className="space-y-4 sm:space-y-6 lg:space-y-8">
+                                  {/* How It Works */}
+                                  <div className="relative group">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-slate-500/8 to-gray-400/8 rounded-2xl sm:rounded-3xl lg:rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                                    <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl lg:rounded-[32px] p-4 sm:p-6 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                                      <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
+                                        <div className="w-0.5 sm:w-1 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-gray-300 to-slate-400 rounded-full opacity-60"></div>
+                                        <h3 className="text-lg sm:text-xl lg:text-3xl font-light text-white/95">How It Works</h3>
+                                      </div>
+                                      <p className="text-white/70 leading-relaxed text-sm sm:text-base lg:text-lg font-light">
+                                        {item.howItWorks}
+                                      </p>
+                                    </div>
+                                  </div>
+
+                                  {/* Performance Stats */}
+                                  <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
+                                    <div className="relative group">
+                                      <div className="absolute inset-0 bg-gradient-to-br from-slate-400/10 to-gray-400/10 rounded-2xl sm:rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                                      <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/5 text-center">
+                                        <div className="text-2xl sm:text-3xl lg:text-4xl font-light text-white/95 mb-2 sm:mb-3">99.9%</div>
+                                        <div className="text-white/60 text-xs sm:text-sm font-light">AI Accuracy</div>
+                                      </div>
+                                    </div>
+                                    <div className="relative group">
+                                      <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 to-slate-400/10 rounded-2xl sm:rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                                      <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/5 text-center">
+                                        <div className="text-2xl sm:text-3xl lg:text-4xl font-light text-white/95 mb-2 sm:mb-3">&lt;2s</div>
+                                        <div className="text-white/60 text-xs sm:text-sm font-light">Response Time</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                    </DialogContent>
                   </Dialog>
                 </div>
