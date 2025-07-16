@@ -189,10 +189,10 @@ const LuxuryShowcase = () => {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className={`border shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
+              <DialogContent className={`border-0 shadow-2xl p-0 [&>button]:hidden ${
                 isMobile 
                   ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] overflow-hidden' 
-                  : 'max-w-[1200px] max-h-[90vh] w-[90vw] bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-2xl'
+                  : 'max-w-[95vw] w-[95vw] max-h-[95vh] h-[95vh] bg-white dark:bg-gray-900 rounded-3xl'
               }`}>
                 <DialogTitle className="sr-only">{showcaseImages[0].title}</DialogTitle>
                 {isMobile ? (
@@ -204,64 +204,64 @@ const LuxuryShowcase = () => {
                     </div>
                   </DraggableDialogContent>
                 ) : (
-                  <div className="h-[85vh] flex flex-col">
+                  <div className="h-full flex flex-col">
                     {/* Header */}
-                    <div className="flex items-center gap-6 p-8 border-b border-gray-200 dark:border-gray-700">
-                      <Brain className="w-12 h-12 text-blue-600" />
-                      <div>
-                        <h2 className="text-4xl font-bold text-gray-900 dark:text-white">{showcaseImages[0].title}</h2>
-                        <p className="text-xl text-gray-500 dark:text-gray-400 mt-2">{showcaseImages[0].category}</p>
+                    <div className="flex items-center gap-8 p-10 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+                      <Brain className="w-16 h-16 text-blue-600" />
+                      <div className="flex-1">
+                        <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-2">{showcaseImages[0].title}</h2>
+                        <p className="text-2xl text-gray-500 dark:text-gray-400">{showcaseImages[0].category}</p>
                       </div>
-                      <div className="ml-auto flex items-center gap-6">
-                        <div className="flex items-center gap-2">
-                          <Star className="w-6 h-6 text-yellow-400 fill-yellow-400" />
-                          <span className="text-xl font-semibold text-gray-900 dark:text-white">{showcaseImages[0].rating}</span>
+                      <div className="flex items-center gap-8">
+                        <div className="flex items-center gap-3">
+                          <Star className="w-8 h-8 text-yellow-400 fill-yellow-400" />
+                          <span className="text-2xl font-bold text-gray-900 dark:text-white">{showcaseImages[0].rating}</span>
                         </div>
-                        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full font-bold text-lg">
+                        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-10 py-4 rounded-2xl font-bold text-xl">
                           {showcaseImages[0].price}
                         </div>
                       </div>
                     </div>
 
                     {/* Main Content */}
-                    <div className="flex-1 grid grid-cols-2 gap-12 p-8 overflow-y-auto">
+                    <div className="flex-1 grid grid-cols-2 gap-16 p-10 overflow-y-auto min-h-0 bg-gray-50 dark:bg-gray-800">
                       {/* Left Column */}
-                      <div className="space-y-8">
+                      <div className="space-y-10">
                         <img 
                           src={showcaseImages[0].image} 
                           alt={showcaseImages[0].title} 
-                          className="w-full h-96 object-cover rounded-2xl shadow-xl" 
+                          className="w-full h-[500px] object-cover rounded-3xl shadow-2xl" 
                         />
                         
-                        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl">
-                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">How It Works</h3>
-                          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">{showcaseImages[0].howItWorks}</p>
+                        <div className="bg-white dark:bg-gray-900 p-10 rounded-3xl shadow-xl">
+                          <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">How It Works</h3>
+                          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-xl">{showcaseImages[0].howItWorks}</p>
                         </div>
                       </div>
 
                       {/* Right Column */}
-                      <div className="space-y-8">
-                        <div>
-                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">About This Feature</h3>
+                      <div className="space-y-10">
+                        <div className="bg-white dark:bg-gray-900 p-10 rounded-3xl shadow-xl">
+                          <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About This Feature</h3>
                           <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-xl">{showcaseImages[0].details}</p>
                         </div>
                         
-                        <div>
-                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Key Features</h3>
-                          <div className="space-y-4">
+                        <div className="bg-white dark:bg-gray-900 p-10 rounded-3xl shadow-xl">
+                          <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Key Features</h3>
+                          <div className="space-y-6">
                             {showcaseImages[0].features.map((feature, idx) => (
-                              <div key={idx} className="flex items-start gap-6 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
-                                <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
-                                <span className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">{feature}</span>
+                              <div key={idx} className="flex items-start gap-6 p-6 bg-blue-50 dark:bg-gray-800 rounded-2xl">
+                                <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mt-1 flex-shrink-0"></div>
+                                <span className="text-gray-700 dark:text-gray-300 leading-relaxed text-xl font-medium">{feature}</span>
                               </div>
                             ))}
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-6 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                          <div className="flex items-center gap-3">
-                            <MapPin className="w-6 h-6 text-gray-500" />
-                            <span className="text-gray-600 dark:text-gray-400 text-lg">{showcaseImages[0].location}</span>
+                        <div className="flex items-center gap-8 p-8 bg-white dark:bg-gray-900 rounded-3xl shadow-xl">
+                          <div className="flex items-center gap-4">
+                            <MapPin className="w-8 h-8 text-gray-500" />
+                            <span className="text-gray-600 dark:text-gray-400 text-xl font-medium">{showcaseImages[0].location}</span>
                           </div>
                         </div>
                       </div>
@@ -340,10 +340,10 @@ const LuxuryShowcase = () => {
                         </div>
                       </div>
                     </DialogTrigger>
-                   <DialogContent className={`border shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-0 [&>button]:hidden ${
+                   <DialogContent className={`border-0 shadow-2xl p-0 [&>button]:hidden ${
                      isMobile 
                        ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] overflow-hidden' 
-                       : 'max-w-[1200px] max-h-[90vh] w-[90vw] bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-2xl'
+                       : 'max-w-[95vw] w-[95vw] max-h-[95vh] h-[95vh] bg-white dark:bg-gray-900 rounded-3xl'
                    }`}>
                       <DialogTitle className="sr-only">{item.title}</DialogTitle>
                       {isMobile ? (
@@ -355,64 +355,64 @@ const LuxuryShowcase = () => {
                           </div>
                         </DraggableDialogContent>
                       ) : (
-                        <div className="h-[85vh] flex flex-col">
+                        <div className="h-full flex flex-col">
                           {/* Header */}
-                          <div className="flex items-center gap-6 p-8 border-b border-gray-200 dark:border-gray-700">
-                            <IconComponent className="w-12 h-12 text-blue-600" />
-                            <div>
-                              <h2 className="text-4xl font-bold text-gray-900 dark:text-white">{item.title}</h2>
-                              <p className="text-xl text-gray-500 dark:text-gray-400 mt-2">{item.category}</p>
+                          <div className="flex items-center gap-8 p-10 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+                            <IconComponent className="w-16 h-16 text-blue-600" />
+                            <div className="flex-1">
+                              <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-2">{item.title}</h2>
+                              <p className="text-2xl text-gray-500 dark:text-gray-400">{item.category}</p>
                             </div>
-                            <div className="ml-auto flex items-center gap-6">
-                              <div className="flex items-center gap-2">
-                                <Star className="w-6 h-6 text-yellow-400 fill-yellow-400" />
-                                <span className="text-xl font-semibold text-gray-900 dark:text-white">{item.rating}</span>
+                            <div className="flex items-center gap-8">
+                              <div className="flex items-center gap-3">
+                                <Star className="w-8 h-8 text-yellow-400 fill-yellow-400" />
+                                <span className="text-2xl font-bold text-gray-900 dark:text-white">{item.rating}</span>
                               </div>
-                              <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full font-bold text-lg">
+                              <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-10 py-4 rounded-2xl font-bold text-xl">
                                 {item.price}
                               </div>
                             </div>
                           </div>
 
                           {/* Main Content */}
-                          <div className="flex-1 grid grid-cols-2 gap-12 p-8 overflow-y-auto">
+                          <div className="flex-1 grid grid-cols-2 gap-16 p-10 overflow-y-auto min-h-0 bg-gray-50 dark:bg-gray-800">
                             {/* Left Column */}
-                            <div className="space-y-8">
+                            <div className="space-y-10">
                               <img 
                                 src={item.image} 
                                 alt={item.title} 
-                                className="w-full h-96 object-cover rounded-2xl shadow-xl" 
+                                className="w-full h-[500px] object-cover rounded-3xl shadow-2xl" 
                               />
                               
-                              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl">
-                                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">How It Works</h3>
-                                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">{item.howItWorks}</p>
+                              <div className="bg-white dark:bg-gray-900 p-10 rounded-3xl shadow-xl">
+                                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">How It Works</h3>
+                                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-xl">{item.howItWorks}</p>
                               </div>
                             </div>
 
                             {/* Right Column */}
-                            <div className="space-y-8">
-                              <div>
-                                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">About This Feature</h3>
+                            <div className="space-y-10">
+                              <div className="bg-white dark:bg-gray-900 p-10 rounded-3xl shadow-xl">
+                                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About This Feature</h3>
                                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-xl">{item.details}</p>
                               </div>
                               
-                              <div>
-                                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Key Features</h3>
-                                <div className="space-y-4">
+                              <div className="bg-white dark:bg-gray-900 p-10 rounded-3xl shadow-xl">
+                                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Key Features</h3>
+                                <div className="space-y-6">
                                   {item.features.map((feature, idx) => (
-                                    <div key={idx} className="flex items-start gap-6 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
-                                      <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
-                                      <span className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">{feature}</span>
+                                    <div key={idx} className="flex items-start gap-6 p-6 bg-blue-50 dark:bg-gray-800 rounded-2xl">
+                                      <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mt-1 flex-shrink-0"></div>
+                                      <span className="text-gray-700 dark:text-gray-300 leading-relaxed text-xl font-medium">{feature}</span>
                                     </div>
                                   ))}
                                 </div>
                               </div>
 
-                              <div className="flex items-center gap-6 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                                <div className="flex items-center gap-3">
-                                  <MapPin className="w-6 h-6 text-gray-500" />
-                                  <span className="text-gray-600 dark:text-gray-400 text-lg">{item.location}</span>
+                              <div className="flex items-center gap-8 p-8 bg-white dark:bg-gray-900 rounded-3xl shadow-xl">
+                                <div className="flex items-center gap-4">
+                                  <MapPin className="w-8 h-8 text-gray-500" />
+                                  <span className="text-gray-600 dark:text-gray-400 text-xl font-medium">{item.location}</span>
                                 </div>
                               </div>
                             </div>
