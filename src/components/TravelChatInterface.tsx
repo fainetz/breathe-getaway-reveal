@@ -408,40 +408,40 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                         </div>
                       </div>
 
-                       <div className="p-4 space-y-3">
-                         <div className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-4">
-                           <div className="flex items-center text-white/80 text-xs">
-                             <Plane className="w-3 h-3 mr-1 text-blue-400" />
-                             <span>Direct Flight</span>
-                           </div>
-                           <div className="flex items-center text-white/80 text-xs">
-                             <Clock className="w-3 h-3 mr-1 text-green-400" />
-                             <span>Departs {flightDetails.departure}</span>
-                           </div>
-                         </div>
+                      <div className="p-4">
+                        <div className="grid grid-cols-2 gap-2 mb-3">
+                          <div className="flex items-center text-white/80 text-xs">
+                            <Plane className="w-3 h-3 mr-1 text-blue-400" />
+                            <span>Direct</span>
+                          </div>
+                          <div className="flex items-center text-white/80 text-xs">
+                            <Clock className="w-3 h-3 mr-1 text-green-400" />
+                            <span>{flightDetails.departure}</span>
+                          </div>
+                        </div>
 
-                         <div className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
-                           <button 
-                             onClick={(e) => {
-                               e.stopPropagation();
-                               handleAddToCart(destination);
-                             }}
-                             className="w-full sm:flex-1 bg-white text-gray-900 font-medium py-3 px-4 rounded-lg hover:bg-white/90 transition-all duration-200 text-sm flex items-center justify-center gap-2"
-                           >
-                             <ShoppingCart className="w-4 h-4" />
-                             Book Flight
-                           </button>
-                           <button 
-                             onClick={(e) => {
-                               e.stopPropagation();
-                               handleCardClick(destination);
-                             }}
-                             className="w-full sm:flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 text-sm flex items-center justify-center"
-                           >
-                             View Details
-                           </button>
-                         </div>
-                       </div>
+                        <div className="flex gap-2">
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleAddToCart(destination);
+                            }}
+                            className="flex-1 bg-white text-gray-900 font-medium py-2 px-3 rounded-lg hover:bg-white/90 transition-all duration-200 text-sm flex items-center justify-center gap-1"
+                          >
+                            <ShoppingCart className="w-3 h-3" />
+                            Book
+                          </button>
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleCardClick(destination);
+                            }}
+                            className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white font-medium py-2 px-3 rounded-lg transition-all duration-200 text-sm"
+                          >
+                            Details
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   );
                 })}
