@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, MapPin, Star, X, Brain, Zap, Settings } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from '@/components/ui/dialog';
 import DraggableDialogContent from './DraggableDialogContent';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -189,12 +189,13 @@ const LuxuryShowcase = () => {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className={`border-0 shadow-2xl p-0 [&>button]:hidden ${
+              <DialogContent className={`${
                 isMobile 
                   ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] overflow-hidden' 
-                  : 'max-w-[95vw] w-[95vw] max-h-[95vh] h-[95vh] bg-white dark:bg-gray-900 rounded-3xl'
-              }`}>
+                  : '!max-w-none !w-[95vw] !max-h-none !h-[95vh] bg-white dark:bg-gray-900 rounded-3xl border-0 shadow-2xl'
+              } p-0 [&>button]:hidden`}>
                 <DialogTitle className="sr-only">{showcaseImages[0].title}</DialogTitle>
+                <DialogDescription className="sr-only">Detailed information about {showcaseImages[0].title}</DialogDescription>
                 {isMobile ? (
                   <DraggableDialogContent>
                     <div className="p-6">
@@ -340,12 +341,13 @@ const LuxuryShowcase = () => {
                         </div>
                       </div>
                     </DialogTrigger>
-                   <DialogContent className={`border-0 shadow-2xl p-0 [&>button]:hidden ${
+                   <DialogContent className={`${
                      isMobile 
                        ? 'max-w-[95vw] max-h-[90vh] bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border-white/5 rounded-t-[32px] overflow-hidden' 
-                       : 'max-w-[95vw] w-[95vw] max-h-[95vh] h-[95vh] bg-white dark:bg-gray-900 rounded-3xl'
-                   }`}>
+                       : '!max-w-none !w-[95vw] !max-h-none !h-[95vh] bg-white dark:bg-gray-900 rounded-3xl border-0 shadow-2xl'
+                   } p-0 [&>button]:hidden`}>
                       <DialogTitle className="sr-only">{item.title}</DialogTitle>
+                      <DialogDescription className="sr-only">Detailed information about {item.title}</DialogDescription>
                       {isMobile ? (
                         <DraggableDialogContent>
                           <div className="p-6">
