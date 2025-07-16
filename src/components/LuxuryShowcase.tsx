@@ -204,20 +204,61 @@ const LuxuryShowcase = () => {
                     </div>
                   </DraggableDialogContent>
                 ) : (
-                  <div className="p-6 bg-white dark:bg-gray-900 max-h-[calc(85vh-100px)] overflow-y-auto">
-                    <div className="flex items-center gap-4 mb-6">
-                      <Brain className="w-8 h-8 text-blue-600" />
-                      <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{showcaseImages[0].title}</h2>
-                    </div>
-                    <img src={showcaseImages[0].image} alt={showcaseImages[0].title} className="w-full h-64 object-cover rounded-lg mb-6" />
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">{showcaseImages[0].details}</p>
-                    <div className="space-y-2">
-                      {showcaseImages[0].features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                          <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                  <div className="max-h-[calc(85vh-100px)] overflow-y-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+                      {/* Left Column - Image and Overview */}
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-4">
+                          <Brain className="w-10 h-10 text-blue-600" />
+                          <div>
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{showcaseImages[0].title}</h2>
+                            <p className="text-gray-500 dark:text-gray-400">{showcaseImages[0].category}</p>
+                          </div>
                         </div>
-                      ))}
+                        <img 
+                          src={showcaseImages[0].image} 
+                          alt={showcaseImages[0].title} 
+                          className="w-full h-80 object-cover rounded-xl shadow-lg" 
+                        />
+                        <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
+                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">How It Works</h3>
+                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{showcaseImages[0].howItWorks}</p>
+                        </div>
+                      </div>
+
+                      {/* Right Column - Details and Features */}
+                      <div className="space-y-6">
+                        <div>
+                          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">About This Feature</h3>
+                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">{showcaseImages[0].details}</p>
+                        </div>
+                        
+                        <div>
+                          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Key Features</h3>
+                          <div className="space-y-4">
+                            {showcaseImages[0].features.map((feature, idx) => (
+                              <div key={idx} className="flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <div className="w-3 h-3 bg-blue-500 rounded-full mt-1 flex-shrink-0"></div>
+                                <span className="text-gray-700 dark:text-gray-300 leading-relaxed">{feature}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                          <div className="flex items-center gap-2">
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <span className="text-gray-900 dark:text-white font-semibold">{showcaseImages[0].rating}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <MapPin className="w-5 h-5 text-gray-500" />
+                            <span className="text-gray-600 dark:text-gray-400">{showcaseImages[0].location}</span>
+                          </div>
+                          <div className="ml-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full font-semibold">
+                            {showcaseImages[0].price}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -308,20 +349,61 @@ const LuxuryShowcase = () => {
                           </div>
                         </DraggableDialogContent>
                       ) : (
-                        <div className="p-6 bg-white dark:bg-gray-900 max-h-[calc(85vh-100px)] overflow-y-auto">
-                          <div className="flex items-center gap-4 mb-6">
-                            <IconComponent className="w-8 h-8 text-blue-600" />
-                            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{item.title}</h2>
-                          </div>
-                          <img src={item.image} alt={item.title} className="w-full h-64 object-cover rounded-lg mb-6" />
-                          <p className="text-gray-600 dark:text-gray-300 mb-4">{item.details}</p>
-                          <div className="space-y-2">
-                            {item.features.map((feature, idx) => (
-                              <div key={idx} className="flex items-center gap-2">
-                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                                <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                        <div className="max-h-[calc(85vh-100px)] overflow-y-auto">
+                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+                            {/* Left Column - Image and Overview */}
+                            <div className="space-y-6">
+                              <div className="flex items-center gap-4">
+                                <IconComponent className="w-10 h-10 text-blue-600" />
+                                <div>
+                                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{item.title}</h2>
+                                  <p className="text-gray-500 dark:text-gray-400">{item.category}</p>
+                                </div>
                               </div>
-                            ))}
+                              <img 
+                                src={item.image} 
+                                alt={item.title} 
+                                className="w-full h-80 object-cover rounded-xl shadow-lg" 
+                              />
+                              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
+                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">How It Works</h3>
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{item.howItWorks}</p>
+                              </div>
+                            </div>
+
+                            {/* Right Column - Details and Features */}
+                            <div className="space-y-6">
+                              <div>
+                                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">About This Feature</h3>
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">{item.details}</p>
+                              </div>
+                              
+                              <div>
+                                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Key Features</h3>
+                                <div className="space-y-4">
+                                  {item.features.map((feature, idx) => (
+                                    <div key={idx} className="flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                                      <div className="w-3 h-3 bg-blue-500 rounded-full mt-1 flex-shrink-0"></div>
+                                      <span className="text-gray-700 dark:text-gray-300 leading-relaxed">{feature}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+
+                              <div className="flex items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                                <div className="flex items-center gap-2">
+                                  <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                                  <span className="text-gray-900 dark:text-white font-semibold">{item.rating}</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <MapPin className="w-5 h-5 text-gray-500" />
+                                  <span className="text-gray-600 dark:text-gray-400">{item.location}</span>
+                                </div>
+                                <div className="ml-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full font-semibold">
+                                  {item.price}
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       )}
