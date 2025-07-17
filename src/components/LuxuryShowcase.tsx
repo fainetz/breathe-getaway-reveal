@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, MapPin, Star, X, Brain, Zap, Settings, Ship } from 'lucide-react';
+import { ArrowRight, MapPin, Star, X, Brain, Zap, Settings } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 const LuxuryShowcase = () => {
@@ -48,7 +48,7 @@ const LuxuryShowcase = () => {
     },
     {
       id: 3,
-      image: '/lovable-uploads/4de955b4-f52a-41d2-a367-ad3cf57cc24e.png',
+      image: '/lovable-uploads/3f81b31d-0911-4669-829d-e28da3084ad5.png',
       title: 'Luxury Retreat Finder',
       subtitle: 'Our AI analyzes thousands of luxury retreat options, considering your travel history, preferences, and budget constraints. Machine learning algorithms evaluate amenities, location exclusivity, and seasonal availability to curate the perfect getaway experience.',
       location: 'Worldwide',
@@ -65,26 +65,6 @@ const LuxuryShowcase = () => {
         'Location exclusivity scoring'
       ],
       howItWorks: 'Our machine learning models analyze your travel history, preferences, and budget to create a unique profile. The AI then scans thousands of luxury retreat options, evaluating factors like amenities, location, seasonal pricing, and guest reviews to present you with curated options that perfectly match your desires.'
-    },
-    {
-      id: 4,
-      image: '/lovable-uploads/842a29ec-208b-4d13-a0df-8916d618e5b9.png',
-      title: 'Luxury Cruise Experience',
-      subtitle: 'Experience the ultimate luxury cruise with AI-powered itinerary planning. Our intelligent system analyzes cruise routes, amenities, and seasonal conditions to find the perfect maritime escape that matches your preferences.',
-      location: 'Ocean Adventures',
-      rating: 4.9,
-      price: 'Premium Voyages',
-      category: 'Cruise Planning',
-      details: 'Our AI cruise finder analyzes thousands of luxury cruise options, considering cabin preferences, dining experiences, entertainment options, and excursion possibilities. The system evaluates weather patterns, seasonal routes, and guest reviews to curate the perfect ocean adventure.',
-      icon: Ship,
-      features: [
-        'Smart cruise route optimization',
-        'Luxury cabin selection assistance',
-        'Seasonal weather analysis',
-        'Personalized excursion planning',
-        'Onboard amenity matching'
-      ],
-      howItWorks: 'Our cruise AI processes your preferences for cabin type, dining style, and activity level to match you with the perfect cruise experience. The system analyzes ship amenities, route highlights, and seasonal conditions to ensure your luxury cruise exceeds expectations.'
     }
   ];
 
@@ -169,15 +149,151 @@ const LuxuryShowcase = () => {
               </DialogTrigger>
               <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 animate-slide-up-mobile sm:animate-slide-up">
                 <div className="relative">
-                  {/* ... keep existing code (modal content) */}
+                  {/* Subtle Background Pattern */}
+                  <div className="absolute inset-0 opacity-30">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(148,163,184,0.08),transparent_70%)]"></div>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(100,116,139,0.08),transparent_70%)]"></div>
+                  </div>
+
+                  {/* Mobile drag handle */}
+                  <div className="sm:hidden flex justify-center pt-3 pb-2">
+                    <div className="w-12 h-1 bg-white/20 rounded-full"></div>
+                  </div>
+
+                  {/* Header */}
+                  <div className="relative p-4 sm:p-6 lg:p-10 pb-4 sm:pb-6 lg:pb-8 border-b border-white/5">
+                    <div className="flex items-center gap-4 sm:gap-6 lg:gap-8">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-300/20 to-gray-400/20 rounded-2xl sm:rounded-3xl blur-2xl opacity-40"></div>
+                        <div className="relative bg-white/10 backdrop-blur-3xl rounded-2xl sm:rounded-3xl p-3 sm:p-4 lg:p-5 border border-white/10">
+                          <Brain className="w-8 h-8 sm:w-10 sm:h-10 lg:w-14 lg:h-14 text-white/90" />
+                        </div>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h1 className="text-xl sm:text-2xl lg:text-5xl font-light text-white/95 mb-2 sm:mb-3 tracking-tight truncate">{showcaseImages[0].title}</h1>
+                        <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+                          <div className="px-3 py-1.5 sm:px-4 sm:py-2 lg:px-6 lg:py-3 bg-white/5 backdrop-blur-2xl rounded-xl sm:rounded-2xl border border-white/10">
+                            <span className="text-white/80 font-medium text-sm sm:text-base lg:text-lg">{showcaseImages[0].category}</span>
+                          </div>
+                          <div className="flex items-center gap-2 sm:gap-3 text-white/70">
+                            <Star className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300/80 fill-amber-300/80" />
+                            <span className="font-medium text-sm sm:text-base lg:text-lg">{showcaseImages[0].rating}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="relative p-4 sm:p-6 lg:p-10 max-h-[calc(90vh-120px)] sm:max-h-[calc(95vh-220px)] overflow-y-auto">
+                    <div className="space-y-6 sm:space-y-8 lg:space-y-12">
+                      {/* Hero Image */}
+                      <div className="relative h-48 sm:h-64 lg:h-[420px] rounded-2xl sm:rounded-3xl lg:rounded-[32px] overflow-hidden group">
+                        <img 
+                          src={showcaseImages[0].image}
+                          alt={showcaseImages[0].title}
+                          className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/20 via-transparent to-slate-900/20 mix-blend-overlay"></div>
+                        
+                        {/* Floating Elements */}
+                        <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-8 lg:left-8 lg:right-8 flex items-center justify-between gap-2 sm:gap-4">
+                          <div className="bg-black/20 backdrop-blur-3xl rounded-2xl sm:rounded-3xl px-3 py-2 sm:px-4 sm:py-3 lg:px-8 lg:py-6 border border-white/10">
+                            <div className="text-white/95 font-medium text-sm sm:text-base lg:text-xl mb-1">{showcaseImages[0].price}</div>
+                            <div className="text-white/60 text-xs sm:text-sm">Pricing Model</div>
+                          </div>
+                          <div className="bg-black/20 backdrop-blur-3xl rounded-2xl sm:rounded-3xl px-3 py-2 sm:px-4 sm:py-3 lg:px-8 lg:py-6 border border-white/10">
+                            <div className="text-white/95 font-medium text-sm sm:text-base lg:text-xl mb-1">{showcaseImages[0].location}</div>
+                            <div className="text-white/60 text-xs sm:text-sm">Global Reach</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Main Content Grid */}
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10">
+                        {/* Left Column */}
+                        <div className="space-y-4 sm:space-y-6 lg:space-y-8">
+                          {/* Overview */}
+                          <div className="relative group">
+                            <div className="absolute inset-0 bg-gradient-to-br from-slate-400/8 to-gray-500/8 rounded-2xl sm:rounded-3xl lg:rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                            <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl lg:rounded-[32px] p-4 sm:p-6 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
+                                <div className="w-0.5 sm:w-1 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-slate-300 to-gray-400 rounded-full opacity-60"></div>
+                                <h3 className="text-lg sm:text-xl lg:text-3xl font-light text-white/95">Overview</h3>
+                              </div>
+                              <p className="text-white/70 leading-relaxed text-sm sm:text-base lg:text-lg font-light">
+                                {showcaseImages[0].details}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Features */}
+                          <div className="relative group">
+                            <div className="absolute inset-0 bg-gradient-to-br from-gray-400/8 to-slate-500/8 rounded-2xl sm:rounded-3xl lg:rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                            <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl lg:rounded-[32px] p-4 sm:p-6 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
+                                <div className="w-0.5 sm:w-1 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-gray-300 to-slate-400 rounded-full opacity-60"></div>
+                                <h3 className="text-lg sm:text-xl lg:text-3xl font-light text-white/95">Key Features</h3>
+                              </div>
+                              <div className="space-y-3 sm:space-y-4 lg:space-y-5">
+                                {showcaseImages[0].features.map((feature, index) => (
+                                  <div key={index} className="group/item flex items-center gap-3 sm:gap-4 lg:gap-5 p-3 sm:p-4 lg:p-5 bg-white/2 backdrop-blur-2xl rounded-2xl sm:rounded-3xl border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-400">
+                                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-slate-300 to-gray-400 rounded-full opacity-60 flex-shrink-0"></div>
+                                    <span className="text-white/80 font-light text-sm sm:text-base lg:text-lg">{feature}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Right Column */}
+                        <div className="space-y-4 sm:space-y-6 lg:space-y-8">
+                          {/* How It Works */}
+                          <div className="relative group">
+                            <div className="absolute inset-0 bg-gradient-to-br from-slate-500/8 to-gray-400/8 rounded-2xl sm:rounded-3xl lg:rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                            <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl lg:rounded-[32px] p-4 sm:p-6 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
+                                <div className="w-0.5 sm:w-1 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-gray-300 to-slate-400 rounded-full opacity-60"></div>
+                                <h3 className="text-lg sm:text-xl lg:text-3xl font-light text-white/95">How It Works</h3>
+                              </div>
+                              <p className="text-white/70 leading-relaxed text-sm sm:text-base lg:text-lg font-light">
+                                {showcaseImages[0].howItWorks}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Performance Stats */}
+                          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
+                            <div className="relative group">
+                              <div className="absolute inset-0 bg-gradient-to-br from-slate-400/10 to-gray-400/10 rounded-2xl sm:rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                              <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/5 text-center">
+                                <div className="text-2xl sm:text-3xl lg:text-4xl font-light text-white/95 mb-2 sm:mb-3">99.9%</div>
+                                <div className="text-white/60 text-xs sm:text-sm font-light">AI Accuracy</div>
+                              </div>
+                            </div>
+                            <div className="relative group">
+                              <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 to-slate-400/10 rounded-2xl sm:rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                              <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/5 text-center">
+                                <div className="text-2xl sm:text-3xl lg:text-4xl font-light text-white/95 mb-2 sm:mb-3">&lt;2s</div>
+                                <div className="text-white/60 text-xs sm:text-sm font-light">Response Time</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </DialogContent>
             </Dialog>
           </div>
 
-          {/* Two Medium Images (excluding cruise) */}
+          {/* Two Medium Images */}
           <div className="space-y-8">
-            {showcaseImages.slice(1, 3).map((item, index) => {
+            {showcaseImages.slice(1).map((item, index) => {
               const IconComponent = item.icon;
               return (
                 <Dialog key={item.id}>
@@ -229,7 +345,143 @@ const LuxuryShowcase = () => {
                   </DialogTrigger>
                   <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 animate-slide-up-mobile sm:animate-slide-up">
                     <div className="relative">
-                      {/* ... keep existing code (modal content) */}
+                      {/* Subtle Background Pattern */}
+                      <div className="absolute inset-0 opacity-30">
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-slate-500/5 to-gray-600/10"></div>
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(148,163,184,0.08),transparent_70%)]"></div>
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(100,116,139,0.08),transparent_70%)]"></div>
+                      </div>
+
+                      {/* Mobile drag handle */}
+                      <div className="sm:hidden flex justify-center pt-3 pb-2">
+                        <div className="w-12 h-1 bg-white/20 rounded-full"></div>
+                      </div>
+
+                      {/* Header */}
+                      <div className="relative p-4 sm:p-6 lg:p-10 pb-4 sm:pb-6 lg:pb-8 border-b border-white/5">
+                        <div className="flex items-center gap-4 sm:gap-6 lg:gap-8">
+                          <div className="relative">
+                            <div className="absolute inset-0 bg-gradient-to-br from-slate-300/20 to-gray-400/20 rounded-2xl sm:rounded-3xl blur-2xl opacity-40"></div>
+                            <div className="relative bg-white/10 backdrop-blur-3xl rounded-2xl sm:rounded-3xl p-3 sm:p-4 lg:p-5 border border-white/10">
+                              <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 lg:w-14 lg:h-14 text-white/90" />
+                            </div>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h1 className="text-xl sm:text-2xl lg:text-5xl font-light text-white/95 mb-2 sm:mb-3 tracking-tight truncate">{item.title}</h1>
+                            <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+                              <div className="px-3 py-1.5 sm:px-4 sm:py-2 lg:px-6 lg:py-3 bg-white/5 backdrop-blur-2xl rounded-xl sm:rounded-2xl border border-white/10">
+                                <span className="text-white/80 font-medium text-sm sm:text-base lg:text-lg">{item.category}</span>
+                              </div>
+                              <div className="flex items-center gap-2 sm:gap-3 text-white/70">
+                                <Star className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300/80 fill-amber-300/80" />
+                                <span className="font-medium text-sm sm:text-base lg:text-lg">{item.rating}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="relative p-4 sm:p-6 lg:p-10 max-h-[calc(90vh-120px)] sm:max-h-[calc(95vh-220px)] overflow-y-auto">
+                        <div className="space-y-6 sm:space-y-8 lg:space-y-12">
+                          {/* Hero Image */}
+                          <div className="relative h-48 sm:h-64 lg:h-[420px] rounded-2xl sm:rounded-3xl lg:rounded-[32px] overflow-hidden group">
+                            <img 
+                              src={item.image}
+                              alt={item.title}
+                              className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/20 via-transparent to-slate-900/20 mix-blend-overlay"></div>
+                            
+                            {/* Floating Elements */}
+                            <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-8 lg:left-8 lg:right-8 flex items-center justify-between gap-2 sm:gap-4">
+                              <div className="bg-black/20 backdrop-blur-3xl rounded-2xl sm:rounded-3xl px-3 py-2 sm:px-4 sm:py-3 lg:px-8 lg:py-6 border border-white/10">
+                                <div className="text-white/95 font-medium text-sm sm:text-base lg:text-xl mb-1">{item.price}</div>
+                                <div className="text-white/60 text-xs sm:text-sm">Pricing Model</div>
+                              </div>
+                              <div className="bg-black/20 backdrop-blur-3xl rounded-2xl sm:rounded-3xl px-3 py-2 sm:px-4 sm:py-3 lg:px-8 lg:py-6 border border-white/10">
+                                <div className="text-white/95 font-medium text-sm sm:text-base lg:text-xl mb-1">{item.location}</div>
+                                <div className="text-white/60 text-xs sm:text-sm">Global Reach</div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Main Content Grid */}
+                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10">
+                            {/* Left Column */}
+                            <div className="space-y-4 sm:space-y-6 lg:space-y-8">
+                              {/* Overview */}
+                              <div className="relative group">
+                                <div className="absolute inset-0 bg-gradient-to-br from-slate-400/8 to-gray-500/8 rounded-2xl sm:rounded-3xl lg:rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                                <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl lg:rounded-[32px] p-4 sm:p-6 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                                  <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
+                                    <div className="w-0.5 sm:w-1 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-slate-300 to-gray-400 rounded-full opacity-60"></div>
+                                    <h3 className="text-lg sm:text-xl lg:text-3xl font-light text-white/95">Overview</h3>
+                                  </div>
+                                  <p className="text-white/70 leading-relaxed text-sm sm:text-base lg:text-lg font-light">
+                                    {item.details}
+                                  </p>
+                                </div>
+                              </div>
+
+                              {/* Features */}
+                              <div className="relative group">
+                                <div className="absolute inset-0 bg-gradient-to-br from-gray-400/8 to-slate-500/8 rounded-2xl sm:rounded-3xl lg:rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                                <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl lg:rounded-[32px] p-4 sm:p-6 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                                  <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
+                                    <div className="w-0.5 sm:w-1 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-gray-300 to-slate-400 rounded-full opacity-60"></div>
+                                    <h3 className="text-lg sm:text-xl lg:text-3xl font-light text-white/95">Key Features</h3>
+                                  </div>
+                                  <div className="space-y-3 sm:space-y-4 lg:space-y-5">
+                                    {item.features.map((feature, featureIndex) => (
+                                      <div key={featureIndex} className="group/item flex items-center gap-3 sm:gap-4 lg:gap-5 p-3 sm:p-4 lg:p-5 bg-white/2 backdrop-blur-2xl rounded-2xl sm:rounded-3xl border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-400">
+                                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-slate-300 to-gray-400 rounded-full opacity-60 flex-shrink-0"></div>
+                                        <span className="text-white/80 font-light text-sm sm:text-base lg:text-lg">{feature}</span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Right Column */}
+                            <div className="space-y-4 sm:space-y-6 lg:space-y-8">
+                              {/* How It Works */}
+                              <div className="relative group">
+                                <div className="absolute inset-0 bg-gradient-to-br from-slate-500/8 to-gray-400/8 rounded-2xl sm:rounded-3xl lg:rounded-[32px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                                <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl lg:rounded-[32px] p-4 sm:p-6 lg:p-10 border border-white/5 hover:border-white/10 transition-all duration-500">
+                                  <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
+                                    <div className="w-0.5 sm:w-1 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-gray-300 to-slate-400 rounded-full opacity-60"></div>
+                                    <h3 className="text-lg sm:text-xl lg:text-3xl font-light text-white/95">How It Works</h3>
+                                  </div>
+                                  <p className="text-white/70 leading-relaxed text-sm sm:text-base lg:text-lg font-light">
+                                    {item.howItWorks}
+                                  </p>
+                                </div>
+                              </div>
+
+                              {/* Performance Stats */}
+                              <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
+                                <div className="relative group">
+                                  <div className="absolute inset-0 bg-gradient-to-br from-slate-400/10 to-gray-400/10 rounded-2xl sm:rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                                  <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/5 text-center">
+                                    <div className="text-2xl sm:text-3xl lg:text-4xl font-light text-white/95 mb-2 sm:mb-3">99.9%</div>
+                                    <div className="text-white/60 text-xs sm:text-sm font-light">AI Accuracy</div>
+                                  </div>
+                                </div>
+                                <div className="relative group">
+                                  <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 to-slate-400/10 rounded-2xl sm:rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                                  <div className="relative bg-white/3 backdrop-blur-3xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/5 text-center">
+                                    <div className="text-2xl sm:text-3xl lg:text-4xl font-light text-white/95 mb-2 sm:mb-3">&lt;2s</div>
+                                    <div className="text-white/60 text-xs sm:text-sm font-light">Response Time</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </DialogContent>
                 </Dialog>
@@ -237,70 +489,6 @@ const LuxuryShowcase = () => {
             })}
           </div>
         </div>
-
-        {/* Full-width Cruise Experience */}
-        {(() => {
-          const cruiseItem = showcaseImages[3]; // Cruise is the 4th item
-          const IconComponent = cruiseItem.icon;
-          return (
-            <div className="mb-16">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <div 
-                    className="relative h-[250px] sm:h-[300px] lg:h-[400px] rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
-                    onMouseEnter={() => setHoveredImage(3)}
-                    onMouseLeave={() => setHoveredImage(null)}
-                  >
-                    <img 
-                      src={cruiseItem.image}
-                      alt={cruiseItem.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                    
-                    {/* Badge */}
-                    <div className="absolute top-6 left-6">
-                      <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30">
-                        <span className="text-white font-semibold text-sm">{cruiseItem.category}</span>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <div className="flex items-center gap-2 mb-3">
-                        <MapPin className="w-4 h-4 text-white/80" />
-                        <span className="text-white/90 text-sm">{cruiseItem.location}</span>
-                        <div className="flex items-center gap-1 ml-4">
-                          <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                          <span className="text-white/90 text-sm">{cruiseItem.rating}</span>
-                        </div>
-                      </div>
-                       <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">{cruiseItem.title}</h3>
-                       <p className="text-white/80 mb-4 max-w-2xl">{cruiseItem.subtitle}</p>
-                       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                         <span className="text-white font-semibold">{cruiseItem.price}</span>
-                         <div 
-                           className={`flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 text-white text-sm sm:text-base font-semibold transition-all duration-300 ${
-                             hoveredImage === 3 ? 'bg-white/30 translate-x-2' : ''
-                           }`}
-                         >
-                           <span className="hidden sm:inline">Explore Ocean Adventure</span>
-                           <span className="sm:hidden">Explore</span>
-                           <ArrowRight className="w-4 h-4" />
-                         </div>
-                       </div>
-                    </div>
-                  </div>
-                </DialogTrigger>
-                <DialogContent className="max-w-[95vw] sm:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden bg-white/5 dark:bg-gray-950/20 backdrop-blur-[40px] border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] rounded-t-[32px] sm:rounded-[40px] p-0 animate-slide-up-mobile sm:animate-slide-up">
-                  <div className="relative">
-                    {/* ... keep existing code (modal content) */}
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </div>
-          );
-        })()}
 
         {/* Bottom Image Strip */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
