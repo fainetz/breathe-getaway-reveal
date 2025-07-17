@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, MapPin, Star, X, Brain, Zap, Settings } from 'lucide-react';
+import { ArrowRight, MapPin, Star, X, Brain, Zap, Settings, Ship } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 const LuxuryShowcase = () => {
@@ -65,6 +65,26 @@ const LuxuryShowcase = () => {
         'Location exclusivity scoring'
       ],
       howItWorks: 'Our machine learning models analyze your travel history, preferences, and budget to create a unique profile. The AI then scans thousands of luxury retreat options, evaluating factors like amenities, location, seasonal pricing, and guest reviews to present you with curated options that perfectly match your desires.'
+    },
+    {
+      id: 4,
+      image: '/lovable-uploads/842a29ec-208b-4d13-a0df-8916d618e5b9.png',
+      title: 'Luxury Cruise Experience',
+      subtitle: 'Experience the ultimate luxury cruise with AI-powered itinerary planning. Our intelligent system analyzes cruise routes, amenities, and seasonal conditions to find the perfect maritime escape that matches your preferences.',
+      location: 'Ocean Adventures',
+      rating: 4.9,
+      price: 'Premium Voyages',
+      category: 'Cruise Planning',
+      details: 'Our AI cruise finder analyzes thousands of luxury cruise options, considering cabin preferences, dining experiences, entertainment options, and excursion possibilities. The system evaluates weather patterns, seasonal routes, and guest reviews to curate the perfect ocean adventure.',
+      icon: Ship,
+      features: [
+        'Smart cruise route optimization',
+        'Luxury cabin selection assistance',
+        'Seasonal weather analysis',
+        'Personalized excursion planning',
+        'Onboard amenity matching'
+      ],
+      howItWorks: 'Our cruise AI processes your preferences for cabin type, dining style, and activity level to match you with the perfect cruise experience. The system analyzes ship amenities, route highlights, and seasonal conditions to ensure your luxury cruise exceeds expectations.'
     }
   ];
 
