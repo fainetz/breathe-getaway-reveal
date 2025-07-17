@@ -92,7 +92,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
 
   return (
-    <div className={`fixed z-[60] transition-transform duration-500 ease-out ${
+    <div className={`fixed z-40 transition-transform duration-500 ease-out ${
       !isScrolled 
         ? isMobile 
           ? 'top-[31vh] left-4 right-4' // Use vh for Safari compatibility
