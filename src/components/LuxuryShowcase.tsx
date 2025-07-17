@@ -48,7 +48,7 @@ const LuxuryShowcase = () => {
     },
     {
       id: 3,
-      image: '/lovable-uploads/3f81b31d-0911-4669-829d-e28da3084ad5.png',
+      image: '/lovable-uploads/4de955b4-f52a-41d2-a367-ad3cf57cc24e.png',
       title: 'Luxury Retreat Finder',
       subtitle: 'Our AI analyzes thousands of luxury retreat options, considering your travel history, preferences, and budget constraints. Machine learning algorithms evaluate amenities, location exclusivity, and seasonal availability to curate the perfect getaway experience.',
       location: 'Worldwide',
