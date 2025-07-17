@@ -90,15 +90,13 @@ const Features = () => {
 
   const scrollLeft = () => {
     if (mobileScrollRef.current) {
-      // Card width (320px) + gap (16px) = 336px per panel
-      mobileScrollRef.current.scrollBy({ left: -336, behavior: 'smooth' });
+      mobileScrollRef.current.scrollBy({ left: -320, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (mobileScrollRef.current) {
-      // Card width (320px) + gap (16px) = 336px per panel
-      mobileScrollRef.current.scrollBy({ left: 336, behavior: 'smooth' });
+      mobileScrollRef.current.scrollBy({ left: 320, behavior: 'smooth' });
     }
   };
 
@@ -207,14 +205,14 @@ const Features = () => {
             <ChevronRight className="w-5 h-5 text-black dark:text-white" />
           </button>
 
-            <div 
+          <div 
             ref={mobileScrollRef}
-            className="overflow-x-auto pb-4 scrollbar-hide px-12 snap-x snap-mandatory"
+            className="overflow-x-auto pb-4 scrollbar-hide px-12"
             onScroll={handleMobileScroll}
           >
             <div className="flex gap-4 w-max">
               {features.map((feature, index) => (
-                <div key={index} className="w-80 flex-shrink-0 snap-start">
+                <div key={index} className="w-80 flex-shrink-0">
                   <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
                     <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98 h-full">
                       <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-30 group-active:opacity-40 transition-all duration-500`}></div>
