@@ -52,6 +52,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				'wanderlust-sage': 'hsl(var(--wanderlust-sage))',
+				'wanderlust-sage-light': 'hsl(var(--wanderlust-sage-light))',
+				'wanderlust-terracotta': 'hsl(var(--wanderlust-terracotta))',
+				'wanderlust-sand': 'hsl(var(--wanderlust-sand))',
+				'wanderlust-cream': 'hsl(var(--wanderlust-cream))',
+				'wanderlust-ocean': 'hsl(var(--wanderlust-ocean))',
+				'wanderlust-sunset': 'hsl(var(--wanderlust-sunset))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
