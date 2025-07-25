@@ -1,18 +1,44 @@
 import { useState, useEffect, useRef } from 'react';
-import { X, Send, MapPin, Clock, DollarSign, Minimize2, Maximize2, Plane, ShoppingCart, Calendar, MessageCircle, ChevronLeft, ArrowLeft } from 'lucide-react';
+import { X, Send, MapPin, Clock, DollarSign, Minimize2, Maximize2, Plane, ShoppingCart, Calendar, MessageCircle, ChevronLeft, ArrowLeft, DessertIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import FullScreenDestination from './FullScreenDestination';
-import santoriniSunset from '../assets/santorini-sunset.jpg';
-import tokyoBeachSunset from '../assets/tokyo-beach-sunset.jpg';
-import baliSunset from '../assets/bali-sunset.jpg';
+import Destinations from '@/pages/Destinations';
+type ChatHistoryItem = {
+  role: 'system' | 'user' | 'assistant';
+  content: string;
+};
+
 
 interface TravelChatInterfaceProps {
   isOpen: boolean;
   onClose: () => void;
   initialPrompt?: string;
 }
+export interface Destination {
+  id: string;
+  name: string;
+  location: string;
+  price: string;
+  image: string;
+  description: string;
 
+  flightreason: string;
+  flightDestination?: string;
+  airportCode?: string;
+  flightairline?: string;
+  flightnumber?: string[] | string;
+  flightarrival?: string;
+  flightdeparture?: string;
+  flightduration?: string;
+  flightclass?: string;
+  mood?: string;
+  rating?: number;
+  featured?: boolean;
+  comingSoon?: boolean;
+  stops?: number;
+  tags?: string[];
+}
 interface Message {
   id: string;
   text: string;
@@ -21,17 +47,6 @@ interface Message {
   destinations?: Destination[];
 }
 
-interface Destination {
-  id: string;
-  name: string;
-  location: string;
-  price: string;
-  image: string;
-  description: string;
-  tags: string[];
-  flightDestination?: string;
-  airportCode?: string;
-}
 
 interface CartItem {
   id: string;
@@ -42,6 +57,9 @@ interface CartItem {
 
 const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInterfaceProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [chatHistory, setChatHistory] = useState<ChatHistoryItem[]>([
+       { role: 'system', content: "You are Breathe & Getaway AI, an expert travel assistant." }
+     ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isChatMinimized, setIsChatMinimized] = useState(false);
@@ -54,65 +72,124 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
   const [showCinematicPause, setShowCinematicPause] = useState(false);
   const [inputFocused, setInputFocused] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [flightResults, setFlightResults] = useState(null);
+  
+  const handleSendMessage = async (messageText?: string) => {
+    const text = messageText ?? inputValue.trim();
+    if (!text) return;
+  
+    // 1) Show the user's message in the UI
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      text,
+      isUser: true,
+      timestamp: new Date(),
+    };
+    setMessages(prev => [...prev, userMessage]);
+    setInputValue('');
+  
+    // 2) Add to our local chatHistory
+    const newHistory: ChatHistoryItem[] = [
+      ...chatHistory,
+      { role: 'user' as 'system' | 'user' | 'assistant', content: text }
+    ];
+    setChatHistory(newHistory);
+  
+    // 3) Show loader
+    setIsLoading(true);
+  
+    try {
+      // 4) Send both the user_input and the full history
+      const response = await fetch(
+        'https://breath-and-escape.onrender.com/ai_travel_agent',
+        {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            user_input: text,
+            chat_history: newHistory
+          })
+        }
+      );
+  
+      const data = await response.json();
+      console.log('Response from backend:', data);
+  
+      // 5) Overwrite our history with the updated one from the server
+      if (data.chat_history) {
+        setChatHistory(data.chat_history as ChatHistoryItem[]);
+      }
+      console.log('Updated chat history:',response);
+      // 6) Flight results?
+      if (data.flights) {
+        const mapped = data.flights.map((f: any, i: number) => {
+          const parsed = JSON.parse(f.best_flight); // ✅ parse the stringified JSON
+        
+          return {
+            id: (i + 1).toString(),
+            name: parsed.destination,
+            location: parsed.from,
+            price: `$${parsed.price}`,
+            image: parsed.imageUrl || '/default-flight.jpg',
+            description: parsed.reason || 'Auto-suggested flight option',
+            flightDestination: parsed.to,
+            airportCode: parsed.from,
+            flightairline: parsed.airline,
+            flightnumber: Array.isArray(parsed.flights) ? parsed.flights : [],
+            flightarrival: parsed.arrival,
+            flightdeparture: parsed.departure,
+            flightduration: parsed.duration || '5 days',
+            flightclass: parsed.cabin_class || parsed.class,
+          };
+        });
+
+        setCurrentDestinations(mapped);
+        console.log('Mapped flight destinations:', mapped);
+        console.log('Current destinations:', currentDestinations);
+        // optional summary in the chat UI
+        const summary: Message = {
+          id: (Date.now() + 1).toString(),
+          text: "Here are some flight options I've found for you:",
+          isUser: false,
+          timestamp: new Date(),
+        };
+        setMessages(prev => [...prev, summary]);
+      }
+  
+      // 7) Plain AI response?
+      if (data.response) {
+        const botMessage: Message = {
+          id: (Date.now() + 2).toString(),
+          text: data.response,
+          isUser: false,
+          timestamp: new Date(),
+        };
+        setMessages(prev => [...prev, botMessage]);
+      }
+  
+    } catch (err) {
+      console.error('Error talking to backend:', err);
+    } finally {
+      setIsLoading(false);
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+    
+  
+ 
   const navigate = useNavigate();
 
   // *** REPLACE WITH YOUR API DATA ***
   // This mock data should be replaced with your flight search API response
   // Structure: Array of Destination objects with id, name, location, price, image, description, tags, etc.
   // TODO: Replace this with: const destinations = await yourFlightAPI.search(searchQuery);
-  const mockDestinations: Destination[] = [
-    {
-      id: '1',
-      name: 'MSP to Santorini',
-      location: 'Santorini, Greece',
-      price: '$899',
-      image: santoriniSunset,
-      description: 'Direct flight to the stunning Greek island with breathtaking sunset views over the Aegean Sea.',
-      tags: ['Direct Flight', 'Sunset Views', 'Mediterranean'],
-      flightDestination: 'Santorini, Greece',
-      airportCode: 'JTR'
-    },
-    {
-      id: '2',
-      name: 'MSP to Tokyo',
-      location: 'Tokyo, Japan',
-      price: '$1,299',
-      image: tokyoBeachSunset,
-      description: 'Experience authentic Japanese culture in the bustling capital city with convenient connections.',
-      tags: ['Cultural', 'Modern City', 'Premium Service'],
-      flightDestination: 'Tokyo, Japan',
-      airportCode: 'NRT'
-    },
-    {
-      id: '3',
-      name: 'MSP to Bali',
-      location: 'Denpasar, Indonesia',
-      price: '$1,150',
-      image: baliSunset,
-      description: 'Fly to the tropical paradise of Bali with stunning rice terraces and spiritual wellness experiences.',
-      tags: ['Tropical Paradise', 'Wellness', 'Island Life'],
-      flightDestination: 'Bali, Indonesia',
-      airportCode: 'DPS'
-    }
-  ];
+
 
   // *** REPLACE WITH YOUR FLIGHT DETAILS API ***
   // This function generates mock flight details for display
   // TODO: Replace with actual flight details from your API response
   // Your API should return: departure time, airline, flight duration, flight number
-  const getFlightDetails = (destination: Destination) => {
-    const flightTimes = ['6:30 AM', '11:45 AM', '3:20 PM', '8:15 PM'];
-    const airlines = ['Delta', 'United', 'American', 'Emirates'];
-    const flightDurations = ['8h 45m', '12h 30m', '6h 15m', '14h 20m'];
-    const destinationIndex = parseInt(destination.id) || 0;
-    
-    return {
-      departure: flightTimes[destinationIndex % flightTimes.length],
-      airline: airlines[destinationIndex % airlines.length],
-      flightTime: flightDurations[destinationIndex % flightDurations.length],
-      flightNumber: `${airlines[destinationIndex % airlines.length].substring(0, 2).toUpperCase()}${1000 + destinationIndex}`
-    };
-  };
 
   const convertToFullScreenDestination = (destination: Destination) => {
     return {
@@ -123,16 +200,28 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       type: 'destination' as const,
       image: destination.image,
       price: destination.price,
-      duration: '5 days', // Default duration
+      duration: destination.flightduration || '5 days',
       description: destination.description,
       mood: 'Ready to Fly',
-      tags: destination.tags,
       rating: 4.5,
       featured: false,
-      comingSoon: false
+      comingSoon: false,
+      tags: ['flight', 'travel'],
+  
+      // 👇 Use destination.flightnumber directly, no extra const
+      airline: destination.flightairline,
+      flightNumber: Array.isArray(destination.flightnumber)
+        ? destination.flightnumber.join(' / ')
+        : destination.flightnumber || '',
+  
+      departure: destination.flightdeparture,
+      arrival: destination.flightarrival,
+      cabinClass: destination.flightclass,
+      stops: Array.isArray(destination.flightnumber)
+        ? Math.max(destination.flightnumber.length - 1, 0)
+        : 0,
     };
   };
-
   const handleCardClick = (destination: Destination) => {
     console.log('Flight card clicked:', destination.name);
     setSelectedDestination(destination);
@@ -185,99 +274,10 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const handleSendMessage = async (messageText?: string) => {
-    const text = messageText || inputValue.trim();
-    if (!text) return;
+  
 
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      text,
-      isUser: true,
-      timestamp: new Date()
-    };
-
-    setMessages(prev => [...prev, userMessage]);
-    setInputValue('');
-    setShowCinematicPause(true);
     
-    // Cinematic pause - let the message breathe
-    setTimeout(() => {
-      setIsLoading(true);
-      setShowCinematicPause(false);
-    }, 800);
-
-    // *** REPLACE WITH YOUR CHATBOT API CALL ***
-    // TODO: Replace this setTimeout with your actual chatbot API call
-    // Example: const response = await yourChatbotAPI.sendMessage(text);
-    // const botResponse = response.message;
-    // const shouldShowDestinations = response.triggerFlightSearch;
     
-    setTimeout(async () => {
-      let botResponse = '';
-      let shouldShowDestinations = false;
-      
-      // *** REPLACE THIS LOGIC WITH YOUR CHATBOT'S RESPONSE LOGIC ***
-      // This section determines how the bot responds to user messages
-      // You can replace this with your own natural language processing
-      
-      // Check if this is a "Learn More" request about a destination
-      const learnMoreMatch = text.match(/learn more about (.*)/i);
-      // Check if user is asking for flights - broader detection
-      const flightRequest = text.toLowerCase().includes('flight') || 
-                           text.toLowerCase().includes('destination') ||
-                           text.toLowerCase().includes('travel') ||
-                           text.toLowerCase().includes('trip') ||
-                           text.toLowerCase().includes('vacation') ||
-                           text.toLowerCase().includes('getaway') ||
-                           text.toLowerCase().includes('escape') ||
-                           text.toLowerCase().includes('adventure') ||
-                           text.toLowerCase().includes('journey');
-      
-      if (learnMoreMatch) {
-        const destinationName = learnMoreMatch[1];
-        // *** REPLACE: Use your API data instead of mockDestinations ***
-        const destination = mockDestinations.find(d => 
-          d.name.toLowerCase().includes(destinationName.toLowerCase()) ||
-          d.location.toLowerCase().includes(destinationName.toLowerCase())
-        );
-        
-        if (destination) {
-          botResponse = `Let me tell you more about the flight to ${destination.flightDestination}! ${destination.description} This route offers ${destination.tags.join(', ').toLowerCase()} experiences. The flight typically includes premium amenities and arrives at ${destination.airportCode} airport. Would you like to know about specific flight times, airline options, or ground transportation?`;
-        } else {
-          botResponse = `I'd love to tell you more! Could you clarify which flight destination you're interested in learning about?`;
-        }
-      } else if (flightRequest) {
-        // *** TRIGGER FLIGHT SEARCH - REPLACE WITH YOUR API CALL ***
-        // TODO: const flightResults = await yourFlightAPI.search(text);
-        // TODO: setCurrentDestinations(flightResults);
-        botResponse = `Perfect! I found some incredible flight destinations that match your vibe. Here are my top flight recommendations with available routes:`;
-        shouldShowDestinations = true;
-      } else {
-        // *** REPLACE WITH YOUR CHATBOT'S DEFAULT RESPONSE LOGIC ***
-        botResponse = `I love that energy! Based on what you're feeling, I can help you in several ways:\n\n✈️ **Show flight options** - I'll find destinations that match your mood\n🗣️ **Chat more** - Let's explore what kind of experience you're craving\n🎯 **Get specific** - Tell me about budget, dates, or preferred activities\n\nWhat sounds most appealing to you right now?`;
-      }
-
-      const botMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        text: botResponse,
-        isUser: false,
-        timestamp: new Date(),
-        destinations: shouldShowDestinations ? mockDestinations : undefined // *** REPLACE: Use your API data ***
-      };
-
-      setMessages(prev => [...prev, botMessage]);
-      if (shouldShowDestinations) {
-        // *** REPLACE: Use your API data instead of mockDestinations ***
-        // Sleek staggered animation for flight results
-        setTimeout(() => {
-          setCurrentDestinations(mockDestinations);
-        }, 800); // Dramatic pause before results appear
-        // *** REMOVED: Automatic redirect to flight results ***
-        // Users now need to manually click "View Flight Results" button
-      }
-      setIsLoading(false);
-    }, 1500); // *** REMOVE: This delay is only for demo purposes ***
-  };
 
   const handleLearnMore = (destination: Destination) => {
     handleSendMessage(`Learn more about ${destination.name}`);
@@ -376,7 +376,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
             <div className="flex-1 overflow-y-auto p-4">
                <div className="space-y-4">
                  {currentDestinations.map((destination, index) => {
-                   const flightDetails = getFlightDetails(destination);
+            
                    return (
                      <div 
                        key={destination.id} 
@@ -395,7 +395,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                         
                         <div className="absolute top-2 left-2 bg-black/60 backdrop-blur-sm rounded px-2 py-1">
-                          <span className="text-xs font-medium text-white">{flightDetails.airline}</span>
+                        <span className="text-xs font-medium text-white">{destination.flightairline}</span>
                         </div>
                         
                         <div className="absolute bottom-2 left-2">
@@ -416,7 +416,9 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                           </div>
                           <div className="flex items-center text-white/80 text-xs">
                             <Clock className="w-3 h-3 mr-1 text-green-400" />
-                            <span>{flightDetails.departure}</span>
+                            <span>{new Date(destination.flightdeparture).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+
+
                           </div>
                         </div>
 
@@ -643,7 +645,6 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                 </div>
               )}
             </div>
-
             {/* Desktop Destinations Panel */}
             {!isMobile && (
               <div className={`${isChatMinimized ? 'flex-1' : 'w-2/3'} transition-all duration-300 ease-out bg-white/5 backdrop-blur-xl flex flex-col overflow-hidden`}>
@@ -664,110 +665,118 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                       </div>
                     </div>
                   ) : (
-                     <div className="grid gap-8">
-                       {currentDestinations.map((destination, index) => {
-                         const flightDetails = getFlightDetails(destination);
-                         return (
-                           <div 
-                             key={destination.id} 
-                             className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl animate-slide-up opacity-0"
-                             style={{ 
-                               animationDelay: `${index * 200}ms`,
-                               animationFillMode: 'forwards'
-                             }}
-                           >
-                            <div className="flex">
-                              <div className="relative w-48 h-40">
-                                <img 
-                                  src={destination.image} 
-                                  alt={destination.name}
-                                  className="w-full h-full object-cover"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                                
-                                <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm rounded-lg px-2 py-1">
-                                  <span className="text-xs font-medium text-white">{flightDetails.airline} {flightDetails.flightNumber}</span>
-                                </div>
-
-                                <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm rounded-lg px-2 py-1">
-                                  <span className="text-xs font-medium text-white">{flightDetails.flightTime}</span>
-                                </div>
-                                
-                                <div className="absolute bottom-3 left-3">
-                                  <div className="bg-neutral-800/70 backdrop-blur-sm rounded-lg px-2 py-1">
-                                    <span className="text-xs font-medium text-white">Departs {flightDetails.departure}</span>
-                                  </div>
-                                </div>
+                    <div className="grid gap-8">
+                    {currentDestinations.map((destination, index) => {
+                      return (
+                        <div 
+                          key={destination.id} 
+                          className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl animate-slide-up opacity-0"
+                          style={{ 
+                            animationDelay: `${index * 200}ms`,
+                            animationFillMode: 'forwards'
+                          }}
+                        >
+                          <div className="flex">
+                            <div className="relative w-48 h-40">
+                              <img 
+                                src={destination.image} 
+                                alt={destination.name}
+                                className="w-full h-full object-cover"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            
+                  
+                              <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm rounded-lg px-2 py-1">
+                                <span className="text-xs font-medium text-white">
+                                  {destination.flightairline}
+                                </span>
                               </div>
-
-                              <div className="flex-1 p-6">
-                                <div className="flex items-start justify-between mb-3">
-                                  <h4 className="text-xl font-bold text-white">{destination.name}</h4>
-                                  <span className="text-xl font-bold text-green-400 bg-green-400/20 px-3 py-1 rounded-lg backdrop-blur-sm">{destination.price}</span>
-                                </div>
-                                <div className="flex items-center text-white/80 mb-3">
-                                  <MapPin className="w-4 h-4 mr-2" />
-                                  <span className="font-medium">{destination.location}</span>
-                                </div>
-
-                                <div className="grid grid-cols-2 gap-3 mb-4">
-                                  <div className="flex items-center text-white/80 text-sm">
-                                    <Plane className="w-4 h-4 mr-2 text-blue-400" />
-                                    <span>Direct Flight</span>
-                                  </div>
-                                  <div className="flex items-center text-white/80 text-sm">
-                                    <Clock className="w-4 h-4 mr-2 text-green-400" />
-                                    <span>On Time</span>
-                                  </div>
-                                  <div className="flex items-center text-white/80 text-sm">
-                                    <Calendar className="w-4 h-4 mr-2 text-purple-400" />
-                                    <span>Flexible Dates</span>
-                                  </div>
-                                  <div className="flex items-center text-white/80 text-sm">
-                                    <span className="w-4 h-4 mr-2 text-orange-400 font-bold text-xs">✈</span>
-                                    <span>Premium Economy</span>
-                                  </div>
-                                </div>
-
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                  <span className="bg-blue-800/30 border border-blue-600/40 text-xs px-3 py-1 rounded-full text-blue-300">
-                                    Free Baggage
+                              
+                              <div className="absolute bottom-3 left-3">
+                                <div className="bg-neutral-800/70 backdrop-blur-sm rounded-lg px-2 py-1">
+                                  <span className="text-xs font-medium text-white">
+                                    Departs {new Date(destination.flightdeparture).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                   </span>
-                                  <span className="bg-green-800/30 border border-green-600/40 text-xs px-3 py-1 rounded-full text-green-300">
-                                    Refundable
-                                  </span>
-                                  <span className="bg-purple-800/30 border border-purple-600/40 text-xs px-3 py-1 rounded-full text-purple-300">
-                                    Wi-Fi
-                                  </span>
-                                </div>
-
-                                <div className="flex gap-3">
-                                  <button 
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      handleAddToCart(destination);
-                                    }}
-                                    className="flex-1 bg-white text-gray-900 font-semibold py-3 px-6 rounded-xl hover:bg-white/90 transition-all duration-200 shadow-lg flex items-center justify-center gap-2"
-                                  >
-                                    <ShoppingCart className="w-4 h-4" />
-                                    Book Flight
-                                  </button>
-                                  <button 
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      handleCardClick(destination);
-                                    }}
-                                    className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200"
-                                  >
-                                    Flight Details
-                                  </button>
                                 </div>
                               </div>
                             </div>
+                  
+                            <div className="flex-1 p-6">
+                              <div className="flex items-start justify-between mb-3">
+                                <h4 className="text-xl font-bold text-white">
+                                  {destination.name}
+                                </h4>
+                                <span className="text-xl font-bold text-green-400 bg-green-400/20 px-3 py-1 rounded-lg backdrop-blur-sm">
+                                  ${destination.price}
+                                </span>
+                              </div>
+                  
+                              <div className="flex items-center text-white/80 mb-3">
+                                <MapPin className="w-4 h-4 mr-2" />
+                                <span className="font-medium">
+                                  Arrives in {destination.name} at {new Date(destination.flightarrival).toLocaleTimeString([], {
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: true
+})
+}
+                                  
+                                </span>
+                              </div>
+                  
+                              <div className="grid grid-cols-2 gap-3 mb-4">
+                                <div className="flex items-center text-white/80 text-sm">
+                                  <Plane className="w-4 h-4 mr-2 text-blue-400" />
+                                  <span>{destination.flightnumber.length <= 1 ? "Direct Flight" : `${destination.flightnumber.length - 1} Stop(s)`}</span>
+                                </div>
+                                <div className="flex items-center text-white/80 text-sm">
+                                  <Clock className="w-4 h-4 mr-2 text-green-400" />
+                                  <span>Departs from {destination.location} at {new Date(destination.flightdeparture).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                                </div>
+                                <div className="flex items-center text-white/80 text-sm">
+                                  <Calendar className="w-4 h-4 mr-2 text-purple-400" />
+                                  <span>{new Date(destination.flightarrival).toLocaleDateString()}</span>
+                                </div>
+                                <div className="flex items-center text-white/80 text-sm">
+                                  <span className="w-4 h-4 mr-2 text-orange-400 font-bold text-xs">✈</span>
+                                  <span>{destination.flightclass}</span>
+                                </div>
+                              </div>
+                  
+                              <div className="flex flex-wrap gap-2 mb-4">
+                                <span className="bg-blue-800/30 border border-blue-600/40 text-xs px-3 py-1 rounded-full text-blue-300">
+                                  Free Baggage
+                                </span>
+                                <span className="bg-green-800/30 border border-green-600/40 text-xs px-3 py-1 rounded-full text-green-300">
+                                  Refundable
+                                </span>
+                                <span className="bg-purple-800/30 border border-purple-600/40 text-xs px-3 py-1 rounded-full text-purple-300">
+                                  Wi-Fi
+                                </span>
+                              </div>
+                  
+                              <p className="text-white/80 text-sm">{destination.description}</p>
+                              <div className="flex gap-3 mt-4">
+                                <button 
+                                  onClick={() => handleAddToCart(destination)}
+                                  className="flex-1 bg-white text-gray-900 font-medium py-3 px-4 rounded-lg hover:bg-white/90 transition-all duration-200 flex items-center justify-center gap-2"
+                                >
+                                  <ShoppingCart className="w-4 h-4" />
+                                  Book Flight
+                                </button>
+                                <button 
+                                  onClick={() => handleCardClick(destination)}
+                                  className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 text-white font-medium py-3 px-4 rounded-lg transition-all duration-200"
+                                >
+                                  View Details
+                                </button>
+                              </div>
+                            </div>
                           </div>
-                        );
-                      })}
-                    </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                   )}
                 </div>
               </div>

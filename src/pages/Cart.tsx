@@ -164,7 +164,7 @@ const Cart = () => {
                         <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-4 line-clamp-2">{item.destination.description}</p>
                         
                         <div className="flex flex-wrap gap-2 mb-6">
-                          {item.destination.tags.map((tag) => (
+                          {(item.destination.tags || []).map((tag) => (
                             <span key={tag} className="px-3 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-xs rounded-full border border-neutral-200 dark:border-neutral-700">
                               {tag}
                             </span>
