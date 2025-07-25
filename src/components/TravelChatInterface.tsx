@@ -345,12 +345,11 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50">
-      <div className="absolute inset-0 chat-background">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-black/40 backdrop-blur-[1px]"></div>
-      </div>
-
-      <div className="relative z-10 h-full flex flex-col md:flex-row">
+    <div className="fixed inset-0 z-50 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-slate-900/40 to-slate-900"></div>
+      <div className="absolute inset-0 bg-gradient-mesh opacity-30"></div>
+      
+      <div className="relative z-10 h-full flex flex-col md:flex-row backdrop-blur-[1px]">
         {/* Mobile: Toggle between chat and destinations */}
         {isMobile && showDestinations ? (
           <div className="flex-1 bg-white/5 backdrop-blur-xl flex flex-col overflow-hidden">
@@ -468,24 +467,29 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
         ) : (
           <>
             {/* Chat Panel - Mobile: Full width, Desktop: 1/3 */}
-            <div className={`${isChatMinimized && !isMobile ? 'w-16' : isMobile ? 'flex-1' : 'w-1/3'} transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-white/5 backdrop-blur-xl ${isMobile ? '' : 'border-r border-white/10'} flex flex-col`}>
-              <div className="flex items-center justify-between p-4 md:p-6 border-b border-white/10">
+            <div className={`${isChatMinimized && !isMobile ? 'w-16' : isMobile ? 'flex-1' : 'w-1/3'} transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-white/5 backdrop-blur-2xl ${isMobile ? '' : 'border-r border-white/20'} flex flex-col shadow-2xl`}>
+              <div className="flex items-center justify-between p-4 md:p-6 border-b border-white/20 bg-gradient-to-r from-white/5 to-white/10">
                 {!isChatMinimized && (
                   <div className="flex-1 animate-fade-in">
-                    <h2 className="text-lg md:text-xl font-bold text-white mb-1 tracking-tight">AI Travel Concierge</h2>
-                    <p className="text-sm text-white/60 font-medium">Your personal travel curator</p>
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+                        <Plane className="w-4 h-4 text-white" />
+                      </div>
+                      <h2 className="text-lg md:text-xl font-bold text-white tracking-tight">AI Travel Concierge</h2>
+                    </div>
+                    <p className="text-sm text-white/70 font-medium ml-11">Your personal travel curator</p>
                   </div>
                 )}
                 <div className="flex items-center gap-2">
                   <div className="relative">
                     <button 
                       onClick={handleCartClick}
-                      className="p-3 rounded-2xl hover:bg-white/10 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] text-white/70 hover:text-white hover:scale-110"
+                      className="p-3 rounded-2xl hover:bg-white/15 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] text-white/70 hover:text-white hover:scale-110 group"
                     >
-                      <ShoppingCart className="w-5 h-5 md:w-6 md:h-6" />
+                      <ShoppingCart className="w-5 h-5 md:w-6 md:h-6 group-hover:rotate-12 transition-transform duration-300" />
                     </button>
                     {getCartItemCount() > 0 && (
-                      <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 md:h-6 md:w-6 flex items-center justify-center font-semibold animate-scale-in shadow-lg">
+                      <span className="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs rounded-full h-5 w-5 md:h-6 md:w-6 flex items-center justify-center font-semibold animate-scale-in shadow-xl ring-2 ring-white/30">
                         {getCartItemCount()}
                       </span>
                     )}
@@ -493,17 +497,17 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                   {!isMobile && (
                     <button
                       onClick={() => setIsChatMinimized(!isChatMinimized)}
-                      className="p-3 rounded-2xl hover:bg-white/10 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] text-white/70 hover:text-white hover:scale-110"
+                      className="p-3 rounded-2xl hover:bg-white/15 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] text-white/70 hover:text-white hover:scale-110 group"
                       title={isChatMinimized ? "Expand Chat" : "Minimize Chat"}
                     >
-                      {isChatMinimized ? <Maximize2 className="w-5 h-5" /> : <Minimize2 className="w-5 h-5" />}
+                      {isChatMinimized ? <Maximize2 className="w-5 h-5 group-hover:scale-110 transition-transform" /> : <Minimize2 className="w-5 h-5 group-hover:scale-110 transition-transform" />}
                     </button>
                   )}
                   <button
                     onClick={onClose}
-                    className="p-3 rounded-2xl hover:bg-white/10 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] text-white/70 hover:text-white hover:scale-110"
+                    className="p-3 rounded-2xl hover:bg-white/15 hover:bg-red-500/20 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] text-white/70 hover:text-red-400 hover:scale-110 group"
                   >
-                    <X className="w-5 h-5 md:w-6 md:h-6" />
+                    <X className="w-5 h-5 md:w-6 md:h-6 group-hover:rotate-90 transition-transform duration-300" />
                   </button>
                 </div>
               </div>
@@ -533,11 +537,11 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                     {messages.length === 0 && !showCinematicPause && (
                       <div className="text-center text-white/80 pt-16 md:pt-24 animate-fade-in">
                         <div className="mb-12">
-                          <div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-8 rounded-3xl bg-white/10 backdrop-blur-sm flex items-center justify-center shadow-xl animate-scale-in">
+                          <div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-8 rounded-3xl bg-gradient-to-br from-blue-500/20 to-purple-600/20 backdrop-blur-sm flex items-center justify-center shadow-2xl animate-scale-in border border-white/20">
                             <Plane className="w-10 h-10 md:w-12 md:h-12 text-white animate-pulse" />
                           </div>
-                          <h3 className="text-xl md:text-2xl font-bold mb-4 tracking-tight">Ready for your next adventure?</h3>
-                          <p className="text-base md:text-lg text-white/60 font-medium leading-relaxed">Tell me how you're feeling or what kind of experience you're craving!</p>
+                          <h3 className="text-xl md:text-2xl font-bold mb-4 tracking-tight bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">Ready for your next adventure?</h3>
+                          <p className="text-base md:text-lg text-white/70 font-medium leading-relaxed max-w-md mx-auto">Tell me how you're feeling or what kind of experience you're craving!</p>
                         </div>
                       </div>
                     )}
@@ -562,11 +566,11 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                          <div className={`max-w-[85%] md:max-w-xs ${message.isUser ? 'order-2' : 'order-1'}`}>
                            <div className={`px-4 md:px-6 py-3 md:py-4 rounded-2xl text-sm md:text-base font-medium transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.01] ${
                              message.isUser 
-                               ? 'bg-white text-gray-900 ml-3 md:ml-4 shadow-xl border border-white/20' 
-                               : 'bg-white/10 backdrop-blur-xl text-white mr-3 md:mr-4 border border-white/20 shadow-lg'
+                               ? 'bg-gradient-to-br from-white to-white/95 text-gray-900 ml-3 md:ml-4 shadow-2xl border border-white/30' 
+                               : 'bg-white/10 backdrop-blur-2xl text-white mr-3 md:mr-4 border border-white/30 shadow-xl'
                            }`}>
                             <p className="leading-relaxed">{message.text}</p>
-                            <p className={`text-sm mt-3 opacity-60 ${
+                            <p className={`text-xs mt-3 opacity-60 ${
                               message.isUser ? 'text-gray-600' : 'text-white/60'
                             }`}>
                               {message.timestamp.toLocaleTimeString()}
@@ -591,14 +595,14 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
 
                     {isLoading && (
                       <div className="flex justify-center py-8 animate-fade-in">
-                        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl px-8 py-6 shadow-2xl">
+                        <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-2xl border border-white/30 rounded-3xl px-8 py-6 shadow-2xl">
                           <div className="flex items-center gap-4">
                             <div className="flex space-x-2">
-                              <div className="w-3 h-3 bg-white/80 rounded-full animate-bounce"></div>
-                              <div className="w-3 h-3 bg-white/80 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }}></div>
-                              <div className="w-3 h-3 bg-white/80 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
+                              <div className="w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-bounce"></div>
+                              <div className="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }}></div>
+                              <div className="w-3 h-3 bg-gradient-to-r from-pink-400 to-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
                             </div>
-                            <span className="text-white/80 font-medium">Curating your perfect flights...</span>
+                            <span className="text-white/90 font-medium">Curating your perfect flights...</span>
                           </div>
                         </div>
                       </div>
@@ -609,17 +613,17 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
               )}
 
               {!isChatMinimized && (
-                <div className="border-t border-white/10 p-4 md:p-6">
+                <div className="border-t border-white/20 p-4 md:p-6 bg-gradient-to-r from-white/5 to-white/10">
                   <form onSubmit={handleSubmit} className="flex items-center gap-4">
                     <input
                       type="text"
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       placeholder="What's calling to you today?"
-                      className={`flex-1 px-6 md:px-8 py-4 md:py-6 text-base bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl text-white placeholder-white/50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] font-medium leading-relaxed shadow-xl ${
+                      className={`flex-1 px-6 md:px-8 py-4 md:py-6 text-base bg-white/10 backdrop-blur-2xl border border-white/30 rounded-2xl text-white placeholder-white/60 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] font-medium leading-relaxed shadow-xl ${
                         inputFocused 
-                          ? 'bg-white/15 border-white/40 shadow-2xl scale-[1.02] ring-2 ring-white/20' 
-                          : 'hover:bg-white/12 hover:border-white/30'
+                          ? 'bg-white/20 border-white/50 shadow-2xl scale-[1.02] ring-2 ring-white/30' 
+                          : 'hover:bg-white/15 hover:border-white/40'
                       } ${isLoading ? 'opacity-60 cursor-not-allowed' : ''}`}
                       style={{ fontSize: 'max(16px, 1rem)' }}
                       disabled={isLoading}
@@ -648,13 +652,13 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                     <button
                       type="submit"
                       disabled={isLoading || !inputValue.trim()}
-                      className={`px-6 md:px-8 py-4 md:py-6 bg-white text-gray-900 rounded-2xl font-semibold transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-xl flex items-center justify-center min-w-[60px] md:min-w-[80px] ${
+                      className={`px-6 md:px-8 py-4 md:py-6 bg-gradient-to-r from-white to-white/95 text-gray-900 rounded-2xl font-semibold transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-xl flex items-center justify-center min-w-[60px] md:min-w-[80px] ${
                         isLoading || !inputValue.trim() 
                           ? 'opacity-40 cursor-not-allowed scale-95' 
-                          : 'hover:bg-white/95 hover:scale-110 hover:shadow-2xl active:scale-95'
+                          : 'hover:from-white/95 hover:to-white/90 hover:scale-110 hover:shadow-2xl active:scale-95 group'
                       }`}
                     >
-                      <Send className="w-5 h-5 md:w-6 md:h-6" />
+                      <Send className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform duration-200" />
                     </button>
                   </form>
                 </div>
@@ -662,20 +666,25 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
             </div>
             {/* Desktop Destinations Panel */}
             {!isMobile && (
-              <div className={`${isChatMinimized ? 'flex-1' : 'w-2/3'} transition-all duration-300 ease-out bg-white/5 backdrop-blur-xl flex flex-col overflow-hidden`}>
-                <div className="p-8 border-b border-white/20">
-                  <h2 className="text-2xl font-bold text-white mb-2">Available Flights</h2>
-                  <p className="text-white/70">Flight recommendations based on your conversation</p>
+              <div className={`${isChatMinimized ? 'flex-1' : 'w-2/3'} transition-all duration-300 ease-out bg-white/5 backdrop-blur-2xl flex flex-col overflow-hidden shadow-2xl`}>
+                <div className="p-8 border-b border-white/20 bg-gradient-to-r from-white/5 to-white/10">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center shadow-lg">
+                      <Plane className="w-5 h-5 text-white" />
+                    </div>
+                    <h2 className="text-2xl font-bold text-white">Available Flights</h2>
+                  </div>
+                  <p className="text-white/70 ml-13">Flight recommendations based on your conversation</p>
                 </div>
 
                 <div className="flex-1 overflow-y-auto p-8">
                   {currentDestinations.length === 0 ? (
                     <div className="flex items-center justify-center h-full text-center">
                       <div className="max-w-md">
-                        <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
-                          <Plane className="w-12 h-12 text-white/60" />
+                        <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-600/20 backdrop-blur-sm flex items-center justify-center border border-white/20 shadow-2xl">
+                          <Plane className="w-12 h-12 text-white/80 animate-pulse" />
                         </div>
-                        <h3 className="text-2xl font-bold text-white mb-4">Your Flight Awaits</h3>
+                        <h3 className="text-2xl font-bold text-white mb-4 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">Your Flight Awaits</h3>
                         <p className="text-white/70 text-lg leading-relaxed">Share your travel dreams with our AI concierge and discover personalized flight recommendations crafted just for you.</p>
                       </div>
                     </div>
