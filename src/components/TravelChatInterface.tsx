@@ -10,6 +10,12 @@ type ChatHistoryItem = {
 };
 
 
+
+
+
+
+
+
 interface TravelChatInterfaceProps {
   isOpen: boolean;
   onClose: () => void;
@@ -22,6 +28,9 @@ export interface Destination {
   price: string;
   image: string;
   description: string;
+
+
+
 
   flightreason: string;
   flightDestination?: string;
@@ -46,6 +55,12 @@ interface Message {
   timestamp: Date;
   destinations?: Destination[];
 }
+
+
+
+
+
+
 
 
 interface CartItem {
