@@ -8,7 +8,7 @@ interface Destination {
   name: string;
   location: string;
   category: string;
-  type: 'hotel' | 'destination' | 'cruise';
+  type: 'hotel' | 'destination' | 'retreat';
   image: string;
   price: string;
   duration: string;

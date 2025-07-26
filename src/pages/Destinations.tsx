@@ -9,7 +9,7 @@ interface Destination {
   name: string;
   location: string;
   category: string;
-  type: 'hotel' | 'destination' | 'cruise';
+  type: 'hotel' | 'destination' | 'retreat';
   image: string;
   price: string;
   duration: string;
@@ -211,21 +211,51 @@ const Destinations = () => {
       rating: 4.8,
       comingSoon: true
     },
-    // CRUISES
+    // LUXURY RETREATS
     {
       id: 14,
-      name: "Mediterranean Discovery",
-      location: "Barcelona to Rome",
-      category: "cultural",
-      type: "cruise",
+      name: "Alpine Wellness Sanctuary",
+      location: "Swiss Alps, Switzerland",
+      category: "wellness",
+      type: "retreat",
       image: "/lovable-uploads/6a2f9c54-bbe6-4609-b27d-841996453813.png",
-      price: "$1,899",
-      duration: "7 nights",
-      description: "Explore ancient civilizations and stunning coastlines aboard a luxury cruise ship",
-      mood: "Cultural Exploration",
-      tags: ["Mediterranean", "History", "Luxury"],
-      rating: 4.6,
-      comingSoon: true
+      price: "$3,299",
+      duration: "7 days",
+      description: "Transform your mind and body in a luxury mountain retreat with world-class spa treatments and meditation",
+      mood: "Complete Transformation",
+      tags: ["Wellness", "Spa", "Mountain Views"],
+      rating: 4.9,
+      comingSoon: false
+    },
+    {
+      id: 15,
+      name: "Maldivian Soul Retreat",
+      location: "Private Island, Maldives",
+      category: "luxury",
+      type: "retreat",
+      image: "/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png",
+      price: "$4,999",
+      duration: "10 days",
+      description: "Ultimate luxury retreat on a private island with personal wellness coaches and underwater meditation",
+      mood: "Pure Bliss",
+      tags: ["Private Island", "Wellness", "Underwater"],
+      rating: 5.0,
+      featured: true
+    },
+    {
+      id: 16,
+      name: "Tuscany Culinary Retreat",
+      location: "Val d'Orcia, Italy",
+      category: "culinary",
+      type: "retreat",
+      image: "/lovable-uploads/b6902c70-0899-4bb8-b8ae-a982867eac3c.png",
+      price: "$2,799",
+      duration: "6 days",
+      description: "Immerse yourself in Italian gastronomy with master chefs in a luxury villa setting",
+      mood: "Culinary Adventure",
+      tags: ["Cooking", "Wine", "Luxury Villa"],
+      rating: 4.8,
+      featured: true
     }
   ];
 
@@ -240,8 +270,8 @@ const Destinations = () => {
       destinations: destinations.filter(dest => dest.type === 'hotel')
     },
     {
-      title: "🚢 Cruises",
-      destinations: destinations.filter(dest => dest.type === 'cruise')
+      title: "🧘‍♀️ Luxury Retreats",
+      destinations: destinations.filter(dest => dest.type === 'retreat')
     }
   ];
 
@@ -281,146 +311,221 @@ const Destinations = () => {
   const currentHero = featuredDestinations[heroIndex];
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
-      {/* Floating Elements Background */}
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 overflow-x-hidden">
+      {/* Immersive Floating Elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-60 right-20 w-40 h-40 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-40 left-1/3 w-28 h-28 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-amber-400/10 to-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-60 right-20 w-80 h-80 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-40 left-1/3 w-48 h-48 bg-gradient-to-br from-emerald-400/10 to-teal-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-br from-purple-400/5 to-pink-500/5 rounded-full blur-3xl animate-pulse delay-3000"></div>
       </div>
 
-      {/* Back Button */}
+      {/* Floating Travel Icons */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-12 opacity-20 animate-float">
+          <div className="w-8 h-8 text-amber-500">✈️</div>
+        </div>
+        <div className="absolute top-3/4 right-16 opacity-20 animate-float delay-1000">
+          <div className="w-6 h-6 text-blue-500">🏝️</div>
+        </div>
+        <div className="absolute top-1/2 left-1/4 opacity-20 animate-float delay-2000">
+          <div className="w-7 h-7 text-emerald-500">🌴</div>
+        </div>
+      </div>
+
+      {/* Dynamic Back Button */}
       <div className="fixed top-6 left-6 z-50">
         <Link 
           to="/" 
-          className="flex items-center gap-2 bg-background/80 backdrop-blur-xl border border-border rounded-full px-5 py-3 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-300 shadow-lg"
+          className="group flex items-center gap-3 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl px-6 py-4 text-sm font-medium text-foreground hover:bg-white/20 transition-all duration-500 shadow-2xl hover:shadow-3xl hover:scale-105"
         >
-          <ArrowLeft className="w-4 h-4" />
-          Back to Home
+          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
+          <span className="group-hover:text-primary transition-colors duration-300">Back to Dreams</span>
         </Link>
       </div>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen pt-20 pb-12 px-6">
+      {/* Immersive Hero Section */}
+      <section className="relative min-h-screen pt-16 pb-12 px-6">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16 space-y-6">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-medium">
-              <Sparkles className="w-4 h-4" />
-              Your Dream Vacation Awaits
+          {/* Magnetic Header */}
+          <div className="text-center mb-20 space-y-8">
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500/20 to-orange-500/20 backdrop-blur-sm border border-amber-500/30 rounded-full px-6 py-3 text-sm font-bold">
+              <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
+              <Sparkles className="w-5 h-5 text-amber-500" />
+              <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+                Your Perfect Escape Awaits Discovery
+              </span>
             </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent">
-              Pick Your Perfect
-              <br />
-              <span className="bg-gradient-to-r from-primary via-purple-500 to-blue-500 bg-clip-text text-transparent">
-                Escape
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none">
+              <span className="block bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent mb-2">
+                Where Will You
+              </span>
+              <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent animate-gradient">
+                Escape Today?
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              From tropical beaches to mountain retreats, find the destination that matches your vibe and book your getaway today.
+            <p className="text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Life's too short for ordinary vacations. Discover extraordinary destinations that will transform your perspective and create memories you'll treasure forever.
             </p>
+            
+            {/* Quick Mood Selector */}
+            <div className="flex flex-wrap justify-center gap-3 pt-6">
+              {[
+                { emoji: "🏖️", text: "Beach Vibes", color: "from-cyan-500 to-blue-500" },
+                { emoji: "🏔️", text: "Mountain Magic", color: "from-emerald-500 to-teal-500" },
+                { emoji: "🧘‍♀️", text: "Soul Healing", color: "from-purple-500 to-pink-500" },
+                { emoji: "🍷", text: "Luxury Life", color: "from-amber-500 to-orange-500" }
+              ].map((mood, index) => (
+                <button
+                  key={index}
+                  className={`group bg-gradient-to-r ${mood.color} bg-opacity-10 hover:bg-opacity-20 border border-white/20 rounded-2xl px-5 py-3 transition-all duration-300 hover:scale-105 hover:shadow-lg`}
+                >
+                  <span className="text-lg mr-2">{mood.emoji}</span>
+                  <span className="text-sm font-medium text-foreground group-hover:text-white transition-colors duration-300">
+                    {mood.text}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Featured Destinations Carousel */}
-          <div className="mb-20">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground">✨ Featured Escapes</h2>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setHeroIndex(heroIndex === 0 ? featuredDestinations.length - 1 : heroIndex - 1)}
-                  className="bg-background border border-border hover:bg-accent rounded-full p-2 transition-colors"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={() => setHeroIndex((heroIndex + 1) % featuredDestinations.length)}
-                  className="bg-background border border-border hover:bg-accent rounded-full p-2 transition-colors"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
+          {/* Ultra-Immersive Featured Escape */}
+          <div className="mb-32">
+            <div className="text-center mb-12 space-y-4">
+              <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                Tonight's Dream Destination
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Close your eyes and imagine yourself here tomorrow
+              </p>
             </div>
 
-            {/* Large Featured Card */}
-            <div className="relative h-[70vh] rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
+            {/* Cinematic Hero Card */}
+            <div className="relative h-[85vh] rounded-[2rem] overflow-hidden group cursor-pointer shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] hover:shadow-[0_35px_60px_-12px_rgba(0,0,0,0.3)] transition-all duration-700"
                  onClick={() => currentHero && handleCardClick(currentHero)}>
-              <div className="absolute inset-0">
+              
+              {/* Parallax Background */}
+              <div className="absolute inset-0 overflow-hidden">
                 {currentHero?.image ? (
                   <img 
                     src={currentHero.image} 
                     alt={currentHero.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:brightness-110"
                   />
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
-                    <div className="text-center text-muted-foreground">
-                      <div className="w-16 h-16 mx-auto mb-4 opacity-30">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                        </svg>
-                      </div>
-                      <p>Image Coming Soon</p>
-                    </div>
+                  <div className="w-full h-full bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600"></div>
+                )}
+              </div>
+
+              {/* Dynamic Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 via-50% to-transparent group-hover:from-black/80 transition-all duration-700"></div>
+              
+              {/* Floating Elements */}
+              <div className="absolute top-8 right-8 space-y-3">
+                {currentHero?.comingSoon && (
+                  <div className="bg-amber-500/90 backdrop-blur-sm rounded-2xl px-4 py-2 border border-amber-400/50">
+                    <span className="text-sm font-bold text-white">✨ COMING SOON</span>
+                  </div>
+                )}
+                <div className="bg-emerald-500/90 backdrop-blur-sm rounded-2xl px-4 py-2 border border-emerald-400/50">
+                  <span className="text-sm font-bold text-white">🏆 FEATURED</span>
+                </div>
+                {currentHero?.rating && (
+                  <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm rounded-2xl px-4 py-2">
+                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                    <span className="text-sm font-bold text-white">{currentHero.rating}</span>
                   </div>
                 )}
               </div>
 
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-
-              {/* Content Overlay */}
-              <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12">
-                <div className="max-w-2xl space-y-4">
-                  {/* Badges */}
-                  <div className="flex flex-wrap gap-3">
-                    {currentHero?.comingSoon && (
-                      <div className="bg-muted/20 backdrop-blur-sm rounded-full px-3 py-1 border border-border/20">
-                        <span className="text-xs font-medium text-muted-foreground">COMING SOON</span>
-                      </div>
-                    )}
-                    <div className="bg-primary/90 backdrop-blur-sm rounded-full px-3 py-1">
-                      <span className="text-xs font-bold text-primary-foreground">FEATURED</span>
-                    </div>
-                    {currentHero?.rating && (
-                      <div className="flex items-center gap-1 bg-black/40 backdrop-blur-sm rounded-full px-3 py-1">
-                        <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                        <span className="text-xs font-medium text-white">{currentHero.rating}</span>
-                      </div>
-                    )}
+              {/* Main Content */}
+              <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16">
+                <div className="max-w-4xl space-y-6">
+                  {/* Mood Badge */}
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm border border-purple-400/30 rounded-full px-6 py-2">
+                    <Heart className="w-4 h-4 text-pink-400" />
+                    <span className="text-sm font-medium text-white">{currentHero?.mood}</span>
                   </div>
-
-                  {/* Title and Location */}
-                  <div>
-                    <h3 className="text-3xl md:text-5xl font-bold text-white mb-2">{currentHero?.name}</h3>
-                    <div className="flex items-center gap-2 text-white/80">
-                      <MapPin className="w-4 h-4" />
-                      <span className="text-lg">{currentHero?.location}</span>
+                  
+                  {/* Title & Location */}
+                  <div className="space-y-3">
+                    <h3 className="text-4xl md:text-7xl font-black text-white leading-none tracking-tight">
+                      {currentHero?.name}
+                    </h3>
+                    <div className="flex items-center gap-3 text-white/90">
+                      <MapPin className="w-6 h-6" />
+                      <span className="text-xl md:text-2xl font-medium">{currentHero?.location}</span>
                     </div>
                   </div>
                   
                   {/* Description */}
-                  <p className="text-white/90 text-lg max-w-xl">{currentHero?.description}</p>
+                  <p className="text-white/95 text-xl md:text-2xl max-w-3xl leading-relaxed font-light">
+                    {currentHero?.description}
+                  </p>
                   
-                  {/* Price and CTA */}
-                  <div className="flex items-center gap-4 pt-2">
-                    <div className="bg-emerald-500 rounded-xl px-4 py-2">
-                      <span className="text-lg font-bold text-white">{currentHero?.price}</span>
+                  {/* Price & Actions */}
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
+                    <div className="bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl px-8 py-4 shadow-lg">
+                      <span className="text-2xl font-black text-white">{currentHero?.price}</span>
                     </div>
-                    <button
-                      className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl px-6 py-2 text-white font-medium transition-all duration-300"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        currentHero && handleCardClick(currentHero);
-                      }}
-                    >
-                      Explore Now
-                    </button>
+                    
+                    <div className="flex gap-4">
+                      <button
+                        className="group bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl px-8 py-4 text-white font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          currentHero && handleCardClick(currentHero);
+                        }}
+                      >
+                        <span className="flex items-center gap-2">
+                          <Calendar className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+                          Book This Dream
+                        </span>
+                      </button>
+                      
+                      <button className="group bg-gradient-to-r from-pink-500 to-purple-500 rounded-2xl px-8 py-4 text-white font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                        <span className="flex items-center gap-2">
+                          <Heart className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+                          Save Dream
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                  
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-3 pt-4">
+                    {currentHero?.tags.map((tag, index) => (
+                      <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2">
+                        <span className="text-sm text-white/90">{tag}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              {/* Dots Indicator */}
-              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2">
+              {/* Navigation Arrows */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setHeroIndex(heroIndex === 0 ? featuredDestinations.length - 1 : heroIndex - 1);
+                }}
+                className="absolute left-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-4 transition-all duration-300 hover:scale-110"
+              >
+                <ChevronLeft className="w-6 h-6 text-white" />
+              </button>
+              
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setHeroIndex((heroIndex + 1) % featuredDestinations.length);
+                }}
+                className="absolute right-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-4 transition-all duration-300 hover:scale-110"
+              >
+                <ChevronRight className="w-6 h-6 text-white" />
+              </button>
+
+              {/* Progress Indicator */}
+              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3">
                 {featuredDestinations.map((_, index) => (
                   <button
                     key={index}
@@ -428,8 +533,10 @@ const Destinations = () => {
                       e.stopPropagation();
                       setHeroIndex(index);
                     }}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === heroIndex ? 'bg-white' : 'bg-white/40'
+                    className={`transition-all duration-500 rounded-full ${
+                      index === heroIndex 
+                        ? 'w-12 h-3 bg-white' 
+                        : 'w-3 h-3 bg-white/40 hover:bg-white/60'
                     }`}
                   />
                 ))}
@@ -437,24 +544,34 @@ const Destinations = () => {
             </div>
           </div>
 
-          {/* Browse by Category */}
-          <div className="space-y-12">
+          {/* Immersive Category Explorer */}
+          <div className="space-y-24">
             {categoryRows.map((row, rowIndex) => (
-              <section key={rowIndex} className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground">{row.title}</h2>
-                  <div className="flex gap-2">
+              <section key={rowIndex} className="space-y-8">
+                {/* Category Header */}
+                <div className="text-center space-y-4">
+                  <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                    {row.title}
+                  </h2>
+                  <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    {rowIndex === 0 && "Discover breathtaking destinations that will steal your heart"}
+                    {rowIndex === 1 && "Luxury accommodations where every detail is perfection"}
+                    {rowIndex === 2 && "Transformative experiences that will change your life"}
+                  </p>
+                  
+                  {/* Category Navigation */}
+                  <div className="flex justify-center gap-4 pt-4">
                     <button
                       onClick={() => scrollRow('left', rowIndex)}
-                      className="bg-background border border-border hover:bg-accent rounded-full p-2 transition-colors"
+                      className="group bg-gradient-to-r from-primary/20 to-purple-500/20 hover:from-primary/30 hover:to-purple-500/30 backdrop-blur-sm border border-primary/30 rounded-2xl p-4 transition-all duration-300 hover:scale-110"
                     >
-                      <ChevronLeft className="w-4 h-4" />
+                      <ChevronLeft className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                     </button>
                     <button
                       onClick={() => scrollRow('right', rowIndex)}
-                      className="bg-background border border-border hover:bg-accent rounded-full p-2 transition-colors"
+                      className="group bg-gradient-to-r from-primary/20 to-purple-500/20 hover:from-primary/30 hover:to-purple-500/30 backdrop-blur-sm border border-primary/30 rounded-2xl p-4 transition-all duration-300 hover:scale-110"
                     >
-                      <ChevronRight className="w-4 h-4" />
+                      <ChevronRight className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                     </button>
                   </div>
                 </div>
