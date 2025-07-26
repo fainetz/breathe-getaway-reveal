@@ -94,7 +94,7 @@ const Hero = () => {
   const itemCount = getCartItemCount();
 
   return (
-    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-100 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900">
+    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-100 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900">
       {/* 3D Background */}
       <ThreeBackground />
 
@@ -194,8 +194,25 @@ const Hero = () => {
 
       {/* Main Content - Heading on right, carousel on left */}
       <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 max-w-7xl mx-auto">
-        {/* Left side - Image carousel */}
-        <div className="relative group order-2 lg:order-1">
+        {/* Left side - Main heading and description */}
+        <div className="text-left lg:pr-8 order-1 lg:order-1">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6 animate-fade-in">
+            The Smarter,
+            <br />
+            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
+              AI-Powered
+            </span>
+            <br />
+            Escape Discovery
+          </h1>
+          
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
+          </p>
+        </div>
+
+        {/* Right side - Image carousel */}
+        <div className="relative group order-2 lg:order-2">
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
@@ -271,23 +288,6 @@ const Hero = () => {
               ))}
             </div>
           </div>
-        </div>
-
-        {/* Right side - Main heading and description */}
-        <div className="text-left lg:pl-8 order-1 lg:order-2">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6 animate-fade-in">
-            The Smarter,
-            <br />
-            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
-              AI-Powered
-            </span>
-            <br />
-            Escape Discovery
-          </h1>
-          
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
-          </p>
         </div>
       </div>
     </section>
