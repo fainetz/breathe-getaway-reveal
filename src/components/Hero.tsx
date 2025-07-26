@@ -94,15 +94,18 @@ const Hero = () => {
   const itemCount = getCartItemCount();
 
   return (
-    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-100 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900">
+    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-100 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900 overflow-hidden">
+      {/* Depth layers */}
+      <div className="absolute inset-0 bg-gradient-to-t from-blue-100/20 via-transparent to-transparent dark:from-slate-800/20 pointer-events-none"></div>
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-blue-50/30 via-transparent to-transparent dark:from-slate-900/30 pointer-events-none"></div>
       {/* 3D Background */}
       <ThreeBackground />
 
       {/* Navigation - AICM layout style */}
-      <nav className="relative z-50 px-4 sm:px-6 py-6">
+      <nav className="relative z-50 px-4 sm:px-6 py-6 glass-effect depth-2">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
+          <Link to="/" className="flex items-center space-x-3 group floating-element">
             <div className="w-8 h-8 sm:w-10 sm:h-10 relative overflow-hidden rounded-lg">
               <img 
                 src={theme === 'dark' 
@@ -153,7 +156,7 @@ const Hero = () => {
             <ThemeToggle />
             
             {/* Cart */}
-            <Link to="/cart" className="relative group p-2 rounded-lg transition-all duration-300 hover:scale-105">
+            <Link to="/cart" className="relative group p-2 rounded-lg transition-all duration-300 hover:scale-105 depth-2 hover:depth-floating">
               <div className="relative">
                 <ShoppingCart className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
                 {itemCount > 0 && (
@@ -168,7 +171,7 @@ const Hero = () => {
 
         {/* Mobile navigation menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-gradient-to-br from-blue-50/95 via-indigo-50/95 to-blue-100/95 dark:from-slate-900/95 dark:via-slate-800/95 dark:to-blue-900/95 backdrop-blur-lg border-b border-blue-200/50 dark:border-blue-800/50 py-4 px-4 animate-fade-in shadow-xl">
+          <div className="md:hidden absolute top-full left-0 right-0 glass-card depth-4 border-b border-blue-200/50 dark:border-blue-800/50 py-4 px-4 animate-fade-in shadow-xl">
             <div className="flex flex-col space-y-4 max-w-7xl mx-auto">
               <Link to="/cart" className="text-muted-foreground hover:text-foreground transition-colors py-3 flex items-center gap-2 px-3 rounded-lg hover:bg-blue-100/50 dark:hover:bg-blue-800/30 relative group">
                 <div className="relative">
@@ -210,8 +213,10 @@ const Hero = () => {
       {/* Main Content - Heading on right, carousel on left */}
       <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 max-w-7xl mx-auto">
         {/* Left side - Main heading and description */}
-        <div className="text-left lg:pr-8 order-1 lg:order-1">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6 animate-fade-in">
+        <div className="text-left lg:pr-8 order-1 lg:order-1 relative">
+          {/* Text depth shadow */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-teal-600/5 rounded-2xl transform translate-x-2 translate-y-2 -z-10"></div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6 animate-fade-in depth-3 relative">
             The Smarter,
             <br />
             <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">

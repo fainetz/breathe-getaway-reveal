@@ -196,6 +196,48 @@ All colors MUST be HSL.
     animation: glow 2s ease-in-out infinite;
   }
 
+  /* Depth and layering utilities */
+  .depth-1 {
+    @apply shadow-sm;
+  }
+
+  .depth-2 {
+    @apply shadow-md;
+  }
+
+  .depth-3 {
+    @apply shadow-lg shadow-primary/5;
+  }
+
+  .depth-4 {
+    @apply shadow-xl shadow-primary/10;
+  }
+
+  .depth-5 {
+    @apply shadow-2xl shadow-primary/15;
+  }
+
+  .depth-floating {
+    @apply shadow-2xl shadow-primary/20;
+    transform: translateY(-2px);
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-xl bg-white/10 dark:bg-slate-900/10 border border-white/20 dark:border-slate-700/20;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border border-white/30 dark:border-slate-700/30;
+  }
+
+  .elevated-card {
+    @apply transform-gpu transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-1;
+  }
+
+  .floating-element {
+    @apply transform-gpu transition-all duration-700 hover:scale-105 hover:shadow-xl hover:shadow-primary/15 hover:-translate-y-2;
+  }
+
   /* Chat background */
   .chat-background {
     background-image: url('/lovable-uploads/442e1967-777c-43e6-9246-91b620e2151b.png');
