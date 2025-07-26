@@ -92,6 +92,13 @@ const ThreeBackground = () => {
     { position: [-4, 1, -3] as [number, number, number], color: theme === 'light' ? '#6366f1' : '#8b5cf6' },
     { position: [3, -1, -2] as [number, number, number], color: theme === 'light' ? '#d946ef' : '#ec4899' },
     { position: [-2, -2, -4] as [number, number, number], color: theme === 'light' ? '#3b82f6' : '#3b82f6' },
+    { position: [5, 2, -5] as [number, number, number], color: theme === 'light' ? '#06b6d4' : '#22d3ee' },
+    { position: [-3, 3, -2] as [number, number, number], color: theme === 'light' ? '#10b981' : '#34d399' },
+    { position: [2, -3, -6] as [number, number, number], color: theme === 'light' ? '#f59e0b' : '#fbbf24' },
+    { position: [-5, -1, -1] as [number, number, number], color: theme === 'light' ? '#ef4444' : '#f87171' },
+    { position: [1, 4, -4] as [number, number, number], color: theme === 'light' ? '#14b8a6' : '#5eead4' },
+    { position: [4, 0, -7] as [number, number, number], color: theme === 'light' ? '#6366f1' : '#818cf8' },
+    { position: [-1, -4, -3] as [number, number, number], color: theme === 'light' ? '#ec4899' : '#f472b6' },
   ], [theme]);
 
   // CSS fallback when WebGL is not available

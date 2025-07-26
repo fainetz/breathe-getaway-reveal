@@ -131,19 +131,23 @@ const Hero = () => {
 
           {/* Desktop navigation - original links */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium">
+            <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
               How it works
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
             </a>
-            <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium">
+            <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
               Features
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
             </a>
-            <Link to="/destinations" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium">
+            <Link to="/destinations" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
               Destinations
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <div className="relative group">
-              <button className="text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-1 font-medium">
+              <button className="text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-1 font-medium relative">
                 Vision
                 <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
               </button>
             </div>
             <ThemeToggle />
@@ -164,9 +168,9 @@ const Hero = () => {
 
         {/* Mobile navigation menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border py-4 px-4 animate-fade-in">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-gradient-to-br from-blue-50/95 via-indigo-50/95 to-blue-100/95 dark:from-slate-900/95 dark:via-slate-800/95 dark:to-blue-900/95 backdrop-blur-lg border-b border-blue-200/50 dark:border-blue-800/50 py-4 px-4 animate-fade-in shadow-xl">
             <div className="flex flex-col space-y-4 max-w-7xl mx-auto">
-              <Link to="/cart" className="text-muted-foreground hover:text-foreground transition-colors py-2 flex items-center gap-2">
+              <Link to="/cart" className="text-muted-foreground hover:text-foreground transition-colors py-3 flex items-center gap-2 px-3 rounded-lg hover:bg-blue-100/50 dark:hover:bg-blue-800/30 relative group">
                 <div className="relative">
                   <ShoppingCart className="w-4 h-4" />
                   {itemCount > 0 && (
@@ -176,13 +180,24 @@ const Hero = () => {
                   )}
                 </div>
                 Cart
+                <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-8"></span>
               </Link>
-              <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors py-2">How it works</a>
-              <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors py-2">Features</a>
-              <Link to="/destinations" className="text-muted-foreground hover:text-foreground transition-colors py-2">Destinations</Link>
-              <button className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 py-2 text-left">
+              <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors py-3 px-3 rounded-lg hover:bg-blue-100/50 dark:hover:bg-blue-800/30 relative group">
+                How it works
+                <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-16"></span>
+              </a>
+              <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors py-3 px-3 rounded-lg hover:bg-blue-100/50 dark:hover:bg-blue-800/30 relative group">
+                Features
+                <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-12"></span>
+              </a>
+              <Link to="/destinations" className="text-muted-foreground hover:text-foreground transition-colors py-3 px-3 rounded-lg hover:bg-blue-100/50 dark:hover:bg-blue-800/30 relative group">
+                Destinations
+                <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-16"></span>
+              </Link>
+              <button className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 py-3 px-3 text-left rounded-lg hover:bg-blue-100/50 dark:hover:bg-blue-800/30 relative group">
                 Vision
                 <ChevronDown className="w-4 h-4" />
+                <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-8"></span>
               </button>
               <div className="pt-2">
                 <ThemeToggle />
