@@ -82,7 +82,7 @@ const WaitlistSection = () => {
   };
 
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 bg-gradient-to-br from-gray-50/60 via-slate-50/60 to-stone-50/60 dark:from-slate-950/80 dark:via-gray-950/80 dark:to-slate-900/80 relative overflow-hidden depth-4">
+    <section className="py-20 sm:py-28 px-4 sm:px-6 bg-gradient-to-br from-gray-50/60 via-slate-50/60 to-stone-50/60 dark:from-slate-950/80 dark:via-gray-950/80 dark:to-slate-900/80 relative overflow-hidden">
       {/* Subtle decorative background elements */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100/10 to-transparent dark:via-gray-800/5"></div>
       <div className="absolute top-0 left-1/4 w-32 h-32 bg-gray-200/20 dark:bg-gray-800/10 rounded-full blur-3xl"></div>
@@ -104,7 +104,7 @@ const WaitlistSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left side - Image Carousel */}
           <div className="relative">
-            <div className="overflow-hidden rounded-2xl depth-5 glass-effect" ref={emblaRef}>
+            <div className="overflow-hidden rounded-2xl shadow-2xl" ref={emblaRef}>
               <div className="flex">
                 {carouselSlides.map((slide) => (
                   <div key={slide.id} className="flex-none w-full relative">
@@ -149,14 +149,14 @@ const WaitlistSection = () => {
             {/* Navigation buttons */}
             <button
               onClick={scrollPrev}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 glass-effect depth-3 rounded-full p-3 transition-all duration-300 floating-element"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 transition-all duration-300 shadow-xl"
             >
               <ChevronLeft className="w-6 h-6 text-white" />
             </button>
 
             <button
               onClick={scrollNext}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 glass-effect depth-3 rounded-full p-3 transition-all duration-300 floating-element"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 transition-all duration-300 shadow-xl"
             >
               <ChevronRight className="w-6 h-6 text-white" />
             </button>

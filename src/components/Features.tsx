@@ -120,7 +120,7 @@ const Features = () => {
   }, []);
 
   return (
-    <section id="features" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300 depth-5" ref={sectionRef}>
+    <section id="features" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300 shadow-2xl dark:shadow-gray-900/60" ref={sectionRef}>
       <div className="max-w-7xl mx-auto">
         <div className={`text-center mb-12 sm:mb-16 lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="overflow-x-auto lg:overflow-visible">
@@ -143,7 +143,7 @@ const Features = () => {
               {features.map((feature, index) => (
                 <div key={index} className="w-1/3 flex-shrink-0">
                   <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-                    <div className="glass-card elevated-card rounded-2xl p-6 h-full relative overflow-hidden depth-3">
+                    <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 hover:bg-white dark:hover:bg-white/25 transition-all duration-500 hover:scale-102 h-full relative overflow-hidden shadow-xl hover:shadow-2xl dark:shadow-black/30 dark:hover:shadow-black/50">
                       <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
                       <div className="relative z-10">
                         <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}></div>
@@ -216,7 +216,7 @@ const Features = () => {
               {features.map((feature, index) => (
                 <div key={index} className="w-80 flex-shrink-0 snap-start">
                   <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-                    <div className="glass-card elevated-card rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden depth-3 touch-manipulation h-full">
+                    <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98 h-full">
                       <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-30 group-active:opacity-40 transition-all duration-500`}></div>
                       
                       <div className="relative z-10">
