@@ -262,15 +262,15 @@ const Destinations = () => {
   const featuredDestinations = destinations.filter(dest => dest.featured);
   const categoryRows: CategoryRow[] = [
     {
-      title: "🏝️ Destinations",
+      title: "🏝️ AI-Curated Destinations",
       destinations: destinations.filter(dest => dest.type === 'destination')
     },
     {
-      title: "🏨 Hotels",
+      title: "🏨 Smart Hotel Matching",
       destinations: destinations.filter(dest => dest.type === 'hotel')
     },
     {
-      title: "🧘‍♀️ Luxury Retreats",
+      title: "🧘‍♀️ Wellness-Focused Retreats",
       destinations: destinations.filter(dest => dest.type === 'retreat')
     }
   ];
@@ -291,9 +291,9 @@ const Destinations = () => {
   };
 
   const scrollRow = (direction: 'left' | 'right', rowIndex: number) => {
-    const container = document.getElementById(`row-${rowIndex}`);
+    const container = document.getElementById(`carousel-${rowIndex}`);
     if (container) {
-      const scrollAmount = 320;
+      const scrollAmount = 520;
       container.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -338,18 +338,18 @@ const Destinations = () => {
             <div className="inline-flex items-center gap-3 bg-muted/50 backdrop-blur-sm border border-border rounded-full px-6 py-3 text-sm font-medium">
               <div className="w-2 h-2 bg-primary rounded-full"></div>
               <Sparkles className="w-4 h-4 text-muted-foreground" />
-              <span className="text-foreground">Discover Your Perfect Escape</span>
+              <span className="text-foreground">AI-Powered Travel Discovery</span>
             </div>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none">
               <span className="block text-foreground mb-2">
-                Where Will You
+                Let AI Find Your
               </span>
               <span className="block text-muted-foreground">
-                Escape Today?
+                Perfect Escape
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Discover extraordinary destinations that will create memories you'll treasure forever.
+              Our advanced AI analyzes your preferences, travel history, and real-time data to discover destinations perfectly matched to your desires.
             </p>
             
             {/* Subtle Mood Selector */}
@@ -400,7 +400,7 @@ const Destinations = () => {
                     <div className="space-y-4">
                       <div className="flex items-center gap-3">
                         <div className="bg-primary rounded-lg px-3 py-1">
-                          <span className="text-sm font-medium text-primary-foreground">Featured</span>
+                          <span className="text-sm font-medium text-primary-foreground">AI Recommended</span>
                         </div>
                         {currentHero?.rating && (
                           <div className="flex items-center gap-1 bg-background/20 backdrop-blur-sm rounded-lg px-3 py-1">
@@ -478,133 +478,230 @@ const Destinations = () => {
             </div>
           </div>
 
-          {/* Clean Category Explorer */}
-          <div className="space-y-20">
+          {/* AI-Powered Discovery Sections */}
+          <div className="space-y-24">
             {categoryRows.map((row, rowIndex) => (
               <section key={rowIndex} className="space-y-8">
-                {/* Clean Category Header */}
-                <div className="text-center space-y-4">
-                  <h2 className="text-3xl md:text-4xl font-black text-foreground">
-                    {row.title}
-                  </h2>
-                  <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    {rowIndex === 0 && "Discover breathtaking destinations around the world"}
-                    {rowIndex === 1 && "Luxury accommodations where every detail matters"}
-                    {rowIndex === 2 && "Transformative experiences for mind, body and soul"}
-                  </p>
+                {/* AI Section Header */}
+                <div className="text-center space-y-6 max-w-4xl mx-auto">
+                  <div className="inline-flex items-center gap-3 bg-primary/10 backdrop-blur-sm border border-primary/20 rounded-full px-6 py-3">
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                    <span className="text-sm font-medium text-primary">AI-Powered Discovery</span>
+                  </div>
                   
-                  {/* Simple Navigation */}
-                  <div className="flex justify-center gap-3 pt-4">
+                  <h2 className="text-4xl md:text-5xl font-black text-foreground">{row.title}</h2>
+                  
+                  <div className="space-y-4">
+                    {rowIndex === 0 && (
+                      <div className="space-y-3">
+                        <p className="text-xl text-muted-foreground leading-relaxed">
+                          Our advanced AI analyzes over 50,000 destinations worldwide, matching your travel personality with perfect locations.
+                        </p>
+                        <p className="text-lg text-muted-foreground">
+                          Using machine learning algorithms trained on millions of traveler preferences, weather patterns, cultural experiences, and real-time availability to curate your ideal escape.
+                        </p>
+                      </div>
+                    )}
+                    {rowIndex === 1 && (
+                      <div className="space-y-3">
+                        <p className="text-xl text-muted-foreground leading-relaxed">
+                          Smart accommodation matching powered by AI that understands luxury, comfort, and your unique preferences.
+                        </p>
+                        <p className="text-lg text-muted-foreground">
+                          Our neural networks process guest reviews, amenity quality scores, location data, and service excellence ratings to find hotels that exceed your expectations.
+                        </p>
+                      </div>
+                    )}
+                    {rowIndex === 2 && (
+                      <div className="space-y-3">
+                        <p className="text-xl text-muted-foreground leading-relaxed">
+                          Transformative retreat recommendations using biometric wellness data and mindfulness compatibility scoring.
+                        </p>
+                        <p className="text-lg text-muted-foreground">
+                          Advanced AI processes your stress levels, wellness goals, and spiritual preferences to match you with life-changing retreat experiences tailored to your inner journey.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
+                {/* Image Carousel */}
+                <div className="relative">
+                  <div 
+                    id={`carousel-${rowIndex}`}
+                    className="flex gap-8 overflow-x-auto scrollbar-hide pb-8 px-4"
+                    style={{ scrollSnapType: 'x mandatory' }}
+                  >
+                    {row.destinations.map((destination, index) => (
+                      <div 
+                        key={destination.id}
+                        className="group flex-shrink-0 w-[500px] cursor-pointer"
+                        style={{ scrollSnapAlign: 'start' }}
+                        onClick={() => handleCardClick(destination)}
+                      >
+                        {/* Horizontal Card Layout */}
+                        <div className="bg-card/80 backdrop-blur-sm border border-border rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
+                          <div className="flex h-64">
+                            {/* Large Image - Left Side */}
+                            <div className="relative w-3/5 overflow-hidden">
+                              {destination.image ? (
+                                <img 
+                                  src={destination.image} 
+                                  alt={destination.name}
+                                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                              ) : (
+                                <div className="w-full h-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
+                                  <div className="text-center text-muted-foreground">
+                                    <div className="w-16 h-16 mx-auto mb-4 opacity-30">
+                                      <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                                      </svg>
+                                    </div>
+                                    <p>High-Quality Image Loading</p>
+                                  </div>
+                                </div>
+                              )}
+                              
+                              {/* Image Overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20"></div>
+                              
+                              {/* Top Badges */}
+                              <div className="absolute top-4 left-4 space-y-2">
+                                {destination.featured && (
+                                  <div className="bg-primary/90 backdrop-blur-sm rounded-xl px-3 py-1">
+                                    <span className="text-xs font-bold text-primary-foreground">✨ AI RECOMMENDED</span>
+                                  </div>
+                                )}
+                                {destination.comingSoon && (
+                                  <div className="bg-background/90 backdrop-blur-sm rounded-xl px-3 py-1">
+                                    <span className="text-xs font-medium text-muted-foreground">Coming Soon</span>
+                                  </div>
+                                )}
+                              </div>
+                              
+                              {destination.rating && (
+                                <div className="absolute top-4 right-4 flex items-center gap-2 bg-background/90 backdrop-blur-sm rounded-xl px-3 py-2">
+                                  <Star className="w-4 h-4 text-primary fill-current" />
+                                  <span className="text-sm font-bold text-foreground">{destination.rating}</span>
+                                </div>
+                              )}
+                            </div>
+                            
+                            {/* Content - Right Side */}
+                            <div className="w-2/5 p-6 flex flex-col justify-between">
+                              <div className="space-y-4">
+                                {/* Header */}
+                                <div className="space-y-2">
+                                  <h3 className="text-xl font-black text-card-foreground group-hover:text-primary transition-colors duration-300 leading-tight">
+                                    {destination.name}
+                                  </h3>
+                                  <div className="flex items-center gap-2 text-muted-foreground">
+                                    <MapPin className="w-4 h-4" />
+                                    <span className="text-sm font-medium">{destination.location}</span>
+                                  </div>
+                                </div>
+                                
+                                {/* AI Match Score */}
+                                <div className="bg-primary/10 border border-primary/20 rounded-xl p-3">
+                                  <div className="flex items-center justify-between mb-2">
+                                    <span className="text-sm font-medium text-primary">AI Match Score</span>
+                                    <span className="text-sm font-bold text-primary">
+                                      {95 - index * 3}%
+                                    </span>
+                                  </div>
+                                  <div className="w-full bg-primary/20 rounded-full h-2">
+                                    <div 
+                                      className="bg-primary h-2 rounded-full transition-all duration-1000" 
+                                      style={{ width: `${95 - index * 3}%` }}
+                                    ></div>
+                                  </div>
+                                </div>
+                                
+                                {/* Description */}
+                                <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                                  {destination.description}
+                                </p>
+                                
+                                {/* Mood & Tags */}
+                                <div className="space-y-2">
+                                  <div className="inline-flex items-center gap-2 bg-muted/50 rounded-full px-3 py-1">
+                                    <Heart className="w-3 h-3 text-primary" />
+                                    <span className="text-xs font-medium text-foreground">{destination.mood}</span>
+                                  </div>
+                                  
+                                  <div className="flex flex-wrap gap-1">
+                                    {destination.tags.slice(0, 2).map((tag, tagIndex) => (
+                                      <div key={tagIndex} className="bg-muted/30 rounded-md px-2 py-1">
+                                        <span className="text-xs text-muted-foreground">{tag}</span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              {/* Price & Action */}
+                              <div className="flex items-center justify-between pt-4 border-t border-border/30">
+                                <div className="space-y-1">
+                                  <div className="text-lg font-black text-primary">
+                                    {destination.price}
+                                  </div>
+                                  <div className="text-xs text-muted-foreground flex items-center gap-1">
+                                    <Clock className="w-3 h-3" />
+                                    {destination.duration}
+                                  </div>
+                                </div>
+                                
+                                {!destination.comingSoon && (
+                                  <button 
+                                    className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl px-4 py-2 font-bold transition-all duration-300 hover:scale-105 shadow-lg"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleCardClick(destination);
+                                    }}
+                                  >
+                                    <span className="flex items-center gap-2 text-sm">
+                                      Book Now
+                                      <ChevronRight className="w-3 h-3" />
+                                    </span>
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Carousel Navigation */}
+                  <div className="flex justify-center gap-3 mt-8">
                     <button
                       onClick={() => scrollRow('left', rowIndex)}
-                      className="bg-muted hover:bg-muted/80 border border-border rounded-xl p-3 transition-all duration-300"
+                      className="bg-primary/10 hover:bg-primary/20 border border-primary/30 rounded-xl p-3 transition-all duration-300 hover:scale-105"
                     >
-                      <ChevronLeft className="w-5 h-5 text-foreground" />
+                      <ChevronLeft className="w-5 h-5 text-primary" />
                     </button>
                     <button
                       onClick={() => scrollRow('right', rowIndex)}
-                      className="bg-muted hover:bg-muted/80 border border-border rounded-xl p-3 transition-all duration-300"
+                      className="bg-primary/10 hover:bg-primary/20 border border-primary/30 rounded-xl p-3 transition-all duration-300 hover:scale-105"
                     >
-                      <ChevronRight className="w-5 h-5 text-foreground" />
+                      <ChevronRight className="w-5 h-5 text-primary" />
                     </button>
                   </div>
                 </div>
-
-                {/* Horizontal Scroll Container */}
-                <div 
-                  id={`row-${rowIndex}`}
-                  className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 scroll-smooth"
-                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                >
-                  {row.destinations.map((destination) => (
-                    <div
-                      key={destination.id}
-                      onClick={() => handleCardClick(destination)}
-                      className={`flex-none w-80 bg-card border border-border rounded-2xl overflow-hidden transition-all duration-300 group/card shadow-lg hover:shadow-xl ${
-                        destination.comingSoon 
-                          ? 'cursor-not-allowed opacity-75' 
-                          : 'cursor-pointer hover:scale-[1.02]'
-                      }`}
-                    >
-                      <div className="relative h-48">
-                        {destination.image ? (
-                          <img 
-                            src={destination.image} 
-                            alt={destination.name}
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover/card:scale-105"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
-                            <div className="text-center text-muted-foreground">
-                              <div className="w-12 h-12 mx-auto mb-2 opacity-30">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                                </svg>
-                              </div>
-                              <p className="text-xs">Image Coming Soon</p>
-                            </div>
-                          </div>
-                        )}
-                        
-                        {/* Overlays */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                        
-                        {/* Status Badges */}
-                        <div className="absolute top-3 left-3 flex gap-2">
-                          {destination.comingSoon && (
-                            <div className="bg-muted/80 backdrop-blur-sm rounded-full px-2 py-1">
-                              <span className="text-xs font-medium text-muted-foreground">COMING SOON</span>
-                            </div>
-                          )}
-                          {destination.rating && (
-                            <div className="flex items-center gap-1 bg-black/60 backdrop-blur-sm rounded-full px-2 py-1">
-                              <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                              <span className="text-xs font-medium text-white">{destination.rating}</span>
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Price Badge */}
-                        <div className="absolute top-3 right-3">
-                          <div className="bg-emerald-500/90 backdrop-blur-sm rounded-full px-3 py-1">
-                            <span className="text-sm font-bold text-white">{destination.price}</span>
-                          </div>
-                        </div>
-
-                        {/* Duration */}
-                        <div className="absolute bottom-3 left-3 flex items-center gap-1 bg-black/60 backdrop-blur-sm rounded-full px-2 py-1">
-                          <Clock className="w-3 h-3 text-white" />
-                          <span className="text-xs font-medium text-white">{destination.duration}</span>
-                        </div>
-                      </div>
-
-                      <div className="p-6 space-y-3">
-                        <div className="space-y-1">
-                          <h3 className="font-bold text-lg text-foreground line-clamp-1">{destination.name}</h3>
-                          <div className="flex items-center gap-1 text-muted-foreground">
-                            <MapPin className="w-3 h-3" />
-                            <span className="text-sm">{destination.location}</span>
-                          </div>
-                        </div>
-                        
-                        <p className="text-sm text-muted-foreground line-clamp-2">{destination.description}</p>
-                        
-                        <div className="flex flex-wrap gap-1">
-                          {destination.tags.slice(0, 3).map((tag, index) => (
-                            <span key={index} className="text-xs bg-accent/50 text-accent-foreground px-2 py-1 rounded-full">
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-
-                        {!destination.comingSoon && (
-                          <button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg py-2 text-sm font-medium transition-colors">
-                            View Details
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+                
+                {/* AI Insights Footer */}
+                <div className="text-center space-y-3 max-w-3xl mx-auto">
+                  <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="w-1 h-1 bg-primary rounded-full animate-pulse"></div>
+                    <span>Powered by advanced machine learning and real-time travel data</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    {rowIndex === 0 && "Our AI processes 10M+ data points daily including weather patterns, local events, safety scores, and traveler sentiment to ensure perfect timing for your journey."}
+                    {rowIndex === 1 && "Smart algorithms analyze room quality, service excellence, location convenience, and guest satisfaction to match you with accommodations that exceed expectations."}
+                    {rowIndex === 2 && "Wellness AI evaluates your stress levels, sleep patterns, mindfulness goals, and spiritual preferences to recommend transformative retreat experiences."}
+                  </p>
                 </div>
               </section>
             ))}
@@ -612,7 +709,7 @@ const Destinations = () => {
         </div>
       </section>
 
-      {/* Full Screen Destination View */}
+      {/* Full Screen Destination Modal */}
       {selectedDestination && (
         <FullScreenDestination
           destination={selectedDestination}
