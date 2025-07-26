@@ -113,23 +113,23 @@ const ThreeBackground = () => {
   }, []);
 
   const shapes = useMemo(() => [
-    // Majority dark/muted colors
-    { position: [-4, 1, -3] as [number, number, number], color: theme === 'light' ? '#475569' : '#1e293b', type: 'sphere' as const },
-    { position: [3, -1, -2] as [number, number, number], color: theme === 'light' ? '#334155' : '#0f172a', type: 'octahedron' as const },
-    { position: [-2, -2, -4] as [number, number, number], color: theme === 'light' ? '#64748b' : '#334155', type: 'torus' as const },
-    { position: [5, 2, -5] as [number, number, number], color: theme === 'light' ? '#475569' : '#1e293b', type: 'tetrahedron' as const },
-    { position: [-3, 3, -2] as [number, number, number], color: theme === 'light' ? '#374151' : '#111827', type: 'sphere' as const },
-    { position: [2, -3, -6] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#374151', type: 'octahedron' as const },
-    { position: [-5, -1, -1] as [number, number, number], color: theme === 'light' ? '#475569' : '#1e293b', type: 'sphere' as const },
-    { position: [1, 4, -4] as [number, number, number], color: theme === 'light' ? '#334155' : '#0f172a', type: 'torus' as const },
+    // Brand color accents - blue, teal, purple
+    { position: [-4, 1, -3] as [number, number, number], color: theme === 'light' ? '#38bdf8' : '#0ea5e9', type: 'sphere' as const }, // Brand blue
+    { position: [3, -1, -2] as [number, number, number], color: theme === 'light' ? '#14b8a6' : '#0d9488', type: 'octahedron' as const }, // Brand teal/green
+    { position: [-2, -2, -4] as [number, number, number], color: theme === 'light' ? '#8b5cf6' : '#7c3aed', type: 'torus' as const }, // Purple
+    { position: [5, 2, -5] as [number, number, number], color: theme === 'light' ? '#475569' : '#1e293b', type: 'tetrahedron' as const }, // Muted gray
+    { position: [-3, 3, -2] as [number, number, number], color: theme === 'light' ? '#06b6d4' : '#0891b2', type: 'sphere' as const }, // Cyan blue
+    { position: [2, -3, -6] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#374151', type: 'octahedron' as const }, // Muted gray
+    { position: [-5, -1, -1] as [number, number, number], color: theme === 'light' ? '#10b981' : '#059669', type: 'sphere' as const }, // Brand green
+    { position: [1, 4, -4] as [number, number, number], color: theme === 'light' ? '#a855f7' : '#9333ea', type: 'torus' as const }, // Purple
     
-    // Just a couple subtle pink accents
-    { position: [4, 0, -7] as [number, number, number], color: theme === 'light' ? '#be185d' : '#831843', type: 'sphere' as const },
-    { position: [-1, -4, -3] as [number, number, number], color: theme === 'light' ? '#a21caf' : '#701a75', type: 'tetrahedron' as const },
+    // Balanced muted tones for depth
+    { position: [4, 0, -7] as [number, number, number], color: theme === 'light' ? '#334155' : '#0f172a', type: 'sphere' as const },
+    { position: [-1, -4, -3] as [number, number, number], color: theme === 'light' ? '#3b82f6' : '#2563eb', type: 'tetrahedron' as const }, // Brand blue
     
-    // Additional darker shapes for depth
+    // Additional brand color touches
     { position: [6, -2, -3] as [number, number, number], color: theme === 'light' ? '#64748b' : '#334155', type: 'octahedron' as const },
-    { position: [-6, 2, -5] as [number, number, number], color: theme === 'light' ? '#475569' : '#1e293b', type: 'torus' as const },
+    { position: [-6, 2, -5] as [number, number, number], color: theme === 'light' ? '#6366f1' : '#4f46e5', type: 'torus' as const }, // Indigo purple
   ], [theme]);
 
   // CSS fallback when WebGL is not available
