@@ -94,7 +94,7 @@ const Hero = () => {
   const itemCount = getCartItemCount();
 
   return (
-    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-slate-800 via-slate-700 to-blue-900 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950">
+    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-100 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900">
       {/* 3D Background */}
       <ThreeBackground />
 
@@ -168,9 +168,9 @@ const Hero = () => {
 
         {/* Mobile navigation menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-gradient-to-br from-slate-800/95 via-slate-700/95 to-blue-900/95 dark:from-slate-950/95 dark:via-slate-900/95 dark:to-blue-950/95 backdrop-blur-lg border-b border-blue-200/50 dark:border-blue-800/50 py-4 px-4 animate-fade-in shadow-xl">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-gradient-to-br from-blue-50/95 via-indigo-50/95 to-blue-100/95 dark:from-slate-900/95 dark:via-slate-800/95 dark:to-blue-900/95 backdrop-blur-lg border-b border-blue-200/50 dark:border-blue-800/50 py-4 px-4 animate-fade-in shadow-xl">
             <div className="flex flex-col space-y-4 max-w-7xl mx-auto">
-              <Link to="/cart" className="text-slate-200 hover:text-white transition-colors py-3 flex items-center gap-2 px-3 rounded-lg hover:bg-slate-700/50 dark:hover:bg-blue-800/30 relative group">
+              <Link to="/cart" className="text-muted-foreground hover:text-foreground transition-colors py-3 flex items-center gap-2 px-3 rounded-lg hover:bg-blue-100/50 dark:hover:bg-blue-800/30 relative group">
                 <div className="relative">
                   <ShoppingCart className="w-4 h-4" />
                   {itemCount > 0 && (
@@ -182,19 +182,19 @@ const Hero = () => {
                 Cart
                 <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-8"></span>
               </Link>
-              <a href="#how-it-works" className="text-slate-200 hover:text-white transition-colors py-3 px-3 rounded-lg hover:bg-slate-700/50 dark:hover:bg-blue-800/30 relative group">
+              <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors py-3 px-3 rounded-lg hover:bg-blue-100/50 dark:hover:bg-blue-800/30 relative group">
                 How it works
                 <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-16"></span>
               </a>
-              <a href="#features" className="text-slate-200 hover:text-white transition-colors py-3 px-3 rounded-lg hover:bg-slate-700/50 dark:hover:bg-blue-800/30 relative group">
+              <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors py-3 px-3 rounded-lg hover:bg-blue-100/50 dark:hover:bg-blue-800/30 relative group">
                 Features
                 <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-12"></span>
               </a>
-              <Link to="/destinations" className="text-slate-200 hover:text-white transition-colors py-3 px-3 rounded-lg hover:bg-slate-700/50 dark:hover:bg-blue-800/30 relative group">
+              <Link to="/destinations" className="text-muted-foreground hover:text-foreground transition-colors py-3 px-3 rounded-lg hover:bg-blue-100/50 dark:hover:bg-blue-800/30 relative group">
                 Destinations
                 <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-16"></span>
               </Link>
-              <button className="text-slate-200 hover:text-white transition-colors flex items-center gap-1 py-3 px-3 text-left rounded-lg hover:bg-slate-700/50 dark:hover:bg-blue-800/30 relative group">
+              <button className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 py-3 px-3 text-left rounded-lg hover:bg-blue-100/50 dark:hover:bg-blue-800/30 relative group">
                 Vision
                 <ChevronDown className="w-4 h-4" />
                 <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-8"></span>
@@ -211,17 +211,17 @@ const Hero = () => {
       <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 max-w-7xl mx-auto">
         {/* Left side - Main heading and description */}
         <div className="text-left lg:pr-8 order-1 lg:order-1">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6 animate-fade-in">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6 animate-fade-in">
             The Smarter,
             <br />
-            <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
               AI-Powered
             </span>
             <br />
             Escape Discovery
           </h1>
           
-          <p className="text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
           </p>
         </div>
