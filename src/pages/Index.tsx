@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
+import WaitlistSection from '../components/WaitlistSection';
 import HowItWorks from '../components/HowItWorks';
 import Features from '../components/Features';
 import LuxuryShowcase from '../components/LuxuryShowcase';
@@ -30,8 +31,9 @@ const Index = () => {
   console.log('Index state - hasChatHistory:', hasChatHistory);
 
   return (
-    <div className="min-h-screen min-h-dvh bg-white dark:bg-black text-black dark:text-white overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen min-h-dvh bg-background text-foreground overflow-x-hidden transition-colors duration-300">
       <Hero />
+      <WaitlistSection />
       <Features />
       <LuxuryShowcase />
       <HowItWorks />
