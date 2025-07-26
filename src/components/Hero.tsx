@@ -226,83 +226,9 @@ const Hero = () => {
           </p>
         </div>
 
-        {/* Right side - Image carousel */}
-        <div className="relative group order-2 lg:order-2">
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl hidden sm:block"
-          >
-            <ChevronLeft className="w-6 h-6 text-white" />
-          </button>
-
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl hidden sm:block"
-          >
-            <ChevronRight className="w-6 h-6 text-white" />
-          </button>
-
-          {/* Carousel Container */}
-          <div className="relative w-full h-[300px] sm:h-[400px] overflow-hidden rounded-2xl shadow-2xl">
-            <div 
-              className="flex transition-transform duration-700 ease-in-out h-full"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
-              {categorySlides.map((slide, index) => (
-                <div key={slide.id} className="w-full h-full flex-shrink-0 relative">
-                  <Link to="/destinations" className="block w-full h-full group/slide">
-                    {/* Background Image */}
-                    <img 
-                      src={slide.image}
-                      alt={slide.title}
-                      className="w-full h-full object-cover group-hover/slide:scale-105 transition-transform duration-700"
-                    />
-                    
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                    
-                    {/* Category Label */}
-                    <div className="absolute top-4 left-4 flex items-center gap-2">
-                      <div className={`${slide.labelColor} backdrop-blur-sm rounded-full px-3 py-1.5`}>
-                        <span className="text-xs font-bold text-white">{slide.label}</span>
-                      </div>
-                      {slide.comingSoon && (
-                        <div className="bg-gradient-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-full px-3 py-1.5 border border-slate-600/30">
-                          <span className="text-xs font-bold text-slate-300">COMING SOON</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Content */}
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h2 className="text-xl sm:text-2xl font-bold text-white mb-2 group-hover/slide:translate-y-[-4px] transition-transform duration-300">
-                        {slide.title}
-                      </h2>
-                      <p className="text-gray-300 text-sm sm:text-base max-w-2xl group-hover/slide:translate-y-[-4px] transition-transform duration-300 delay-75">
-                        {slide.description}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-            
-            {/* Slide Indicators */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 gap-3 flex">
-              {categorySlides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide 
-                      ? 'bg-white shadow-lg' 
-                      : 'bg-white/40 hover:bg-white/60'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
+        {/* Right side - Empty space where carousel was */}
+        <div className="relative order-2 lg:order-2">
+          {/* Left empty as requested */}
         </div>
       </div>
     </section>
