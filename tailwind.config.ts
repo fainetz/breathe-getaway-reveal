@@ -59,6 +59,12 @@ export default {
 				'wanderlust-cream': 'hsl(var(--wanderlust-cream))',
 				'wanderlust-ocean': 'hsl(var(--wanderlust-ocean))',
 				'wanderlust-sunset': 'hsl(var(--wanderlust-sunset))',
+				'luxury-gold': 'hsl(var(--luxury-gold))',
+				'luxury-platinum': 'hsl(var(--luxury-platinum))',
+				'luxury-midnight': 'hsl(var(--luxury-midnight))',
+				'luxury-pearl': 'hsl(var(--luxury-pearl))',
+				'luxury-carbon': 'hsl(var(--luxury-carbon))',
+				'luxury-diamond': 'hsl(var(--luxury-diamond))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

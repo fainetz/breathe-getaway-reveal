@@ -41,14 +41,36 @@ All colors MUST be HSL.
     --input: 40 14% 96%;
     --ring: 157 36% 37%;
 
-    /* Wanderlust specific colors */
-    --wanderlust-sage: 157 36% 37%;
-    --wanderlust-sage-light: 157 25% 85%;
-    --wanderlust-terracotta: 15 75% 65%;
-    --wanderlust-sand: 43 33% 91%;
-    --wanderlust-cream: 40 14% 98%;
-    --wanderlust-ocean: 201 88% 61%;
-    --wanderlust-sunset: 25 100% 67%;
+  /* Wanderlust specific colors */
+  --wanderlust-sage: 157 36% 37%;
+  --wanderlust-sage-light: 157 25% 85%;
+  --wanderlust-terracotta: 15 75% 65%;
+  --wanderlust-sand: 43 33% 91%;
+  --wanderlust-cream: 40 14% 98%;
+  --wanderlust-ocean: 201 88% 61%;
+  --wanderlust-sunset: 25 100% 67%;
+
+  /* Premium luxury colors */
+  --luxury-gold: 45 100% 75%;
+  --luxury-platinum: 220 20% 90%;
+  --luxury-midnight: 240 40% 8%;
+  --luxury-pearl: 0 0% 96%;
+  --luxury-carbon: 210 15% 15%;
+  --luxury-diamond: 220 25% 98%;
+
+  /* Premium gradients */
+  --gradient-luxury: linear-gradient(135deg, hsl(var(--luxury-gold) / 0.8), hsl(var(--wanderlust-terracotta) / 0.9));
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+  --gradient-mesh: radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.3) 0%, transparent 50%),
+                   radial-gradient(circle at 80% 20%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                   radial-gradient(circle at 40% 40%, rgba(255, 125, 125, 0.2) 0%, transparent 50%);
+
+  /* Premium shadows */
+  --shadow-luxury: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+  --shadow-elegant: 0 15px 35px -10px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 30px rgba(255, 215, 0, 0.3);
+  --shadow-inner: inset 0 2px 4px rgba(255, 255, 255, 0.1);
 
     --radius: 0.5rem;
 
@@ -102,14 +124,22 @@ All colors MUST be HSL.
     --input: 220 25% 16%;
     --ring: 157 25% 65%;
 
-    /* Dark wanderlust colors */
-    --wanderlust-sage: 157 25% 65%;
-    --wanderlust-sage-light: 157 15% 25%;
-    --wanderlust-terracotta: 15 55% 55%;
-    --wanderlust-sand: 43 15% 20%;
-    --wanderlust-cream: 220 27% 8%;
-    --wanderlust-ocean: 201 70% 45%;
-    --wanderlust-sunset: 25 80% 55%;
+  /* Dark wanderlust colors */
+  --wanderlust-sage: 157 25% 65%;
+  --wanderlust-sage-light: 157 15% 25%;
+  --wanderlust-terracotta: 15 55% 55%;
+  --wanderlust-sand: 43 15% 20%;
+  --wanderlust-cream: 220 27% 8%;
+  --wanderlust-ocean: 201 70% 45%;
+  --wanderlust-sunset: 25 80% 55%;
+
+  /* Dark luxury colors */
+  --luxury-gold: 45 80% 65%;
+  --luxury-platinum: 220 15% 25%;
+  --luxury-midnight: 240 50% 5%;
+  --luxury-pearl: 220 27% 12%;
+  --luxury-carbon: 210 20% 8%;
+  --luxury-diamond: 220 27% 15%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -203,6 +233,37 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes premium-glow {
+    0%, 100% {
+      box-shadow: 0 0 30px hsl(var(--luxury-gold) / 0.4),
+                  0 0 60px hsl(var(--luxury-gold) / 0.2),
+                  0 0 100px hsl(var(--luxury-gold) / 0.1);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--luxury-gold) / 0.6),
+                  0 0 80px hsl(var(--luxury-gold) / 0.3),
+                  0 0 120px hsl(var(--luxury-gold) / 0.15);
+    }
+  }
+
+  @keyframes floating {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
   .animate-fade-in {
     animation: fade-in 0.6s ease-out forwards;
   }
@@ -221,6 +282,75 @@ All colors MUST be HSL.
 
   .animate-glow {
     animation: glow 2s ease-in-out infinite;
+  }
+
+  .animate-premium-glow {
+    animation: premium-glow 3s ease-in-out infinite;
+  }
+
+  .animate-floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Premium glassmorphism effects */
+  .glass-luxury {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .glass-premium {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+  }
+
+  .mesh-gradient {
+    background: var(--gradient-mesh);
+  }
+
+  /* Luxury hover effects */
+  .hover-luxury {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-luxury:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-luxury);
+  }
+
+  /* Premium button effects */
+  .btn-luxury {
+    background: var(--gradient-luxury);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: var(--shadow-premium), var(--shadow-inner);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-luxury:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-luxury), var(--shadow-glow);
+  }
+
+  /* Premium text effects */
+  .text-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 215, 0, 1) 50%,
+      rgba(255, 255, 255, 0.8) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 2s linear infinite;
   }
 
   /* Chat background */
