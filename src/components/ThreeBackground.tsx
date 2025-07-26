@@ -36,9 +36,9 @@ const FloatingParticles = ({ theme }: { theme: 'light' | 'dark' }) => {
       </bufferGeometry>
       <pointsMaterial
         size={0.05}
-        color={theme === 'light' ? "#6366f1" : "#8b5cf6"}
+        color={theme === 'light' ? "#6b7280" : "#4b5563"}
         transparent
-        opacity={theme === 'light' ? 0.6 : 0.4}
+        opacity={theme === 'light' ? 0.4 : 0.25}
       />
     </points>
   );
@@ -62,7 +62,7 @@ const FloatingShape = ({ position, color, theme }: { position: [number, number, 
       <meshBasicMaterial
         color={color}
         transparent
-        opacity={theme === 'light' ? 0.4 : 0.3}
+        opacity={theme === 'light' ? 0.25 : 0.15}
         wireframe
       />
     </mesh>
@@ -89,26 +89,26 @@ const ThreeBackground = () => {
   }, []);
 
   const shapes = useMemo(() => [
-    { position: [-4, 1, -3] as [number, number, number], color: theme === 'light' ? '#6366f1' : '#8b5cf6' },
-    { position: [3, -1, -2] as [number, number, number], color: theme === 'light' ? '#d946ef' : '#ec4899' },
-    { position: [-2, -2, -4] as [number, number, number], color: theme === 'light' ? '#3b82f6' : '#3b82f6' },
-    { position: [5, 2, -5] as [number, number, number], color: theme === 'light' ? '#06b6d4' : '#22d3ee' },
-    { position: [-3, 3, -2] as [number, number, number], color: theme === 'light' ? '#10b981' : '#34d399' },
-    { position: [2, -3, -6] as [number, number, number], color: theme === 'light' ? '#f59e0b' : '#fbbf24' },
-    { position: [-5, -1, -1] as [number, number, number], color: theme === 'light' ? '#ef4444' : '#f87171' },
-    { position: [1, 4, -4] as [number, number, number], color: theme === 'light' ? '#14b8a6' : '#5eead4' },
-    { position: [4, 0, -7] as [number, number, number], color: theme === 'light' ? '#6366f1' : '#818cf8' },
-    { position: [-1, -4, -3] as [number, number, number], color: theme === 'light' ? '#ec4899' : '#f472b6' },
+    { position: [-4, 1, -3] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#374151' },
+    { position: [3, -1, -2] as [number, number, number], color: theme === 'light' ? '#9ca3af' : '#4b5563' },
+    { position: [-2, -2, -4] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#374151' },
+    { position: [5, 2, -5] as [number, number, number], color: theme === 'light' ? '#9ca3af' : '#4b5563' },
+    { position: [-3, 3, -2] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#374151' },
+    { position: [2, -3, -6] as [number, number, number], color: theme === 'light' ? '#9ca3af' : '#4b5563' },
+    { position: [-5, -1, -1] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#374151' },
+    { position: [1, 4, -4] as [number, number, number], color: theme === 'light' ? '#9ca3af' : '#4b5563' },
+    { position: [4, 0, -7] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#374151' },
+    { position: [-1, -4, -3] as [number, number, number], color: theme === 'light' ? '#9ca3af' : '#4b5563' },
   ], [theme]);
 
   // CSS fallback when WebGL is not available
   if (!hasWebGL) {
     return (
       <div className="fixed inset-0 z-0">
-        <div className={`absolute inset-0 ${theme === 'light' ? 'bg-gradient-to-br from-purple-100/60 via-transparent to-pink-100/60' : 'bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20'}`}>
-          <div className={`absolute top-1/4 left-1/4 w-32 h-32 ${theme === 'light' ? 'bg-purple-400/30' : 'bg-purple-500/20'} rounded-full blur-xl animate-pulse`}></div>
-          <div className={`absolute top-3/4 right-1/4 w-24 h-24 ${theme === 'light' ? 'bg-pink-400/30' : 'bg-pink-500/20'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '1s' }}></div>
-          <div className={`absolute top-1/2 left-3/4 w-28 h-28 ${theme === 'light' ? 'bg-blue-400/30' : 'bg-blue-500/20'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '2s' }}></div>
+        <div className={`absolute inset-0 ${theme === 'light' ? 'bg-gradient-to-br from-gray-100/40 via-transparent to-slate-100/40' : 'bg-gradient-to-br from-gray-900/30 via-transparent to-slate-900/30'}`}>
+          <div className={`absolute top-1/4 left-1/4 w-32 h-32 ${theme === 'light' ? 'bg-gray-400/20' : 'bg-gray-700/15'} rounded-full blur-xl animate-pulse`}></div>
+          <div className={`absolute top-3/4 right-1/4 w-24 h-24 ${theme === 'light' ? 'bg-slate-400/20' : 'bg-slate-700/15'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '1s' }}></div>
+          <div className={`absolute top-1/2 left-3/4 w-28 h-28 ${theme === 'light' ? 'bg-gray-400/20' : 'bg-gray-700/15'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '2s' }}></div>
         </div>
       </div>
     );
@@ -133,7 +133,7 @@ const ThreeBackground = () => {
         {isLoaded && (
           <>
             <ambientLight intensity={0.2} />
-            <pointLight position={[5, 5, 5]} intensity={0.3} color={theme === 'light' ? "#6366f1" : "#8b5cf6"} />
+            <pointLight position={[5, 5, 5]} intensity={0.2} color={theme === 'light' ? "#6b7280" : "#374151"} />
             
             {shapes.map((shape, index) => (
               <FloatingShape
