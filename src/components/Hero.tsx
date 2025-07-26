@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, ShoppingCart, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import ThreeBackground from './ThreeBackground';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Hero = () => {
@@ -93,15 +94,9 @@ const Hero = () => {
   const itemCount = getCartItemCount();
 
   return (
-    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-purple-100 via-pink-50 to-purple-200 dark:from-purple-900 dark:via-purple-800 dark:to-pink-900">
-      {/* Geometric shapes background - matching AICM style */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-10 w-40 h-40 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full opacity-20 blur-xl"></div>
-        <div className="absolute top-40 right-32 w-60 h-60 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-15 blur-2xl"></div>
-        <div className="absolute bottom-20 left-10 w-80 h-80 bg-gradient-to-br from-blue-300 to-purple-300 rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute top-1/2 right-0 w-96 h-96 bg-gradient-to-l from-purple-200 to-transparent rounded-l-full opacity-30"></div>
-        <div className="absolute bottom-0 right-20 w-72 h-72 bg-gradient-to-t from-pink-200 to-transparent rounded-t-full opacity-25"></div>
-      </div>
+    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-100 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900">
+      {/* 3D Background */}
+      <ThreeBackground />
 
       {/* Navigation - AICM layout style */}
       <nav className="relative z-50 px-4 sm:px-6 py-6">
@@ -197,27 +192,10 @@ const Hero = () => {
         )}
       </nav>
 
-      {/* Main Content - AICM layout with original content */}
+      {/* Main Content - Heading on right, carousel on left */}
       <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 max-w-7xl mx-auto">
-        {/* Left side - Main heading and description */}
-        <div className="text-left lg:pr-8">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-foreground mb-6 animate-fade-in">
-            The Smarter,
-            <br />
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              AI-Powered
-            </span>
-            <br />
-            Escape Discovery
-          </h1>
-          
-          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
-          </p>
-        </div>
-
-        {/* Right side - Image carousel as its own section */}
-        <div className="relative group">
+        {/* Left side - Image carousel */}
+        <div className="relative group order-2 lg:order-1">
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
@@ -293,6 +271,23 @@ const Hero = () => {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Right side - Main heading and description */}
+        <div className="text-left lg:pl-8 order-1 lg:order-2">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6 animate-fade-in">
+            The Smarter,
+            <br />
+            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
+              AI-Powered
+            </span>
+            <br />
+            Escape Discovery
+          </h1>
+          
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
+          </p>
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@ interface ExpandableSearchProps {
 }
 
 const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -92,47 +92,35 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
 
   return (
-    <div className={`fixed z-40 transition-transform duration-500 ease-out ${
-      !isScrolled 
-        ? isMobile 
-          ? 'top-[31vh] left-4 right-4' // Use vh for Safari compatibility
-          : 'top-[50%] left-1/2 -translate-x-1/2' // Desktop hero position
-        : isMobile 
-          ? 'bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2' // Respect safe area
-          : 'bottom-8 left-1/2 -translate-x-1/2' // Desktop collapsed position - moved up
-    }`}>
+    <div className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-40 transition-transform duration-500 ease-out">
       <div 
-  className={`${
-    isMobile ? 'w-full' : 'w-96'
-  } ${
-    isMobile ? 'h-[48px]' : 'h-[52px]'
-  } relative overflow-hidden transition-all duration-500 ease-out origin-center ${
-    shouldBeExpanded ? 'scale-100' : 'scale-[0.75]'
-  }`}
+        className={`${
+          isMobile ? 'w-full max-w-sm' : 'w-96'
+        } ${
+          isMobile ? 'h-[48px]' : 'h-[52px]'
+        } relative overflow-hidden transition-all duration-500 ease-out origin-center ${
+          isExpanded ? 'scale-100' : 'scale-[0.6]'
+        }`}
         onMouseEnter={() => {
-          if (!isMobile && isScrolled) {
-            setIsHovered(true);
-            setIsExpanded(true);
-          }
+          setIsHovered(true);
+          setIsExpanded(true);
         }}
         onMouseLeave={() => {
-          if (!isMobile && isScrolled) {
-            setIsHovered(false);
+          setIsHovered(false);
+          if (!isFocused && !isUserTyping) {
             setIsExpanded(false);
           }
         }}
         onClick={() => {
-          if (isMobile && isScrolled && !shouldBeExpanded) {
-            setIsExpanded(true);
-          }
+          setIsExpanded(true);
         }}
       >
         {/* Simplified background with blur */}
         <div className="absolute inset-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md">
         </div> 
 
-        {/* Collapsed state for desktop when scrolled */}
-        {isScrolled && !shouldBeExpanded && !isMobile ? (
+        {/* Collapsed state */}
+        {!isExpanded ? (
           <div className="relative w-full h-full flex items-center justify-center px-4">
             <Search className="w-5 h-5 text-gray-600 dark:text-gray-400 mr-2 transition-colors duration-300" />
             <span className="text-gray-600 dark:text-gray-400 text-sm font-medium transition-colors duration-300">Search</span>
@@ -147,37 +135,24 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
                 setPrompt(e.target.value);
                 setIsUserTyping(true); // Mark as typing when user inputs text
               }}
-              placeholder={!isScrolled ? "Need escape..." : isMobile ? "Escape..." : "Need escape..."}
+              placeholder="Need escape..."
               className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-base font-medium transition-all duration-300 focus:scale-[1.01]"
-              autoFocus={!isScrolled}
               onFocus={(e) => {
-                setIsFocused(true); // Mark as focused
-                if (!isScrolled) {
-                  e.target.placeholder = "Heartbroken, excited, adventurous...";
-                }
-                if (isMobile) {
-                  e.target.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center', 
-                    inline: 'nearest' 
-                  });
-                }
+                setIsFocused(true);
+                e.target.placeholder = "Heartbroken, excited, adventurous...";
+                setIsExpanded(true);
               }}
               onBlur={(e) => {
-                setIsFocused(false); // Remove focus state
-                if (!isScrolled) {
-                  e.target.placeholder = "Need escape...";
-                }
-                if (isMobile) {
-                  setTimeout(() => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }, 100);
+                setIsFocused(false);
+                e.target.placeholder = "Need escape...";
+                if (!isHovered && !isUserTyping) {
+                  setIsExpanded(false);
                 }
               }}
             />
             <button
               type="submit"
-              className="ml-3 p-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-full hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0"
+              className="ml-3 p-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0"
             >
               <ArrowRight className="w-4 h-4" />
             </button>
