@@ -44,25 +44,49 @@ const FloatingParticles = ({ theme }: { theme: 'light' | 'dark' }) => {
   );
 };
 
-// Simplified floating shape component
-const FloatingShape = ({ position, color, theme }: { position: [number, number, number], color: string, theme: 'light' | 'dark' }) => {
+// Enhanced floating shape component with different geometries
+const FloatingShape = ({ 
+  position, 
+  color, 
+  theme, 
+  type = 'sphere' 
+}: { 
+  position: [number, number, number], 
+  color: string, 
+  theme: 'light' | 'dark',
+  type?: 'sphere' | 'torus' | 'octahedron' | 'tetrahedron'
+}) => {
   const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.elapsedTime * 0.2;
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.1;
+      const speed = type === 'torus' ? 0.15 : 0.2;
+      meshRef.current.rotation.x = state.clock.elapsedTime * speed;
+      meshRef.current.rotation.y = state.clock.elapsedTime * (speed * 0.5);
       meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime + position[0]) * 0.3;
     }
   });
 
+  const getGeometry = () => {
+    switch (type) {
+      case 'torus':
+        return <torusGeometry args={[0.4, 0.15, 8, 16]} />;
+      case 'octahedron':
+        return <octahedronGeometry args={[0.4]} />;
+      case 'tetrahedron':
+        return <tetrahedronGeometry args={[0.5]} />;
+      default:
+        return <sphereGeometry args={[0.3, 8, 8]} />;
+    }
+  };
+
   return (
     <mesh ref={meshRef} position={position}>
-      <sphereGeometry args={[0.3, 8, 8]} />
+      {getGeometry()}
       <meshBasicMaterial
         color={color}
         transparent
-        opacity={theme === 'light' ? 0.25 : 0.15}
+        opacity={theme === 'light' ? 0.3 : 0.18}
         wireframe
       />
     </mesh>
@@ -89,16 +113,23 @@ const ThreeBackground = () => {
   }, []);
 
   const shapes = useMemo(() => [
-    { position: [-4, 1, -3] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#374151' },
-    { position: [3, -1, -2] as [number, number, number], color: theme === 'light' ? '#9ca3af' : '#4b5563' },
-    { position: [-2, -2, -4] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#374151' },
-    { position: [5, 2, -5] as [number, number, number], color: theme === 'light' ? '#9ca3af' : '#4b5563' },
-    { position: [-3, 3, -2] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#374151' },
-    { position: [2, -3, -6] as [number, number, number], color: theme === 'light' ? '#9ca3af' : '#4b5563' },
-    { position: [-5, -1, -1] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#374151' },
-    { position: [1, 4, -4] as [number, number, number], color: theme === 'light' ? '#9ca3af' : '#4b5563' },
-    { position: [4, 0, -7] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#374151' },
-    { position: [-1, -4, -3] as [number, number, number], color: theme === 'light' ? '#9ca3af' : '#4b5563' },
+    // Majority dark/muted colors
+    { position: [-4, 1, -3] as [number, number, number], color: theme === 'light' ? '#475569' : '#1e293b', type: 'sphere' as const },
+    { position: [3, -1, -2] as [number, number, number], color: theme === 'light' ? '#334155' : '#0f172a', type: 'octahedron' as const },
+    { position: [-2, -2, -4] as [number, number, number], color: theme === 'light' ? '#64748b' : '#334155', type: 'torus' as const },
+    { position: [5, 2, -5] as [number, number, number], color: theme === 'light' ? '#475569' : '#1e293b', type: 'tetrahedron' as const },
+    { position: [-3, 3, -2] as [number, number, number], color: theme === 'light' ? '#374151' : '#111827', type: 'sphere' as const },
+    { position: [2, -3, -6] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#374151', type: 'octahedron' as const },
+    { position: [-5, -1, -1] as [number, number, number], color: theme === 'light' ? '#475569' : '#1e293b', type: 'sphere' as const },
+    { position: [1, 4, -4] as [number, number, number], color: theme === 'light' ? '#334155' : '#0f172a', type: 'torus' as const },
+    
+    // Just a couple subtle pink accents
+    { position: [4, 0, -7] as [number, number, number], color: theme === 'light' ? '#be185d' : '#831843', type: 'sphere' as const },
+    { position: [-1, -4, -3] as [number, number, number], color: theme === 'light' ? '#a21caf' : '#701a75', type: 'tetrahedron' as const },
+    
+    // Additional darker shapes for depth
+    { position: [6, -2, -3] as [number, number, number], color: theme === 'light' ? '#64748b' : '#334155', type: 'octahedron' as const },
+    { position: [-6, 2, -5] as [number, number, number], color: theme === 'light' ? '#475569' : '#1e293b', type: 'torus' as const },
   ], [theme]);
 
   // CSS fallback when WebGL is not available
@@ -141,6 +172,7 @@ const ThreeBackground = () => {
                 position={shape.position}
                 color={shape.color}
                 theme={theme}
+                type={shape.type}
               />
             ))}
             
