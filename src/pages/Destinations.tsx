@@ -373,156 +373,106 @@ const Destinations = () => {
             </div>
           </div>
 
-          {/* Elegant Featured Destination */}
-          <div className="mb-32">
-            <div className="text-center mb-12 space-y-4">
-              <h2 className="text-4xl md:text-5xl font-black text-foreground">
-                Featured Destination
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Close your eyes and imagine yourself here
-              </p>
-            </div>
-
-            {/* Clean Hero Card */}
-            <div className="relative h-[80vh] rounded-3xl overflow-hidden group cursor-pointer shadow-2xl hover:shadow-3xl transition-all duration-700"
-                 onClick={() => currentHero && handleCardClick(currentHero)}>
-              
-              {/* Image Background */}
-              <div className="absolute inset-0 overflow-hidden">
-                {currentHero?.image ? (
-                  <img 
-                    src={currentHero.image} 
-                    alt={currentHero.name}
-                    className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-muted"></div>
-                )}
-              </div>
-
-              {/* Subtle Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-              
-              {/* Clean Status Badges */}
-              <div className="absolute top-8 right-8 space-y-3">
-                {currentHero?.comingSoon && (
-                  <div className="bg-background/90 backdrop-blur-sm rounded-xl px-4 py-2 border border-border">
-                    <span className="text-sm font-medium text-muted-foreground">Coming Soon</span>
-                  </div>
-                )}
-                <div className="bg-primary/90 backdrop-blur-sm rounded-xl px-4 py-2">
-                  <span className="text-sm font-medium text-primary-foreground">Featured</span>
-                </div>
-                {currentHero?.rating && (
-                  <div className="flex items-center gap-2 bg-background/90 backdrop-blur-sm rounded-xl px-4 py-2">
-                    <Star className="w-4 h-4 text-primary fill-current" />
-                    <span className="text-sm font-medium text-foreground">{currentHero.rating}</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Content */}
-              <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16">
-                <div className="max-w-4xl space-y-6">
-                  {/* Mood Badge */}
-                  <div className="inline-flex items-center gap-2 bg-background/20 backdrop-blur-sm border border-border/20 rounded-full px-6 py-2">
-                    <Heart className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-medium text-white">{currentHero?.mood}</span>
+          {/* Magazine-Style Featured Section */}
+          <div className="mb-20">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 h-[80vh]">
+              {/* Large Featured Card - Left Side */}
+              <div className="lg:col-span-2">
+                <div 
+                  className="relative h-full rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
+                  onClick={() => currentHero && handleCardClick(currentHero)}
+                >
+                  <div className="absolute inset-0">
+                    {currentHero?.image ? (
+                      <img 
+                        src={currentHero.image} 
+                        alt={currentHero.name}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-muted"></div>
+                    )}
                   </div>
                   
-                  {/* Title & Location */}
-                  <div className="space-y-3">
-                    <h3 className="text-4xl md:text-6xl font-black text-white leading-tight">
-                      {currentHero?.name}
-                    </h3>
-                    <div className="flex items-center gap-3 text-white/90">
-                      <MapPin className="w-5 h-5" />
-                      <span className="text-xl font-medium">{currentHero?.location}</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                  
+                  <div className="absolute bottom-8 left-8 right-8">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <div className="bg-primary rounded-lg px-3 py-1">
+                          <span className="text-sm font-medium text-primary-foreground">Featured</span>
+                        </div>
+                        {currentHero?.rating && (
+                          <div className="flex items-center gap-1 bg-background/20 backdrop-blur-sm rounded-lg px-3 py-1">
+                            <Star className="w-4 h-4 text-primary fill-current" />
+                            <span className="text-sm font-medium text-white">{currentHero.rating}</span>
+                          </div>
+                        )}
+                      </div>
+                      
+                      <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
+                        {currentHero?.name}
+                      </h2>
+                      
+                      <div className="flex items-center gap-2 text-white/90">
+                        <MapPin className="w-5 h-5" />
+                        <span className="text-lg">{currentHero?.location}</span>
+                      </div>
+                      
+                      <p className="text-white/90 text-lg max-w-2xl">
+                        {currentHero?.description}
+                      </p>
+                      
+                      <div className="flex items-center gap-4 pt-2">
+                        <div className="bg-primary rounded-xl px-4 py-2">
+                          <span className="text-lg font-bold text-primary-foreground">{currentHero?.price}</span>
+                        </div>
+                        <button 
+                          className="bg-background/20 hover:bg-background/30 backdrop-blur-sm border border-border/30 rounded-xl px-6 py-2 text-white font-medium transition-all duration-300"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            currentHero && handleCardClick(currentHero);
+                          }}
+                        >
+                          Explore Now
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  
-                  {/* Description */}
-                  <p className="text-white/95 text-xl max-w-3xl leading-relaxed">
-                    {currentHero?.description}
-                  </p>
-                  
-                  {/* Price & Actions */}
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
-                    <div className="bg-primary rounded-xl px-6 py-3">
-                      <span className="text-xl font-bold text-primary-foreground">{currentHero?.price}</span>
+                </div>
+              </div>
+              
+              {/* Right Side - Two Stacked Cards */}
+              <div className="space-y-8">
+                {featuredDestinations.slice(1, 3).map((destination, index) => (
+                  <div 
+                    key={destination.id}
+                    className="relative h-[calc(50%-1rem)] rounded-2xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={() => handleCardClick(destination)}
+                  >
+                    <div className="absolute inset-0">
+                      {destination.image ? (
+                        <img 
+                          src={destination.image} 
+                          alt={destination.name}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-muted"></div>
+                      )}
                     </div>
                     
-                    <div className="flex gap-4">
-                      <button
-                        className="group bg-background/20 hover:bg-background/30 backdrop-blur-xl border border-border/30 rounded-xl px-6 py-3 text-white font-medium transition-all duration-300"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          currentHero && handleCardClick(currentHero);
-                        }}
-                      >
-                        <span className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4" />
-                          Book Now
-                        </span>
-                      </button>
-                      
-                      <button className="group bg-background/10 hover:bg-background/20 backdrop-blur-xl border border-border/20 rounded-xl px-6 py-3 text-white font-medium transition-all duration-300">
-                        <span className="flex items-center gap-2">
-                          <Heart className="w-4 h-4" />
-                          Save
-                        </span>
-                      </button>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-xl font-bold text-white mb-1">{destination.name}</h3>
+                      <div className="flex items-center gap-2 text-white/80 mb-2">
+                        <MapPin className="w-4 h-4" />
+                        <span className="text-sm">{destination.location}</span>
+                      </div>
+                      <div className="text-primary font-bold">{destination.price}</div>
                     </div>
                   </div>
-                  
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-3 pt-4">
-                    {currentHero?.tags.map((tag, index) => (
-                      <div key={index} className="bg-background/20 backdrop-blur-sm border border-border/20 rounded-full px-4 py-2">
-                        <span className="text-sm text-white/90">{tag}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Simple Navigation */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setHeroIndex(heroIndex === 0 ? featuredDestinations.length - 1 : heroIndex - 1);
-                }}
-                className="absolute left-8 top-1/2 -translate-y-1/2 bg-background/20 hover:bg-background/30 backdrop-blur-sm border border-border/20 rounded-full p-3 transition-all duration-300"
-              >
-                <ChevronLeft className="w-5 h-5 text-white" />
-              </button>
-              
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setHeroIndex((heroIndex + 1) % featuredDestinations.length);
-                }}
-                className="absolute right-8 top-1/2 -translate-y-1/2 bg-background/20 hover:bg-background/30 backdrop-blur-sm border border-border/20 rounded-full p-3 transition-all duration-300"
-              >
-                <ChevronRight className="w-5 h-5 text-white" />
-              </button>
-
-              {/* Clean Indicator */}
-              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
-                {featuredDestinations.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setHeroIndex(index);
-                    }}
-                    className={`transition-all duration-300 rounded-full ${
-                      index === heroIndex 
-                        ? 'w-8 h-2 bg-white' 
-                        : 'w-2 h-2 bg-white/50 hover:bg-white/70'
-                    }`}
-                  />
                 ))}
               </div>
             </div>
