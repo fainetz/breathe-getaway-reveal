@@ -107,7 +107,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply text-foreground;
+    @apply text-foreground font-inter;
     background-color: #000000;
     min-height: 100vh;
     min-height: 100dvh;

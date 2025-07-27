@@ -333,22 +333,22 @@ const Destinations = () => {
       {/* Clean Hero Section */}
       <section className="relative min-h-screen pt-16 pb-12 px-6">
         <div className="max-w-7xl mx-auto">
-          {/* Refined Header */}
-          <div className="text-center mb-20 space-y-8">
-            <div className="inline-flex items-center gap-3 bg-muted/50 backdrop-blur-sm border border-border rounded-full px-6 py-3 text-sm font-medium">
-              <div className="w-2 h-2 bg-primary rounded-full"></div>
-              <Sparkles className="w-4 h-4 text-muted-foreground" />
-              <span className="text-foreground">AI-Powered Travel Discovery</span>
+          {/* Enhanced Header */}
+          <div className="text-center mb-20 space-y-10">
+            <div className="inline-flex items-center gap-3 bg-primary/10 backdrop-blur-sm border border-primary/20 rounded-full px-8 py-4 text-sm font-semibold">
+              <div className="w-2.5 h-2.5 bg-primary rounded-full animate-pulse"></div>
+              <Sparkles className="w-5 h-5 text-primary" />
+              <span className="text-primary">AI-Powered Travel Discovery</span>
             </div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none">
-              <span className="block text-foreground mb-2">
+            <h1 className="font-playfair text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.9] tracking-tight">
+              <span className="block text-foreground mb-4 italic">
                 Let AI Find Your
               </span>
-              <span className="block text-muted-foreground">
+              <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-black">
                 Perfect Escape
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-2xl md:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
               Our advanced AI analyzes your preferences, travel history, and real-time data to discover destinations perfectly matched to your desires.
             </p>
             
