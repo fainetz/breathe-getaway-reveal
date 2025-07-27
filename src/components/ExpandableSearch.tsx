@@ -110,8 +110,8 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       isMobile && !shouldShowOnMobile ? 'translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100 pointer-events-auto'
     }`}>
       <div 
-        className={`${isMobile ? 'w-80 max-w-[calc(100vw-2rem)]' : 'w-96'} h-[52px] relative overflow-visible transition-all duration-500 ease-out origin-center ${
-          isExpanded ? 'scale-100' : isMobile ? 'scale-[0.75]' : 'scale-[0.55]'
+        className={`${isMobile ? 'w-72 max-w-[calc(100vw-2rem)]' : 'w-80'} ${isExpanded ? 'h-[48px]' : 'h-[40px]'} relative overflow-visible transition-all duration-500 ease-out origin-center ${
+          isExpanded ? 'scale-100' : isMobile ? 'scale-[0.85]' : 'scale-[0.7]'
         }`}
         onMouseEnter={() => {
           setIsHovered(true);
@@ -127,8 +127,9 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           setIsExpanded(true);
         }}
       >
-        {/* Background with blur */}
-        <div className="absolute inset-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md">
+        <div className={`absolute inset-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border border-gray-200 dark:border-gray-700 shadow-md transition-all duration-300 ${
+          isExpanded ? 'rounded-2xl' : 'rounded-full'
+        }`}>
         </div>
         
         {/* Contemporary Preview Tag - only shows when expanded */}
@@ -140,15 +141,15 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           </div>
         )}
 
-        {/* Collapsed state */}
+        {/* Collapsed state - round search pill */}
         {!isExpanded ? (
-          <div className="relative w-full h-full flex items-center justify-center px-4">
-            <Search className="w-5 h-5 text-gray-600 dark:text-gray-400 mr-2 transition-colors duration-300" />
+          <div className="relative w-full h-full flex items-center justify-center px-6">
+            <Search className="w-4 h-4 text-gray-600 dark:text-gray-400 mr-2 transition-colors duration-300" />
             <span className="text-gray-600 dark:text-gray-400 text-sm font-medium transition-colors duration-300">Search</span>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className={`relative w-full h-full flex items-center ${isMobile ? 'px-3' : 'px-6'}`}>
-            <Search className={`${isMobile ? 'w-4 h-4 mr-2' : 'w-5 h-5 mr-3'} text-gray-400 dark:text-gray-500 flex-shrink-0`} />
+          <form onSubmit={handleSubmit} className={`relative w-full h-full flex items-center ${isMobile ? 'px-4' : 'px-5'}`}>
+            <Search className={`${isMobile ? 'w-4 h-4 mr-2' : 'w-4 h-4 mr-3'} text-gray-400 dark:text-gray-500 flex-shrink-0`} />
             <input
               type="text"
               value={prompt}
@@ -157,7 +158,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
                 setIsUserTyping(true); // Mark as typing when user inputs text
               }}
               placeholder="Need escape..."
-              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-base font-medium transition-all duration-300 focus:scale-[1.01]"
+              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm font-medium transition-all duration-300 focus:scale-[1.01]"
               onFocus={(e) => {
                 setIsFocused(true);
                 e.target.placeholder = "Heartbroken, excited, adventurous...";
@@ -173,9 +174,9 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
             />
             <button
               type="submit"
-              className={`ml-1 ${isMobile ? 'p-1.5' : 'p-2'} bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0`}
+              className={`ml-2 ${isMobile ? 'p-1.5' : 'p-2'} bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0`}
             >
-              <ArrowRight className={`${isMobile ? 'w-3.5 h-3.5' : 'w-4 h-4'}`} />
+              <ArrowRight className={`${isMobile ? 'w-3.5 h-3.5' : 'w-3.5 h-3.5'}`} />
             </button>
           </form>
         )}
