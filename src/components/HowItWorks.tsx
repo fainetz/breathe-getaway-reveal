@@ -32,19 +32,22 @@ const HowItWorks = () => {
 
   const steps = [
     {
-      title: "Express Your Soul",
-      description: "Tell us how you're feeling, what you're seeking, or what you need to escape from.",
-      icon: "💭"
+      title: "Tell Us Your Story",
+      description: "Whether it's 'cheapest way to leave this weekend' or 'I need to disappear in luxury'—we understand every travel need.",
+      icon: "💭",
+      examples: ["Under $200 trip", "I need to get away", "Something stress-free"]
     },
     {
-      title: "AI Understands You", 
-      description: "Our emotional intelligence AI processes your deepest travel desires and intentions.",
-      icon: "🧠"
+      title: "AI Reads Your Needs", 
+      description: "Our intelligence adapts: budget optimization for students, emotional healing for escapists, concierge service for executives.",
+      icon: "🧠",
+      examples: ["Smart deals", "Healing destinations", "Luxury coordination"]
     },
     {
-      title: "Curated Just for You",
-      description: "Receive personalized trips that match your emotional state and wanderlust needs.",
-      icon: "✨"
+      title: "Perfect Match Delivered",
+      description: "From hostels to private jets, from group tours to personal chefs—receive exactly what your situation calls for.",
+      icon: "✨",
+      examples: ["Budget adventures", "Soul retreats", "VIP experiences"]
     }
   ];
 
@@ -54,10 +57,10 @@ const HowItWorks = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-20 opacity-0 animate-fade-in">
           <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:via-gray-100 dark:to-gray-300 bg-clip-text text-transparent transition-colors duration-300 drop-shadow-lg">
-            How It Works
+            How It Works for Everyone
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
-            Beyond destinations. Beyond filters. We read between the lines of what your heart truly seeks.
+            Three different personas, one intelligent system. Whether you're budget-conscious, emotionally seeking, or wanting luxury—we adapt completely.
           </p>
         </div>
 
@@ -71,7 +74,16 @@ const HowItWorks = () => {
                 <div className="relative z-10">
                   <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-lg">{step.icon}</div>
                   <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white transition-colors duration-300 drop-shadow-md">{step.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed transition-colors duration-300">{step.description}</p>
+                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed transition-colors duration-300 mb-4">{step.description}</p>
+                  
+                  {/* Example cards */}
+                  <div className="space-y-2">
+                    {step.examples.map((example, exampleIndex) => (
+                      <div key={exampleIndex} className="bg-white/60 dark:bg-white/10 rounded-lg px-3 py-2 text-sm text-gray-600 dark:text-gray-300">
+                        "{example}"
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
               {index < steps.length - 1 && (

@@ -14,39 +14,46 @@ const Features = () => {
 
   const features = [
     {
-      title: "AI-Powered Specific Search",
-      description: "Search for oddly specific things using AI - find flights with sunset views or hotels with vintage typewriters in the lobby.",
-      gradient: "from-cyan-500 to-blue-500"
+      title: "Budget-Smart Discovery",
+      description: "Find amazing deals under $200. Our AI optimizes for value, timing, and hidden discounts that fit your everyday budget.",
+      gradient: "from-green-500 to-emerald-500",
+      persona: "budget"
     },
     {
       title: "Emotional Intelligence",
-      description: "AI that reads your mood, energy, and deepest travel desires to match you with transformative experiences.",
-      gradient: "from-purple-500 to-blue-500"
+      description: "AI that reads your mood, energy, and deepest travel desires to match you with transformative healing experiences.",
+      gradient: "from-purple-500 to-blue-500",
+      persona: "emotional"
     },
     {
-      title: "Instant Everything", 
-      description: "From flights to hidden gems, we handle every detail so you can focus on your journey within.",
-      gradient: "from-pink-500 to-purple-500"
+      title: "Luxury Concierge AI", 
+      description: "Stress-free, premium travel. Just say what you want—private jets, 5-star suites, exclusive access—we handle everything.",
+      gradient: "from-amber-500 to-orange-500",
+      persona: "luxury"
     },
     {
-      title: "Curated Authenticity",
-      description: "Skip the tourist traps. Find experiences that resonate with your soul and create lasting memories.",
-      gradient: "from-blue-500 to-teal-500"
+      title: "Flexible Date Magic",
+      description: "Students and young professionals: we find the cheapest times to travel with smart date flexibility and last-minute deals.",
+      gradient: "from-cyan-500 to-blue-500",
+      persona: "budget"
     },
     {
-      title: "Serendipitous Discovery",
-      description: "Uncover places and experiences you never knew existed but were exactly what you needed.",
-      gradient: "from-teal-500 to-green-500"
+      title: "Soul-Centered Escapes",
+      description: "Breakup? Burnout? We understand and curate restorative retreats, peaceful nature spots, and healing destinations.",
+      gradient: "from-rose-500 to-pink-500",
+      persona: "emotional"
     },
     {
-      title: "Last-Minute Magic",
-      description: "Spontaneous escapes made simple. Perfect for when you need to disappear into adventure.",
-      gradient: "from-orange-500 to-pink-500"
+      title: "Zero-Effort Luxury",
+      description: "For busy executives: speak your needs once, we coordinate everything—flights, drivers, reservations, surprises.",
+      gradient: "from-purple-500 to-violet-500",
+      persona: "luxury"
     },
     {
-      title: "Mindful Travel",
-      description: "Every recommendation considers your mental space and what will truly nourish your spirit.",
-      gradient: "from-indigo-500 to-purple-500"
+      title: "Hostel to Resort Range",
+      description: "Whether it's a $30 hostel or a $3000 villa, we match accommodations to your budget and vibe perfectly.",
+      gradient: "from-indigo-500 to-blue-500",
+      persona: "mixed"
     }
   ];
 
@@ -125,11 +132,11 @@ const Features = () => {
         <div className={`text-center mb-12 sm:mb-16 lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="overflow-x-auto lg:overflow-visible">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-black dark:text-white transition-colors duration-300 drop-shadow-lg whitespace-nowrap lg:whitespace-normal">
-              Travel That Understands You
+              Features for Every Traveler
             </h2>
           </div>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed transition-colors duration-300 px-4 sm:px-0">
-            Every feature designed to bridge the gap between where you are and where your soul needs to be.
+            Budget-conscious? Seeking emotional healing? Want luxury without effort? Our AI adapts to your exact travel personality.
           </p>
         </div>
 

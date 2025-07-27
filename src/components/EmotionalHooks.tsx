@@ -8,29 +8,40 @@ const EmotionalHooks = () => {
 
   const examples = [
     {
-      quote: "I need to feel small again under vast skies",
-      destination: "Iceland Northern Lights Escape",
-      color: "blue"
+      quote: "Cheapest way to leave this weekend",
+      destination: "Budget hostel in Prague ($45/night)",
+      color: "green",
+      persona: "budget"
     },
     {
-      quote: "Find me a place where time moves differently", 
-      destination: "Monasteries of Bhutan Retreat",
-      color: "indigo"
+      quote: "I need to get away and cry alone", 
+      destination: "Healing retreat in Bali mountains",
+      color: "blue",
+      persona: "emotional"
     },
     {
-      quote: "I want to disappear into music and culture",
-      destination: "Jazz Clubs of New Orleans",
-      color: "blue"
+      quote: "Book me something stress-free. No decisions.",
+      destination: "Private villa in Tuscany with chef",
+      color: "amber",
+      persona: "luxury"
     },
     {
-      quote: "Help me reconnect with ancient wisdom",
-      destination: "Sacred Temples of Kyoto",
-      color: "cyan"
+      quote: "Solo trip under $200 total",
+      destination: "Backpacking trail in Portugal",
+      color: "green",
+      persona: "budget"
     },
     {
-      quote: "I crave the rhythm of ocean waves",
-      destination: "Secluded Beaches of Maldives",
-      color: "blue"
+      quote: "Somewhere warm that feels like a reset",
+      destination: "Oceanfront wellness center, Costa Rica",
+      color: "blue",
+      persona: "emotional"
+    },
+    {
+      quote: "AI concierge: I want to disappear in luxury",
+      destination: "Private island with yacht access",
+      color: "amber",
+      persona: "luxury"
     }
   ];
 
@@ -83,10 +94,10 @@ const EmotionalHooks = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className={`transition-all duration-1200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
             <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight text-black dark:text-white transition-colors duration-300">
-              When Words 
+              From Any Request
               <br />
               <span className="text-gray-700 dark:text-gray-300">
-                Become Journeys
+                To Perfect Trip
               </span>
             </h2>
             
@@ -101,6 +112,20 @@ const EmotionalHooks = () => {
                   }`}
                 >
                   <div className="bg-white/80 dark:bg-white/20 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-2xl p-6 hover:bg-white/90 dark:hover:bg-white/30 transition-all duration-300 shadow-xl">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className={`text-lg ${
+                        example.persona === 'budget' ? '💰' : 
+                        example.persona === 'emotional' ? '💙' : '👑'
+                      }`}></span>
+                      <span className={`text-xs font-semibold px-2 py-1 rounded-full ${
+                        example.persona === 'budget' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-200' :
+                        example.persona === 'emotional' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200' :
+                        'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-200'
+                      }`}>
+                        {example.persona === 'budget' ? 'Budget Traveler' : 
+                         example.persona === 'emotional' ? 'Emotional Escapist' : 'Luxury Client'}
+                      </span>
+                    </div>
                     <p className="text-lg text-gray-700 dark:text-gray-100 italic mb-2 transition-colors duration-300">"{example.quote}"</p>
                     <p className="text-sm text-gray-600 dark:text-gray-400 font-medium transition-colors duration-300">→ {example.destination}</p>
                   </div>

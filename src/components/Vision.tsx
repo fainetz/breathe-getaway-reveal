@@ -8,22 +8,22 @@ const Vision = () => {
 
   const visionCards = [
     {
-      icon: "🌍",
-      title: "Global Discovery",
-      description: "Access to hidden gems and transformative experiences across all continents.",
-      gradient: "from-blue-500 to-cyan-500"
+      icon: "💰",
+      title: "Budget Intelligence",
+      description: "Smart deals for students and everyday travelers who want to explore without breaking the bank.",
+      gradient: "from-green-500 to-emerald-500"
     },
     {
-      icon: "🤖", 
-      title: "Emotional AI",
-      description: "Technology that reads between the lines of your deepest travel desires.",
-      gradient: "from-blue-600 to-indigo-500"
+      icon: "💙", 
+      title: "Emotional Healing",
+      description: "AI that understands when you need to escape, heal, and find yourself through transformative travel.",
+      gradient: "from-blue-500 to-indigo-500"
     },
     {
-      icon: "✨",
-      title: "Serendipity Engine", 
-      description: "Calculated magic that puts you in the right place at the perfect moment.",
-      gradient: "from-indigo-500 to-blue-600"
+      icon: "👑",
+      title: "Luxury Concierge", 
+      description: "Effortless premium experiences for executives who want zero stress and maximum prestige.",
+      gradient: "from-amber-500 to-orange-500"
     }
   ];
 
@@ -75,16 +75,16 @@ const Vision = () => {
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <div className={`transition-all duration-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <h2 className="text-5xl md:text-7xl font-bold mb-12 leading-tight text-black dark:text-white transition-colors duration-300">
-            The Future of 
+            Travel for
             <br />
-            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500 bg-clip-text text-transparent">
-              Conscious Travel
+            <span className="bg-gradient-to-r from-green-500 via-blue-500 to-amber-500 bg-clip-text text-transparent">
+              Every Journey
             </span>
           </h2>
           
           <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed mb-16 transition-colors duration-300">
-            Imagine a world where every journey is perfectly aligned with your inner landscape. 
-            Where AI doesn't just understand destinations, but understands you.
+            From budget backpacking to luxury escapes, from emotional healing to adventure seeking—
+            our AI understands your unique travel story and crafts the perfect experience.
           </p>
         </div>
 
