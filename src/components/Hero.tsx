@@ -143,13 +143,10 @@ const Hero = () => {
               Destinations
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
             </Link>
-            <div className="relative group">
-              <button className="text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-1 font-medium relative">
-                Vision
-                <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
-              </button>
-            </div>
+            <Link to="/faq" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
+              FAQ
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
             <ThemeToggle />
             
             {/* Cart */}
@@ -194,11 +191,10 @@ const Hero = () => {
                 Destinations
                 <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-16"></span>
               </Link>
-              <button className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 py-3 px-3 text-left rounded-lg hover:bg-blue-100/50 dark:hover:bg-blue-800/30 relative group">
-                Vision
-                <ChevronDown className="w-4 h-4" />
+              <Link to="/faq" className="text-muted-foreground hover:text-foreground transition-colors py-3 px-3 rounded-lg hover:bg-blue-100/50 dark:hover:bg-blue-800/30 relative group">
+                FAQ
                 <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-8"></span>
-              </button>
+              </Link>
               <div className="pt-2">
                 <ThemeToggle />
               </div>
@@ -212,13 +208,13 @@ const Hero = () => {
         {/* Left side - Main heading and description */}
         <div className="text-left lg:pr-8 order-1 lg:order-1">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6 animate-fade-in">
-            The Smarter,
+            Smarter
             <br />
             <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
               AI-Powered
             </span>
             <br />
-            Escape Discovery
+            Getaway Discovery
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, ChevronLeft, ChevronRight, MapPin, Star, Sparkles, Heart, Calendar, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FullScreenDestination from '../components/FullScreenDestination';
+import FAQ from '../components/FAQ';
 import { useTheme } from '../contexts/ThemeContext';
 
 interface Destination {
@@ -712,6 +713,9 @@ const Destinations = () => {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQ />
 
       {/* Full Screen Destination Modal */}
       {selectedDestination && (
