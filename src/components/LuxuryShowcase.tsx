@@ -75,42 +75,39 @@ const LuxuryShowcase = () => {
   ];
 
   return (
-    <section className="relative py-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900 transition-colors duration-300">
+    <section className="relative py-20 bg-gradient-to-b from-slate-50 to-gray-100 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Enhanced Header for Luxury Tier */}
+        {/* Contemporary Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900/40 dark:to-orange-900/40 rounded-full mb-6">
-            <span className="text-2xl">👑</span>
-            <span className="text-sm font-semibold text-amber-800 dark:text-amber-200">TIER 3: LUXURY CLIENTS</span>
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-slate-100 dark:bg-slate-800 rounded-full mb-6">
+            <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">PREMIUM EXPERIENCES</span>
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-6">
-            Your Personal
+            Curated Luxury
             <br />
-            <span className="bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-400 dark:to-orange-400 bg-clip-text text-transparent">
-              AI Concierge
+            <span className="bg-gradient-to-r from-slate-600 to-gray-600 dark:from-slate-300 dark:to-gray-300 bg-clip-text text-transparent">
+              Travel Experiences
             </span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
-            For affluent travelers, CEOs, creators, and founders who want convenience, prestige, and privacy. 
-            No decisions, no stress—just say what you want and we orchestrate everything.
+            Discover exceptional destinations and premium accommodations. Our AI curates high-end travel experiences with attention to every detail.
           </p>
           
-          {/* Luxury Promise */}
-          <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl p-6 max-w-4xl mx-auto mb-8">
-            <h3 className="text-xl font-bold text-amber-800 dark:text-amber-200 mb-3">The Luxury Experience Promise</h3>
+          {/* Contemporary Feature Cards */}
+          <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 max-w-4xl mx-auto mb-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
               <div className="flex items-center gap-2">
-                <span className="text-amber-600">✈️</span>
-                <span>Private jets & first-class only</span>
+                <div className="w-2 h-2 bg-slate-400 rounded-full"></div>
+                <span>Premium accommodations & transport</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-amber-600">🏨</span>
-                <span>5-star accommodations exclusively</span>
+                <div className="w-2 h-2 bg-slate-400 rounded-full"></div>
+                <span>Exclusive access & experiences</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-amber-600">🤵</span>
-                <span>Personal concierge for everything</span>
+                <div className="w-2 h-2 bg-slate-400 rounded-full"></div>
+                <span>Full-service planning & coordination</span>
               </div>
             </div>
           </div>

@@ -5,7 +5,6 @@ import Hero from '../components/Hero';
 import WaitlistSection from '../components/WaitlistSection';
 import HowItWorks from '../components/HowItWorks';
 import Features from '../components/Features';
-import PersonaTiers from '../components/PersonaTiers';
 import LuxuryShowcase from '../components/LuxuryShowcase';
 import EmotionalHooks from '../components/EmotionalHooks';
 import Vision from '../components/Vision';
@@ -35,7 +34,6 @@ const Index = () => {
     <div className="min-h-screen min-h-dvh bg-background text-foreground overflow-x-hidden transition-colors duration-300">
       <Hero />
       <WaitlistSection />
-      <PersonaTiers />
       <Features />
       <HowItWorks />
       <EmotionalHooks />
