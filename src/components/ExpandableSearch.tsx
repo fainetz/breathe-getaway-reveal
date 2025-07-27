@@ -104,7 +104,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
 
   return (
-    <div className={`fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out ${
+    <div className={`fixed ${isMobile ? 'bottom-20' : 'bottom-[max(1.5rem,env(safe-area-inset-bottom))]'} left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out ${
       isMobile ? 'transform-gpu' : ''
     } ${
       isMobile && !shouldShowOnMobile ? 'translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100 pointer-events-auto'
