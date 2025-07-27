@@ -208,37 +208,18 @@ const Hero = () => {
         {/* Left side - Main heading and description */}
         <div className="text-left lg:pr-8 order-1 lg:order-1">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6 animate-fade-in">
-            Travel That
+            Smarter
             <br />
             <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
-              Understands
+              AI-Powered
             </span>
             <br />
-            Your Journey
+            Getaway Discovery
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            Whether you need budget-friendly escapes, emotional healing, or luxury without limits—our AI reads your soul and crafts the perfect getaway.
+            Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
           </p>
-          
-          {/* Three-tier preview */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <div className="bg-background/80 backdrop-blur-sm border border-border rounded-lg p-4 hover:bg-background/90 transition-all duration-300">
-              <div className="text-2xl mb-2">💰</div>
-              <h3 className="font-semibold text-sm">Budget Escapes</h3>
-              <p className="text-xs text-muted-foreground">Smart deals for everyday adventures</p>
-            </div>
-            <div className="bg-background/80 backdrop-blur-sm border border-border rounded-lg p-4 hover:bg-background/90 transition-all duration-300">
-              <div className="text-2xl mb-2">💙</div>
-              <h3 className="font-semibold text-sm">Emotional Reset</h3>
-              <p className="text-xs text-muted-foreground">Healing journeys for the soul</p>
-            </div>
-            <div className="bg-background/80 backdrop-blur-sm border border-border rounded-lg p-4 hover:bg-background/90 transition-all duration-300">
-              <div className="text-2xl mb-2">👑</div>
-              <h3 className="font-semibold text-sm">Luxury Concierge</h3>
-              <p className="text-xs text-muted-foreground">Effortless premium experiences</p>
-            </div>
-          </div>
         </div>
 
         {/* Right side - Empty space where carousel was */}
