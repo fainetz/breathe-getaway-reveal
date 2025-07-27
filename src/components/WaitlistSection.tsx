@@ -108,8 +108,7 @@ const WaitlistSection = () => {
             Experience What's <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">Coming Soon</span>
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-            Be the first to access our revolutionary AI-powered travel platform featuring luxury hotels, premium flights, and exclusive retreats. 
-            Join our waitlist for early access and exclusive previews.
+            Where intuitive AI transforms wanderlust into reality. Experience travel without planning as our intelligence curates luxury hotels, premium flights, and exclusive retreats just for you.
           </p>
         </div>
 
@@ -181,7 +180,7 @@ const WaitlistSection = () => {
               Join the <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">Waitlist</span>
             </h3>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Get exclusive early access to our AI-powered travel platform. Be among the first to discover luxury accommodations, premium flights, and unique retreats curated just for you.
+              Skip the endless research and planning. Let AI discover destinations that match your soul, delivering experiences you never knew you needed.
             </p>
             
             <form onSubmit={handleSubmit} className="space-y-4">

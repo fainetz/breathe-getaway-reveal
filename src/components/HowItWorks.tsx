@@ -60,7 +60,7 @@ const HowItWorks = () => {
             How It Works for Everyone
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
-            Three different personas, one intelligent system. Whether you're budget-conscious, emotionally seeking, or wanting luxury—we adapt completely.
+            Travel without planning made effortless. One intelligent system that adapts to your style—whether budget-conscious, emotionally seeking, or craving luxury.
           </p>
         </div>
 
