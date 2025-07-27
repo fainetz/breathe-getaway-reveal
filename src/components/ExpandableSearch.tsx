@@ -135,7 +135,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
         {/* Contemporary Preview Tag - only shows when expanded */}
         {isExpanded && (
           <div className="absolute -top-2 left-4 animate-fade-in">
-            <div className="bg-gradient-to-r from-blue-800/90 to-emerald-700/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg border border-white/20">
+            <div className="bg-gradient-to-r from-blue-900/90 to-blue-700/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg border border-white/20">
               Preview
             </div>
           </div>

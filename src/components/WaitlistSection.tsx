@@ -68,17 +68,30 @@ const WaitlistSection = () => {
 
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      // Store in localStorage for now
-      const waitlist = JSON.parse(localStorage.getItem('aicm-waitlist') || '[]');
-      waitlist.push({ email, timestamp: new Date().toISOString() });
-      localStorage.setItem('aicm-waitlist', JSON.stringify(waitlist));
-      
-      toast.success('You\'ve been added to the waitlist! We\'ll notify you when hotels, flights, and resorts launch.');
-      setEmail('');
+    try {
+      const response = await fetch('https://formspree.io/f/mjkrryrd', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          _subject: 'New Waitlist Signup - Breathe & Getaway AI',
+        }),
+      });
+
+      if (response.ok) {
+        toast.success('You\'ve been added to the waitlist! We\'ll notify you when hotels, flights, and resorts launch.');
+        setEmail('');
+      } else {
+        toast.error('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      toast.error('Something went wrong. Please try again.');
+      console.error('Waitlist submission error:', error);
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
