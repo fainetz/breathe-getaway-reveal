@@ -20,6 +20,18 @@ const Features = () => {
       persona: "budget"
     },
     {
+      title: "Natural Language Requests",
+      description: "Skip checkboxes and dropdowns. Simply say 'book me a flight around sunset' or 'get me a window seat where I can see the sunset' and our AI handles the complex details.",
+      gradient: "from-teal-500 to-cyan-500",
+      persona: "smart"
+    },
+    {
+      title: "Hidden Gems Discovery",
+      description: "Our AI uncovers secret spots, local favorites, and off-the-beaten-path destinations that guidebooks miss. Find extraordinary places others never discover.",
+      gradient: "from-emerald-500 to-green-500",
+      persona: "explorer"
+    },
+    {
       title: "Emotional Intelligence",
       description: "AI that reads your mood, energy, and deepest travel desires to match you with transformative healing experiences.",
       gradient: "from-purple-500 to-blue-500",
