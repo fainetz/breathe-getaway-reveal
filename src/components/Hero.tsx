@@ -220,6 +220,22 @@ const Hero = () => {
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
           </p>
+          
+          {/* Mobile Search Bar positioned under heading */}
+          <div className="lg:hidden mt-8 mb-8">
+            <div className="relative max-w-sm mx-auto">
+              <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md h-[42px] relative overflow-hidden">
+                {/* Preview Tag */}
+                <div className="absolute -top-3 left-4 bg-gradient-to-r from-blue-500 to-teal-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">
+                  Preview
+                </div>
+                
+                <div className="relative w-full h-full flex items-center justify-center px-4">
+                  <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">Tap to search destinations...</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Right side - Empty space where carousel was */}

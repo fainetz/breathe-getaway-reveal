@@ -95,11 +95,11 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
     <div className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-40 transition-transform duration-500 ease-out">
       <div 
         className={`${
-          isMobile ? 'w-full max-w-sm' : 'w-96'
+          isMobile ? 'w-full max-w-xs' : 'w-96'
         } ${
-          isMobile ? 'h-[48px]' : 'h-[52px]'
+          isMobile ? 'h-[42px]' : 'h-[52px]'
         } relative overflow-hidden transition-all duration-500 ease-out origin-center ${
-          isExpanded ? 'scale-100' : 'scale-[0.6]'
+          isExpanded ? 'scale-100' : 'scale-[0.55]'
         }`}
         onMouseEnter={() => {
           setIsHovered(true);
@@ -115,9 +115,14 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           setIsExpanded(true);
         }}
       >
-        {/* Simplified background with blur */}
+        {/* Background with blur and preview tag */}
         <div className="absolute inset-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md">
-        </div> 
+        </div>
+        
+        {/* Preview Tag */}
+        <div className="absolute -top-3 left-4 bg-gradient-to-r from-blue-500 to-teal-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">
+          Preview
+        </div>
 
         {/* Collapsed state */}
         {!isExpanded ? (
