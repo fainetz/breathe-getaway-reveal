@@ -147,8 +147,8 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
             <span className="text-gray-600 dark:text-gray-400 text-sm font-medium transition-colors duration-300">Search</span>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className={`relative w-full h-full flex items-center ${isMobile ? 'px-4' : 'px-6'}`}>
-            <Search className="w-5 h-5 text-gray-400 dark:text-gray-500 mr-3 flex-shrink-0" />
+          <form onSubmit={handleSubmit} className={`relative w-full h-full flex items-center ${isMobile ? 'px-3' : 'px-6'}`}>
+            <Search className={`${isMobile ? 'w-4 h-4 mr-2' : 'w-5 h-5 mr-3'} text-gray-400 dark:text-gray-500 flex-shrink-0`} />
             <input
               type="text"
               value={prompt}
@@ -173,9 +173,9 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
             />
             <button
               type="submit"
-              className={`${isMobile ? 'ml-2' : 'ml-3'} p-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0`}
+              className={`ml-1 ${isMobile ? 'p-1.5' : 'p-2'} bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0`}
             >
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className={`${isMobile ? 'w-3.5 h-3.5' : 'w-4 h-4'}`} />
             </button>
           </form>
         )}
