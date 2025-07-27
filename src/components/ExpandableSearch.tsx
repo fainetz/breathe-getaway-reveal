@@ -108,7 +108,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       isMobile && !shouldShowOnMobile ? 'translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100 pointer-events-auto'
     }`}>
       <div 
-        className={`${isMobile ? 'w-full max-w-sm' : 'w-80'} ${isExpanded ? 'h-[48px] pt-6' : 'h-[40px]'} relative overflow-visible transition-all duration-500 ease-out origin-center ${
+        className={`${isMobile ? 'w-full max-w-sm' : 'w-80'} ${isExpanded ? 'h-[48px]' : 'h-[40px]'} relative overflow-visible transition-all duration-500 ease-out origin-center ${
           isExpanded ? 'scale-100' : 'scale-90'
         }`}
         onMouseEnter={() => {
