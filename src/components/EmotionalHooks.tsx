@@ -113,17 +113,13 @@ const EmotionalHooks = () => {
                 >
                   <div className="bg-white/80 dark:bg-white/20 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-2xl p-6 hover:bg-white/90 dark:hover:bg-white/30 transition-all duration-300 shadow-xl">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className={`text-lg ${
-                        example.persona === 'budget' ? '💰' : 
-                        example.persona === 'emotional' ? '💙' : '👑'
-                      }`}></span>
                       <span className={`text-xs font-semibold px-2 py-1 rounded-full ${
                         example.persona === 'budget' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-200' :
                         example.persona === 'emotional' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200' :
                         'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-200'
                       }`}>
-                        {example.persona === 'budget' ? 'Budget Traveler' : 
-                         example.persona === 'emotional' ? 'Emotional Escapist' : 'Luxury Client'}
+                        {example.persona === 'budget' ? 'Budget Trip' : 
+                         example.persona === 'emotional' ? 'Wellness Trip' : 'Premium Trip'}
                       </span>
                     </div>
                     <p className="text-lg text-gray-700 dark:text-gray-100 italic mb-2 transition-colors duration-300">"{example.quote}"</p>

@@ -10,10 +10,9 @@ const PersonaTiers = () => {
     {
       id: 0,
       icon: Wallet,
-      emoji: "💰",
-      title: "Everyday Users",
-      subtitle: "Budget-Conscious • Students • Young Professionals",
-      description: "Smart, affordable travel for the everyday explorer. Find amazing deals and make every dollar count.",
+      title: "Budget-Smart Trips",
+      subtitle: "Affordable • Value-Focused • Smart Deals",
+      description: "Access amazing adventures without breaking the bank. We find the best value options and smart deals for every budget.",
       color: "emerald",
       gradientFrom: "from-emerald-500",
       gradientTo: "to-green-600",
@@ -24,19 +23,18 @@ const PersonaTiers = () => {
         "\"I want to go to NYC next month, lowest price?\""
       ],
       features: [
-        { icon: Star, text: "Budget optimization & flexible dates" },
-        { icon: Plane, text: "Hostels, budget airlines, smart deals" },
-        { icon: Coffee, text: "Clear price breakdowns & value focus" }
+        { icon: Star, text: "Budget optimization & flexible date options" },
+        { icon: Plane, text: "Hostels, budget airlines, and value accommodations" },
+        { icon: Coffee, text: "Clear pricing and cost-effective itineraries" }
       ],
-      promise: "Travel smart, spend less, explore more"
+      promise: "Maximum adventure, minimum cost"
     },
     {
       id: 1,
       icon: Heart,
-      emoji: "💙",
-      title: "Emotional Escapists",
-      subtitle: "Mid-Tier • Seeking Healing • Impulse Travelers",
-      description: "Travel that heals. For breakups, burnout, and emotional overload—we find places that restore your soul.",
+      title: "Healing & Wellness Trips",
+      subtitle: "Restorative • Peaceful • Meaningful",
+      description: "Access transformative experiences designed for emotional healing and personal reset. Perfect for life transitions and self-discovery.",
       color: "blue",
       gradientFrom: "from-blue-500",
       gradientTo: "to-indigo-600",
@@ -44,37 +42,36 @@ const PersonaTiers = () => {
       examples: [
         "\"I need to get away.\"",
         "\"Somewhere warm that feels like a reset.\"",
-        "\"Find me a place to cry alone.\""
+        "\"Find me a place to reflect and recharge.\""
       ],
       features: [
-        { icon: Heart, text: "Empathetic AI that understands emotions" },
-        { icon: Bed, text: "Healing retreats, nature, ocean therapy" },
-        { icon: Coffee, text: "Mid-tier resorts & boutique experiences" }
+        { icon: Heart, text: "Wellness retreats and peaceful destinations" },
+        { icon: Bed, text: "Nature therapy, spas, and mindful experiences" },
+        { icon: Coffee, text: "Mid-range to premium healing-focused accommodations" }
       ],
-      promise: "Journey inward, heal outward"
+      promise: "Space to heal, time to grow"
     },
     {
       id: 2,
       icon: Crown,
-      emoji: "👑",
-      title: "Luxury Clients",
-      subtitle: "High-Income • Executives • Experience-Driven",
-      description: "Your personal AI concierge. Stress-free luxury with zero decisions required. We orchestrate everything.",
+      title: "Premium & Luxury Trips",
+      subtitle: "Full-Service • High-End • Effortless",
+      description: "Access to premium experiences with comprehensive planning handled for you. When convenience and quality are priorities.",
       color: "amber",
       gradientFrom: "from-amber-500",
       gradientTo: "to-orange-600",
       bgGradient: "from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20",
       examples: [
-        "\"Book me something stress-free. No decisions.\"",
-        "\"Give me a 5-star escape with a private driver.\"",
-        "\"AI concierge: I want to disappear in luxury.\""
+        "\"Plan something stress-free for me.\"",
+        "\"I want a complete luxury package.\"",
+        "\"Handle all the details, I just want to enjoy.\""
       ],
       features: [
-        { icon: Crown, text: "Private jets, first-class only, 5-star hotels" },
-        { icon: Plane, text: "Personal concierge planning everything" },
-        { icon: Star, text: "Exclusive access, privacy, and prestige" }
+        { icon: Crown, text: "Premium accommodations and transportation" },
+        { icon: Plane, text: "Comprehensive planning and coordination services" },
+        { icon: Star, text: "Exclusive access and personalized experiences" }
       ],
-      promise: "Effortless luxury, infinite possibilities"
+      promise: "Complete experiences, zero stress"
     }
   ];
 
@@ -110,12 +107,12 @@ const PersonaTiers = () => {
         {/* Header */}
         <div className={`text-center mb-16 transition-all duration-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
-            Three Types of Travelers,
+            Every Type of Trip,
             <br />
-            <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">One Intelligent System</span>
+            <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">One Smart Platform</span>
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed">
-            Our AI adapts completely to your travel personality. Whether you're budget-conscious, emotionally seeking, or wanting luxury—we speak your language.
+            We provide access to every style of travel experience. From budget adventures to premium getaways—our AI matches you with the perfect trip type for your needs.
           </p>
         </div>
 
@@ -133,7 +130,7 @@ const PersonaTiers = () => {
                     : 'bg-background/80 backdrop-blur-sm border border-border hover:bg-background/90 text-muted-foreground hover:text-foreground'
                 }`}
               >
-                <span className="text-2xl">{tier.emoji}</span>
+                <tier.icon className="w-5 h-5" />
                 <div className="text-left">
                   <div className="font-semibold text-sm sm:text-base">{tier.title}</div>
                   <div className="text-xs opacity-80">{tier.subtitle.split(' • ')[0]}</div>

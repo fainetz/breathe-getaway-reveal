@@ -8,21 +8,21 @@ const Vision = () => {
 
   const visionCards = [
     {
-      icon: "💰",
-      title: "Budget Intelligence",
-      description: "Smart deals for students and everyday travelers who want to explore without breaking the bank.",
+      icon: "🛫",
+      title: "Budget Adventures",
+      description: "Smart deals and value-focused trips that make amazing experiences accessible to everyone.",
       gradient: "from-green-500 to-emerald-500"
     },
     {
-      icon: "💙", 
-      title: "Emotional Healing",
-      description: "AI that understands when you need to escape, heal, and find yourself through transformative travel.",
+      icon: "🌿", 
+      title: "Wellness Escapes",
+      description: "Restorative journeys designed for healing, reflection, and personal growth through travel.",
       gradient: "from-blue-500 to-indigo-500"
     },
     {
-      icon: "👑",
-      title: "Luxury Concierge", 
-      description: "Effortless premium experiences for executives who want zero stress and maximum prestige.",
+      icon: "✨",
+      title: "Premium Experiences", 
+      description: "Full-service luxury travel with comprehensive planning and exclusive access to exceptional destinations.",
       gradient: "from-amber-500 to-orange-500"
     }
   ];
