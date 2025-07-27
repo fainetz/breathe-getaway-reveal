@@ -333,32 +333,27 @@ const Destinations = () => {
       {/* Clean Hero Section */}
       <section className="relative min-h-screen pt-16 pb-12 px-6">
         <div className="max-w-7xl mx-auto">
-          {/* Aesthetic Header */}
+          {/* Contemporary Header */}
           <div className="text-center mb-20 space-y-8 animate-fade-in">
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-primary/10 to-accent/10 backdrop-blur-sm border border-primary/30 rounded-full px-6 py-3 text-sm font-medium hover-scale group">
-              <div className="w-2 h-2 bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"></div>
-              <Sparkles className="w-4 h-4 text-primary group-hover:rotate-12 transition-transform duration-300" />
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-semibold">AI-Powered Discovery</span>
+            <div className="inline-flex items-center gap-2 bg-muted/50 backdrop-blur-sm border border-border rounded-full px-4 py-2 text-sm font-medium">
+              <div className="w-1.5 h-1.5 bg-foreground/60 rounded-full"></div>
+              <Sparkles className="w-4 h-4 text-foreground/60" />
+              <span className="text-foreground/80">AI-Powered Discovery</span>
             </div>
             
             <div className="relative">
-              <h1 className="font-playfair text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-                <span className="block text-foreground mb-2 opacity-90">
+              <h1 className="font-playfair text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight">
+                <span className="block text-foreground/90 mb-2">
                   Find Your
                 </span>
-                <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent font-black relative">
+                <span className="block text-foreground font-medium">
                   Perfect Escape
-                  <div className="absolute -inset-x-4 -inset-y-2 bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl -z-10 blur-sm"></div>
                 </span>
               </h1>
-              
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-full opacity-20 animate-pulse"></div>
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-gradient-to-br from-accent to-primary rounded-full opacity-30 animate-pulse delay-300"></div>
             </div>
             
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
-              Let our AI discover destinations that match your <span className="text-primary font-medium">exact vibe</span> and preferences
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Discover destinations tailored to your preferences through intelligent travel curation
             </p>
             
             {/* Subtle Mood Selector */}
