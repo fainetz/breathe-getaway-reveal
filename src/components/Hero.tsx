@@ -220,6 +220,29 @@ const Hero = () => {
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             Harness the power of intuitive AI travel discovery. Tell us how you feel. We'll find where you need to go.
           </p>
+          
+          {/* Mobile Search Bar positioned under heading */}
+          <div className="lg:hidden mt-6 mb-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <div className="relative max-w-sm mx-auto">
+              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/30 dark:border-gray-700/50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-[48px] relative overflow-visible group">
+                {/* Contemporary Preview Tag - only shows on hover/focus */}
+                <div className="absolute -top-2 left-4 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-300 transform -translate-y-1 group-hover:translate-y-0 group-focus-within:translate-y-0">
+                  <div className="bg-gradient-to-r from-violet-500/90 to-fuchsia-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg border border-white/20">
+                    Preview
+                  </div>
+                </div>
+                
+                <div className="relative w-full h-full flex items-center px-4 cursor-pointer">
+                  <div className="w-4 h-4 text-gray-400 dark:text-gray-500 mr-3 flex-shrink-0">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-500 dark:text-gray-400 text-sm font-medium">Tell us how you feel...</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Right side - Empty space where carousel was */}
