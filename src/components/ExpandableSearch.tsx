@@ -41,11 +41,20 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           
           const isAtHeroSection = scrollY <= 150; // More generous hero section
           
-          // Prevent collapse when user is actively typing or focused
-          if (shouldScroll && !isHovered && !isAtHeroSection && !isFocused && !isUserTyping) {
-            setIsExpanded(false);
-          } else if (isAtHeroSection) {
-            setIsExpanded(true);
+          // For mobile, show search bar when scrolled down and not at hero section
+          if (isMobile) {
+            if (shouldScroll && !isAtHeroSection && !isFocused && !isUserTyping) {
+              setIsExpanded(false); // Collapsed when scrolled
+            } else if (isAtHeroSection) {
+              setIsExpanded(true); // Expanded at hero section
+            }
+          } else {
+            // Desktop behavior - prevent collapse when user is actively typing or focused
+            if (shouldScroll && !isHovered && !isAtHeroSection && !isFocused && !isUserTyping) {
+              setIsExpanded(false);
+            } else if (isAtHeroSection) {
+              setIsExpanded(true);
+            }
           }
           
           ticking = false;
@@ -63,7 +72,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-  }, [isHovered, isFocused, isUserTyping]);
+  }, [isHovered, isFocused, isUserTyping, isMobile]);
 
   // Add typing timeout effect
   useEffect(() => {
@@ -78,6 +87,9 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
   const isAtHeroSection = !isScrolled;
   const shouldBeExpanded = isAtHeroSection || isHovered || isFocused || isUserTyping;
+  
+  // For mobile, show search bar when scrolled away from hero section or when in hero section
+  const shouldShowOnMobile = isMobile ? (isScrolled || isAtHeroSection || isFocused || isUserTyping) : true;
 
  const handleSubmit = async (e: React.FormEvent) => {
    e.preventDefault();
@@ -92,10 +104,14 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
 
   return (
-    <div className={`fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-40 transition-transform duration-500 ease-out ${isMobile ? 'hidden' : ''}`}>
+    <div className={`fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out ${
+      isMobile ? 'transform-gpu' : ''
+    } ${
+      isMobile && !shouldShowOnMobile ? 'translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100 pointer-events-auto'
+    }`}>
       <div 
-        className={`w-96 h-[52px] relative overflow-visible transition-all duration-500 ease-out origin-center ${
-          isExpanded ? 'scale-100' : 'scale-[0.55]'
+        className={`${isMobile ? 'w-80 max-w-[calc(100vw-2rem)]' : 'w-96'} h-[52px] relative overflow-visible transition-all duration-500 ease-out origin-center ${
+          isExpanded ? 'scale-100' : isMobile ? 'scale-[0.75]' : 'scale-[0.55]'
         }`}
         onMouseEnter={() => {
           setIsHovered(true);
