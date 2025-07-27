@@ -110,8 +110,8 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
       isMobile && !shouldShowOnMobile ? 'translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100 pointer-events-auto'
     }`}>
       <div 
-        className={`${isMobile ? 'w-72 max-w-[calc(100vw-6rem)]' : 'w-96'} h-[52px] relative overflow-visible transition-all duration-500 ease-out origin-center ${
-          isExpanded ? 'scale-100' : isMobile ? 'scale-[0.8]' : 'scale-[0.55]'
+        className={`${isMobile ? 'w-80 max-w-[calc(100vw-2rem)]' : 'w-96'} h-[52px] relative overflow-visible transition-all duration-500 ease-out origin-center ${
+          isExpanded ? 'scale-100' : isMobile ? 'scale-[0.75]' : 'scale-[0.55]'
         }`}
         onMouseEnter={() => {
           setIsHovered(true);
@@ -173,7 +173,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
             />
             <button
               type="submit"
-              className="ml-2 p-2.5 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-xl hover:from-blue-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0 flex items-center justify-center"
+              className="ml-3 p-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0"
             >
               <ArrowRight className="w-4 h-4" />
             </button>
