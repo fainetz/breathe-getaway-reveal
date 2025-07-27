@@ -135,7 +135,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
         {/* Contemporary Preview Tag - only shows when expanded */}
         {isExpanded && (
           <div className="absolute -top-2 left-4 animate-fade-in">
-            <div className="bg-gradient-to-r from-violet-500/90 to-fuchsia-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg border border-white/20">
+            <div className="bg-gradient-to-r from-blue-800/90 to-emerald-700/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg border border-white/20">
               Preview
             </div>
           </div>
@@ -159,6 +159,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
               }}
               placeholder="Need escape..."
               className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm font-medium transition-all duration-300 focus:scale-[1.01]"
+              style={{ fontSize: '16px' }}
               onFocus={(e) => {
                 setIsFocused(true);
                 e.target.placeholder = "Heartbroken, excited, adventurous...";
