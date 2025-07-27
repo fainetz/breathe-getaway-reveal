@@ -105,13 +105,13 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
   return (
     <div className={`fixed ${isMobile ? 'bottom-20' : 'bottom-[max(1.5rem,env(safe-area-inset-bottom))]'} left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out ${
-      isMobile ? 'transform-gpu' : ''
+      isMobile ? 'transform-gpu px-4' : ''
     } ${
       isMobile && !shouldShowOnMobile ? 'translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100 pointer-events-auto'
     }`}>
       <div 
-        className={`${isMobile ? 'w-72 max-w-[calc(100vw-2rem)]' : 'w-80'} ${isExpanded ? 'h-[48px]' : 'h-[40px]'} relative overflow-visible transition-all duration-500 ease-out origin-center ${
-          isExpanded ? 'scale-100' : isMobile ? 'scale-[0.85]' : 'scale-[0.7]'
+        className={`${isMobile ? 'w-full max-w-[280px]' : 'w-80'} ${isExpanded ? 'h-[48px]' : 'h-[40px]'} relative overflow-hidden transition-all duration-500 ease-out origin-center ${
+          isExpanded ? 'scale-100' : isMobile ? 'scale-[0.9]' : 'scale-[0.7]'
         }`}
         onMouseEnter={() => {
           setIsHovered(true);
