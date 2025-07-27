@@ -28,7 +28,7 @@ const Features = () => {
     {
       title: "Hidden Gems Discovery",
       description: "Our AI uncovers secret spots, local favorites, and off-the-beaten-path destinations that guidebooks miss. Find extraordinary places others never discover.",
-      gradient: "from-emerald-500 to-green-500",
+      gradient: "from-violet-500 to-purple-500",
       persona: "explorer"
     },
     {
@@ -139,7 +139,7 @@ const Features = () => {
   }, []);
 
   return (
-    <section id="features" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300 shadow-2xl dark:shadow-gray-900/60" ref={sectionRef}>
+    <section id="features" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden section-overlap section-bridge dark:section-bridge-dark transition-colors duration-300" ref={sectionRef}>
       <div className="max-w-7xl mx-auto">
         <div className={`text-center mb-12 sm:mb-16 lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="overflow-x-auto lg:overflow-visible">

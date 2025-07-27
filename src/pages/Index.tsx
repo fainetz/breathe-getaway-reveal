@@ -33,11 +33,17 @@ const Index = () => {
   return (
     <div className="min-h-screen min-h-dvh bg-background text-foreground overflow-x-hidden transition-colors duration-300">
       <Hero />
+      <div className="section-bridge dark:section-bridge-dark py-8"></div>
       <WaitlistSection />
+      <div className="section-bridge dark:section-bridge-dark py-6"></div>
       <Features />
+      <div className="section-bridge dark:section-bridge-dark py-6"></div>
       <HowItWorks />
+      <div className="section-bridge dark:section-bridge-dark py-6"></div>
       <EmotionalHooks />
+      <div className="section-bridge dark:section-bridge-dark py-6"></div>
       <LuxuryShowcase />
+      <div className="section-bridge dark:section-bridge-dark py-6"></div>
       <Vision />
       <div id="resultsSection" className="min-h-0"></div>
       <Footer />
