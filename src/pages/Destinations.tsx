@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, ChevronLeft, ChevronRight, MapPin, Star, Sparkles, Heart, Calendar, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FullScreenDestination from '../components/FullScreenDestination';
-import FAQ from '../components/FAQ';
+
 import { useTheme } from '../contexts/ThemeContext';
 
 interface Destination {
@@ -315,16 +315,16 @@ const Destinations = () => {
     <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Contemporary Floating Elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-accent/10 to-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-60 right-20 w-80 h-80 bg-gradient-to-tl from-secondary/10 to-accent/8 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 left-1/3 w-48 h-48 bg-gradient-to-tr from-primary/8 to-accent/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-primary/15 to-accent/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-60 right-20 w-80 h-80 bg-gradient-to-tl from-accent/20 to-primary/15 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-40 left-1/3 w-48 h-48 bg-gradient-to-tr from-primary/25 to-accent/15 rounded-full blur-3xl"></div>
       </div>
 
       {/* Elegant Back Button */}
       <div className="fixed top-6 left-6 z-50">
         <Link 
           to="/" 
-          className="group flex items-center gap-3 bg-background/80 backdrop-blur-2xl border border-border/40 rounded-2xl px-6 py-4 text-sm font-medium text-foreground hover:bg-secondary/20 transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="group flex items-center gap-3 bg-background/60 backdrop-blur-2xl border border-primary/20 rounded-2xl px-6 py-4 text-sm font-medium text-foreground hover:bg-primary/10 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
           <span>Back to Home</span>
@@ -336,9 +336,9 @@ const Destinations = () => {
         <div className="max-w-7xl mx-auto">
           {/* Contemporary Header */}
           <div className="text-center mb-20 space-y-8 animate-fade-in">
-            <div className="inline-flex items-center gap-2 bg-secondary/20 backdrop-blur-xl border border-accent/30 rounded-full px-4 py-2 text-sm font-medium">
-              <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
-              <Sparkles className="w-4 h-4 text-accent" />
+            <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-xl border border-primary/30 rounded-full px-4 py-2 text-sm font-medium">
+              <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+              <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-foreground/80">AI-Powered Discovery</span>
             </div>
             
@@ -367,7 +367,7 @@ const Destinations = () => {
               ].map((mood, index) => (
                 <button
                   key={index}
-                  className="group bg-secondary/10 hover:bg-secondary/20 backdrop-blur-xl border border-accent/20 rounded-2xl px-5 py-3 transition-all duration-300 hover:scale-105"
+                  className="group bg-primary/5 hover:bg-primary/15 backdrop-blur-xl border border-primary/20 rounded-2xl px-5 py-3 transition-all duration-300 hover:scale-105"
                 >
                   <span className="text-lg mr-2">{mood.emoji}</span>
                   <span className="text-sm font-medium text-foreground">
@@ -404,12 +404,12 @@ const Destinations = () => {
                   <div className="absolute bottom-8 left-8 right-8">
                     <div className="space-y-4">
                       <div className="flex items-center gap-3">
-                        <div className="bg-accent/90 backdrop-blur-sm rounded-lg px-3 py-1">
-                          <span className="text-sm font-medium text-accent-foreground">AI Recommended</span>
+                        <div className="bg-primary/90 backdrop-blur-sm rounded-lg px-3 py-1">
+                          <span className="text-sm font-medium text-primary-foreground">AI Recommended</span>
                         </div>
                         {currentHero?.rating && (
                           <div className="flex items-center gap-1 bg-background/20 backdrop-blur-xl rounded-lg px-3 py-1">
-                            <Star className="w-4 h-4 text-accent fill-current" />
+                            <Star className="w-4 h-4 text-primary fill-current" />
                             <span className="text-sm font-medium text-white">{currentHero.rating}</span>
                           </div>
                         )}
@@ -428,12 +428,12 @@ const Destinations = () => {
                         {currentHero?.description}
                       </p>
                       
-                       <div className="flex items-center gap-4 pt-2">
-                         <div className="bg-accent/90 backdrop-blur-sm rounded-xl px-4 py-2">
-                           <span className="text-lg font-bold text-accent-foreground">{currentHero?.price}</span>
+                        <div className="flex items-center gap-4 pt-2">
+                         <div className="bg-primary/90 backdrop-blur-sm rounded-xl px-4 py-2">
+                           <span className="text-lg font-bold text-primary-foreground">{currentHero?.price}</span>
                          </div>
                          <button 
-                           className="bg-background/20 hover:bg-background/30 backdrop-blur-xl border border-accent/30 rounded-xl px-6 py-2 text-white font-medium transition-all duration-300"
+                           className="bg-background/20 hover:bg-background/30 backdrop-blur-xl border border-primary/30 rounded-xl px-6 py-2 text-white font-medium transition-all duration-300"
                           onClick={(e) => {
                             e.stopPropagation();
                             currentHero && handleCardClick(currentHero);
@@ -714,8 +714,6 @@ const Destinations = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <FAQ />
 
       {/* Full Screen Destination Modal */}
       {selectedDestination && (

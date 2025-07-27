@@ -42,6 +42,10 @@ const FAQ = () => {
     {
       question: "How do I get support if something goes wrong?",
       answer: "We offer support through email and chat, and we're continuing to scale our support team as more travelers join. You'll never be left in the dark."
+    },
+    {
+      question: "Who is behind Breathe & Getaway?",
+      answer: "Breathe & Getaway is founded and led by a passionate young entrepreneur (he/him, 19 years old) who believes in the power of AI to transform how we discover and experience travel. Driven by a vision of making personalized travel accessible to everyone, the founder combines innovative technology with a deep understanding of human emotions and wanderlust."
     }
   ];
 
