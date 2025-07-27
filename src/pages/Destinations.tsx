@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, ChevronLeft, ChevronRight, MapPin, Star, Sparkles, Heart, Calendar, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FullScreenDestination from '../components/FullScreenDestination';
+import FAQ from '../components/FAQ';
 import { useTheme } from '../contexts/ThemeContext';
 
 interface Destination {
@@ -481,7 +482,15 @@ const Destinations = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* FAQ Section */}
+      <FAQ />
+
+      {/* Destinations Content */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
           {/* AI-Powered Discovery Sections */}
           <div className="space-y-24">
             {categoryRows.map((row, rowIndex) => (
