@@ -33,17 +33,17 @@ const Index = () => {
   return (
     <div className="min-h-screen min-h-dvh bg-background text-foreground overflow-x-hidden transition-colors duration-300">
       <Hero />
-      <div className="section-bridge dark:section-bridge-dark py-8"></div>
+      <div className="transition-hero-waitlist"></div>
       <WaitlistSection />
-      <div className="section-bridge dark:section-bridge-dark py-6"></div>
+      <div className="transition-waitlist-features"></div>
       <Features />
-      <div className="section-bridge dark:section-bridge-dark py-6"></div>
+      <div className="transition-features-howitworks"></div>
       <HowItWorks />
-      <div className="section-bridge dark:section-bridge-dark py-6"></div>
+      <div className="transition-howitworks-emotional"></div>
       <EmotionalHooks />
-      <div className="section-bridge dark:section-bridge-dark py-6"></div>
+      <div className="transition-emotional-luxury"></div>
       <LuxuryShowcase />
-      <div className="section-bridge dark:section-bridge-dark py-6"></div>
+      <div className="transition-luxury-vision"></div>
       <Vision />
       <div id="resultsSection" className="min-h-0"></div>
       <Footer />
