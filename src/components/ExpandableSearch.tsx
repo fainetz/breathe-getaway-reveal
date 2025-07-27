@@ -173,7 +173,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
             />
             <button
               type="submit"
-              className={`ml-2 ${isMobile ? 'p-1.5' : 'p-2'} bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0`}
+              className={`ml-2 ${isMobile ? 'p-1.5' : 'p-[7px]'} bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0`}
             >
               <ArrowRight className={`${isMobile ? 'w-3.5 h-3.5' : 'w-3.5 h-3.5'}`} />
             </button>
