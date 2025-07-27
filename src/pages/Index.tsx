@@ -33,17 +33,17 @@ const Index = () => {
   return (
     <div className="min-h-screen min-h-dvh bg-background text-foreground overflow-x-hidden transition-colors duration-300">
       <Hero />
-      <div className="transition-hero-waitlist"></div>
+      <div className="section-transition transition-hero-waitlist"></div>
       <WaitlistSection />
-      <div className="transition-waitlist-features"></div>
+      <div className="section-transition transition-waitlist-features"></div>
       <Features />
-      <div className="transition-features-howitworks"></div>
+      <div className="section-transition transition-features-howitworks"></div>
       <HowItWorks />
-      <div className="transition-howitworks-emotional"></div>
+      <div className="section-transition transition-howitworks-emotional"></div>
       <EmotionalHooks />
-      <div className="transition-emotional-luxury"></div>
+      <div className="section-transition transition-emotional-luxury"></div>
       <LuxuryShowcase />
-      <div className="transition-luxury-vision"></div>
+      <div className="section-transition transition-luxury-vision"></div>
       <Vision />
       <div id="resultsSection" className="min-h-0"></div>
       <Footer />
