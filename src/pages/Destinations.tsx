@@ -215,14 +215,14 @@ const Destinations = () => {
     // LUXURY RETREATS
     {
       id: 14,
-      name: "Alpine Wellness Sanctuary",
-      location: "Swiss Alps, Switzerland",
+      name: "Desert Mountain Spa Retreat",
+      location: "Atacama Desert, Chile",
       category: "wellness",
       type: "retreat",
-      image: "/lovable-uploads/6a2f9c54-bbe6-4609-b27d-841996453813.png",
+      image: "/lovable-uploads/f9ec0008-a534-4dc2-912a-1d3d3177027f.png",
       price: "$3,299",
       duration: "7 days",
-      description: "Transform your mind and body in a luxury mountain retreat with world-class spa treatments and meditation",
+      description: "Transform your mind and body in a luxury mountain retreat with world-class spa treatments and meditation overlooking endless desert vistas",
       mood: "Complete Transformation",
       tags: ["Wellness", "Spa", "Mountain Views"],
       rating: 4.9,
@@ -230,32 +230,47 @@ const Destinations = () => {
     },
     {
       id: 15,
-      name: "Maldivian Soul Retreat",
-      location: "Private Island, Maldives",
+      name: "Bamboo Luxury Wellness Resort",
+      location: "Bali, Indonesia",
       category: "luxury",
       type: "retreat",
-      image: "/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png",
+      image: "/lovable-uploads/c19085d5-4229-450c-8c8c-aa391d6902a5.png",
       price: "$4,999",
       duration: "10 days",
-      description: "Ultimate luxury retreat on a private island with personal wellness coaches and underwater meditation",
+      description: "Ultimate luxury retreat featuring contemporary architecture with personal wellness coaches and transformative healing experiences",
       mood: "Pure Bliss",
-      tags: ["Private Island", "Wellness", "Underwater"],
+      tags: ["Luxury Design", "Wellness", "Architecture"],
       rating: 5.0,
       featured: true
     },
     {
       id: 16,
-      name: "Tuscany Culinary Retreat",
-      location: "Val d'Orcia, Italy",
-      category: "culinary",
+      name: "Tropical Island Paradise Retreat",
+      location: "Maldives",
+      category: "tropical",
       type: "retreat",
-      image: "/lovable-uploads/b6902c70-0899-4bb8-b8ae-a982867eac3c.png",
+      image: "/lovable-uploads/ffc754fe-1273-4ca4-a581-9118a1694b6c.png",
       price: "$2,799",
       duration: "6 days",
-      description: "Immerse yourself in Italian gastronomy with master chefs in a luxury villa setting",
-      mood: "Culinary Adventure",
-      tags: ["Cooking", "Wine", "Luxury Villa"],
+      description: "Immerse yourself in tropical paradise with pristine beaches, crystal clear waters and luxurious overwater accommodations",
+      mood: "Tropical Escape",
+      tags: ["Beach", "Overwater", "Paradise"],
       rating: 4.8,
+      featured: true
+    },
+    {
+      id: 17,
+      name: "Sacred Cenote Spiritual Retreat",
+      location: "Riviera Maya, Mexico",
+      category: "spiritual",
+      type: "retreat",
+      image: "/lovable-uploads/5e12c786-7c01-4fb4-bf1b-eea0010773a6.png",
+      price: "$3,599",
+      duration: "8 days",
+      description: "Connect with ancient Mayan wisdom through sacred cenote ceremonies and underground meditation experiences in crystal-clear waters",
+      mood: "Spiritual Awakening",
+      tags: ["Cenote", "Sacred", "Meditation"],
+      rating: 4.9,
       featured: true
     }
   ];
@@ -263,15 +278,15 @@ const Destinations = () => {
   const featuredDestinations = destinations.filter(dest => dest.featured);
   const categoryRows: CategoryRow[] = [
     {
-      title: "🏝️ AI-Curated Destinations",
+      title: "AI-Curated Flight Destinations",
       destinations: destinations.filter(dest => dest.type === 'destination')
     },
     {
-      title: "🏨 Smart Hotel Matching",
+      title: "Smart Hotel Matching",
       destinations: destinations.filter(dest => dest.type === 'hotel')
     },
     {
-      title: "🧘‍♀️ Wellness-Focused Retreats",
+      title: "Wellness-Focused Retreats",
       destinations: destinations.filter(dest => dest.type === 'retreat')
     }
   ];
@@ -360,16 +375,15 @@ const Destinations = () => {
             {/* Subtle Mood Selector */}
             <div className="flex flex-wrap justify-center gap-3 pt-6">
               {[
-                { emoji: "🏖️", text: "Beach Vibes" },
-                { emoji: "🏔️", text: "Mountain Magic" },
-                { emoji: "🧘‍♀️", text: "Soul Healing" },
-                { emoji: "🍷", text: "Luxury Life" }
+                { text: "Beach Vibes" },
+                { text: "Mountain Magic" },
+                { text: "Soul Healing" },
+                { text: "Luxury Life" }
               ].map((mood, index) => (
                 <button
                   key={index}
                   className="group bg-primary/5 hover:bg-primary/15 backdrop-blur-xl border border-primary/20 rounded-2xl px-5 py-3 transition-all duration-300 hover:scale-105"
                 >
-                  <span className="text-lg mr-2">{mood.emoji}</span>
                   <span className="text-sm font-medium text-foreground">
                     {mood.text}
                   </span>
@@ -573,11 +587,11 @@ const Destinations = () => {
                               
                               {/* Top Badges */}
                               <div className="absolute top-4 left-4 space-y-2">
-                                {destination.featured && (
-                                  <div className="bg-primary/90 backdrop-blur-sm rounded-xl px-3 py-1">
-                                    <span className="text-xs font-bold text-primary-foreground">✨ AI RECOMMENDED</span>
-                                  </div>
-                                )}
+                                 {destination.featured && (
+                                   <div className="bg-primary/90 backdrop-blur-sm rounded-xl px-3 py-1">
+                                     <span className="text-xs font-bold text-primary-foreground">AI RECOMMENDED</span>
+                                   </div>
+                                 )}
                                 {destination.comingSoon && (
                                   <div className="bg-background/90 backdrop-blur-sm rounded-xl px-3 py-1">
                                     <span className="text-xs font-medium text-muted-foreground">Coming Soon</span>
