@@ -241,84 +241,61 @@ All colors MUST be HSL.
     display: none;
   }
 
-  /* Seamless Section Transitions */
+  /* Subtle Section Transitions */
   .section-transition {
     position: relative;
-    height: 200px;
-    margin-top: -100px;
-    margin-bottom: -100px;
+    height: 60px;
+    margin-top: -30px;
+    margin-bottom: -30px;
     z-index: 10;
   }
 
   .transition-hero-waitlist {
     background: linear-gradient(180deg, 
       hsl(var(--background)) 0%,
-      hsl(var(--primary) / 0.15) 25%,
-      hsl(var(--accent) / 0.25) 50%,
-      hsl(var(--primary) / 0.15) 75%,
+      hsl(var(--primary) / 0.03) 50%,
       hsl(var(--background)) 100%
     );
-    transform: skewY(-2deg);
-    transform-origin: top left;
   }
 
   .transition-waitlist-features {
     background: linear-gradient(180deg, 
       hsl(var(--background)) 0%,
-      hsl(var(--accent) / 0.2) 30%,
-      hsl(var(--secondary) / 0.3) 50%,
-      hsl(var(--accent) / 0.2) 70%,
+      hsl(var(--accent) / 0.04) 50%,
       hsl(var(--background)) 100%
     );
-    transform: skewY(1.5deg);
-    transform-origin: top right;
   }
 
   .transition-features-howitworks {
-    background: radial-gradient(ellipse 120% 80% at 50% 50%, 
-      hsl(var(--primary) / 0.25) 0%,
-      hsl(var(--accent) / 0.15) 40%,
-      hsl(var(--background)) 80%
+    background: linear-gradient(180deg, 
+      hsl(var(--background)) 0%,
+      hsl(var(--secondary) / 0.05) 50%,
+      hsl(var(--background)) 100%
     );
-    transform: skewY(-1deg);
-    transform-origin: center;
   }
 
   .transition-howitworks-emotional {
-    background: linear-gradient(135deg, 
+    background: linear-gradient(180deg, 
       hsl(var(--background)) 0%,
-      hsl(var(--secondary) / 0.2) 25%,
-      hsl(var(--primary) / 0.3) 50%,
-      hsl(var(--accent) / 0.2) 75%,
+      hsl(var(--primary) / 0.04) 50%,
       hsl(var(--background)) 100%
     );
-    transform: skewY(2deg);
-    transform-origin: bottom left;
   }
 
   .transition-emotional-luxury {
-    background: conic-gradient(from 45deg at 50% 50%,
-      hsl(var(--background)) 0deg,
-      hsl(var(--primary) / 0.2) 90deg,
-      hsl(var(--accent) / 0.3) 180deg,
-      hsl(var(--secondary) / 0.15) 270deg,
-      hsl(var(--background)) 360deg
+    background: linear-gradient(180deg, 
+      hsl(var(--background)) 0%,
+      hsl(var(--accent) / 0.03) 50%,
+      hsl(var(--background)) 100%
     );
-    transform: skewY(-1.5deg);
-    clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
   }
 
   .transition-luxury-vision {
-    background: linear-gradient(45deg, 
+    background: linear-gradient(180deg, 
       hsl(var(--background)) 0%,
-      hsl(var(--accent) / 0.25) 20%,
-      hsl(var(--primary) / 0.4) 40%,
-      hsl(var(--secondary) / 0.2) 60%,
-      hsl(var(--muted) / 0.15) 80%,
+      hsl(var(--muted) / 0.05) 50%,
       hsl(var(--background)) 100%
     );
-    transform: skewY(1deg);
-    clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);
   }
 
   /* Seamless section blending */
@@ -362,61 +339,49 @@ All colors MUST be HSL.
   /* Dark mode transitions */
   .dark .transition-hero-waitlist {
     background: linear-gradient(180deg, 
-      transparent 0%,
-      hsl(var(--primary) / 0.08) 30%,
-      hsl(var(--primary) / 0.12) 50%,
-      hsl(var(--accent) / 0.06) 70%,
-      transparent 100%
+      hsl(var(--background)) 0%,
+      hsl(var(--primary) / 0.02) 50%,
+      hsl(var(--background)) 100%
     );
   }
 
   .dark .transition-waitlist-features {
     background: linear-gradient(180deg, 
-      transparent 0%,
-      hsl(var(--accent) / 0.06) 20%,
-      hsl(var(--secondary) / 0.12) 40%,
-      hsl(var(--primary) / 0.08) 60%,
-      hsl(var(--muted) / 0.10) 80%,
-      transparent 100%
+      hsl(var(--background)) 0%,
+      hsl(var(--accent) / 0.03) 50%,
+      hsl(var(--background)) 100%
     );
   }
 
   .dark .transition-features-howitworks {
-    background: radial-gradient(ellipse 80% 60% at 50% 50%, 
-      hsl(var(--primary) / 0.12) 0%,
-      hsl(var(--accent) / 0.08) 30%,
-      transparent 70%
+    background: linear-gradient(180deg, 
+      hsl(var(--background)) 0%,
+      hsl(var(--secondary) / 0.04) 50%,
+      hsl(var(--background)) 100%
     );
   }
 
   .dark .transition-howitworks-emotional {
-    background: linear-gradient(135deg, 
-      transparent 0%,
-      hsl(var(--secondary) / 0.10) 25%,
-      hsl(var(--primary) / 0.08) 50%,
-      hsl(var(--accent) / 0.08) 75%,
-      transparent 100%
+    background: linear-gradient(180deg, 
+      hsl(var(--background)) 0%,
+      hsl(var(--primary) / 0.03) 50%,
+      hsl(var(--background)) 100%
     );
   }
 
   .dark .transition-emotional-luxury {
-    background: conic-gradient(from 180deg at 50% 50%,
-      transparent 0deg,
-      hsl(var(--primary) / 0.08) 90deg,
-      hsl(var(--accent) / 0.12) 180deg,
-      hsl(var(--secondary) / 0.06) 270deg,
-      transparent 360deg
+    background: linear-gradient(180deg, 
+      hsl(var(--background)) 0%,
+      hsl(var(--accent) / 0.02) 50%,
+      hsl(var(--background)) 100%
     );
   }
 
   .dark .transition-luxury-vision {
-    background: linear-gradient(45deg, 
-      transparent 0%,
-      hsl(var(--accent) / 0.10) 20%,
-      hsl(var(--primary) / 0.15) 40%,
-      hsl(var(--secondary) / 0.08) 60%,
-      hsl(var(--muted) / 0.12) 80%,
-      transparent 100%
+    background: linear-gradient(180deg, 
+      hsl(var(--background)) 0%,
+      hsl(var(--muted) / 0.04) 50%,
+      hsl(var(--background)) 100%
     );
   }
 
