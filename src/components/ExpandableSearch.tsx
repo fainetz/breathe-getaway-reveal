@@ -95,10 +95,10 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
     <div className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-40 transition-transform duration-500 ease-out">
       <div 
         className={`${
-          isMobile ? 'w-full max-w-xs' : 'w-96'
+          isMobile ? 'w-full max-w-xs mx-4' : 'w-96'
         } ${
           isMobile ? 'h-[42px]' : 'h-[52px]'
-        } relative overflow-hidden transition-all duration-500 ease-out origin-center ${
+        } relative overflow-visible transition-all duration-500 ease-out origin-center ${
           isExpanded ? 'scale-100' : 'scale-[0.55]'
         }`}
         onMouseEnter={() => {
@@ -126,13 +126,13 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
         {/* Collapsed state */}
         {!isExpanded ? (
-          <div className="relative w-full h-full flex items-center justify-center px-4">
-            <Search className="w-5 h-5 text-gray-600 dark:text-gray-400 mr-2 transition-colors duration-300" />
-            <span className="text-gray-600 dark:text-gray-400 text-sm font-medium transition-colors duration-300">Search</span>
+          <div className="relative w-full h-full flex items-center justify-center px-3">
+            <Search className="w-4 h-4 text-gray-600 dark:text-gray-400 mr-2 transition-colors duration-300" />
+            <span className="text-gray-600 dark:text-gray-400 text-xs font-medium transition-colors duration-300">Search</span>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="relative w-full h-full flex items-center px-6">
-            <Search className="w-5 h-5 text-gray-400 dark:text-gray-500 mr-3 flex-shrink-0" />
+          <form onSubmit={handleSubmit} className="relative w-full h-full flex items-center px-4 sm:px-6">
+            <Search className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 dark:text-gray-500 mr-2 sm:mr-3 flex-shrink-0" />
             <input
               type="text"
               value={prompt}
@@ -141,7 +141,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
                 setIsUserTyping(true); // Mark as typing when user inputs text
               }}
               placeholder="Need escape..."
-              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-base font-medium transition-all duration-300 focus:scale-[1.01]"
+              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm sm:text-base font-medium transition-all duration-300 focus:scale-[1.01]"
               onFocus={(e) => {
                 setIsFocused(true);
                 e.target.placeholder = "Heartbroken, excited, adventurous...";
@@ -157,9 +157,9 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
             />
             <button
               type="submit"
-              className="ml-3 p-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0"
+              className="ml-2 sm:ml-3 p-1.5 sm:p-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0"
             >
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
             </button>
           </form>
         )}
