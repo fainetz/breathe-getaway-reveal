@@ -208,17 +208,11 @@ const Hero = () => {
         {/* Left side - Main heading and description */}
         <div className="text-left lg:pr-8 order-1 lg:order-1">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6 animate-fade-in">
-            Travel
-            <br />
-            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
-              Without
-            </span>
-            <br />
-            Planning
+            Smarter AI That Gets You — And Gets You There
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            Let your feelings guide the journey. Whisper your mood to our AI, and discover destinations your heart never knew it craved.
+            A Good trip doesn't start with filters and compromises. It starts with clarity — and a booking that just feels right, no second-guessing, no stress.
           </p>
           
           {/* Mobile search functionality is now handled by the floating ExpandableSearch component */}
