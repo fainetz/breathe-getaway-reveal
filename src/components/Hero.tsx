@@ -220,6 +220,13 @@ const Hero = () => {
             A Good trip doesn't start with filters and compromises. It starts with clarity — and a booking that just feels right, no second-guessing, no stress.
           </p>
           
+          {/* Waitlist text - positioned to appear under search */}
+          <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <p className="text-sm sm:text-base text-muted-foreground">
+              Join the waitlist for founding perks
+            </p>
+          </div>
+          
           {/* Mobile search functionality is now handled by the floating ExpandableSearch component */}
         </div>
 
@@ -229,15 +236,8 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Waitlist text - positioned directly under search bar */}
-      <div className="absolute bottom-24 sm:bottom-12 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-        <p className="text-sm text-muted-foreground text-center">
-          Join the waitlist for founding perks
-        </p>
-      </div>
-      
-      {/* Scroll indicator arrows - positioned directly under waitlist text */}
-      <div className="absolute bottom-16 sm:bottom-4 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in" style={{ animationDelay: '0.9s' }}>
+      {/* Scroll indicator arrows */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in" style={{ animationDelay: '0.9s' }}>
         <div className="flex flex-col items-center space-y-2">
           <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
           <ChevronDown className="w-5 h-5 text-muted-foreground/70 animate-bounce" style={{ animationDelay: '0.2s' }} />
