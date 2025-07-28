@@ -208,7 +208,8 @@ const Hero = () => {
         {/* Left side - Main heading and description */}
         <div className="text-left lg:pr-8 order-1 lg:order-1">
           <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-geist font-semibold leading-tight text-foreground mb-6 animate-fade-in">
-            <span>AI That Gets You</span>
+            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">AI</span>
+            <span> That Gets You</span>
             <br className="sm:hidden" />
             <span className="sm:inline"> And Gets You There</span>
             <br className="sm:hidden" />
