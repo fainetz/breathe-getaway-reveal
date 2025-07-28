@@ -211,8 +211,8 @@ const Hero = () => {
             <span>AI That Gets You</span>
             <br className="sm:hidden" />
             <span className="sm:inline"> And Gets You</span>
-            <br className="sm:hidden" />
-            <span className="sm:inline"> There </span>
+            <br />
+            <span>There </span>
             <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Smarter</span>
           </h1>
           
