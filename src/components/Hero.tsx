@@ -213,7 +213,7 @@ const Hero = () => {
             <span className="sm:inline"> That Gets You,</span>
             <br className="sm:hidden" />
             <span className="sm:inline"> And </span>
-            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Gets You There</span>
+            <span>Gets You There</span>
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
