@@ -208,7 +208,8 @@ const Hero = () => {
         {/* Left side - Main heading and description */}
         <div className="text-left lg:pr-8 order-1 lg:order-1">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6 animate-fade-in">
-            Smarter AI That Gets You — And Gets You There
+            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Smarter AI</span> That Gets You, And{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Gets You There</span>
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
