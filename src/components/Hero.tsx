@@ -237,12 +237,7 @@ const Hero = () => {
       </div>
       
       {/* Scroll indicator arrows */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in" style={{ animationDelay: '0.9s' }}>
-        <div className="flex flex-col items-center space-y-2">
-          <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
-          <ChevronDown className="w-5 h-5 text-muted-foreground/70 animate-bounce" style={{ animationDelay: '0.2s' }} />
-        </div>
-      </div>
+      
     </section>
   );
 };
