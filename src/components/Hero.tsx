@@ -220,13 +220,6 @@ const Hero = () => {
             A Good trip doesn't start with filters and compromises. It starts with clarity — and a booking that just feels right, no second-guessing, no stress.
           </p>
           
-          {/* Waitlist text - positioned to appear under search */}
-          <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <p className="text-sm sm:text-base text-muted-foreground">
-              Join the waitlist for founding perks
-            </p>
-          </div>
-          
           {/* Mobile search functionality is now handled by the floating ExpandableSearch component */}
         </div>
 
@@ -234,6 +227,13 @@ const Hero = () => {
         <div className="relative order-2 lg:order-2">
           {/* Left empty as requested */}
         </div>
+      </div>
+      
+      {/* Waitlist text - positioned to appear under search bar */}
+      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+        <p className="text-sm text-muted-foreground text-center">
+          Join the waitlist for founding perks
+        </p>
       </div>
       
       {/* Scroll indicator arrows */}
