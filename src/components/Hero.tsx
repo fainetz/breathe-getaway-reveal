@@ -223,7 +223,7 @@ const Hero = () => {
           {/* Waitlist text - positioned to appear under search */}
           <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
             <p className="text-sm sm:text-base text-muted-foreground">
-              Join the waitlist for founding perks
+              Join the waitlist for founding user perks
             </p>
           </div>
           
