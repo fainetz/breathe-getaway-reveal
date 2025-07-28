@@ -229,8 +229,8 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Waitlist text - positioned to appear under search bar */}
-      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+      {/* Waitlist text - positioned to appear under search bar area but not overlap */}
+      <div className="absolute bottom-32 sm:bottom-28 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in" style={{ animationDelay: '0.6s' }}>
         <p className="text-sm text-muted-foreground text-center">
           Join the waitlist for founding perks
         </p>
