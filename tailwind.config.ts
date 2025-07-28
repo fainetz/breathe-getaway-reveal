@@ -21,6 +21,7 @@ export default {
 			fontFamily: {
 				'playfair': ['Playfair Display', 'serif'],
 				'inter': ['Inter', 'sans-serif'],
+				'geist': ['Geist', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
