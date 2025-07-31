@@ -685,7 +685,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                       return (
                         <div 
                           key={destination.id} 
-                          className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl animate-slide-up opacity-0"
+                          className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl opacity-100"
                           style={{ 
                             animationDelay: `${index * 200}ms`,
                             animationFillMode: 'forwards'
