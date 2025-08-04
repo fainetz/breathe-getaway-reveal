@@ -138,26 +138,31 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
       console.log('Updated chat history:',response);
       // 6) Flight results?
       if (data.flights) {
-        const mapped = data.flights.map((f: any, i: number) => {
-          const parsed = JSON.parse(f.best_flight); // ✅ parse the stringified JSON
+        const mapped = await Promise.all(
+          data.flights.map(async (f: any, i: number) => {
+            const parsed = JSON.parse(f.best_flight);
         
-          return {
-            id: (i + 1).toString(),
-            name: parsed.destination,
-            location: parsed.from,
-            price: `$${parsed.price}`,
-            image: parsed.imageUrl || '/default-flight.jpg',
-            description: parsed.reason || 'Auto-suggested flight option',
-            flightDestination: parsed.to,
-            airportCode: parsed.from,
-            flightairline: parsed.airline,
-            flightnumber: Array.isArray(parsed.flights) ? parsed.flights : [],
-            flightarrival: parsed.arrival,
-            flightdeparture: parsed.departure,
-            flightduration: parsed.duration || '5 days',
-            flightclass: parsed.cabin_class || parsed.class,
-          };
-        });
+            const imageQuery = `${parsed.destination} travel`; // customize query
+            const unsplashImage = await fetchUnsplashImage(imageQuery);
+        
+            return {
+              id: (i + 1).toString(),
+              name: parsed.destination,
+              location: parsed.from,
+              price: `$${parsed.price}`,
+              image: unsplashImage || '/default-flight.jpg',  // fallback image
+              description: parsed.reason || 'Auto-suggested flight option',
+              flightDestination: parsed.to,
+              airportCode: parsed.from,
+              flightairline: parsed.airline,
+              flightnumber: Array.isArray(parsed.flights) ? parsed.flights : [],
+              flightarrival: parsed.arrival,
+              flightdeparture: parsed.departure,
+              flightduration: parsed.duration || '5 days',
+              flightclass: parsed.cabin_class || parsed.class,
+            };
+          })
+        );
 
         setCurrentDestinations(mapped);
         console.log('Mapped flight destinations:', mapped);
@@ -191,7 +196,19 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
     }
   };
     
-  
+const fetchUnsplashImage = async (query: string): Promise<string | null> => {
+  try {
+    const response = await fetch(`https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&orientation=landscape&client_id=46S75Fp5Zz-lrFzxhFovN5pyUojzRtls3JaRqvYv9Nc`);
+    const data = await response.json();
+    if (data.results && data.results.length > 0) {
+      return data.results[0].urls.regular;
+    }
+    return null;
+  } catch (error) {
+    console.error('Failed to fetch Unsplash image:', error);
+    return null;
+   }
+ };
  
   const navigate = useNavigate();
 
@@ -685,7 +702,7 @@ const TravelChatInterface = ({ isOpen, onClose, initialPrompt }: TravelChatInter
                       return (
                         <div 
                           key={destination.id} 
-                          className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl opacity-100"
+                          className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 shadow-xl animate-slide-up opacity-0"
                           style={{ 
                             animationDelay: `${index * 200}ms`,
                             animationFillMode: 'forwards'
