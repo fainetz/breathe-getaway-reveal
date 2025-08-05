@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Edit, Plus, Plane, Hotel, MapPin, Calendar, Star, ArrowRight, Eye, Heart, Camera } from 'lucide-react';
+import { ArrowLeft, Edit, Plus, Plane, Hotel, MapPin, Calendar, Star, ArrowRight, Eye, Heart, Camera, ChevronRight } from 'lucide-react';
+import TripComponentDetails from '../components/TripComponentDetails';
 
 interface TripResults {
   prompt: string;
@@ -48,6 +49,7 @@ const TripResults = () => {
   const navigate = useNavigate();
   const [results, setResults] = useState<TripResults | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedComponent, setSelectedComponent] = useState<{type: 'flight' | 'hotel' | 'itinerary' | 'gems', data: any} | null>(null);
 
   const query = searchParams.get('q') || '';
 
@@ -153,6 +155,16 @@ const TripResults = () => {
     // Here you would trigger a new AI generation with the adjustment
   };
 
+  const handleComponentClick = (type: 'flight' | 'hotel' | 'itinerary' | 'gems', data: any) => {
+    setSelectedComponent({ type, data });
+  };
+
+  const handlePromptSubmit = (prompt: string, componentType: string) => {
+    console.log(`Updating ${componentType} with prompt: ${prompt}`);
+    // This would trigger a new AI generation with the prompt
+    setSelectedComponent(null);
+  };
+
   const handleBackClick = () => {
     navigate(-1);
   };
@@ -215,175 +227,154 @@ const TripResults = () => {
           </p>
         </div>
 
-        {/* Main Trip Cards */}
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* Flight Card */}
-          <div className="group relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative bg-card/40 backdrop-blur-xl border border-border/50 rounded-3xl p-8 space-y-6 hover:bg-card/60 transition-all duration-300">
+        {/* Compact Trip Overview */}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {/* Flight Card - Compact */}
+          <button 
+            onClick={() => handleComponentClick('flight', results.flight)}
+            className="group relative text-left"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-6 space-y-4 hover:bg-card/60 transition-all duration-300">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="p-3 bg-primary/10 rounded-xl">
-                    <Plane className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-medium text-card-foreground">Flight</h3>
-                </div>
-                <span className="text-2xl font-bold text-primary">{results.flight.price}</span>
-              </div>
-              
-              <div className="space-y-3">
-                <p className="text-xl font-medium text-foreground">{results.flight.route}</p>
-                <p className="text-muted-foreground flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  {results.flight.schedule}
-                </p>
-                <p className="text-muted-foreground">{results.flight.details}</p>
-              </div>
-
-              <div className="space-y-3 pt-4 border-t border-border/30">
-                {results.flight.suggestions.map((suggestion, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleAdjustment('flight', suggestion)}
-                    className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group/suggestion w-full text-left p-2 rounded-lg hover:bg-muted/50"
-                  >
-                    <Edit className="w-4 h-4 opacity-60 group-hover/suggestion:opacity-100" />
-                    <span>"{suggestion}"</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Hotel Card */}
-          <div className="group relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative bg-card/40 backdrop-blur-xl border border-border/50 rounded-3xl p-8 space-y-6 hover:bg-card/60 transition-all duration-300">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="p-3 bg-accent/10 rounded-xl">
-                    <Hotel className="w-6 h-6 text-accent" />
-                  </div>
-                  <h3 className="text-xl font-medium text-card-foreground">Hotel</h3>
-                </div>
-                <span className="text-2xl font-bold text-accent">{results.hotel.price}</span>
-              </div>
-              
-              <div className="space-y-3">
-                <p className="text-xl font-medium text-foreground">{results.hotel.name}</p>
                 <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1">
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    <span className="font-medium">{results.hotel.rating}</span>
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Plane className="w-5 h-5 text-primary" />
                   </div>
-                  <span className="text-muted-foreground">— {results.hotel.description}</span>
+                  <h3 className="font-medium text-card-foreground">Flight</h3>
                 </div>
+                <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
               </div>
-
-              <div className="space-y-3 pt-4 border-t border-border/30">
-                {results.hotel.suggestions.map((suggestion, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleAdjustment('hotel', suggestion)}
-                    className="flex items-center gap-3 text-sm text-muted-foreground hover:text-accent transition-colors group/suggestion w-full text-left p-2 rounded-lg hover:bg-muted/50"
-                  >
-                    <Edit className="w-4 h-4 opacity-60 group-hover/suggestion:opacity-100" />
-                    <span>"{suggestion}"</span>
-                  </button>
-                ))}
+              
+              <div className="space-y-2">
+                <p className="font-medium text-foreground">{results.flight.route}</p>
+                <p className="text-sm text-muted-foreground">{results.flight.schedule}</p>
+                <p className="text-lg font-bold text-primary">{results.flight.price}</p>
               </div>
             </div>
-          </div>
+          </button>
+
+          {/* Hotel Card - Compact */}
+          <button 
+            onClick={() => handleComponentClick('hotel', results.hotel)}
+            className="group relative text-left"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-6 space-y-4 hover:bg-card/60 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="p-2 bg-accent/10 rounded-lg">
+                    <Hotel className="w-5 h-5 text-accent" />
+                  </div>
+                  <h3 className="font-medium text-card-foreground">Hotel</h3>
+                </div>
+                <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors" />
+              </div>
+              
+              <div className="space-y-2">
+                <p className="font-medium text-foreground">{results.hotel.name}</p>
+                <div className="flex items-center gap-1">
+                  <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                  <span className="text-sm font-medium">{results.hotel.rating}</span>
+                </div>
+                <p className="text-lg font-bold text-accent">{results.hotel.price}</p>
+              </div>
+            </div>
+          </button>
+
+          {/* Itinerary Card - Compact */}
+          <button 
+            onClick={() => handleComponentClick('itinerary', results.thingsToDo)}
+            className="group relative text-left"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-6 space-y-4 hover:bg-card/60 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="p-2 bg-secondary/10 rounded-lg">
+                    <MapPin className="w-5 h-5 text-secondary-foreground" />
+                  </div>
+                  <h3 className="font-medium text-card-foreground">Itinerary</h3>
+                </div>
+                <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-secondary-foreground transition-colors" />
+              </div>
+              
+              <div className="space-y-2">
+                <p className="font-medium text-foreground">{results.thingsToDo.length} activities</p>
+                <div className="flex -space-x-1">
+                  {results.thingsToDo.slice(0, 3).map((activity, index) => (
+                    <div key={index} className="w-6 h-6 bg-muted rounded-full border-2 border-card flex items-center justify-center text-xs">
+                      {activity.icon}
+                    </div>
+                  ))}
+                  {results.thingsToDo.length > 3 && (
+                    <div className="w-6 h-6 bg-muted rounded-full border-2 border-card flex items-center justify-center text-xs text-muted-foreground">
+                      +{results.thingsToDo.length - 3}
+                    </div>
+                  )}
+                </div>
+                <p className="text-sm text-muted-foreground">Tap to customize</p>
+              </div>
+            </div>
+          </button>
+
+          {/* Hidden Gems Card - Compact */}
+          <button 
+            onClick={() => handleComponentClick('gems', results.hiddenGems)}
+            className="group relative text-left"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-6 space-y-4 hover:bg-card/60 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Eye className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="font-medium text-card-foreground">Hidden Gems</h3>
+                </div>
+                <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+              </div>
+              
+              <div className="space-y-2">
+                <p className="font-medium text-foreground">{results.hiddenGems.length} secret spots</p>
+                <p className="text-sm text-muted-foreground">Local favorites & insider tips</p>
+                <div className="flex gap-1">
+                  {results.hiddenGems.map((gem, index) => (
+                    <span key={index} className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">
+                      {gem.type}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </button>
         </div>
 
-        {/* Things to Do */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-3">
-            <div className="p-3 bg-secondary/10 rounded-xl">
-              <MapPin className="w-6 h-6 text-secondary-foreground" />
-            </div>
-            <h3 className="text-2xl font-medium text-foreground">Your Itinerary</h3>
-          </div>
-          
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {results.thingsToDo.map((activity, index) => (
-              <div key={index} className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-6 space-y-4 hover:bg-card/60 transition-all duration-300">
-                  <div className="text-3xl">{activity.icon}</div>
-                  <div>
-                    <h4 className="font-medium text-foreground">{activity.title}</h4>
-                    <p className="text-sm text-muted-foreground mt-1">{activity.description}</p>
-                    <p className="text-xs text-primary font-medium mt-2">{activity.time}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-wrap gap-3 justify-center pt-4">
-            <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors px-4 py-2 rounded-lg hover:bg-muted/50">
-              <Plus className="w-4 h-4" />
-              "Add cenote swimming"
+        {/* Quick Actions */}
+        <div className="bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-6">
+          <h3 className="text-lg font-medium text-foreground mb-4">Quick adjustments</h3>
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+            <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors px-4 py-3 rounded-lg hover:bg-muted/50 border border-border/30">
+              <Edit className="w-4 h-4" />
+              "Make it more luxurious"
             </button>
-            <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors px-4 py-2 rounded-lg hover:bg-muted/50">
-              <Plus className="w-4 h-4" />
-              "Skip activities — I just wanna sleep"
+            <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors px-4 py-3 rounded-lg hover:bg-muted/50 border border-border/30">
+              <Edit className="w-4 h-4" />
+              "Less touristy places"
             </button>
-            <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors px-4 py-2 rounded-lg hover:bg-muted/50">
-              <Plus className="w-4 h-4" />
-              "Add a night market"
+            <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors px-4 py-3 rounded-lg hover:bg-muted/50 border border-border/30">
+              <Edit className="w-4 h-4" />
+              "Add more adventure"
             </button>
-          </div>
-        </div>
-
-        {/* Hidden Gems */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-3">
-            <div className="p-3 bg-primary/10 rounded-xl">
-              <Eye className="w-6 h-6 text-primary" />
-            </div>
-            <h3 className="text-2xl font-medium text-foreground">Hidden Gems</h3>
-            <span className="text-sm text-muted-foreground">Local secrets just for you</span>
-          </div>
-          
-          <div className="grid gap-6 md:grid-cols-3">
-            {results.hiddenGems.map((gem, index) => (
-              <div key={index} className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-6 space-y-4 hover:bg-card/60 transition-all duration-300">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full font-medium">
-                        {gem.type}
-                      </span>
-                    </div>
-                    <Heart className="w-5 h-5 text-muted-foreground hover:text-red-500 transition-colors cursor-pointer" />
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium text-foreground">{gem.name}</h4>
-                    <p className="text-sm text-muted-foreground mt-1">{gem.description}</p>
-                  </div>
-                  
-                  <div className="pt-3 border-t border-border/30">
-                    <div className="flex items-start gap-2">
-                      <div className="p-1 bg-accent/10 rounded">
-                        <Camera className="w-3 h-3 text-accent" />
-                      </div>
-                      <p className="text-xs text-muted-foreground">
-                        <strong>Insider tip:</strong> {gem.insider_tip}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors px-4 py-3 rounded-lg hover:bg-muted/50 border border-border/30">
+              <Edit className="w-4 h-4" />
+              "I just want to relax"
+            </button>
           </div>
         </div>
 
         {/* Final CTA */}
-        <div className="text-center pt-12">
+        <div className="text-center pt-8">
           <button className="group bg-gradient-to-r from-primary to-accent text-primary-foreground px-12 py-6 rounded-3xl text-lg font-medium hover:from-primary/90 hover:to-accent/90 transition-all duration-300 hover:scale-105 shadow-2xl">
             <span className="flex items-center gap-3">
               Looks good? Tap to book, or tell me what to change
@@ -392,6 +383,17 @@ const TripResults = () => {
           </button>
         </div>
       </div>
+
+      {/* Component Details Modal */}
+      {selectedComponent && (
+        <TripComponentDetails
+          type={selectedComponent.type}
+          data={selectedComponent.data}
+          isOpen={!!selectedComponent}
+          onClose={() => setSelectedComponent(null)}
+          onPromptSubmit={handlePromptSubmit}
+        />
+      )}
     </div>
   );
 };
