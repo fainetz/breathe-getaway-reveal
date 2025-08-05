@@ -13,15 +13,22 @@ import FeatureRequestBox from '../components/FeatureRequestBox';
 import ExpandableSearch from '../components/ExpandableSearch';
 import BackToChatButton from '../components/BackToChatButton';
 import AIAssistantChat from '../components/AIAssistantChat';
+import FlightAIGenerator from '../components/FlightAIGenerator';
 
 const Index = () => {
   const navigate = useNavigate();
   const [hasChatHistory, setHasChatHistory] = useState(false);
+  const [showFlightAI, setShowFlightAI] = useState(false);
 
   const handleSearchSubmit = (query: string) => {
     console.log('Search submitted:', query);
     setHasChatHistory(true);
     navigate(`/chat?q=${encodeURIComponent(query)}`);
+  };
+
+  const handleFlightAIResults = (results: any) => {
+    console.log('Flight AI results:', results);
+    // Here you could navigate to a results page or update state to show results
   };
 
   const handleBackToChat = () => {
@@ -51,6 +58,7 @@ const Index = () => {
       <FeatureRequestBox />
       <ExpandableSearch onSearchSubmit={handleSearchSubmit} />
       <AIAssistantChat onSearchSubmit={handleSearchSubmit} />
+      <FlightAIGenerator onResultsGenerated={handleFlightAIResults} />
       <BackToChatButton 
         onBackToChat={handleBackToChat} 
         hasChatHistory={hasChatHistory} 
