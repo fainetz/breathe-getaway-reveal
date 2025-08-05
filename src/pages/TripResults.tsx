@@ -58,6 +58,12 @@ const TripResults = () => {
     gems: ''
   });
   const [submittingPrompts, setSubmittingPrompts] = useState<{[key: string]: boolean}>({});
+  const [showPromptBox, setShowPromptBox] = useState<{[key: string]: boolean}>({
+    flight: false,
+    hotel: false,
+    itinerary: false,
+    gems: false
+  });
 
   const query = searchParams.get('q') || '';
 
@@ -98,25 +104,25 @@ const TripResults = () => {
           title: "Sunrise beach meditation",
           description: "Start your day with peaceful meditation as the sun rises over the Caribbean",
           time: "6:00 AM",
-          icon: "🧘‍♀️"
+          icon: "sunrise"
         },
         {
           title: "Street taco crawl",
           description: "Authentic local tacos from 3 beloved neighborhood spots",
           time: "12:00 PM",
-          icon: "🌮"
+          icon: "food"
         },
         {
           title: "Cenote swimming",
           description: "Crystal clear freshwater swimming in ancient limestone caves",
           time: "3:00 PM",
-          icon: "🏊‍♂️"
+          icon: "swim"
         },
         {
           title: "Naps built in",
           description: "Strategic rest time because you deserve it",
           time: "5:00 PM",
-          icon: "💤"
+          icon: "rest"
         }
       ],
       hiddenGems: [
@@ -197,6 +203,20 @@ const TripResults = () => {
     setPrompts(prev => ({ ...prev, [componentType]: value }));
   };
 
+  const togglePromptBox = (componentType: string) => {
+    setShowPromptBox(prev => ({ ...prev, [componentType]: !prev[componentType] }));
+  };
+
+  const getActivityIcon = (iconType: string) => {
+    const iconMap = {
+      sunrise: <Calendar className="w-5 h-5 text-orange-400" />,
+      food: <Star className="w-5 h-5 text-amber-500" />,
+      swim: <MapPin className="w-5 h-5 text-blue-400" />,
+      rest: <Heart className="w-5 h-5 text-purple-400" />
+    };
+    return iconMap[iconType as keyof typeof iconMap] || <MapPin className="w-5 h-5 text-muted-foreground" />;
+  };
+
   const handleBackClick = () => {
     navigate(-1);
   };
@@ -262,273 +282,323 @@ const TripResults = () => {
         {/* Vertical Trip Components */}
         <div className="space-y-8">
           {/* Flight Section */}
-          <div className="bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-8">
+          <div className="group bg-gradient-to-br from-card/60 via-card/40 to-card/20 backdrop-blur-xl border border-border/30 rounded-3xl p-8 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 cursor-pointer"
+               onClick={() => togglePromptBox('flight')}>
             <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-xl">
-                  <Plane className="w-6 h-6 text-primary" />
+              <div className="flex items-center gap-4">
+                <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl group-hover:scale-105 transition-transform duration-300">
+                  <Plane className="w-7 h-7 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-foreground">Flight</h3>
-                  <p className="text-sm text-muted-foreground">Tap details for full view</p>
+                  <h3 className="text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">Flight</h3>
+                  <p className="text-sm text-muted-foreground">Click to customize</p>
                 </div>
               </div>
-              <button 
-                onClick={() => handleComponentClick('flight', results.flight)}
-                className="p-2 hover:bg-muted rounded-lg transition-colors"
-              >
-                <Eye className="w-5 h-5 text-muted-foreground" />
-              </button>
+              <div className="flex gap-2">
+                <button 
+                  onClick={(e) => {e.stopPropagation(); handleComponentClick('flight', results.flight);}}
+                  className="p-2 hover:bg-muted/50 rounded-xl transition-colors"
+                >
+                  <Eye className="w-5 h-5 text-muted-foreground" />
+                </button>
+                <button 
+                  onClick={(e) => {e.stopPropagation(); togglePromptBox('flight');}}
+                  className="p-2 hover:bg-primary/10 rounded-xl transition-colors"
+                >
+                  <Edit className="w-5 h-5 text-primary" />
+                </button>
+              </div>
             </div>
             
             <div className="grid md:grid-cols-3 gap-6 mb-6">
-              <div>
-                <p className="text-sm text-muted-foreground mb-1">Route</p>
-                <p className="font-medium text-foreground">{results.flight.route}</p>
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Route</p>
+                <p className="text-lg font-semibold text-foreground">{results.flight.route}</p>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground mb-1">Schedule</p>
-                <p className="font-medium text-foreground">{results.flight.schedule}</p>
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Schedule</p>
+                <p className="text-lg font-semibold text-foreground">{results.flight.schedule}</p>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground mb-1">Price</p>
-                <p className="text-2xl font-bold text-primary">{results.flight.price}</p>
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Price</p>
+                <p className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">{results.flight.price}</p>
               </div>
             </div>
             
-            <div className="flex gap-3">
-              <div className="flex-1 relative">
-                <Textarea
-                  value={prompts.flight}
-                  onChange={(e) => updatePrompt('flight', e.target.value)}
-                  placeholder="Want business class? Red-eye? Different airline? Tell me..."
-                  className="resize-none bg-muted/50 border-border/50"
-                  rows={2}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                      e.preventDefault();
-                      handleInlinePromptSubmit('flight');
-                    }
-                  }}
-                />
-                <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+            {showPromptBox.flight && (
+              <div className="flex gap-3 mt-4 pt-4 border-t border-border/30 animate-in slide-in-from-top-2 duration-300">
+                <div className="flex-1 relative">
+                  <Textarea
+                    value={prompts.flight}
+                    onChange={(e) => updatePrompt('flight', e.target.value)}
+                    placeholder="Want business class? Red-eye? Different airline? Tell me..."
+                    className="resize-none bg-muted/30 border-border/50 rounded-xl focus:ring-2 focus:ring-primary/20"
+                    rows={2}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        handleInlinePromptSubmit('flight');
+                      }
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                  <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+                </div>
+                <button
+                  onClick={(e) => {e.stopPropagation(); handleInlinePromptSubmit('flight');}}
+                  disabled={!prompts.flight.trim() || submittingPrompts.flight}
+                  className="px-6 py-3 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground rounded-xl hover:from-primary/90 hover:to-primary/80 transition-all duration-300 disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl"
+                >
+                  {submittingPrompts.flight ? (
+                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <Send className="w-4 h-4" />
+                  )}
+                </button>
               </div>
-              <button
-                onClick={() => handleInlinePromptSubmit('flight')}
-                disabled={!prompts.flight.trim() || submittingPrompts.flight}
-                className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 flex items-center gap-2"
-              >
-                {submittingPrompts.flight ? (
-                  <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                ) : (
-                  <Send className="w-4 h-4" />
-                )}
-              </button>
-            </div>
+            )}
           </div>
 
           {/* Hotel Section */}
-          <div className="bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-8">
+          <div className="group bg-gradient-to-br from-card/60 via-card/40 to-card/20 backdrop-blur-xl border border-border/30 rounded-3xl p-8 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 cursor-pointer"
+               onClick={() => togglePromptBox('hotel')}>
             <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-accent/10 rounded-xl">
-                  <Hotel className="w-6 h-6 text-accent" />
+              <div className="flex items-center gap-4">
+                <div className="p-4 bg-gradient-to-br from-accent/20 to-accent/10 rounded-2xl group-hover:scale-105 transition-transform duration-300">
+                  <Hotel className="w-7 h-7 text-accent" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-foreground">Hotel</h3>
-                  <p className="text-sm text-muted-foreground">Tap details for full view</p>
+                  <h3 className="text-2xl font-semibold text-foreground group-hover:text-accent transition-colors">Hotel</h3>
+                  <p className="text-sm text-muted-foreground">Click to customize</p>
                 </div>
               </div>
-              <button 
-                onClick={() => handleComponentClick('hotel', results.hotel)}
-                className="p-2 hover:bg-muted rounded-lg transition-colors"
-              >
-                <Eye className="w-5 h-5 text-muted-foreground" />
-              </button>
+              <div className="flex gap-2">
+                <button 
+                  onClick={(e) => {e.stopPropagation(); handleComponentClick('hotel', results.hotel);}}
+                  className="p-2 hover:bg-muted/50 rounded-xl transition-colors"
+                >
+                  <Eye className="w-5 h-5 text-muted-foreground" />
+                </button>
+                <button 
+                  onClick={(e) => {e.stopPropagation(); togglePromptBox('hotel');}}
+                  className="p-2 hover:bg-accent/10 rounded-xl transition-colors"
+                >
+                  <Edit className="w-5 h-5 text-accent" />
+                </button>
+              </div>
             </div>
             
             <div className="grid md:grid-cols-3 gap-6 mb-6">
-              <div>
-                <p className="text-sm text-muted-foreground mb-1">Hotel</p>
-                <p className="font-medium text-foreground">{results.hotel.name}</p>
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Hotel</p>
+                <p className="text-lg font-semibold text-foreground">{results.hotel.name}</p>
                 <div className="flex items-center gap-1 mt-1">
-                  <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                  <span className="text-sm font-medium">{results.hotel.rating}</span>
+                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  <span className="text-sm font-medium text-yellow-400">{results.hotel.rating}</span>
                 </div>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground mb-1">Details</p>
-                <p className="font-medium text-foreground">{results.hotel.description}</p>
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Details</p>
+                <p className="text-lg font-semibold text-foreground">{results.hotel.description}</p>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground mb-1">Price</p>
-                <p className="text-2xl font-bold text-accent">{results.hotel.price}</p>
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Price</p>
+                <p className="text-3xl font-bold bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent">{results.hotel.price}</p>
               </div>
             </div>
             
-            <div className="flex gap-3">
-              <div className="flex-1 relative">
-                <Textarea
-                  value={prompts.hotel}
-                  onChange={(e) => updatePrompt('hotel', e.target.value)}
-                  placeholder="More luxury? Spa resort? Beach access? Tell me what you want..."
-                  className="resize-none bg-muted/50 border-border/50"
-                  rows={2}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                      e.preventDefault();
-                      handleInlinePromptSubmit('hotel');
-                    }
-                  }}
-                />
-                <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+            {showPromptBox.hotel && (
+              <div className="flex gap-3 mt-4 pt-4 border-t border-border/30 animate-in slide-in-from-top-2 duration-300">
+                <div className="flex-1 relative">
+                  <Textarea
+                    value={prompts.hotel}
+                    onChange={(e) => updatePrompt('hotel', e.target.value)}
+                    placeholder="More luxury? Spa resort? Beach access? Tell me what you want..."
+                    className="resize-none bg-muted/30 border-border/50 rounded-xl focus:ring-2 focus:ring-accent/20"
+                    rows={2}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        handleInlinePromptSubmit('hotel');
+                      }
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                  <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+                </div>
+                <button
+                  onClick={(e) => {e.stopPropagation(); handleInlinePromptSubmit('hotel');}}
+                  disabled={!prompts.hotel.trim() || submittingPrompts.hotel}
+                  className="px-6 py-3 bg-gradient-to-r from-accent to-accent/90 text-accent-foreground rounded-xl hover:from-accent/90 hover:to-accent/80 transition-all duration-300 disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl"
+                >
+                  {submittingPrompts.hotel ? (
+                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <Send className="w-4 h-4" />
+                  )}
+                </button>
               </div>
-              <button
-                onClick={() => handleInlinePromptSubmit('hotel')}
-                disabled={!prompts.hotel.trim() || submittingPrompts.hotel}
-                className="px-4 py-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50 flex items-center gap-2"
-              >
-                {submittingPrompts.hotel ? (
-                  <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                ) : (
-                  <Send className="w-4 h-4" />
-                )}
-              </button>
-            </div>
+            )}
           </div>
 
           {/* Itinerary Section */}
-          <div className="bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-8">
+          <div className="group bg-gradient-to-br from-card/60 via-card/40 to-card/20 backdrop-blur-xl border border-border/30 rounded-3xl p-8 hover:shadow-lg hover:shadow-secondary/5 transition-all duration-300 cursor-pointer"
+               onClick={() => togglePromptBox('itinerary')}>
             <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-secondary/10 rounded-xl">
-                  <MapPin className="w-6 h-6 text-secondary-foreground" />
+              <div className="flex items-center gap-4">
+                <div className="p-4 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-2xl group-hover:scale-105 transition-transform duration-300">
+                  <MapPin className="w-7 h-7 text-secondary-foreground" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-foreground">Itinerary</h3>
-                  <p className="text-sm text-muted-foreground">Tap details for full view</p>
+                  <h3 className="text-2xl font-semibold text-foreground group-hover:text-secondary-foreground transition-colors">Itinerary</h3>
+                  <p className="text-sm text-muted-foreground">Click to customize</p>
                 </div>
               </div>
-              <button 
-                onClick={() => handleComponentClick('itinerary', results.thingsToDo)}
-                className="p-2 hover:bg-muted rounded-lg transition-colors"
-              >
-                <Eye className="w-5 h-5 text-muted-foreground" />
-              </button>
+              <div className="flex gap-2">
+                <button 
+                  onClick={(e) => {e.stopPropagation(); handleComponentClick('itinerary', results.thingsToDo);}}
+                  className="p-2 hover:bg-muted/50 rounded-xl transition-colors"
+                >
+                  <Eye className="w-5 h-5 text-muted-foreground" />
+                </button>
+                <button 
+                  onClick={(e) => {e.stopPropagation(); togglePromptBox('itinerary');}}
+                  className="p-2 hover:bg-secondary/10 rounded-xl transition-colors"
+                >
+                  <Edit className="w-5 h-5 text-secondary-foreground" />
+                </button>
+              </div>
             </div>
             
             <div className="grid md:grid-cols-2 gap-4 mb-6">
               {results.thingsToDo.map((activity, index) => (
-                <div key={index} className="flex items-start gap-3 p-4 bg-muted/30 rounded-xl">
-                  <div className="text-2xl">{activity.icon}</div>
+                <div key={index} className="flex items-start gap-4 p-5 bg-gradient-to-r from-muted/40 to-muted/20 rounded-2xl hover:from-muted/50 hover:to-muted/30 transition-all duration-300">
+                  <div className="p-2 bg-background/50 rounded-xl">
+                    {getActivityIcon(activity.icon)}
+                  </div>
                   <div className="flex-1">
-                    <h4 className="font-medium text-foreground">{activity.title}</h4>
-                    <p className="text-sm text-muted-foreground mt-1">{activity.description}</p>
-                    <p className="text-xs text-primary font-medium mt-2">{activity.time}</p>
+                    <h4 className="font-semibold text-foreground text-lg">{activity.title}</h4>
+                    <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{activity.description}</p>
+                    <p className="text-xs text-primary font-medium mt-3 bg-primary/10 px-2 py-1 rounded-full inline-block">{activity.time}</p>
                   </div>
                 </div>
               ))}
             </div>
             
-            <div className="flex gap-3">
-              <div className="flex-1 relative">
-                <Textarea
-                  value={prompts.itinerary}
-                  onChange={(e) => updatePrompt('itinerary', e.target.value)}
-                  placeholder="More adventure? Just relaxation? Food tours? Tell me your vibe..."
-                  className="resize-none bg-muted/50 border-border/50"
-                  rows={2}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                      e.preventDefault();
-                      handleInlinePromptSubmit('itinerary');
-                    }
-                  }}
-                />
-                <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+            {showPromptBox.itinerary && (
+              <div className="flex gap-3 mt-4 pt-4 border-t border-border/30 animate-in slide-in-from-top-2 duration-300">
+                <div className="flex-1 relative">
+                  <Textarea
+                    value={prompts.itinerary}
+                    onChange={(e) => updatePrompt('itinerary', e.target.value)}
+                    placeholder="More adventure? Just relaxation? Food tours? Tell me your vibe..."
+                    className="resize-none bg-muted/30 border-border/50 rounded-xl focus:ring-2 focus:ring-secondary/20"
+                    rows={2}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        handleInlinePromptSubmit('itinerary');
+                      }
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                  <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+                </div>
+                <button
+                  onClick={(e) => {e.stopPropagation(); handleInlinePromptSubmit('itinerary');}}
+                  disabled={!prompts.itinerary.trim() || submittingPrompts.itinerary}
+                  className="px-6 py-3 bg-gradient-to-r from-secondary to-secondary/90 text-secondary-foreground rounded-xl hover:from-secondary/90 hover:to-secondary/80 transition-all duration-300 disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl"
+                >
+                  {submittingPrompts.itinerary ? (
+                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <Send className="w-4 h-4" />
+                  )}
+                </button>
               </div>
-              <button
-                onClick={() => handleInlinePromptSubmit('itinerary')}
-                disabled={!prompts.itinerary.trim() || submittingPrompts.itinerary}
-                className="px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/90 transition-colors disabled:opacity-50 flex items-center gap-2"
-              >
-                {submittingPrompts.itinerary ? (
-                  <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                ) : (
-                  <Send className="w-4 h-4" />
-                )}
-              </button>
-            </div>
+            )}
           </div>
 
           {/* Hidden Gems Section */}
-          <div className="bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-8">
+          <div className="group bg-gradient-to-br from-card/60 via-card/40 to-card/20 backdrop-blur-xl border border-border/30 rounded-3xl p-8 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 cursor-pointer"
+               onClick={() => togglePromptBox('gems')}>
             <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-xl">
-                  <Eye className="w-6 h-6 text-primary" />
+              <div className="flex items-center gap-4">
+                <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl group-hover:scale-105 transition-transform duration-300">
+                  <Camera className="w-7 h-7 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-foreground">Hidden Gems</h3>
-                  <p className="text-sm text-muted-foreground">Tap details for full view</p>
+                  <h3 className="text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">Hidden Gems</h3>
+                  <p className="text-sm text-muted-foreground">Click to customize</p>
                 </div>
               </div>
-              <button 
-                onClick={() => handleComponentClick('gems', results.hiddenGems)}
-                className="p-2 hover:bg-muted rounded-lg transition-colors"
-              >
-                <Eye className="w-5 h-5 text-muted-foreground" />
-              </button>
+              <div className="flex gap-2">
+                <button 
+                  onClick={(e) => {e.stopPropagation(); handleComponentClick('gems', results.hiddenGems);}}
+                  className="p-2 hover:bg-muted/50 rounded-xl transition-colors"
+                >
+                  <Eye className="w-5 h-5 text-muted-foreground" />
+                </button>
+                <button 
+                  onClick={(e) => {e.stopPropagation(); togglePromptBox('gems');}}
+                  className="p-2 hover:bg-primary/10 rounded-xl transition-colors"
+                >
+                  <Edit className="w-5 h-5 text-primary" />
+                </button>
+              </div>
             </div>
             
-            <div className="grid md:grid-cols-1 gap-4 mb-6">
+            <div className="grid md:grid-cols-1 gap-5 mb-6">
               {results.hiddenGems.map((gem, index) => (
-                <div key={index} className="p-4 bg-muted/30 rounded-xl">
-                  <div className="flex items-start justify-between mb-2">
-                    <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full font-medium">
+                <div key={index} className="p-6 bg-gradient-to-r from-muted/40 to-muted/20 rounded-2xl hover:from-muted/50 hover:to-muted/30 transition-all duration-300">
+                  <div className="flex items-start justify-between mb-3">
+                    <span className="text-xs px-3 py-1.5 bg-gradient-to-r from-primary/20 to-primary/10 text-primary rounded-full font-semibold tracking-wide">
                       {gem.type}
                     </span>
                   </div>
-                  <h4 className="font-medium text-foreground mb-1">{gem.name}</h4>
-                  <p className="text-sm text-muted-foreground mb-3">{gem.description}</p>
-                  <div className="bg-accent/10 rounded-lg p-3">
-                    <p className="text-xs text-muted-foreground">
-                      <strong className="text-accent">Insider tip:</strong> {gem.insider_tip}
+                  <h4 className="text-lg font-semibold text-foreground mb-2">{gem.name}</h4>
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{gem.description}</p>
+                  <div className="bg-gradient-to-r from-accent/10 to-accent/5 rounded-xl p-4 border-l-4 border-accent/30">
+                    <p className="text-sm text-muted-foreground">
+                      <strong className="text-accent font-semibold">Insider tip:</strong> {gem.insider_tip}
                     </p>
                   </div>
                 </div>
               ))}
             </div>
             
-            <div className="flex gap-3">
-              <div className="flex-1 relative">
-                <Textarea
-                  value={prompts.gems}
-                  onChange={(e) => updatePrompt('gems', e.target.value)}
-                  placeholder="Less touristy? More nightlife? Unique dining? Tell me what you're seeking..."
-                  className="resize-none bg-muted/50 border-border/50"
-                  rows={2}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                      e.preventDefault();
-                      handleInlinePromptSubmit('gems');
-                    }
-                  }}
-                />
-                <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+            {showPromptBox.gems && (
+              <div className="flex gap-3 mt-4 pt-4 border-t border-border/30 animate-in slide-in-from-top-2 duration-300">
+                <div className="flex-1 relative">
+                  <Textarea
+                    value={prompts.gems}
+                    onChange={(e) => updatePrompt('gems', e.target.value)}
+                    placeholder="Less touristy? More nightlife? Unique dining? Tell me what you're seeking..."
+                    className="resize-none bg-muted/30 border-border/50 rounded-xl focus:ring-2 focus:ring-primary/20"
+                    rows={2}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        handleInlinePromptSubmit('gems');
+                      }
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                  <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+                </div>
+                <button
+                  onClick={(e) => {e.stopPropagation(); handleInlinePromptSubmit('gems');}}
+                  disabled={!prompts.gems.trim() || submittingPrompts.gems}
+                  className="px-6 py-3 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground rounded-xl hover:from-primary/90 hover:to-primary/80 transition-all duration-300 disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl"
+                >
+                  {submittingPrompts.gems ? (
+                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <Send className="w-4 h-4" />
+                  )}
+                </button>
               </div>
-              <button
-                onClick={() => handleInlinePromptSubmit('gems')}
-                disabled={!prompts.gems.trim() || submittingPrompts.gems}
-                className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 flex items-center gap-2"
-              >
-                {submittingPrompts.gems ? (
-                  <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                ) : (
-                  <Send className="w-4 h-4" />
-                )}
-              </button>
-            </div>
+            )}
           </div>
         </div>
 
