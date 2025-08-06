@@ -209,95 +209,92 @@ const TripResults = () => {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--gradient-soft)' }}>
+    <div className="min-h-screen bg-background">
       {/* Clean Header */}
-      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/50" style={{ background: 'hsl(var(--background) / 0.9)' }}>
-        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-3">
+      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/20" style={{ background: 'hsl(var(--background) / 0.95)' }}>
+        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-4">
           <button 
             onClick={handleBackClick}
             className="p-2 hover:bg-muted/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-5 h-5" />
           </button>
           <div>
-            <h1 className="font-medium text-foreground">Your Trip</h1>
-            <p className="text-xs text-muted-foreground">Based on: "{query}"</p>
+            <h1 className="text-lg font-semibold text-foreground">Your Trip</h1>
+            <p className="text-sm text-muted-foreground">Based on: "{query}"</p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-3 space-y-3">
-        {/* Inline Trip Overview */}
-        <div 
-          className="rounded-lg border border-border/50 backdrop-blur-sm p-3"
-          style={{ background: 'var(--gradient-card)' }}
-        >
+      <div className="max-w-4xl mx-auto px-6 py-8 space-y-8">
+        {/* Trip Overview */}
+        <div className="bg-card border border-border rounded-xl p-6 shadow-sm">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-gradient-to-br from-primary to-primary/70">
-                <Sparkles className="w-3 h-3 text-white" />
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary to-primary/70">
+                <Sparkles className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-sm font-semibold text-foreground">Tulum Weekend</h2>
-                <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                  <div className="w-1 h-1 bg-green-500 rounded-full"></div>
+                <h2 className="text-xl font-semibold text-foreground">Tulum Weekend</h2>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   <span>AI Optimized • 2 days</span>
                 </div>
               </div>
             </div>
             <div className="text-right">
-              <div className="text-lg font-bold text-primary">$600</div>
-              <div className="text-xs text-muted-foreground">total</div>
+              <div className="text-2xl font-bold text-primary">$600</div>
+              <div className="text-sm text-muted-foreground">total</div>
             </div>
           </div>
         </div>
 
-        {/* Ultra Compact Trip Components */}
-        <div className="space-y-2">
+        {/* Trip Components */}
+        <div className="space-y-6">
           {/* Flight Component */}
-          <div 
-            className="group/component rounded-lg border border-border/50 transition-all duration-200"
-            style={{ background: 'var(--gradient-card)' }}
-          >
-            <div className="p-3 cursor-pointer" onClick={() => togglePromptBox('flight')}>
+          <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden group/component">
+            <div className="p-6 cursor-pointer hover:bg-muted/20 transition-colors" onClick={() => togglePromptBox('flight')}>
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-primary/10">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-xl bg-primary/10">
                     {panelStates.flight?.isLoading ? (
-                      <Loader2 className="w-4 h-4 text-primary animate-spin" />
+                      <Loader2 className="w-6 h-6 text-primary animate-spin" />
                     ) : (
-                      <Plane className="w-4 h-4 text-primary" />
+                      <Plane className="w-6 h-6 text-primary" />
                     )}
                   </div>
                   <div>
-                    <div className="flex items-center gap-2">
-                      <h3 className="text-sm font-semibold text-foreground">Flights</h3>
-                      <span className="text-xs text-muted-foreground">
+                    <div className="flex items-center gap-3 mb-1">
+                      <h3 className="text-lg font-semibold text-foreground">Flights</h3>
+                      <span className="text-sm text-muted-foreground font-medium">
                         {panelStates.flight?.data?.route || results.flight.route}
                       </span>
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-sm text-muted-foreground">
                       {panelStates.flight?.data?.schedule || results.flight.schedule}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {panelStates.flight?.data?.details || results.flight.details}
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-lg font-bold text-foreground">
+                <div className="flex items-center gap-3">
+                  <span className="text-xl font-bold text-foreground">
                     {panelStates.flight?.data?.price || results.flight.price}
                   </span>
-                  <Edit className="w-3 h-3 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
+                  <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
                 </div>
               </div>
             </div>
             
             {showPromptBox.flight && (
-              <div className="px-3 pb-3 border-t border-border/50">
-                <div className="pt-2 flex gap-2">
+              <div className="px-6 pb-6 border-t border-border/50">
+                <div className="pt-4 flex gap-3">
                   <Textarea
                     value={prompts.flight || ''}
                     onChange={(e) => updatePrompt('flight', e.target.value)}
-                    placeholder="Different time? Upgrade class?"
-                    className="resize-none text-xs flex-1 border-border/50 rounded h-8"
+                    placeholder="Different time? Upgrade class? More direct route?"
+                    className="resize-none text-sm flex-1 border-border/50 rounded-lg h-10"
                     rows={1}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
@@ -309,12 +306,12 @@ const TripResults = () => {
                   <button
                     onClick={() => handleInlinePromptSubmit('flight')}
                     disabled={!prompts.flight?.trim() || panelStates.flight?.isLoading}
-                    className="p-1.5 bg-primary text-primary-foreground rounded hover:bg-primary/90 transition-colors disabled:opacity-50"
+                    className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 flex items-center gap-2"
                   >
                     {panelStates.flight?.isLoading ? (
-                      <Loader2 className="w-3 h-3 animate-spin" />
+                      <Loader2 className="w-4 h-4 animate-spin" />
                     ) : (
-                      <Send className="w-3 h-3" />
+                      <Send className="w-4 h-4" />
                     )}
                   </button>
                 </div>
@@ -322,56 +319,53 @@ const TripResults = () => {
             )}
           </div>
 
-          {/* Hotel - Compact */}
-          <div 
-            className="group/component rounded-lg border border-border transition-all duration-200"
-            style={{ background: 'var(--gradient-card)' }}
-          >
-            <div className="p-3 cursor-pointer" onClick={() => togglePromptBox('hotel')}>
+          {/* Hotel Component */}
+          <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden group/component">
+            <div className="p-6 cursor-pointer hover:bg-muted/20 transition-colors" onClick={() => togglePromptBox('hotel')}>
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="p-1.5 rounded bg-accent/10">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-xl bg-accent/10">
                     {panelStates.hotel?.isLoading ? (
-                      <Loader2 className="w-3 h-3 text-accent animate-spin" />
+                      <Loader2 className="w-6 h-6 text-accent animate-spin" />
                     ) : (
-                      <Hotel className="w-3 h-3 text-accent" />
+                      <Hotel className="w-6 h-6 text-accent" />
                     )}
                   </div>
                   <div>
-                    <div className="flex items-center gap-2">
-                      <h4 className="text-sm font-semibold text-foreground">Hotel</h4>
-                      <span className="text-xs text-muted-foreground">
+                    <div className="flex items-center gap-3 mb-1">
+                      <h4 className="text-lg font-semibold text-foreground">Hotel</h4>
+                      <span className="text-sm text-muted-foreground font-medium">
                         {panelStates.hotel?.data?.name || results.hotel.name}
                       </span>
                       <div className="flex items-center gap-1">
-                        <Star className="w-2.5 h-2.5 fill-accent text-accent" />
-                        <span className="text-xs text-muted-foreground">
+                        <Star className="w-4 h-4 fill-accent text-accent" />
+                        <span className="text-sm text-muted-foreground">
                           {panelStates.hotel?.data?.rating || results.hotel.rating}
                         </span>
                       </div>
                     </div>
-                    <p className="text-xs text-muted-foreground truncate max-w-48">
+                    <p className="text-sm text-muted-foreground">
                       {panelStates.hotel?.data?.description || results.hotel.description}
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-semibold text-foreground">
+                <div className="flex items-center gap-3">
+                  <span className="text-xl font-bold text-foreground">
                     {panelStates.hotel?.data?.price || results.hotel.price}
                   </span>
-                  <Edit className="w-3 h-3 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
+                  <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
                 </div>
               </div>
             </div>
             
             {showPromptBox.hotel && (
-              <div className="px-3 pb-3 border-t border-border/50">
-                <div className="pt-2 flex gap-2">
+              <div className="px-6 pb-6 border-t border-border/50">
+                <div className="pt-4 flex gap-3">
                   <Textarea
                     value={prompts.hotel || ''}
                     onChange={(e) => updatePrompt('hotel', e.target.value)}
                     placeholder="More luxury? Beachfront? Different vibe?"
-                    className="resize-none text-xs flex-1 border-border/50 rounded h-8"
+                    className="resize-none text-sm flex-1 border-border/50 rounded-lg h-10"
                     rows={1}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
@@ -383,12 +377,12 @@ const TripResults = () => {
                   <button
                     onClick={() => handleInlinePromptSubmit('hotel')}
                     disabled={!prompts.hotel?.trim() || panelStates.hotel?.isLoading}
-                    className="p-1.5 bg-accent text-accent-foreground rounded hover:bg-accent/90 transition-colors disabled:opacity-50"
+                    className="px-4 py-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50 flex items-center gap-2"
                   >
                     {panelStates.hotel?.isLoading ? (
-                      <Loader2 className="w-3 h-3 animate-spin" />
+                      <Loader2 className="w-4 h-4 animate-spin" />
                     ) : (
-                      <Send className="w-3 h-3" />
+                      <Send className="w-4 h-4" />
                     )}
                   </button>
                 </div>
@@ -396,49 +390,46 @@ const TripResults = () => {
             )}
           </div>
 
-          {/* Activities - Compact Grid */}
-          <div 
-            className="rounded-lg border border-border"
-            style={{ background: 'var(--gradient-card)' }}
-          >
-            <div className="p-2 border-b border-border/50">
-              <div className="flex items-center gap-2">
-                <div className="p-1 rounded bg-secondary/10">
-                  <MapPin className="w-3 h-3 text-secondary" />
+          {/* Activities */}
+          <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
+            <div className="p-6 border-b border-border/50">
+              <div className="flex items-center gap-3">
+                <div className="p-3 rounded-xl bg-secondary/10">
+                  <MapPin className="w-6 h-6 text-secondary" />
                 </div>
-                <h4 className="text-sm font-semibold text-foreground">Activities</h4>
+                <h4 className="text-lg font-semibold text-foreground">Activities</h4>
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
               {results.thingsToDo.map((activity, index) => (
                 <div 
                   key={index}
-                  className="group/activity p-2 hover:bg-muted/30 cursor-pointer transition-colors"
+                  className="group/activity p-4 border border-border rounded-lg hover:bg-muted/20 cursor-pointer transition-colors"
                   onClick={() => togglePromptBox(`activity-${index}`)}
                 >
-                  <div className="flex items-start gap-2">
-                    <div className="p-1 rounded bg-secondary/10 mt-0.5">
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 rounded-lg bg-secondary/10 mt-1">
                       {getActivityIcon(activity.icon)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-1">
-                        <h5 className="text-xs font-medium text-foreground truncate">{activity.title}</h5>
-                        <span className="text-xs text-muted-foreground">{activity.time}</span>
+                      <div className="flex items-center gap-2 mb-1">
+                        <h5 className="text-sm font-semibold text-foreground">{activity.title}</h5>
+                        <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">{activity.time}</span>
                       </div>
-                      <p className="text-xs text-muted-foreground line-clamp-2">{activity.description}</p>
+                      <p className="text-sm text-muted-foreground">{activity.description}</p>
                     </div>
-                    <Edit className="w-2.5 h-2.5 text-muted-foreground opacity-0 group-hover/activity:opacity-100 transition-opacity flex-shrink-0" />
+                    <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/activity:opacity-100 transition-opacity flex-shrink-0" />
                   </div>
                   
                   {showPromptBox[`activity-${index}`] && (
-                    <div className="mt-2 pt-2 border-t border-border/30 col-span-2" onClick={(e) => e.stopPropagation()}>
-                      <div className="flex gap-1">
+                    <div className="mt-4 pt-4 border-t border-border/30" onClick={(e) => e.stopPropagation()}>
+                      <div className="flex gap-3">
                         <Textarea
                           value={prompts[`activity-${index}`] || ''}
                           onChange={(e) => updatePrompt(`activity-${index}`, e.target.value)}
-                          placeholder="Different activity? Change time?"
-                          className="resize-none text-xs flex-1 border-border/50 rounded h-6"
+                          placeholder="Different activity? Time change?"
+                          className="resize-none text-sm flex-1 border-border/50 rounded-lg h-10"
                           rows={1}
                           onKeyDown={(e) => {
                             if (e.key === 'Enter' && !e.shiftKey) {
@@ -450,12 +441,12 @@ const TripResults = () => {
                         <button
                           onClick={() => handleInlinePromptSubmit(`activity-${index}`)}
                           disabled={!prompts[`activity-${index}`]?.trim() || panelStates[`activity-${index}`]?.isLoading}
-                          className="p-1 bg-secondary text-secondary-foreground rounded hover:bg-secondary/90 transition-colors disabled:opacity-50"
+                          className="px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/90 transition-colors disabled:opacity-50 flex items-center gap-2"
                         >
                           {panelStates[`activity-${index}`]?.isLoading ? (
-                            <Loader2 className="w-2.5 h-2.5 animate-spin" />
+                            <Loader2 className="w-4 h-4 animate-spin" />
                           ) : (
-                            <Send className="w-2.5 h-2.5" />
+                            <Send className="w-4 h-4" />
                           )}
                         </button>
                       </div>
@@ -466,61 +457,58 @@ const TripResults = () => {
             </div>
           </div>
 
-          {/* Hidden Gems - Compact */}
-          <div 
-            className="rounded-lg border border-border"
-            style={{ background: 'var(--gradient-card)' }}
-          >
-            <div className="p-2 border-b border-border/50">
-              <div className="flex items-center gap-2">
-                <div className="p-1 rounded bg-accent/10">
-                  <Eye className="w-3 h-3 text-accent" />
+          {/* Hidden Gems */}
+          <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
+            <div className="p-6 border-b border-border/50">
+              <div className="flex items-center gap-3">
+                <div className="p-3 rounded-xl bg-accent/10">
+                  <Eye className="w-6 h-6 text-accent" />
                 </div>
-                <h4 className="text-sm font-semibold text-foreground">Hidden Gems</h4>
+                <h4 className="text-lg font-semibold text-foreground">Hidden Gems</h4>
               </div>
             </div>
-            <div className="divide-y divide-border/30">
+            <div className="divide-y divide-border/20">
               {results.hiddenGems.map((gem, index) => (
                 <div 
                   key={index}
-                  className="group/gem p-2 hover:bg-muted/30 cursor-pointer transition-colors"
+                  className="group/gem p-6 hover:bg-muted/20 cursor-pointer transition-colors"
                   onClick={() => togglePromptBox(`gem-${index}`)}
                 >
-                  <div className="flex items-start gap-2">
-                    <div className="p-1 rounded bg-accent/10 mt-0.5">
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 rounded-lg bg-accent/10 mt-1">
                       {panelStates[`gem-${index}`]?.isLoading ? (
-                        <Loader2 className="w-3 h-3 text-accent animate-spin" />
+                        <Loader2 className="w-5 h-5 text-accent animate-spin" />
                       ) : (
-                        <Eye className="w-3 h-3 text-accent" />
+                        <Eye className="w-5 h-5 text-accent" />
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <h4 className="text-xs font-semibold text-foreground">
+                      <div className="flex items-center gap-2 mb-2">
+                        <h4 className="text-sm font-semibold text-foreground">
                           {panelStates[`gem-${index}`]?.data?.name || gem.name}
                         </h4>
-                        <span className="text-xs px-1 py-0.5 bg-accent/10 text-accent rounded">
+                        <span className="text-xs px-2 py-1 bg-accent/10 text-accent rounded">
                           {panelStates[`gem-${index}`]?.data?.type || gem.type}
                         </span>
                       </div>
-                      <p className="text-xs text-muted-foreground line-clamp-1">
+                      <p className="text-sm text-muted-foreground mb-2">
                         {panelStates[`gem-${index}`]?.data?.description || gem.description}
                       </p>
-                      <p className="text-xs text-muted-foreground/70 line-clamp-1">
+                      <p className="text-sm text-muted-foreground/80 italic">
                         💡 {panelStates[`gem-${index}`]?.data?.insider_tip || gem.insider_tip}
                       </p>
                     </div>
-                    <Edit className="w-2.5 h-2.5 text-muted-foreground opacity-0 group-hover/gem:opacity-100 transition-opacity flex-shrink-0" />
+                    <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/gem:opacity-100 transition-opacity flex-shrink-0" />
                   </div>
               
                   {showPromptBox[`gem-${index}`] && (
-                    <div className="mt-2 pt-2 border-t border-border/30" onClick={(e) => e.stopPropagation()}>
-                      <div className="flex gap-1">
+                    <div className="mt-4 pt-4 border-t border-border/30" onClick={(e) => e.stopPropagation()}>
+                      <div className="flex gap-3">
                         <Textarea
                           value={prompts[`gem-${index}`] || ''}
                           onChange={(e) => updatePrompt(`gem-${index}`, e.target.value)}
                           placeholder="Different type? More adventurous? Food focused?"
-                          className="resize-none text-xs flex-1 border-border/50 rounded h-6"
+                          className="resize-none text-sm flex-1 border-border/50 rounded-lg h-10"
                           rows={1}
                           onKeyDown={(e) => {
                             if (e.key === 'Enter' && !e.shiftKey) {
@@ -532,12 +520,12 @@ const TripResults = () => {
                         <button
                           onClick={() => handleInlinePromptSubmit(`gem-${index}`)}
                           disabled={!prompts[`gem-${index}`]?.trim() || panelStates[`gem-${index}`]?.isLoading}
-                          className="p-1 bg-accent text-accent-foreground rounded hover:bg-accent/90 transition-colors disabled:opacity-50"
+                          className="px-4 py-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50 flex items-center gap-2"
                         >
                           {panelStates[`gem-${index}`]?.isLoading ? (
-                            <Loader2 className="w-2.5 h-2.5 animate-spin" />
+                            <Loader2 className="w-4 h-4 animate-spin" />
                           ) : (
-                            <Send className="w-2.5 h-2.5" />
+                            <Send className="w-4 h-4" />
                           )}
                         </button>
                       </div>
