@@ -12,8 +12,8 @@ interface MiniCurvedNavProps {
 }
 
 const navItems: NavItem[] = [
-  { path: '/', label: 'Home', id: 'home' },
   { path: '/destinations', label: 'Destinations', id: 'destinations' },
+  { path: '/', label: 'Home', id: 'home' },
   { path: '/curated-trips', label: 'Trips', id: 'trips' },
   { path: '/chat', label: 'Chat', id: 'chat' },
   { path: '/faq', label: 'FAQ', id: 'faq' },
@@ -209,9 +209,9 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
 
           {/* Properly aligned sliding text */}
           <div 
-            className="flex items-center space-x-8 transition-transform duration-700 ease-out relative z-20"
+            className="flex items-center space-x-4 transition-transform duration-700 ease-out relative z-20"
             style={{
-              transform: `translateX(${105 - activeIndex * 142}px)`, // Correct formula: item_width(110) + spacing(32) = 142px per item
+              transform: `translateX(${105 - activeIndex * 126}px)`, // Correct formula: item_width(110) + spacing(16) = 126px per item
               transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
             }}
           >
