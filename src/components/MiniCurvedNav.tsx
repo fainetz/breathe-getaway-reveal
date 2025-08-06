@@ -189,29 +189,28 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
         onTouchEnd={handleTouchEnd}
         style={{ touchAction: 'pan-x' }}
       >
-        {/* Polished carousel container */}
-        <div className="relative flex items-center w-96 h-12 overflow-hidden">
+        {/* Compact minimal carousel */}
+        <div className="relative flex items-center w-80 h-10 overflow-hidden">
           
-          {/* Prominent glass bubble - more visible */}
+          {/* Minimal glass bubble */}
           <div 
-            className="absolute left-1/2 transform -translate-x-1/2 px-8 py-3 rounded-full pointer-events-none z-10"
+            className="absolute left-1/2 transform -translate-x-1/2 px-6 py-2 rounded-full pointer-events-none z-10"
             style={{
-              background: 'rgba(255, 255, 255, 0.25)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.4)',
-              borderRadius: '28px',
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
-              minWidth: '140px',
-              height: '48px',
+              background: 'rgba(255, 255, 255, 0.2)',
+              backdropFilter: 'blur(15px)',
+              WebkitBackdropFilter: 'blur(15px)',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              borderRadius: '20px',
+              minWidth: '110px',
+              height: '36px',
             }}
           />
 
-          {/* Smooth sliding text carousel - fixed alignment */}
+          {/* Compact sliding text */}
           <div 
-            className="flex items-center space-x-10 transition-transform duration-700 ease-out relative z-20"
+            className="flex items-center space-x-8 transition-transform duration-700 ease-out relative z-20"
             style={{
-              transform: `translateX(${-activeIndex * 140 + 128}px)`, // Fixed alignment to center text perfectly
+              transform: `translateX(${-activeIndex * 120 + 120}px)`, // Tighter spacing
               transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
             }}
           >
@@ -226,17 +225,15 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
                     if (el && isActive) itemRefs.current[activeIndex] = el;
                   }}
                   onClick={() => handleNavigation(item.path, index)}
-                  className={`relative px-8 py-3 text-sm font-bold whitespace-nowrap transition-all duration-700 ease-out select-none min-w-[140px] flex items-center justify-center tracking-wide ${
+                  className={`relative px-6 py-2 text-xs font-semibold whitespace-nowrap transition-all duration-700 ease-out select-none min-w-[110px] flex items-center justify-center tracking-wide ${
                     isActive 
-                      ? 'text-foreground scale-110 drop-shadow-lg' 
+                      ? 'text-foreground scale-105' 
                       : distance === 1 
-                        ? 'text-foreground/60 hover:text-foreground/80 scale-95 hover:scale-100' 
-                        : 'text-foreground/30 scale-90'
+                        ? 'text-foreground/50 hover:text-foreground/70 scale-95 hover:scale-100' 
+                        : 'text-foreground/25 scale-90'
                   }`}
                   style={{
                     transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                    filter: isActive ? 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' : 'none',
-                    textShadow: isActive ? '0 1px 2px rgba(0,0,0,0.1)' : 'none',
                   }}
                 >
                   {item.label}
