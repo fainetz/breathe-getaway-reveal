@@ -192,16 +192,17 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
         {/* Compact minimal carousel */}
         <div className="relative flex items-center w-80 h-10 overflow-hidden">
           
-          {/* Refined glass bubble - lighter and cleaner */}
+          {/* Refined glass bubble - better aligned */}
           <div 
-            className="absolute left-1/2 transform -translate-x-1/2 px-6 py-2 rounded-full pointer-events-none z-10 border"
+            className="absolute left-1/2 transform -translate-x-1/2 px-5 py-2 rounded-full pointer-events-none z-10 border"
             style={{
               background: 'rgba(0, 0, 0, 0.04)',
               backdropFilter: 'blur(15px)',
               WebkitBackdropFilter: 'blur(15px)',
               borderColor: 'rgba(0, 0, 0, 0.08)',
               borderRadius: '20px',
-              minWidth: '110px',
+              minWidth: '100px',
+              width: 'fit-content',
               height: '36px',
               boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
             }}
@@ -209,9 +210,9 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
 
           {/* Properly aligned sliding text */}
           <div 
-            className="flex items-center space-x-4 transition-transform duration-700 ease-out relative z-20"
+            className="flex items-center space-x-2 transition-transform duration-700 ease-out relative z-20"
             style={{
-              transform: `translateX(${105 - activeIndex * 126}px)`, // Correct formula: item_width(110) + spacing(16) = 126px per item
+              transform: `translateX(${105 - activeIndex * 114}px)`, // Tighter spacing: item_width(110) + spacing(4) = 114px per item
               transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
             }}
           >
@@ -226,7 +227,7 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
                     if (el && isActive) itemRefs.current[activeIndex] = el;
                   }}
                   onClick={() => handleNavigation(item.path, index)}
-                  className={`relative px-6 py-2 text-xs font-semibold whitespace-nowrap transition-all duration-700 ease-out select-none min-w-[110px] flex items-center justify-center tracking-wide ${
+                  className={`relative px-4 py-2 text-xs font-semibold whitespace-nowrap transition-all duration-700 ease-out select-none min-w-[100px] flex items-center justify-center tracking-wide ${
                     isActive 
                       ? 'text-foreground scale-105' 
                       : distance === 1 
