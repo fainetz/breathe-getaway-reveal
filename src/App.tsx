@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AuthProvider } from "./hooks/useAuth";
+import MobileHorizontalNav from "./components/MobileHorizontalNav";
 import Index from "./pages/Index";
 import Destinations from "./pages/Destinations";
 import CuratedTrips from "./pages/CuratedTrips";
@@ -26,6 +27,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <MobileHorizontalNav />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/destinations" element={<Destinations />} />
