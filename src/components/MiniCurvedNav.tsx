@@ -189,34 +189,38 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
         onTouchEnd={handleTouchEnd}
         style={{ touchAction: 'pan-x' }}
       >
-        {/* Carousel container with bubble as viewport */}
-        <div className="relative flex items-center space-x-8 w-80">
+        {/* Carousel container showing 3 items at a time */}
+        <div className="relative flex items-center w-96 overflow-hidden">
           
-          {/* Glass bubble positioned over center item */}
+          {/* Glass bubble that follows the active item */}
           <div 
-            className="absolute left-1/2 transform -translate-x-1/2 px-6 py-3 backdrop-blur-lg rounded-full shadow-lg pointer-events-none z-10"
+            className="absolute px-6 py-3 backdrop-blur-md rounded-full shadow-lg pointer-events-none z-10 transition-all duration-500 ease-out"
             style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
+              background: 'rgba(255, 255, 255, 0.15)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              border: '1px solid rgba(255, 255, 255, 0.25)',
               borderRadius: '24px',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
               minWidth: '120px',
               height: '44px',
+              left: `${32 + (activeIndex % 3) * 128}px`, // Position bubble over active item
+              transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
             }}
           />
 
-          {/* Sliding carousel of nav items */}
+          {/* Sliding carousel showing 3 items */}
           <div 
             className="flex items-center space-x-8 transition-transform duration-500 ease-out"
             style={{
-              transform: `translateX(${-activeIndex * 120 + 140}px)`, // Center the active item in bubble
+              transform: `translateX(${-Math.floor(activeIndex / 3) * 384}px)`, // Slide by groups of 3
               transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
             }}
           >
             {navItems.map((item, index) => {
               const isActive = index === activeIndex;
+              const isVisible = Math.floor(index / 3) === Math.floor(activeIndex / 3); // Show current group of 3
+              
               return (
                 <button
                   key={item.id}
@@ -226,9 +230,9 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
                   onClick={() => handleNavigation(item.path, index)}
                   className={`relative px-6 py-3 text-sm font-semibold whitespace-nowrap transition-all duration-500 ease-out select-none min-w-[120px] flex items-center justify-center ${
                     isActive 
-                      ? 'text-primary-foreground z-20' 
-                      : 'text-foreground/40 hover:text-foreground/70'
-                  }`}
+                      ? 'text-primary-foreground z-20 scale-105' 
+                      : 'text-foreground/50 hover:text-foreground/80 hover:scale-102'
+                  } ${isVisible ? 'opacity-100' : 'opacity-30'}`}
                   style={{
                     transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
                   }}
