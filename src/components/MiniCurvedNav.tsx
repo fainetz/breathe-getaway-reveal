@@ -8,9 +8,10 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { path: '/', label: 'Made', id: 'made' },
+  { path: '/', label: 'Home', id: 'home' },
+  { path: '/destinations', label: 'Destinations', id: 'destinations' },
   { path: '/curated-trips', label: 'Get Trips', id: 'trips' },
-  { path: '/faq', label: 'FAQ', id: 'faq' },
+  { path: '/chat', label: 'Chat', id: 'chat' },
 ];
 
 const MiniCurvedNav = () => {
@@ -57,7 +58,7 @@ const MiniCurvedNav = () => {
     // Apple-like magnetic delay
     setTimeout(() => {
       navigate(path);
-    }, 60);
+    }, 40);
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -69,7 +70,7 @@ const MiniCurvedNav = () => {
     if (!isDragging) return;
     
     const dragDistance = e.clientX - dragStartX;
-    const threshold = 30;
+    const threshold = 20;
     
     if (Math.abs(dragDistance) > threshold) {
       const newIndex = dragDistance > 0 
@@ -81,7 +82,7 @@ const MiniCurvedNav = () => {
         setDragStartX(e.clientX);
         setTimeout(() => {
           navigate(navItems[newIndex].path);
-        }, 60);
+        }, 40);
       }
     }
   };
@@ -99,7 +100,7 @@ const MiniCurvedNav = () => {
     if (!isDragging) return;
     
     const dragDistance = e.touches[0].clientX - dragStartX;
-    const threshold = 30;
+    const threshold = 20;
     
     if (Math.abs(dragDistance) > threshold) {
       const newIndex = dragDistance > 0 
@@ -111,7 +112,7 @@ const MiniCurvedNav = () => {
         setDragStartX(e.touches[0].clientX);
         setTimeout(() => {
           navigate(navItems[newIndex].path);
-        }, 60);
+        }, 40);
       }
     }
   };
@@ -131,13 +132,14 @@ const MiniCurvedNav = () => {
     <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-30">
       <div 
         ref={navRef}
-        className={`relative flex items-center gap-0.5 bg-background/70 backdrop-blur-lg border border-border/20 rounded-full px-1.5 py-1 shadow-sm cursor-grab ${isDragging ? 'cursor-grabbing' : ''}`}
+        className={`relative flex items-center gap-0.5 bg-background/70 backdrop-blur-lg border border-border/20 rounded-full px-2 py-1.5 shadow-sm cursor-grab select-none ${isDragging ? 'cursor-grabbing' : ''}`}
         style={{
           background: 'rgba(255, 255, 255, 0.08)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
           border: '1px solid rgba(255, 255, 255, 0.15)',
           boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+          touchAction: 'pan-x',
         }}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -149,10 +151,10 @@ const MiniCurvedNav = () => {
       >
         {/* Sliding indicator */}
         <div
-          className="absolute top-1 bg-primary/80 rounded-full transition-all duration-200 ease-out"
+          className="absolute top-1.5 bg-primary/80 rounded-full transition-all duration-150 ease-out"
           style={{
             ...indicatorStyle,
-            height: 'calc(100% - 8px)',
+            height: 'calc(100% - 12px)',
             transitionTimingFunction: 'cubic-bezier(0.2, 0.0, 0.2, 1)',
           }}
         />
@@ -165,8 +167,8 @@ const MiniCurvedNav = () => {
               ref={(el) => (itemRefs.current[index] = el)}
               onClick={() => handleNavigation(item.path, index)}
               className={`
-                relative z-10 px-3 py-1.5 text-xs font-medium rounded-full
-                transition-all duration-200 ease-out select-none
+                relative z-10 px-4 py-2 text-sm font-medium rounded-full
+                transition-all duration-150 ease-out select-none touch-manipulation
                 ${isActive 
                   ? 'text-primary-foreground' 
                   : 'text-foreground/60 hover:text-foreground/80'
