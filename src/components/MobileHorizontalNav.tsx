@@ -79,10 +79,10 @@ const MobileHorizontalNav = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border/20">
       <div 
         ref={scrollRef}
-        className="flex overflow-x-auto scrollbar-hide px-4 py-3 gap-3 cursor-grab active:cursor-grabbing"
+        className="flex overflow-x-auto scrollbar-hide px-3 py-3 gap-2 cursor-grab active:cursor-grabbing"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -99,17 +99,17 @@ const MobileHorizontalNav = () => {
               key={item.path}
               onClick={() => navigate(item.path)}
               className={`
-                flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 select-none
+                flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 select-none transform hover:scale-105 active:scale-95
                 ${isActive 
-                  ? 'bg-primary text-primary-foreground shadow-lg scale-105' 
-                  : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'
+                  ? 'bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg shadow-primary/25 scale-105' 
+                  : 'bg-gradient-to-r from-muted/60 to-muted/40 text-muted-foreground hover:from-muted hover:to-muted/60 hover:text-foreground border border-border/40'
                 }
               `}
-              style={{ minWidth: '100px' }}
+              style={{ minWidth: '110px' }}
             >
-              <span className="flex items-center gap-2 whitespace-nowrap">
+              <span className="flex items-center justify-center gap-2 whitespace-nowrap">
                 {item.emoji && <span className="text-base">{item.emoji}</span>}
-                <span>{item.label}</span>
+                <span className="font-medium">{item.label}</span>
               </span>
             </button>
           );
