@@ -126,35 +126,31 @@ const Hero = () => {
           {/* Mobile menu button - hidden since we have horizontal nav */}
           <div className="md:hidden"></div>
 
-          {/* Desktop navigation with integrated mini nav - centered */}
-          <div className="hidden md:flex items-center justify-center flex-1">
-            <div className="flex items-center space-x-8">
-              <Link to="/faq" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
-                FAQ
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-              
+          {/* Centered nav bubble */}
+          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
+            <MiniCurvedNav isIntegrated={true} />
+          </div>
+
+          {/* Desktop navigation - keep original position */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link to="/faq" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
+              FAQ
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <ThemeToggle />
+            <AuthButton />
+            
+            {/* Cart */}
+            <Link to="/cart" className="relative group p-2 rounded-lg transition-all duration-300 hover:scale-105">
               <div className="relative">
-                <MiniCurvedNav isIntegrated={true} />
+                <ShoppingCart className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground rounded-full h-4 w-4 flex items-center justify-center font-bold text-[10px]">
+                    {itemCount}
+                  </span>
+                )}
               </div>
-              
-              <div className="flex items-center space-x-4">
-                <ThemeToggle />
-                <AuthButton />
-                
-                {/* Cart */}
-                <Link to="/cart" className="relative group p-2 rounded-lg transition-all duration-300 hover:scale-105">
-                  <div className="relative">
-                    <ShoppingCart className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
-                    {itemCount > 0 && (
-                      <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground rounded-full h-4 w-4 flex items-center justify-center font-bold text-[10px]">
-                        {itemCount}
-                      </span>
-                    )}
-                  </div>
-                </Link>
-              </div>
-            </div>
+            </Link>
           </div>
         </div>
 
