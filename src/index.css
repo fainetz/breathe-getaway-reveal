@@ -8,51 +8,49 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Soft morning light palette - Muji inspired */
-    --background: 42 15% 98%;
-    --foreground: 42 8% 15%;
+    /* Cool, scannable palette */
+    --background: 220 15% 97%;
+    --foreground: 220 10% 12%;
 
-    --card: 40 20% 99%;
-    --card-foreground: 42 8% 20%;
+    --card: 220 20% 98%;
+    --card-foreground: 220 10% 15%;
 
-    --popover: 40 20% 99%;
-    --popover-foreground: 42 8% 20%;
+    --popover: 220 20% 98%;
+    --popover-foreground: 220 10% 15%;
 
-    /* Gentle sky tones */
-    --primary: 210 40% 70%;
-    --primary-foreground: 210 15% 10%;
+    /* Cool primary - professional blue */
+    --primary: 215 55% 65%;
+    --primary-foreground: 220 15% 8%;
 
-    /* Warm neutral secondary */
-    --secondary: 35 25% 88%;
-    --secondary-foreground: 35 15% 25%;
+    /* Neutral secondary */
+    --secondary: 220 15% 90%;
+    --secondary-foreground: 220 15% 25%;
 
-    /* Soft muted tones */
-    --muted: 40 15% 95%;
-    --muted-foreground: 40 10% 50%;
+    /* Clean muted tones */
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 8% 45%;
 
-    /* Gentle accent - sunrise peach */
-    --accent: 25 45% 75%;
-    --accent-foreground: 25 20% 15%;
+    /* Cool accent - mint */
+    --accent: 165 35% 65%;
+    --accent-foreground: 220 15% 8%;
 
-    --destructive: 355 75% 65%;
-    --destructive-foreground: 355 10% 95%;
+    --destructive: 355 70% 60%;
+    --destructive-foreground: 220 10% 95%;
 
-    /* Softer borders */
-    --border: 40 20% 90%;
-    --input: 40 20% 92%;
-    --ring: 210 40% 70%;
+    /* Crisp borders */
+    --border: 220 15% 88%;
+    --input: 220 15% 90%;
+    --ring: 215 55% 65%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Beautiful gradients for depth */
-    --gradient-soft: linear-gradient(135deg, hsl(40 20% 99%) 0%, hsl(210 15% 96%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(40 25% 98%) 0%, hsl(210 20% 97%) 100%);
-    --gradient-hover: linear-gradient(145deg, hsl(210 25% 95%) 0%, hsl(35 20% 94%) 100%);
+    /* Clean gradients */
+    --gradient-soft: linear-gradient(135deg, hsl(220 20% 98%) 0%, hsl(215 15% 96%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 25% 99%) 0%, hsl(215 20% 97%) 100%);
     
-    /* Soft shadows */
-    --shadow-soft: 0 2px 20px hsl(210 20% 70% / 0.08);
-    --shadow-gentle: 0 4px 30px hsl(210 25% 60% / 0.12);
-    --shadow-floating: 0 8px 40px hsl(210 30% 50% / 0.15);
+    /* Subtle shadows */
+    --shadow-soft: 0 1px 10px hsl(220 15% 70% / 0.06);
+    --shadow-gentle: 0 2px 20px hsl(220 20% 60% / 0.08);
 
     --sidebar-background: 0 0% 98%;
 
@@ -72,49 +70,47 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Calm evening palette */
-    --background: 220 20% 8%;
-    --foreground: 220 15% 92%;
+    /* Cool dark palette */
+    --background: 220 25% 8%;
+    --foreground: 220 12% 90%;
 
-    --card: 220 25% 10%;
-    --card-foreground: 220 15% 90%;
+    --card: 220 30% 10%;
+    --card-foreground: 220 12% 88%;
 
-    --popover: 220 25% 10%;
-    --popover-foreground: 220 15% 90%;
+    --popover: 220 30% 10%;
+    --popover-foreground: 220 12% 88%;
 
-    /* Gentle moon tones */
-    --primary: 210 35% 65%;
-    --primary-foreground: 220 20% 12%;
+    /* Cool primary */
+    --primary: 215 50% 60%;
+    --primary-foreground: 220 20% 10%;
 
-    /* Warm dark secondary */
-    --secondary: 35 15% 20%;
-    --secondary-foreground: 35 10% 85%;
+    /* Dark secondary */
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 220 10% 82%;
 
-    /* Soft dark muted */
-    --muted: 220 20% 15%;
-    --muted-foreground: 220 10% 65%;
+    /* Dark muted */
+    --muted: 220 25% 15%;
+    --muted-foreground: 220 8% 60%;
 
-    /* Evening accent - warm amber */
-    --accent: 35 40% 60%;
-    --accent-foreground: 220 20% 12%;
+    /* Cool accent */
+    --accent: 165 30% 55%;
+    --accent-foreground: 220 20% 10%;
 
-    --destructive: 355 60% 55%;
-    --destructive-foreground: 220 15% 92%;
+    --destructive: 355 60% 50%;
+    --destructive-foreground: 220 12% 90%;
 
-    /* Gentle dark borders */
-    --border: 220 25% 18%;
-    --input: 220 25% 16%;
-    --ring: 210 35% 65%;
+    /* Dark borders */
+    --border: 220 25% 20%;
+    --input: 220 25% 18%;
+    --ring: 215 50% 60%;
 
     /* Dark gradients */
-    --gradient-soft: linear-gradient(135deg, hsl(220 25% 10%) 0%, hsl(210 20% 12%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(220 30% 11%) 0%, hsl(210 25% 13%) 100%);
-    --gradient-hover: linear-gradient(145deg, hsl(210 30% 16%) 0%, hsl(35 25% 18%) 100%);
+    --gradient-soft: linear-gradient(135deg, hsl(220 25% 8%) 0%, hsl(215 20% 10%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 30% 10%) 0%, hsl(215 25% 12%) 100%);
     
-    /* Soft dark shadows */
-    --shadow-soft: 0 2px 20px hsl(220 30% 5% / 0.4);
-    --shadow-gentle: 0 4px 30px hsl(220 35% 3% / 0.5);
-    --shadow-floating: 0 8px 40px hsl(220 40% 2% / 0.6);
+    /* Dark shadows */
+    --shadow-soft: 0 1px 10px hsl(220 30% 5% / 0.3);
+    --shadow-gentle: 0 2px 20px hsl(220 35% 3% / 0.4);
     --sidebar-background: 214 50% 6%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 214 76.3% 48%;

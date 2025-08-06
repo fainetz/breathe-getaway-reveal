@@ -213,105 +213,104 @@ const TripResults = () => {
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--gradient-soft)' }}>
-      {/* Gentle Header */}
-      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/20" style={{ background: 'hsl(var(--background) / 0.85)' }}>
-        <div className="max-w-5xl mx-auto px-6 py-5 flex items-center gap-4">
+      {/* Clean Header */}
+      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/50" style={{ background: 'hsl(var(--background) / 0.9)' }}>
+        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-3">
           <button 
             onClick={handleBackClick}
-            className="p-2.5 hover:bg-muted/40 rounded-xl transition-all duration-200 text-muted-foreground hover:text-foreground"
+            className="p-2 hover:bg-muted/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
           </button>
           <div>
-            <h1 className="font-normal text-foreground lowercase tracking-wide">your escape</h1>
-            <p className="text-sm text-muted-foreground font-light">inspired by "{query}"</p>
+            <h1 className="font-medium text-foreground">Your Trip</h1>
+            <p className="text-xs text-muted-foreground">Based on: "{query}"</p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 py-12 space-y-16">
-        {/* Soft Intro */}
-        <div className="text-center space-y-6 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-light text-foreground leading-relaxed lowercase tracking-wide">
+      <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
+        {/* Clean Intro */}
+        <div className="text-center space-y-4 animate-fade-in">
+          <h2 className="text-2xl md:text-3xl font-medium text-foreground leading-tight">
             {results.introText}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto font-light text-lg leading-relaxed">
-            everything curated for you. change any part with a simple prompt.
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            everything curated for you. click to edit any part.
           </p>
         </div>
 
-        {/* Vertical Trip List */}
-        <div className="space-y-6">
-          {/* Trip Header Card */}
+        {/* Compact Trip List */}
+        <div className="space-y-4">
+          {/* Trip Header - Compact */}
           <div 
-            className="group relative rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-[var(--shadow-gentle)]"
+            className="rounded-xl border border-border transition-all duration-300 hover:shadow-[var(--shadow-soft)]"
             style={{ background: 'var(--gradient-card)' }}
           >
-            <div className="p-8 border-b border-border/10">
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-5">
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ background: 'hsl(var(--primary) / 0.08)' }}>
-                    <Sparkles className="w-7 h-7 text-primary" />
+            <div className="p-4 border-b border-border/50">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-primary/10">
+                    <Sparkles className="w-4 h-4 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-light text-foreground lowercase tracking-wide">tulum retreat</h3>
-                    <div className="flex items-center gap-3 mt-2">
-                      <span className="text-sm text-muted-foreground font-light">ai curated</span>
-                      <span className="w-1.5 h-1.5 bg-muted-foreground/40 rounded-full"></span>
-                      <span className="text-sm text-muted-foreground font-light">2 days</span>
-                      <span className="w-1.5 h-1.5 bg-muted-foreground/40 rounded-full"></span>
-                      <span className="text-sm text-primary font-normal">$600 total</span>
+                    <h3 className="text-lg font-semibold text-foreground">Tulum Retreat</h3>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <span>AI curated</span>
+                      <span>•</span>
+                      <span>2 days</span>
+                      <span>•</span>
+                      <span className="text-primary font-medium">$600 total</span>
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-3">
-                  <button className="px-6 py-3 bg-primary text-primary-foreground rounded-2xl text-sm font-light hover:bg-primary/90 transition-all duration-300 lowercase shadow-[var(--shadow-soft)]">
-                    book this escape
+                <div className="flex gap-2">
+                  <button className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
+                    Book Trip
                   </button>
-                  <button className="p-3 hover:bg-muted/30 rounded-2xl transition-all duration-300">
-                    <Heart className="w-5 h-5 text-muted-foreground" />
+                  <button className="p-2 hover:bg-muted/50 rounded-lg transition-colors">
+                    <Heart className="w-4 h-4 text-muted-foreground" />
                   </button>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Flight Section */}
+          {/* Flight - Compact */}
           <div 
-            className="group/component rounded-2xl border border-border/20 transition-all duration-300 hover:shadow-[var(--shadow-soft)]"
+            className="group/component rounded-xl border border-border transition-all duration-200 hover:shadow-[var(--shadow-soft)]"
             style={{ background: 'var(--gradient-card)' }}
           >
-            <div className="p-6 cursor-pointer" onClick={() => togglePromptBox('flight')}>
+            <div className="p-4 cursor-pointer" onClick={() => togglePromptBox('flight')}>
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl" style={{ background: 'hsl(var(--primary) / 0.1)' }}>
-                    <Plane className="w-6 h-6 text-primary" />
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <Plane className="w-4 h-4 text-primary" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-normal text-foreground lowercase">flights</h4>
-                    <p className="text-muted-foreground font-light">{results.flight.route}</p>
-                    <p className="text-sm text-muted-foreground font-light mt-1">{results.flight.schedule}</p>
+                    <div className="flex items-center gap-2">
+                      <h4 className="font-semibold text-foreground">Flights</h4>
+                      <span className="text-sm text-muted-foreground">{results.flight.route}</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">{results.flight.schedule}</p>
                   </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-xl font-light text-foreground">{results.flight.price}</p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/component:opacity-60 transition-all duration-300" />
-                    <span className="text-xs text-muted-foreground font-light opacity-0 group-hover/component:opacity-100 transition-all duration-300">change this</span>
-                  </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-lg font-semibold text-foreground">{results.flight.price}</span>
+                  <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
                 </div>
               </div>
             </div>
             
             {showPromptBox.flight && (
-              <div className="px-6 pb-6 border-t border-border/10 animate-in slide-in-from-top-2 duration-300">
-                <div className="pt-4 flex gap-3">
+              <div className="px-4 pb-4 border-t border-border/50 animate-in slide-in-from-top-2 duration-200">
+                <div className="pt-3 flex gap-2">
                   <Textarea
                     value={prompts.flight || ''}
                     onChange={(e) => updatePrompt('flight', e.target.value)}
-                    placeholder="different time? upgrade class? change airline?"
-                    className="resize-none text-sm flex-1 font-light border-border/30 rounded-xl"
-                    rows={2}
+                    placeholder="Different time? Upgrade class?"
+                    className="resize-none text-sm flex-1 border-border/50 rounded-lg"
+                    rows={1}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
                         e.preventDefault();
@@ -322,7 +321,7 @@ const TripResults = () => {
                   <button
                     onClick={() => handleInlinePromptSubmit('flight')}
                     disabled={!prompts.flight?.trim() || submittingPrompts.flight}
-                    className="p-3 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-all duration-300 disabled:opacity-50 shadow-[var(--shadow-soft)]"
+                    className="p-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50"
                   >
                     <Send className="w-4 h-4" />
                   </button>
@@ -331,46 +330,45 @@ const TripResults = () => {
             )}
           </div>
 
-          {/* Hotel Section */}
+          {/* Hotel - Compact */}
           <div 
-            className="group/component rounded-2xl border border-border/20 transition-all duration-300 hover:shadow-[var(--shadow-soft)]"
+            className="group/component rounded-xl border border-border transition-all duration-200 hover:shadow-[var(--shadow-soft)]"
             style={{ background: 'var(--gradient-card)' }}
           >
-            <div className="p-6 cursor-pointer" onClick={() => togglePromptBox('hotel')}>
+            <div className="p-4 cursor-pointer" onClick={() => togglePromptBox('hotel')}>
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl" style={{ background: 'hsl(var(--accent) / 0.1)' }}>
-                    <Hotel className="w-6 h-6 text-accent" />
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-accent/10">
+                    <Hotel className="w-4 h-4 text-accent" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-normal text-foreground lowercase">accommodation</h4>
-                    <p className="text-muted-foreground font-light">{results.hotel.name}</p>
-                    <div className="flex items-center gap-2 mt-1">
-                      <Star className="w-4 h-4 fill-accent/60 text-accent/60" />
-                      <span className="text-sm text-muted-foreground font-light">{results.hotel.rating}</span>
-                      <span className="text-sm text-muted-foreground font-light">• {results.hotel.description}</span>
+                    <div className="flex items-center gap-2">
+                      <h4 className="font-semibold text-foreground">Hotel</h4>
+                      <span className="text-sm text-muted-foreground">{results.hotel.name}</span>
+                      <div className="flex items-center gap-1">
+                        <Star className="w-3 h-3 fill-accent text-accent" />
+                        <span className="text-xs text-muted-foreground">{results.hotel.rating}</span>
+                      </div>
                     </div>
+                    <p className="text-xs text-muted-foreground">{results.hotel.description}</p>
                   </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-xl font-light text-foreground">{results.hotel.price}</p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/component:opacity-60 transition-all duration-300" />
-                    <span className="text-xs text-muted-foreground font-light opacity-0 group-hover/component:opacity-100 transition-all duration-300">change this</span>
-                  </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-lg font-semibold text-foreground">{results.hotel.price}</span>
+                  <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
                 </div>
               </div>
             </div>
             
             {showPromptBox.hotel && (
-              <div className="px-6 pb-6 border-t border-border/10 animate-in slide-in-from-top-2 duration-300">
-                <div className="pt-4 flex gap-3">
+              <div className="px-4 pb-4 border-t border-border/50 animate-in slide-in-from-top-2 duration-200">
+                <div className="pt-3 flex gap-2">
                   <Textarea
                     value={prompts.hotel || ''}
                     onChange={(e) => updatePrompt('hotel', e.target.value)}
-                    placeholder="more luxury? beachfront? different vibe?"
-                    className="resize-none text-sm flex-1 font-light border-border/30 rounded-xl"
-                    rows={2}
+                    placeholder="More luxury? Beachfront? Different vibe?"
+                    className="resize-none text-sm flex-1 border-border/50 rounded-lg"
+                    rows={1}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
                         e.preventDefault();
@@ -381,7 +379,7 @@ const TripResults = () => {
                   <button
                     onClick={() => handleInlinePromptSubmit('hotel')}
                     disabled={!prompts.hotel?.trim() || submittingPrompts.hotel}
-                    className="p-3 bg-accent text-accent-foreground rounded-xl hover:bg-accent/90 transition-all duration-300 disabled:opacity-50 shadow-[var(--shadow-soft)]"
+                    className="p-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50"
                   >
                     <Send className="w-4 h-4" />
                   </button>
@@ -390,56 +388,52 @@ const TripResults = () => {
             )}
           </div>
 
-          {/* Activities Section */}
+          {/* Activities - Compact List */}
           <div 
-            className="rounded-2xl border border-border/20 transition-all duration-300 hover:shadow-[var(--shadow-soft)]"
+            className="rounded-xl border border-border transition-all duration-200 hover:shadow-[var(--shadow-soft)]"
             style={{ background: 'var(--gradient-card)' }}
           >
-            <div className="p-6 border-b border-border/10">
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-xl" style={{ background: 'hsl(var(--secondary) / 0.1)' }}>
-                  <MapPin className="w-6 h-6 text-secondary" />
+            <div className="p-4 border-b border-border/50">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-lg bg-secondary/10">
+                  <MapPin className="w-4 h-4 text-secondary" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-normal text-foreground lowercase">experiences</h4>
-                  <p className="text-muted-foreground font-light">curated moments for you</p>
-                </div>
+                <h4 className="font-semibold text-foreground">Activities</h4>
               </div>
             </div>
             
-            <div className="p-2">
+            <div className="divide-y divide-border/30">
               {results.thingsToDo.map((activity, index) => (
                 <div 
                   key={index}
-                  className="group/activity p-4 rounded-xl hover:bg-muted/20 cursor-pointer transition-all duration-300"
+                  className="group/activity p-3 hover:bg-muted/30 cursor-pointer transition-colors"
                   onClick={() => togglePromptBox(`activity-${index}`)}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg" style={{ background: 'hsl(var(--secondary) / 0.08)' }}>
+                      <div className="p-1.5 rounded bg-secondary/10">
                         {getActivityIcon(activity.icon)}
                       </div>
                       <div>
-                        <h5 className="font-normal text-foreground lowercase">{activity.title}</h5>
-                        <p className="text-sm text-muted-foreground font-light">{activity.description}</p>
-                        <p className="text-xs text-muted-foreground font-light mt-1">{activity.time}</p>
+                        <div className="flex items-center gap-2">
+                          <h5 className="font-medium text-foreground">{activity.title}</h5>
+                          <span className="text-xs text-muted-foreground">{activity.time}</span>
+                        </div>
+                        <p className="text-xs text-muted-foreground">{activity.description}</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Edit className="w-3 h-3 text-muted-foreground opacity-0 group-hover/activity:opacity-60 transition-all duration-300" />
-                      <span className="text-xs text-muted-foreground font-light opacity-0 group-hover/activity:opacity-100 transition-all duration-300">edit</span>
-                    </div>
+                    <Edit className="w-3 h-3 text-muted-foreground opacity-0 group-hover/activity:opacity-100 transition-opacity" />
                   </div>
                   
                   {showPromptBox[`activity-${index}`] && (
-                    <div className="mt-4 pt-4 border-t border-border/10 animate-in slide-in-from-top-2 duration-300" onClick={(e) => e.stopPropagation()}>
-                      <div className="flex gap-3">
+                    <div className="mt-3 pt-3 border-t border-border/30 animate-in slide-in-from-top-2 duration-200" onClick={(e) => e.stopPropagation()}>
+                      <div className="flex gap-2">
                         <Textarea
                           value={prompts[`activity-${index}`] || ''}
                           onChange={(e) => updatePrompt(`activity-${index}`, e.target.value)}
-                          placeholder="different activity? change time? more active?"
-                          className="resize-none text-sm flex-1 font-light border-border/30 rounded-xl"
-                          rows={2}
+                          placeholder="Different activity? Change time?"
+                          className="resize-none text-sm flex-1 border-border/50 rounded-lg"
+                          rows={1}
                           onKeyDown={(e) => {
                             if (e.key === 'Enter' && !e.shiftKey) {
                               e.preventDefault();
@@ -450,7 +444,7 @@ const TripResults = () => {
                         <button
                           onClick={() => handleInlinePromptSubmit(`activity-${index}`)}
                           disabled={!prompts[`activity-${index}`]?.trim() || submittingPrompts[`activity-${index}`]}
-                          className="p-3 bg-secondary text-secondary-foreground rounded-xl hover:bg-secondary/90 transition-all duration-300 disabled:opacity-50 shadow-[var(--shadow-soft)]"
+                          className="p-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/90 transition-colors disabled:opacity-50"
                         >
                           <Send className="w-4 h-4" />
                         </button>
@@ -462,54 +456,48 @@ const TripResults = () => {
             </div>
           </div>
 
-          {/* Hidden Gems Section */}
+          {/* Hidden Gems - Compact List */}
           <div 
-            className="rounded-2xl border border-border/20 transition-all duration-300 hover:shadow-[var(--shadow-soft)]"
+            className="rounded-xl border border-border transition-all duration-200 hover:shadow-[var(--shadow-soft)]"
             style={{ background: 'var(--gradient-card)' }}
           >
-            <div className="p-6 border-b border-border/10">
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-xl" style={{ background: 'hsl(var(--accent) / 0.1)' }}>
-                  <Eye className="w-6 h-6 text-accent" />
+            <div className="p-4 border-b border-border/50">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-lg bg-accent/10">
+                  <Eye className="w-4 h-4 text-accent" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-normal text-foreground lowercase">hidden gems</h4>
-                  <p className="text-muted-foreground font-light">local secrets just for you</p>
-                </div>
+                <h4 className="font-semibold text-foreground">Hidden Gems</h4>
               </div>
             </div>
             
-            <div className="p-2">
+            <div className="divide-y divide-border/30">
               {results.hiddenGems.map((gem, index) => (
                 <div 
                   key={index}
-                  className="group/gem p-4 rounded-xl hover:bg-muted/20 cursor-pointer transition-all duration-300"
+                  className="group/gem p-3 hover:bg-muted/30 cursor-pointer transition-colors"
                   onClick={() => togglePromptBox(`gem-${index}`)}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <h5 className="font-normal text-foreground lowercase">{gem.name}</h5>
-                        <span className="text-xs px-2 py-1 bg-accent/10 text-accent rounded-lg font-light">{gem.type.toLowerCase()}</span>
+                      <div className="flex items-center gap-2 mb-1">
+                        <h5 className="font-medium text-foreground">{gem.name}</h5>
+                        <span className="text-xs px-2 py-0.5 bg-accent/10 text-accent rounded font-medium">{gem.type}</span>
                       </div>
-                      <p className="text-sm text-muted-foreground font-light mb-2">{gem.description}</p>
-                      <p className="text-xs text-muted-foreground font-light italic">💡 {gem.insider_tip}</p>
+                      <p className="text-xs text-muted-foreground mb-1">{gem.description}</p>
+                      <p className="text-xs text-muted-foreground/80">💡 {gem.insider_tip}</p>
                     </div>
-                    <div className="flex items-center gap-2 ml-4">
-                      <Edit className="w-3 h-3 text-muted-foreground opacity-0 group-hover/gem:opacity-60 transition-all duration-300" />
-                      <span className="text-xs text-muted-foreground font-light opacity-0 group-hover/gem:opacity-100 transition-all duration-300">edit</span>
-                    </div>
+                    <Edit className="w-3 h-3 text-muted-foreground opacity-0 group-hover/gem:opacity-100 transition-opacity ml-3 mt-1" />
                   </div>
                   
                   {showPromptBox[`gem-${index}`] && (
-                    <div className="mt-4 pt-4 border-t border-border/10 animate-in slide-in-from-top-2 duration-300" onClick={(e) => e.stopPropagation()}>
-                      <div className="flex gap-3">
+                    <div className="mt-3 pt-3 border-t border-border/30 animate-in slide-in-from-top-2 duration-200" onClick={(e) => e.stopPropagation()}>
+                      <div className="flex gap-2">
                         <Textarea
                           value={prompts[`gem-${index}`] || ''}
                           onChange={(e) => updatePrompt(`gem-${index}`, e.target.value)}
-                          placeholder="different type of place? more adventurous? food focused?"
-                          className="resize-none text-sm flex-1 font-light border-border/30 rounded-xl"
-                          rows={2}
+                          placeholder="Different type? More adventurous?"
+                          className="resize-none text-sm flex-1 border-border/50 rounded-lg"
+                          rows={1}
                           onKeyDown={(e) => {
                             if (e.key === 'Enter' && !e.shiftKey) {
                               e.preventDefault();
@@ -520,7 +508,7 @@ const TripResults = () => {
                         <button
                           onClick={() => handleInlinePromptSubmit(`gem-${index}`)}
                           disabled={!prompts[`gem-${index}`]?.trim() || submittingPrompts[`gem-${index}`]}
-                          className="p-3 bg-accent text-accent-foreground rounded-xl hover:bg-accent/90 transition-all duration-300 disabled:opacity-50 shadow-[var(--shadow-soft)]"
+                          className="p-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50"
                         >
                           <Send className="w-4 h-4" />
                         </button>
