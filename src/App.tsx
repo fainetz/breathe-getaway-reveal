@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Index from "./pages/Index";
 import Destinations from "./pages/Destinations";
+import CuratedTrips from "./pages/CuratedTrips";
 import Cart from "./pages/Cart";
 import Chat from "./pages/Chat";
 import FAQ from "./pages/FAQ";
@@ -25,6 +26,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/destinations" element={<Destinations />} />
+            <Route path="/curated-trips" element={<CuratedTrips />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/faq" element={<FAQ />} />

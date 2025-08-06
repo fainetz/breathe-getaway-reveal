@@ -1,8 +1,10 @@
 
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Features = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -267,6 +269,25 @@ const Features = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Call to Action for Curated Trips */}
+        <div className="mt-16 text-center">
+          <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-8 max-w-2xl mx-auto shadow-xl">
+            <h3 className="text-2xl font-bold mb-4 text-black dark:text-white">
+              Need Something More Specific?
+            </h3>
+            <p className="text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
+              Discover trips curated for solo female travelers, families with neurodivergent children, accessibility needs, and other unique situations. 
+              Someone gets you.
+            </p>
+            <button 
+              onClick={() => navigate('/curated-trips')}
+              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Browse Curated Trips
+            </button>
           </div>
         </div>
       </div>

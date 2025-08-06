@@ -227,82 +227,73 @@ const TripResults = () => {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
-        {/* Hero Banner with Background */}
+        {/* Compact Hero Banner */}
         <div 
-          className="relative -mx-4 -mt-8 mb-12 overflow-hidden"
+          className="relative -mx-4 -mt-8 mb-8 overflow-hidden"
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('/lovable-uploads/250f747d-157f-480c-9c25-76d931a9ad49.png')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            height: '60vh',
-            minHeight: '400px'
+            height: '35vh',
+            minHeight: '280px'
           }}
         >
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center space-y-6 px-4 max-w-4xl mx-auto animate-fade-in">
-              <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
+            <div className="text-center space-y-4 px-4 max-w-4xl mx-auto animate-fade-in">
+              <div className="inline-block px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
                 <span className="text-white/90 text-sm font-medium">AI Curated Trip</span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+              <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight">
                 Your Perfect Escape
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 font-light max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg text-white/90 font-light max-w-2xl mx-auto">
                 {results.introText}
-              </p>
-              <p className="text-white/70 max-w-xl mx-auto">
-                Everything curated for you. Click any section below to customize your experience.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Trip Overview Card - Not Editable */}
-        <div className="mb-8">
+        {/* Trip Overview & Total */}
+        <div className="mb-6">
           <div 
             className="rounded-2xl border border-border/50 backdrop-blur-sm"
             style={{ background: 'var(--gradient-card)' }}
           >
-            <div className="p-6">
+            <div className="p-4">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary to-primary/70">
-                    <Sparkles className="w-6 h-6 text-white" />
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary to-primary/70">
+                    <Sparkles className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-foreground">Tulum Retreat Experience</h2>
-                    <div className="flex items-center gap-3 text-sm text-muted-foreground mt-1">
+                    <h2 className="text-lg font-bold text-foreground">Tulum Retreat Experience</h2>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
                       <span className="flex items-center gap-1">
-                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                         AI Optimized
                       </span>
                       <span>•</span>
                       <span>2 days</span>
-                      <span>•</span>
-                      <span className="text-primary font-semibold">$600 total</span>
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-3">
-                  <button className="px-6 py-3 bg-primary text-primary-foreground rounded-xl text-sm font-semibold hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl">
-                    Book Trip
-                  </button>
-                  <button className="p-3 hover:bg-muted/50 rounded-xl transition-colors">
-                    <Heart className="w-5 h-5 text-muted-foreground" />
-                  </button>
+                <div className="text-right">
+                  <div className="text-2xl font-bold text-primary">$600</div>
+                  <div className="text-xs text-muted-foreground">estimated total</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Editable Trip Components */}
-        <div className="space-y-6">
-          {/* Flight Component - Editable */}
+        {/* Compact Trip Components */}
+        <div className="space-y-4">
+          {/* Flight Component */}
           <div 
-            className="group/component rounded-2xl border border-border/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+            className="group/component rounded-xl border border-border/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
             style={{ background: 'var(--gradient-card)' }}
           >
-            <div className="p-6 cursor-pointer" onClick={() => togglePromptBox('flight')}>
+            <div className="p-4 cursor-pointer" onClick={() => togglePromptBox('flight')}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="p-3 rounded-xl bg-primary/10">
