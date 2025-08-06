@@ -108,6 +108,22 @@ export default {
 						transform: 'translateY(-10px)'
 					}
 				},
+				'slide-in-right': {
+					'0%': { transform: 'translateX(100%)', opacity: '0' },
+					'100%': { transform: 'translateX(0)', opacity: '1' }
+				},
+				'slide-in-left': {
+					'0%': { transform: 'translateX(-100%)', opacity: '0' },
+					'100%': { transform: 'translateX(0)', opacity: '1' }
+				},
+				'slide-out-right': {
+					'0%': { transform: 'translateX(0)', opacity: '1' },
+					'100%': { transform: 'translateX(100%)', opacity: '0' }
+				},
+				'slide-out-left': {
+					'0%': { transform: 'translateX(0)', opacity: '1' },
+					'100%': { transform: 'translateX(-100%)', opacity: '0' }
+				},
 				'gradient': {
 					'0%, 100%': {
 						'background-size': '200% 200%',
@@ -123,6 +139,10 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'slide-up': 'slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+				'slide-in-right': 'slide-in-right 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)',
+				'slide-in-left': 'slide-in-left 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)',
+				'slide-out-right': 'slide-out-right 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)',
+				'slide-out-left': 'slide-out-left 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)',
 				'float': 'float 3s ease-in-out infinite',
 				'gradient': 'gradient 3s ease-in-out infinite'
 			}

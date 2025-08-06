@@ -23,6 +23,8 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [previousIndex, setPreviousIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [indicatorStyle, setIndicatorStyle] = useState({});
   const [isDragging, setIsDragging] = useState(false);
   const [dragStartX, setDragStartX] = useState(0);
@@ -34,10 +36,17 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
   // Update active index based on current path
   useEffect(() => {
     const index = navItems.findIndex(item => item.path === currentPath);
-    if (index !== -1) {
+    if (index !== -1 && index !== activeIndex) {
+      setPreviousIndex(activeIndex);
+      setIsTransitioning(true);
       setActiveIndex(index);
+      
+      // Reset transition state after animation
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 400);
     }
-  }, [currentPath]);
+  }, [currentPath, activeIndex]);
 
   // Update sliding indicator position
   useEffect(() => {
@@ -144,17 +153,25 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
   // Navigation functions for cycling through items
   const goToPrevious = () => {
     const newIndex = (activeIndex - 1 + navItems.length) % navItems.length;
+    setPreviousIndex(activeIndex);
+    setIsTransitioning(true);
     setActiveIndex(newIndex);
+    
     setTimeout(() => {
       navigate(navItems[newIndex].path);
+      setTimeout(() => setIsTransitioning(false), 400);
     }, 40);
   };
 
   const goToNext = () => {
     const newIndex = (activeIndex + 1) % navItems.length;
+    setPreviousIndex(activeIndex);
+    setIsTransitioning(true);
     setActiveIndex(newIndex);
+    
     setTimeout(() => {
       navigate(navItems[newIndex].path);
+      setTimeout(() => setIsTransitioning(false), 400);
     }, 40);
   };
 
@@ -184,12 +201,11 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
 
           {/* Current active item (center bubble) */}
           <button
-            key={`${currentItem.id}-${activeIndex}`} // Key change triggers animation
             ref={(el) => {
               if (el) itemRefs.current[activeIndex] = el;
             }}
             onClick={() => handleNavigation(currentItem.path, activeIndex)}
-            className="relative flex items-center justify-center px-6 py-3 backdrop-blur-lg rounded-full shadow-lg transition-all duration-500 ease-out select-none touch-manipulation w-full min-w-[120px]"
+            className="relative overflow-hidden px-6 py-3 backdrop-blur-lg rounded-full shadow-lg transition-all duration-500 ease-out select-none touch-manipulation min-w-[120px]"
             style={{
               background: 'rgba(255, 255, 255, 0.1)',
               backdropFilter: 'blur(20px)',
@@ -200,12 +216,14 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
               transitionTimingFunction: 'cubic-bezier(0.2, 0.0, 0.2, 1)',
             }}
           >
+            {/* Carousel text with sliding animation */}
             <span 
-              className="relative z-10 text-sm font-semibold text-primary-foreground transition-all duration-500 ease-out animate-slide-in-right"
-              style={{
-                transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
-                animation: 'slide-in-right 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards',
-              }}
+              key={`nav-${activeIndex}`}
+              className={`text-sm font-semibold text-primary-foreground whitespace-nowrap ${
+                isTransitioning 
+                  ? `animate-slide-in-${activeIndex > previousIndex ? 'right' : 'left'}` 
+                  : ''
+              }`}
             >
               {currentItem.label}
             </span>
