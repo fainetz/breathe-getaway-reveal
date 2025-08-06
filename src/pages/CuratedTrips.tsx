@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, BookOpen, Users, PlusCircle, Sparkles, Search, Filter } from 'lucide-react';
 import ZineCard from '../components/ZineCard';
 import ZineFilters from '../components/ZineFilters';
@@ -37,8 +37,15 @@ interface Zine {
 
 const CuratedTrips = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    console.log('CuratedTrips component mounted');
+    console.log('Current location:', location.pathname);
+    console.log('Current search:', location.search);
+  }, [location]);
 
   const travelZines: Zine[] = [
     {
@@ -216,8 +223,11 @@ const CuratedTrips = () => {
 
   const handleZineClick = (zine: Zine) => {
     const query = `${zine.title} zine - ${zine.subtitle}`;
+    console.log('Zine clicked, navigating to trip results with query:', query);
     navigate(`/trip-results?q=${encodeURIComponent(query)}`);
   };
+
+  console.log('CuratedTrips rendering with', filteredZines.length, 'zines');
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--gradient-soft)' }}>
@@ -226,7 +236,10 @@ const CuratedTrips = () => {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
             <button 
-              onClick={() => navigate('/')}
+              onClick={() => {
+                console.log('Back button clicked, navigating to home');
+                navigate('/');
+              }}
               className="p-2 hover:bg-muted/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
             >
               <ArrowLeft className="w-5 h-5" />
