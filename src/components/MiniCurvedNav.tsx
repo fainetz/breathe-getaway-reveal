@@ -183,8 +183,13 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
           </button>
 
           {/* Current active item (center bubble) */}
-          <div
-            className="relative flex items-center justify-center px-6 py-3 backdrop-blur-lg rounded-full shadow-lg transition-all duration-500 ease-out"
+          <button
+            key={`${currentItem.id}-${activeIndex}`} // Key change triggers animation
+            ref={(el) => {
+              if (el) itemRefs.current[activeIndex] = el;
+            }}
+            onClick={() => handleNavigation(currentItem.path, activeIndex)}
+            className="relative flex items-center justify-center px-6 py-3 backdrop-blur-lg rounded-full shadow-lg transition-all duration-500 ease-out select-none touch-manipulation w-full min-w-[120px]"
             style={{
               background: 'rgba(255, 255, 255, 0.1)',
               backdropFilter: 'blur(20px)',
@@ -192,23 +197,19 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
               border: '1px solid rgba(255, 255, 255, 0.2)',
               borderRadius: '24px',
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-              minWidth: '120px',
+              transitionTimingFunction: 'cubic-bezier(0.2, 0.0, 0.2, 1)',
             }}
           >
-            <button
-              key={`${currentItem.id}-${activeIndex}`} // Key change triggers animation
-              ref={(el) => {
-                if (el) itemRefs.current[activeIndex] = el;
-              }}
-              onClick={() => handleNavigation(currentItem.path, activeIndex)}
-              className="relative z-10 text-sm font-semibold text-primary-foreground transition-all duration-500 ease-out select-none touch-manipulation animate-fade-in"
+            <span 
+              className="relative z-10 text-sm font-semibold text-primary-foreground transition-all duration-500 ease-out animate-slide-in-right"
               style={{
-                transitionTimingFunction: 'cubic-bezier(0.2, 0.0, 0.2, 1)',
+                transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+                animation: 'slide-in-right 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards',
               }}
             >
               {currentItem.label}
-            </button>
-          </div>
+            </span>
+          </button>
 
           {/* Next item (right side) */}
           <button
