@@ -189,12 +189,12 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
         onTouchEnd={handleTouchEnd}
         style={{ touchAction: 'pan-x' }}
       >
-        {/* Carousel container showing 3 items at a time */}
+        {/* Carousel container showing text sliding into fixed bubble */}
         <div className="relative flex items-center w-96 overflow-hidden">
           
-          {/* Glass bubble that follows the active item */}
+          {/* Fixed glass bubble in center - stays in place */}
           <div 
-            className="absolute px-6 py-3 rounded-full shadow-lg pointer-events-none z-0 transition-all duration-500 ease-out"
+            className="absolute left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-full shadow-lg pointer-events-none z-10"
             style={{
               background: 'rgba(255, 255, 255, 0.12)',
               backdropFilter: 'blur(8px)',
@@ -204,22 +204,19 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
               boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
               minWidth: '120px',
               height: '44px',
-              left: `${32 + (activeIndex % 3) * 128}px`, // Position bubble over active item
-              transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
             }}
           />
 
-          {/* Sliding carousel showing 3 items */}
+          {/* Sliding carousel of text that moves into the bubble */}
           <div 
             className="flex items-center space-x-8 transition-transform duration-500 ease-out"
             style={{
-              transform: `translateX(${-Math.floor(activeIndex / 3) * 384}px)`, // Slide by groups of 3
+              transform: `translateX(${-activeIndex * 128 + 138}px)`, // Slide text so active item centers in bubble
               transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
             }}
           >
             {navItems.map((item, index) => {
               const isActive = index === activeIndex;
-              const isVisible = Math.floor(index / 3) === Math.floor(activeIndex / 3); // Show current group of 3
               
               return (
                 <button
@@ -232,7 +229,7 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
                     isActive 
                       ? 'text-primary-foreground z-20 scale-105' 
                       : 'text-foreground/50 hover:text-foreground/80 hover:scale-102'
-                  } ${isVisible ? 'opacity-100' : 'opacity-30'}`}
+                  }`}
                   style={{
                     transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
                   }}
