@@ -10,8 +10,9 @@ interface NavItem {
 const navItems: NavItem[] = [
   { path: '/', label: 'Home', id: 'home' },
   { path: '/destinations', label: 'Destinations', id: 'destinations' },
-  { path: '/curated-trips', label: 'Get Trips', id: 'trips' },
+  { path: '/curated-trips', label: 'Trips', id: 'trips' },
   { path: '/chat', label: 'Chat', id: 'chat' },
+  { path: '/faq', label: 'FAQ', id: 'faq' },
 ];
 
 const MiniCurvedNav = () => {
@@ -121,24 +122,57 @@ const MiniCurvedNav = () => {
     setIsDragging(false);
   };
 
-  const getItemOpacity = (index: number) => {
-    const distance = Math.abs(index - activeIndex);
-    if (distance === 0) return 1;
-    if (distance === 1) return 0.5;
-    return 0.25;
+  // Get the 3 visible items centered around the active item
+  const getVisibleItems = () => {
+    const visibleItems = [];
+    const startIndex = Math.max(0, activeIndex - 1);
+    const endIndex = Math.min(navItems.length - 1, activeIndex + 1);
+    
+    // Always show exactly 3 items
+    if (activeIndex === 0) {
+      // Show first 3 items
+      for (let i = 0; i < Math.min(3, navItems.length); i++) {
+        visibleItems.push({ ...navItems[i], originalIndex: i });
+      }
+    } else if (activeIndex === navItems.length - 1) {
+      // Show last 3 items
+      for (let i = Math.max(0, navItems.length - 3); i < navItems.length; i++) {
+        visibleItems.push({ ...navItems[i], originalIndex: i });
+      }
+    } else {
+      // Show 3 items centered around active
+      for (let i = startIndex; i <= endIndex; i++) {
+        visibleItems.push({ ...navItems[i], originalIndex: i });
+      }
+    }
+    
+    return visibleItems;
   };
+
+  const getItemOpacity = (originalIndex: number) => {
+    if (originalIndex === activeIndex) return 1;
+    return 0.4; // Fade effect for non-active items
+  };
+
+  const getItemScale = (originalIndex: number) => {
+    if (originalIndex === activeIndex) return 1;
+    return 0.85; // Slightly smaller for non-active items
+  };
+
+  const visibleItems = getVisibleItems();
 
   return (
     <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-30">
       <div 
         ref={navRef}
-        className={`relative flex items-center gap-0.5 bg-background/70 backdrop-blur-lg border border-border/20 rounded-full px-2 py-1.5 shadow-sm cursor-grab select-none ${isDragging ? 'cursor-grabbing' : ''}`}
+        className={`relative flex items-center gap-1 backdrop-blur-lg rounded-full px-3 py-2 shadow-lg cursor-grab select-none ${isDragging ? 'cursor-grabbing' : ''}`}
         style={{
-          background: 'rgba(255, 255, 255, 0.08)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          border: '1px solid rgba(255, 255, 255, 0.15)',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+          background: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          borderRadius: '24px', // Outer curve as requested
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
           touchAction: 'pan-x',
         }}
         onMouseDown={handleMouseDown}
@@ -149,33 +183,42 @@ const MiniCurvedNav = () => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {/* Sliding indicator */}
-        <div
-          className="absolute top-1.5 bg-primary/80 rounded-full transition-all duration-150 ease-out"
-          style={{
-            ...indicatorStyle,
-            height: 'calc(100% - 12px)',
-            transitionTimingFunction: 'cubic-bezier(0.2, 0.0, 0.2, 1)',
-          }}
-        />
+        {/* Sliding indicator - only for the active item in visible range */}
+        {visibleItems.some(item => item.originalIndex === activeIndex) && (
+          <div
+            className="absolute bg-primary/20 transition-all duration-200 ease-out"
+            style={{
+              ...indicatorStyle,
+              height: 'calc(100% - 16px)',
+              top: '8px',
+              borderRadius: '16px', // Inner curve as requested
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05))',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              transitionTimingFunction: 'cubic-bezier(0.2, 0.0, 0.2, 1)',
+            }}
+          />
+        )}
 
-        {navItems.map((item, index) => {
-          const isActive = index === activeIndex;
+        {visibleItems.map((item) => {
+          const isActive = item.originalIndex === activeIndex;
           return (
             <button
               key={item.id}
-              ref={(el) => (itemRefs.current[index] = el)}
-              onClick={() => handleNavigation(item.path, index)}
+              ref={(el) => {
+                if (el) itemRefs.current[item.originalIndex] = el;
+              }}
+              onClick={() => handleNavigation(item.path, item.originalIndex)}
               className={`
-                relative z-10 px-4 py-2 text-sm font-medium rounded-full
-                transition-all duration-150 ease-out select-none touch-manipulation
+                relative z-10 px-4 py-2 text-sm font-medium transition-all duration-200 ease-out select-none touch-manipulation
                 ${isActive 
-                  ? 'text-primary-foreground' 
-                  : 'text-foreground/60 hover:text-foreground/80'
+                  ? 'text-primary-foreground font-semibold' 
+                  : 'text-foreground/70 hover:text-foreground'
                 }
               `}
               style={{
-                opacity: getItemOpacity(index),
+                opacity: getItemOpacity(item.originalIndex),
+                transform: `scale(${getItemScale(item.originalIndex)})`,
+                borderRadius: '16px', // Inner curve for buttons
                 transitionTimingFunction: 'cubic-bezier(0.2, 0.0, 0.2, 1)',
               }}
             >
@@ -184,15 +227,15 @@ const MiniCurvedNav = () => {
           );
         })}
         
-        {/* Subtle drag indicator dots */}
-        <div className="absolute -bottom-1.5 left-1/2 transform -translate-x-1/2 flex gap-1">
+        {/* Navigation dots - show all items */}
+        <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1">
           {navItems.map((_, index) => (
             <div
               key={index}
               className={`w-1 h-1 rounded-full transition-all duration-200 ${
                 index === activeIndex 
-                  ? 'bg-primary/60 scale-110' 
-                  : 'bg-foreground/20 scale-75'
+                  ? 'bg-primary/80 scale-125' 
+                  : 'bg-foreground/30 scale-75'
               }`}
             />
           ))}
