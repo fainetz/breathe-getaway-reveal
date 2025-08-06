@@ -3,6 +3,7 @@ import { ChevronDown, Menu, X, ShoppingCart, ChevronLeft, ChevronRight } from 'l
 import { Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import ThreeBackground from './ThreeBackground';
+import AuthButton from './AuthButton';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Hero = () => {
@@ -152,6 +153,7 @@ const Hero = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <ThemeToggle />
+            <AuthButton />
             
             {/* Cart */}
             <Link to="/cart" className="relative group p-2 rounded-lg transition-all duration-300 hover:scale-105">
