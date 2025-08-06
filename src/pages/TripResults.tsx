@@ -211,329 +211,408 @@ const TripResults = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Clean Header */}
-      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/20" style={{ background: 'hsl(var(--background) / 0.95)' }}>
-        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-4">
+      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/10" style={{ background: 'hsl(var(--background) / 0.8)' }}>
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center gap-4">
           <button 
             onClick={handleBackClick}
-            className="p-2 hover:bg-muted/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
+            className="p-2 hover:bg-blue-500/10 rounded-xl transition-all duration-300 text-muted-foreground hover:text-blue-600 group"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-5 h-5 group-hover:translate-x-[-2px] transition-transform duration-200" />
           </button>
           <div>
-            <h1 className="text-lg font-semibold text-foreground">Your Trip</h1>
+            <h1 className="text-lg font-semibold text-foreground">Your Perfect Escape</h1>
             <p className="text-sm text-muted-foreground">Based on: "{query}"</p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 py-8 space-y-8">
-        {/* Trip Overview */}
-        <div className="bg-card border border-border rounded-xl p-6 shadow-sm">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary to-primary/70">
-                <Sparkles className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h2 className="text-xl font-semibold text-foreground">Tulum Weekend</h2>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>AI Optimized • 2 days</span>
+      {/* Hero Section with Destination Image */}
+      <div className="relative h-96 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="/lovable-uploads/57128f78-ae84-40b4-9e6e-e92dfb583dc4.png" 
+            alt="Destination" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-blue-600/20 backdrop-blur-[1px]"></div>
+        </div>
+        
+        <div className="absolute inset-0 flex items-end">
+          <div className="max-w-6xl mx-auto px-6 pb-12 w-full">
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 animate-fade-in">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-6">
+                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-600 shadow-xl animate-scale-in">
+                    <Sparkles className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-3xl font-bold text-white mb-2">Tulum Weekend</h2>
+                    <div className="flex items-center gap-3 text-white/80">
+                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                      <span className="text-lg">AI Optimized • 2 days • Handcrafted for you</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-4xl font-bold text-white mb-1">$600</div>
+                  <div className="text-white/80">total experience</div>
                 </div>
               </div>
-            </div>
-            <div className="text-right">
-              <div className="text-2xl font-bold text-primary">$600</div>
-              <div className="text-sm text-muted-foreground">total</div>
             </div>
           </div>
         </div>
+      </div>
 
+      <div className="max-w-6xl mx-auto px-6 py-12 space-y-8">
         {/* Trip Components */}
-        <div className="space-y-6">
+        <div className="space-y-8">
           {/* Flight Component */}
-          <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden group/component">
-            <div className="p-6 cursor-pointer hover:bg-muted/20 transition-colors" onClick={() => togglePromptBox('flight')}>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-primary/10">
-                    {panelStates.flight?.isLoading ? (
-                      <Loader2 className="w-6 h-6 text-primary animate-spin" />
-                    ) : (
-                      <Plane className="w-6 h-6 text-primary" />
-                    )}
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-3 mb-1">
-                      <h3 className="text-lg font-semibold text-foreground">Flights</h3>
-                      <span className="text-sm text-muted-foreground font-medium">
-                        {panelStates.flight?.data?.route || results.flight.route}
-                      </span>
+          <div className="group/component bg-white/80 dark:bg-card/80 backdrop-blur-xl border border-blue-200/30 dark:border-border/30 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden animate-fade-in">
+            <div className="relative">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 opacity-0 group-hover/component:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="p-8 cursor-pointer hover:bg-blue-50/50 dark:hover:bg-blue-950/20 transition-all duration-300" onClick={() => togglePromptBox('flight')}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-6">
+                    <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg group-hover/component:scale-110 group-hover/component:rotate-3 transition-all duration-300">
+                      {panelStates.flight?.isLoading ? (
+                        <Loader2 className="w-8 h-8 text-white animate-spin" />
+                      ) : (
+                        <Plane className="w-8 h-8 text-white" />
+                      )}
                     </div>
-                    <p className="text-sm text-muted-foreground">
-                      {panelStates.flight?.data?.schedule || results.flight.schedule}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      {panelStates.flight?.data?.details || results.flight.details}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-xl font-bold text-foreground">
-                    {panelStates.flight?.data?.price || results.flight.price}
-                  </span>
-                  <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
-                </div>
-              </div>
-            </div>
-            
-            {showPromptBox.flight && (
-              <div className="px-6 pb-6 border-t border-border/50">
-                <div className="pt-4 flex gap-3">
-                  <Textarea
-                    value={prompts.flight || ''}
-                    onChange={(e) => updatePrompt('flight', e.target.value)}
-                    placeholder="Different time? Upgrade class? More direct route?"
-                    className="resize-none text-sm flex-1 border-border/50 rounded-lg h-10"
-                    rows={1}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        handleInlinePromptSubmit('flight');
-                      }
-                    }}
-                  />
-                  <button
-                    onClick={() => handleInlinePromptSubmit('flight')}
-                    disabled={!prompts.flight?.trim() || panelStates.flight?.isLoading}
-                    className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 flex items-center gap-2"
-                  >
-                    {panelStates.flight?.isLoading ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : (
-                      <Send className="w-4 h-4" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Hotel Component */}
-          <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden group/component">
-            <div className="p-6 cursor-pointer hover:bg-muted/20 transition-colors" onClick={() => togglePromptBox('hotel')}>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-accent/10">
-                    {panelStates.hotel?.isLoading ? (
-                      <Loader2 className="w-6 h-6 text-accent animate-spin" />
-                    ) : (
-                      <Hotel className="w-6 h-6 text-accent" />
-                    )}
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-3 mb-1">
-                      <h4 className="text-lg font-semibold text-foreground">Hotel</h4>
-                      <span className="text-sm text-muted-foreground font-medium">
-                        {panelStates.hotel?.data?.name || results.hotel.name}
-                      </span>
-                      <div className="flex items-center gap-1">
-                        <Star className="w-4 h-4 fill-accent text-accent" />
-                        <span className="text-sm text-muted-foreground">
-                          {panelStates.hotel?.data?.rating || results.hotel.rating}
+                    <div>
+                      <div className="flex items-center gap-4 mb-2">
+                        <h3 className="text-2xl font-bold text-foreground">Flights</h3>
+                        <span className="text-lg text-blue-600 dark:text-blue-400 font-semibold px-3 py-1 bg-blue-100/80 dark:bg-blue-950/30 rounded-lg">
+                          {panelStates.flight?.data?.route || results.flight.route}
                         </span>
                       </div>
+                      <p className="text-lg text-muted-foreground mb-1">
+                        {panelStates.flight?.data?.schedule || results.flight.schedule}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {panelStates.flight?.data?.details || results.flight.details}
+                      </p>
                     </div>
-                    <p className="text-sm text-muted-foreground">
-                      {panelStates.hotel?.data?.description || results.hotel.description}
-                    </p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <span className="text-3xl font-bold text-foreground">
+                      {panelStates.flight?.data?.price || results.flight.price}
+                    </span>
+                    <Edit className="w-5 h-5 text-blue-500 opacity-0 group-hover/component:opacity-100 transition-all duration-300 group-hover/component:scale-110" />
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-xl font-bold text-foreground">
-                    {panelStates.hotel?.data?.price || results.hotel.price}
-                  </span>
-                  <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
-                </div>
               </div>
+              
+              {showPromptBox.flight && (
+                <div className="px-8 pb-8 border-t border-blue-200/30 dark:border-border/30 bg-blue-50/30 dark:bg-blue-950/10 animate-fade-in">
+                  <div className="pt-6 flex gap-4">
+                    <Textarea
+                      value={prompts.flight || ''}
+                      onChange={(e) => updatePrompt('flight', e.target.value)}
+                      placeholder="Different time? Upgrade class? More direct route?"
+                      className="resize-none text-base flex-1 border-blue-200/50 dark:border-border/50 rounded-xl h-12 bg-white/80 dark:bg-background/80"
+                      rows={1}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          handleInlinePromptSubmit('flight');
+                        }
+                      }}
+                    />
+                    <button
+                      onClick={() => handleInlinePromptSubmit('flight')}
+                      disabled={!prompts.flight?.trim() || panelStates.flight?.isLoading}
+                      className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 disabled:opacity-50 flex items-center gap-3 shadow-lg hover:shadow-xl hover:scale-105"
+                    >
+                      {panelStates.flight?.isLoading ? (
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                      ) : (
+                        <Send className="w-5 h-5" />
+                      )}
+                      <span className="font-semibold">Update</span>
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
-            
-            {showPromptBox.hotel && (
-              <div className="px-6 pb-6 border-t border-border/50">
-                <div className="pt-4 flex gap-3">
-                  <Textarea
-                    value={prompts.hotel || ''}
-                    onChange={(e) => updatePrompt('hotel', e.target.value)}
-                    placeholder="More luxury? Beachfront? Different vibe?"
-                    className="resize-none text-sm flex-1 border-border/50 rounded-lg h-10"
-                    rows={1}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        handleInlinePromptSubmit('hotel');
-                      }
-                    }}
-                  />
-                  <button
-                    onClick={() => handleInlinePromptSubmit('hotel')}
-                    disabled={!prompts.hotel?.trim() || panelStates.hotel?.isLoading}
-                    className="px-4 py-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50 flex items-center gap-2"
-                  >
-                    {panelStates.hotel?.isLoading ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : (
-                      <Send className="w-4 h-4" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            )}
           </div>
 
-          {/* Activities */}
-          <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
-            <div className="p-6 border-b border-border/50">
-              <div className="flex items-center gap-3">
-                <div className="p-3 rounded-xl bg-secondary/10">
-                  <MapPin className="w-6 h-6 text-secondary" />
-                </div>
-                <h4 className="text-lg font-semibold text-foreground">Activities</h4>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
-              {results.thingsToDo.map((activity, index) => (
-                <div 
-                  key={index}
-                  className="group/activity p-4 border border-border rounded-lg hover:bg-muted/20 cursor-pointer transition-colors"
-                  onClick={() => togglePromptBox(`activity-${index}`)}
-                >
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-secondary/10 mt-1">
-                      {getActivityIcon(activity.icon)}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h5 className="text-sm font-semibold text-foreground">{activity.title}</h5>
-                        <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">{activity.time}</span>
+          {/* Hotel Component with Image */}
+          <div className="group/component bg-white/80 dark:bg-card/80 backdrop-blur-xl border border-blue-200/30 dark:border-border/30 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <div className="relative">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500 opacity-0 group-hover/component:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="flex">
+                <div className="flex-1 p-8 cursor-pointer hover:bg-emerald-50/30 dark:hover:bg-emerald-950/10 transition-all duration-300" onClick={() => togglePromptBox('hotel')}>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-6">
+                      <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg group-hover/component:scale-110 group-hover/component:rotate-3 transition-all duration-300">
+                        {panelStates.hotel?.isLoading ? (
+                          <Loader2 className="w-8 h-8 text-white animate-spin" />
+                        ) : (
+                          <Hotel className="w-8 h-8 text-white" />
+                        )}
                       </div>
-                      <p className="text-sm text-muted-foreground">{activity.description}</p>
+                      <div>
+                        <div className="flex items-center gap-4 mb-2">
+                          <h4 className="text-2xl font-bold text-foreground">Hotel</h4>
+                          <span className="text-lg text-emerald-600 dark:text-emerald-400 font-semibold px-3 py-1 bg-emerald-100/80 dark:bg-emerald-950/30 rounded-lg">
+                            {panelStates.hotel?.data?.name || results.hotel.name}
+                          </span>
+                          <div className="flex items-center gap-2">
+                            <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
+                            <span className="text-lg text-muted-foreground font-semibold">
+                              {panelStates.hotel?.data?.rating || results.hotel.rating}
+                            </span>
+                          </div>
+                        </div>
+                        <p className="text-lg text-muted-foreground">
+                          {panelStates.hotel?.data?.description || results.hotel.description}
+                        </p>
+                      </div>
                     </div>
-                    <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/activity:opacity-100 transition-opacity flex-shrink-0" />
+                    <div className="flex items-center gap-4">
+                      <span className="text-3xl font-bold text-foreground">
+                        {panelStates.hotel?.data?.price || results.hotel.price}
+                      </span>
+                      <Edit className="w-5 h-5 text-emerald-500 opacity-0 group-hover/component:opacity-100 transition-all duration-300 group-hover/component:scale-110" />
+                    </div>
                   </div>
-                  
-                  {showPromptBox[`activity-${index}`] && (
-                    <div className="mt-4 pt-4 border-t border-border/30" onClick={(e) => e.stopPropagation()}>
-                      <div className="flex gap-3">
-                        <Textarea
-                          value={prompts[`activity-${index}`] || ''}
-                          onChange={(e) => updatePrompt(`activity-${index}`, e.target.value)}
-                          placeholder="Different activity? Time change?"
-                          className="resize-none text-sm flex-1 border-border/50 rounded-lg h-10"
-                          rows={1}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter' && !e.shiftKey) {
-                              e.preventDefault();
-                              handleInlinePromptSubmit(`activity-${index}`);
-                            }
-                          }}
-                        />
-                        <button
-                          onClick={() => handleInlinePromptSubmit(`activity-${index}`)}
-                          disabled={!prompts[`activity-${index}`]?.trim() || panelStates[`activity-${index}`]?.isLoading}
-                          className="px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/90 transition-colors disabled:opacity-50 flex items-center gap-2"
-                        >
-                          {panelStates[`activity-${index}`]?.isLoading ? (
-                            <Loader2 className="w-4 h-4 animate-spin" />
-                          ) : (
-                            <Send className="w-4 h-4" />
-                          )}
-                        </button>
-                      </div>
-                    </div>
-                  )}
                 </div>
-              ))}
+                
+                <div className="w-48 relative overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/ba96e9ac-933d-4c61-90df-ba423b87b04d.png" 
+                    alt="Luxury hotel room" 
+                    className="w-full h-full object-cover group-hover/component:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-l from-transparent to-white/20 dark:to-black/20"></div>
+                </div>
+              </div>
+              
+              {showPromptBox.hotel && (
+                <div className="px-8 pb-8 border-t border-emerald-200/30 dark:border-border/30 bg-emerald-50/30 dark:bg-emerald-950/10 animate-fade-in">
+                  <div className="pt-6 flex gap-4">
+                    <Textarea
+                      value={prompts.hotel || ''}
+                      onChange={(e) => updatePrompt('hotel', e.target.value)}
+                      placeholder="More luxury? Beachfront? Different vibe?"
+                      className="resize-none text-base flex-1 border-emerald-200/50 dark:border-border/50 rounded-xl h-12 bg-white/80 dark:bg-background/80"
+                      rows={1}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          handleInlinePromptSubmit('hotel');
+                        }
+                      }}
+                    />
+                    <button
+                      onClick={() => handleInlinePromptSubmit('hotel')}
+                      disabled={!prompts.hotel?.trim() || panelStates.hotel?.isLoading}
+                      className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-xl hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 disabled:opacity-50 flex items-center gap-3 shadow-lg hover:shadow-xl hover:scale-105"
+                    >
+                      {panelStates.hotel?.isLoading ? (
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                      ) : (
+                        <Send className="w-5 h-5" />
+                      )}
+                      <span className="font-semibold">Update</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Activities with Dynamic Images */}
+          <div className="bg-white/80 dark:bg-card/80 backdrop-blur-xl border border-blue-200/30 dark:border-border/30 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <div className="relative">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="p-8 border-b border-purple-200/30 dark:border-border/30">
+                <div className="flex items-center gap-4">
+                  <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 shadow-lg">
+                    <MapPin className="w-8 h-8 text-white" />
+                  </div>
+                  <h4 className="text-2xl font-bold text-foreground">Curated Experiences</h4>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-8">
+                {results.thingsToDo.map((activity, index) => {
+                  const activityImages = [
+                    "/lovable-uploads/02c0dc39-74a0-4355-9275-75b1dd128c08.png", // cenote
+                    "/lovable-uploads/5f78a1b2-c7a5-4064-891c-f2ab5db2c767.png", // Japanese street
+                    "/lovable-uploads/6afa058e-fb1f-4eb8-8fbc-d2ce3df4e47f.png", // tropical pool
+                    "/lovable-uploads/f61bb501-3d6d-43ab-a67e-a604877983b8.png"  // luxury lobby
+                  ];
+                  
+                  return (
+                    <div 
+                      key={index}
+                      className="group/activity relative overflow-hidden rounded-xl border border-purple-200/30 dark:border-border/30 hover:border-purple-300/50 dark:hover:border-purple-500/30 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                      onClick={() => togglePromptBox(`activity-${index}`)}
+                    >
+                      <div className="aspect-video relative overflow-hidden">
+                        <img 
+                          src={activityImages[index]} 
+                          alt={activity.title} 
+                          className="w-full h-full object-cover group-hover/activity:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                        <div className="absolute inset-0 bg-purple-600/20 opacity-0 group-hover/activity:opacity-100 transition-opacity duration-300"></div>
+                        
+                        <div className="absolute top-4 right-4">
+                          <span className="text-sm font-semibold text-white bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30">
+                            {activity.time}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-white/20 backdrop-blur-md border border-white/30 mt-1">
+                            {getActivityIcon(activity.icon)}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h5 className="text-lg font-bold text-white mb-2">{activity.title}</h5>
+                            <p className="text-white/90 text-sm leading-relaxed">{activity.description}</p>
+                          </div>
+                          <Edit className="w-5 h-5 text-white opacity-0 group-hover/activity:opacity-100 transition-all duration-300 group-hover/activity:scale-110 flex-shrink-0" />
+                        </div>
+                      </div>
+                      
+                      {showPromptBox[`activity-${index}`] && (
+                        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-6 animate-fade-in" onClick={(e) => e.stopPropagation()}>
+                          <div className="w-full max-w-md space-y-4">
+                            <Textarea
+                              value={prompts[`activity-${index}`] || ''}
+                              onChange={(e) => updatePrompt(`activity-${index}`, e.target.value)}
+                              placeholder="Different activity? Time change?"
+                              className="resize-none text-base w-full border-white/30 rounded-xl h-12 bg-white/90 dark:bg-background/90 text-foreground"
+                              rows={1}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter' && !e.shiftKey) {
+                                  e.preventDefault();
+                                  handleInlinePromptSubmit(`activity-${index}`);
+                                }
+                              }}
+                            />
+                            <button
+                              onClick={() => handleInlinePromptSubmit(`activity-${index}`)}
+                              disabled={!prompts[`activity-${index}`]?.trim() || panelStates[`activity-${index}`]?.isLoading}
+                              className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
+                            >
+                              {panelStates[`activity-${index}`]?.isLoading ? (
+                                <Loader2 className="w-5 h-5 animate-spin" />
+                              ) : (
+                                <Send className="w-5 h-5" />
+                              )}
+                              <span className="font-semibold">Update Experience</span>
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+          </div>
+
             </div>
           </div>
 
           {/* Hidden Gems */}
-          <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
-            <div className="p-6 border-b border-border/50">
-              <div className="flex items-center gap-3">
-                <div className="p-3 rounded-xl bg-accent/10">
-                  <Eye className="w-6 h-6 text-accent" />
-                </div>
-                <h4 className="text-lg font-semibold text-foreground">Hidden Gems</h4>
-              </div>
-            </div>
-            <div className="divide-y divide-border/20">
-              {results.hiddenGems.map((gem, index) => (
-                <div 
-                  key={index}
-                  className="group/gem p-6 hover:bg-muted/20 cursor-pointer transition-colors"
-                  onClick={() => togglePromptBox(`gem-${index}`)}
-                >
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-accent/10 mt-1">
-                      {panelStates[`gem-${index}`]?.isLoading ? (
-                        <Loader2 className="w-5 h-5 text-accent animate-spin" />
-                      ) : (
-                        <Eye className="w-5 h-5 text-accent" />
-                      )}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-2">
-                        <h4 className="text-sm font-semibold text-foreground">
-                          {panelStates[`gem-${index}`]?.data?.name || gem.name}
-                        </h4>
-                        <span className="text-xs px-2 py-1 bg-accent/10 text-accent rounded">
-                          {panelStates[`gem-${index}`]?.data?.type || gem.type}
-                        </span>
-                      </div>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        {panelStates[`gem-${index}`]?.data?.description || gem.description}
-                      </p>
-                      <p className="text-sm text-muted-foreground/80 italic">
-                        💡 {panelStates[`gem-${index}`]?.data?.insider_tip || gem.insider_tip}
-                      </p>
-                    </div>
-                    <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/gem:opacity-100 transition-opacity flex-shrink-0" />
-                  </div>
+          <div className="bg-white/80 dark:bg-card/80 backdrop-blur-xl border border-blue-200/30 dark:border-border/30 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <div className="relative">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
               
-                  {showPromptBox[`gem-${index}`] && (
-                    <div className="mt-4 pt-4 border-t border-border/30" onClick={(e) => e.stopPropagation()}>
-                      <div className="flex gap-3">
-                        <Textarea
-                          value={prompts[`gem-${index}`] || ''}
-                          onChange={(e) => updatePrompt(`gem-${index}`, e.target.value)}
-                          placeholder="Different type? More adventurous? Food focused?"
-                          className="resize-none text-sm flex-1 border-border/50 rounded-lg h-10"
-                          rows={1}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter' && !e.shiftKey) {
-                              e.preventDefault();
-                              handleInlinePromptSubmit(`gem-${index}`);
-                            }
-                          }}
-                        />
-                        <button
-                          onClick={() => handleInlinePromptSubmit(`gem-${index}`)}
-                          disabled={!prompts[`gem-${index}`]?.trim() || panelStates[`gem-${index}`]?.isLoading}
-                          className="px-4 py-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50 flex items-center gap-2"
-                        >
-                          {panelStates[`gem-${index}`]?.isLoading ? (
-                            <Loader2 className="w-4 h-4 animate-spin" />
-                          ) : (
-                            <Send className="w-4 h-4" />
-                          )}
-                        </button>
-                      </div>
-                    </div>
-                  )}
+              <div className="p-8 border-b border-amber-200/30 dark:border-border/30">
+                <div className="flex items-center gap-4">
+                  <div className="p-4 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg">
+                    <Eye className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-foreground">Hidden Gems</h4>
+                    <p className="text-muted-foreground">Insider secrets just for you</p>
+                  </div>
                 </div>
-              ))}
-            </div>
+              </div>
+              
+              <div className="divide-y divide-amber-200/20 dark:divide-border/20">
+                {results.hiddenGems.map((gem, index) => (
+                  <div 
+                    key={index}
+                    className="group/gem p-8 hover:bg-amber-50/30 dark:hover:bg-amber-950/10 cursor-pointer transition-all duration-300"
+                    onClick={() => togglePromptBox(`gem-${index}`)}
+                  >
+                    <div className="flex items-start gap-6">
+                      <div className="p-3 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-600/20 border border-amber-200/30 dark:border-amber-800/30 mt-1 group-hover/gem:scale-110 group-hover/gem:rotate-3 transition-all duration-300">
+                        {panelStates[`gem-${index}`]?.isLoading ? (
+                          <Loader2 className="w-6 h-6 text-amber-600 animate-spin" />
+                        ) : (
+                          <Eye className="w-6 h-6 text-amber-600" />
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-3 mb-3">
+                          <h4 className="text-xl font-bold text-foreground">
+                            {panelStates[`gem-${index}`]?.data?.name || gem.name}
+                          </h4>
+                          <span className="text-sm px-3 py-1 bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-950 dark:to-orange-950 text-amber-700 dark:text-amber-300 rounded-full font-semibold border border-amber-200/50 dark:border-amber-800/50">
+                            {panelStates[`gem-${index}`]?.data?.type || gem.type}
+                          </span>
+                        </div>
+                        <p className="text-lg text-muted-foreground mb-3 leading-relaxed">
+                          {panelStates[`gem-${index}`]?.data?.description || gem.description}
+                        </p>
+                        <div className="flex items-start gap-3 p-4 bg-amber-50/50 dark:bg-amber-950/20 rounded-xl border border-amber-200/30 dark:border-amber-800/30">
+                          <span className="text-xl">💡</span>
+                          <p className="text-amber-800 dark:text-amber-200 italic font-medium">
+                            {panelStates[`gem-${index}`]?.data?.insider_tip || gem.insider_tip}
+                          </p>
+                        </div>
+                      </div>
+                      <Edit className="w-5 h-5 text-amber-500 opacity-0 group-hover/gem:opacity-100 transition-all duration-300 group-hover/gem:scale-110 flex-shrink-0" />
+                    </div>
+                
+                    {showPromptBox[`gem-${index}`] && (
+                      <div className="mt-6 pt-6 border-t border-amber-200/30 dark:border-border/30 animate-fade-in" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex gap-4">
+                          <Textarea
+                            value={prompts[`gem-${index}`] || ''}
+                            onChange={(e) => updatePrompt(`gem-${index}`, e.target.value)}
+                            placeholder="Different type? More adventurous? Food focused?"
+                            className="resize-none text-base flex-1 border-amber-200/50 dark:border-border/50 rounded-xl h-12 bg-white/80 dark:bg-background/80"
+                            rows={1}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter' && !e.shiftKey) {
+                                e.preventDefault();
+                                handleInlinePromptSubmit(`gem-${index}`);
+                              }
+                            }}
+                          />
+                          <button
+                            onClick={() => handleInlinePromptSubmit(`gem-${index}`)}
+                            disabled={!prompts[`gem-${index}`]?.trim() || panelStates[`gem-${index}`]?.isLoading}
+                            className="px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-xl hover:from-amber-600 hover:to-orange-700 transition-all duration-300 disabled:opacity-50 flex items-center gap-3 shadow-lg hover:shadow-xl hover:scale-105"
+                          >
+                            {panelStates[`gem-${index}`]?.isLoading ? (
+                              <Loader2 className="w-5 h-5 animate-spin" />
+                            ) : (
+                              <Send className="w-5 h-5" />
+                            )}
+                            <span className="font-semibold">Update</span>
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
           </div>
 
         </div>
