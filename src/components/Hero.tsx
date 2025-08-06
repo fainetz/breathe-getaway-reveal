@@ -96,7 +96,7 @@ const Hero = () => {
   const itemCount = getCartItemCount();
 
   return (
-    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 pt-0">{/* Remove top padding */}
       {/* 3D Background */}
       <ThreeBackground />
 
@@ -126,8 +126,8 @@ const Hero = () => {
           {/* Mobile menu button - hidden since we have horizontal nav */}
           <div className="md:hidden"></div>
 
-          {/* Centered nav bubble */}
-          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
+          {/* Centered nav bubble - moved down */}
+          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 top-16">
             <MiniCurvedNav isIntegrated={true} />
           </div>
 

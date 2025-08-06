@@ -126,8 +126,20 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
     setIsDragging(false);
   };
 
-  // Get the current active item
+  // Get the previous, current, and next items for display
+  const getPreviousItem = () => {
+    const prevIndex = (activeIndex - 1 + navItems.length) % navItems.length;
+    return navItems[prevIndex];
+  };
+
+  const getNextItem = () => {
+    const nextIndex = (activeIndex + 1) % navItems.length;
+    return navItems[nextIndex];
+  };
+
   const currentItem = navItems[activeIndex];
+  const previousItem = getPreviousItem();
+  const nextItem = getNextItem();
 
   // Navigation functions for cycling through items
   const goToPrevious = () => {
@@ -160,56 +172,50 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
         onTouchEnd={handleTouchEnd}
         style={{ touchAction: 'pan-x' }}
       >
-        {/* Single bubble containing the active item */}
-        <div
-          className="relative flex items-center justify-center px-6 py-3 backdrop-blur-lg rounded-full shadow-lg transition-all duration-300 ease-out"
-          style={{
-            background: 'rgba(255, 255, 255, 0.1)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            borderRadius: '24px',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-            minWidth: '120px',
-          }}
-        >
-          {/* Navigation arrows - only visible on hover when integrated */}
-          {isIntegrated && (
-            <>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  goToPrevious();
-                }}
-                className="absolute -left-8 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-70 hover:opacity-100 transition-opacity duration-200 p-1 rounded-full hover:bg-white/10"
-              >
-                <div className="w-4 h-4 border-l-2 border-b-2 border-foreground/60 transform rotate-45 -translate-x-0.5"></div>
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  goToNext();
-                }}
-                className="absolute -right-8 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-70 hover:opacity-100 transition-opacity duration-200 p-1 rounded-full hover:bg-white/10"
-              >
-                <div className="w-4 h-4 border-r-2 border-t-2 border-foreground/60 transform rotate-45 translate-x-0.5"></div>
-              </button>
-            </>
-          )}
-
-          {/* Current active item */}
+        {/* Three-item layout: Previous | Current | Next */}
+        <div className="flex items-center space-x-4">
+          {/* Previous item (left side) */}
           <button
-            key={currentItem.id}
-            ref={(el) => {
-              if (el) itemRefs.current[activeIndex] = el;
-            }}
-            onClick={() => handleNavigation(currentItem.path, activeIndex)}
-            className="relative z-10 text-sm font-semibold text-primary-foreground transition-all duration-300 ease-out select-none touch-manipulation"
+            onClick={() => goToPrevious()}
+            className="px-4 py-2 text-sm font-medium text-foreground/40 hover:text-foreground/70 transition-all duration-300 ease-out transform hover:scale-105"
+          >
+            {previousItem.label}
+          </button>
+
+          {/* Current active item (center bubble) */}
+          <div
+            className="relative flex items-center justify-center px-6 py-3 backdrop-blur-lg rounded-full shadow-lg transition-all duration-500 ease-out"
             style={{
-              transitionTimingFunction: 'cubic-bezier(0.2, 0.0, 0.2, 1)',
+              background: 'rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: '24px',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+              minWidth: '120px',
             }}
           >
-            {currentItem.label}
+            <button
+              key={`${currentItem.id}-${activeIndex}`} // Key change triggers animation
+              ref={(el) => {
+                if (el) itemRefs.current[activeIndex] = el;
+              }}
+              onClick={() => handleNavigation(currentItem.path, activeIndex)}
+              className="relative z-10 text-sm font-semibold text-primary-foreground transition-all duration-500 ease-out select-none touch-manipulation animate-fade-in"
+              style={{
+                transitionTimingFunction: 'cubic-bezier(0.2, 0.0, 0.2, 1)',
+              }}
+            >
+              {currentItem.label}
+            </button>
+          </div>
+
+          {/* Next item (right side) */}
+          <button
+            onClick={() => goToNext()}
+            className="px-4 py-2 text-sm font-medium text-foreground/40 hover:text-foreground/70 transition-all duration-300 ease-out transform hover:scale-105"
+          >
+            {nextItem.label}
           </button>
         </div>
         
