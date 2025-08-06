@@ -192,15 +192,16 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
         {/* Polished carousel container */}
         <div className="relative flex items-center w-96 h-12 overflow-hidden">
           
-          {/* Clean glass bubble - no heavy shadows */}
+          {/* Prominent glass bubble - more visible */}
           <div 
             className="absolute left-1/2 transform -translate-x-1/2 px-8 py-3 rounded-full pointer-events-none z-10"
             style={{
-              background: 'rgba(255, 255, 255, 0.15)',
+              background: 'rgba(255, 255, 255, 0.25)',
               backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
+              border: '1px solid rgba(255, 255, 255, 0.4)',
               borderRadius: '28px',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
               minWidth: '140px',
               height: '48px',
             }}
