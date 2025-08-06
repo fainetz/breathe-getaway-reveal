@@ -144,13 +144,8 @@ All colors MUST be HSL.
 
   @media (max-width: 768px) {
     body {
-      padding-top: 20px; /* Minimal space for mini nav */
+      padding-top: 20px; /* Minimal space for mobile mini nav only */
     }
-  }
-
-  /* Desktop also needs minimal space for the mini nav */
-  body {
-    padding-top: 20px;
   }
 
   #root {

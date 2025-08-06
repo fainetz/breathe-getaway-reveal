@@ -31,8 +31,8 @@ const App = () => (
             <div className="md:hidden">
               <MiniCurvedNav />
             </div>
-            {/* Desktop nav - positioned at very top */}
-            <div className="hidden md:flex fixed top-4 left-1/2 transform -translate-x-1/2 z-30">
+            {/* Desktop nav - centered and always visible */}
+            <div className="hidden md:flex fixed top-20 left-1/2 transform -translate-x-1/2 z-30">
               <MiniCurvedNav isIntegrated={true} />
             </div>
             <Routes>
