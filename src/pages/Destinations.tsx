@@ -327,7 +327,7 @@ const Destinations = () => {
   const currentHero = featuredDestinations[heroIndex];
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen bg-background overflow-x-hidden pt-20">
       {/* Contemporary Floating Elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-primary/15 to-accent/10 rounded-full blur-3xl"></div>
@@ -336,7 +336,7 @@ const Destinations = () => {
       </div>
 
       {/* Elegant Back Button */}
-      <div className="fixed top-6 left-6 z-50">
+      <div className="fixed top-24 left-6 z-40">
         <Link 
           to="/" 
           className="group flex items-center gap-3 bg-background/60 backdrop-blur-2xl border border-primary/20 rounded-2xl px-6 py-4 text-sm font-medium text-foreground hover:bg-primary/10 transition-all duration-300 shadow-lg hover:shadow-xl"

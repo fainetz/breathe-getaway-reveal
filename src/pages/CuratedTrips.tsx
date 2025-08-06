@@ -220,9 +220,9 @@ const CuratedTrips = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--gradient-soft)' }}>
+    <div className="min-h-screen bg-background pt-20">
       {/* Header */}
-      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/50" style={{ background: 'hsl(var(--background) / 0.9)' }}>
+      <div className="sticky top-20 z-40 backdrop-blur-xl border-b border-border/50 bg-background/90">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
             <button 

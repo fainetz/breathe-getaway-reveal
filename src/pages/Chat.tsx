@@ -12,7 +12,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
+    <div className="min-h-screen bg-background text-foreground pt-20">
       <TravelChatInterface 
         isOpen={true} 
         onClose={handleChatClose}
