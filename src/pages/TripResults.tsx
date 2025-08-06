@@ -616,6 +616,277 @@ const TripResults = () => {
           </div>
 
         </div>
+
+        {/* Curated Trips Section */}
+        <div className="mt-16 space-y-8">
+          <div className="text-center space-y-4">
+            <h2 className="text-4xl font-bold text-foreground">More Curated Escapes</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Handpicked destinations that match your vibe. Each one crafted for different moods and moments.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Desert Luxury */}
+            <div className="group relative overflow-hidden rounded-3xl bg-white/90 dark:bg-card/90 backdrop-blur-xl border border-white/20 dark:border-border/20 shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in cursor-pointer">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src="/lovable-uploads/cdf92cc1-d292-4962-a500-ff2c4cea50f8.png" 
+                  alt="Desert luxury resort" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl px-3 py-1">
+                  <span className="text-white font-semibold text-sm">3 days</span>
+                </div>
+              </div>
+              <div className="p-6 space-y-4">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">Desert Luxury Retreat</h3>
+                  <p className="text-muted-foreground">Escape to serene desert landscapes with world-class amenities and breathtaking sunset views.</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <span className="text-sm font-semibold">4.9</span>
+                  </div>
+                  <span className="text-2xl font-bold text-foreground">$890</span>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+
+            {/* Ocean Sunset Cruise */}
+            <div className="group relative overflow-hidden rounded-3xl bg-white/90 dark:bg-card/90 backdrop-blur-xl border border-white/20 dark:border-border/20 shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in cursor-pointer" style={{ animationDelay: '0.1s' }}>
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src="/lovable-uploads/5f342a0e-24bf-4a28-ba1c-e6c7aed09f67.png" 
+                  alt="Ocean sunset cruise" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl px-3 py-1">
+                  <span className="text-white font-semibold text-sm">4 days</span>
+                </div>
+              </div>
+              <div className="p-6 space-y-4">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">Sunset Ocean Escape</h3>
+                  <p className="text-muted-foreground">Drift across crystal waters while golden hour paints the sky in unforgettable colors.</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <span className="text-sm font-semibold">4.8</span>
+                  </div>
+                  <span className="text-2xl font-bold text-foreground">$1,240</span>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+
+            {/* Beach Paradise */}
+            <div className="group relative overflow-hidden rounded-3xl bg-white/90 dark:bg-card/90 backdrop-blur-xl border border-white/20 dark:border-border/20 shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in cursor-pointer" style={{ animationDelay: '0.2s' }}>
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src="/lovable-uploads/42abd49b-cc9e-422e-863c-11d618b69cf3.png" 
+                  alt="Tropical beach paradise" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl px-3 py-1">
+                  <span className="text-white font-semibold text-sm">5 days</span>
+                </div>
+              </div>
+              <div className="p-6 space-y-4">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">Tropical Beach Haven</h3>
+                  <p className="text-muted-foreground">Pure paradise with pristine beaches, turquoise waters, and endless summer vibes.</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <span className="text-sm font-semibold">4.9</span>
+                  </div>
+                  <span className="text-2xl font-bold text-foreground">$1,450</span>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+
+            {/* Beach Resort */}
+            <div className="group relative overflow-hidden rounded-3xl bg-white/90 dark:bg-card/90 backdrop-blur-xl border border-white/20 dark:border-border/20 shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in cursor-pointer" style={{ animationDelay: '0.3s' }}>
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src="/lovable-uploads/e9d5ad59-e162-4bd4-9d0a-93d2db78784f.png" 
+                  alt="Luxury beach resort" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl px-3 py-1">
+                  <span className="text-white font-semibold text-sm">6 days</span>
+                </div>
+              </div>
+              <div className="p-6 space-y-4">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">Luxury Beach Resort</h3>
+                  <p className="text-muted-foreground">Indulge in premium beachfront luxury with world-class service and stunning ocean views.</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <span className="text-sm font-semibold">4.9</span>
+                  </div>
+                  <span className="text-2xl font-bold text-foreground">$2,100</span>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+
+            {/* Sydney Harbor */}
+            <div className="group relative overflow-hidden rounded-3xl bg-white/90 dark:bg-card/90 backdrop-blur-xl border border-white/20 dark:border-border/20 shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in cursor-pointer" style={{ animationDelay: '0.4s' }}>
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src="/lovable-uploads/d8d78727-e0ae-4b6a-b395-f4b12aff2ed5.png" 
+                  alt="Sydney Opera House at sunset" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl px-3 py-1">
+                  <span className="text-white font-semibold text-sm">7 days</span>
+                </div>
+              </div>
+              <div className="p-6 space-y-4">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">Sydney Cultural Experience</h3>
+                  <p className="text-muted-foreground">Iconic architecture, harbor views, and vibrant city culture in Australia's crown jewel.</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <span className="text-sm font-semibold">4.8</span>
+                  </div>
+                  <span className="text-2xl font-bold text-foreground">$1,890</span>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+
+            {/* European Village */}
+            <div className="group relative overflow-hidden rounded-3xl bg-white/90 dark:bg-card/90 backdrop-blur-xl border border-white/20 dark:border-border/20 shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in cursor-pointer" style={{ animationDelay: '0.5s' }}>
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src="/lovable-uploads/9100a082-d403-4661-98f6-c96ed8198fdd.png" 
+                  alt="European riverside village" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl px-3 py-1">
+                  <span className="text-white font-semibold text-sm">8 days</span>
+                </div>
+              </div>
+              <div className="p-6 space-y-4">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">European Village Romance</h3>
+                  <p className="text-muted-foreground">Discover charming riverside villages with cobblestone streets and old-world magic.</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <span className="text-sm font-semibold">4.9</span>
+                  </div>
+                  <span className="text-2xl font-bold text-foreground">$1,650</span>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+          </div>
+
+          {/* Second Row with Different Layouts */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            {/* Modern Desert Suite */}
+            <div className="group relative overflow-hidden rounded-3xl bg-white/90 dark:bg-card/90 backdrop-blur-xl border border-white/20 dark:border-border/20 shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in cursor-pointer" style={{ animationDelay: '0.6s' }}>
+              <div className="flex h-64">
+                <div className="flex-1 p-8 flex flex-col justify-center">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <span className="px-3 py-1 bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-950 dark:to-orange-950 text-amber-700 dark:text-amber-300 rounded-full text-sm font-semibold">
+                        Premium Suite
+                      </span>
+                      <span className="text-sm text-muted-foreground">4 days</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground">Modern Desert Sanctuary</h3>
+                    <p className="text-muted-foreground">Ultra-modern architecture meets natural beauty in this glass-walled desert retreat.</p>
+                    <div className="flex items-center justify-between pt-4">
+                      <div className="flex items-center gap-2">
+                        <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                        <span className="font-semibold">4.9</span>
+                      </div>
+                      <span className="text-3xl font-bold text-foreground">$2,890</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-64 relative overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/f032d5e7-5538-43fe-9e78-ef39fc4af5e6.png" 
+                    alt="Modern luxury desert suite" 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-l from-transparent to-white/20 dark:to-black/20"></div>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+
+            {/* Hidden Cave Adventure */}
+            <div className="group relative overflow-hidden rounded-3xl bg-white/90 dark:bg-card/90 backdrop-blur-xl border border-white/20 dark:border-border/20 shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in cursor-pointer" style={{ animationDelay: '0.7s' }}>
+              <div className="flex h-64">
+                <div className="w-64 relative overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/5342f8bb-2402-49b1-8309-561a6a22fe69.png" 
+                    alt="Hidden cenote cave swimming" 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 dark:to-black/20"></div>
+                </div>
+                <div className="flex-1 p-8 flex flex-col justify-center">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <span className="px-3 py-1 bg-gradient-to-r from-blue-100 to-teal-100 dark:from-blue-950 dark:to-teal-950 text-blue-700 dark:text-blue-300 rounded-full text-sm font-semibold">
+                        Adventure
+                      </span>
+                      <span className="text-sm text-muted-foreground">3 days</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground">Hidden Cenote Explorer</h3>
+                    <p className="text-muted-foreground">Swim in secret underground caves with crystal-clear waters and magical light beams.</p>
+                    <div className="flex items-center justify-between pt-4">
+                      <div className="flex items-center gap-2">
+                        <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                        <span className="font-semibold">4.8</span>
+                      </div>
+                      <span className="text-3xl font-bold text-foreground">$890</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center pt-12">
+            <div className="inline-flex items-center gap-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-xl border border-blue-200/30 dark:border-border/30 rounded-2xl px-8 py-6">
+              <Sparkles className="w-6 h-6 text-blue-600" />
+              <p className="text-lg text-muted-foreground">
+                Can't find the perfect match? 
+                <button className="text-blue-600 dark:text-blue-400 font-semibold hover:underline ml-2" onClick={() => navigate('/chat')}>
+                  Let's create something custom for you →
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
