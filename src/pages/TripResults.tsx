@@ -279,324 +279,609 @@ const TripResults = () => {
           </p>
         </div>
 
-        {/* Vertical Trip Components */}
+        {/* Flight Section */}
         <div className="space-y-8">
-          {/* Flight Section */}
-          <div className="group bg-gradient-to-br from-card/60 via-card/40 to-card/20 backdrop-blur-xl border border-border/30 rounded-3xl p-8 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 cursor-pointer"
-               onClick={() => togglePromptBox('flight')}>
-            <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center gap-4">
-                <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl group-hover:scale-105 transition-transform duration-300">
-                  <Plane className="w-7 h-7 text-primary" />
+          <div className="group bg-gradient-to-br from-card/60 via-card/40 to-card/20 backdrop-blur-xl border border-border/30 rounded-3xl overflow-hidden hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+            {/* Flight Header */}
+            <div className="p-8 cursor-pointer" onClick={() => togglePromptBox('flight')}>
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl group-hover:scale-105 transition-transform duration-300">
+                    <Plane className="w-7 h-7 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">Flight</h3>
+                    <p className="text-sm text-muted-foreground">Click to customize</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">Flight</h3>
-                  <p className="text-sm text-muted-foreground">Click to customize</p>
+                <div className="flex gap-2">
+                  <button 
+                    onClick={(e) => {e.stopPropagation(); handleComponentClick('flight', results.flight);}}
+                    className="p-2 hover:bg-muted/50 rounded-xl transition-colors"
+                  >
+                    <Eye className="w-5 h-5 text-muted-foreground" />
+                  </button>
+                  <button 
+                    onClick={(e) => {e.stopPropagation(); togglePromptBox('flight');}}
+                    className="p-2 hover:bg-primary/10 rounded-xl transition-colors"
+                  >
+                    <Edit className="w-5 h-5 text-primary" />
+                  </button>
                 </div>
               </div>
-              <div className="flex gap-2">
-                <button 
-                  onClick={(e) => {e.stopPropagation(); handleComponentClick('flight', results.flight);}}
-                  className="p-2 hover:bg-muted/50 rounded-xl transition-colors"
-                >
-                  <Eye className="w-5 h-5 text-muted-foreground" />
-                </button>
-                <button 
-                  onClick={(e) => {e.stopPropagation(); togglePromptBox('flight');}}
-                  className="p-2 hover:bg-primary/10 rounded-xl transition-colors"
-                >
-                  <Edit className="w-5 h-5 text-primary" />
-                </button>
+              
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="space-y-2">
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Route</p>
+                  <p className="text-lg font-semibold text-foreground">{results.flight.route}</p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Schedule</p>
+                  <p className="text-lg font-semibold text-foreground">{results.flight.schedule}</p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Price</p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">{results.flight.price}</p>
+                </div>
               </div>
             </div>
-            
-            <div className="grid md:grid-cols-3 gap-6 mb-6">
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Route</p>
-                <p className="text-lg font-semibold text-foreground">{results.flight.route}</p>
+
+            {/* Flight Details Panels */}
+            <div className="grid md:grid-cols-3 gap-px bg-border/20">
+              <div className="bg-gradient-to-br from-muted/50 to-muted/30 p-6 space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Calendar className="w-4 h-4 text-primary" />
+                  </div>
+                  <h4 className="font-medium text-foreground">Departure</h4>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Terminal</span>
+                    <span className="text-sm font-medium">Terminal 1</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Gate</span>
+                    <span className="text-sm font-medium">B15</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Check-in</span>
+                    <span className="text-sm font-medium">Online Available</span>
+                  </div>
+                </div>
               </div>
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Schedule</p>
-                <p className="text-lg font-semibold text-foreground">{results.flight.schedule}</p>
+              
+              <div className="bg-gradient-to-br from-muted/50 to-muted/30 p-6 space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-accent/10 rounded-lg">
+                    <Plane className="w-4 h-4 text-accent" />
+                  </div>
+                  <h4 className="font-medium text-foreground">Aircraft</h4>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Model</span>
+                    <span className="text-sm font-medium">Boeing 737-800</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Seats</span>
+                    <span className="text-sm font-medium">15A, 15B</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Baggage</span>
+                    <span className="text-sm font-medium">1 Personal + 1 Carry-on</span>
+                  </div>
+                </div>
               </div>
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Price</p>
-                <p className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">{results.flight.price}</p>
+              
+              <div className="bg-gradient-to-br from-muted/50 to-muted/30 p-6 space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-destructive/10 rounded-lg">
+                    <Star className="w-4 h-4 text-destructive" />
+                  </div>
+                  <h4 className="font-medium text-foreground">Amenities</h4>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">WiFi</span>
+                    <span className="text-sm font-medium">Free</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Meals</span>
+                    <span className="text-sm font-medium">Complimentary</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Entertainment</span>
+                    <span className="text-sm font-medium">Seatback Screen</span>
+                  </div>
+                </div>
               </div>
             </div>
             
             {showPromptBox.flight && (
-              <div className="flex gap-3 mt-4 pt-4 border-t border-border/30 animate-in slide-in-from-top-2 duration-300">
-                <div className="flex-1 relative">
-                  <Textarea
-                    value={prompts.flight}
-                    onChange={(e) => updatePrompt('flight', e.target.value)}
-                    placeholder="Want business class? Red-eye? Different airline? Tell me..."
-                    className="resize-none bg-muted/30 border-border/50 rounded-xl focus:ring-2 focus:ring-primary/20"
-                    rows={2}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        handleInlinePromptSubmit('flight');
-                      }
-                    }}
-                    onClick={(e) => e.stopPropagation()}
-                  />
-                  <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+              <div className="p-6 bg-muted/20 border-t border-border/30">
+                <div className="flex gap-3 animate-in slide-in-from-top-2 duration-300">
+                  <div className="flex-1 relative">
+                    <Textarea
+                      value={prompts.flight}
+                      onChange={(e) => updatePrompt('flight', e.target.value)}
+                      placeholder="Want business class? Red-eye? Different airline? Tell me..."
+                      className="resize-none bg-background/60 border-border/50 rounded-xl focus:ring-2 focus:ring-primary/20"
+                      rows={2}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          handleInlinePromptSubmit('flight');
+                        }
+                      }}
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                    <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+                  </div>
+                  <button
+                    onClick={(e) => {e.stopPropagation(); handleInlinePromptSubmit('flight');}}
+                    disabled={!prompts.flight.trim() || submittingPrompts.flight}
+                    className="px-6 py-3 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground rounded-xl hover:from-primary/90 hover:to-primary/80 transition-all duration-300 disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl"
+                  >
+                    {submittingPrompts.flight ? (
+                      <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
+                  </button>
                 </div>
-                <button
-                  onClick={(e) => {e.stopPropagation(); handleInlinePromptSubmit('flight');}}
-                  disabled={!prompts.flight.trim() || submittingPrompts.flight}
-                  className="px-6 py-3 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground rounded-xl hover:from-primary/90 hover:to-primary/80 transition-all duration-300 disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl"
-                >
-                  {submittingPrompts.flight ? (
-                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                  ) : (
-                    <Send className="w-4 h-4" />
-                  )}
-                </button>
               </div>
             )}
           </div>
 
           {/* Hotel Section */}
-          <div className="group bg-gradient-to-br from-card/60 via-card/40 to-card/20 backdrop-blur-xl border border-border/30 rounded-3xl p-8 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 cursor-pointer"
-               onClick={() => togglePromptBox('hotel')}>
-            <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center gap-4">
-                <div className="p-4 bg-gradient-to-br from-accent/20 to-accent/10 rounded-2xl group-hover:scale-105 transition-transform duration-300">
-                  <Hotel className="w-7 h-7 text-accent" />
+          <div className="group bg-gradient-to-br from-card/60 via-card/40 to-card/20 backdrop-blur-xl border border-border/30 rounded-3xl overflow-hidden hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
+            {/* Hotel Header */}
+            <div className="p-8 cursor-pointer" onClick={() => togglePromptBox('hotel')}>
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="p-4 bg-gradient-to-br from-accent/20 to-accent/10 rounded-2xl group-hover:scale-105 transition-transform duration-300">
+                    <Hotel className="w-7 h-7 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-foreground group-hover:text-accent transition-colors">Hotel</h3>
+                    <p className="text-sm text-muted-foreground">Click to customize</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-foreground group-hover:text-accent transition-colors">Hotel</h3>
-                  <p className="text-sm text-muted-foreground">Click to customize</p>
+                <div className="flex gap-2">
+                  <button 
+                    onClick={(e) => {e.stopPropagation(); handleComponentClick('hotel', results.hotel);}}
+                    className="p-2 hover:bg-muted/50 rounded-xl transition-colors"
+                  >
+                    <Eye className="w-5 h-5 text-muted-foreground" />
+                  </button>
+                  <button 
+                    onClick={(e) => {e.stopPropagation(); togglePromptBox('hotel');}}
+                    className="p-2 hover:bg-accent/10 rounded-xl transition-colors"
+                  >
+                    <Edit className="w-5 h-5 text-accent" />
+                  </button>
                 </div>
               </div>
-              <div className="flex gap-2">
-                <button 
-                  onClick={(e) => {e.stopPropagation(); handleComponentClick('hotel', results.hotel);}}
-                  className="p-2 hover:bg-muted/50 rounded-xl transition-colors"
-                >
-                  <Eye className="w-5 h-5 text-muted-foreground" />
-                </button>
-                <button 
-                  onClick={(e) => {e.stopPropagation(); togglePromptBox('hotel');}}
-                  className="p-2 hover:bg-accent/10 rounded-xl transition-colors"
-                >
-                  <Edit className="w-5 h-5 text-accent" />
-                </button>
+              
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="space-y-2">
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Hotel</p>
+                  <p className="text-lg font-semibold text-foreground">{results.hotel.name}</p>
+                  <div className="flex items-center gap-1 mt-1">
+                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <span className="text-sm font-medium text-yellow-400">{results.hotel.rating}</span>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Details</p>
+                  <p className="text-lg font-semibold text-foreground">{results.hotel.description}</p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Price</p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent">{results.hotel.price}</p>
+                </div>
               </div>
             </div>
-            
-            <div className="grid md:grid-cols-3 gap-6 mb-6">
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Hotel</p>
-                <p className="text-lg font-semibold text-foreground">{results.hotel.name}</p>
-                <div className="flex items-center gap-1 mt-1">
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  <span className="text-sm font-medium text-yellow-400">{results.hotel.rating}</span>
+
+            {/* Hotel Details Panels */}
+            <div className="grid md:grid-cols-4 gap-px bg-border/20">
+              <div className="bg-gradient-to-br from-muted/50 to-muted/30 p-6 space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-accent/10 rounded-lg">
+                    <Hotel className="w-4 h-4 text-accent" />
+                  </div>
+                  <h4 className="font-medium text-foreground">Room</h4>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Type</span>
+                    <span className="text-sm font-medium">Ocean View Suite</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Size</span>
+                    <span className="text-sm font-medium">450 sq ft</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Bed</span>
+                    <span className="text-sm font-medium">King</span>
+                  </div>
                 </div>
               </div>
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Details</p>
-                <p className="text-lg font-semibold text-foreground">{results.hotel.description}</p>
+              
+              <div className="bg-gradient-to-br from-muted/50 to-muted/30 p-6 space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Star className="w-4 h-4 text-primary" />
+                  </div>
+                  <h4 className="font-medium text-foreground">Amenities</h4>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Pool</span>
+                    <span className="text-sm font-medium">Infinity</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Spa</span>
+                    <span className="text-sm font-medium">Full Service</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">WiFi</span>
+                    <span className="text-sm font-medium">Complimentary</span>
+                  </div>
+                </div>
               </div>
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Price</p>
-                <p className="text-3xl font-bold bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent">{results.hotel.price}</p>
+              
+              <div className="bg-gradient-to-br from-muted/50 to-muted/30 p-6 space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-destructive/10 rounded-lg">
+                    <MapPin className="w-4 h-4 text-destructive" />
+                  </div>
+                  <h4 className="font-medium text-foreground">Location</h4>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Beach</span>
+                    <span className="text-sm font-medium">5 min walk</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Airport</span>
+                    <span className="text-sm font-medium">45 min drive</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Town</span>
+                    <span className="text-sm font-medium">10 min bike</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-muted/50 to-muted/30 p-6 space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-orange-500/10 rounded-lg">
+                    <Calendar className="w-4 h-4 text-orange-500" />
+                  </div>
+                  <h4 className="font-medium text-foreground">Policies</h4>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Check-in</span>
+                    <span className="text-sm font-medium">3:00 PM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Check-out</span>
+                    <span className="text-sm font-medium">11:00 AM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-muted-foreground">Cancellation</span>
+                    <span className="text-sm font-medium">Free 24h</span>
+                  </div>
+                </div>
               </div>
             </div>
             
             {showPromptBox.hotel && (
-              <div className="flex gap-3 mt-4 pt-4 border-t border-border/30 animate-in slide-in-from-top-2 duration-300">
-                <div className="flex-1 relative">
-                  <Textarea
-                    value={prompts.hotel}
-                    onChange={(e) => updatePrompt('hotel', e.target.value)}
-                    placeholder="More luxury? Spa resort? Beach access? Tell me what you want..."
-                    className="resize-none bg-muted/30 border-border/50 rounded-xl focus:ring-2 focus:ring-accent/20"
-                    rows={2}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        handleInlinePromptSubmit('hotel');
-                      }
-                    }}
-                    onClick={(e) => e.stopPropagation()}
-                  />
-                  <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+              <div className="p-6 bg-muted/20 border-t border-border/30">
+                <div className="flex gap-3 animate-in slide-in-from-top-2 duration-300">
+                  <div className="flex-1 relative">
+                    <Textarea
+                      value={prompts.hotel}
+                      onChange={(e) => updatePrompt('hotel', e.target.value)}
+                      placeholder="More luxury? Spa resort? Beach access? Tell me what you want..."
+                      className="resize-none bg-background/60 border-border/50 rounded-xl focus:ring-2 focus:ring-accent/20"
+                      rows={2}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          handleInlinePromptSubmit('hotel');
+                        }
+                      }}
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                    <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+                  </div>
+                  <button
+                    onClick={(e) => {e.stopPropagation(); handleInlinePromptSubmit('hotel');}}
+                    disabled={!prompts.hotel.trim() || submittingPrompts.hotel}
+                    className="px-6 py-3 bg-gradient-to-r from-accent to-accent/90 text-accent-foreground rounded-xl hover:from-accent/90 hover:to-accent/80 transition-all duration-300 disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl"
+                  >
+                    {submittingPrompts.hotel ? (
+                      <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
+                  </button>
                 </div>
-                <button
-                  onClick={(e) => {e.stopPropagation(); handleInlinePromptSubmit('hotel');}}
-                  disabled={!prompts.hotel.trim() || submittingPrompts.hotel}
-                  className="px-6 py-3 bg-gradient-to-r from-accent to-accent/90 text-accent-foreground rounded-xl hover:from-accent/90 hover:to-accent/80 transition-all duration-300 disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl"
-                >
-                  {submittingPrompts.hotel ? (
-                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                  ) : (
-                    <Send className="w-4 h-4" />
-                  )}
-                </button>
               </div>
             )}
           </div>
 
           {/* Itinerary Section */}
-          <div className="group bg-gradient-to-br from-card/60 via-card/40 to-card/20 backdrop-blur-xl border border-border/30 rounded-3xl p-8 hover:shadow-lg hover:shadow-secondary/5 transition-all duration-300 cursor-pointer"
-               onClick={() => togglePromptBox('itinerary')}>
-            <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center gap-4">
-                <div className="p-4 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-2xl group-hover:scale-105 transition-transform duration-300">
-                  <MapPin className="w-7 h-7 text-secondary-foreground" />
+          <div className="group bg-gradient-to-br from-card/60 via-card/40 to-card/20 backdrop-blur-xl border border-border/30 rounded-3xl overflow-hidden hover:shadow-lg hover:shadow-secondary/5 transition-all duration-300">
+            {/* Itinerary Header */}
+            <div className="p-8 cursor-pointer" onClick={() => togglePromptBox('itinerary')}>
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="p-4 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-2xl group-hover:scale-105 transition-transform duration-300">
+                    <MapPin className="w-7 h-7 text-secondary-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-foreground group-hover:text-secondary-foreground transition-colors">Itinerary</h3>
+                    <p className="text-sm text-muted-foreground">Click to customize</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-foreground group-hover:text-secondary-foreground transition-colors">Itinerary</h3>
-                  <p className="text-sm text-muted-foreground">Click to customize</p>
+                <div className="flex gap-2">
+                  <button 
+                    onClick={(e) => {e.stopPropagation(); handleComponentClick('itinerary', results.thingsToDo);}}
+                    className="p-2 hover:bg-muted/50 rounded-xl transition-colors"
+                  >
+                    <Eye className="w-5 h-5 text-muted-foreground" />
+                  </button>
+                  <button 
+                    onClick={(e) => {e.stopPropagation(); togglePromptBox('itinerary');}}
+                    className="p-2 hover:bg-secondary/10 rounded-xl transition-colors"
+                  >
+                    <Edit className="w-5 h-5 text-secondary-foreground" />
+                  </button>
                 </div>
-              </div>
-              <div className="flex gap-2">
-                <button 
-                  onClick={(e) => {e.stopPropagation(); handleComponentClick('itinerary', results.thingsToDo);}}
-                  className="p-2 hover:bg-muted/50 rounded-xl transition-colors"
-                >
-                  <Eye className="w-5 h-5 text-muted-foreground" />
-                </button>
-                <button 
-                  onClick={(e) => {e.stopPropagation(); togglePromptBox('itinerary');}}
-                  className="p-2 hover:bg-secondary/10 rounded-xl transition-colors"
-                >
-                  <Edit className="w-5 h-5 text-secondary-foreground" />
-                </button>
               </div>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-4 mb-6">
-              {results.thingsToDo.map((activity, index) => (
-                <div key={index} className="flex items-start gap-4 p-5 bg-gradient-to-r from-muted/40 to-muted/20 rounded-2xl hover:from-muted/50 hover:to-muted/30 transition-all duration-300">
-                  <div className="p-2 bg-background/50 rounded-xl">
-                    {getActivityIcon(activity.icon)}
+            {/* Itinerary Timeline */}
+            <div className="relative px-8 pb-6">
+              <div className="absolute left-12 top-0 bottom-6 w-px bg-gradient-to-b from-secondary/50 to-secondary/20"></div>
+              <div className="space-y-8">
+                {results.thingsToDo.map((activity, index) => (
+                  <div key={index} className="relative">
+                    <div className="absolute left-8 w-5 h-5 bg-secondary rounded-full border-4 border-background shadow-lg"></div>
+                    <div className="ml-16 p-6 bg-gradient-to-br from-muted/50 to-muted/30 rounded-2xl hover:from-muted/60 hover:to-muted/40 transition-all duration-300">
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 bg-background/60 rounded-lg">
+                            {getActivityIcon(activity.icon)}
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-foreground text-lg">{activity.title}</h4>
+                            <p className="text-xs text-secondary font-medium bg-secondary/10 px-2 py-1 rounded-full inline-block">{activity.time}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed ml-12">{activity.description}</p>
+                      
+                      {/* Activity Details */}
+                      <div className="mt-4 ml-12 grid md:grid-cols-3 gap-4">
+                        <div className="space-y-2">
+                          <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Duration</p>
+                          <p className="text-sm font-medium text-foreground">
+                            {index === 0 ? '2 hours' : index === 1 ? '1.5 hours' : index === 2 ? '3 hours' : '1 hour'}
+                          </p>
+                        </div>
+                        <div className="space-y-2">
+                          <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Distance</p>
+                          <p className="text-sm font-medium text-foreground">
+                            {index === 0 ? 'Beach front' : index === 1 ? '10 min walk' : index === 2 ? '20 min drive' : 'Hotel'}
+                          </p>
+                        </div>
+                        <div className="space-y-2">
+                          <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Cost</p>
+                          <p className="text-sm font-medium text-foreground">
+                            {index === 0 ? 'Free' : index === 1 ? '$15-25' : index === 2 ? '$30' : 'Free'}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-foreground text-lg">{activity.title}</h4>
-                    <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{activity.description}</p>
-                    <p className="text-xs text-primary font-medium mt-3 bg-primary/10 px-2 py-1 rounded-full inline-block">{activity.time}</p>
-                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Day Summary Panel */}
+            <div className="mx-8 mb-6 p-6 bg-gradient-to-r from-secondary/10 to-secondary/5 rounded-2xl border border-secondary/20">
+              <div className="grid md:grid-cols-4 gap-6">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-secondary mb-1">6:30</div>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground">Total Hours</div>
                 </div>
-              ))}
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-secondary mb-1">4</div>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground">Activities</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-secondary mb-1">$60</div>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground">Est. Cost</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-secondary mb-1">Mixed</div>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground">Energy Level</div>
+                </div>
+              </div>
             </div>
             
             {showPromptBox.itinerary && (
-              <div className="flex gap-3 mt-4 pt-4 border-t border-border/30 animate-in slide-in-from-top-2 duration-300">
-                <div className="flex-1 relative">
-                  <Textarea
-                    value={prompts.itinerary}
-                    onChange={(e) => updatePrompt('itinerary', e.target.value)}
-                    placeholder="More adventure? Just relaxation? Food tours? Tell me your vibe..."
-                    className="resize-none bg-muted/30 border-border/50 rounded-xl focus:ring-2 focus:ring-secondary/20"
-                    rows={2}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        handleInlinePromptSubmit('itinerary');
-                      }
-                    }}
-                    onClick={(e) => e.stopPropagation()}
-                  />
-                  <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+              <div className="p-6 bg-muted/20 border-t border-border/30">
+                <div className="flex gap-3 animate-in slide-in-from-top-2 duration-300">
+                  <div className="flex-1 relative">
+                    <Textarea
+                      value={prompts.itinerary}
+                      onChange={(e) => updatePrompt('itinerary', e.target.value)}
+                      placeholder="More adventure? Just relaxation? Food tours? Tell me your vibe..."
+                      className="resize-none bg-background/60 border-border/50 rounded-xl focus:ring-2 focus:ring-secondary/20"
+                      rows={2}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          handleInlinePromptSubmit('itinerary');
+                        }
+                      }}
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                    <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+                  </div>
+                  <button
+                    onClick={(e) => {e.stopPropagation(); handleInlinePromptSubmit('itinerary');}}
+                    disabled={!prompts.itinerary.trim() || submittingPrompts.itinerary}
+                    className="px-6 py-3 bg-gradient-to-r from-secondary to-secondary/90 text-secondary-foreground rounded-xl hover:from-secondary/90 hover:to-secondary/80 transition-all duration-300 disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl"
+                  >
+                    {submittingPrompts.itinerary ? (
+                      <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
+                  </button>
                 </div>
-                <button
-                  onClick={(e) => {e.stopPropagation(); handleInlinePromptSubmit('itinerary');}}
-                  disabled={!prompts.itinerary.trim() || submittingPrompts.itinerary}
-                  className="px-6 py-3 bg-gradient-to-r from-secondary to-secondary/90 text-secondary-foreground rounded-xl hover:from-secondary/90 hover:to-secondary/80 transition-all duration-300 disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl"
-                >
-                  {submittingPrompts.itinerary ? (
-                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                  ) : (
-                    <Send className="w-4 h-4" />
-                  )}
-                </button>
               </div>
             )}
           </div>
 
           {/* Hidden Gems Section */}
-          <div className="group bg-gradient-to-br from-card/60 via-card/40 to-card/20 backdrop-blur-xl border border-border/30 rounded-3xl p-8 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 cursor-pointer"
-               onClick={() => togglePromptBox('gems')}>
-            <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center gap-4">
-                <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl group-hover:scale-105 transition-transform duration-300">
-                  <Camera className="w-7 h-7 text-primary" />
+          <div className="group bg-gradient-to-br from-card/60 via-card/40 to-card/20 backdrop-blur-xl border border-border/30 rounded-3xl overflow-hidden hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+            {/* Hidden Gems Header */}
+            <div className="p-8 cursor-pointer" onClick={() => togglePromptBox('gems')}>
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl group-hover:scale-105 transition-transform duration-300">
+                    <Camera className="w-7 h-7 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">Hidden Gems</h3>
+                    <p className="text-sm text-muted-foreground">Click to customize</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">Hidden Gems</h3>
-                  <p className="text-sm text-muted-foreground">Click to customize</p>
+                <div className="flex gap-2">
+                  <button 
+                    onClick={(e) => {e.stopPropagation(); handleComponentClick('gems', results.hiddenGems);}}
+                    className="p-2 hover:bg-muted/50 rounded-xl transition-colors"
+                  >
+                    <Eye className="w-5 h-5 text-muted-foreground" />
+                  </button>
+                  <button 
+                    onClick={(e) => {e.stopPropagation(); togglePromptBox('gems');}}
+                    className="p-2 hover:bg-primary/10 rounded-xl transition-colors"
+                  >
+                    <Edit className="w-5 h-5 text-primary" />
+                  </button>
                 </div>
-              </div>
-              <div className="flex gap-2">
-                <button 
-                  onClick={(e) => {e.stopPropagation(); handleComponentClick('gems', results.hiddenGems);}}
-                  className="p-2 hover:bg-muted/50 rounded-xl transition-colors"
-                >
-                  <Eye className="w-5 h-5 text-muted-foreground" />
-                </button>
-                <button 
-                  onClick={(e) => {e.stopPropagation(); togglePromptBox('gems');}}
-                  className="p-2 hover:bg-primary/10 rounded-xl transition-colors"
-                >
-                  <Edit className="w-5 h-5 text-primary" />
-                </button>
               </div>
             </div>
             
-            <div className="grid md:grid-cols-1 gap-5 mb-6">
-              {results.hiddenGems.map((gem, index) => (
-                <div key={index} className="p-6 bg-gradient-to-r from-muted/40 to-muted/20 rounded-2xl hover:from-muted/50 hover:to-muted/30 transition-all duration-300">
-                  <div className="flex items-start justify-between mb-3">
-                    <span className="text-xs px-3 py-1.5 bg-gradient-to-r from-primary/20 to-primary/10 text-primary rounded-full font-semibold tracking-wide">
-                      {gem.type}
-                    </span>
+            {/* Gems Grid */}
+            <div className="px-8 pb-6">
+              <div className="grid md:grid-cols-3 gap-6 mb-6">
+                {results.hiddenGems.map((gem, index) => (
+                  <div key={index} className="group/gem bg-gradient-to-br from-muted/50 to-muted/30 rounded-2xl overflow-hidden hover:from-muted/60 hover:to-muted/40 transition-all duration-300">
+                    <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <span className="text-xs px-3 py-1.5 bg-primary/90 text-primary-foreground rounded-full font-semibold tracking-wide">
+                          {gem.type}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-6 space-y-4">
+                      <div>
+                        <h4 className="text-lg font-semibold text-foreground mb-2">{gem.name}</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{gem.description}</p>
+                      </div>
+                      
+                      <div className="space-y-3">
+                        <div className="flex justify-between">
+                          <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Vibe</span>
+                          <span className="text-xs font-medium">
+                            {index === 0 ? 'Sunset Views' : index === 1 ? 'Authentic Local' : 'Adventure'}
+                          </span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Best Time</span>
+                          <span className="text-xs font-medium">
+                            {index === 0 ? '5-7 PM' : index === 1 ? '12-2 PM' : '10-11 AM'}
+                          </span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Crowd Level</span>
+                          <span className="text-xs font-medium">
+                            {index === 0 ? 'Low' : index === 1 ? 'Very Low' : 'Minimal'}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-accent/10 to-accent/5 rounded-xl p-4 border-l-4 border-accent/30">
+                        <p className="text-sm text-muted-foreground">
+                          <strong className="text-accent font-semibold">Insider tip:</strong> {gem.insider_tip}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <h4 className="text-lg font-semibold text-foreground mb-2">{gem.name}</h4>
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{gem.description}</p>
-                  <div className="bg-gradient-to-r from-accent/10 to-accent/5 rounded-xl p-4 border-l-4 border-accent/30">
-                    <p className="text-sm text-muted-foreground">
-                      <strong className="text-accent font-semibold">Insider tip:</strong> {gem.insider_tip}
-                    </p>
-                  </div>
+                ))}
+              </div>
+
+              {/* Gems Summary */}
+              <div className="grid md:grid-cols-3 gap-4 p-6 bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl border border-primary/20">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-primary mb-1">3</div>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground">Secret Spots</div>
                 </div>
-              ))}
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-primary mb-1">0%</div>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground">Tourist Overlap</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-primary mb-1">Local</div>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground">Approved</div>
+                </div>
+              </div>
             </div>
             
             {showPromptBox.gems && (
-              <div className="flex gap-3 mt-4 pt-4 border-t border-border/30 animate-in slide-in-from-top-2 duration-300">
-                <div className="flex-1 relative">
-                  <Textarea
-                    value={prompts.gems}
-                    onChange={(e) => updatePrompt('gems', e.target.value)}
-                    placeholder="Less touristy? More nightlife? Unique dining? Tell me what you're seeking..."
-                    className="resize-none bg-muted/30 border-border/50 rounded-xl focus:ring-2 focus:ring-primary/20"
-                    rows={2}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        handleInlinePromptSubmit('gems');
-                      }
-                    }}
-                    onClick={(e) => e.stopPropagation()}
-                  />
-                  <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+              <div className="p-6 bg-muted/20 border-t border-border/30">
+                <div className="flex gap-3 animate-in slide-in-from-top-2 duration-300">
+                  <div className="flex-1 relative">
+                    <Textarea
+                      value={prompts.gems}
+                      onChange={(e) => updatePrompt('gems', e.target.value)}
+                      placeholder="Less touristy? More nightlife? Unique dining? Tell me what you're seeking..."
+                      className="resize-none bg-background/60 border-border/50 rounded-xl focus:ring-2 focus:ring-primary/20"
+                      rows={2}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          handleInlinePromptSubmit('gems');
+                        }
+                      }}
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                    <Sparkles className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground" />
+                  </div>
+                  <button
+                    onClick={(e) => {e.stopPropagation(); handleInlinePromptSubmit('gems');}}
+                    disabled={!prompts.gems.trim() || submittingPrompts.gems}
+                    className="px-6 py-3 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground rounded-xl hover:from-primary/90 hover:to-primary/80 transition-all duration-300 disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl"
+                  >
+                    {submittingPrompts.gems ? (
+                      <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
+                  </button>
                 </div>
-                <button
-                  onClick={(e) => {e.stopPropagation(); handleInlinePromptSubmit('gems');}}
-                  disabled={!prompts.gems.trim() || submittingPrompts.gems}
-                  className="px-6 py-3 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground rounded-xl hover:from-primary/90 hover:to-primary/80 transition-all duration-300 disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl"
-                >
-                  {submittingPrompts.gems ? (
-                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                  ) : (
-                    <Send className="w-4 h-4" />
-                  )}
-                </button>
               </div>
             )}
           </div>
