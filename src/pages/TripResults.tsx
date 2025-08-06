@@ -227,84 +227,113 @@ const TripResults = () => {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
-        {/* Clean Intro */}
-        <div className="text-center space-y-4 animate-fade-in">
-          <h2 className="text-2xl md:text-3xl font-medium text-foreground leading-tight">
-            {results.introText}
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            everything curated for you. click to edit any part.
-          </p>
+        {/* Hero Banner with Background */}
+        <div 
+          className="relative -mx-4 -mt-8 mb-12 overflow-hidden"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('/lovable-uploads/250f747d-157f-480c-9c25-76d931a9ad49.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            height: '60vh',
+            minHeight: '400px'
+          }}
+        >
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center space-y-6 px-4 max-w-4xl mx-auto animate-fade-in">
+              <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
+                <span className="text-white/90 text-sm font-medium">AI Curated Trip</span>
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+                Your Perfect Escape
+              </h1>
+              <p className="text-xl md:text-2xl text-white/90 font-light max-w-2xl mx-auto leading-relaxed">
+                {results.introText}
+              </p>
+              <p className="text-white/70 max-w-xl mx-auto">
+                Everything curated for you. Click any section below to customize your experience.
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* Compact Trip List */}
-        <div className="space-y-4">
-          {/* Trip Header - Compact */}
+        {/* Trip Overview Card - Not Editable */}
+        <div className="mb-8">
           <div 
-            className="rounded-xl border border-border transition-all duration-300 hover:shadow-[var(--shadow-soft)]"
+            className="rounded-2xl border border-border/50 backdrop-blur-sm"
             style={{ background: 'var(--gradient-card)' }}
           >
-            <div className="p-4 border-b border-border/50">
+            <div className="p-6">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-primary/10">
-                    <Sparkles className="w-4 h-4 text-primary" />
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary to-primary/70">
+                    <Sparkles className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-foreground">Tulum Retreat</h3>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <span>AI curated</span>
+                    <h2 className="text-xl font-bold text-foreground">Tulum Retreat Experience</h2>
+                    <div className="flex items-center gap-3 text-sm text-muted-foreground mt-1">
+                      <span className="flex items-center gap-1">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        AI Optimized
+                      </span>
                       <span>•</span>
                       <span>2 days</span>
                       <span>•</span>
-                      <span className="text-primary font-medium">$600 total</span>
+                      <span className="text-primary font-semibold">$600 total</span>
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2">
-                  <button className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
+                <div className="flex gap-3">
+                  <button className="px-6 py-3 bg-primary text-primary-foreground rounded-xl text-sm font-semibold hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl">
                     Book Trip
                   </button>
-                  <button className="p-2 hover:bg-muted/50 rounded-lg transition-colors">
-                    <Heart className="w-4 h-4 text-muted-foreground" />
+                  <button className="p-3 hover:bg-muted/50 rounded-xl transition-colors">
+                    <Heart className="w-5 h-5 text-muted-foreground" />
                   </button>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Flight - Compact */}
+        {/* Editable Trip Components */}
+        <div className="space-y-6">
+          {/* Flight Component - Editable */}
           <div 
-            className="group/component rounded-xl border border-border transition-all duration-200 hover:shadow-[var(--shadow-soft)]"
+            className="group/component rounded-2xl border border-border/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
             style={{ background: 'var(--gradient-card)' }}
           >
-            <div className="p-4 cursor-pointer" onClick={() => togglePromptBox('flight')}>
+            <div className="p-6 cursor-pointer" onClick={() => togglePromptBox('flight')}>
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-primary/10">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-xl bg-primary/10">
                     {panelStates.flight?.isLoading ? (
-                      <Loader2 className="w-4 h-4 text-primary animate-spin" />
+                      <Loader2 className="w-5 h-5 text-primary animate-spin" />
                     ) : (
-                      <Plane className="w-4 h-4 text-primary" />
+                      <Plane className="w-5 h-5 text-primary" />
                     )}
                   </div>
                   <div>
-                    <div className="flex items-center gap-2">
-                      <h4 className="font-semibold text-foreground">Flights</h4>
-                      <span className="text-sm text-muted-foreground">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-lg font-semibold text-foreground">Flights</h3>
+                      <span className="text-sm text-muted-foreground font-medium">
                         {panelStates.flight?.data?.route || results.flight.route}
                       </span>
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-sm text-muted-foreground mt-1">
                       {panelStates.flight?.data?.schedule || results.flight.schedule}
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-lg font-semibold text-foreground">
+                <div className="flex items-center gap-4">
+                  <span className="text-2xl font-bold text-foreground">
                     {panelStates.flight?.data?.price || results.flight.price}
                   </span>
-                  <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
+                  <div className="opacity-0 group-hover/component:opacity-100 transition-opacity duration-200">
+                    <div className="flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-lg">
+                      <Edit className="w-4 h-4 text-primary" />
+                      <span className="text-sm text-primary font-medium">Edit</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
