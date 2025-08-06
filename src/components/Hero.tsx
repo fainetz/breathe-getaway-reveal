@@ -125,24 +125,8 @@ const Hero = () => {
           {/* Mobile menu button - hidden since we have horizontal nav */}
           <div className="md:hidden"></div>
 
-          {/* Desktop navigation - original links */}
+          {/* Desktop navigation - simplified to avoid duplication with mini nav */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
-              How it works
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
-              Features
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <Link to="/destinations" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
-              Destinations
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link to="/curated-trips" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
-              Curated Trips
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
             <Link to="/faq" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
               FAQ
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
