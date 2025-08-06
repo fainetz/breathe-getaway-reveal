@@ -548,8 +548,11 @@ const Destinations = () => {
                 <div className="relative">
                   <div 
                     id={`carousel-${rowIndex}`}
-                    className="flex gap-8 overflow-x-auto scrollbar-hide pb-8 px-4"
-                    style={{ scrollSnapType: 'x mandatory' }}
+                    className="flex gap-8 overflow-x-auto scrollbar-hide pb-8 px-4 overscroll-x-contain"
+                    style={{ 
+                      scrollSnapType: 'x mandatory',
+                      WebkitOverflowScrolling: 'touch'
+                    }}
                   >
                     {row.destinations.map((destination, index) => (
                       <div 
