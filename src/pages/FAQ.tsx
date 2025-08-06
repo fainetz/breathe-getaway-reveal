@@ -70,7 +70,7 @@ const FAQ = () => {
             <span className="text-foreground/80">Growing Fast</span>
           </div>
           
-          <h1 className="font-playfair text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight mb-8">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight mb-8">
             <span className="block text-foreground/90 mb-2">
               Frequently Asked
             </span>

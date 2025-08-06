@@ -358,7 +358,7 @@ const Destinations = () => {
             </div>
             
             <div className="relative">
-              <h1 className="font-playfair text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight">
                 <span className="block text-foreground/90 mb-2">
                   Find Your
                 </span>
@@ -429,7 +429,7 @@ const Destinations = () => {
                         )}
                       </div>
                       
-                      <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
+                      <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
                         {currentHero?.name}
                       </h2>
                       
@@ -508,7 +508,7 @@ const Destinations = () => {
                     <span className="text-sm font-medium text-primary">AI-Powered Discovery</span>
                   </div>
                   
-                  <h2 className="text-4xl md:text-5xl font-black text-foreground">{row.title}</h2>
+                  <h2 className="text-4xl md:text-5xl font-bold text-foreground">{row.title}</h2>
                   
                   <div className="space-y-4">
                     {rowIndex === 0 && (
@@ -573,7 +573,7 @@ const Destinations = () => {
                                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
                               ) : (
-                                <div className="w-full h-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
+                                <div className="w-full h-full bg-card flex items-center justify-center">
                                   <div className="text-center text-muted-foreground">
                                     <div className="w-16 h-16 mx-auto mb-4 opacity-30">
                                       <svg viewBox="0 0 24 24" fill="currentColor">
@@ -615,7 +615,7 @@ const Destinations = () => {
                               <div className="space-y-4">
                                 {/* Header */}
                                 <div className="space-y-2">
-                                  <h3 className="text-xl font-black text-card-foreground group-hover:text-primary transition-colors duration-300 leading-tight">
+                                  <h3 className="text-xl font-semibold text-card-foreground group-hover:text-primary transition-colors duration-300 leading-tight">
                                     {destination.name}
                                   </h3>
                                   <div className="flex items-center gap-2 text-muted-foreground">
@@ -665,7 +665,7 @@ const Destinations = () => {
                               {/* Price & Action */}
                               <div className="flex items-center justify-between pt-4 border-t border-border/30">
                                 <div className="space-y-1">
-                                  <div className="text-lg font-black text-primary">
+                                  <div className="text-lg font-semibold text-primary">
                                     {destination.price}
                                   </div>
                                   <div className="text-xs text-muted-foreground flex items-center gap-1">
