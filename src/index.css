@@ -144,13 +144,13 @@ All colors MUST be HSL.
 
   @media (max-width: 768px) {
     body {
-      padding-top: 80px; /* Space for premium nav */
+      padding-top: 20px; /* Minimal space for mini nav */
     }
   }
 
-  /* Desktop also needs space for the premium nav */
+  /* Desktop also needs minimal space for the mini nav */
   body {
-    padding-top: 80px;
+    padding-top: 20px;
   }
 
   #root {
