@@ -143,6 +143,10 @@ const Hero = () => {
               Destinations
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
             </Link>
+            <Link to="/curated-trips" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
+              Curated Trips
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
             <Link to="/faq" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
               FAQ
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
@@ -190,6 +194,10 @@ const Hero = () => {
               <Link to="/destinations" className="text-muted-foreground hover:text-foreground transition-colors py-3 px-3 rounded-lg hover:bg-blue-100/50 dark:hover:bg-slate-800/30 relative group">
                 Destinations
                 <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-16"></span>
+              </Link>
+              <Link to="/curated-trips" className="text-muted-foreground hover:text-foreground transition-colors py-3 px-3 rounded-lg hover:bg-blue-100/50 dark:hover:bg-slate-800/30 relative group">
+                Curated Trips
+                <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-20"></span>
               </Link>
               <Link to="/faq" className="text-muted-foreground hover:text-foreground transition-colors py-3 px-3 rounded-lg hover:bg-blue-100/50 dark:hover:bg-slate-800/30 relative group">
                 FAQ
