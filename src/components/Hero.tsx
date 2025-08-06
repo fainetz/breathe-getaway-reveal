@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import ThreeBackground from './ThreeBackground';
 import AuthButton from './AuthButton';
+import MiniCurvedNav from './MiniCurvedNav';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Hero = () => {
@@ -125,8 +126,11 @@ const Hero = () => {
           {/* Mobile menu button - hidden since we have horizontal nav */}
           <div className="md:hidden"></div>
 
-          {/* Desktop navigation - simplified to avoid duplication with mini nav */}
+          {/* Desktop navigation with integrated mini nav */}
           <div className="hidden md:flex items-center space-x-8">
+            <div className="relative">
+              <MiniCurvedNav isIntegrated={true} />
+            </div>
             <Link to="/faq" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
               FAQ
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>

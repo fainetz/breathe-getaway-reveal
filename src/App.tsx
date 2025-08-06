@@ -27,7 +27,9 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <MiniCurvedNav />
+            <div className="md:hidden">
+              <MiniCurvedNav />
+            </div>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/destinations" element={<Destinations />} />

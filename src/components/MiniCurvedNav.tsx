@@ -7,6 +7,10 @@ interface NavItem {
   id: string;
 }
 
+interface MiniCurvedNavProps {
+  isIntegrated?: boolean;
+}
+
 const navItems: NavItem[] = [
   { path: '/', label: 'Home', id: 'home' },
   { path: '/destinations', label: 'Destinations', id: 'destinations' },
@@ -15,7 +19,7 @@ const navItems: NavItem[] = [
   { path: '/faq', label: 'FAQ', id: 'faq' },
 ];
 
-const MiniCurvedNav = () => {
+const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -162,7 +166,7 @@ const MiniCurvedNav = () => {
   const visibleItems = getVisibleItems();
 
   return (
-    <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-30">
+    <div className={isIntegrated ? "relative" : "fixed top-20 left-1/2 transform -translate-x-1/2 z-30"}>
       <div 
         ref={navRef}
         className={`relative flex items-center gap-1 backdrop-blur-lg rounded-full px-3 py-2 shadow-lg cursor-grab select-none ${isDragging ? 'cursor-grabbing' : ''}`}
