@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, BookOpen, Users, PlusCircle, Sparkles, Search, Filter } from 'lucide-react';
 import ZineCard from '../components/ZineCard';
 import ZineFilters from '../components/ZineFilters';
@@ -36,43 +36,9 @@ interface Zine {
 }
 
 const CuratedTrips = () => {
-  console.log('CuratedTrips component starting to render');
-  
   const navigate = useNavigate();
-  const location = useLocation();
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-
-  useEffect(() => {
-    console.log('CuratedTrips component mounted successfully');
-    console.log('Current location:', location.pathname);
-    console.log('Current search:', location.search);
-    console.log('Location state:', location.state);
-    
-    // Check if we're being redirected from somewhere
-    if (location.state?.from) {
-      console.log('Redirected from:', location.state.from);
-    }
-  }, [location]);
-
-  // Add error handling for any potential issues
-  useEffect(() => {
-    const handleError = (event: ErrorEvent) => {
-      console.error('Global error caught in CuratedTrips:', event.error);
-    };
-
-    const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
-      console.error('Unhandled promise rejection in CuratedTrips:', event.reason);
-    };
-
-    window.addEventListener('error', handleError);
-    window.addEventListener('unhandledrejection', handleUnhandledRejection);
-
-    return () => {
-      window.removeEventListener('error', handleError);
-      window.removeEventListener('unhandledrejection', handleUnhandledRejection);
-    };
-  }, []);
 
   const travelZines: Zine[] = [
     {
@@ -85,12 +51,12 @@ const CuratedTrips = () => {
         name: 'Maya Chen',
         avatar: '/lovable-uploads/5935897b-1c16-4e4f-8a47-50073b06561d.png',
         bio: 'Ex-Silicon Valley, now finding quiet places',
-        followers: 8200,
+        followers: 12400,
         verified: true
       },
       tags: ['Digital Detox', 'Mental Health', 'Remote Work', 'Mindfulness'],
       contentCount: 12,
-      followers: 6800,
+      followers: 8900,
       rating: 4.9,
       lastUpdated: '2 days ago',
       featured: true,
@@ -111,12 +77,12 @@ const CuratedTrips = () => {
         name: 'Zara Johnson',
         avatar: '/lovable-uploads/6a2f9c54-bbe6-4609-b27d-841996453813.png',
         bio: 'Travel writer, cultural explorer, truth-teller',
-        followers: 12800,
+        followers: 15600,
         verified: true
       },
       tags: ['Solo Travel', 'Cultural Heritage', 'Safety', 'Empowerment'],
       contentCount: 18,
-      followers: 8900,
+      followers: 11200,
       rating: 4.8,
       lastUpdated: '1 day ago',
       featured: true,
@@ -132,17 +98,17 @@ const CuratedTrips = () => {
       title: 'Luxury Travel That Isn\'t Cringe',
       subtitle: 'High-end experiences without the pretense',
       description: 'Thoughtful luxury travel that respects local culture, pays fair wages, and doesn\'t make you feel like a walking Instagram ad.',
-      coverImage: '/lovable-uploads/c3e077fc-fb5b-4df6-9b8c-75bcc742e307.png',
+      coverImage: '/lovable-uploads/9f082fcd-2f60-40ba-a703-582f95955704.png',
       editor: {
         name: 'Alessandro Rossi',
         avatar: '/lovable-uploads/37d54649-724a-4949-a90c-e7ce7a18e976.png',
         bio: 'Hospitality industry insider, ethical luxury advocate',
-        followers: 7600,
+        followers: 9800,
         verified: true
       },
       tags: ['Sustainable Luxury', 'Local Culture', 'Responsible Travel', 'Authentic Experiences'],
       contentCount: 15,
-      followers: 5800,
+      followers: 7300,
       rating: 4.7,
       lastUpdated: '4 days ago',
       featured: false,
@@ -158,17 +124,17 @@ const CuratedTrips = () => {
       title: 'Neurodivergent Nomads',
       subtitle: 'Travel guides for different brains',
       description: 'Sensory-friendly destinations, routine-flexible itineraries, and real advice from travelers who think differently.',
-      coverImage: '/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png',
+      coverImage: '/lovable-uploads/5f342a0e-24bf-4a28-ba1c-e6c7aed09f67.png',
       editor: {
         name: 'Dr. Sam Taylor',
         avatar: '/lovable-uploads/40732476-5f3d-426e-b486-daf165370855.png',
         bio: 'Autism researcher & travel enthusiast',
-        followers: 5100,
+        followers: 6700,
         verified: true
       },
       tags: ['Neurodivergent', 'Sensory-Friendly', 'Accessibility', 'Family Travel'],
       contentCount: 14,
-      followers: 4200,
+      followers: 5400,
       rating: 4.9,
       lastUpdated: '1 week ago',
       featured: false,
@@ -184,17 +150,17 @@ const CuratedTrips = () => {
       title: 'Single Parents Escape Club',
       subtitle: 'Adventures that work with real life',
       description: 'Realistic travel plans for parents doing it solo - with backup plans, kid-friendly logistics, and sanity-saving tips.',
-      coverImage: '/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png',
+      coverImage: '/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png',
       editor: {
         name: 'Rachel Morrison',
         avatar: '/lovable-uploads/c19085d5-4229-450c-8c8c-aa391d6902a5.png',
         bio: 'Single mom of 2, reformed perfectionist',
-        followers: 6300,
+        followers: 8200,
         verified: false
       },
       tags: ['Single Parent', 'Family Travel', 'Budget-Friendly', 'Realistic Planning'],
       contentCount: 11,
-      followers: 4600,
+      followers: 6100,
       rating: 4.6,
       lastUpdated: '3 days ago',
       featured: false,
@@ -210,17 +176,17 @@ const CuratedTrips = () => {
       title: 'Accessible Adventures',
       subtitle: 'The world is for everyone',
       description: 'Wheelchair-accessible wonders, mobility-friendly routes, and destinations that welcome all bodies with genuine inclusivity.',
-      coverImage: '/lovable-uploads/5f342a0e-24bf-4a28-ba1c-e6c7aed09f67.png',
+      coverImage: '/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png',
       editor: {
         name: 'Marcus Williams',
         avatar: '/lovable-uploads/42f30823-7039-463f-8b34-fa31699595d9.png',
         bio: 'Adaptive sports athlete, accessibility consultant',
-        followers: 9100,
+        followers: 11300,
         verified: true
       },
       tags: ['Accessibility', 'Inclusive Travel', 'Universal Design', 'Adventure'],
       contentCount: 16,
-      followers: 6800,
+      followers: 8700,
       rating: 4.8,
       lastUpdated: '5 days ago',
       featured: false,
@@ -249,132 +215,113 @@ const CuratedTrips = () => {
   });
 
   const handleZineClick = (zine: Zine) => {
-    try {
-      const query = `${zine.title} zine - ${zine.subtitle}`;
-      console.log('Zine clicked, navigating to trip results with query:', query);
-      navigate(`/trip-results?q=${encodeURIComponent(query)}`);
-    } catch (error) {
-      console.error('Error during zine click navigation:', error);
-    }
+    const query = `${zine.title} zine - ${zine.subtitle}`;
+    navigate(`/trip-results?q=${encodeURIComponent(query)}`);
   };
 
-  console.log('CuratedTrips rendering with', filteredZines.length, 'zines');
-
-  try {
-    return (
-      <div className="min-h-screen" style={{ background: 'var(--gradient-soft)' }}>
-        {/* Header */}
-        <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/50" style={{ background: 'hsl(var(--background) / 0.9)' }}>
-          <div className="max-w-6xl mx-auto px-4 py-4">
-            <div className="flex items-center gap-4">
-              <button 
-                onClick={() => {
-                  try {
-                    console.log('Back button clicked, navigating to home');
-                    navigate('/');
-                  } catch (error) {
-                    console.error('Error during back navigation:', error);
-                  }
-                }}
-                className="p-2 hover:bg-muted/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </button>
-              <div>
-                <h1 className="text-xl font-bold text-foreground">Curated Trips</h1>
-                <p className="text-sm text-muted-foreground">Trips designed for specific needs & situations</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          {/* Hero Section */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-6">
-              <BookOpen className="w-4 h-4" />
-              <span className="text-sm font-medium">Trip Zines</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Niche Travel Magazines
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Thoughtfully curated travel collections by real people with real stories. Each zine is a deep dive into specific travel experiences, complete with blueprints, honest reviews, and personal insights.
-            </p>
-            
-            {/* Search Bar */}
-            <div className="max-w-md mx-auto mt-8 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <input
-                type="text"
-                placeholder="Search zines, topics, or editors..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-border/50 bg-card/50 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
-              />
-            </div>
-          </div>
-
-          {/* Filters */}
-          <div className="mb-8">
-            <ZineFilters selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
-          </div>
-
-          {/* Zines Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredZines.map((zine) => (
-              <ZineCard key={zine.id} zine={zine} onZineClick={handleZineClick} />
-            ))}
-          </div>
-
-          {/* Empty State */}
-          {filteredZines.length === 0 && (
-            <div className="text-center py-16">
-              <BookOpen className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
-              <h3 className="text-xl font-semibold text-foreground mb-2">No Zines Found</h3>
-              <p className="text-muted-foreground">
-                Try adjusting your search or filter to discover more travel zines.
-              </p>
-            </div>
-          )}
-
-          {/* Call to Action */}
-          <div className="text-center mt-16">
-            <div 
-              className="inline-block p-8 rounded-2xl border border-border/50"
-              style={{ background: 'var(--gradient-card)' }}
+  return (
+    <div className="min-h-screen" style={{ background: 'var(--gradient-soft)' }}>
+      {/* Header */}
+      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/50" style={{ background: 'hsl(var(--background) / 0.9)' }}>
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => navigate('/')}
+              className="p-2 hover:bg-muted/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
             >
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                Want to Create Your Own Zine?
-              </h3>
-              <p className="text-muted-foreground mb-6 max-w-md">
-                Have a unique travel perspective or niche expertise? Pitch your zine idea and start curating for our community.
-              </p>
-              <div className="flex gap-4 justify-center">
-                <button 
-                  onClick={() => navigate('/chat')}
-                  className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors"
-                >
-                  <PlusCircle className="w-4 h-4" />
-                  Pitch a Zine
-                </button>
-                <button 
-                  onClick={() => navigate('/chat')}
-                  className="flex items-center gap-2 px-6 py-3 bg-card/50 text-foreground border border-border/50 rounded-xl font-semibold hover:bg-card transition-colors"
-                >
-                  <Search className="w-4 h-4" />
-                  Custom Trip
-                </button>
-              </div>
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+            <div>
+              <h1 className="text-xl font-bold text-foreground">Curated Trips</h1>
+              <p className="text-sm text-muted-foreground">Trips designed for specific needs & situations</p>
             </div>
           </div>
         </div>
       </div>
-    );
-  } catch (error) {
-    console.error('Error rendering CuratedTrips component:', error);
-    throw error; // Re-throw to be caught by ErrorBoundary
-  }
+
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Hero Section */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-6">
+            <BookOpen className="w-4 h-4" />
+            <span className="text-sm font-medium">Trip Zines</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Niche Travel Magazines
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Thoughtfully curated travel collections by real people with real stories. Each zine is a deep dive into specific travel experiences, complete with blueprints, honest reviews, and personal insights.
+          </p>
+          
+          {/* Search Bar */}
+          <div className="max-w-md mx-auto mt-8 relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+            <input
+              type="text"
+              placeholder="Search zines, topics, or editors..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-border/50 bg-card/50 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+            />
+          </div>
+        </div>
+
+        {/* Filters */}
+        <div className="mb-8">
+          <ZineFilters selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+        </div>
+
+        {/* Zines Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredZines.map((zine) => (
+            <ZineCard key={zine.id} zine={zine} onZineClick={handleZineClick} />
+          ))}
+        </div>
+
+        {/* Empty State */}
+        {filteredZines.length === 0 && (
+          <div className="text-center py-16">
+            <BookOpen className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
+            <h3 className="text-xl font-semibold text-foreground mb-2">No Zines Found</h3>
+            <p className="text-muted-foreground">
+              Try adjusting your search or filter to discover more travel zines.
+            </p>
+          </div>
+        )}
+
+        {/* Call to Action */}
+        <div className="text-center mt-16">
+          <div 
+            className="inline-block p-8 rounded-2xl border border-border/50"
+            style={{ background: 'var(--gradient-card)' }}
+          >
+            <h3 className="text-2xl font-bold text-foreground mb-4">
+              Want to Create Your Own Zine?
+            </h3>
+            <p className="text-muted-foreground mb-6 max-w-md">
+              Have a unique travel perspective or niche expertise? Pitch your zine idea and start curating for our community.
+            </p>
+            <div className="flex gap-4 justify-center">
+              <button 
+                onClick={() => navigate('/chat')}
+                className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors"
+              >
+                <PlusCircle className="w-4 h-4" />
+                Pitch a Zine
+              </button>
+              <button 
+                onClick={() => navigate('/chat')}
+                className="flex items-center gap-2 px-6 py-3 bg-card/50 text-foreground border border-border/50 rounded-xl font-semibold hover:bg-card transition-colors"
+              >
+                <Search className="w-4 h-4" />
+                Custom Trip
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default CuratedTrips;
