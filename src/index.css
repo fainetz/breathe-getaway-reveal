@@ -135,6 +135,11 @@ All colors MUST be HSL.
     /* Ensure no gaps on mobile Safari */
     margin: 0;
     padding: 0;
+    /* Fill safe areas with background color on iPhone */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
 
   body {
@@ -143,9 +148,17 @@ All colors MUST be HSL.
     min-height: 100dvh;
     margin: 0;
     padding: 0;
-    /* Remove safe area padding to eliminate gaps */
     width: 100%;
     overflow-x: hidden;
+    /* Ensure background extends into safe areas */
+    margin-top: calc(-1 * env(safe-area-inset-top));
+    margin-bottom: calc(-1 * env(safe-area-inset-bottom));
+    margin-left: calc(-1 * env(safe-area-inset-left));
+    margin-right: calc(-1 * env(safe-area-inset-right));
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
 
   @media (max-width: 768px) {
