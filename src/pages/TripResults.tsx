@@ -226,117 +226,78 @@ const TripResults = () => {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
-        {/* Compact Hero Banner */}
+      <div className="max-w-4xl mx-auto px-4 py-3 space-y-3">
+        {/* Inline Trip Overview */}
         <div 
-          className="relative -mx-4 -mt-8 mb-8 overflow-hidden"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('/lovable-uploads/250f747d-157f-480c-9c25-76d931a9ad49.png')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            height: '35vh',
-            minHeight: '280px'
-          }}
+          className="rounded-lg border border-border/50 backdrop-blur-sm p-3"
+          style={{ background: 'var(--gradient-card)' }}
         >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center space-y-4 px-4 max-w-4xl mx-auto animate-fade-in">
-              <div className="inline-block px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
-                <span className="text-white/90 text-sm font-medium">AI Curated Trip</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-gradient-to-br from-primary to-primary/70">
+                <Sparkles className="w-3 h-3 text-white" />
               </div>
-              <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-                Your Perfect Escape
-              </h1>
-              <p className="text-lg text-white/90 font-light max-w-2xl mx-auto">
-                {results.introText}
-              </p>
+              <div>
+                <h2 className="text-sm font-semibold text-foreground">Tulum Weekend</h2>
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                  <div className="w-1 h-1 bg-green-500 rounded-full"></div>
+                  <span>AI Optimized • 2 days</span>
+                </div>
+              </div>
+            </div>
+            <div className="text-right">
+              <div className="text-lg font-bold text-primary">$600</div>
+              <div className="text-xs text-muted-foreground">total</div>
             </div>
           </div>
         </div>
 
-        {/* Trip Overview & Total */}
-        <div className="mb-6">
-          <div 
-            className="rounded-2xl border border-border/50 backdrop-blur-sm"
-            style={{ background: 'var(--gradient-card)' }}
-          >
-            <div className="p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary to-primary/70">
-                    <Sparkles className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h2 className="text-lg font-bold text-foreground">Tulum Retreat Experience</h2>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                        AI Optimized
-                      </span>
-                      <span>•</span>
-                      <span>2 days</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <div className="text-2xl font-bold text-primary">$600</div>
-                  <div className="text-xs text-muted-foreground">estimated total</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Compact Trip Components */}
-        <div className="space-y-4">
+        {/* Ultra Compact Trip Components */}
+        <div className="space-y-2">
           {/* Flight Component */}
           <div 
-            className="group/component rounded-xl border border-border/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+            className="group/component rounded-lg border border-border/50 transition-all duration-200"
             style={{ background: 'var(--gradient-card)' }}
           >
-            <div className="p-4 cursor-pointer" onClick={() => togglePromptBox('flight')}>
+            <div className="p-3 cursor-pointer" onClick={() => togglePromptBox('flight')}>
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-primary/10">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-primary/10">
                     {panelStates.flight?.isLoading ? (
-                      <Loader2 className="w-5 h-5 text-primary animate-spin" />
+                      <Loader2 className="w-4 h-4 text-primary animate-spin" />
                     ) : (
-                      <Plane className="w-5 h-5 text-primary" />
+                      <Plane className="w-4 h-4 text-primary" />
                     )}
                   </div>
                   <div>
-                    <div className="flex items-center gap-3">
-                      <h3 className="text-lg font-semibold text-foreground">Flights</h3>
-                      <span className="text-sm text-muted-foreground font-medium">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-sm font-semibold text-foreground">Flights</h3>
+                      <span className="text-xs text-muted-foreground">
                         {panelStates.flight?.data?.route || results.flight.route}
                       </span>
                     </div>
-                    <p className="text-sm text-muted-foreground mt-1">
+                    <p className="text-xs text-muted-foreground">
                       {panelStates.flight?.data?.schedule || results.flight.schedule}
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <span className="text-2xl font-bold text-foreground">
+                <div className="flex items-center gap-2">
+                  <span className="text-lg font-bold text-foreground">
                     {panelStates.flight?.data?.price || results.flight.price}
                   </span>
-                  <div className="opacity-0 group-hover/component:opacity-100 transition-opacity duration-200">
-                    <div className="flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-lg">
-                      <Edit className="w-4 h-4 text-primary" />
-                      <span className="text-sm text-primary font-medium">Edit</span>
-                    </div>
-                  </div>
+                  <Edit className="w-3 h-3 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
                 </div>
               </div>
             </div>
             
             {showPromptBox.flight && (
-              <div className="px-4 pb-4 border-t border-border/50 animate-in slide-in-from-top-2 duration-200">
-                <div className="pt-3 flex gap-2">
+              <div className="px-3 pb-3 border-t border-border/50">
+                <div className="pt-2 flex gap-2">
                   <Textarea
                     value={prompts.flight || ''}
                     onChange={(e) => updatePrompt('flight', e.target.value)}
                     placeholder="Different time? Upgrade class?"
-                    className="resize-none text-sm flex-1 border-border/50 rounded-lg"
+                    className="resize-none text-xs flex-1 border-border/50 rounded h-8"
                     rows={1}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
@@ -348,12 +309,12 @@ const TripResults = () => {
                   <button
                     onClick={() => handleInlinePromptSubmit('flight')}
                     disabled={!prompts.flight?.trim() || panelStates.flight?.isLoading}
-                    className="p-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50"
+                    className="p-1.5 bg-primary text-primary-foreground rounded hover:bg-primary/90 transition-colors disabled:opacity-50"
                   >
                     {panelStates.flight?.isLoading ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <Loader2 className="w-3 h-3 animate-spin" />
                     ) : (
-                      <Send className="w-4 h-4" />
+                      <Send className="w-3 h-3" />
                     )}
                   </button>
                 </div>
@@ -363,54 +324,54 @@ const TripResults = () => {
 
           {/* Hotel - Compact */}
           <div 
-            className="group/component rounded-xl border border-border transition-all duration-200 hover:shadow-[var(--shadow-soft)]"
+            className="group/component rounded-lg border border-border transition-all duration-200"
             style={{ background: 'var(--gradient-card)' }}
           >
-            <div className="p-4 cursor-pointer" onClick={() => togglePromptBox('hotel')}>
+            <div className="p-3 cursor-pointer" onClick={() => togglePromptBox('hotel')}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-accent/10">
+                  <div className="p-1.5 rounded bg-accent/10">
                     {panelStates.hotel?.isLoading ? (
-                      <Loader2 className="w-4 h-4 text-accent animate-spin" />
+                      <Loader2 className="w-3 h-3 text-accent animate-spin" />
                     ) : (
-                      <Hotel className="w-4 h-4 text-accent" />
+                      <Hotel className="w-3 h-3 text-accent" />
                     )}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h4 className="font-semibold text-foreground">Hotel</h4>
-                      <span className="text-sm text-muted-foreground">
+                      <h4 className="text-sm font-semibold text-foreground">Hotel</h4>
+                      <span className="text-xs text-muted-foreground">
                         {panelStates.hotel?.data?.name || results.hotel.name}
                       </span>
                       <div className="flex items-center gap-1">
-                        <Star className="w-3 h-3 fill-accent text-accent" />
+                        <Star className="w-2.5 h-2.5 fill-accent text-accent" />
                         <span className="text-xs text-muted-foreground">
                           {panelStates.hotel?.data?.rating || results.hotel.rating}
                         </span>
                       </div>
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-muted-foreground truncate max-w-48">
                       {panelStates.hotel?.data?.description || results.hotel.description}
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-lg font-semibold text-foreground">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-semibold text-foreground">
                     {panelStates.hotel?.data?.price || results.hotel.price}
                   </span>
-                  <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
+                  <Edit className="w-3 h-3 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
                 </div>
               </div>
             </div>
             
             {showPromptBox.hotel && (
-              <div className="px-4 pb-4 border-t border-border/50 animate-in slide-in-from-top-2 duration-200">
-                <div className="pt-3 flex gap-2">
+              <div className="px-3 pb-3 border-t border-border/50">
+                <div className="pt-2 flex gap-2">
                   <Textarea
                     value={prompts.hotel || ''}
                     onChange={(e) => updatePrompt('hotel', e.target.value)}
                     placeholder="More luxury? Beachfront? Different vibe?"
-                    className="resize-none text-sm flex-1 border-border/50 rounded-lg"
+                    className="resize-none text-xs flex-1 border-border/50 rounded h-8"
                     rows={1}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
@@ -422,12 +383,12 @@ const TripResults = () => {
                   <button
                     onClick={() => handleInlinePromptSubmit('hotel')}
                     disabled={!prompts.hotel?.trim() || panelStates.hotel?.isLoading}
-                    className="p-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50"
+                    className="p-1.5 bg-accent text-accent-foreground rounded hover:bg-accent/90 transition-colors disabled:opacity-50"
                   >
                     {panelStates.hotel?.isLoading ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <Loader2 className="w-3 h-3 animate-spin" />
                     ) : (
-                      <Send className="w-4 h-4" />
+                      <Send className="w-3 h-3" />
                     )}
                   </button>
                 </div>
@@ -435,51 +396,49 @@ const TripResults = () => {
             )}
           </div>
 
-          {/* Activities - Compact List */}
+          {/* Activities - Compact Grid */}
           <div 
-            className="rounded-xl border border-border transition-all duration-200 hover:shadow-[var(--shadow-soft)]"
+            className="rounded-lg border border-border"
             style={{ background: 'var(--gradient-card)' }}
           >
-            <div className="p-4 border-b border-border/50">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-secondary/10">
-                  <MapPin className="w-4 h-4 text-secondary" />
+            <div className="p-2 border-b border-border/50">
+              <div className="flex items-center gap-2">
+                <div className="p-1 rounded bg-secondary/10">
+                  <MapPin className="w-3 h-3 text-secondary" />
                 </div>
-                <h4 className="font-semibold text-foreground">Activities</h4>
+                <h4 className="text-sm font-semibold text-foreground">Activities</h4>
               </div>
             </div>
             
-            <div className="divide-y divide-border/30">
+            <div className="grid grid-cols-2 gap-1">
               {results.thingsToDo.map((activity, index) => (
                 <div 
                   key={index}
-                  className="group/activity p-3 hover:bg-muted/30 cursor-pointer transition-colors"
+                  className="group/activity p-2 hover:bg-muted/30 cursor-pointer transition-colors"
                   onClick={() => togglePromptBox(`activity-${index}`)}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="p-1.5 rounded bg-secondary/10">
-                        {getActivityIcon(activity.icon)}
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <h5 className="font-medium text-foreground">{activity.title}</h5>
-                          <span className="text-xs text-muted-foreground">{activity.time}</span>
-                        </div>
-                        <p className="text-xs text-muted-foreground">{activity.description}</p>
-                      </div>
+                  <div className="flex items-start gap-2">
+                    <div className="p-1 rounded bg-secondary/10 mt-0.5">
+                      {getActivityIcon(activity.icon)}
                     </div>
-                    <Edit className="w-3 h-3 text-muted-foreground opacity-0 group-hover/activity:opacity-100 transition-opacity" />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-1">
+                        <h5 className="text-xs font-medium text-foreground truncate">{activity.title}</h5>
+                        <span className="text-xs text-muted-foreground">{activity.time}</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground line-clamp-2">{activity.description}</p>
+                    </div>
+                    <Edit className="w-2.5 h-2.5 text-muted-foreground opacity-0 group-hover/activity:opacity-100 transition-opacity flex-shrink-0" />
                   </div>
                   
                   {showPromptBox[`activity-${index}`] && (
-                    <div className="mt-3 pt-3 border-t border-border/30 animate-in slide-in-from-top-2 duration-200" onClick={(e) => e.stopPropagation()}>
-                      <div className="flex gap-2">
+                    <div className="mt-2 pt-2 border-t border-border/30 col-span-2" onClick={(e) => e.stopPropagation()}>
+                      <div className="flex gap-1">
                         <Textarea
                           value={prompts[`activity-${index}`] || ''}
                           onChange={(e) => updatePrompt(`activity-${index}`, e.target.value)}
                           placeholder="Different activity? Change time?"
-                          className="resize-none text-sm flex-1 border-border/50 rounded-lg"
+                          className="resize-none text-xs flex-1 border-border/50 rounded h-6"
                           rows={1}
                           onKeyDown={(e) => {
                             if (e.key === 'Enter' && !e.shiftKey) {
@@ -491,12 +450,12 @@ const TripResults = () => {
                         <button
                           onClick={() => handleInlinePromptSubmit(`activity-${index}`)}
                           disabled={!prompts[`activity-${index}`]?.trim() || panelStates[`activity-${index}`]?.isLoading}
-                          className="p-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/90 transition-colors disabled:opacity-50"
+                          className="p-1 bg-secondary text-secondary-foreground rounded hover:bg-secondary/90 transition-colors disabled:opacity-50"
                         >
                           {panelStates[`activity-${index}`]?.isLoading ? (
-                            <Loader2 className="w-4 h-4 animate-spin" />
+                            <Loader2 className="w-2.5 h-2.5 animate-spin" />
                           ) : (
-                            <Send className="w-4 h-4" />
+                            <Send className="w-2.5 h-2.5" />
                           )}
                         </button>
                       </div>
@@ -507,79 +466,87 @@ const TripResults = () => {
             </div>
           </div>
 
-          {/* Individual Hidden Gem Panels */}
-          {results.hiddenGems.map((gem, index) => (
-            <div 
-              key={index}
-              className="group/gem rounded-xl border border-border transition-all duration-200 hover:shadow-[var(--shadow-soft)]"
-              style={{ background: 'var(--gradient-card)' }}
-            >
-              <div className="p-4 cursor-pointer" onClick={() => togglePromptBox(`gem-${index}`)}>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-accent/10">
+          {/* Hidden Gems - Compact */}
+          <div 
+            className="rounded-lg border border-border"
+            style={{ background: 'var(--gradient-card)' }}
+          >
+            <div className="p-2 border-b border-border/50">
+              <div className="flex items-center gap-2">
+                <div className="p-1 rounded bg-accent/10">
+                  <Eye className="w-3 h-3 text-accent" />
+                </div>
+                <h4 className="text-sm font-semibold text-foreground">Hidden Gems</h4>
+              </div>
+            </div>
+            <div className="divide-y divide-border/30">
+              {results.hiddenGems.map((gem, index) => (
+                <div 
+                  key={index}
+                  className="group/gem p-2 hover:bg-muted/30 cursor-pointer transition-colors"
+                  onClick={() => togglePromptBox(`gem-${index}`)}
+                >
+                  <div className="flex items-start gap-2">
+                    <div className="p-1 rounded bg-accent/10 mt-0.5">
                       {panelStates[`gem-${index}`]?.isLoading ? (
-                        <Loader2 className="w-4 h-4 text-accent animate-spin" />
+                        <Loader2 className="w-3 h-3 text-accent animate-spin" />
                       ) : (
-                        <Eye className="w-4 h-4 text-accent" />
+                        <Eye className="w-3 h-3 text-accent" />
                       )}
                     </div>
-                    <div>
+                    <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <h4 className="font-semibold text-foreground">
+                        <h4 className="text-xs font-semibold text-foreground">
                           {panelStates[`gem-${index}`]?.data?.name || gem.name}
                         </h4>
-                        <span className="text-xs px-2 py-0.5 bg-accent/10 text-accent rounded font-medium">
+                        <span className="text-xs px-1 py-0.5 bg-accent/10 text-accent rounded">
                           {panelStates[`gem-${index}`]?.data?.type || gem.type}
                         </span>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs text-muted-foreground line-clamp-1">
                         {panelStates[`gem-${index}`]?.data?.description || gem.description}
                       </p>
-                      <p className="text-xs text-muted-foreground/70 mt-1">
+                      <p className="text-xs text-muted-foreground/70 line-clamp-1">
                         💡 {panelStates[`gem-${index}`]?.data?.insider_tip || gem.insider_tip}
                       </p>
                     </div>
+                    <Edit className="w-2.5 h-2.5 text-muted-foreground opacity-0 group-hover/gem:opacity-100 transition-opacity flex-shrink-0" />
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-muted-foreground font-medium">Hidden Gem</span>
-                    <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/gem:opacity-100 transition-opacity" />
-                  </div>
-                </div>
-              </div>
               
-              {showPromptBox[`gem-${index}`] && (
-                <div className="px-4 pb-4 border-t border-border/50 animate-in slide-in-from-top-2 duration-200">
-                  <div className="pt-3 flex gap-2">
-                    <Textarea
-                      value={prompts[`gem-${index}`] || ''}
-                      onChange={(e) => updatePrompt(`gem-${index}`, e.target.value)}
-                      placeholder="Different type? More adventurous? Food focused?"
-                      className="resize-none text-sm flex-1 border-border/50 rounded-lg"
-                      rows={1}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' && !e.shiftKey) {
-                          e.preventDefault();
-                          handleInlinePromptSubmit(`gem-${index}`);
-                        }
-                      }}
-                    />
-                    <button
-                      onClick={() => handleInlinePromptSubmit(`gem-${index}`)}
-                      disabled={!prompts[`gem-${index}`]?.trim() || panelStates[`gem-${index}`]?.isLoading}
-                      className="p-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50"
-                    >
-                      {panelStates[`gem-${index}`]?.isLoading ? (
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                      ) : (
-                        <Send className="w-4 h-4" />
-                      )}
-                    </button>
-                  </div>
+                  {showPromptBox[`gem-${index}`] && (
+                    <div className="mt-2 pt-2 border-t border-border/30" onClick={(e) => e.stopPropagation()}>
+                      <div className="flex gap-1">
+                        <Textarea
+                          value={prompts[`gem-${index}`] || ''}
+                          onChange={(e) => updatePrompt(`gem-${index}`, e.target.value)}
+                          placeholder="Different type? More adventurous? Food focused?"
+                          className="resize-none text-xs flex-1 border-border/50 rounded h-6"
+                          rows={1}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' && !e.shiftKey) {
+                              e.preventDefault();
+                              handleInlinePromptSubmit(`gem-${index}`);
+                            }
+                          }}
+                        />
+                        <button
+                          onClick={() => handleInlinePromptSubmit(`gem-${index}`)}
+                          disabled={!prompts[`gem-${index}`]?.trim() || panelStates[`gem-${index}`]?.isLoading}
+                          className="p-1 bg-accent text-accent-foreground rounded hover:bg-accent/90 transition-colors disabled:opacity-50"
+                        >
+                          {panelStates[`gem-${index}`]?.isLoading ? (
+                            <Loader2 className="w-2.5 h-2.5 animate-spin" />
+                          ) : (
+                            <Send className="w-2.5 h-2.5" />
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              )}
+              ))}
             </div>
-          ))}
+          </div>
 
         </div>
       </div>
