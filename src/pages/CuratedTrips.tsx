@@ -36,16 +36,43 @@ interface Zine {
 }
 
 const CuratedTrips = () => {
+  console.log('CuratedTrips component starting to render');
+  
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    console.log('CuratedTrips component mounted');
+    console.log('CuratedTrips component mounted successfully');
     console.log('Current location:', location.pathname);
     console.log('Current search:', location.search);
+    console.log('Location state:', location.state);
+    
+    // Check if we're being redirected from somewhere
+    if (location.state?.from) {
+      console.log('Redirected from:', location.state.from);
+    }
   }, [location]);
+
+  // Add error handling for any potential issues
+  useEffect(() => {
+    const handleError = (event: ErrorEvent) => {
+      console.error('Global error caught in CuratedTrips:', event.error);
+    };
+
+    const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
+      console.error('Unhandled promise rejection in CuratedTrips:', event.reason);
+    };
+
+    window.addEventListener('error', handleError);
+    window.addEventListener('unhandledrejection', handleUnhandledRejection);
+
+    return () => {
+      window.removeEventListener('error', handleError);
+      window.removeEventListener('unhandledrejection', handleUnhandledRejection);
+    };
+  }, []);
 
   const travelZines: Zine[] = [
     {
@@ -222,119 +249,132 @@ const CuratedTrips = () => {
   });
 
   const handleZineClick = (zine: Zine) => {
-    const query = `${zine.title} zine - ${zine.subtitle}`;
-    console.log('Zine clicked, navigating to trip results with query:', query);
-    navigate(`/trip-results?q=${encodeURIComponent(query)}`);
+    try {
+      const query = `${zine.title} zine - ${zine.subtitle}`;
+      console.log('Zine clicked, navigating to trip results with query:', query);
+      navigate(`/trip-results?q=${encodeURIComponent(query)}`);
+    } catch (error) {
+      console.error('Error during zine click navigation:', error);
+    }
   };
 
   console.log('CuratedTrips rendering with', filteredZines.length, 'zines');
 
-  return (
-    <div className="min-h-screen" style={{ background: 'var(--gradient-soft)' }}>
-      {/* Header */}
-      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/50" style={{ background: 'hsl(var(--background) / 0.9)' }}>
-        <div className="max-w-6xl mx-auto px-4 py-4">
-          <div className="flex items-center gap-4">
-            <button 
-              onClick={() => {
-                console.log('Back button clicked, navigating to home');
-                navigate('/');
-              }}
-              className="p-2 hover:bg-muted/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
+  try {
+    return (
+      <div className="min-h-screen" style={{ background: 'var(--gradient-soft)' }}>
+        {/* Header */}
+        <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/50" style={{ background: 'hsl(var(--background) / 0.9)' }}>
+          <div className="max-w-6xl mx-auto px-4 py-4">
+            <div className="flex items-center gap-4">
+              <button 
+                onClick={() => {
+                  try {
+                    console.log('Back button clicked, navigating to home');
+                    navigate('/');
+                  } catch (error) {
+                    console.error('Error during back navigation:', error);
+                  }
+                }}
+                className="p-2 hover:bg-muted/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </button>
+              <div>
+                <h1 className="text-xl font-bold text-foreground">Curated Trips</h1>
+                <p className="text-sm text-muted-foreground">Trips designed for specific needs & situations</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 py-8">
+          {/* Hero Section */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-6">
+              <BookOpen className="w-4 h-4" />
+              <span className="text-sm font-medium">Trip Zines</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Niche Travel Magazines
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Thoughtfully curated travel collections by real people with real stories. Each zine is a deep dive into specific travel experiences, complete with blueprints, honest reviews, and personal insights.
+            </p>
+            
+            {/* Search Bar */}
+            <div className="max-w-md mx-auto mt-8 relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+              <input
+                type="text"
+                placeholder="Search zines, topics, or editors..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-border/50 bg-card/50 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+              />
+            </div>
+          </div>
+
+          {/* Filters */}
+          <div className="mb-8">
+            <ZineFilters selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+          </div>
+
+          {/* Zines Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredZines.map((zine) => (
+              <ZineCard key={zine.id} zine={zine} onZineClick={handleZineClick} />
+            ))}
+          </div>
+
+          {/* Empty State */}
+          {filteredZines.length === 0 && (
+            <div className="text-center py-16">
+              <BookOpen className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
+              <h3 className="text-xl font-semibold text-foreground mb-2">No Zines Found</h3>
+              <p className="text-muted-foreground">
+                Try adjusting your search or filter to discover more travel zines.
+              </p>
+            </div>
+          )}
+
+          {/* Call to Action */}
+          <div className="text-center mt-16">
+            <div 
+              className="inline-block p-8 rounded-2xl border border-border/50"
+              style={{ background: 'var(--gradient-card)' }}
             >
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-            <div>
-              <h1 className="text-xl font-bold text-foreground">Curated Trips</h1>
-              <p className="text-sm text-muted-foreground">Trips designed for specific needs & situations</p>
+              <h3 className="text-2xl font-bold text-foreground mb-4">
+                Want to Create Your Own Zine?
+              </h3>
+              <p className="text-muted-foreground mb-6 max-w-md">
+                Have a unique travel perspective or niche expertise? Pitch your zine idea and start curating for our community.
+              </p>
+              <div className="flex gap-4 justify-center">
+                <button 
+                  onClick={() => navigate('/chat')}
+                  className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors"
+                >
+                  <PlusCircle className="w-4 h-4" />
+                  Pitch a Zine
+                </button>
+                <button 
+                  onClick={() => navigate('/chat')}
+                  className="flex items-center gap-2 px-6 py-3 bg-card/50 text-foreground border border-border/50 rounded-xl font-semibold hover:bg-card transition-colors"
+                >
+                  <Search className="w-4 h-4" />
+                  Custom Trip
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-6">
-            <BookOpen className="w-4 h-4" />
-            <span className="text-sm font-medium">Trip Zines</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Niche Travel Magazines
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Thoughtfully curated travel collections by real people with real stories. Each zine is a deep dive into specific travel experiences, complete with blueprints, honest reviews, and personal insights.
-          </p>
-          
-          {/* Search Bar */}
-          <div className="max-w-md mx-auto mt-8 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-            <input
-              type="text"
-              placeholder="Search zines, topics, or editors..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-border/50 bg-card/50 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
-            />
-          </div>
-        </div>
-
-        {/* Filters */}
-        <div className="mb-8">
-          <ZineFilters selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
-        </div>
-
-        {/* Zines Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredZines.map((zine) => (
-            <ZineCard key={zine.id} zine={zine} onZineClick={handleZineClick} />
-          ))}
-        </div>
-
-        {/* Empty State */}
-        {filteredZines.length === 0 && (
-          <div className="text-center py-16">
-            <BookOpen className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
-            <h3 className="text-xl font-semibold text-foreground mb-2">No Zines Found</h3>
-            <p className="text-muted-foreground">
-              Try adjusting your search or filter to discover more travel zines.
-            </p>
-          </div>
-        )}
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div 
-            className="inline-block p-8 rounded-2xl border border-border/50"
-            style={{ background: 'var(--gradient-card)' }}
-          >
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Want to Create Your Own Zine?
-            </h3>
-            <p className="text-muted-foreground mb-6 max-w-md">
-              Have a unique travel perspective or niche expertise? Pitch your zine idea and start curating for our community.
-            </p>
-            <div className="flex gap-4 justify-center">
-              <button 
-                onClick={() => navigate('/chat')}
-                className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors"
-              >
-                <PlusCircle className="w-4 h-4" />
-                Pitch a Zine
-              </button>
-              <button 
-                onClick={() => navigate('/chat')}
-                className="flex items-center gap-2 px-6 py-3 bg-card/50 text-foreground border border-border/50 rounded-xl font-semibold hover:bg-card transition-colors"
-              >
-                <Search className="w-4 h-4" />
-                Custom Trip
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error('Error rendering CuratedTrips component:', error);
+    throw error; // Re-throw to be caught by ErrorBoundary
+  }
 };
 
 export default CuratedTrips;
