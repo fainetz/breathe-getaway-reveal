@@ -189,23 +189,12 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
         onTouchEnd={handleTouchEnd}
         style={{ touchAction: 'pan-x' }}
       >
-        {/* Three-item layout: Previous | Current | Next */}
-        <div className="flex items-center space-x-4">
-          {/* Previous item (left side) */}
-          <button
-            onClick={() => goToPrevious()}
-            className="px-4 py-2 text-sm font-medium text-foreground/40 hover:text-foreground/70 transition-all duration-300 ease-out transform hover:scale-105"
-          >
-            {previousItem.label}
-          </button>
-
-          {/* Current active item (center bubble) */}
-          <button
-            ref={(el) => {
-              if (el) itemRefs.current[activeIndex] = el;
-            }}
-            onClick={() => handleNavigation(currentItem.path, activeIndex)}
-            className="relative overflow-hidden px-6 py-3 backdrop-blur-lg rounded-full shadow-lg transition-all duration-500 ease-out select-none touch-manipulation min-w-[120px]"
+        {/* Carousel container with bubble as viewport */}
+        <div className="relative flex items-center space-x-8 w-80">
+          
+          {/* Glass bubble positioned over center item */}
+          <div 
+            className="absolute left-1/2 transform -translate-x-1/2 px-6 py-3 backdrop-blur-lg rounded-full shadow-lg pointer-events-none z-10"
             style={{
               background: 'rgba(255, 255, 255, 0.1)',
               backdropFilter: 'blur(20px)',
@@ -213,29 +202,42 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
               border: '1px solid rgba(255, 255, 255, 0.2)',
               borderRadius: '24px',
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-              transitionTimingFunction: 'cubic-bezier(0.2, 0.0, 0.2, 1)',
+              minWidth: '120px',
+              height: '44px',
+            }}
+          />
+
+          {/* Sliding carousel of nav items */}
+          <div 
+            className="flex items-center space-x-8 transition-transform duration-500 ease-out"
+            style={{
+              transform: `translateX(${-activeIndex * 120 + 140}px)`, // Center the active item in bubble
+              transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
             }}
           >
-            {/* Carousel text with sliding animation */}
-            <span 
-              key={`nav-${activeIndex}`}
-              className={`text-sm font-semibold text-primary-foreground whitespace-nowrap ${
-                isTransitioning 
-                  ? `animate-slide-in-${activeIndex > previousIndex ? 'right' : 'left'}` 
-                  : ''
-              }`}
-            >
-              {currentItem.label}
-            </span>
-          </button>
-
-          {/* Next item (right side) */}
-          <button
-            onClick={() => goToNext()}
-            className="px-4 py-2 text-sm font-medium text-foreground/40 hover:text-foreground/70 transition-all duration-300 ease-out transform hover:scale-105"
-          >
-            {nextItem.label}
-          </button>
+            {navItems.map((item, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <button
+                  key={item.id}
+                  ref={(el) => {
+                    if (el && isActive) itemRefs.current[activeIndex] = el;
+                  }}
+                  onClick={() => handleNavigation(item.path, index)}
+                  className={`relative px-6 py-3 text-sm font-semibold whitespace-nowrap transition-all duration-500 ease-out select-none min-w-[120px] flex items-center justify-center ${
+                    isActive 
+                      ? 'text-primary-foreground z-20' 
+                      : 'text-foreground/40 hover:text-foreground/70'
+                  }`}
+                  style={{
+                    transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+                  }}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
         
         {/* Navigation dots - show all items, positioned below */}
