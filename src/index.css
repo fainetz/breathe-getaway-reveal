@@ -144,8 +144,13 @@ All colors MUST be HSL.
 
   @media (max-width: 768px) {
     body {
-      padding-top: 70px; /* Space for mobile nav */
+      padding-top: 80px; /* Space for premium nav */
     }
+  }
+
+  /* Desktop also needs space for the premium nav */
+  body {
+    padding-top: 80px;
   }
 
   #root {
