@@ -1,168 +1,222 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Heart, Users, MapPin, Clock, Star, Eye, Sparkles, Shield, Baby, Accessibility } from 'lucide-react';
+import { ArrowLeft, BookOpen, Users, PlusCircle, Sparkles, Search, Filter } from 'lucide-react';
+import ZineCard from '../components/ZineCard';
+import ZineFilters from '../components/ZineFilters';
 
-interface CuratedTrip {
+interface ZineEditor {
+  name: string;
+  avatar: string;
+  bio: string;
+  followers: number;
+  verified: boolean;
+}
+
+interface ZineContent {
+  type: 'trip-blueprint' | 'journal-entry' | 'local-review' | 'photo-essay';
+  title: string;
+  excerpt: string;
+  author?: string;
+}
+
+interface Zine {
   id: string;
   title: string;
+  subtitle: string;
   description: string;
-  category: string;
+  coverImage: string;
+  editor: ZineEditor;
   tags: string[];
-  duration: string;
-  priceRange: string;
-  imageUrl: string;
-  difficulty: 'Easy' | 'Moderate' | 'Challenging';
+  contentCount: number;
+  followers: number;
   rating: number;
-  tripCount: number;
-  situations: string[];
+  lastUpdated: string;
+  featured: boolean;
+  contents: ZineContent[];
 }
 
 const CuratedTrips = () => {
   const navigate = useNavigate();
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedFilter, setSelectedFilter] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const categories = [
-    { id: 'all', label: 'All Trips', icon: MapPin },
-    { id: 'solo-female', label: 'Solo Female', icon: Shield },
-    { id: 'neurodivergent', label: 'Neurodivergent Friendly', icon: Accessibility },
-    { id: 'family', label: 'Family Challenges', icon: Baby },
-    { id: 'accessibility', label: 'Accessibility Needs', icon: Users },
-    { id: 'cultural', label: 'Cultural Sensitivities', icon: Eye }
-  ];
-
-  const curatedTrips: CuratedTrip[] = [
+  const travelZines: Zine[] = [
     {
       id: '1',
-      title: 'Safe Solo Female Travel in Spain',
-      description: 'Navigate Spain confidently with insider tips on safe neighborhoods, reliable transport, and female-friendly accommodations.',
-      category: 'solo-female',
-      tags: ['Solo Travel', 'Safety First', 'Cultural Immersion', 'Budget-Friendly'],
-      duration: '7-10 days',
-      priceRange: '$800-1200',
-      imageUrl: '/lovable-uploads/c3e077fc-fb5b-4df6-9b8c-75bcc742e307.png',
-      difficulty: 'Easy',
+      title: 'Quiet AF Trips for Tech Burnout',
+      subtitle: 'Digital detox destinations that actually work',
+      description: 'Real escapes from the constant ping of notifications. Curated by burnt-out tech workers who found their way back to peace.',
+      coverImage: '/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png',
+      editor: {
+        name: 'Maya Chen',
+        avatar: '/lovable-uploads/5935897b-1c16-4e4f-8a47-50073b06561d.png',
+        bio: 'Ex-Silicon Valley, now finding quiet places',
+        followers: 12400,
+        verified: true
+      },
+      tags: ['Digital Detox', 'Mental Health', 'Remote Work', 'Mindfulness'],
+      contentCount: 12,
+      followers: 8900,
       rating: 4.9,
-      tripCount: 1247,
-      situations: [
-        'Avoiding tourist scams in Barcelona',
-        'Safe late-night transport options',
-        'Female-only accommodations and spaces',
-        'Cultural norms around solo dining'
+      lastUpdated: '2 days ago',
+      featured: true,
+      contents: [
+        { type: 'trip-blueprint', title: 'Iceland Silent Retreat (No Wifi)', excerpt: '7 days of pure disconnection' },
+        { type: 'journal-entry', title: 'Day 3: I Forgot What Slack Was', excerpt: 'Personal account of digital withdrawal' },
+        { type: 'local-review', title: 'Monastery Stays in Bhutan', excerpt: 'Rating the most peaceful places on earth' },
+        { type: 'photo-essay', title: 'Sunrise Without Instagram', excerpt: 'What happens when you just watch' }
       ]
     },
     {
       id: '2',
-      title: 'Traveling with Neurodivergent Children in Japan',
-      description: 'Experience Japan stress-free with sensory-friendly activities, quiet spaces, and autism-understanding accommodations.',
-      category: 'neurodivergent',
-      tags: ['Family Travel', 'Sensory-Friendly', 'Structured Itinerary', 'Educational'],
-      duration: '10-14 days',
-      priceRange: '$2500-4000',
-      imageUrl: '/lovable-uploads/5f342a0e-24bf-4a28-ba1c-e6c7aed09f67.png',
-      difficulty: 'Moderate',
+      title: 'Black Women Abroad',
+      subtitle: 'Stories, tips, and real talk from the road',
+      description: 'Honest travel experiences, safety insights, and cultural connections from Black women exploring the world unapologetically.',
+      coverImage: '/lovable-uploads/c3e077fc-fb5b-4df6-9b8c-75bcc742e307.png',
+      editor: {
+        name: 'Zara Johnson',
+        avatar: '/lovable-uploads/6a2f9c54-bbe6-4609-b27d-841996453813.png',
+        bio: 'Travel writer, cultural explorer, truth-teller',
+        followers: 15600,
+        verified: true
+      },
+      tags: ['Solo Travel', 'Cultural Heritage', 'Safety', 'Empowerment'],
+      contentCount: 18,
+      followers: 11200,
       rating: 4.8,
-      tripCount: 432,
-      situations: [
-        'Sensory-friendly temple visits',
-        'Quiet train car reservations',
-        'Visual schedule creation for activities',
-        'Autism-friendly hotels with routine support'
+      lastUpdated: '1 day ago',
+      featured: true,
+      contents: [
+        { type: 'trip-blueprint', title: 'Ghana Homecoming Journey', excerpt: 'A deeply personal 2-week itinerary' },
+        { type: 'journal-entry', title: 'Hair Care in Humid Climates', excerpt: 'Real talk about travel beauty routines' },
+        { type: 'local-review', title: 'Black-Owned Hotels Worldwide', excerpt: 'Supporting our community while traveling' },
+        { type: 'photo-essay', title: 'Melanin in Morocco', excerpt: 'Finding representation in unexpected places' }
       ]
     },
     {
       id: '3',
-      title: 'Wheelchair Accessible Europe',
-      description: 'Explore European cities with confidence using wheelchair-accessible transport, attractions, and accommodations.',
-      category: 'accessibility',
-      tags: ['Accessibility', 'City Breaks', 'Culture', 'Historic Sites'],
-      duration: '14-21 days',
-      priceRange: '$1800-3200',
-      imageUrl: '/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png',
-      difficulty: 'Easy',
+      title: 'Luxury Travel That Isn\'t Cringe',
+      subtitle: 'High-end experiences without the pretense',
+      description: 'Thoughtful luxury travel that respects local culture, pays fair wages, and doesn\'t make you feel like a walking Instagram ad.',
+      coverImage: '/lovable-uploads/9f082fcd-2f60-40ba-a703-582f95955704.png',
+      editor: {
+        name: 'Alessandro Rossi',
+        avatar: '/lovable-uploads/37d54649-724a-4949-a90c-e7ce7a18e976.png',
+        bio: 'Hospitality industry insider, ethical luxury advocate',
+        followers: 9800,
+        verified: true
+      },
+      tags: ['Sustainable Luxury', 'Local Culture', 'Responsible Travel', 'Authentic Experiences'],
+      contentCount: 15,
+      followers: 7300,
       rating: 4.7,
-      tripCount: 890,
-      situations: [
-        'Accessible museum entrances and facilities',
-        'Wheelchair-friendly public transport',
-        'Hotels with roll-in showers',
-        'Accessible restaurant recommendations'
+      lastUpdated: '4 days ago',
+      featured: false,
+      contents: [
+        { type: 'trip-blueprint', title: 'Japan\'s Hidden Ryokans', excerpt: 'Traditional inns that respect heritage' },
+        { type: 'journal-entry', title: 'Why I Stopped Flying Private', excerpt: 'A privileged perspective on climate impact' },
+        { type: 'local-review', title: 'Michelin vs. Street Food', excerpt: 'When expensive isn\'t better' },
+        { type: 'photo-essay', title: 'Craft Over Corporate', excerpt: 'Supporting artisan communities' }
       ]
     },
     {
       id: '4',
-      title: 'Halal Family Travel in Southeast Asia',
-      description: 'Discover halal-friendly destinations with mosque locations, prayer times, and family-appropriate activities.',
-      category: 'cultural',
-      tags: ['Halal', 'Family', 'Cultural Respect', 'Religious Sites'],
-      duration: '12-16 days',
-      priceRange: '$1500-2800',
-      imageUrl: '/lovable-uploads/9f082fcd-2f60-40ba-a703-582f95955704.png',
-      difficulty: 'Easy',
+      title: 'Neurodivergent Nomads',
+      subtitle: 'Travel guides for different brains',
+      description: 'Sensory-friendly destinations, routine-flexible itineraries, and real advice from travelers who think differently.',
+      coverImage: '/lovable-uploads/5f342a0e-24bf-4a28-ba1c-e6c7aed09f67.png',
+      editor: {
+        name: 'Dr. Sam Taylor',
+        avatar: '/lovable-uploads/40732476-5f3d-426e-b486-daf165370855.png',
+        bio: 'Autism researcher & travel enthusiast',
+        followers: 6700,
+        verified: true
+      },
+      tags: ['Neurodivergent', 'Sensory-Friendly', 'Accessibility', 'Family Travel'],
+      contentCount: 14,
+      followers: 5400,
       rating: 4.9,
-      tripCount: 756,
-      situations: [
-        'Finding nearby mosques for prayer',
-        'Halal restaurant verification',
-        'Modest dress code guidance',
-        'Family-friendly Islamic cultural sites'
+      lastUpdated: '1 week ago',
+      featured: false,
+      contents: [
+        { type: 'trip-blueprint', title: 'Tokyo for Sensory Seekers', excerpt: 'Structured chaos that actually works' },
+        { type: 'journal-entry', title: 'Meltdown in Milan', excerpt: 'When travel plans go wrong (and that\'s okay)' },
+        { type: 'local-review', title: 'Autism-Friendly Airlines', excerpt: 'Who actually gets it right' },
+        { type: 'photo-essay', title: 'Stimming in Stunning Places', excerpt: 'Finding comfort in beautiful spaces' }
       ]
     },
     {
       id: '5',
-      title: 'Single Parent Adventures in Costa Rica',
-      description: 'Manageable adventures for single parents with age-appropriate activities and childcare support options.',
-      category: 'family',
-      tags: ['Single Parent', 'Adventure', 'Kid-Friendly', 'Support Network'],
-      duration: '7-10 days',
-      priceRange: '$1200-2200',
-      imageUrl: '/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png',
-      difficulty: 'Moderate',
+      title: 'Single Parents Escape Club',
+      subtitle: 'Adventures that work with real life',
+      description: 'Realistic travel plans for parents doing it solo - with backup plans, kid-friendly logistics, and sanity-saving tips.',
+      coverImage: '/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png',
+      editor: {
+        name: 'Rachel Morrison',
+        avatar: '/lovable-uploads/c19085d5-4229-450c-8c8c-aa391d6902a5.png',
+        bio: 'Single mom of 2, reformed perfectionist',
+        followers: 8200,
+        verified: false
+      },
+      tags: ['Single Parent', 'Family Travel', 'Budget-Friendly', 'Realistic Planning'],
+      contentCount: 11,
+      followers: 6100,
       rating: 4.6,
-      tripCount: 623,
-      situations: [
-        'Supervised kids clubs during activities',
-        'Single-parent group tour options',
-        'Age-appropriate adventure levels',
-        'Emergency childcare arrangements'
+      lastUpdated: '3 days ago',
+      featured: false,
+      contents: [
+        { type: 'trip-blueprint', title: 'Costa Rica with Kids (Solo)', excerpt: 'Adventure that won\'t break you or the bank' },
+        { type: 'journal-entry', title: 'Airport Crying is Normal', excerpt: 'When travel gets overwhelming' },
+        { type: 'local-review', title: 'Kid Clubs That Actually Help', excerpt: 'Where parents can actually relax' },
+        { type: 'photo-essay', title: 'Bedtime Stories from Bali', excerpt: 'Making memories in chaos' }
       ]
     },
     {
       id: '6',
-      title: 'Anxiety-Friendly Iceland',
-      description: 'Low-stress travel with predictable schedules, small groups, and mental health-conscious planning.',
-      category: 'neurodivergent',
-      tags: ['Mental Health', 'Small Groups', 'Nature Therapy', 'Flexible Itinerary'],
-      duration: '5-8 days',
-      priceRange: '$1800-2800',
-      imageUrl: '/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png',
-      difficulty: 'Easy',
+      title: 'Accessible Adventures',
+      subtitle: 'The world is for everyone',
+      description: 'Wheelchair-accessible wonders, mobility-friendly routes, and destinations that welcome all bodies with genuine inclusivity.',
+      coverImage: '/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png',
+      editor: {
+        name: 'Marcus Williams',
+        avatar: '/lovable-uploads/42f30823-7039-463f-8b34-fa31699595d9.png',
+        bio: 'Adaptive sports athlete, accessibility consultant',
+        followers: 11300,
+        verified: true
+      },
+      tags: ['Accessibility', 'Inclusive Travel', 'Universal Design', 'Adventure'],
+      contentCount: 16,
+      followers: 8700,
       rating: 4.8,
-      tripCount: 345,
-      situations: [
-        'Quiet nature activities for overwhelm',
-        'Flexible schedule for bad mental health days',
-        'Small group tours under 8 people',
-        'Hotels with 24/7 support services'
+      lastUpdated: '5 days ago',
+      featured: false,
+      contents: [
+        { type: 'trip-blueprint', title: 'European Art Cities by Wheelchair', excerpt: 'Culture without barriers' },
+        { type: 'journal-entry', title: 'The Bathroom Situation', excerpt: 'Let\'s talk about what really matters' },
+        { type: 'local-review', title: 'Hotels That Get It Right', excerpt: 'Beyond just ramps and elevators' },
+        { type: 'photo-essay', title: 'Rolling Through Rome', excerpt: 'Ancient streets, modern access' }
       ]
     }
   ];
 
-  const filteredTrips = selectedCategory === 'all' 
-    ? curatedTrips 
-    : curatedTrips.filter(trip => trip.category === selectedCategory);
+  const filteredZines = travelZines.filter(zine => {
+    const matchesFilter = selectedFilter === 'all' || 
+      (selectedFilter === 'featured' && zine.featured) ||
+      (selectedFilter === 'trending' && zine.rating >= 4.8) ||
+      (selectedFilter === 'new' && zine.lastUpdated.includes('day')) ||
+      (selectedFilter === 'popular' && zine.followers > 8000);
+    
+    const matchesSearch = searchQuery === '' || 
+      zine.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      zine.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      zine.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+    
+    return matchesFilter && matchesSearch;
+  });
 
-  const handleTripClick = (trip: CuratedTrip) => {
-    const query = `${trip.title} - curated trip`;
+  const handleZineClick = (zine: Zine) => {
+    const query = `${zine.title} zine - ${zine.subtitle}`;
     navigate(`/trip-results?q=${encodeURIComponent(query)}`);
-  };
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch(difficulty) {
-      case 'Easy': return 'text-green-600 bg-green-100';
-      case 'Moderate': return 'text-yellow-600 bg-yellow-100';
-      case 'Challenging': return 'text-red-600 bg-red-100';
-      default: return 'text-muted-foreground bg-muted';
-    }
   };
 
   return (
@@ -189,140 +243,51 @@ const CuratedTrips = () => {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-6">
-            <Sparkles className="w-4 h-4" />
-            <span className="text-sm font-medium">Someone Gets You</span>
+            <BookOpen className="w-4 h-4" />
+            <span className="text-sm font-medium">Trip Zines</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Travel Made for Your Reality
+            Niche Travel Magazines
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Real trips planned by people who understand your specific challenges, needs, and limitations. 
-            Because everyone deserves to explore the world, regardless of their circumstances.
+            Thoughtfully curated travel collections by real people with real stories. Each zine is a deep dive into specific travel experiences, complete with blueprints, honest reviews, and personal insights.
           </p>
+          
+          {/* Search Bar */}
+          <div className="max-w-md mx-auto mt-8 relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+            <input
+              type="text"
+              placeholder="Search zines, topics, or editors..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-border/50 bg-card/50 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+            />
+          </div>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap gap-3 mb-8 justify-center">
-          {categories.map((category) => {
-            const Icon = category.icon;
-            return (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                  selectedCategory === category.id
-                    ? 'bg-primary text-primary-foreground shadow-lg'
-                    : 'bg-card/50 text-muted-foreground hover:bg-card hover:text-foreground border border-border/50'
-                }`}
-              >
-                <Icon className="w-4 h-4" />
-                {category.label}
-              </button>
-            );
-          })}
+        {/* Filters */}
+        <div className="mb-8">
+          <ZineFilters selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
         </div>
 
-        {/* Trip Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredTrips.map((trip) => (
-            <div
-              key={trip.id}
-              onClick={() => handleTripClick(trip)}
-              className="group cursor-pointer"
-            >
-              <div 
-                className="rounded-2xl border border-border/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30"
-                style={{ background: 'var(--gradient-card)' }}
-              >
-                {/* Image */}
-                <div 
-                  className="h-48 bg-cover bg-center relative"
-                  style={{ backgroundImage: `url(${trip.imageUrl})` }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(trip.difficulty)}`}>
-                      {trip.difficulty}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <div className="flex items-center gap-4 text-sm">
-                      <div className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
-                        {trip.duration}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Users className="w-4 h-4" />
-                        {trip.tripCount.toLocaleString()}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
-                        {trip.title}
-                      </h3>
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="flex items-center gap-1">
-                          <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                          <span className="text-sm font-medium text-foreground">{trip.rating}</span>
-                        </div>
-                        <span className="text-muted-foreground text-sm">•</span>
-                        <span className="text-sm font-medium text-primary">{trip.priceRange}</span>
-                      </div>
-                    </div>
-                    <button className="p-2 hover:bg-muted/50 rounded-lg transition-colors opacity-0 group-hover:opacity-100">
-                      <Heart className="w-4 h-4 text-muted-foreground" />
-                    </button>
-                  </div>
-
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                    {trip.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {trip.tags.slice(0, 3).map((tag, index) => (
-                      <span 
-                        key={index}
-                        className="px-2 py-1 bg-muted/50 text-muted-foreground text-xs rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                    {trip.tags.length > 3 && (
-                      <span className="px-2 py-1 bg-muted/50 text-muted-foreground text-xs rounded-full">
-                        +{trip.tags.length - 3} more
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Situations Preview */}
-                  <div className="border-t border-border/30 pt-4">
-                    <h4 className="text-sm font-medium text-foreground mb-2">Addresses:</h4>
-                    <ul className="space-y-1">
-                      {trip.situations.slice(0, 2).map((situation, index) => (
-                        <li key={index} className="text-xs text-muted-foreground flex items-center gap-2">
-                          <div className="w-1 h-1 bg-primary rounded-full" />
-                          {situation}
-                        </li>
-                      ))}
-                      {trip.situations.length > 2 && (
-                        <li className="text-xs text-primary font-medium">
-                          +{trip.situations.length - 2} more situations covered
-                        </li>
-                      )}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Zines Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredZines.map((zine) => (
+            <ZineCard key={zine.id} zine={zine} onZineClick={handleZineClick} />
           ))}
         </div>
+
+        {/* Empty State */}
+        {filteredZines.length === 0 && (
+          <div className="text-center py-16">
+            <BookOpen className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
+            <h3 className="text-xl font-semibold text-foreground mb-2">No Zines Found</h3>
+            <p className="text-muted-foreground">
+              Try adjusting your search or filter to discover more travel zines.
+            </p>
+          </div>
+        )}
 
         {/* Call to Action */}
         <div className="text-center mt-16">
@@ -331,17 +296,27 @@ const CuratedTrips = () => {
             style={{ background: 'var(--gradient-card)' }}
           >
             <h3 className="text-2xl font-bold text-foreground mb-4">
-              Don't See Your Situation?
+              Want to Create Your Own Zine?
             </h3>
             <p className="text-muted-foreground mb-6 max-w-md">
-              Tell us about your specific needs and we'll create a personalized trip that works for your unique circumstances.
+              Have a unique travel perspective or niche expertise? Pitch your zine idea and start curating for our community.
             </p>
-            <button 
-              onClick={() => navigate('/chat')}
-              className="px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors"
-            >
-              Create Custom Trip
-            </button>
+            <div className="flex gap-4 justify-center">
+              <button 
+                onClick={() => navigate('/chat')}
+                className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors"
+              >
+                <PlusCircle className="w-4 h-4" />
+                Pitch a Zine
+              </button>
+              <button 
+                onClick={() => navigate('/chat')}
+                className="flex items-center gap-2 px-6 py-3 bg-card/50 text-foreground border border-border/50 rounded-xl font-semibold hover:bg-card transition-colors"
+              >
+                <Search className="w-4 h-4" />
+                Custom Trip
+              </button>
+            </div>
           </div>
         </div>
       </div>
