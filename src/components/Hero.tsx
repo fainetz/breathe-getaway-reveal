@@ -126,10 +126,6 @@ const Hero = () => {
           {/* Mobile menu button - hidden since we have horizontal nav */}
           <div className="md:hidden"></div>
 
-          {/* Centered nav bubble - moved down */}
-          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 top-16">
-            <MiniCurvedNav isIntegrated={true} />
-          </div>
 
           {/* Desktop navigation - keep original position */}
           <div className="hidden md:flex items-center space-x-8">
