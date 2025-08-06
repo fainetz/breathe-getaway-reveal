@@ -192,17 +192,18 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
         {/* Compact minimal carousel */}
         <div className="relative flex items-center w-80 h-10 overflow-hidden">
           
-          {/* Minimal glass bubble */}
+          {/* Adaptive glass bubble - visible in both modes */}
           <div 
-            className="absolute left-1/2 transform -translate-x-1/2 px-6 py-2 rounded-full pointer-events-none z-10"
+            className="absolute left-1/2 transform -translate-x-1/2 px-6 py-2 rounded-full pointer-events-none z-10 border"
             style={{
-              background: 'rgba(255, 255, 255, 0.2)',
+              background: 'rgba(0, 0, 0, 0.08)',
               backdropFilter: 'blur(15px)',
               WebkitBackdropFilter: 'blur(15px)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
+              borderColor: 'rgba(0, 0, 0, 0.12)',
               borderRadius: '20px',
               minWidth: '110px',
               height: '36px',
+              boxShadow: '0 2px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
             }}
           />
 
