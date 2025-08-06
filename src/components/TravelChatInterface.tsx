@@ -680,7 +680,7 @@ const fetchUnsplashImage = async (query: string): Promise<string | null> => {
             {/* Desktop Destinations Panel */}
             {!isMobile && (
               <div className={`${isChatMinimized ? 'flex-1' : 'w-2/3'} transition-all duration-300 ease-out bg-white/5 backdrop-blur-xl flex flex-col overflow-hidden`}>
-                <div className="p-8 border-b border-white/20">
+                <div className="p-8 pt-20 border-b border-white/20 text-center">
                   <h2 className="text-2xl font-bold text-white mb-2">Available Flights</h2>
                   <p className="text-white/70">Flight recommendations based on your conversation</p>
                 </div>
