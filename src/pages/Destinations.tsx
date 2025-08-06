@@ -409,7 +409,7 @@ const Destinations = () => {
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="w-full h-full bg-muted"></div>
+                      <div className="w-full h-full bg-card"></div>
                     )}
                   </div>
                   
@@ -477,7 +477,7 @@ const Destinations = () => {
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       ) : (
-                        <div className="w-full h-full bg-muted"></div>
+                        <div className="w-full h-full bg-card"></div>
                       )}
                     </div>
                     
@@ -647,14 +647,14 @@ const Destinations = () => {
                                 
                                 {/* Mood & Tags */}
                                 <div className="space-y-2">
-                                  <div className="inline-flex items-center gap-2 bg-muted/50 rounded-full px-3 py-1">
+                                  <div className="inline-flex items-center gap-2 bg-card/50 rounded-full px-3 py-1">
                                     <Heart className="w-3 h-3 text-primary" />
                                     <span className="text-xs font-medium text-foreground">{destination.mood}</span>
                                   </div>
                                   
                                   <div className="flex flex-wrap gap-1">
                                     {destination.tags.slice(0, 2).map((tag, tagIndex) => (
-                                      <div key={tagIndex} className="bg-muted/30 rounded-md px-2 py-1">
+                                      <div key={tagIndex} className="bg-card/30 rounded-md px-2 py-1">
                                         <span className="text-xs text-muted-foreground">{tag}</span>
                                       </div>
                                     ))}

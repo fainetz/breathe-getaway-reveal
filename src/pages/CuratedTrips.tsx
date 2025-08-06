@@ -229,7 +229,7 @@ const CuratedTrips = () => {
           <div className="flex items-center gap-4">
             <button 
               onClick={() => navigate('/')}
-              className="p-2 hover:bg-muted/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
+              className="p-2 hover:bg-card/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
@@ -241,35 +241,35 @@ const CuratedTrips = () => {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4 py-6">
         {/* Hero Section */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-6">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-4">
             <BookOpen className="w-4 h-4" />
             <span className="text-sm font-medium">Trip Zines</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
             Niche Travel Magazines
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Thoughtfully curated travel collections by real people with real stories. Each zine is a deep dive into specific travel experiences, complete with blueprints, honest reviews, and personal insights.
           </p>
           
           {/* Search Bar */}
-          <div className="max-w-md mx-auto mt-8 relative">
+          <div className="max-w-md mx-auto mt-6 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <input
               type="text"
               placeholder="Search zines, topics, or editors..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-border/50 bg-card/50 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-border/50 bg-card text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
             />
           </div>
         </div>
 
         {/* Filters */}
-        <div className="mb-8">
+        <div className="mb-6">
           <ZineFilters selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
         </div>
 

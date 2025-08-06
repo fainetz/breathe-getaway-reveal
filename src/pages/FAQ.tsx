@@ -65,7 +65,7 @@ const FAQ = () => {
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-muted/50 backdrop-blur-sm border border-border rounded-full px-4 py-2 text-sm font-medium mb-8">
+          <div className="inline-flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border rounded-full px-4 py-2 text-sm font-medium mb-8">
             <div className="w-1.5 h-1.5 bg-foreground/60 rounded-full"></div>
             <span className="text-foreground/80">Growing Fast</span>
           </div>
