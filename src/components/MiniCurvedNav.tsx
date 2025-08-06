@@ -162,7 +162,7 @@ const MiniCurvedNav = () => {
   const visibleItems = getVisibleItems();
 
   return (
-    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-30">
+    <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-30">
       <div 
         ref={navRef}
         className={`relative flex items-center gap-1 backdrop-blur-lg rounded-full px-3 py-2 shadow-lg cursor-grab select-none ${isDragging ? 'cursor-grabbing' : ''}`}
