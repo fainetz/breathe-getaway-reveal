@@ -50,9 +50,9 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background pt-20">
+    <div className="min-h-screen bg-background pt-24">
       {/* Elegant Back Button */}
-      <div className="fixed top-24 left-6 z-40">
+      <div className="fixed top-28 left-6 z-40">
         <Link 
           to="/" 
           className="group flex items-center gap-3 bg-background/95 backdrop-blur-xl border border-border rounded-2xl px-6 py-4 text-sm font-medium text-foreground hover:bg-accent transition-all duration-300 shadow-lg hover:shadow-xl"

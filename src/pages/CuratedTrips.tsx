@@ -220,9 +220,9 @@ const CuratedTrips = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-20">
+    <div className="min-h-screen bg-background pt-24">
       {/* Header */}
-      <div className="sticky top-20 z-40 backdrop-blur-xl border-b border-border/50 bg-background/90">
+      <div className="sticky top-16 z-40 backdrop-blur-xl border-b border-border/50 bg-background/90">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
             <button 

@@ -28,11 +28,11 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             {/* Mobile nav - overlay style */}
-            <div className="md:hidden fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
+            <div className="md:hidden fixed top-16 left-1/2 transform -translate-x-1/2 z-50">
               <MiniCurvedNav />
             </div>
             {/* Desktop nav - centered and always visible */}
-            <div className="hidden md:flex fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
+            <div className="hidden md:flex fixed top-16 left-1/2 transform -translate-x-1/2 z-50">
               <MiniCurvedNav isIntegrated={true} />
             </div>
             <Routes>
