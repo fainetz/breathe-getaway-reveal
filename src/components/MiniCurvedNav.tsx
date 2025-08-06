@@ -206,11 +206,11 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
             }}
           />
 
-          {/* Perfectly aligned sliding text */}
+          {/* Fixed sliding text with proper alignment */}
           <div 
             className="flex items-center space-x-8 transition-transform duration-700 ease-out relative z-20"
             style={{
-              transform: `translateX(${160 - activeIndex * 118}px)`, // Perfect centering: container center (160px) minus item spacing
+              transform: `translateX(${140 - activeIndex * 118}px)`, // Center calculation: bubble position - item offset
               transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
             }}
           >
