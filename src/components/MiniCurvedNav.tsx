@@ -32,6 +32,7 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const currentPath = location.pathname;
+  const isChatPage = currentPath === '/chat';
 
   // Update active index based on current path
   useEffect(() => {
@@ -196,15 +197,15 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
           <div 
             className="absolute left-1/2 transform -translate-x-1/2 px-5 py-2 rounded-full pointer-events-none z-10 border"
             style={{
-              background: 'rgba(0, 0, 0, 0.04)',
+              background: isChatPage ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.04)',
               backdropFilter: 'blur(15px)',
               WebkitBackdropFilter: 'blur(15px)',
-              borderColor: 'rgba(0, 0, 0, 0.08)',
+              borderColor: isChatPage ? 'rgba(255, 255, 255, 0.25)' : 'rgba(0, 0, 0, 0.08)',
               borderRadius: '20px',
               minWidth: '100px',
               width: 'fit-content',
               height: '36px',
-              boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
+              boxShadow: isChatPage ? '0 1px 8px rgba(0, 0, 0, 0.3)' : '0 1px 8px rgba(0, 0, 0, 0.04)',
             }}
           />
 
@@ -229,10 +230,16 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
                   onClick={() => handleNavigation(item.path, index)}
                   className={`relative px-4 py-2 text-xs font-semibold whitespace-nowrap transition-all duration-700 ease-out select-none min-w-[100px] flex items-center justify-center tracking-wide ${
                     isActive 
-                      ? 'text-foreground scale-105' 
+                      ? isChatPage 
+                        ? 'text-white scale-105' 
+                        : 'text-foreground scale-105'
                       : distance === 1 
-                        ? 'text-foreground/50 hover:text-foreground/70 scale-95 hover:scale-100' 
-                        : 'text-foreground/25 scale-90'
+                        ? isChatPage
+                          ? 'text-white/60 hover:text-white/80 scale-95 hover:scale-100'
+                          : 'text-foreground/50 hover:text-foreground/70 scale-95 hover:scale-100'
+                        : isChatPage
+                          ? 'text-white/30 scale-90'
+                          : 'text-foreground/25 scale-90'
                   }`}
                   style={{
                     transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -253,8 +260,12 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
               onClick={() => handleNavigation(navItems[index].path, index)}
               className={`w-1.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-125 ${
                 index === activeIndex 
-                  ? 'bg-primary/80 scale-125' 
-                  : 'bg-foreground/30 scale-75 hover:bg-foreground/50'
+                  ? isChatPage 
+                    ? 'bg-white/90 scale-125' 
+                    : 'bg-primary/80 scale-125'
+                  : isChatPage
+                    ? 'bg-white/40 scale-75 hover:bg-white/60'
+                    : 'bg-foreground/30 scale-75 hover:bg-foreground/50'
               }`}
             />
           ))}
