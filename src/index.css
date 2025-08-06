@@ -140,17 +140,25 @@ All colors MUST be HSL.
     min-height: 100dvh;
     margin: 0;
     padding: 0;
+    /* Safari mobile safe areas */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
 
   @media (max-width: 768px) {
     body {
-      padding-top: 20px; /* Minimal space for mobile mini nav only */
+      padding-top: max(env(safe-area-inset-top), 20px); /* Use safe area or minimum space for nav */
     }
   }
 
   #root {
     min-height: 100vh;
     min-height: 100dvh;
+    /* Ensure full viewport coverage including safe areas */
+    min-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    min-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
   }
 }
 
