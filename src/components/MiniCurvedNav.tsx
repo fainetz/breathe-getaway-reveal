@@ -189,34 +189,35 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
         onTouchEnd={handleTouchEnd}
         style={{ touchAction: 'pan-x' }}
       >
-        {/* Carousel container showing text sliding into fixed bubble */}
-        <div className="relative flex items-center w-96 overflow-hidden">
+        {/* Polished carousel container */}
+        <div className="relative flex items-center w-96 h-12 overflow-hidden">
           
-          {/* Fixed glass bubble in center - stays in place */}
+          {/* Enhanced glass bubble - fixed center position */}
           <div 
-            className="absolute left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-full shadow-lg pointer-events-none z-10"
+            className="absolute left-1/2 transform -translate-x-1/2 px-8 py-3 rounded-full shadow-xl pointer-events-none z-10"
             style={{
-              background: 'rgba(255, 255, 255, 0.12)',
-              backdropFilter: 'blur(8px)',
-              WebkitBackdropFilter: 'blur(8px)',
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1))',
+              backdropFilter: 'blur(20px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(20px) saturate(180%)',
               border: '1px solid rgba(255, 255, 255, 0.3)',
-              borderRadius: '24px',
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-              minWidth: '120px',
-              height: '44px',
+              borderRadius: '28px',
+              boxShadow: '0 8px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)',
+              minWidth: '140px',
+              height: '48px',
             }}
           />
 
-          {/* Sliding carousel of text that moves into the bubble */}
+          {/* Smooth sliding text carousel */}
           <div 
-            className="flex items-center space-x-8 transition-transform duration-500 ease-out"
+            className="flex items-center space-x-10 transition-transform duration-700 ease-out relative z-20"
             style={{
-              transform: `translateX(${-activeIndex * 128 + 138}px)`, // Slide text so active item centers in bubble
-              transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+              transform: `translateX(${-activeIndex * 140 + 148}px)`, // Perfectly center active text in bubble
+              transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
             }}
           >
             {navItems.map((item, index) => {
               const isActive = index === activeIndex;
+              const distance = Math.abs(index - activeIndex);
               
               return (
                 <button
@@ -225,13 +226,16 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
                     if (el && isActive) itemRefs.current[activeIndex] = el;
                   }}
                   onClick={() => handleNavigation(item.path, index)}
-                  className={`relative px-6 py-3 text-sm font-semibold whitespace-nowrap transition-all duration-500 ease-out select-none min-w-[120px] flex items-center justify-center ${
+                  className={`relative px-8 py-3 text-sm font-bold whitespace-nowrap transition-all duration-700 ease-out select-none min-w-[140px] flex items-center justify-center tracking-wide ${
                     isActive 
-                      ? 'text-primary-foreground z-20 scale-105' 
-                      : 'text-foreground/50 hover:text-foreground/80 hover:scale-102'
+                      ? 'text-primary-foreground scale-110 drop-shadow-lg' 
+                      : distance === 1 
+                        ? 'text-foreground/60 hover:text-foreground/80 scale-95 hover:scale-100' 
+                        : 'text-foreground/30 scale-90'
                   }`}
                   style={{
-                    transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+                    transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    filter: isActive ? 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' : 'none',
                   }}
                 >
                   {item.label}
