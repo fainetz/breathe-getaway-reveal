@@ -37,6 +37,13 @@ const RouteLogger = () => {
     if (location.search.includes('error') || location.search.includes('auth')) {
       console.warn('Possible auth-related URL detected:', location.search);
     }
+    
+    // Track if there's an unexpected redirect happening
+    if (location.pathname !== '/' && !location.state && location.search.includes('error')) {
+      console.error('Unexpected redirect detected - possible auth error causing redirect');
+      console.error('Current path:', location.pathname);
+      console.error('Search params:', location.search);
+    }
   }, [location]);
   
   return null;
@@ -44,6 +51,38 @@ const RouteLogger = () => {
 
 const App = () => {
   console.log('App component rendering');
+  
+  useEffect(() => {
+    // Check for any global redirects or authentication issues
+    console.log('App mounted - checking for global navigation issues');
+    
+    // Override window navigation to catch automatic redirects
+    const originalPushState = window.history.pushState;
+    const originalReplaceState = window.history.replaceState;
+    
+    window.history.pushState = function(...args) {
+      console.log('History pushState called with:', args);
+      return originalPushState.apply(this, args);
+    };
+    
+    window.history.replaceState = function(...args) {
+      console.log('History replaceState called with:', args);
+      return originalReplaceState.apply(this, args);
+    };
+    
+    // Listen for popstate events
+    const handlePopState = (event: PopStateEvent) => {
+      console.log('PopState event:', event);
+    };
+    
+    window.addEventListener('popstate', handlePopState);
+    
+    return () => {
+      window.history.pushState = originalPushState;
+      window.history.replaceState = originalReplaceState;
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
   
   return (
     <ErrorBoundary>

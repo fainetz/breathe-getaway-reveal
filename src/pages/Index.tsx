@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
 import WaitlistSection from '../components/WaitlistSection';
@@ -18,6 +18,57 @@ const Index = () => {
   const navigate = useNavigate();
   const [hasChatHistory, setHasChatHistory] = useState(false);
   const [showFlightAI, setShowFlightAI] = useState(false);
+
+  useEffect(() => {
+    console.log('Index component mounted - checking for redirects');
+    
+    // Check if any component is trying to navigate
+    const checkForRedirects = () => {
+      console.log('Current URL:', window.location.href);
+      console.log('Current pathname:', window.location.pathname);
+      
+      // Check for any authentication errors in URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const hasError = urlParams.get('error');
+      const hasAuth = urlParams.get('auth');
+      
+      if (hasError) {
+        console.error('URL contains error parameter:', hasError);
+      }
+      if (hasAuth) {
+        console.log('URL contains auth parameter:', hasAuth);
+      }
+      
+      // Check localStorage for any redirect flags
+      const storedRedirect = localStorage.getItem('redirect');
+      const storedAuth = localStorage.getItem('auth');
+      if (storedRedirect) {
+        console.log('Found stored redirect:', storedRedirect);
+      }
+      if (storedAuth) {
+        console.log('Found stored auth:', storedAuth);
+      }
+    };
+    
+    checkForRedirects();
+    
+    // Set up an interval to catch any delayed redirects
+    const interval = setInterval(() => {
+      if (window.location.pathname !== '/') {
+        console.log('Detected automatic redirect to:', window.location.pathname);
+        clearInterval(interval);
+      }
+    }, 100);
+    
+    // Clean up interval after 5 seconds
+    setTimeout(() => {
+      clearInterval(interval);
+    }, 5000);
+    
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   const handleSearchSubmit = (query: string) => {
     console.log('Search submitted:', query);
