@@ -194,14 +194,14 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
           
           {/* Glass bubble that follows the active item */}
           <div 
-            className="absolute px-6 py-3 backdrop-blur-md rounded-full shadow-lg pointer-events-none z-10 transition-all duration-500 ease-out"
+            className="absolute px-6 py-3 rounded-full shadow-lg pointer-events-none z-0 transition-all duration-500 ease-out"
             style={{
-              background: 'rgba(255, 255, 255, 0.15)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              border: '1px solid rgba(255, 255, 255, 0.25)',
+              background: 'rgba(255, 255, 255, 0.12)',
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
               borderRadius: '24px',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
               minWidth: '120px',
               height: '44px',
               left: `${32 + (activeIndex % 3) * 128}px`, // Position bubble over active item
