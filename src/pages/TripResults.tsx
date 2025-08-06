@@ -456,69 +456,63 @@ const TripResults = () => {
             </div>
           </div>
 
-          {/* Hidden Gems - Compact List */}
-          <div 
-            className="rounded-xl border border-border transition-all duration-200 hover:shadow-[var(--shadow-soft)]"
-            style={{ background: 'var(--gradient-card)' }}
-          >
-            <div className="p-4 border-b border-border/50">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-accent/10">
-                  <Eye className="w-4 h-4 text-accent" />
-                </div>
-                <h4 className="font-semibold text-foreground">Hidden Gems</h4>
-              </div>
-            </div>
-            
-            <div className="divide-y divide-border/30">
-              {results.hiddenGems.map((gem, index) => (
-                <div 
-                  key={index}
-                  className="group/gem p-3 hover:bg-muted/30 cursor-pointer transition-colors"
-                  onClick={() => togglePromptBox(`gem-${index}`)}
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h5 className="font-medium text-foreground">{gem.name}</h5>
+          {/* Individual Hidden Gem Panels */}
+          {results.hiddenGems.map((gem, index) => (
+            <div 
+              key={index}
+              className="group/gem rounded-xl border border-border transition-all duration-200 hover:shadow-[var(--shadow-soft)]"
+              style={{ background: 'var(--gradient-card)' }}
+            >
+              <div className="p-4 cursor-pointer" onClick={() => togglePromptBox(`gem-${index}`)}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-accent/10">
+                      <Eye className="w-4 h-4 text-accent" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h4 className="font-semibold text-foreground">{gem.name}</h4>
                         <span className="text-xs px-2 py-0.5 bg-accent/10 text-accent rounded font-medium">{gem.type}</span>
                       </div>
-                      <p className="text-xs text-muted-foreground mb-1">{gem.description}</p>
-                      <p className="text-xs text-muted-foreground/80">💡 {gem.insider_tip}</p>
+                      <p className="text-xs text-muted-foreground">{gem.description}</p>
+                      <p className="text-xs text-muted-foreground/70 mt-1">💡 {gem.insider_tip}</p>
                     </div>
-                    <Edit className="w-3 h-3 text-muted-foreground opacity-0 group-hover/gem:opacity-100 transition-opacity ml-3 mt-1" />
                   </div>
-                  
-                  {showPromptBox[`gem-${index}`] && (
-                    <div className="mt-3 pt-3 border-t border-border/30 animate-in slide-in-from-top-2 duration-200" onClick={(e) => e.stopPropagation()}>
-                      <div className="flex gap-2">
-                        <Textarea
-                          value={prompts[`gem-${index}`] || ''}
-                          onChange={(e) => updatePrompt(`gem-${index}`, e.target.value)}
-                          placeholder="Different type? More adventurous?"
-                          className="resize-none text-sm flex-1 border-border/50 rounded-lg"
-                          rows={1}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter' && !e.shiftKey) {
-                              e.preventDefault();
-                              handleInlinePromptSubmit(`gem-${index}`);
-                            }
-                          }}
-                        />
-                        <button
-                          onClick={() => handleInlinePromptSubmit(`gem-${index}`)}
-                          disabled={!prompts[`gem-${index}`]?.trim() || submittingPrompts[`gem-${index}`]}
-                          className="p-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50"
-                        >
-                          <Send className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </div>
-                  )}
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-muted-foreground font-medium">Hidden Gem</span>
+                    <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/gem:opacity-100 transition-opacity" />
+                  </div>
                 </div>
-              ))}
+              </div>
+              
+              {showPromptBox[`gem-${index}`] && (
+                <div className="px-4 pb-4 border-t border-border/50 animate-in slide-in-from-top-2 duration-200">
+                  <div className="pt-3 flex gap-2">
+                    <Textarea
+                      value={prompts[`gem-${index}`] || ''}
+                      onChange={(e) => updatePrompt(`gem-${index}`, e.target.value)}
+                      placeholder="Different type? More adventurous? Food focused?"
+                      className="resize-none text-sm flex-1 border-border/50 rounded-lg"
+                      rows={1}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          handleInlinePromptSubmit(`gem-${index}`);
+                        }
+                      }}
+                    />
+                    <button
+                      onClick={() => handleInlinePromptSubmit(`gem-${index}`)}
+                      disabled={!prompts[`gem-${index}`]?.trim() || submittingPrompts[`gem-${index}`]}
+                      className="p-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50"
+                    >
+                      <Send className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
+          ))}
 
         </div>
       </div>
