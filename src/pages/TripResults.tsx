@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Edit, Plane, Hotel, MapPin, Star, Heart, Send, Sparkles, Eye } from 'lucide-react';
+import { ArrowLeft, Edit, Plane, Hotel, MapPin, Star, Heart, Send, Sparkles, Eye, Loader2 } from 'lucide-react';
 import { Textarea } from '../components/ui/textarea';
+import { usePanelUpdates } from '../hooks/usePanelUpdates';
 
 interface TripResults {
   prompt: string;
@@ -50,8 +51,9 @@ const TripResults = () => {
   const [results, setResults] = useState<TripResults | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [prompts, setPrompts] = useState<{[key: string]: string}>({});
-  const [submittingPrompts, setSubmittingPrompts] = useState<{[key: string]: boolean}>({});
   const [showPromptBox, setShowPromptBox] = useState<{[key: string]: boolean}>({});
+  
+  const { panelStates, updatePanel } = usePanelUpdates(results);
 
   const query = searchParams.get('q') || '';
 
@@ -144,20 +146,15 @@ const TripResults = () => {
 
   const handleInlinePromptSubmit = async (componentType: string) => {
     const prompt = prompts[componentType];
-    if (!prompt?.trim() || submittingPrompts[componentType]) return;
+    if (!prompt?.trim() || panelStates[componentType]?.isLoading) return;
     
-    setSubmittingPrompts(prev => ({ ...prev, [componentType]: true }));
-    
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    console.log(`Updating ${componentType} with prompt: ${prompt}`);
-    
-    setPrompts(prev => ({ ...prev, [componentType]: '' }));
-    setSubmittingPrompts(prev => ({ ...prev, [componentType]: false }));
-    setShowPromptBox(prev => ({ ...prev, [componentType]: false }));
-    
-    const newQuery = `${prompt} - modify ${componentType}`;
-    navigate(`/trip-results?q=${encodeURIComponent(newQuery)}`);
+    try {
+      await updatePanel(componentType, prompt);
+      setPrompts(prev => ({ ...prev, [componentType]: '' }));
+      setShowPromptBox(prev => ({ ...prev, [componentType]: false }));
+    } catch (error) {
+      console.error(`Failed to update ${componentType}:`, error);
+    }
   };
 
   const updatePrompt = (componentType: string, value: string) => {
@@ -285,18 +282,28 @@ const TripResults = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-primary/10">
-                    <Plane className="w-4 h-4 text-primary" />
+                    {panelStates.flight?.isLoading ? (
+                      <Loader2 className="w-4 h-4 text-primary animate-spin" />
+                    ) : (
+                      <Plane className="w-4 h-4 text-primary" />
+                    )}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h4 className="font-semibold text-foreground">Flights</h4>
-                      <span className="text-sm text-muted-foreground">{results.flight.route}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {panelStates.flight?.data?.route || results.flight.route}
+                      </span>
                     </div>
-                    <p className="text-xs text-muted-foreground">{results.flight.schedule}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {panelStates.flight?.data?.schedule || results.flight.schedule}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-lg font-semibold text-foreground">{results.flight.price}</span>
+                  <span className="text-lg font-semibold text-foreground">
+                    {panelStates.flight?.data?.price || results.flight.price}
+                  </span>
                   <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
                 </div>
               </div>
@@ -320,10 +327,14 @@ const TripResults = () => {
                   />
                   <button
                     onClick={() => handleInlinePromptSubmit('flight')}
-                    disabled={!prompts.flight?.trim() || submittingPrompts.flight}
+                    disabled={!prompts.flight?.trim() || panelStates.flight?.isLoading}
                     className="p-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50"
                   >
-                    <Send className="w-4 h-4" />
+                    {panelStates.flight?.isLoading ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
                   </button>
                 </div>
               </div>
@@ -339,22 +350,34 @@ const TripResults = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-accent/10">
-                    <Hotel className="w-4 h-4 text-accent" />
+                    {panelStates.hotel?.isLoading ? (
+                      <Loader2 className="w-4 h-4 text-accent animate-spin" />
+                    ) : (
+                      <Hotel className="w-4 h-4 text-accent" />
+                    )}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h4 className="font-semibold text-foreground">Hotel</h4>
-                      <span className="text-sm text-muted-foreground">{results.hotel.name}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {panelStates.hotel?.data?.name || results.hotel.name}
+                      </span>
                       <div className="flex items-center gap-1">
                         <Star className="w-3 h-3 fill-accent text-accent" />
-                        <span className="text-xs text-muted-foreground">{results.hotel.rating}</span>
+                        <span className="text-xs text-muted-foreground">
+                          {panelStates.hotel?.data?.rating || results.hotel.rating}
+                        </span>
                       </div>
                     </div>
-                    <p className="text-xs text-muted-foreground">{results.hotel.description}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {panelStates.hotel?.data?.description || results.hotel.description}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-lg font-semibold text-foreground">{results.hotel.price}</span>
+                  <span className="text-lg font-semibold text-foreground">
+                    {panelStates.hotel?.data?.price || results.hotel.price}
+                  </span>
                   <Edit className="w-4 h-4 text-muted-foreground opacity-0 group-hover/component:opacity-100 transition-opacity" />
                 </div>
               </div>
@@ -378,10 +401,14 @@ const TripResults = () => {
                   />
                   <button
                     onClick={() => handleInlinePromptSubmit('hotel')}
-                    disabled={!prompts.hotel?.trim() || submittingPrompts.hotel}
+                    disabled={!prompts.hotel?.trim() || panelStates.hotel?.isLoading}
                     className="p-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50"
                   >
-                    <Send className="w-4 h-4" />
+                    {panelStates.hotel?.isLoading ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
                   </button>
                 </div>
               </div>
@@ -443,10 +470,14 @@ const TripResults = () => {
                         />
                         <button
                           onClick={() => handleInlinePromptSubmit(`activity-${index}`)}
-                          disabled={!prompts[`activity-${index}`]?.trim() || submittingPrompts[`activity-${index}`]}
+                          disabled={!prompts[`activity-${index}`]?.trim() || panelStates[`activity-${index}`]?.isLoading}
                           className="p-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/90 transition-colors disabled:opacity-50"
                         >
-                          <Send className="w-4 h-4" />
+                          {panelStates[`activity-${index}`]?.isLoading ? (
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                          ) : (
+                            <Send className="w-4 h-4" />
+                          )}
                         </button>
                       </div>
                     </div>
@@ -467,15 +498,27 @@ const TripResults = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-accent/10">
-                      <Eye className="w-4 h-4 text-accent" />
+                      {panelStates[`gem-${index}`]?.isLoading ? (
+                        <Loader2 className="w-4 h-4 text-accent animate-spin" />
+                      ) : (
+                        <Eye className="w-4 h-4 text-accent" />
+                      )}
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <h4 className="font-semibold text-foreground">{gem.name}</h4>
-                        <span className="text-xs px-2 py-0.5 bg-accent/10 text-accent rounded font-medium">{gem.type}</span>
+                        <h4 className="font-semibold text-foreground">
+                          {panelStates[`gem-${index}`]?.data?.name || gem.name}
+                        </h4>
+                        <span className="text-xs px-2 py-0.5 bg-accent/10 text-accent rounded font-medium">
+                          {panelStates[`gem-${index}`]?.data?.type || gem.type}
+                        </span>
                       </div>
-                      <p className="text-xs text-muted-foreground">{gem.description}</p>
-                      <p className="text-xs text-muted-foreground/70 mt-1">💡 {gem.insider_tip}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {panelStates[`gem-${index}`]?.data?.description || gem.description}
+                      </p>
+                      <p className="text-xs text-muted-foreground/70 mt-1">
+                        💡 {panelStates[`gem-${index}`]?.data?.insider_tip || gem.insider_tip}
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
@@ -503,10 +546,14 @@ const TripResults = () => {
                     />
                     <button
                       onClick={() => handleInlinePromptSubmit(`gem-${index}`)}
-                      disabled={!prompts[`gem-${index}`]?.trim() || submittingPrompts[`gem-${index}`]}
+                      disabled={!prompts[`gem-${index}`]?.trim() || panelStates[`gem-${index}`]?.isLoading}
                       className="p-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50"
                     >
-                      <Send className="w-4 h-4" />
+                      {panelStates[`gem-${index}`]?.isLoading ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <Send className="w-4 h-4" />
+                      )}
                     </button>
                   </div>
                 </div>
