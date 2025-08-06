@@ -18,6 +18,8 @@ const MiniCurvedNav = () => {
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
   const [indicatorStyle, setIndicatorStyle] = useState({});
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
   const navRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -49,58 +51,109 @@ const MiniCurvedNav = () => {
   }, [activeIndex]);
 
   const handleNavigation = (path: string, index: number) => {
+    if (isDragging) return;
     setActiveIndex(index);
     
     // Apple-like magnetic delay
     setTimeout(() => {
       navigate(path);
-    }, 80);
+    }, 60);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setDragStartX(e.clientX);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    
+    const dragDistance = e.clientX - dragStartX;
+    const threshold = 30;
+    
+    if (Math.abs(dragDistance) > threshold) {
+      const newIndex = dragDistance > 0 
+        ? Math.min(activeIndex + 1, navItems.length - 1)
+        : Math.max(activeIndex - 1, 0);
+      
+      if (newIndex !== activeIndex) {
+        setActiveIndex(newIndex);
+        setDragStartX(e.clientX);
+        setTimeout(() => {
+          navigate(navItems[newIndex].path);
+        }, 60);
+      }
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true);
+    setDragStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+    
+    const dragDistance = e.touches[0].clientX - dragStartX;
+    const threshold = 30;
+    
+    if (Math.abs(dragDistance) > threshold) {
+      const newIndex = dragDistance > 0 
+        ? Math.min(activeIndex + 1, navItems.length - 1)
+        : Math.max(activeIndex - 1, 0);
+      
+      if (newIndex !== activeIndex) {
+        setActiveIndex(newIndex);
+        setDragStartX(e.touches[0].clientX);
+        setTimeout(() => {
+          navigate(navItems[newIndex].path);
+        }, 60);
+      }
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
   };
 
   const getItemOpacity = (index: number) => {
     const distance = Math.abs(index - activeIndex);
     if (distance === 0) return 1;
-    if (distance === 1) return 0.7;
-    return 0.4;
-  };
-
-  const getItemScale = (index: number) => {
-    const distance = Math.abs(index - activeIndex);
-    if (distance === 0) return 1;
-    if (distance === 1) return 0.95;
-    return 0.9;
+    if (distance === 1) return 0.5;
+    return 0.25;
   };
 
   return (
-    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+    <div className="fixed top-3 left-1/2 transform -translate-x-1/2 z-30">
       <div 
         ref={navRef}
-        className="relative flex items-center gap-1 bg-background/80 backdrop-blur-xl border border-border/30 rounded-full px-2 py-1.5 shadow-lg"
+        className={`relative flex items-center gap-0.5 bg-background/70 backdrop-blur-lg border border-border/20 rounded-full px-1.5 py-1 shadow-sm cursor-grab ${isDragging ? 'cursor-grabbing' : ''}`}
         style={{
-          background: 'rgba(255, 255, 255, 0.1)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+          background: 'rgba(255, 255, 255, 0.08)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
         }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
-        {/* Sliding indicator background */}
+        {/* Sliding indicator */}
         <div
-          className="absolute top-1.5 bg-primary/20 dark:bg-primary/30 rounded-full transition-all duration-300 ease-out"
+          className="absolute top-1 bg-primary/80 rounded-full transition-all duration-200 ease-out"
           style={{
             ...indicatorStyle,
-            height: 'calc(100% - 12px)',
-            transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
-          }}
-        />
-        
-        {/* Active indicator pill */}
-        <div
-          className="absolute top-1.5 bg-primary rounded-full transition-all duration-300 ease-out"
-          style={{
-            ...indicatorStyle,
-            height: 'calc(100% - 12px)',
-            transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+            height: 'calc(100% - 8px)',
+            transitionTimingFunction: 'cubic-bezier(0.2, 0.0, 0.2, 1)',
           }}
         />
 
@@ -112,23 +165,36 @@ const MiniCurvedNav = () => {
               ref={(el) => (itemRefs.current[index] = el)}
               onClick={() => handleNavigation(item.path, index)}
               className={`
-                relative z-10 px-4 py-2 text-sm font-medium rounded-full
-                transition-all duration-300 ease-out
+                relative z-10 px-3 py-1.5 text-xs font-medium rounded-full
+                transition-all duration-200 ease-out select-none
                 ${isActive 
                   ? 'text-primary-foreground' 
-                  : 'text-foreground/70 hover:text-foreground'
+                  : 'text-foreground/60 hover:text-foreground/80'
                 }
               `}
               style={{
                 opacity: getItemOpacity(index),
-                transform: `scale(${getItemScale(index)})`,
-                transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+                transitionTimingFunction: 'cubic-bezier(0.2, 0.0, 0.2, 1)',
               }}
             >
               {item.label}
             </button>
           );
         })}
+        
+        {/* Subtle drag indicator dots */}
+        <div className="absolute -bottom-1.5 left-1/2 transform -translate-x-1/2 flex gap-1">
+          {navItems.map((_, index) => (
+            <div
+              key={index}
+              className={`w-1 h-1 rounded-full transition-all duration-200 ${
+                index === activeIndex 
+                  ? 'bg-primary/60 scale-110' 
+                  : 'bg-foreground/20 scale-75'
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
