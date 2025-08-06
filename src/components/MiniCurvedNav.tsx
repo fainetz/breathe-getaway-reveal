@@ -192,26 +192,26 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
         {/* Polished carousel container */}
         <div className="relative flex items-center w-96 h-12 overflow-hidden">
           
-          {/* Enhanced glass bubble - fixed center position */}
+          {/* Enhanced glass bubble - more visible on all backgrounds */}
           <div 
-            className="absolute left-1/2 transform -translate-x-1/2 px-8 py-3 rounded-full shadow-xl pointer-events-none z-10"
+            className="absolute left-1/2 transform -translate-x-1/2 px-8 py-3 rounded-full shadow-2xl pointer-events-none z-10"
             style={{
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1))',
-              backdropFilter: 'blur(20px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2))',
+              backdropFilter: 'blur(25px) saturate(200%)',
+              WebkitBackdropFilter: 'blur(25px) saturate(200%)',
+              border: '2px solid rgba(255, 255, 255, 0.5)',
               borderRadius: '28px',
-              boxShadow: '0 8px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)',
+              boxShadow: '0 12px 50px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.3)',
               minWidth: '140px',
               height: '48px',
             }}
           />
 
-          {/* Smooth sliding text carousel */}
+          {/* Smooth sliding text carousel - fixed alignment */}
           <div 
             className="flex items-center space-x-10 transition-transform duration-700 ease-out relative z-20"
             style={{
-              transform: `translateX(${-activeIndex * 140 + 148}px)`, // Perfectly center active text in bubble
+              transform: `translateX(${-activeIndex * 140 + 128}px)`, // Fixed alignment to center text perfectly
               transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
             }}
           >
@@ -228,14 +228,15 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
                   onClick={() => handleNavigation(item.path, index)}
                   className={`relative px-8 py-3 text-sm font-bold whitespace-nowrap transition-all duration-700 ease-out select-none min-w-[140px] flex items-center justify-center tracking-wide ${
                     isActive 
-                      ? 'text-primary-foreground scale-110 drop-shadow-lg' 
+                      ? 'text-foreground scale-110 drop-shadow-lg' 
                       : distance === 1 
                         ? 'text-foreground/60 hover:text-foreground/80 scale-95 hover:scale-100' 
                         : 'text-foreground/30 scale-90'
                   }`}
                   style={{
                     transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                    filter: isActive ? 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' : 'none',
+                    filter: isActive ? 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' : 'none',
+                    textShadow: isActive ? '0 1px 2px rgba(0,0,0,0.1)' : 'none',
                   }}
                 >
                   {item.label}
