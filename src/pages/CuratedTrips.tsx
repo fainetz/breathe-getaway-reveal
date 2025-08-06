@@ -220,9 +220,11 @@ const CuratedTrips = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-24">
+    <div className="min-h-screen bg-background text-foreground pt-24 overflow-x-hidden transition-colors duration-300">
       {/* Header */}
-      <div className="sticky top-16 z-40 backdrop-blur-xl border-b border-border/50 bg-background/90">
+      <div className="sticky top-16 z-40 backdrop-blur-xl border-b border-border/50 bg-background/90"
+        style={{ position: 'sticky' }}
+      >
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
             <button 
@@ -292,8 +294,7 @@ const CuratedTrips = () => {
         {/* Call to Action */}
         <div className="text-center mt-16">
           <div 
-            className="inline-block p-8 rounded-2xl border border-border/50"
-            style={{ background: 'var(--gradient-card)' }}
+            className="inline-block p-8 rounded-2xl border border-border/50 bg-card"
           >
             <h3 className="text-2xl font-bold text-foreground mb-4">
               Want to Create Your Own Zine?

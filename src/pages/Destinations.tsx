@@ -327,7 +327,7 @@ const Destinations = () => {
   const currentHero = featuredDestinations[heroIndex];
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden pt-24">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden pt-24 transition-colors duration-300">
       {/* Contemporary Floating Elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-primary/15 to-accent/10 rounded-full blur-3xl"></div>

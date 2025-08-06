@@ -50,7 +50,7 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background pt-24">
+    <div className="min-h-screen bg-background text-foreground pt-24 overflow-x-hidden transition-colors duration-300">
       {/* Elegant Back Button */}
       <div className="fixed top-28 left-6 z-40">
         <Link 
@@ -97,7 +97,7 @@ const FAQ = () => {
             {faqs.map((faq, index) => (
               <div 
                 key={index}
-                className="bg-muted/30 backdrop-blur-sm border border-border rounded-2xl p-8 hover:bg-muted/40 transition-all duration-300"
+                className="bg-card backdrop-blur-sm border border-border rounded-2xl p-8 hover:bg-card/80 transition-all duration-300"
               >
                 <h3 className="text-xl font-semibold text-foreground mb-4">
                   Q: {faq.question}
