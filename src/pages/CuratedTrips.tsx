@@ -221,8 +221,8 @@ const CuratedTrips = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden transition-colors duration-300">
-      {/* Header - Positioned below nav scroller */}
-      <div className="sticky top-20 md:top-24 z-30 backdrop-blur-xl border-b border-border/50 bg-background/95 safe-area-inset-top">
+      {/* Header - Positioned much higher to accommodate nav */}
+      <div className="sticky top-8 md:top-10 z-30 backdrop-blur-xl border-b border-border/50 bg-background/95 safe-area-inset-top">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-3">
           <div className="flex items-center gap-3 sm:gap-4">
             <button 
