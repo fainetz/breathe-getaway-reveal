@@ -51,8 +51,8 @@ const MobileMenu = () => {
                 </button>
               </div>
               <div className="text-[8px] text-primary-foreground">
-                <div className="font-semibold mb-0.5">Early dev! 👋</div>
-                <div className="opacity-90 leading-tight">Tap menu for feedback</div>
+                <div className="font-semibold mb-0.5">Very early dev! 🚧</div>
+                <div className="opacity-90 leading-tight">Suggest features & give feedback!</div>
               </div>
             </div>
             {/* Chat bubble tail pointing to menu button */}
