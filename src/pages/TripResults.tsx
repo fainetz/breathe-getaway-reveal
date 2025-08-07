@@ -447,7 +447,7 @@ const TripResults = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       {/* Header */}
-      <div className="sticky top-20 z-50 backdrop-blur-xl border-b border-border/20" style={{ background: 'hsl(var(--background) / 0.95)' }}>
+      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/20" style={{ background: 'hsl(var(--background) / 0.95)' }}>
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3">
           <button 
             onClick={handleBackClick}
@@ -462,7 +462,7 @@ const TripResults = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 pt-8 pb-6 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 pt-24 pb-6 sm:px-6 lg:px-8">
         {/* Desktop: Side-by-Side Layout with improved spacing */}
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
           {/* Main Content - Takes up 3 columns on desktop */}
