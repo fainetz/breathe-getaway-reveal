@@ -51,14 +51,15 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground pt-24 overflow-x-hidden transition-colors duration-300">
-      {/* Elegant Back Button */}
-      <div className="fixed top-28 left-6 z-40">
+      {/* Mobile Back Button - Top Left Corner */}
+      <div className="fixed top-4 left-4 z-50 md:top-28 md:left-6">
         <Link 
           to="/" 
-          className="group flex items-center gap-3 bg-background/95 backdrop-blur-xl border border-border rounded-2xl px-6 py-4 text-sm font-medium text-foreground hover:bg-accent transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="group flex items-center gap-2 md:gap-3 bg-background/95 backdrop-blur-xl border border-border rounded-2xl px-4 py-3 md:px-6 md:py-4 text-sm font-medium text-foreground hover:bg-accent transition-all duration-300 shadow-lg hover:shadow-xl"
         >
-          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
-          <span>Back to Home</span>
+          <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 group-hover:-translate-x-1 transition-transform duration-300" />
+          <span className="hidden sm:inline">Back to Home</span>
+          <span className="sm:hidden">Back</span>
         </Link>
       </div>
 
