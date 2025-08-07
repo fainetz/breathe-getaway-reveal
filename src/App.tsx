@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AuthProvider } from "./hooks/useAuth";
 import MiniCurvedNav from "./components/MiniCurvedNav";
+import MobileMenu from "./components/MobileMenu";
 import Index from "./pages/Index";
 import Destinations from "./pages/Destinations";
 import CuratedTrips from "./pages/CuratedTrips";
@@ -27,6 +28,9 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            {/* Mobile Menu - Always available */}
+            <MobileMenu />
+            
             {/* Mobile nav - positioned lower for better spacing */}
             <div className="md:hidden fixed top-2 left-1/2 transform -translate-x-1/2 z-[60]" style={{ position: 'fixed' }}>
               <MiniCurvedNav />
