@@ -95,7 +95,7 @@ const WaitlistSection = () => {
   };
 
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 bg-gradient-to-br from-gray-50/60 via-slate-50/60 to-stone-50/60 dark:from-slate-950/80 dark:via-gray-950/80 dark:to-slate-900/80 relative overflow-hidden">
+    <section className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 bg-gradient-to-br from-gray-50/60 via-slate-50/60 to-stone-50/60 dark:from-slate-950/80 dark:via-gray-950/80 dark:to-slate-900/80 relative overflow-hidden">
       {/* Subtle decorative background elements */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100/10 to-transparent dark:via-gray-800/5"></div>
       <div className="absolute top-0 left-1/4 w-32 h-32 bg-gray-200/20 dark:bg-gray-800/10 rounded-full blur-3xl"></div>
@@ -103,24 +103,24 @@ const WaitlistSection = () => {
       
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-foreground leading-tight px-2 sm:px-0">
             Experience What's <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">Coming Soon</span>
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4 sm:px-6 lg:px-0">
             Where intuitive AI transforms wanderlust into reality. Our intelligence curates luxury hotels, premium flights, and exclusive retreats that match your desires before you even know them.
           </p>
         </div>
 
         {/* Image Carousel and Waitlist Combined */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Left side - Image Carousel */}
-          <div className="relative">
+          <div className="relative order-2 lg:order-1">
             <div className="overflow-hidden rounded-2xl shadow-2xl" ref={emblaRef}>
               <div className="flex">
                 {carouselSlides.map((slide) => (
                   <div key={slide.id} className="flex-none w-full relative">
-                    <div className="relative h-[400px] sm:h-[500px] group">
+                    <div className="relative h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] group">
                       {/* Background Image */}
                       <img 
                         src={slide.image}
@@ -175,11 +175,11 @@ const WaitlistSection = () => {
           </div>
 
           {/* Right side - Waitlist Form */}
-          <div className="text-center lg:text-left">
-            <h3 className="text-3xl sm:text-4xl font-bold mb-6 text-foreground">
+          <div className="text-center lg:text-left order-1 lg:order-2">
+            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-foreground leading-tight">
               Join the <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">Waitlist</span>
             </h3>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0">
               Be among the first to experience AI that truly gets you. Early waitlist members receive grandfathered pricing on all premium features and exclusive access to beta destinations.
             </p>
             
@@ -208,27 +208,27 @@ const WaitlistSection = () => {
             </p>
 
             {/* Features Preview */}
-            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
               <div className="text-center">
-                <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <div className="w-6 h-6 bg-emerald-600 rounded-full"></div>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-emerald-600 rounded-full"></div>
                 </div>
-                <h4 className="font-semibold text-foreground mb-1">Hotels</h4>
-                <p className="text-sm text-muted-foreground">Luxury accommodations</p>
+                <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Hotels</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground">Luxury accommodations</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <div className="w-6 h-6 bg-blue-600 rounded-full"></div>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-blue-600 rounded-full"></div>
                 </div>
-                <h4 className="font-semibold text-foreground mb-1">Flights</h4>
-                <p className="text-sm text-muted-foreground">Premium travel options</p>
+                <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Flights</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground">Premium travel options</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <div className="w-6 h-6 bg-amber-600 rounded-full"></div>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-amber-600 rounded-full"></div>
                 </div>
-                <h4 className="font-semibold text-foreground mb-1">Retreats</h4>
-                <p className="text-sm text-muted-foreground">Exclusive getaways</p>
+                <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Retreats</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground">Exclusive getaways</p>
               </div>
             </div>
           </div>

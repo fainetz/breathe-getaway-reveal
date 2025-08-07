@@ -141,13 +141,13 @@ const Features = () => {
   }, []);
 
   return (
-    <section id="features" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden section-seamless transition-colors duration-300" ref={sectionRef}>
+    <section id="features" className="py-12 sm:py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden section-seamless transition-colors duration-300" ref={sectionRef}>
       <div className="max-w-7xl mx-auto">
-        <div className={`text-center mb-12 sm:mb-16 lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 text-black dark:text-white transition-colors duration-300 drop-shadow-lg px-4 sm:px-0 leading-tight">
+        <div className={`text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-black dark:text-white transition-colors duration-300 drop-shadow-lg px-2 sm:px-4 lg:px-0 leading-tight">
             Features for Every Traveler
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed transition-colors duration-300 px-4 sm:px-0">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed transition-colors duration-300 px-4 sm:px-6 lg:px-0">
             Budget-conscious? Seeking emotional healing? Want luxury without effort? Our AI adapts to your exact travel personality.
           </p>
         </div>
@@ -204,54 +204,54 @@ const Features = () => {
           </div>
         </div>
 
-        {/* Mobile/Tablet: Horizontal Scrolling Layout */}
+        {/* Mobile/Tablet: Improved Mobile Layout */}
         <div className="lg:hidden relative">
           {/* Left Arrow */}
           <button 
             onClick={scrollLeft}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-3 shadow-lg transition-all duration-300 ${
+            className={`absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 ${
               canScrollLeft ? 'opacity-100 hover:bg-white dark:hover:bg-white/30' : 'opacity-0 pointer-events-none'
             }`}
           >
-            <ChevronLeft className="w-5 h-5 text-black dark:text-white" />
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-black dark:text-white" />
           </button>
 
           {/* Right Arrow */}
           <button 
             onClick={scrollRight}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-3 shadow-lg transition-all duration-300 ${
+            className={`absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 ${
               canScrollRight ? 'opacity-100 hover:bg-white dark:hover:bg-white/30' : 'opacity-0 pointer-events-none'
             }`}
           >
-            <ChevronRight className="w-5 h-5 text-black dark:text-white" />
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-black dark:text-white" />
           </button>
 
-            <div 
+          <div 
             ref={mobileScrollRef}
-            className="overflow-x-auto pb-4 scrollbar-hide px-12 snap-x snap-mandatory"
+            className="overflow-x-auto pb-4 scrollbar-hide px-8 sm:px-12 snap-x snap-mandatory"
             onScroll={handleMobileScroll}
           >
-            <div className="flex gap-4 w-max">
+            <div className="flex gap-3 sm:gap-4 w-max">
               {features.map((feature, index) => (
-                <div key={index} className="w-80 flex-shrink-0 snap-start">
+                <div key={index} className="w-72 sm:w-80 flex-shrink-0 snap-start">
                   <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-                    <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98 h-full">
+                    <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-4 sm:p-6 md:p-8 transition-all duration-500 relative overflow-hidden shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98 h-full">
                       <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-30 group-active:opacity-40 transition-all duration-500`}></div>
                       
                       <div className="relative z-10">
-                        <div className={`w-14 h-14 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex items-center justify-center`}>
-                          <div className={`w-6 h-6 bg-white/30 rounded-md group-hover:bg-white/50 transition-colors duration-300`}></div>
+                        <div className={`w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r ${feature.gradient} rounded-xl mb-4 sm:mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex items-center justify-center`}>
+                          <div className={`w-5 h-5 sm:w-6 sm:h-6 bg-white/30 rounded-md group-hover:bg-white/50 transition-colors duration-300`}></div>
                         </div>
                         
-                        <h3 className="text-xl sm:text-2xl font-bold mb-4 text-black dark:text-white transition-all duration-300 drop-shadow-sm group-hover:translate-x-1">
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-black dark:text-white transition-all duration-300 drop-shadow-sm group-hover:translate-x-1 leading-tight">
                           {feature.title}
                         </h3>
                         
-                        <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-base sm:text-lg transition-all duration-300 group-hover:translate-x-1">
+                        <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-sm sm:text-base md:text-lg transition-all duration-300 group-hover:translate-x-1">
                           {feature.description}
                         </p>
                         
-                        <div className="mt-6 flex items-center space-x-1">
+                        <div className="mt-4 sm:mt-6 flex items-center space-x-1">
                           {Array.from({ length: 7 }).map((_, dotIndex) => (
                             <div 
                               key={dotIndex}

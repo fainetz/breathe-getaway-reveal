@@ -75,7 +75,7 @@ const EmotionalHooks = () => {
   }, [isVisible, examples.length]);
 
   return (
-    <section className="py-32 px-6 relative overflow-hidden bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-gray-900/30 dark:to-black transition-colors duration-300" ref={sectionRef}>
+    <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-gray-900/30 dark:to-black transition-colors duration-300" ref={sectionRef}>
       {/* Background with overlaid images */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
@@ -91,9 +91,9 @@ const EmotionalHooks = () => {
       </div>
       
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           <div className={`transition-all duration-1200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
-            <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight text-black dark:text-white transition-colors duration-300">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight text-black dark:text-white transition-colors duration-300 text-center lg:text-left">
               From Any Request
               <br />
               <span className="text-gray-700 dark:text-gray-300">
@@ -101,7 +101,7 @@ const EmotionalHooks = () => {
               </span>
             </h2>
             
-            <div className="space-y-8 relative h-80">
+            <div className="space-y-8 relative h-64 sm:h-72 md:h-80">
               {examples.map((example, index) => (
                 <div 
                   key={index}
@@ -111,8 +111,8 @@ const EmotionalHooks = () => {
                       : 'opacity-0 translate-y-4 scale-95 z-0'
                   }`}
                 >
-                  <div className="bg-white/80 dark:bg-white/20 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-2xl p-6 hover:bg-white/90 dark:hover:bg-white/30 transition-all duration-300 shadow-xl">
-                    <div className="flex items-center gap-2 mb-3">
+                  <div className="bg-white/80 dark:bg-white/20 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-2xl p-4 sm:p-6 hover:bg-white/90 dark:hover:bg-white/30 transition-all duration-300 shadow-xl touch-manipulation">
+                    <div className="flex items-center gap-2 mb-2 sm:mb-3">
                       <span className={`text-xs font-semibold px-2 py-1 rounded-full ${
                         example.persona === 'budget' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-200' :
                         example.persona === 'emotional' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200' :
@@ -122,8 +122,8 @@ const EmotionalHooks = () => {
                          example.persona === 'emotional' ? 'Wellness Trip' : 'Premium Trip'}
                       </span>
                     </div>
-                    <p className="text-lg text-gray-700 dark:text-gray-100 italic mb-2 transition-colors duration-300">"{example.quote}"</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 font-medium transition-colors duration-300">→ {example.destination}</p>
+                    <p className="text-base sm:text-lg text-gray-700 dark:text-gray-100 italic mb-2 transition-colors duration-300 leading-tight">"{example.quote}"</p>
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium transition-colors duration-300">→ {example.destination}</p>
                   </div>
                 </div>
               ))}
@@ -142,29 +142,29 @@ const EmotionalHooks = () => {
             </div>
           </div>
 
-          <div className={`space-y-8 transition-all duration-1200 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}>
-            <div className="bg-white/80 dark:bg-white/20 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-3xl p-8 group hover:bg-white/90 dark:hover:bg-white/30 transition-all duration-500 shadow-2xl hover:shadow-3xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+          <div className={`space-y-6 sm:space-y-8 transition-all duration-1200 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}>
+            <div className="bg-white/80 dark:bg-white/20 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 group hover:bg-white/90 dark:hover:bg-white/30 transition-all duration-500 shadow-2xl hover:shadow-3xl touch-manipulation">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl sm:rounded-3xl"></div>
               <div className="relative z-10">
-                <h3 className="text-3xl font-bold mb-6 text-black dark:text-white transition-colors duration-300">Beyond Booking</h3>
-                <p className="text-gray-700 dark:text-gray-100 text-lg leading-relaxed mb-6 transition-colors duration-300">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 text-black dark:text-white transition-colors duration-300 leading-tight">Beyond Booking</h3>
+                <p className="text-gray-700 dark:text-gray-100 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6 transition-colors duration-300">
                   We don't just find you flights and hotels. We interpret your emotions, understand your needs, and craft experiences that heal, inspire, and transform.
                 </p>
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse shadow-lg shadow-blue-500/50"></div>
+                <div className="flex items-center space-x-3 sm:space-x-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse shadow-lg shadow-blue-500/50 flex-shrink-0"></div>
                   <div>
-                    <p className="font-semibold text-black dark:text-white transition-colors duration-300">Soul-Curated</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-200 transition-colors duration-300">Every trip designed for your inner journey</p>
+                    <p className="font-semibold text-black dark:text-white transition-colors duration-300 text-sm sm:text-base">Soul-Curated</p>
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-200 transition-colors duration-300">Every trip designed for your inner journey</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/80 dark:bg-white/20 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-3xl p-8 group hover:bg-white/90 dark:hover:bg-white/30 transition-all duration-500 hover:scale-105 shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+            <div className="bg-white/80 dark:bg-white/20 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 group hover:bg-white/90 dark:hover:bg-white/30 transition-all duration-500 hover:scale-105 active:scale-95 shadow-2xl touch-manipulation">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl sm:rounded-3xl"></div>
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold mb-4 text-black dark:text-white transition-colors duration-300">Transformative Travel</h3>
-                <p className="text-gray-700 dark:text-gray-100 leading-relaxed transition-colors duration-300">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-black dark:text-white transition-colors duration-300 leading-tight">Transformative Travel</h3>
+                <p className="text-gray-700 dark:text-gray-100 leading-relaxed transition-colors duration-300 text-sm sm:text-base">
                   Return home not just with photos, but with a renewed sense of self and purpose.
                 </p>
               </div>
