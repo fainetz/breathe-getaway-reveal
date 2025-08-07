@@ -8,24 +8,24 @@ const DevelopmentBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-primary/90 to-accent/90 backdrop-blur-sm border-b border-primary/20">
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <Sparkles className="h-5 w-5 text-primary-foreground animate-pulse" />
-            <div className="text-sm text-primary-foreground">
-              <span className="font-semibold">We're developing exciting new features!</span>
-              <span className="ml-2 opacity-90">Playground around and give us your feedback</span>
-            </div>
+    <div className="fixed top-20 right-4 z-50 max-w-xs">
+      <div className="bg-gradient-to-br from-primary/90 to-accent/90 backdrop-blur-sm rounded-lg border border-primary/20 shadow-lg">
+        <div className="p-4">
+          <div className="flex items-start justify-between gap-2 mb-2">
+            <Sparkles className="h-4 w-4 text-primary-foreground animate-pulse mt-0.5 flex-shrink-0" />
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsVisible(false)}
+              className="text-primary-foreground hover:bg-white/10 h-6 w-6 p-0 -mt-1 -mr-1"
+            >
+              <X className="h-3 w-3" />
+            </Button>
           </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setIsVisible(false)}
-            className="text-primary-foreground hover:bg-white/10 h-8 w-8 p-0"
-          >
-            <X className="h-4 w-4" />
-          </Button>
+          <div className="text-xs text-primary-foreground">
+            <div className="font-semibold mb-1">We're developing!</div>
+            <div className="opacity-90 leading-relaxed">Playground around and give us your feedback</div>
+          </div>
         </div>
       </div>
     </div>
