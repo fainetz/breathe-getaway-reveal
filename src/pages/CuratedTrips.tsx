@@ -49,7 +49,7 @@ const CuratedTrips = () => {
       coverImage: '/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png',
       editor: {
         name: 'Rachel Morrison',
-        avatar: '/lovable-uploads/c19085d5-4229-450c-8c8c-aa391d6902a5.png',
+        avatar: '/lovable-uploads/d77c7114-7ceb-4de8-8302-8d8c17ae1c79.png',
         bio: 'Mom of twins, travel chaos coordinator',
         followers: 8200,
         verified: false
@@ -101,7 +101,7 @@ const CuratedTrips = () => {
       coverImage: '/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png',
       editor: {
         name: 'Maya Chen',
-        avatar: '/lovable-uploads/5935897b-1c16-4e4f-8a47-50073b06561d.png',
+        avatar: '/lovable-uploads/b375de54-3fb8-4756-b6a3-4368913122d6.png',
         bio: 'Introvert traveler, temple seeker',
         followers: 12400,
         verified: true
@@ -127,7 +127,7 @@ const CuratedTrips = () => {
       coverImage: '/lovable-uploads/5f342a0e-24bf-4a28-ba1c-e6c7aed09f67.png',
       editor: {
         name: 'Dr. Sam Taylor',
-        avatar: '/lovable-uploads/40732476-5f3d-426e-b486-daf165370855.png',
+        avatar: '/lovable-uploads/de9ac698-f095-4727-9365-8db574cbfca2.png',
         bio: 'Ex-tech worker, current nature enthusiast',
         followers: 6700,
         verified: true
@@ -153,7 +153,7 @@ const CuratedTrips = () => {
       coverImage: '/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png',
       editor: {
         name: 'Marcus Williams',
-        avatar: '/lovable-uploads/42f30823-7039-463f-8b34-fa31699595d9.png',
+        avatar: '/lovable-uploads/b496d712-6814-4b95-864d-dbb412ce5f43.png',
         bio: 'Wheelchair user, accessibility advocate',
         followers: 11300,
         verified: true
@@ -179,7 +179,7 @@ const CuratedTrips = () => {
       coverImage: '/lovable-uploads/9f082fcd-2f60-40ba-a703-582f95955704.png',
       editor: {
         name: 'Amina Hassan',
-        avatar: '/lovable-uploads/37d54649-724a-4949-a90c-e7ce7a18e976.png',
+        avatar: '/lovable-uploads/865b2ee3-3062-4d55-9354-b3f3dbbcef62.png',
         bio: 'Muslim travel blogger, cultural bridge-builder',
         followers: 9800,
         verified: true
