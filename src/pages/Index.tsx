@@ -12,7 +12,6 @@ import Footer from '../components/Footer';
 import FeatureRequestBox from '../components/FeatureRequestBox';
 import ExpandableSearch from '../components/ExpandableSearch';
 import BackToChatButton from '../components/BackToChatButton';
-import AIAssistantChat from '../components/AIAssistantChat';
 import DevelopmentBanner from '../components/DevelopmentBanner';
 
 const Index = () => {
@@ -53,8 +52,7 @@ const Index = () => {
       <Footer />
       <FeatureRequestBox />
       <ExpandableSearch onSearchSubmit={handleSearchSubmit} />
-      <AIAssistantChat onSearchSubmit={handleSearchSubmit} />
-      <BackToChatButton 
+      <BackToChatButton
         onBackToChat={handleBackToChat} 
         hasChatHistory={hasChatHistory} 
       />
