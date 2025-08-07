@@ -241,9 +241,9 @@ const CuratedTrips = () => {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 pt-6 pb-4">
+      <div className="max-w-6xl mx-auto px-4 pt-12 md:pt-6 pb-4">
         {/* Hero Section */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-6 mt-4 md:mt-0">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full mb-3">
             <BookOpen className="w-3 h-3" />
             <span className="text-xs font-medium">Trip Zines</span>
