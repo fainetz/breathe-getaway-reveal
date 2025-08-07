@@ -13,7 +13,6 @@ import FeatureRequestBox from '../components/FeatureRequestBox';
 import ExpandableSearch from '../components/ExpandableSearch';
 import BackToChatButton from '../components/BackToChatButton';
 import AIAssistantChat from '../components/AIAssistantChat';
-import MiniCurvedNav from '../components/MiniCurvedNav';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -57,7 +56,6 @@ const Index = () => {
         onBackToChat={handleBackToChat} 
         hasChatHistory={hasChatHistory} 
       />
-      <MiniCurvedNav />
     </div>
   );
 };
