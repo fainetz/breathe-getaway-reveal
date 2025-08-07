@@ -392,69 +392,38 @@ const TripResults = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 sm:py-8">
-        {/* Mobile-First Layout */}
-        <div className="space-y-6">
-          {/* Hero Image - Mobile Optimized */}
-          <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl">
-            <img 
-              src={getDestinationImages(query).hero} 
-              alt="Destination" 
-              className="w-full h-48 sm:h-64 object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
-              <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-6">
-                <h2 className="text-xl sm:text-3xl font-bold text-white mb-2">
-                  {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') 
-                    ? 'Iceland Digital Detox' 
-                    : 'Tulum Weekend'}
-                </h2>
-                <div className="flex items-center justify-between flex-wrap gap-2">
-                  <div className="flex items-center gap-2 text-white/90">
-                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                    <span className="text-sm">
-                      AI Optimized • {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '7 days' : '2 days'}
-                    </span>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-xl sm:text-2xl font-bold text-white">
-                      {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '$2,630' : '$600'}
+        {/* Desktop: Side-by-Side Layout, Mobile: Stacked */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Hero Image */}
+            <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl">
+              <img 
+                src={getDestinationImages(query).hero} 
+                alt="Destination" 
+                className="w-full h-48 sm:h-64 lg:h-72 object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
+                <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                  <h2 className="text-xl sm:text-3xl font-bold text-white mb-2">
+                    {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') 
+                      ? 'Iceland Digital Detox' 
+                      : 'Tulum Weekend'}
+                  </h2>
+                  <div className="flex items-center justify-between flex-wrap gap-2">
+                    <div className="flex items-center gap-2 text-white/90">
+                      <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                      <span className="text-sm">
+                        AI Optimized • {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '7 days' : '2 days'}
+                      </span>
                     </div>
-                    <div className="text-white/80 text-xs sm:text-sm">total</div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Trip Summary - Compact Design */}
-          <div className="backdrop-blur-md bg-card/60 border border-border/20 rounded-2xl p-4 shadow-lg">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-semibold text-foreground">Trip Summary</h3>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                AI Optimized
-              </div>
-            </div>
-            
-            <div className="flex items-center justify-between text-sm">
-              <div className="flex items-center gap-4">
-                <span className="text-muted-foreground">
-                  {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') 
-                    ? 'Reykjavik, Iceland • 7 days' 
-                    : 'Tulum, Mexico • 2 days'}
-                </span>
-              </div>
-              <div className="text-right">
-                <div className="text-lg font-bold text-foreground">
-                  {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '$2,630' : '$600'}
-                </div>
-                <div className="text-xs text-muted-foreground">total</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Trip Itinerary - Mobile Optimized */}
+            {/* Trip Itinerary */}
           <div className="space-y-4">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
@@ -666,6 +635,46 @@ const TripResults = () => {
 
           {/* Mobile Bottom Spacing */}
           <div className="h-6"></div>
+          </div>
+
+          {/* Sidebar with Trip Summary */}
+          <div className="space-y-6">
+            <div className="backdrop-blur-md bg-card/60 border border-border/20 rounded-2xl p-6 shadow-lg sticky top-24">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-foreground">Trip Summary</h3>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                  AI Optimized
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div>
+                  <div className="text-sm text-muted-foreground mb-1">Destination</div>
+                  <div className="font-medium">
+                    {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') 
+                      ? 'Reykjavik, Iceland' 
+                      : 'Tulum, Mexico'}
+                  </div>
+                </div>
+                
+                <div>
+                  <div className="text-sm text-muted-foreground mb-1">Duration</div>
+                  <div className="font-medium">
+                    {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '7 days' : '2 days'}
+                  </div>
+                </div>
+                
+                <div className="border-t pt-4">
+                  <div className="text-sm text-muted-foreground mb-1">Total Cost</div>
+                  <div className="text-2xl font-bold text-foreground">
+                    {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '$2,630' : '$600'}
+                  </div>
+                  <div className="text-xs text-muted-foreground">per person</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
