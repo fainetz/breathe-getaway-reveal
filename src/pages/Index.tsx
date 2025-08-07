@@ -13,6 +13,7 @@ import FeatureRequestBox from '../components/FeatureRequestBox';
 import ExpandableSearch from '../components/ExpandableSearch';
 import BackToChatButton from '../components/BackToChatButton';
 import AIAssistantChat from '../components/AIAssistantChat';
+import DevelopmentBanner from '../components/DevelopmentBanner';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen min-h-dvh bg-background text-foreground overflow-x-hidden transition-colors duration-300">
+      <DevelopmentBanner />
       <Hero />
       <div className="transition-hero-waitlist"></div>
       <WaitlistSection />
