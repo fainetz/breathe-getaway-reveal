@@ -28,7 +28,7 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             {/* Mobile nav - positioned lower for better spacing */}
-            <div className="md:hidden fixed top-4 left-1/2 transform -translate-x-1/2 z-[60]" style={{ position: 'fixed' }}>
+            <div className="md:hidden fixed top-2 left-1/2 transform -translate-x-1/2 z-[60]" style={{ position: 'fixed' }}>
               <MiniCurvedNav />
             </div>
             {/* Desktop nav - centered and always visible */}
