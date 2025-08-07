@@ -151,6 +151,76 @@ const TripResults = () => {
   const generateMockResults = (prompt: string): TripResults => {
     const isStressed = prompt.toLowerCase().includes('burnt out') || prompt.toLowerCase().includes('stressed');
     const isIcelandTrip = prompt.toLowerCase().includes('digital detox') && prompt.toLowerCase().includes('iceland');
+    const isBarcelonaFamily = prompt.toLowerCase().includes('barcelona') && prompt.toLowerCase().includes('toddler');
+    
+    if (isBarcelonaFamily) {
+      return {
+        prompt,
+        introText: "family adventure in barcelona designed for toddlers who love exploration and parents who deserve ease. everything planned, nothing forgotten.",
+        subText: "everything's editable. click anything to rework it with a fresh prompt.",
+        flight: {
+          route: "jfk → barcelona",
+          schedule: "friday 8:00pm — sunday return",
+          details: "direct · premium economy · delta airlines",
+          price: "$680",
+          suggestions: []
+        },
+        hotel: {
+          name: "hotel casa bonay",
+          rating: 4.7,
+          description: "family suites · playground · 10-min to park güell",
+          price: "$220/night",
+          imageUrl: "/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png",
+          suggestions: []
+        },
+        thingsToDo: [
+          {
+            title: "park güell morning magic",
+            description: "early access tour when toddlers are fresh, plus playground time",
+            time: "9:00 am",
+            icon: "sunrise"
+          },
+          {
+            title: "barcelona beach & picnic",
+            description: "family-friendly barceloneta with toddler play areas and easy food",
+            time: "12:00 pm",
+            icon: "swim"
+          },
+          {
+            title: "magic fountain show",
+            description: "evening water and light show that mesmerizes little ones",
+            time: "7:00 pm",
+            icon: "sparkles"
+          },
+          {
+            title: "early hotel rest",
+            description: "planned downtime for naps and family recharge",
+            time: "3:00 pm",
+            icon: "rest"
+          }
+        ],
+        hiddenGems: [
+          {
+            name: "parc de la ciutadella playground",
+            description: "massive playground with toddler swings and family picnic spots",
+            type: "family park",
+            insider_tip: "go tuesday mornings - local moms meet here and kids play together"
+          },
+          {
+            name: "mercat de sant antoni",
+            description: "covered market with toddler-friendly finger foods and high chairs",
+            type: "market",
+            insider_tip: "ask maria at the fruit stand - she gives free samples to kids"
+          },
+          {
+            name: "chocolate factory tour",
+            description: "hands-on chocolate making perfect for curious toddler hands",
+            type: "activity",
+            insider_tip: "book the 10am slot - naptime is built into the schedule afterward"
+          }
+        ]
+      };
+    }
     
     if (isIcelandTrip) {
       return {
@@ -335,7 +405,8 @@ const TripResults = () => {
       mountain: <MapPin className="w-4 h-4 text-slate-500" />,
       water: <MapPin className="w-4 h-4 text-blue-500" />,
       spa: <MapPin className="w-4 h-4 text-emerald-500" />,
-      aurora: <Sparkles className="w-4 h-4 text-purple-500" />
+      aurora: <Sparkles className="w-4 h-4 text-purple-500" />,
+      sparkles: <Sparkles className="w-4 h-4 text-yellow-500" />
     };
     return iconMap[iconType as keyof typeof iconMap] || <MapPin className="w-4 h-4 text-muted-foreground" />;
   };
@@ -375,7 +446,7 @@ const TripResults = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      {/* Mobile-Optimized Header */}
+      {/* Header */}
       <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/20" style={{ background: 'hsl(var(--background) / 0.95)' }}>
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3">
           <button 
@@ -391,287 +462,308 @@ const TripResults = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 sm:py-8">
-        {/* Desktop: Side-by-Side Layout, Mobile: Stacked */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Hero Image */}
-            <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl">
+      <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+        {/* Desktop: Side-by-Side Layout with improved spacing */}
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
+          {/* Main Content - Takes up 3 columns on desktop */}
+          <div className="xl:col-span-3 space-y-8">
+            {/* Hero Section with enhanced design */}
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl">
               <img 
                 src={getDestinationImages(query).hero} 
                 alt="Destination" 
-                className="w-full h-48 sm:h-64 lg:h-72 object-cover"
+                className="w-full h-64 sm:h-80 lg:h-96 object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
-                <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-6">
-                  <h2 className="text-xl sm:text-3xl font-bold text-white mb-2">
-                    {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') 
-                      ? 'Iceland Digital Detox' 
-                      : 'Tulum Weekend'}
-                  </h2>
-                  <div className="flex items-center justify-between flex-wrap gap-2">
-                    <div className="flex items-center gap-2 text-white/90">
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                      <span className="text-sm">
-                        AI Optimized • {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '7 days' : '2 days'}
-                      </span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              {/* Floating content overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+                <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-6 lg:p-8 shadow-xl">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white mb-2 leading-tight">
+                        {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') 
+                          ? 'Iceland Digital Detox' 
+                          : 'Barcelona Family Adventure'}
+                      </h1>
+                      <div className="flex items-center gap-3 text-white/90">
+                        <div className="flex items-center gap-2">
+                          <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                          <span className="text-sm font-medium">AI Optimized</span>
+                        </div>
+                        <span className="text-white/60">•</span>
+                        <span className="text-sm">
+                          {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '7 days' : '3-4 days'}
+                        </span>
+                      </div>
                     </div>
                   </div>
+                  
+                  <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                    {results?.introText}
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Trip Itinerary */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-white" />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground">Your Itinerary</h3>
-            </div>
-            
-            {/* Flight Item - Mobile Optimized */}
-            <div className="backdrop-blur-sm bg-card/80 border border-border/50 rounded-xl p-4 sm:p-6 group cursor-pointer hover:shadow-xl hover:bg-card/90 transition-all duration-300 touch-manipulation"
-                 onClick={() => togglePromptBox('flight')}>
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white shadow-lg flex-shrink-0">
-                  <Plane className="w-5 h-5 sm:w-6 sm:h-6" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-2 flex-wrap">
-                    <h4 className="text-base sm:text-lg font-semibold text-foreground">
-                      {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? 'Flight to Reykjavik' : 'Flight to Tulum'}
-                    </h4>
-                    <Edit className="w-4 h-4 text-blue-500 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <div className="space-y-1 sm:space-y-2 mb-3">
-                    <p className="text-sm sm:text-base text-muted-foreground font-medium">{results.flight.route} • {results.flight.schedule}</p>
-                    <p className="text-xs sm:text-sm text-muted-foreground">{results.flight.details}</p>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="text-lg sm:text-xl font-bold text-foreground">{results.flight.price}</div>
-                    <div className="text-xs text-blue-600 bg-blue-50 dark:bg-blue-950/30 px-2 py-1 rounded-full">
-                      Tap to edit
+            {/* Flight & Hotel Cards */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Flight Card */}
+              <div className="group relative backdrop-blur-md bg-card/80 border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-primary/10 rounded-xl">
+                      <Plane className="w-5 h-5 text-primary" />
                     </div>
+                    <h3 className="text-lg font-semibold text-foreground">Flight</h3>
                   </div>
-                </div>
-              </div>
-              {showPromptBox.flight && (
-                <div className="mt-4 pt-4 border-t border-border/50">
-                  <Textarea
-                    value={prompts.flight || ''}
-                    onChange={(e) => updatePrompt('flight', e.target.value)}
-                    placeholder="Different time? Upgrade class? Change airline?"
-                    className="w-full mb-3 bg-background/50 backdrop-blur-sm text-base"
-                    rows={3}
-                  />
-                  <button
-                    onClick={() => handleInlinePromptSubmit('flight')}
-                    disabled={panelStates.flight?.isLoading}
-                    className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-xl px-6 py-3 flex items-center justify-center gap-2 transition-colors disabled:opacity-50 font-medium touch-manipulation"
+                  <button 
+                    onClick={() => togglePromptBox('flight')}
+                    className="p-2 hover:bg-muted rounded-lg transition-colors opacity-0 group-hover:opacity-100"
                   >
-                    {panelStates.flight?.isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
-                    Update Flight
+                    <Edit className="w-4 h-4 text-muted-foreground" />
                   </button>
                 </div>
-              )}
-            </div>
+                
+                <div className="space-y-3">
+                  <div>
+                    <div className="text-xl font-bold text-foreground">{results?.flight?.route}</div>
+                    <div className="text-sm text-muted-foreground">{results?.flight?.schedule}</div>
+                  </div>
+                  <div className="text-sm text-muted-foreground">{results?.flight?.details}</div>
+                  <div className="flex items-center justify-between pt-2 border-t">
+                    <span className="text-2xl font-bold text-primary">{results?.flight?.price}</span>
+                    <span className="text-xs text-muted-foreground">per person</span>
+                  </div>
+                </div>
 
-            {/* Hotel Item - Mobile Optimized */}
-            <div className="backdrop-blur-sm bg-card/80 border border-border/50 rounded-xl p-4 sm:p-6 group cursor-pointer hover:shadow-xl hover:bg-card/90 transition-all duration-300 touch-manipulation"
-                 onClick={() => togglePromptBox('hotel')}>
-              {results.hotel.imageUrl ? (
-                // Image-focused layout for Iceland trip
-                <div className="space-y-4">
-                  <div className="relative rounded-xl overflow-hidden">
-                    <img 
-                      src={results.hotel.imageUrl} 
-                      alt={results.hotel.name}
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                    <div className="absolute top-3 right-3">
-                      <Edit className="w-4 h-4 text-white opacity-70 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h4 className="text-lg font-bold text-white mb-1">{results.hotel.name}</h4>
-                          <div className="flex items-center gap-2 mb-2">
-                            <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                            <span className="text-sm text-white/90">{results.hotel.rating} rating</span>
-                          </div>
-                          <p className="text-sm text-white/80">{results.hotel.description}</p>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-xl font-bold text-white">{results.hotel.price}</div>
-                          <div className="text-xs text-emerald-400 bg-emerald-950/30 px-2 py-1 rounded-full">
-                            Tap to edit
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                // Default panel layout for other trips
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white shadow-lg flex-shrink-0">
-                    <Hotel className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-2 flex-wrap">
-                      <h4 className="text-base sm:text-lg font-semibold text-foreground">Hotel Stay</h4>
-                      <Edit className="w-4 h-4 text-emerald-500 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity" />
-                    </div>
-                    <div className="space-y-1 sm:space-y-2 mb-3">
-                      <p className="text-sm sm:text-base text-muted-foreground font-medium">{results.hotel.name}</p>
-                      <div className="flex items-center gap-2">
-                        <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                        <span className="text-xs sm:text-sm text-muted-foreground">{results.hotel.rating} rating</span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-muted-foreground">{results.hotel.description}</p>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="text-lg sm:text-xl font-bold text-foreground">{results.hotel.price}</div>
-                      <div className="text-xs text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30 px-2 py-1 rounded-full">
-                        Tap to edit
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-              {showPromptBox.hotel && (
-                <div className="mt-4 pt-4 border-t border-border/50">
-                  <Textarea
-                    value={prompts.hotel || ''}
-                    onChange={(e) => updatePrompt('hotel', e.target.value)}
-                    placeholder="More luxury? Different location? Specific amenities?"
-                    className="w-full mb-3 bg-background/50 backdrop-blur-sm text-base"
-                    rows={3}
-                  />
-                  <button
-                    onClick={() => handleInlinePromptSubmit('hotel')}
-                    disabled={panelStates.hotel?.isLoading}
-                    className="w-full bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl px-6 py-3 flex items-center justify-center gap-2 transition-colors disabled:opacity-50 font-medium touch-manipulation"
-                  >
-                    {panelStates.hotel?.isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
-                    Update Hotel
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* Activities List - Mobile Optimized */}
-            {results.thingsToDo.map((activity, index) => (
-              <div key={index} className="backdrop-blur-sm bg-card/80 border border-border/50 rounded-xl p-4 sm:p-6 group cursor-pointer hover:shadow-xl hover:bg-card/90 transition-all duration-300 touch-manipulation"
-                   onClick={() => togglePromptBox(`activity-${index}`)}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white shadow-lg flex-shrink-0">
-                    {getActivityIcon(activity.icon)}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-2 flex-wrap">
-                      <h4 className="text-base sm:text-lg font-semibold text-foreground">{activity.title}</h4>
-                      <span className="text-xs text-muted-foreground bg-muted/60 px-2 py-1 rounded-full font-medium">
-                        {activity.time}
-                      </span>
-                      <Edit className="w-4 h-4 text-purple-500 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity" />
-                    </div>
-                    <p className="text-sm sm:text-base text-muted-foreground mb-3">{activity.description}</p>
-                    <div className="text-xs text-purple-600 bg-purple-50 dark:bg-purple-950/30 px-2 py-1 rounded-full w-fit">
-                      Tap to customize
-                    </div>
-                  </div>
-                </div>
-                {showPromptBox[`activity-${index}`] && (
-                  <div className="mt-4 pt-4 border-t border-border/50">
+                {showPromptBox.flight && (
+                  <div className="mt-4 p-4 bg-muted/50 rounded-xl border-2 border-dashed border-border">
                     <Textarea
-                      value={prompts[`activity-${index}`] || ''}
-                      onChange={(e) => updatePrompt(`activity-${index}`, e.target.value)}
-                      placeholder="Change time? Different activity? More/less active?"
-                      className="w-full mb-3 bg-background/50 backdrop-blur-sm text-base"
-                      rows={3}
+                      placeholder="Adjust flight preferences..."
+                      value={prompts.flight || ''}
+                      onChange={(e) => updatePrompt('flight', e.target.value)}
+                      className="resize-none border-0 bg-transparent focus:ring-0 text-sm"
+                      rows={2}
                     />
-                    <button
-                      onClick={() => handleInlinePromptSubmit(`activity-${index}`)}
-                      disabled={panelStates[`activity-${index}`]?.isLoading}
-                      className="w-full bg-purple-500 hover:bg-purple-600 text-white rounded-xl px-6 py-3 flex items-center justify-center gap-2 transition-colors disabled:opacity-50 font-medium touch-manipulation"
-                    >
-                      {panelStates[`activity-${index}`]?.isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
-                      Update Activity
-                    </button>
+                    <div className="flex gap-2 mt-2">
+                      <button
+                        onClick={() => handleInlinePromptSubmit('flight')}
+                        disabled={panelStates.flight?.isLoading}
+                        className="flex items-center gap-2 px-3 py-1.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
+                      >
+                        {panelStates.flight?.isLoading ? (
+                          <Loader2 className="w-3 h-3 animate-spin" />
+                        ) : (
+                          <Send className="w-3 h-3" />
+                        )}
+                        Update
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
-            ))}
-          </div>
 
-          {/* Hidden Gems - Mobile Optimized */}
-          <div className="backdrop-blur-md bg-card/70 border border-border/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center shadow-lg">
-                <Eye className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-foreground">Hidden Gems</h3>
-            </div>
-            
-            <div className="space-y-6">
-              {results.hiddenGems.map((gem, index) => (
-                <div key={index} className="border-b border-border/30 last:border-b-0 pb-6 last:pb-0">
-                  <h4 className="font-semibold text-foreground mb-2 text-base sm:text-lg">{gem.name}</h4>
-                  <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{gem.description}</p>
-                  <div className="backdrop-blur-sm bg-amber-50/80 dark:bg-amber-950/40 border border-amber-200/50 dark:border-amber-800/50 rounded-xl p-3">
-                    <p className="text-sm text-amber-700 dark:text-amber-300 font-medium">
-                      💡 {gem.insider_tip}
-                    </p>
+              {/* Hotel Card */}
+              <div className="group relative backdrop-blur-md bg-card/80 border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-primary/10 rounded-xl">
+                      <Hotel className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground">Hotel</h3>
+                  </div>
+                  <button 
+                    onClick={() => togglePromptBox('hotel')}
+                    className="p-2 hover:bg-muted rounded-lg transition-colors opacity-0 group-hover:opacity-100"
+                  >
+                    <Edit className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                </div>
+                
+                <div className="space-y-3">
+                  <div>
+                    <div className="text-xl font-bold text-foreground">{results?.hotel?.name}</div>
+                    <div className="flex items-center gap-2 mb-1">
+                      {[...Array(Math.floor(results?.hotel?.rating || 0))].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      ))}
+                      <span className="text-sm text-muted-foreground">({results?.hotel?.rating})</span>
+                    </div>
+                  </div>
+                  <div className="text-sm text-muted-foreground">{results?.hotel?.description}</div>
+                  <div className="flex items-center justify-between pt-2 border-t">
+                    <span className="text-2xl font-bold text-primary">{results?.hotel?.price}</span>
+                    <span className="text-xs text-muted-foreground">per night</span>
                   </div>
                 </div>
-              ))}
+
+                {showPromptBox.hotel && (
+                  <div className="mt-4 p-4 bg-muted/50 rounded-xl border-2 border-dashed border-border">
+                    <Textarea
+                      placeholder="Adjust hotel preferences..."
+                      value={prompts.hotel || ''}
+                      onChange={(e) => updatePrompt('hotel', e.target.value)}
+                      className="resize-none border-0 bg-transparent focus:ring-0 text-sm"
+                      rows={2}
+                    />
+                    <div className="flex gap-2 mt-2">
+                      <button
+                        onClick={() => handleInlinePromptSubmit('hotel')}
+                        disabled={panelStates.hotel?.isLoading}
+                        className="flex items-center gap-2 px-3 py-1.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
+                      >
+                        {panelStates.hotel?.isLoading ? (
+                          <Loader2 className="w-3 h-3 animate-spin" />
+                        ) : (
+                          <Send className="w-3 h-3" />
+                        )}
+                        Update
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
 
-          {/* Mobile Bottom Spacing */}
-          <div className="h-6"></div>
-          </div>
-
-          {/* Sidebar with Trip Summary */}
-          <div className="space-y-6">
-            <div className="backdrop-blur-md bg-card/60 border border-border/20 rounded-2xl p-6 shadow-lg sticky top-24">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-foreground">Trip Summary</h3>
+            {/* Daily Itinerary */}
+            <div className="backdrop-blur-md bg-card/60 border border-border/50 rounded-2xl p-6 lg:p-8 shadow-lg">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-foreground">Daily Itinerary</h3>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                  AI Optimized
+                  <Eye className="w-4 h-4" />
+                  <span>Personalized for you</span>
                 </div>
               </div>
               
-              <div className="space-y-4">
+              <div className="grid gap-4">
+                {results?.thingsToDo?.map((activity, index) => (
+                  <div key={index} className="group flex gap-4 p-4 hover:bg-muted/50 rounded-xl transition-colors">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center">
+                        {getActivityIcon(activity.icon)}
+                      </div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between mb-2">
+                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                          {activity.title}
+                        </h4>
+                        <span className="text-sm text-muted-foreground whitespace-nowrap ml-4">
+                          {activity.time}
+                        </span>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {activity.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Hidden Gems */}
+            <div className="backdrop-blur-md bg-card/60 border border-border/50 rounded-2xl p-6 lg:p-8 shadow-lg">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-xl">
+                  <Sparkles className="w-5 h-5 text-amber-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-foreground">Hidden Gems</h3>
+              </div>
+              
+              <div className="grid gap-6">
+                {results?.hiddenGems?.map((gem, index) => (
+                  <div key={index} className="group p-4 border border-border/50 rounded-xl hover:border-primary/30 hover:bg-primary/5 transition-all duration-300">
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <h4 className="font-semibold text-foreground text-lg group-hover:text-primary transition-colors">
+                          {gem.name}
+                        </h4>
+                        <span className="inline-block px-2 py-1 bg-secondary/80 text-secondary-foreground text-xs rounded-lg mt-1">
+                          {gem.type}
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground mb-3 leading-relaxed">
+                      {gem.description}
+                    </p>
+                    <div className="p-3 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/30 rounded-lg">
+                      <div className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-sm text-amber-700 dark:text-amber-300 font-medium">
+                          <span className="font-semibold">Insider tip:</span> {gem.insider_tip}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Enhanced Sidebar */}
+          <div className="xl:col-span-1 space-y-6">
+            {/* Trip Summary Card */}
+            <div className="backdrop-blur-md bg-card/80 border border-border/50 rounded-2xl p-6 shadow-lg sticky top-24">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-primary/10 rounded-xl">
+                  <MapPin className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground">Trip Summary</h3>
+              </div>
+              
+              <div className="space-y-6">
                 <div>
-                  <div className="text-sm text-muted-foreground mb-1">Destination</div>
-                  <div className="font-medium">
+                  <div className="text-sm text-muted-foreground mb-2">Destination</div>
+                  <div className="font-semibold text-lg">
                     {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') 
                       ? 'Reykjavik, Iceland' 
-                      : 'Tulum, Mexico'}
+                      : 'Barcelona, Spain'}
                   </div>
                 </div>
                 
                 <div>
-                  <div className="text-sm text-muted-foreground mb-1">Duration</div>
-                  <div className="font-medium">
-                    {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '7 days' : '2 days'}
+                  <div className="text-sm text-muted-foreground mb-2">Duration</div>
+                  <div className="font-semibold">
+                    {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '7 days' : '3-4 days'}
                   </div>
+                </div>
+                
+                <div>
+                  <div className="text-sm text-muted-foreground mb-2">Travelers</div>
+                  <div className="font-semibold">Family with toddlers</div>
                 </div>
                 
                 <div className="border-t pt-4">
-                  <div className="text-sm text-muted-foreground mb-1">Total Cost</div>
-                  <div className="text-2xl font-bold text-foreground">
-                    {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '$2,630' : '$600'}
+                  <div className="text-sm text-muted-foreground mb-2">Estimated Total</div>
+                  <div className="text-3xl font-bold text-primary mb-1">
+                    {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '$2,630' : '$1,200'}
                   </div>
                   <div className="text-xs text-muted-foreground">per person</div>
                 </div>
+
+                <button className="w-full bg-primary text-primary-foreground py-3 rounded-xl font-semibold hover:bg-primary/90 transition-colors shadow-lg">
+                  Book This Trip
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="backdrop-blur-md bg-card/60 border border-border/50 rounded-2xl p-6 shadow-lg">
+              <h4 className="font-semibold text-foreground mb-4">Quick Actions</h4>
+              <div className="space-y-3">
+                <button className="w-full p-3 text-left hover:bg-muted/50 rounded-lg transition-colors flex items-center gap-3">
+                  <Heart className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-sm">Save Trip</span>
+                </button>
+                <button className="w-full p-3 text-left hover:bg-muted/50 rounded-lg transition-colors flex items-center gap-3">
+                  <Send className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-sm">Share Trip</span>
+                </button>
+                <button className="w-full p-3 text-left hover:bg-muted/50 rounded-lg transition-colors flex items-center gap-3">
+                  <Edit className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-sm">Customize</span>
+                </button>
               </div>
             </div>
           </div>
