@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, Sun, Moon, User, UserPlus } from 'lucide-react';
+import { User, Sun, Moon, X } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Link } from 'react-router-dom';
 
@@ -12,21 +12,29 @@ const MobileMenu = () => {
 
   return (
     <>
-      {/* Hamburger Menu Button - Top Right */}
-      <div className="fixed top-4 right-4 z-[70] md:hidden">
+      {/* Floating Action Button Style - Bottom Right */}
+      <div className="fixed bottom-6 right-6 z-[70] md:hidden">
         <button
           onClick={toggleMenu}
-          className="p-3 bg-background/80 backdrop-blur-xl border border-border/40 rounded-2xl text-foreground hover:bg-muted/50 transition-all duration-300 shadow-lg"
+          className={`w-14 h-14 rounded-full shadow-2xl transition-all duration-300 transform ${
+            isOpen 
+              ? 'bg-primary text-primary-foreground rotate-45 scale-110' 
+              : 'bg-background/90 text-foreground hover:scale-105 backdrop-blur-xl border border-border/40'
+          }`}
         >
           {isOpen ? (
-            <X className="w-5 h-5" />
+            <X className="w-6 h-6 mx-auto" />
           ) : (
-            <Menu className="w-5 h-5" />
+            <div className="space-y-1 mx-auto">
+              <div className="w-5 h-0.5 bg-current rounded"></div>
+              <div className="w-3 h-0.5 bg-current rounded ml-auto"></div>
+              <div className="w-4 h-0.5 bg-current rounded ml-auto"></div>
+            </div>
           )}
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Radial Menu Options */}
       {isOpen && (
         <>
           {/* Backdrop */}
@@ -35,55 +43,53 @@ const MobileMenu = () => {
             onClick={closeMenu}
           />
           
-          {/* Menu Panel */}
-          <div className="fixed top-20 right-4 z-[66] md:hidden">
-            <div className="bg-background/95 backdrop-blur-xl border border-border/40 rounded-3xl shadow-2xl p-6 min-w-[200px]">
-              <div className="space-y-4">
-                {/* Login/Signup Section */}
-                <div className="space-y-3">
-                  <Link
-                    to="/auth"
-                    onClick={closeMenu}
-                    className="flex items-center gap-3 p-3 rounded-2xl text-foreground hover:bg-muted/50 transition-all duration-300"
-                  >
-                    <User className="w-5 h-5" />
-                    <span className="font-medium">Login</span>
-                  </Link>
-                  
-                  <Link
-                    to="/auth?mode=signup"
-                    onClick={closeMenu}
-                    className="flex items-center gap-3 p-3 rounded-2xl text-foreground hover:bg-muted/50 transition-all duration-300"
-                  >
-                    <UserPlus className="w-5 h-5" />
-                    <span className="font-medium">Sign Up</span>
-                  </Link>
-                </div>
+          {/* Floating Menu Items */}
+          <div className="fixed bottom-6 right-6 z-[66] md:hidden">
+            {/* Login/Signup Button */}
+            <div 
+              className="absolute -top-20 -right-2 transform transition-all duration-300 ease-out opacity-0 animate-in slide-in-from-bottom-4 fade-in duration-300"
+              style={{ 
+                animationDelay: isOpen ? '100ms' : '0ms',
+                animationFillMode: 'forwards'
+              }}
+            >
+              <Link
+                to="/auth"
+                onClick={closeMenu}
+                className="flex items-center gap-3 bg-background/95 backdrop-blur-xl border border-border/40 rounded-2xl px-4 py-3 text-foreground hover:bg-primary/10 transition-all duration-300 shadow-lg min-w-[140px]"
+              >
+                <User className="w-5 h-5" />
+                <span className="font-medium">Join / Login</span>
+              </Link>
+            </div>
 
-                {/* Divider */}
-                <div className="border-t border-border/30 my-4" />
-
-                {/* Theme Toggle */}
-                <button
-                  onClick={() => {
-                    toggleTheme();
-                    closeMenu();
-                  }}
-                  className="flex items-center gap-3 p-3 rounded-2xl text-foreground hover:bg-muted/50 transition-all duration-300 w-full"
-                >
-                  {theme === 'dark' ? (
-                    <>
-                      <Sun className="w-5 h-5" />
-                      <span className="font-medium">Light Mode</span>
-                    </>
-                  ) : (
-                    <>
-                      <Moon className="w-5 h-5" />
-                      <span className="font-medium">Dark Mode</span>
-                    </>
-                  )}
-                </button>
-              </div>
+            {/* Theme Toggle Button */}
+            <div 
+              className="absolute -top-36 -left-8 transform transition-all duration-300 ease-out opacity-0 animate-in slide-in-from-bottom-4 fade-in duration-300"
+              style={{ 
+                animationDelay: isOpen ? '200ms' : '0ms',
+                animationFillMode: 'forwards'
+              }}
+            >
+              <button
+                onClick={() => {
+                  toggleTheme();
+                  closeMenu();
+                }}
+                className="flex items-center gap-3 bg-background/95 backdrop-blur-xl border border-border/40 rounded-2xl px-4 py-3 text-foreground hover:bg-primary/10 transition-all duration-300 shadow-lg min-w-[140px]"
+              >
+                {theme === 'dark' ? (
+                  <>
+                    <Sun className="w-5 h-5" />
+                    <span className="font-medium">Light Mode</span>
+                  </>
+                ) : (
+                  <>
+                    <Moon className="w-5 h-5" />
+                    <span className="font-medium">Dark Mode</span>
+                  </>
+                )}
+              </button>
             </div>
           </div>
         </>
