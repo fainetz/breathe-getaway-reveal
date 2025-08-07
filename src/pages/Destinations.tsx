@@ -28,7 +28,7 @@ interface CategoryRow {
 }
 
 const Destinations = () => {
-  const { theme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
   const [isFullScreenOpen, setIsFullScreenOpen] = useState(false);
   const [heroIndex, setHeroIndex] = useState(0);
@@ -335,8 +335,8 @@ const Destinations = () => {
         <div className="absolute bottom-40 left-1/3 w-48 h-48 bg-gradient-to-tr from-primary/25 to-accent/15 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Elegant Back Button */}
-      <div className="fixed top-28 left-6 z-40">
+      {/* Elegant Back Button - Hidden on mobile */}
+      <div className="fixed top-28 left-6 z-40 hidden md:block">
         <Link 
           to="/" 
           className="group flex items-center gap-3 bg-background/60 backdrop-blur-2xl border border-primary/20 rounded-2xl px-6 py-4 text-sm font-medium text-foreground hover:bg-primary/10 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -344,6 +344,31 @@ const Destinations = () => {
           <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
           <span>Back to Home</span>
         </Link>
+      </div>
+
+      {/* Mobile Menu - Right Corner */}
+      <div className="fixed top-4 right-4 z-50 md:hidden">
+        <div className="flex items-center gap-2">
+          <button className="p-3 bg-background/80 backdrop-blur-xl border border-border/40 rounded-2xl text-foreground hover:bg-muted/50 transition-all duration-300 shadow-lg">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </button>
+          <button 
+            onClick={toggleTheme}
+            className="p-3 bg-background/80 backdrop-blur-xl border border-border/40 rounded-2xl text-foreground hover:bg-muted/50 transition-all duration-300 shadow-lg"
+          >
+            {theme === 'dark' ? (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Clean Hero Section */}
