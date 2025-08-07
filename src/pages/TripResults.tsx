@@ -57,6 +57,97 @@ const TripResults = () => {
 
   const query = searchParams.get('q') || '';
 
+  // Map queries to specific destination images from CuratedTrips
+  const getDestinationImages = (prompt: string) => {
+    const promptLower = prompt.toLowerCase();
+    
+    // Map specific trip queries to their cover images
+    if (promptLower.includes('barcelona') && promptLower.includes('toddler')) {
+      return {
+        hero: '/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png',
+        hotel: '/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png'
+      };
+    }
+    if (promptLower.includes('black woman') || promptLower.includes('safe alone')) {
+      return {
+        hero: '/lovable-uploads/c3e077fc-fb5b-4df6-9b8c-75bcc742e307.png',
+        hotel: '/lovable-uploads/c3e077fc-fb5b-4df6-9b8c-75bcc742e307.png'
+      };
+    }
+    if (promptLower.includes('solo') && promptLower.includes('japan') && promptLower.includes('introvert')) {
+      return {
+        hero: '/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png',
+        hotel: '/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png'
+      };
+    }
+    if (promptLower.includes('digital detox') && promptLower.includes('iceland')) {
+      return {
+        hero: '/lovable-uploads/5f342a0e-24bf-4a28-ba1c-e6c7aed09f67.png',
+        hotel: '/lovable-uploads/5f342a0e-24bf-4a28-ba1c-e6c7aed09f67.png'
+      };
+    }
+    if (promptLower.includes('wheelchair') && promptLower.includes('barcelona')) {
+      return {
+        hero: '/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png',
+        hotel: '/lovable-uploads/ad282feb-6c07-42fa-a2c1-b6262dc7d9a9.png'
+      };
+    }
+    if (promptLower.includes('muslim') && promptLower.includes('paris')) {
+      return {
+        hero: '/lovable-uploads/9f082fcd-2f60-40ba-a703-582f95955704.png',
+        hotel: '/lovable-uploads/9f082fcd-2f60-40ba-a703-582f95955704.png'
+      };
+    }
+    if (promptLower.includes('vegan') && promptLower.includes('italy')) {
+      return {
+        hero: '/lovable-uploads/250f747d-157f-480c-9c25-76d931a9ad49.png',
+        hotel: '/lovable-uploads/250f747d-157f-480c-9c25-76d931a9ad49.png'
+      };
+    }
+    if (promptLower.includes('luxury') && promptLower.includes('kids') && promptLower.includes('bali')) {
+      return {
+        hero: '/lovable-uploads/33c21689-4a63-4d20-b050-b566ede4b771.png',
+        hotel: '/lovable-uploads/33c21689-4a63-4d20-b050-b566ede4b771.png'
+      };
+    }
+    if (promptLower.includes('mountains') && promptLower.includes('colorado') && promptLower.includes('off-grid')) {
+      return {
+        hero: '/lovable-uploads/462239f6-9a27-4b7d-a660-d8474967fd14.png',
+        hotel: '/lovable-uploads/462239f6-9a27-4b7d-a660-d8474967fd14.png'
+      };
+    }
+    if (promptLower.includes('croatia') && promptLower.includes('budget')) {
+      return {
+        hero: '/lovable-uploads/495f63b6-10b4-4636-9eaa-039faf98b098.png',
+        hotel: '/lovable-uploads/495f63b6-10b4-4636-9eaa-039faf98b098.png'
+      };
+    }
+    if (promptLower.includes('croatia') && promptLower.includes('baby')) {
+      return {
+        hero: '/lovable-uploads/5da0882d-c336-4a6c-b816-25ff575ea341.png',
+        hotel: '/lovable-uploads/5da0882d-c336-4a6c-b816-25ff575ea341.png'
+      };
+    }
+    if (promptLower.includes('teen') && promptLower.includes('japan') && promptLower.includes('anime')) {
+      return {
+        hero: '/lovable-uploads/57128f78-ae84-40b4-9e6e-e92dfb583dc4.png',
+        hotel: '/lovable-uploads/57128f78-ae84-40b4-9e6e-e92dfb583dc4.png'
+      };
+    }
+    if (promptLower.includes('introvert') && promptLower.includes('vietnam')) {
+      return {
+        hero: '/lovable-uploads/5f78a1b2-c7a5-4064-891c-f2ab5db2c767.png',
+        hotel: '/lovable-uploads/5f78a1b2-c7a5-4064-891c-f2ab5db2c767.png'
+      };
+    }
+    
+    // Default fallback images
+    return {
+      hero: '/lovable-uploads/57128f78-ae84-40b4-9e6e-e92dfb583dc4.png',
+      hotel: '/lovable-uploads/ba96e9ac-933d-4c61-90df-ba423b87b04d.png'
+    };
+  };
+
   const generateMockResults = (prompt: string): TripResults => {
     const isStressed = prompt.toLowerCase().includes('burnt out') || prompt.toLowerCase().includes('stressed');
     
@@ -230,7 +321,7 @@ const TripResults = () => {
       <div className="relative h-96 overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="/lovable-uploads/57128f78-ae84-40b4-9e6e-e92dfb583dc4.png" 
+            src={getDestinationImages(query).hero} 
             alt="Destination" 
             className="w-full h-full object-cover"
           />
@@ -385,8 +476,8 @@ const TripResults = () => {
                 
                 <div className="w-48 relative overflow-hidden">
                   <img 
-                    src="/lovable-uploads/ba96e9ac-933d-4c61-90df-ba423b87b04d.png" 
-                    alt="Luxury hotel room" 
+                    src={getDestinationImages(query).hotel} 
+                    alt="Hotel" 
                     className="w-full h-full object-cover group-hover/component:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-l from-transparent to-white/20 dark:to-black/20"></div>
