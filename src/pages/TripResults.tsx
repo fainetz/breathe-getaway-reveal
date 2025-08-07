@@ -354,207 +354,177 @@ const TripResults = () => {
         </div>
       </div>
 
-      <div className="flex gap-8">
-        {/* Main Content - Compact List */}
-        <div className="flex-1 max-w-4xl space-y-6">
-          {/* Flight Component - Compact */}
-          <div className="bg-card border border-border rounded-xl p-4 hover:shadow-lg transition-all duration-300">
-            <div className="flex items-center gap-4 cursor-pointer" onClick={() => togglePromptBox('flight')}>
-              <div className="p-3 rounded-lg bg-blue-500 text-white">
-                <Plane className="w-5 h-5" />
+      {/* Centered Panel Layout */}
+      <div className="max-w-4xl mx-auto px-6 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Flight Panel */}
+          <div className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <div className="flex items-start gap-4 cursor-pointer" onClick={() => togglePromptBox('flight')}>
+              <div className="p-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg">
+                <Plane className="w-6 h-6" />
               </div>
               <div className="flex-1">
-                <div className="flex items-center gap-3 mb-1">
-                  <h3 className="text-lg font-semibold text-foreground">Flights</h3>
-                  <span className="text-sm text-blue-600 bg-blue-100/80 dark:bg-blue-950/30 rounded px-2 py-1">
-                    {results.flight.route}
-                  </span>
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="text-xl font-bold text-foreground">Flights</h3>
+                  <Edit className="w-4 h-4 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-                <p className="text-sm text-muted-foreground">{results.flight.schedule} • {results.flight.details}</p>
-              </div>
-              <div className="text-right">
-                <span className="text-xl font-bold text-foreground">{results.flight.price}</span>
-                <Edit className="w-4 h-4 text-blue-500 ml-2" />
+                <span className="inline-block text-sm text-blue-600 bg-blue-100/80 dark:bg-blue-950/30 rounded-lg px-3 py-1 mb-3">
+                  {results.flight.route}
+                </span>
+                <p className="text-muted-foreground mb-2">{results.flight.schedule}</p>
+                <p className="text-sm text-muted-foreground">{results.flight.details}</p>
+                <div className="mt-4">
+                  <span className="text-2xl font-bold text-foreground">{results.flight.price}</span>
+                </div>
               </div>
             </div>
             
             {showPromptBox.flight && (
-              <div className="mt-4 pt-4 border-t border-border">
-                <div className="flex gap-3">
+              <div className="mt-6 pt-6 border-t border-border">
+                <div className="space-y-3">
                   <Textarea
                     value={prompts.flight || ''}
                     onChange={(e) => updatePrompt('flight', e.target.value)}
-                    placeholder="Different time? Upgrade class?"
-                    className="flex-1 h-12"
-                    rows={1}
+                    placeholder="Different time? Upgrade class? Change airline?"
+                    className="w-full"
+                    rows={2}
                   />
                   <button
                     onClick={() => handleInlinePromptSubmit('flight')}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+                    disabled={panelStates.flight?.isLoading}
+                    className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
                   >
-                    Update
+                    {panelStates.flight?.isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                    Update Flight
                   </button>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Hotel Component - Compact */}
-          <div className="bg-card border border-border rounded-xl p-4 hover:shadow-lg transition-all duration-300">
-            <div className="flex items-center gap-4 cursor-pointer" onClick={() => togglePromptBox('hotel')}>
-              <div className="p-3 rounded-lg bg-emerald-500 text-white">
-                <Hotel className="w-5 h-5" />
+          {/* Hotel Panel */}
+          <div className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group">
+            <div className="flex items-start gap-4 cursor-pointer" onClick={() => togglePromptBox('hotel')}>
+              <div className="p-4 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 text-white shadow-lg">
+                <Hotel className="w-6 h-6" />
               </div>
               <div className="flex-1">
-                <div className="flex items-center gap-3 mb-1">
-                  <h3 className="text-lg font-semibold text-foreground">Hotel</h3>
-                  <span className="text-sm text-emerald-600 bg-emerald-100/80 dark:bg-emerald-950/30 rounded px-2 py-1">
-                    {results.hotel.name}
-                  </span>
-                  <div className="flex items-center gap-1">
-                    <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                    <span className="text-sm text-muted-foreground">{results.hotel.rating}</span>
-                  </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="text-xl font-bold text-foreground">Hotel</h3>
+                  <Edit className="w-4 h-4 text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-                <p className="text-sm text-muted-foreground">{results.hotel.description}</p>
-              </div>
-              <div className="text-right">
-                <span className="text-xl font-bold text-foreground">{results.hotel.price}</span>
-                <Edit className="w-4 h-4 text-emerald-500 ml-2" />
+                <span className="inline-block text-sm text-emerald-600 bg-emerald-100/80 dark:bg-emerald-950/30 rounded-lg px-3 py-1 mb-3">
+                  {results.hotel.name}
+                </span>
+                <div className="flex items-center gap-2 mb-2">
+                  <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  <span className="text-muted-foreground">{results.hotel.rating} rating</span>
+                </div>
+                <p className="text-muted-foreground mb-4">{results.hotel.description}</p>
+                <div className="mt-4">
+                  <span className="text-2xl font-bold text-foreground">{results.hotel.price}</span>
+                </div>
               </div>
             </div>
             
             {showPromptBox.hotel && (
-              <div className="mt-4 pt-4 border-t border-border">
-                <div className="flex gap-3">
+              <div className="mt-6 pt-6 border-t border-border">
+                <div className="space-y-3">
                   <Textarea
                     value={prompts.hotel || ''}
                     onChange={(e) => updatePrompt('hotel', e.target.value)}
-                    placeholder="More luxury? Different location?"
-                    className="flex-1 h-12"
-                    rows={1}
+                    placeholder="More luxury? Different location? Specific amenities?"
+                    className="w-full"
+                    rows={2}
                   />
                   <button
                     onClick={() => handleInlinePromptSubmit('hotel')}
-                    className="px-4 py-2 bg-emerald-500 text-white rounded-lg"
+                    disabled={panelStates.hotel?.isLoading}
+                    className="w-full bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg py-2 flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
                   >
-                    Update
+                    {panelStates.hotel?.isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                    Update Hotel
                   </button>
                 </div>
               </div>
             )}
           </div>
+        </div>
 
-          {/* Activities - Compact List */}
-          <div className="bg-card border border-border rounded-xl p-4">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-purple-500 text-white">
-                <MapPin className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground">Curated Experiences</h3>
+        {/* Activities Panel */}
+        <div className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg transition-all duration-300 mt-6">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="p-4 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-lg">
+              <MapPin className="w-6 h-6" />
             </div>
-            
-            <div className="space-y-3">
-              {results.thingsToDo.map((activity, index) => (
-                <div 
-                  key={index}
-                  className="flex items-center gap-4 p-3 rounded-lg border border-border/50 hover:bg-muted/30 cursor-pointer transition-colors"
-                  onClick={() => togglePromptBox(`activity-${index}`)}
-                >
-                  <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-950/30">
-                    {getActivityIcon(activity.icon)}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-1">
-                      <h4 className="font-medium text-foreground">{activity.title}</h4>
-                      <span className="text-xs text-muted-foreground bg-muted/50 px-2 py-1 rounded">
-                        {activity.time}
-                      </span>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{activity.description}</p>
-                  </div>
-                  <Edit className="w-4 h-4 text-purple-500" />
+            <div>
+              <h3 className="text-xl font-bold text-foreground">Curated Experiences</h3>
+              <p className="text-muted-foreground">Hand-picked activities for your trip</p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {results.thingsToDo.map((activity, index) => (
+              <div 
+                key={index}
+                className="flex items-center gap-4 p-4 rounded-xl border border-border/50 hover:bg-muted/30 cursor-pointer transition-colors group"
+                onClick={() => togglePromptBox(`activity-${index}`)}
+              >
+                <div className="p-3 rounded-lg bg-purple-100 dark:bg-purple-950/30">
+                  {getActivityIcon(activity.icon)}
                 </div>
-              ))}
-            </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-1">
+                    <h4 className="font-medium text-foreground">{activity.title}</h4>
+                    <span className="text-xs text-muted-foreground bg-muted/50 px-2 py-1 rounded">
+                      {activity.time}
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{activity.description}</p>
+                </div>
+                <Edit className="w-4 h-4 text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Sidebar */}
-        <div className="w-80 space-y-6">
-          {/* Trip Summary */}
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 rounded-xl p-6 border border-blue-200/50 dark:border-blue-800/30">
-            <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="w-5 h-5 text-blue-600" />
-              <h3 className="font-semibold text-foreground">Trip Summary</h3>
+        {/* Hidden Gems Panel */}
+        <div className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg transition-all duration-300 mt-6">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="p-4 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-white shadow-lg">
+              <Eye className="w-6 h-6" />
             </div>
-            <div className="space-y-3">
-              <div className="flex justify-between">
-                <span className="text-sm text-muted-foreground">Total Cost</span>
-                <span className="font-semibold text-foreground">$600</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-sm text-muted-foreground">Duration</span>
-                <span className="font-semibold text-foreground">2 days</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-sm text-muted-foreground">Activities</span>
-                <span className="font-semibold text-foreground">{results.thingsToDo.length} planned</span>
-              </div>
+            <div>
+              <h3 className="text-xl font-bold text-foreground">Hidden Gems</h3>
+              <p className="text-muted-foreground">Local secrets just for you</p>
             </div>
           </div>
-
-          {/* Hidden Gems with Images */}
-          <div className="bg-card rounded-xl p-6 border border-border">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-              <h3 className="font-semibold text-foreground">Hidden Gems</h3>
-            </div>
-            <div className="space-y-4">
-              {results.hiddenGems.map((gem, index) => {
-                const gemImages = [
-                  "/lovable-uploads/6afa058e-fb1f-4eb8-8fbc-d2ce3df4e47f.png",
-                  "/lovable-uploads/73d68dec-aaff-4cb1-9f42-798bc090860f.png", 
-                  "/lovable-uploads/02c0dc39-74a0-4355-9275-75b1dd128c08.png"
-                ];
-                
-                return (
-                  <div key={index} className="group cursor-pointer">
-                    <div className="w-full h-24 rounded-lg overflow-hidden mb-3">
-                      <img 
-                        src={gemImages[index]} 
-                        alt={gem.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <h4 className="font-medium text-foreground mb-1">{gem.name}</h4>
-                    <p className="text-xs text-muted-foreground mb-2">{gem.description}</p>
-                    <p className="text-xs text-blue-600 font-medium">{gem.insider_tip}</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {results.hiddenGems.map((gem, index) => {
+              const gemImages = [
+                "/lovable-uploads/6afa058e-fb1f-4eb8-8fbc-d2ce3df4e47f.png",
+                "/lovable-uploads/73d68dec-aaff-4cb1-9f42-798bc090860f.png", 
+                "/lovable-uploads/02c0dc39-74a0-4355-9275-75b1dd128c08.png"
+              ];
+              
+              return (
+                <div key={index} className="group cursor-pointer">
+                  <div className="w-full h-32 rounded-xl overflow-hidden mb-3">
+                    <img 
+                      src={gemImages[index]} 
+                      alt={gem.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* AI Assistant */}
-          <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-6 border border-primary/20">
-            <div className="text-center space-y-4">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto">
-                <Sparkles className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground mb-2">Need Changes?</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Click any component to customize with AI or ask for completely new suggestions.
-                </p>
-              </div>
-              <button 
-                onClick={() => navigate('/chat')}
-                className="w-full bg-primary text-primary-foreground rounded-lg py-2 px-4 font-medium hover:bg-primary/90 transition-colors"
-              >
-                Start New Trip
-              </button>
-            </div>
+                  <h4 className="font-semibold text-foreground mb-2">{gem.name}</h4>
+                  <p className="text-sm text-muted-foreground mb-3">{gem.description}</p>
+                  <p className="text-sm text-amber-600 font-medium bg-amber-100/80 dark:bg-amber-950/30 rounded-lg px-3 py-1">
+                    💡 {gem.insider_tip}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
