@@ -221,98 +221,104 @@ const CuratedTrips = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden transition-colors duration-300">
-      {/* Header */}
-      <div className="sticky top-0 z-40 backdrop-blur-xl border-b border-border/50 bg-background/95">
-        <div className="max-w-6xl mx-auto px-4 py-3">
-          <div className="flex items-center gap-3">
+      {/* Header - Mobile optimized */}
+      <div className="sticky top-0 z-40 backdrop-blur-xl border-b border-border/50 bg-background/95 safe-area-inset-top">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-3">
+          <div className="flex items-center gap-3 sm:gap-4">
             <button 
               onClick={() => navigate('/')}
-              className="p-1.5 hover:bg-card/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
+              className="p-2 sm:p-1.5 hover:bg-card/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground touch-manipulation"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <ArrowLeft className="w-5 h-5 sm:w-4 sm:h-4" />
             </button>
-            <div className="flex items-center gap-2">
-              <h1 className="text-lg font-semibold text-foreground">Curated Trips</h1>
-              <span className="text-xs text-muted-foreground px-2 py-1 bg-muted/50 rounded-full">
+            <div className="flex items-center gap-2 min-w-0 flex-1">
+              <h1 className="text-xl sm:text-lg font-semibold text-foreground truncate">Curated Trips</h1>
+              <span className="hidden sm:inline text-xs text-muted-foreground px-2 py-1 bg-muted/50 rounded-full whitespace-nowrap">
                 Trips designed for specific needs & situations
               </span>
             </div>
           </div>
+          {/* Mobile subtitle */}
+          <div className="sm:hidden mt-2">
+            <span className="text-xs text-muted-foreground">
+              Trips designed for specific needs & situations
+            </span>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 pt-6 pb-4">
-        {/* Hero Section */}
-        <div className="text-center mb-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full mb-3">
-            <BookOpen className="w-3 h-3" />
-            <span className="text-xs font-medium">Trip Zines</span>
+      {/* Main Content with proper mobile spacing */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-6 sm:pb-8 safe-area-inset-bottom">
+        {/* Hero Section - Mobile optimized */}
+        <div className="text-center mb-8 sm:mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:py-1 bg-primary/10 text-primary rounded-full mb-4 sm:mb-3">
+            <BookOpen className="w-4 h-4 sm:w-3 sm:h-3" />
+            <span className="text-sm sm:text-xs font-medium">Trip Zines</span>
           </div>
-          <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
+          <h2 className="text-2xl sm:text-xl md:text-2xl font-semibold text-foreground mb-3 sm:mb-2 px-4 sm:px-0">
             Niche Travel Magazines
           </h2>
-          <p className="text-sm text-muted-foreground max-w-xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-sm text-muted-foreground max-w-xl mx-auto leading-relaxed px-4 sm:px-0">
             Curated travel collections by real people with real stories.
           </p>
           
-          {/* Search Bar */}
-          <div className="max-w-sm mx-auto mt-4 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-3 h-3" />
+          {/* Search Bar - Mobile optimized */}
+          <div className="max-w-sm mx-auto mt-6 sm:mt-4 relative px-4 sm:px-0">
+            <Search className="absolute left-7 sm:left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 sm:w-3 sm:h-3" />
             <input
               type="text"
               placeholder="Search zines..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-border/50 bg-card text-foreground placeholder-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary"
+              className="w-full pl-12 sm:pl-9 pr-4 sm:pr-3 py-3 sm:py-2 text-base sm:text-sm rounded-xl sm:rounded-lg border border-border/50 bg-card text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 sm:focus:ring-1 focus:ring-primary/50 focus:border-primary touch-manipulation"
+              style={{ fontSize: '16px' }} // Prevent zoom on iOS
             />
           </div>
         </div>
 
-        {/* Filters */}
-        <div className="mb-4">
+        {/* Filters - Mobile optimized */}
+        <div className="mb-6 sm:mb-4 px-2 sm:px-0">
           <ZineFilters selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
         </div>
 
-        {/* Zines Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Zines Grid - Mobile optimized */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-2 sm:px-0">
           {filteredZines.map((zine) => (
             <ZineCard key={zine.id} zine={zine} onZineClick={handleZineClick} />
           ))}
         </div>
 
-        {/* Empty State */}
+        {/* Empty State - Mobile optimized */}
         {filteredZines.length === 0 && (
-          <div className="text-center py-16">
-            <BookOpen className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
-            <h3 className="text-xl font-semibold text-foreground mb-2">No Zines Found</h3>
-            <p className="text-muted-foreground">
+          <div className="text-center py-16 sm:py-12 px-4 sm:px-0">
+            <BookOpen className="w-16 h-16 sm:w-12 sm:h-12 text-muted-foreground mx-auto mb-4 opacity-50" />
+            <h3 className="text-xl sm:text-lg font-semibold text-foreground mb-2">No Zines Found</h3>
+            <p className="text-muted-foreground text-sm sm:text-base max-w-sm mx-auto">
               Try adjusting your search or filter to discover more travel zines.
             </p>
           </div>
         )}
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div 
-            className="inline-block p-8 rounded-2xl border border-border/50 bg-card"
-          >
-            <h3 className="text-2xl font-bold text-foreground mb-4">
+        {/* Call to Action - Mobile optimized */}
+        <div className="text-center mt-16 sm:mt-12 px-4 sm:px-0">
+          <div className="inline-block p-6 sm:p-8 rounded-2xl border border-border/50 bg-card w-full max-w-md sm:max-w-none">
+            <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4">
               Want to Create Your Own Zine?
             </h3>
-            <p className="text-muted-foreground mb-6 max-w-md">
+            <p className="text-muted-foreground mb-6 sm:mb-6 max-w-md mx-auto text-sm sm:text-base leading-relaxed">
               Have a unique travel perspective or niche expertise? Pitch your zine idea and start curating for our community.
             </p>
-            <div className="flex gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <button 
                 onClick={() => navigate('/chat')}
-                className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors touch-manipulation w-full sm:w-auto"
               >
                 <PlusCircle className="w-4 h-4" />
                 Pitch a Zine
               </button>
               <button 
                 onClick={() => navigate('/chat')}
-                className="flex items-center gap-2 px-6 py-3 bg-card/50 text-foreground border border-border/50 rounded-xl font-semibold hover:bg-card transition-colors"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-card/50 text-foreground border border-border/50 rounded-xl font-semibold hover:bg-card transition-colors touch-manipulation w-full sm:w-auto"
               >
                 <Search className="w-4 h-4" />
                 Custom Trip
