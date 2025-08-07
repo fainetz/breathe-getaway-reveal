@@ -73,11 +73,11 @@ const ZineCard = ({ zine, onZineClick }: ZineCardProps) => {
       >
         {/* Cover Image */}
         <div className="relative">
-          <div className="h-64 relative overflow-hidden">
+          <div className="relative overflow-hidden rounded-t-2xl">
             <img 
               src={zine.coverImage} 
               alt={zine.title}
-              className="w-full h-full object-cover"
+              className="w-full h-auto"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             
