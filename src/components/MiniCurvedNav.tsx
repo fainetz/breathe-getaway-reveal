@@ -191,18 +191,18 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
         style={{ touchAction: 'pan-x' }}
       >
         {/* Compact minimal carousel */}
-        <div className="relative flex items-center w-80 h-10 overflow-hidden">
+        <div className="relative flex items-center w-64 h-10 overflow-hidden">
           
           {/* Refined glass bubble - better aligned */}
           <div 
-            className="absolute left-1/2 transform -translate-x-1/2 px-5 py-2 rounded-full pointer-events-none z-10 border"
+            className="absolute left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-full pointer-events-none z-10 border"
             style={{
               background: isChatPage ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.04)',
               backdropFilter: 'blur(15px)',
               WebkitBackdropFilter: 'blur(15px)',
               borderColor: isChatPage ? 'rgba(255, 255, 255, 0.25)' : 'rgba(0, 0, 0, 0.08)',
               borderRadius: '20px',
-              minWidth: '100px',
+              minWidth: '90px',
               width: 'fit-content',
               height: '36px',
               boxShadow: isChatPage ? '0 1px 8px rgba(0, 0, 0, 0.3)' : '0 1px 8px rgba(0, 0, 0, 0.04)',
@@ -211,9 +211,9 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
 
           {/* Properly aligned sliding text */}
           <div 
-            className="flex items-center space-x-2 transition-transform duration-700 ease-out relative z-20"
+            className="flex items-center space-x-1 transition-transform duration-700 ease-out relative z-20"
             style={{
-              transform: `translateX(${105 - activeIndex * 114}px)`, // Tighter spacing: item_width(110) + spacing(4) = 114px per item
+              transform: `translateX(${80 - activeIndex * 96}px)`, // Tighter mobile spacing: 96px per item
               transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
             }}
           >
@@ -228,7 +228,7 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
                     if (el && isActive) itemRefs.current[activeIndex] = el;
                   }}
                   onClick={() => handleNavigation(item.path, index)}
-                  className={`relative px-4 py-2 text-xs font-semibold whitespace-nowrap transition-all duration-700 ease-out select-none min-w-[100px] flex items-center justify-center tracking-wide ${
+                  className={`relative px-3 py-2 text-xs font-semibold whitespace-nowrap transition-all duration-700 ease-out select-none min-w-[85px] flex items-center justify-center tracking-wide ${
                     isActive 
                       ? isChatPage 
                         ? 'text-white scale-105' 
@@ -252,8 +252,8 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
           </div>
         </div>
         
-        {/* Navigation dots - show all items, positioned below */}
-        <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex gap-1">
+        {/* Navigation dots - show all items, positioned closer */}
+        <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1">
           {navItems.map((_, index) => (
             <button
               key={index}
