@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, BookOpen, Users, PlusCircle, Sparkles, Search, Filter } from 'lucide-react';
+import ZineCard from '../components/ZineCard';
 import ZineFilters from '../components/ZineFilters';
 
 interface ZineEditor {
@@ -219,188 +220,101 @@ const CuratedTrips = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden transition-colors duration-300">
       {/* Header */}
-      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/10" style={{ background: 'hsl(var(--background) / 0.8)' }}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center gap-4">
-          <button 
-            onClick={() => navigate(-1)}
-            className="p-2 hover:bg-blue-500/10 rounded-xl transition-all duration-300 text-muted-foreground hover:text-blue-600 group"
-          >
-            <ArrowLeft className="w-5 h-5 group-hover:translate-x-[-2px] transition-transform duration-200" />
-          </button>
-          <div>
-            <h1 className="text-lg font-semibold text-foreground">Travel Zines</h1>
-            <p className="text-sm text-muted-foreground">Real stories from real travelers</p>
+      <div className="sticky top-16 z-40 backdrop-blur-xl border-b border-border/50 bg-background/95">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => navigate('/')}
+              className="p-1.5 hover:bg-card/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <div>
+              <h1 className="text-lg font-semibold text-foreground">Curated Trips</h1>
+              <p className="text-xs text-muted-foreground">Trips designed for specific needs & situations</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="flex gap-8">
-          {/* Main Content - Compact List */}
-          <div className="flex-1 max-w-3xl">
-            {/* Search and Filters */}
-            <div className="mb-6 space-y-4">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-                <input
-                  type="text"
-                  placeholder="Search zines..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary/20"
-                />
-              </div>
-              <ZineFilters selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
-            </div>
-
-            {/* Compact Zine List */}
-            <div className="space-y-4">
-              {filteredZines.map((zine) => (
-                <div
-                  key={zine.id}
-                  onClick={() => handleZineClick(zine)}
-                  className="group cursor-pointer bg-card border border-border rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:border-primary/30"
-                >
-                  <div className="flex gap-4">
-                    {/* Cover Image - Small */}
-                    <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
-                      <img 
-                        src={zine.coverImage} 
-                        alt={zine.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-start justify-between mb-2">
-                        <h3 className="text-lg font-semibold text-foreground line-clamp-1 group-hover:text-primary transition-colors">
-                          {zine.title}
-                        </h3>
-                        {zine.featured && (
-                          <span className="px-2 py-1 bg-amber-500/10 text-amber-600 text-xs font-medium rounded-full ml-2">
-                            FEATURED
-                          </span>
-                        )}
-                      </div>
-                      
-                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-                        {zine.description}
-                      </p>
-                      
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <img 
-                            src={zine.editor.avatar} 
-                            alt={zine.editor.name}
-                            className="w-6 h-6 rounded-full object-cover"
-                          />
-                          <span className="text-sm text-muted-foreground">{zine.editor.name}</span>
-                          <span className="text-xs text-muted-foreground">•</span>
-                          <span className="text-xs text-muted-foreground">{zine.lastUpdated}</span>
-                        </div>
-                        
-                        <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                          <div className="flex items-center gap-1">
-                            <Users className="w-3 h-3" />
-                            <span>{zine.followers.toLocaleString()}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <BookOpen className="w-3 h-3" />
-                            <span>{zine.contentCount}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+      <div className="max-w-6xl mx-auto px-4 pt-6 pb-4">
+        {/* Hero Section */}
+        <div className="text-center mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full mb-3">
+            <BookOpen className="w-3 h-3" />
+            <span className="text-xs font-medium">Trip Zines</span>
           </div>
+          <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
+            Niche Travel Magazines
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-xl mx-auto leading-relaxed">
+            Curated travel collections by real people with real stories.
+          </p>
+          
+          {/* Search Bar */}
+          <div className="max-w-sm mx-auto mt-4 relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-3 h-3" />
+            <input
+              type="text"
+              placeholder="Search zines..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-border/50 bg-card text-foreground placeholder-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary"
+            />
+          </div>
+        </div>
 
-          {/* Sidebar Content */}
-          <div className="w-80 space-y-6">
-            {/* Community Notes */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 rounded-xl p-6 border border-blue-200/50 dark:border-blue-800/30">
-              <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="w-5 h-5 text-blue-600" />
-                <h3 className="font-semibold text-foreground">Community Notes</h3>
-              </div>
-              <div className="space-y-3">
-                <div className="bg-white/50 dark:bg-background/50 rounded-lg p-3 border border-blue-200/30">
-                  <p className="text-sm text-muted-foreground">
-                    "These zines are game-changers! Finally, honest travel advice that's actually useful."
-                  </p>
-                  <div className="flex items-center gap-2 mt-2">
-                    <div className="w-4 h-4 bg-primary rounded-full"></div>
-                    <span className="text-xs text-muted-foreground">Sarah M.</span>
-                  </div>
-                </div>
-                
-                <div className="bg-white/50 dark:bg-background/50 rounded-lg p-3 border border-blue-200/30">
-                  <p className="text-sm text-muted-foreground">
-                    "The accessibility guide for Barcelona saved my entire trip. Thank you!"
-                  </p>
-                  <div className="flex items-center gap-2 mt-2">
-                    <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-                    <span className="text-xs text-muted-foreground">Mike R.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Filters */}
+        <div className="mb-4">
+          <ZineFilters selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+        </div>
 
-            {/* Hidden Gems */}
-            <div className="bg-card rounded-xl p-6 border border-border">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                <h3 className="font-semibold text-foreground">Hidden Gems</h3>
-              </div>
-              <div className="space-y-4">
-                <div className="group cursor-pointer">
-                  <div className="w-full h-32 rounded-lg overflow-hidden mb-3">
-                    <img 
-                      src="/lovable-uploads/6afa058e-fb1f-4eb8-8fbc-d2ce3df4e47f.png" 
-                      alt="Secret cenote in Tulum"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <h4 className="font-medium text-foreground mb-1">Secret Cenote, Tulum</h4>
-                  <p className="text-xs text-muted-foreground">Only locals know about this hidden swimming spot</p>
-                </div>
-                
-                <div className="group cursor-pointer">
-                  <div className="w-full h-32 rounded-lg overflow-hidden mb-3">
-                    <img 
-                      src="/lovable-uploads/73d68dec-aaff-4cb1-9f42-798bc090860f.png" 
-                      alt="Rooftop café in Lisbon"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <h4 className="font-medium text-foreground mb-1">Rooftop Café, Lisbon</h4>
-                  <p className="text-xs text-muted-foreground">Best sunset views, zero tourists</p>
-                </div>
-              </div>
-            </div>
+        {/* Zines Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredZines.map((zine) => (
+            <ZineCard key={zine.id} zine={zine} onZineClick={handleZineClick} />
+          ))}
+        </div>
 
-            {/* Join Community */}
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-6 border border-primary/20">
-              <div className="text-center space-y-4">
-                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto">
-                  <PlusCircle className="w-6 h-6 text-primary-foreground" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">Join Our Community</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Share your own travel stories and get exclusive access to new zines.
-                  </p>
-                </div>
-                <button className="w-full bg-primary text-primary-foreground rounded-lg py-2 px-4 font-medium hover:bg-primary/90 transition-colors">
-                  Join 15,000+ Travelers
-                </button>
-                <p className="text-xs text-muted-foreground">Free to join • No spam, ever</p>
-              </div>
+        {/* Empty State */}
+        {filteredZines.length === 0 && (
+          <div className="text-center py-16">
+            <BookOpen className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
+            <h3 className="text-xl font-semibold text-foreground mb-2">No Zines Found</h3>
+            <p className="text-muted-foreground">
+              Try adjusting your search or filter to discover more travel zines.
+            </p>
+          </div>
+        )}
+
+        {/* Call to Action */}
+        <div className="text-center mt-16">
+          <div 
+            className="inline-block p-8 rounded-2xl border border-border/50 bg-card"
+          >
+            <h3 className="text-2xl font-bold text-foreground mb-4">
+              Want to Create Your Own Zine?
+            </h3>
+            <p className="text-muted-foreground mb-6 max-w-md">
+              Have a unique travel perspective or niche expertise? Pitch your zine idea and start curating for our community.
+            </p>
+            <div className="flex gap-4 justify-center">
+              <button 
+                onClick={() => navigate('/chat')}
+                className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors"
+              >
+                <PlusCircle className="w-4 h-4" />
+                Pitch a Zine
+              </button>
+              <button 
+                onClick={() => navigate('/chat')}
+                className="flex items-center gap-2 px-6 py-3 bg-card/50 text-foreground border border-border/50 rounded-xl font-semibold hover:bg-card transition-colors"
+              >
+                <Search className="w-4 h-4" />
+                Custom Trip
+              </button>
             </div>
           </div>
         </div>
