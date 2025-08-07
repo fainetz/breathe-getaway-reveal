@@ -27,8 +27,8 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            {/* Mobile nav - overlay style */}
-            <div className="md:hidden fixed top-16 left-1/2 transform -translate-x-1/2 z-[60]" style={{ position: 'fixed' }}>
+            {/* Mobile nav - positioned lower for better spacing */}
+            <div className="md:hidden fixed top-24 left-1/2 transform -translate-x-1/2 z-[60]" style={{ position: 'fixed' }}>
               <MiniCurvedNav />
             </div>
             {/* Desktop nav - centered and always visible */}
