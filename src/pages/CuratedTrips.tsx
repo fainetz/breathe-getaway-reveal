@@ -222,7 +222,7 @@ const CuratedTrips = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden transition-colors duration-300">
       {/* Header */}
-      <div className="sticky top-16 z-40 backdrop-blur-xl border-b border-border/50 bg-background/95">
+      <div className="sticky top-24 z-40 backdrop-blur-xl border-b border-border/50 bg-background/95">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="flex items-center gap-3">
             <button 
@@ -231,9 +231,11 @@ const CuratedTrips = () => {
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
-            <div>
+            <div className="flex items-center gap-2">
               <h1 className="text-lg font-semibold text-foreground">Curated Trips</h1>
-              <p className="text-xs text-muted-foreground">Trips designed for specific needs & situations</p>
+              <span className="text-xs text-muted-foreground px-2 py-1 bg-muted/50 rounded-full">
+                Trips designed for specific needs & situations
+              </span>
             </div>
           </div>
         </div>
