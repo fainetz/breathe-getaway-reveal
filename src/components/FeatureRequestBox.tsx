@@ -6,6 +6,7 @@ const FeatureRequestBox = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [featureRequest, setFeatureRequest] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -98,10 +99,36 @@ const FeatureRequestBox = () => {
         </div>
       )}
 
-      {/* Floating Feature Request Button */}
+      {/* Development Banner - Desktop only, positioned near feedback button */}
+      {showBanner && (
+        <div className="hidden md:block fixed bottom-24 right-20 z-40 max-w-xs">
+          <div className="bg-gradient-to-br from-primary/90 to-accent/90 backdrop-blur-sm rounded-lg border border-primary/20 shadow-lg">
+            <div className="p-3">
+              <div className="flex items-start justify-between gap-2 mb-2">
+                <Lightbulb className="h-3 w-3 text-primary-foreground animate-pulse mt-0.5 flex-shrink-0" />
+                <button
+                  onClick={() => setShowBanner(false)}
+                  className="text-primary-foreground hover:bg-white/10 h-5 w-5 p-0 -mt-1 -mr-1 rounded transition-colors"
+                >
+                  <X className="h-2.5 w-2.5" />
+                </button>
+              </div>
+              <div className="text-[10px] text-primary-foreground">
+                <div className="font-semibold mb-1">Early Development!</div>
+                <div className="opacity-90 leading-relaxed">Share feedback →</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Floating Feature Request Button - Desktop only */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center z-30 group"
+        onClick={() => {
+          setIsOpen(!isOpen);
+          if (!isOpen) setShowBanner(false);
+        }}
+        className="hidden md:flex fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 items-center justify-center z-30 group"
       >
         {isOpen ? (
           <X className="w-6 h-6 text-white" />

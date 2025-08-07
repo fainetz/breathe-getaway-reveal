@@ -12,7 +12,7 @@ import Footer from '../components/Footer';
 import FeatureRequestBox from '../components/FeatureRequestBox';
 import ExpandableSearch from '../components/ExpandableSearch';
 import BackToChatButton from '../components/BackToChatButton';
-import DevelopmentBanner from '../components/DevelopmentBanner';
+import MobileMenu from '../components/MobileMenu';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -34,7 +34,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen min-h-dvh bg-background text-foreground overflow-x-hidden transition-colors duration-300">
-      <DevelopmentBanner />
       <Hero />
       <div className="transition-hero-waitlist"></div>
       <WaitlistSection />
@@ -52,10 +51,11 @@ const Index = () => {
       <Footer />
       <FeatureRequestBox />
       <ExpandableSearch onSearchSubmit={handleSearchSubmit} />
-      <BackToChatButton
+      <BackToChatButton 
         onBackToChat={handleBackToChat} 
         hasChatHistory={hasChatHistory} 
       />
+      <MobileMenu />
     </div>
   );
 };
