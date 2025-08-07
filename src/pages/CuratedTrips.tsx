@@ -220,28 +220,26 @@ const CuratedTrips = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-24 overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden transition-colors duration-300">
       {/* Header */}
-      <div className="sticky top-16 z-40 backdrop-blur-xl border-b border-border/50 bg-background/90"
-        style={{ position: 'sticky' }}
-      >
-        <div className="max-w-6xl mx-auto px-4 py-4">
-          <div className="flex items-center gap-4">
+      <div className="sticky top-16 z-40 backdrop-blur-xl border-b border-border/50 bg-background/95">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <div className="flex items-center gap-3">
             <button 
               onClick={() => navigate('/')}
-              className="p-2 hover:bg-card/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
+              className="p-1.5 hover:bg-card/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-4 h-4" />
             </button>
             <div>
-              <h1 className="text-xl font-bold text-foreground">Curated Trips</h1>
-              <p className="text-sm text-muted-foreground">Trips designed for specific needs & situations</p>
+              <h1 className="text-lg font-semibold text-foreground">Curated Trips</h1>
+              <p className="text-xs text-muted-foreground">Trips designed for specific needs & situations</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-4">
+      <div className="max-w-6xl mx-auto px-4 pt-6 pb-4">
         {/* Hero Section */}
         <div className="text-center mb-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full mb-3">
