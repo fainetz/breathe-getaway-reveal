@@ -221,8 +221,8 @@ const CuratedTrips = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden transition-colors duration-300">
-      {/* Header - Mobile optimized */}
-      <div className="sticky top-0 z-40 backdrop-blur-xl border-b border-border/50 bg-background/95 safe-area-inset-top">
+      {/* Header - Positioned below nav scroller */}
+      <div className="sticky top-20 md:top-24 z-30 backdrop-blur-xl border-b border-border/50 bg-background/95 safe-area-inset-top">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-3">
           <div className="flex items-center gap-3 sm:gap-4">
             <button 
@@ -247,8 +247,8 @@ const CuratedTrips = () => {
         </div>
       </div>
 
-      {/* Main Content with proper mobile spacing */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-6 sm:pb-8 safe-area-inset-bottom">
+      {/* Main Content with spacing for nav + header */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 sm:pt-6 pb-6 sm:pb-8 safe-area-inset-bottom">
         {/* Hero Section - Mobile optimized */}
         <div className="text-center mb-8 sm:mb-6">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:py-1 bg-primary/10 text-primary rounded-full mb-4 sm:mb-3">
