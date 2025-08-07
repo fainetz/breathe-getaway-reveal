@@ -47,10 +47,11 @@ const MobileMenu = () => {
           <div className="fixed bottom-6 right-6 z-[66] md:hidden">
             {/* Login/Signup Button */}
             <div 
-              className="absolute -top-20 -right-2 transform transition-all duration-300 ease-out opacity-0 animate-in slide-in-from-bottom-4 fade-in duration-300"
+              className={`absolute -top-20 -right-2 transform transition-all duration-300 ease-out ${
+                isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
               style={{ 
-                animationDelay: isOpen ? '100ms' : '0ms',
-                animationFillMode: 'forwards'
+                transitionDelay: isOpen ? '100ms' : '0ms'
               }}
             >
               <Link
@@ -65,10 +66,11 @@ const MobileMenu = () => {
 
             {/* Theme Toggle Button */}
             <div 
-              className="absolute -top-36 -left-8 transform transition-all duration-300 ease-out opacity-0 animate-in slide-in-from-bottom-4 fade-in duration-300"
+              className={`absolute -top-36 -left-8 transform transition-all duration-300 ease-out ${
+                isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
               style={{ 
-                animationDelay: isOpen ? '200ms' : '0ms',
-                animationFillMode: 'forwards'
+                transitionDelay: isOpen ? '200ms' : '0ms'
               }}
             >
               <button
