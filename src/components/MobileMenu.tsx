@@ -37,7 +37,7 @@ const MobileMenu = () => {
     <>
       {/* Development Banner - Mobile chat bubble */}
       {showBanner && (
-        <div className="md:hidden fixed right-2 bottom-20 z-[60] max-w-[140px]">
+        <div className="md:hidden fixed right-2 bottom-[4.5rem] z-[60] max-w-[140px]">
           <div className="relative">
             {/* Chat bubble */}
             <div className="bg-gradient-to-br from-primary/95 to-accent/95 backdrop-blur-sm rounded-xl border border-primary/20 shadow-lg p-2">
@@ -55,24 +55,21 @@ const MobileMenu = () => {
                 <div className="opacity-90 leading-tight">Tap menu for feedback</div>
               </div>
             </div>
-            {/* Chat bubble tail */}
-            <div className="absolute -bottom-0.5 right-3 w-2 h-2 bg-gradient-to-br from-primary/95 to-accent/95 transform rotate-45 border-r border-b border-primary/20"></div>
+            {/* Chat bubble tail pointing to menu button */}
+            <div className="absolute -bottom-1 left-[4.5rem] w-2 h-2 bg-gradient-to-br from-primary/95 to-accent/95 transform rotate-45 border-r border-b border-primary/20"></div>
           </div>
         </div>
       )}
 
-      {/* Floating Action Button - Fixed position */}
+      {/* Floating Action Button - Fixed position, no animation */}
       <div className="fixed right-6 bottom-6 z-[70] md:hidden">
         <button
           onClick={toggleMenu}
-          className={`w-14 h-14 rounded-full shadow-lg transition-all duration-300 transform animate-float ${
+          className={`w-14 h-14 rounded-full shadow-lg transition-all duration-300 ${
             isOpen 
               ? 'bg-primary text-primary-foreground scale-110' 
               : 'bg-background/90 backdrop-blur-md text-foreground hover:scale-105 border border-border/20 shadow-xl hover:shadow-2xl'
           }`}
-          style={{
-            animation: isOpen ? 'none' : 'float 3s ease-in-out infinite'
-          }}
         >
           {isOpen ? (
             <X className="w-6 h-6 mx-auto" />
