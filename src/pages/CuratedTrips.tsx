@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, BookOpen, Users, PlusCircle, Sparkles, Search, Filter } from 'lucide-react';
-import ZineCard from '../components/ZineCard';
 import ZineFilters from '../components/ZineFilters';
 
 interface ZineEditor {
@@ -196,188 +195,6 @@ const CuratedTrips = () => {
         { type: 'local-review', title: 'Best Halal Restaurants', excerpt: 'Beyond just kebab shops' },
         { type: 'photo-essay', title: 'Islamic Art in Paris', excerpt: 'Hidden cultural treasures' }
       ]
-    },
-    {
-      id: '7',
-      title: 'Traveling vegan in southern Italy (yes, it\'s possible)',
-      subtitle: 'Plant-based paradise in pasta land',
-      description: 'Discover southern Italy\'s incredible vegan scene. From traditional plant dishes to modern vegan restaurants.',
-      coverImage: '/lovable-uploads/250f747d-157f-480c-9c25-76d931a9ad49.png',
-      editor: {
-        name: 'Sofia Romano',
-        avatar: '/lovable-uploads/1b34fb02-ef92-4f9c-abad-7c07f22e9457.png',
-        bio: 'Vegan food writer, Italian cuisine explorer',
-        followers: 8900,
-        verified: false
-      },
-      tags: ['Vegan Travel', 'Italy', 'Food Culture', 'Plant-Based'],
-      contentCount: 13,
-      followers: 6500,
-      rating: 4.6,
-      lastUpdated: '1 week ago',
-      featured: false,
-      contents: [
-        { type: 'trip-blueprint', title: 'Puglia Vegan Food Trail', excerpt: 'Traditional dishes, no meat' },
-        { type: 'journal-entry', title: 'Explaining Veganism in Italian', excerpt: 'Language barriers and breakthroughs' },
-        { type: 'local-review', title: 'Naples\' Hidden Vegan Gems', excerpt: 'Pizza and beyond' },
-        { type: 'photo-essay', title: 'Market Day in Sicily', excerpt: 'Incredible produce and local connections' }
-      ]
-    },
-    {
-      id: '8',
-      title: 'Luxury with kids: Bali without the chaos',
-      subtitle: 'High-end family travel done right',
-      description: 'Experience Bali\'s luxury side with children in tow. Family-friendly resorts, cultural experiences, and stress-free planning.',
-      coverImage: '/lovable-uploads/33c21689-4a63-4d20-b050-b566ede4b771.png',
-      editor: {
-        name: 'Diana Patel',
-        avatar: '/lovable-uploads/349adef3-59ea-405e-bc62-d704ea49bf62.png',
-        bio: 'Luxury family travel specialist',
-        followers: 12100,
-        verified: true
-      },
-      tags: ['Luxury Travel', 'Family', 'Bali', 'Kids'],
-      contentCount: 17,
-      followers: 9200,
-      rating: 4.7,
-      lastUpdated: '3 days ago',
-      featured: false,
-      contents: [
-        { type: 'trip-blueprint', title: 'Kid-Friendly Luxury Resorts', excerpt: 'Where parents can actually relax' },
-        { type: 'journal-entry', title: 'Temple Visits with Toddlers', excerpt: 'Cultural respect meets chaos' },
-        { type: 'local-review', title: 'Ubud for Families', excerpt: 'Jungle adventures, spa time' },
-        { type: 'photo-essay', title: 'Sunset Beaches, Happy Kids', excerpt: 'Perfect family moments' }
-      ]
-    },
-    {
-      id: '9',
-      title: 'Mountains > People: A week off-grid in Colorado',
-      subtitle: 'Escape civilization completely',
-      description: 'True wilderness immersion in Colorado\'s backcountry. No cell service, no crowds, just mountains and peace.',
-      coverImage: '/lovable-uploads/462239f6-9a27-4b7d-a660-d8474967fd14.png',
-      editor: {
-        name: 'Jake Mountain',
-        avatar: '/lovable-uploads/44271e40-b9f9-4b74-a5b9-9f414e3a5eac.png',
-        bio: 'Wilderness guide, people avoider',
-        followers: 7400,
-        verified: false
-      },
-      tags: ['Off-Grid', 'Colorado', 'Wilderness', 'Solo Travel'],
-      contentCount: 11,
-      followers: 5900,
-      rating: 4.8,
-      lastUpdated: '2 weeks ago',
-      featured: false,
-      contents: [
-        { type: 'trip-blueprint', title: 'Remote Colorado Trails', excerpt: 'Where you\'ll see more elk than people' },
-        { type: 'journal-entry', title: 'Day 5: Talking to Trees', excerpt: 'When solitude becomes communion' },
-        { type: 'local-review', title: 'Gear That Actually Works', excerpt: 'Tested in real wilderness' },
-        { type: 'photo-essay', title: '14ers in Solitude', excerpt: 'Summit views, zero crowds' }
-      ]
-    },
-    {
-      id: '10',
-      title: 'Cheap but dreamy: Croatia on $100/day',
-      subtitle: 'Adriatic luxury on a budget',
-      description: 'Experience Croatia\'s stunning coastline without breaking the bank. Smart strategies for affordable island hopping.',
-      coverImage: '/lovable-uploads/495f63b6-10b4-4636-9eaa-039faf98b098.png',
-      editor: {
-        name: 'Ana Kovač',
-        avatar: '/lovable-uploads/4bedad66-82e6-44d2-a571-8ac9e6a3973d.png',
-        bio: 'Budget travel expert, Croatian local',
-        followers: 10200,
-        verified: false
-      },
-      tags: ['Budget Travel', 'Croatia', 'Island Hopping', 'Adriatic'],
-      contentCount: 14,
-      followers: 7800,
-      rating: 4.5,
-      lastUpdated: '4 days ago',
-      featured: false,
-      contents: [
-        { type: 'trip-blueprint', title: 'Island Hopping Route', excerpt: 'Ferry schedules and hidden costs' },
-        { type: 'journal-entry', title: 'Dubrovnik on a Dime', excerpt: 'Game of Thrones locations for less' },
-        { type: 'local-review', title: 'Apartment vs Hotel Reality', excerpt: 'Where to save, where to splurge' },
-        { type: 'photo-essay', title: 'Croatian Sunsets for Free', excerpt: 'Million-dollar views, zero cost' }
-      ]
-    },
-    {
-      id: '11',
-      title: 'Baby naps + beach time: Croatia with an infant',
-      subtitle: 'Coastal family travel with tiny humans',
-      description: 'Navigate Croatia\'s islands with a baby in tow. Stroller-friendly beaches, nap schedules, and realistic expectations.',
-      coverImage: '/lovable-uploads/5da0882d-c336-4a6c-b816-25ff575ea341.png',
-      editor: {
-        name: 'Emma Thompson',
-        avatar: '/lovable-uploads/5e12c786-7c01-4fb4-bf1b-eea0010773a6.png',
-        bio: 'New mom, determined traveler',
-        followers: 6300,
-        verified: false
-      },
-      tags: ['Baby Travel', 'Croatia', 'Family', 'Beach'],
-      contentCount: 12,
-      followers: 4800,
-      rating: 4.7,
-      lastUpdated: '1 week ago',
-      featured: false,
-      contents: [
-        { type: 'trip-blueprint', title: 'Baby-Friendly Beach Route', excerpt: 'Shade, facilities, and peace' },
-        { type: 'journal-entry', title: 'Ferry Naps and Sea Breezes', excerpt: 'When babies love boat rides' },
-        { type: 'local-review', title: 'Restaurants That Welcome Babies', excerpt: 'High chairs and understanding' },
-        { type: 'photo-essay', title: 'First Beach Day', excerpt: 'Tiny toes in Adriatic sand' }
-      ]
-    },
-    {
-      id: '12',
-      title: 'Teen-approved Japan: anime, arcades & culture',
-      subtitle: 'Japan through teenage eyes',
-      description: 'Keep teenagers engaged in Japan with the perfect mix of pop culture, technology, and traditional experiences.',
-      coverImage: '/lovable-uploads/57128f78-ae84-40b4-9e6e-e92dfb583dc4.png',
-      editor: {
-        name: 'Kenji Nakamura',
-        avatar: '/lovable-uploads/5f365107-6261-4234-b664-965c3aea763b.png',
-        bio: 'Otaku parent, cultural translator',
-        followers: 9600,
-        verified: true
-      },
-      tags: ['Teen Travel', 'Japan', 'Anime', 'Pop Culture'],
-      contentCount: 15,
-      followers: 8100,
-      rating: 4.6,
-      lastUpdated: '5 days ago',
-      featured: false,
-      contents: [
-        { type: 'trip-blueprint', title: 'Akihabara to Asakusa Route', excerpt: 'Modern anime culture meets tradition' },
-        { type: 'journal-entry', title: 'My Teen Loved the Fish Market?', excerpt: 'Unexpected moments of connection' },
-        { type: 'local-review', title: 'Arcade vs Temple Visits', excerpt: 'Balancing fun with culture' },
-        { type: 'photo-essay', title: 'Cosplay in Harajuku', excerpt: 'When teens embrace Japanese creativity' }
-      ]
-    },
-    {
-      id: '13',
-      title: 'Introvert-friendly Vietnam: the itinerary I wish I had',
-      subtitle: 'Quiet corners in a bustling country',
-      description: 'Vietnam for introverts who want authentic experiences without overwhelming crowds. Peaceful routes and mindful travel.',
-      coverImage: '/lovable-uploads/5f78a1b2-c7a5-4064-891c-f2ab5db2c767.png',
-      editor: {
-        name: 'Linh Nguyen',
-        avatar: '/lovable-uploads/62358993-d15b-4b81-9c51-49ab4c2e8d79.png',
-        bio: 'Quiet traveler, cultural observer',
-        followers: 7200,
-        verified: false
-      },
-      tags: ['Introvert Travel', 'Vietnam', 'Cultural Immersion', 'Peaceful'],
-      contentCount: 13,
-      followers: 5600,
-      rating: 4.8,
-      lastUpdated: '6 days ago',
-      featured: false,
-      contents: [
-        { type: 'trip-blueprint', title: 'Northern Mountains Route', excerpt: 'Sapa without tour groups' },
-        { type: 'journal-entry', title: 'Coffee Shop Meditation', excerpt: 'Finding peace in Vietnamese café culture' },
-        { type: 'local-review', title: 'Homestays vs Hotels', excerpt: 'Authentic connections without overwhelm' },
-        { type: 'photo-essay', title: 'Mekong Delta Mornings', excerpt: 'Quiet moments on the water' }
-      ]
     }
   ];
 
@@ -402,101 +219,188 @@ const CuratedTrips = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="sticky top-16 z-40 backdrop-blur-xl border-b border-border/50 bg-background/95">
-        <div className="max-w-6xl mx-auto px-4 py-3">
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={() => navigate('/')}
-              className="p-1.5 hover:bg-card/50 rounded-lg transition-colors text-muted-foreground hover:text-foreground"
-            >
-              <ArrowLeft className="w-4 h-4" />
-            </button>
-            <div>
-              <h1 className="text-lg font-semibold text-foreground">Curated Trips</h1>
-              <p className="text-xs text-muted-foreground">Trips designed for specific needs & situations</p>
-            </div>
+      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/10" style={{ background: 'hsl(var(--background) / 0.8)' }}>
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center gap-4">
+          <button 
+            onClick={() => navigate(-1)}
+            className="p-2 hover:bg-blue-500/10 rounded-xl transition-all duration-300 text-muted-foreground hover:text-blue-600 group"
+          >
+            <ArrowLeft className="w-5 h-5 group-hover:translate-x-[-2px] transition-transform duration-200" />
+          </button>
+          <div>
+            <h1 className="text-lg font-semibold text-foreground">Travel Zines</h1>
+            <p className="text-sm text-muted-foreground">Real stories from real travelers</p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 pt-6 pb-4">
-        {/* Hero Section */}
-        <div className="text-center mb-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full mb-3">
-            <BookOpen className="w-3 h-3" />
-            <span className="text-xs font-medium">Trip Zines</span>
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="flex gap-8">
+          {/* Main Content - Compact List */}
+          <div className="flex-1 max-w-3xl">
+            {/* Search and Filters */}
+            <div className="mb-6 space-y-4">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <input
+                  type="text"
+                  placeholder="Search zines..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary/20"
+                />
+              </div>
+              <ZineFilters selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+            </div>
+
+            {/* Compact Zine List */}
+            <div className="space-y-4">
+              {filteredZines.map((zine) => (
+                <div
+                  key={zine.id}
+                  onClick={() => handleZineClick(zine)}
+                  className="group cursor-pointer bg-card border border-border rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:border-primary/30"
+                >
+                  <div className="flex gap-4">
+                    {/* Cover Image - Small */}
+                    <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                      <img 
+                        src={zine.coverImage} 
+                        alt={zine.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between mb-2">
+                        <h3 className="text-lg font-semibold text-foreground line-clamp-1 group-hover:text-primary transition-colors">
+                          {zine.title}
+                        </h3>
+                        {zine.featured && (
+                          <span className="px-2 py-1 bg-amber-500/10 text-amber-600 text-xs font-medium rounded-full ml-2">
+                            FEATURED
+                          </span>
+                        )}
+                      </div>
+                      
+                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                        {zine.description}
+                      </p>
+                      
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <img 
+                            src={zine.editor.avatar} 
+                            alt={zine.editor.name}
+                            className="w-6 h-6 rounded-full object-cover"
+                          />
+                          <span className="text-sm text-muted-foreground">{zine.editor.name}</span>
+                          <span className="text-xs text-muted-foreground">•</span>
+                          <span className="text-xs text-muted-foreground">{zine.lastUpdated}</span>
+                        </div>
+                        
+                        <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                          <div className="flex items-center gap-1">
+                            <Users className="w-3 h-3" />
+                            <span>{zine.followers.toLocaleString()}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <BookOpen className="w-3 h-3" />
+                            <span>{zine.contentCount}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
-            Niche Travel Magazines
-          </h2>
-          <p className="text-sm text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            Curated travel collections by real people with real stories.
-          </p>
-          
-          {/* Search Bar */}
-          <div className="max-w-sm mx-auto mt-4 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-3 h-3" />
-            <input
-              type="text"
-              placeholder="Search zines..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-border/50 bg-card text-foreground placeholder-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary"
-            />
-          </div>
-        </div>
 
-        {/* Filters */}
-        <div className="mb-4">
-          <ZineFilters selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
-        </div>
+          {/* Sidebar Content */}
+          <div className="w-80 space-y-6">
+            {/* Community Notes */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 rounded-xl p-6 border border-blue-200/50 dark:border-blue-800/30">
+              <div className="flex items-center gap-2 mb-4">
+                <Sparkles className="w-5 h-5 text-blue-600" />
+                <h3 className="font-semibold text-foreground">Community Notes</h3>
+              </div>
+              <div className="space-y-3">
+                <div className="bg-white/50 dark:bg-background/50 rounded-lg p-3 border border-blue-200/30">
+                  <p className="text-sm text-muted-foreground">
+                    "These zines are game-changers! Finally, honest travel advice that's actually useful."
+                  </p>
+                  <div className="flex items-center gap-2 mt-2">
+                    <div className="w-4 h-4 bg-primary rounded-full"></div>
+                    <span className="text-xs text-muted-foreground">Sarah M.</span>
+                  </div>
+                </div>
+                
+                <div className="bg-white/50 dark:bg-background/50 rounded-lg p-3 border border-blue-200/30">
+                  <p className="text-sm text-muted-foreground">
+                    "The accessibility guide for Barcelona saved my entire trip. Thank you!"
+                  </p>
+                  <div className="flex items-center gap-2 mt-2">
+                    <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                    <span className="text-xs text-muted-foreground">Mike R.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-        {/* Zines Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredZines.map((zine) => (
-            <ZineCard key={zine.id} zine={zine} onZineClick={handleZineClick} />
-          ))}
-        </div>
+            {/* Hidden Gems */}
+            <div className="bg-card rounded-xl p-6 border border-border">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
+                <h3 className="font-semibold text-foreground">Hidden Gems</h3>
+              </div>
+              <div className="space-y-4">
+                <div className="group cursor-pointer">
+                  <div className="w-full h-32 rounded-lg overflow-hidden mb-3">
+                    <img 
+                      src="/lovable-uploads/6afa058e-fb1f-4eb8-8fbc-d2ce3df4e47f.png" 
+                      alt="Secret cenote in Tulum"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <h4 className="font-medium text-foreground mb-1">Secret Cenote, Tulum</h4>
+                  <p className="text-xs text-muted-foreground">Only locals know about this hidden swimming spot</p>
+                </div>
+                
+                <div className="group cursor-pointer">
+                  <div className="w-full h-32 rounded-lg overflow-hidden mb-3">
+                    <img 
+                      src="/lovable-uploads/73d68dec-aaff-4cb1-9f42-798bc090860f.png" 
+                      alt="Rooftop café in Lisbon"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <h4 className="font-medium text-foreground mb-1">Rooftop Café, Lisbon</h4>
+                  <p className="text-xs text-muted-foreground">Best sunset views, zero tourists</p>
+                </div>
+              </div>
+            </div>
 
-        {/* Empty State */}
-        {filteredZines.length === 0 && (
-          <div className="text-center py-16">
-            <BookOpen className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
-            <h3 className="text-xl font-semibold text-foreground mb-2">No Zines Found</h3>
-            <p className="text-muted-foreground">
-              Try adjusting your search or filter to discover more travel zines.
-            </p>
-          </div>
-        )}
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div 
-            className="inline-block p-8 rounded-2xl border border-border/50 bg-card"
-          >
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Want to Create Your Own Zine?
-            </h3>
-            <p className="text-muted-foreground mb-6 max-w-md">
-              Have a unique travel perspective or niche expertise? Pitch your zine idea and start curating for our community.
-            </p>
-            <div className="flex gap-4 justify-center">
-              <button 
-                onClick={() => navigate('/chat')}
-                className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors"
-              >
-                <PlusCircle className="w-4 h-4" />
-                Pitch a Zine
-              </button>
-              <button 
-                onClick={() => navigate('/chat')}
-                className="flex items-center gap-2 px-6 py-3 bg-card/50 text-foreground border border-border/50 rounded-xl font-semibold hover:bg-card transition-colors"
-              >
-                <Search className="w-4 h-4" />
-                Custom Trip
-              </button>
+            {/* Join Community */}
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-6 border border-primary/20">
+              <div className="text-center space-y-4">
+                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto">
+                  <PlusCircle className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Join Our Community</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Share your own travel stories and get exclusive access to new zines.
+                  </p>
+                </div>
+                <button className="w-full bg-primary text-primary-foreground rounded-lg py-2 px-4 font-medium hover:bg-primary/90 transition-colors">
+                  Join 15,000+ Travelers
+                </button>
+                <p className="text-xs text-muted-foreground">Free to join • No spam, ever</p>
+              </div>
             </div>
           </div>
         </div>
