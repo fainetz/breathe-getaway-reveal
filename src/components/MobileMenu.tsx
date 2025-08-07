@@ -40,7 +40,10 @@ const MobileMenu = () => {
         <div className="md:hidden fixed right-2 bottom-[4.5rem] z-[60] max-w-[140px]">
           <div className="relative">
             {/* Chat bubble */}
-            <div className="bg-gradient-to-br from-primary/95 to-accent/95 backdrop-blur-sm rounded-xl border border-primary/20 shadow-lg p-2">
+            <div 
+              className="bg-gradient-to-br from-primary/95 to-accent/95 backdrop-blur-sm rounded-xl border border-primary/20 shadow-lg p-2 cursor-pointer"
+              onClick={() => setShowBanner(false)}
+            >
               <div className="flex items-start justify-between gap-1 mb-1">
                 <Lightbulb className="h-2 w-2 text-primary-foreground animate-pulse mt-0.5 flex-shrink-0" />
                 <button
