@@ -300,13 +300,13 @@ const TripResults = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       {/* Clean Header */}
-      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/10" style={{ background: 'hsl(var(--background) / 0.8)' }}>
+      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-border/20" style={{ background: 'hsl(var(--background) / 0.9)' }}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center gap-4">
           <button 
             onClick={handleBackClick}
-            className="p-2 hover:bg-blue-500/10 rounded-xl transition-all duration-300 text-muted-foreground hover:text-blue-600 group"
+            className="p-2.5 hover:bg-primary/10 rounded-xl transition-all duration-300 text-muted-foreground hover:text-primary group"
           >
             <ArrowLeft className="w-5 h-5 group-hover:translate-x-[-2px] transition-transform duration-200" />
           </button>
@@ -321,101 +321,129 @@ const TripResults = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Trip Timeline - Left Side */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="relative">
+            {/* Hero Image */}
+            <div className="relative overflow-hidden rounded-3xl">
               <img 
                 src={getDestinationImages(query).hero} 
                 alt="Destination" 
-                className="w-full h-64 object-cover rounded-2xl"
+                className="w-full h-64 object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent rounded-2xl"></div>
-              <div className="absolute bottom-6 left-6">
-                <h2 className="text-3xl font-bold text-white mb-2">Tulum Weekend</h2>
-                <div className="flex items-center gap-3 text-white/90">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span>AI Optimized • 2 days</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-6">
+                  <h2 className="text-3xl font-bold text-white mb-2">Tulum Weekend</h2>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3 text-white/90">
+                      <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                      <span className="text-sm">AI Optimized • 2 days</span>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold text-white">$600</div>
+                      <div className="text-white/80 text-sm">total</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Trip Itinerary List */}
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-foreground mb-6">Your Itinerary</h3>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
+                  <Sparkles className="w-4 h-4 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-foreground">Your Itinerary</h3>
+              </div>
               
               {/* Flight Item */}
-              <div className="bg-card border border-border rounded-xl p-6 group cursor-pointer hover:shadow-md transition-all duration-300"
+              <div className="backdrop-blur-sm bg-card/80 border border-border/50 rounded-2xl p-6 group cursor-pointer hover:shadow-xl hover:bg-card/90 transition-all duration-300"
                    onClick={() => togglePromptBox('flight')}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-blue-500 flex items-center justify-center text-white">
+                <div className="flex items-start gap-5">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white shadow-lg">
                     <Plane className="w-6 h-6" />
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center gap-3 mb-3">
                       <h4 className="text-lg font-semibold text-foreground">Flight to Tulum</h4>
                       <Edit className="w-4 h-4 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
-                    <p className="text-muted-foreground mb-3">{results.flight.route} • {results.flight.schedule}</p>
-                    <p className="text-sm text-muted-foreground mb-3">{results.flight.details}</p>
-                    <div className="text-lg font-bold text-foreground">{results.flight.price}</div>
+                    <div className="space-y-2 mb-4">
+                      <p className="text-muted-foreground font-medium">{results.flight.route} • {results.flight.schedule}</p>
+                      <p className="text-sm text-muted-foreground">{results.flight.details}</p>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="text-xl font-bold text-foreground">{results.flight.price}</div>
+                      <div className="text-xs text-blue-600 bg-blue-50 dark:bg-blue-950/30 px-3 py-1 rounded-full">
+                        Tap to edit
+                      </div>
+                    </div>
                   </div>
                 </div>
                 {showPromptBox.flight && (
-                  <div className="mt-4 pt-4 border-t border-border">
+                  <div className="mt-6 pt-6 border-t border-border/50">
                     <Textarea
                       value={prompts.flight || ''}
                       onChange={(e) => updatePrompt('flight', e.target.value)}
                       placeholder="Different time? Upgrade class? Change airline?"
-                      className="w-full mb-3"
+                      className="w-full mb-3 bg-background/50 backdrop-blur-sm"
                       rows={2}
                     />
                     <button
                       onClick={() => handleInlinePromptSubmit('flight')}
                       disabled={panelStates.flight?.isLoading}
-                      className="bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-4 py-2 flex items-center gap-2 transition-colors disabled:opacity-50"
+                      className="bg-blue-500 hover:bg-blue-600 text-white rounded-xl px-6 py-2.5 flex items-center gap-2 transition-colors disabled:opacity-50 font-medium"
                     >
                       {panelStates.flight?.isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
-                      Update
+                      Update Flight
                     </button>
                   </div>
                 )}
               </div>
 
               {/* Hotel Item */}
-              <div className="bg-card border border-border rounded-xl p-6 group cursor-pointer hover:shadow-md transition-all duration-300"
+              <div className="backdrop-blur-sm bg-card/80 border border-border/50 rounded-2xl p-6 group cursor-pointer hover:shadow-xl hover:bg-card/90 transition-all duration-300"
                    onClick={() => togglePromptBox('hotel')}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-emerald-500 flex items-center justify-center text-white">
+                <div className="flex items-start gap-5">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white shadow-lg">
                     <Hotel className="w-6 h-6" />
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center gap-3 mb-3">
                       <h4 className="text-lg font-semibold text-foreground">Hotel Stay</h4>
                       <Edit className="w-4 h-4 text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
-                    <p className="text-muted-foreground mb-2">{results.hotel.name}</p>
-                    <div className="flex items-center gap-2 mb-3">
-                      <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                      <span className="text-sm text-muted-foreground">{results.hotel.rating} rating</span>
+                    <div className="space-y-2 mb-4">
+                      <p className="text-muted-foreground font-medium">{results.hotel.name}</p>
+                      <div className="flex items-center gap-2">
+                        <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                        <span className="text-sm text-muted-foreground">{results.hotel.rating} rating</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">{results.hotel.description}</p>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-3">{results.hotel.description}</p>
-                    <div className="text-lg font-bold text-foreground">{results.hotel.price}</div>
+                    <div className="flex items-center justify-between">
+                      <div className="text-xl font-bold text-foreground">{results.hotel.price}</div>
+                      <div className="text-xs text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30 px-3 py-1 rounded-full">
+                        Tap to edit
+                      </div>
+                    </div>
                   </div>
                 </div>
                 {showPromptBox.hotel && (
-                  <div className="mt-4 pt-4 border-t border-border">
+                  <div className="mt-6 pt-6 border-t border-border/50">
                     <Textarea
                       value={prompts.hotel || ''}
                       onChange={(e) => updatePrompt('hotel', e.target.value)}
                       placeholder="More luxury? Different location? Specific amenities?"
-                      className="w-full mb-3"
+                      className="w-full mb-3 bg-background/50 backdrop-blur-sm"
                       rows={2}
                     />
                     <button
                       onClick={() => handleInlinePromptSubmit('hotel')}
                       disabled={panelStates.hotel?.isLoading}
-                      className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg px-4 py-2 flex items-center gap-2 transition-colors disabled:opacity-50"
+                      className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl px-6 py-2.5 flex items-center gap-2 transition-colors disabled:opacity-50 font-medium"
                     >
                       {panelStates.hotel?.isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
-                      Update
+                      Update Hotel
                     </button>
                   </div>
                 )}
@@ -423,23 +451,45 @@ const TripResults = () => {
 
               {/* Activities List */}
               {results.thingsToDo.map((activity, index) => (
-                <div key={index} className="bg-card border border-border rounded-xl p-6 group cursor-pointer hover:shadow-md transition-all duration-300"
+                <div key={index} className="backdrop-blur-sm bg-card/80 border border-border/50 rounded-2xl p-6 group cursor-pointer hover:shadow-xl hover:bg-card/90 transition-all duration-300"
                      onClick={() => togglePromptBox(`activity-${index}`)}>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-purple-500 flex items-center justify-center text-white">
+                  <div className="flex items-start gap-5">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white shadow-lg">
                       {getActivityIcon(activity.icon)}
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-3 mb-3">
                         <h4 className="text-lg font-semibold text-foreground">{activity.title}</h4>
-                        <span className="text-xs text-muted-foreground bg-muted/50 px-2 py-1 rounded">
+                        <span className="text-xs text-muted-foreground bg-muted/60 px-3 py-1 rounded-full font-medium">
                           {activity.time}
                         </span>
                         <Edit className="w-4 h-4 text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                       </div>
-                      <p className="text-muted-foreground">{activity.description}</p>
+                      <p className="text-muted-foreground mb-3">{activity.description}</p>
+                      <div className="text-xs text-purple-600 bg-purple-50 dark:bg-purple-950/30 px-3 py-1 rounded-full w-fit">
+                        Tap to customize
+                      </div>
                     </div>
                   </div>
+                  {showPromptBox[`activity-${index}`] && (
+                    <div className="mt-6 pt-6 border-t border-border/50">
+                      <Textarea
+                        value={prompts[`activity-${index}`] || ''}
+                        onChange={(e) => updatePrompt(`activity-${index}`, e.target.value)}
+                        placeholder="Change time? Different activity? More/less active?"
+                        className="w-full mb-3 bg-background/50 backdrop-blur-sm"
+                        rows={2}
+                      />
+                      <button
+                        onClick={() => handleInlinePromptSubmit(`activity-${index}`)}
+                        disabled={panelStates[`activity-${index}`]?.isLoading}
+                        className="bg-purple-500 hover:bg-purple-600 text-white rounded-xl px-6 py-2.5 flex items-center gap-2 transition-colors disabled:opacity-50 font-medium"
+                      >
+                        {panelStates[`activity-${index}`]?.isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                        Update Activity
+                      </button>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -448,50 +498,50 @@ const TripResults = () => {
           {/* Trip Summary Sidebar - Right Side */}
           <div className="space-y-6">
             {/* Trip Overview Card */}
-            <div className="bg-card border border-border rounded-xl p-6 sticky top-24">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                  <Sparkles className="w-5 h-5 text-white" />
+            <div className="backdrop-blur-md bg-card/70 border border-border/30 rounded-2xl p-6 sticky top-28 shadow-xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg">
+                  <Sparkles className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-foreground">Trip Summary</h3>
+                <h3 className="text-xl font-semibold text-foreground">Trip Summary</h3>
               </div>
               
               <div className="space-y-4">
-                <div className="flex justify-between items-center py-2 border-b border-border/50">
-                  <span className="text-muted-foreground">Destination</span>
-                  <span className="font-medium text-foreground">Tulum, Mexico</span>
+                <div className="flex justify-between items-center py-3 border-b border-border/30">
+                  <span className="text-muted-foreground font-medium">Destination</span>
+                  <span className="font-semibold text-foreground">Tulum, Mexico</span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-border/50">
-                  <span className="text-muted-foreground">Duration</span>
-                  <span className="font-medium text-foreground">2 Days</span>
+                <div className="flex justify-between items-center py-3 border-b border-border/30">
+                  <span className="text-muted-foreground font-medium">Duration</span>
+                  <span className="font-semibold text-foreground">2 Days</span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-border/50">
-                  <span className="text-muted-foreground">Total Cost</span>
-                  <span className="font-bold text-foreground text-xl">$600</span>
+                <div className="flex justify-between items-center py-3 border-b border-border/30">
+                  <span className="text-muted-foreground font-medium">Total Cost</span>
+                  <span className="font-bold text-foreground text-2xl">$600</span>
                 </div>
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-muted-foreground">Trip Type</span>
-                  <span className="font-medium text-foreground">Relaxation</span>
+                <div className="flex justify-between items-center py-3">
+                  <span className="text-muted-foreground font-medium">Trip Type</span>
+                  <span className="font-semibold text-foreground">Relaxation</span>
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-border">
-                <h4 className="font-semibold text-foreground mb-3">What's Included</h4>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <div className="mt-6 pt-6 border-t border-border/30">
+                <h4 className="font-semibold text-foreground mb-4">What's Included</h4>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
                     <span className="text-muted-foreground">Round-trip flights</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
                     <span className="text-muted-foreground">2 nights accommodation</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
                     <span className="text-muted-foreground">Curated activities</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
                     <span className="text-muted-foreground">Local insider tips</span>
                   </div>
                 </div>
@@ -499,22 +549,24 @@ const TripResults = () => {
             </div>
 
             {/* Hidden Gems */}
-            <div className="bg-card border border-border rounded-xl p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-amber-500 flex items-center justify-center">
-                  <Eye className="w-5 h-5 text-white" />
+            <div className="backdrop-blur-md bg-card/70 border border-border/30 rounded-2xl p-6 shadow-xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center shadow-lg">
+                  <Eye className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-foreground">Hidden Gems</h3>
+                <h3 className="text-xl font-semibold text-foreground">Hidden Gems</h3>
               </div>
               
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {results.hiddenGems.map((gem, index) => (
-                  <div key={index} className="border-b border-border/50 last:border-b-0 pb-4 last:pb-0">
-                    <h4 className="font-medium text-foreground mb-1">{gem.name}</h4>
-                    <p className="text-sm text-muted-foreground mb-2">{gem.description}</p>
-                    <p className="text-xs text-amber-600 bg-amber-100/80 dark:bg-amber-950/30 rounded px-2 py-1">
-                      💡 {gem.insider_tip}
-                    </p>
+                  <div key={index} className="border-b border-border/30 last:border-b-0 pb-6 last:pb-0">
+                    <h4 className="font-semibold text-foreground mb-2 text-lg">{gem.name}</h4>
+                    <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{gem.description}</p>
+                    <div className="backdrop-blur-sm bg-amber-50/80 dark:bg-amber-950/40 border border-amber-200/50 dark:border-amber-800/50 rounded-xl p-3">
+                      <p className="text-sm text-amber-700 dark:text-amber-300 font-medium">
+                        💡 {gem.insider_tip}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
