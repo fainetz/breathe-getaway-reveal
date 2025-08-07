@@ -96,7 +96,7 @@ const Hero = () => {
   const itemCount = getCartItemCount();
 
   return (
-    <section className="relative min-h-screen min-h-[100dvh] flex flex-col bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 pt-0">{/* Mobile viewport height fix */}
+    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 pt-0">{/* Remove top padding */}
       {/* 3D Background */}
       <ThreeBackground />
 
@@ -153,28 +153,36 @@ const Hero = () => {
         {/* Mobile navigation menu - removed since we have horizontal nav */}
       </nav>
 
-      {/* Main Content - Mobile optimized layout */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center px-6 sm:px-8 max-w-7xl mx-auto py-12 sm:py-16 md:py-20">
-        {/* Mobile-first centered layout */}
-        <div className="text-center lg:text-left max-w-4xl mx-auto lg:mx-0">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-geist font-semibold leading-tight text-foreground mb-8 sm:mb-10 animate-fade-in">
+      {/* Main Content - Heading on right, carousel on left */}
+      <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 max-w-7xl mx-auto">
+        {/* Left side - Main heading and description */}
+        <div className="text-left lg:pr-8 order-1 lg:order-1">
+          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-geist font-semibold leading-tight text-foreground mb-6 animate-fade-in">
             <span>AI That Gets You</span>
+            <br className="sm:hidden" />
+            <span className="sm:inline"> And Gets You</span>
             <br />
-            <span>And Gets You There</span>
-            <br />
+            <span>There </span>
             <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Smarter</span>
           </h1>
           
-          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground leading-relaxed mb-10 sm:mb-12 animate-fade-in px-4 sm:px-0" style={{ animationDelay: '0.3s' }}>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             A Good trip doesn't start with filters and compromises. It starts with clarity — and a booking that just feels right, no second-guessing, no stress.
           </p>
           
-          {/* Waitlist text - mobile optimized */}
-          <div className="mb-16 sm:mb-20 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <p className="text-base sm:text-lg text-muted-foreground">
+          {/* Waitlist text - positioned to appear under search */}
+          <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <p className="text-sm sm:text-base text-muted-foreground">
               Join the waitlist for founding user perks
             </p>
           </div>
+          
+          {/* Mobile search functionality is now handled by the floating ExpandableSearch component */}
+        </div>
+
+        {/* Right side - Empty space where carousel was */}
+        <div className="relative order-2 lg:order-2">
+          {/* Left empty as requested */}
         </div>
       </div>
       

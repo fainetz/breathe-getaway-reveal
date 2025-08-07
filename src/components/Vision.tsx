@@ -57,7 +57,7 @@ const Vision = () => {
   }, [isVisible, visionCards.length]);
 
   return (
-    <section id="vision" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300" ref={sectionRef}>
+    <section id="vision" className="py-32 px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300" ref={sectionRef}>
       {/* Enhanced background with image */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-5">
@@ -74,7 +74,7 @@ const Vision = () => {
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <div className={`transition-all duration-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-6 sm:mb-8 md:mb-12 leading-tight text-black dark:text-white transition-colors duration-300 px-2 sm:px-0">
+          <h2 className="text-5xl md:text-7xl font-bold mb-12 leading-tight text-black dark:text-white transition-colors duration-300">
             Travel for
             <br />
             <span className="bg-gradient-to-r from-green-500 via-blue-500 to-amber-500 bg-clip-text text-transparent">
@@ -82,14 +82,14 @@ const Vision = () => {
             </span>
           </h2>
           
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed mb-8 sm:mb-12 md:mb-16 transition-colors duration-300 px-4 sm:px-6 lg:px-0">
+          <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed mb-16 transition-colors duration-300">
             From budget backpacking to luxury escapes, from emotional healing to adventure seeking—
             our AI understands your unique travel story and crafts the perfect experience.
           </p>
         </div>
 
-        {/* Mobile-optimized Card Carousel */}
-        <div className="relative mb-12 sm:mb-16 h-64 sm:h-72 md:h-80">
+        {/* Simplified Card Carousel */}
+        <div className="relative mb-16 h-80">
           {visionCards.map((card, index) => (
             <div
               key={index}
@@ -97,9 +97,9 @@ const Vision = () => {
                 currentCard === index
                   ? 'opacity-100 scale-100 translate-y-0 z-20'
                   : index === (currentCard + 1) % visionCards.length
-                  ? 'opacity-20 scale-95 translate-y-4 translate-x-4 sm:translate-x-8 z-10'
+                  ? 'opacity-20 scale-95 translate-y-4 translate-x-8 z-10'
                   : index === (currentCard - 1 + visionCards.length) % visionCards.length
-                  ? 'opacity-20 scale-95 translate-y-4 -translate-x-4 sm:-translate-x-8 z-10'
+                  ? 'opacity-20 scale-95 translate-y-4 -translate-x-8 z-10'
                   : 'opacity-0 scale-90 translate-y-8 z-0'
               }`}
               style={{
@@ -107,12 +107,12 @@ const Vision = () => {
                 transitionProperty: 'opacity, transform'
               }}
             >
-              <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-gray-200 dark:border-gray-700 rounded-2xl p-4 sm:p-6 md:p-8 mx-auto max-w-xs sm:max-w-md h-full relative overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-500 touch-manipulation">
+              <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-gray-200 dark:border-gray-700 rounded-2xl p-8 mx-auto max-w-md h-full relative overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-500">
                 <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
-                  <div className="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6 transform group-hover:scale-110 transition-transform duration-500">{card.icon}</div>
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-black dark:text-white transition-colors duration-300 leading-tight">{card.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-center transition-colors duration-300 text-sm sm:text-base">{card.description}</p>
+                <div className="relative z-10 flex flex-col items-center justify-center h-full">
+                  <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500">{card.icon}</div>
+                  <h3 className="text-2xl font-bold mb-4 text-black dark:text-white transition-colors duration-300">{card.title}</h3>
+                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-center transition-colors duration-300">{card.description}</p>
                 </div>
               </div>
             </div>
