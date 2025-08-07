@@ -318,15 +318,14 @@ const TripResults = () => {
       </div>
 
       {/* Hero Section with Destination Image */}
-      <div className="relative overflow-hidden">
-        <div className="relative">
+      <div className="relative h-96 overflow-hidden">
+        <div className="absolute inset-0">
           <img 
             src={getDestinationImages(query).hero} 
             alt="Destination" 
-            className="w-full h-auto"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-          <div className="absolute inset-0 bg-blue-600/20 backdrop-blur-[1px]"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
         </div>
         
         <div className="absolute inset-0 flex items-end">
