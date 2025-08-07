@@ -16,6 +16,7 @@ const navItems: NavItem[] = [
   { path: '/destinations', label: 'Destinations', id: 'destinations' },
   { path: '/', label: 'Home', id: 'home' },
   { path: '/curated-trips', label: 'Trips', id: 'trips' },
+  { path: '/community', label: 'Community', id: 'community' },
   { path: '/chat', label: 'Chat', id: 'chat' },
   { path: '/faq', label: 'FAQ', id: 'faq' },
 ];

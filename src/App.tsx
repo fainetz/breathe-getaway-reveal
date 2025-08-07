@@ -16,6 +16,8 @@ import Chat from "./pages/Chat";
 import FAQ from "./pages/FAQ";
 import TripResults from "./pages/TripResults";
 import Auth from "./pages/Auth";
+import Community from "./pages/Community";
+import CommunityDetail from "./pages/CommunityDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -47,6 +49,8 @@ const App = () => (
               <Route path="/chat" element={<Chat />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/trip-results" element={<TripResults />} />
+              <Route path="/community" element={<Community />} />
+              <Route path="/community/:slug" element={<CommunityDetail />} />
               <Route path="/auth" element={<Auth />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
