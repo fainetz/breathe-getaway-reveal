@@ -150,6 +150,76 @@ const TripResults = () => {
 
   const generateMockResults = (prompt: string): TripResults => {
     const isStressed = prompt.toLowerCase().includes('burnt out') || prompt.toLowerCase().includes('stressed');
+    const isIcelandTrip = prompt.toLowerCase().includes('digital detox') && prompt.toLowerCase().includes('iceland');
+    
+    if (isIcelandTrip) {
+      return {
+        prompt,
+        introText: "disconnect to reconnect. seven days in iceland with no screens, just you and the raw beauty of nature.",
+        subText: "everything's editable. click anything to rework it with a fresh prompt.",
+        flight: {
+          route: "jfk → reykjavik",
+          schedule: "monday 8:00pm — monday return",
+          details: "direct · premium economy · icelandair",
+          price: "$890",
+          suggestions: []
+        },
+        hotel: {
+          name: "ion adventure hotel",
+          rating: 4.9,
+          description: "eco-luxury · northern lights · no wifi in rooms",
+          price: "$320/night",
+          imageUrl: "/lovable-uploads/495f63b6-10b4-4636-9eaa-039faf98b098.png",
+          suggestions: []
+        },
+        thingsToDo: [
+          {
+            title: "glacier hike at sólheimajökull",
+            description: "walk on ancient ice formations with expert guides",
+            time: "9:00 am",
+            icon: "mountain"
+          },
+          {
+            title: "geysir & gullfoss tour",
+            description: "witness earth's power at iceland's famous geysir and waterfall",
+            time: "1:00 pm", 
+            icon: "water"
+          },
+          {
+            title: "blue lagoon & spa",
+            description: "natural geothermal pools with healing silica mud",
+            time: "6:00 pm",
+            icon: "spa"
+          },
+          {
+            title: "northern lights chase",
+            description: "professional guide leads aurora hunting with no phones allowed",
+            time: "10:00 pm",
+            icon: "aurora"
+          }
+        ],
+        hiddenGems: [
+          {
+            name: "seljavallalaug pool",
+            description: "secret geothermal pool hidden in mountains, locals only",
+            type: "hot spring",
+            insider_tip: "hike starts behind abandoned farm - look for the worn path"
+          },
+          {
+            name: "kvernufoss waterfall",
+            description: "walk behind this hidden waterfall, no crowds ever",
+            type: "waterfall",
+            insider_tip: "park at skógafoss then walk 15 minutes east - most miss it completely"
+          },
+          {
+            name: "fjörðnir restaurant",
+            description: "michelin-level dining in a tiny village, reservations essential",
+            type: "restaurant",
+            insider_tip: "mention you're doing digital detox - chef gives special off-menu course"
+          }
+        ]
+      };
+    }
     
     return {
       prompt,
@@ -261,7 +331,11 @@ const TripResults = () => {
       sunrise: <MapPin className="w-4 h-4 text-orange-400" />,
       food: <Star className="w-4 h-4 text-amber-500" />,
       swim: <MapPin className="w-4 h-4 text-blue-400" />,
-      rest: <Heart className="w-4 h-4 text-purple-400" />
+      rest: <Heart className="w-4 h-4 text-purple-400" />,
+      mountain: <MapPin className="w-4 h-4 text-slate-500" />,
+      water: <MapPin className="w-4 h-4 text-blue-500" />,
+      spa: <MapPin className="w-4 h-4 text-emerald-500" />,
+      aurora: <Sparkles className="w-4 h-4 text-purple-500" />
     };
     return iconMap[iconType as keyof typeof iconMap] || <MapPin className="w-4 h-4 text-muted-foreground" />;
   };
@@ -330,14 +404,22 @@ const TripResults = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
             <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
               <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-6">
-                <h2 className="text-xl sm:text-3xl font-bold text-white mb-2">Tulum Weekend</h2>
+                <h2 className="text-xl sm:text-3xl font-bold text-white mb-2">
+                  {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') 
+                    ? 'Iceland Digital Detox' 
+                    : 'Tulum Weekend'}
+                </h2>
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <div className="flex items-center gap-2 text-white/90">
                     <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                    <span className="text-sm">AI Optimized • 2 days</span>
+                    <span className="text-sm">
+                      AI Optimized • {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '7 days' : '2 days'}
+                    </span>
                   </div>
                   <div className="text-right">
-                    <div className="text-xl sm:text-2xl font-bold text-white">$600</div>
+                    <div className="text-xl sm:text-2xl font-bold text-white">
+                      {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '$2,630' : '$600'}
+                    </div>
                     <div className="text-white/80 text-xs sm:text-sm">total</div>
                   </div>
                 </div>
@@ -357,19 +439,29 @@ const TripResults = () => {
             <div className="grid grid-cols-2 gap-4 sm:space-y-0">
               <div className="text-center p-3 rounded-xl bg-muted/30">
                 <div className="text-sm text-muted-foreground">Destination</div>
-                <div className="font-semibold text-foreground">Tulum, Mexico</div>
+                <div className="font-semibold text-foreground">
+                  {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') 
+                    ? 'Reykjavik, Iceland' 
+                    : 'Tulum, Mexico'}
+                </div>
               </div>
               <div className="text-center p-3 rounded-xl bg-muted/30">
                 <div className="text-sm text-muted-foreground">Duration</div>
-                <div className="font-semibold text-foreground">2 Days</div>
+                <div className="font-semibold text-foreground">
+                  {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '7 Days' : '2 Days'}
+                </div>
               </div>
               <div className="text-center p-3 rounded-xl bg-muted/30">
                 <div className="text-sm text-muted-foreground">Total Cost</div>
-                <div className="font-bold text-foreground text-xl">$600</div>
+                <div className="font-bold text-foreground text-xl">
+                  {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '$2,630' : '$600'}
+                </div>
               </div>
               <div className="text-center p-3 rounded-xl bg-muted/30">
                 <div className="text-sm text-muted-foreground">Trip Type</div>
-                <div className="font-semibold text-foreground">Relaxation</div>
+                <div className="font-semibold text-foreground">
+                  {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? 'Digital Detox' : 'Relaxation'}
+                </div>
               </div>
             </div>
 
@@ -382,7 +474,9 @@ const TripResults = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-emerald-500 rounded-full flex-shrink-0"></div>
-                  <span className="text-muted-foreground">2 nights stay</span>
+                  <span className="text-muted-foreground">
+                    {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '7 nights stay' : '2 nights stay'}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-emerald-500 rounded-full flex-shrink-0"></div>
@@ -414,7 +508,9 @@ const TripResults = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-2 flex-wrap">
-                    <h4 className="text-base sm:text-lg font-semibold text-foreground">Flight to Tulum</h4>
+                    <h4 className="text-base sm:text-lg font-semibold text-foreground">
+                      {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? 'Flight to Reykjavik' : 'Flight to Tulum'}
+                    </h4>
                     <Edit className="w-4 h-4 text-blue-500 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity" />
                   </div>
                   <div className="space-y-1 sm:space-y-2 mb-3">
@@ -453,31 +549,67 @@ const TripResults = () => {
             {/* Hotel Item - Mobile Optimized */}
             <div className="backdrop-blur-sm bg-card/80 border border-border/50 rounded-xl p-4 sm:p-6 group cursor-pointer hover:shadow-xl hover:bg-card/90 transition-all duration-300 touch-manipulation"
                  onClick={() => togglePromptBox('hotel')}>
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white shadow-lg flex-shrink-0">
-                  <Hotel className="w-5 h-5 sm:w-6 sm:h-6" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-2 flex-wrap">
-                    <h4 className="text-base sm:text-lg font-semibold text-foreground">Hotel Stay</h4>
-                    <Edit className="w-4 h-4 text-emerald-500 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <div className="space-y-1 sm:space-y-2 mb-3">
-                    <p className="text-sm sm:text-base text-muted-foreground font-medium">{results.hotel.name}</p>
-                    <div className="flex items-center gap-2">
-                      <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                      <span className="text-xs sm:text-sm text-muted-foreground">{results.hotel.rating} rating</span>
+              {results.hotel.imageUrl ? (
+                // Image-focused layout for Iceland trip
+                <div className="space-y-4">
+                  <div className="relative rounded-xl overflow-hidden">
+                    <img 
+                      src={results.hotel.imageUrl} 
+                      alt={results.hotel.name}
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                    <div className="absolute top-3 right-3">
+                      <Edit className="w-4 h-4 text-white opacity-70 group-hover:opacity-100 transition-opacity" />
                     </div>
-                    <p className="text-xs sm:text-sm text-muted-foreground">{results.hotel.description}</p>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="text-lg sm:text-xl font-bold text-foreground">{results.hotel.price}</div>
-                    <div className="text-xs text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30 px-2 py-1 rounded-full">
-                      Tap to edit
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h4 className="text-lg font-bold text-white mb-1">{results.hotel.name}</h4>
+                          <div className="flex items-center gap-2 mb-2">
+                            <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                            <span className="text-sm text-white/90">{results.hotel.rating} rating</span>
+                          </div>
+                          <p className="text-sm text-white/80">{results.hotel.description}</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-xl font-bold text-white">{results.hotel.price}</div>
+                          <div className="text-xs text-emerald-400 bg-emerald-950/30 px-2 py-1 rounded-full">
+                            Tap to edit
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                // Default panel layout for other trips
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white shadow-lg flex-shrink-0">
+                    <Hotel className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-2 flex-wrap">
+                      <h4 className="text-base sm:text-lg font-semibold text-foreground">Hotel Stay</h4>
+                      <Edit className="w-4 h-4 text-emerald-500 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity" />
+                    </div>
+                    <div className="space-y-1 sm:space-y-2 mb-3">
+                      <p className="text-sm sm:text-base text-muted-foreground font-medium">{results.hotel.name}</p>
+                      <div className="flex items-center gap-2">
+                        <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                        <span className="text-xs sm:text-sm text-muted-foreground">{results.hotel.rating} rating</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-muted-foreground">{results.hotel.description}</p>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="text-lg sm:text-xl font-bold text-foreground">{results.hotel.price}</div>
+                      <div className="text-xs text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30 px-2 py-1 rounded-full">
+                        Tap to edit
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
               {showPromptBox.hotel && (
                 <div className="mt-4 pt-4 border-t border-border/50">
                   <Textarea
