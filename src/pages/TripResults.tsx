@@ -427,65 +427,29 @@ const TripResults = () => {
             </div>
           </div>
 
-          {/* Trip Summary - Mobile First */}
-          <div className="backdrop-blur-md bg-card/80 border border-border/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg">
-                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+          {/* Trip Summary - Compact Design */}
+          <div className="backdrop-blur-md bg-card/60 border border-border/20 rounded-2xl p-4 shadow-lg">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-lg font-semibold text-foreground">Trip Summary</h3>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                AI Optimized
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-foreground">Trip Summary</h3>
             </div>
             
-            <div className="grid grid-cols-2 gap-4 sm:space-y-0">
-              <div className="text-center p-3 rounded-xl bg-muted/30">
-                <div className="text-sm text-muted-foreground">Destination</div>
-                <div className="font-semibold text-foreground">
+            <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center gap-4">
+                <span className="text-muted-foreground">
                   {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') 
-                    ? 'Reykjavik, Iceland' 
-                    : 'Tulum, Mexico'}
-                </div>
+                    ? 'Reykjavik, Iceland • 7 days' 
+                    : 'Tulum, Mexico • 2 days'}
+                </span>
               </div>
-              <div className="text-center p-3 rounded-xl bg-muted/30">
-                <div className="text-sm text-muted-foreground">Duration</div>
-                <div className="font-semibold text-foreground">
-                  {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '7 Days' : '2 Days'}
-                </div>
-              </div>
-              <div className="text-center p-3 rounded-xl bg-muted/30">
-                <div className="text-sm text-muted-foreground">Total Cost</div>
-                <div className="font-bold text-foreground text-xl">
+              <div className="text-right">
+                <div className="text-lg font-bold text-foreground">
                   {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '$2,630' : '$600'}
                 </div>
-              </div>
-              <div className="text-center p-3 rounded-xl bg-muted/30">
-                <div className="text-sm text-muted-foreground">Trip Type</div>
-                <div className="font-semibold text-foreground">
-                  {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? 'Digital Detox' : 'Relaxation'}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-border/30">
-              <h4 className="font-semibold text-foreground mb-3">What's Included</h4>
-              <div className="grid grid-cols-2 gap-2 text-sm">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full flex-shrink-0"></div>
-                  <span className="text-muted-foreground">Round-trip flights</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full flex-shrink-0"></div>
-                  <span className="text-muted-foreground">
-                    {query.toLowerCase().includes('digital detox') && query.toLowerCase().includes('iceland') ? '7 nights stay' : '2 nights stay'}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full flex-shrink-0"></div>
-                  <span className="text-muted-foreground">Curated activities</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full flex-shrink-0"></div>
-                  <span className="text-muted-foreground">Insider tips</span>
-                </div>
+                <div className="text-xs text-muted-foreground">total</div>
               </div>
             </div>
           </div>
