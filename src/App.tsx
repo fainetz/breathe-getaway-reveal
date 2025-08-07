@@ -27,8 +27,8 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            {/* Mobile nav - positioned above content */}
-            <div className="md:hidden fixed top-4 left-1/2 transform -translate-x-1/2 z-[60]">
+            {/* Mobile nav - positioned at top for easy access */}
+            <div className="md:hidden fixed top-1 left-1/2 transform -translate-x-1/2 z-[60]">
               <MiniCurvedNav />
             </div>
             {/* Desktop nav - positioned above content */}
