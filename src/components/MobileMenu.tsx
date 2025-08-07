@@ -35,25 +35,28 @@ const MobileMenu = () => {
 
   return (
     <>
-      {/* Development Banner - Mobile only, positioned as side banner */}
+      {/* Development Banner - Mobile chat bubble */}
       {showBanner && (
-        <div className="md:hidden fixed right-2 bottom-20 z-[60] max-w-[120px]">
-          <div className="bg-gradient-to-br from-primary/90 to-accent/90 backdrop-blur-sm rounded-md border border-primary/20 shadow-lg">
-            <div className="p-2">
+        <div className="md:hidden fixed right-2 bottom-20 z-[60] max-w-[140px]">
+          <div className="relative">
+            {/* Chat bubble */}
+            <div className="bg-gradient-to-br from-primary/95 to-accent/95 backdrop-blur-sm rounded-xl border border-primary/20 shadow-lg p-2">
               <div className="flex items-start justify-between gap-1 mb-1">
                 <Lightbulb className="h-2 w-2 text-primary-foreground animate-pulse mt-0.5 flex-shrink-0" />
                 <button
                   onClick={() => setShowBanner(false)}
-                  className="text-primary-foreground hover:bg-white/10 h-3 w-3 p-0 rounded transition-colors"
+                  className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-white/10 h-3 w-3 p-0 rounded-full transition-colors flex items-center justify-center"
                 >
-                  <X className="h-2 w-2" />
+                  <X className="h-1.5 w-1.5" />
                 </button>
               </div>
               <div className="text-[8px] text-primary-foreground">
-                <div className="font-semibold mb-0.5">Early Dev!</div>
-                <div className="opacity-90">Give feedback</div>
+                <div className="font-semibold mb-0.5">Early dev! 👋</div>
+                <div className="opacity-90 leading-tight">Tap menu for feedback</div>
               </div>
             </div>
+            {/* Chat bubble tail */}
+            <div className="absolute -bottom-0.5 right-3 w-2 h-2 bg-gradient-to-br from-primary/95 to-accent/95 transform rotate-45 border-r border-b border-primary/20"></div>
           </div>
         </div>
       )}

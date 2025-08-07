@@ -99,25 +99,28 @@ const FeatureRequestBox = () => {
         </div>
       )}
 
-      {/* Development Banner - Desktop only, positioned near feedback button */}
+      {/* Development Banner - Desktop chat bubble */}
       {showBanner && (
         <div className="hidden md:block fixed bottom-24 right-20 z-40 max-w-xs">
-          <div className="bg-gradient-to-br from-primary/90 to-accent/90 backdrop-blur-sm rounded-lg border border-primary/20 shadow-lg">
-            <div className="p-3">
-              <div className="flex items-start justify-between gap-2 mb-2">
+          <div className="relative">
+            {/* Chat bubble */}
+            <div className="bg-gradient-to-br from-primary/95 to-accent/95 backdrop-blur-sm rounded-2xl border border-primary/20 shadow-lg p-3">
+              <div className="flex items-start justify-between gap-2 mb-1">
                 <Lightbulb className="h-3 w-3 text-primary-foreground animate-pulse mt-0.5 flex-shrink-0" />
                 <button
                   onClick={() => setShowBanner(false)}
-                  className="text-primary-foreground hover:bg-white/10 h-5 w-5 p-0 -mt-1 -mr-1 rounded transition-colors"
+                  className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-white/10 h-5 w-5 p-0 rounded-full transition-colors flex items-center justify-center"
                 >
                   <X className="h-2.5 w-2.5" />
                 </button>
               </div>
-              <div className="text-[10px] text-primary-foreground">
-                <div className="font-semibold mb-1">Early Development!</div>
-                <div className="opacity-90 leading-relaxed">Share feedback →</div>
+              <div className="text-xs text-primary-foreground">
+                <div className="font-semibold mb-1">Hey! We're in early development 👋</div>
+                <div className="opacity-90 leading-relaxed">Click here to share feedback →</div>
               </div>
             </div>
+            {/* Chat bubble tail */}
+            <div className="absolute -bottom-1 right-4 w-3 h-3 bg-gradient-to-br from-primary/95 to-accent/95 transform rotate-45 border-r border-b border-primary/20"></div>
           </div>
         </div>
       )}
