@@ -507,9 +507,9 @@ const TripResults = () => {
             </div>
 
             {/* Flight & Hotel Cards */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
               {/* Flight Card */}
-              <div className="group relative backdrop-blur-md bg-card/80 border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="group relative backdrop-blur-md bg-card/80 border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-fit">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-primary/10 rounded-xl">
@@ -565,7 +565,7 @@ const TripResults = () => {
               </div>
 
               {/* Hotel Card */}
-              <div className="group relative backdrop-blur-md bg-card/80 border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="group relative backdrop-blur-md bg-card/80 border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-fit">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-primary/10 rounded-xl">
