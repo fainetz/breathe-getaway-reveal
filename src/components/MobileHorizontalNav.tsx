@@ -89,7 +89,7 @@ const PremiumHorizontalNav = () => {
   };
 
   return (
-    <div className="fixed top-16 md:top-0 left-0 right-0 z-50">
+    <div className="fixed top-4 md:top-0 left-0 right-0 z-50">
       {/* Premium backdrop with luxury blur */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/80 backdrop-blur-xl border-b border-gradient-to-r from-border/20 via-border/40 to-border/20"></div>
       
