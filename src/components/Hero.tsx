@@ -154,10 +154,10 @@ const Hero = () => {
       </nav>
 
       {/* Main Content - Mobile optimized layout */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center px-4 sm:px-6 max-w-7xl mx-auto py-8 sm:py-16">
+      <div className="relative z-10 flex-1 flex flex-col justify-center px-6 sm:px-8 max-w-7xl mx-auto py-12 sm:py-16 md:py-20">
         {/* Mobile-first centered layout */}
         <div className="text-center lg:text-left max-w-4xl mx-auto lg:mx-0">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-geist font-semibold leading-tight text-foreground mb-4 sm:mb-6 animate-fade-in">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-geist font-semibold leading-tight text-foreground mb-8 sm:mb-10 animate-fade-in">
             <span>AI That Gets You</span>
             <br />
             <span>And Gets You There</span>
@@ -165,13 +165,13 @@ const Hero = () => {
             <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Smarter</span>
           </h1>
           
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 animate-fade-in px-2 sm:px-0" style={{ animationDelay: '0.3s' }}>
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground leading-relaxed mb-10 sm:mb-12 animate-fade-in px-4 sm:px-0" style={{ animationDelay: '0.3s' }}>
             A Good trip doesn't start with filters and compromises. It starts with clarity — and a booking that just feels right, no second-guessing, no stress.
           </p>
           
           {/* Waitlist text - mobile optimized */}
-          <div className="mb-8 sm:mb-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
+          <div className="mb-16 sm:mb-20 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <p className="text-base sm:text-lg text-muted-foreground">
               Join the waitlist for founding user perks
             </p>
           </div>

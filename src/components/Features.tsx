@@ -141,13 +141,13 @@ const Features = () => {
   }, []);
 
   return (
-    <section id="features" className="py-12 sm:py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden section-seamless transition-colors duration-300" ref={sectionRef}>
+    <section id="features" className="py-20 sm:py-24 md:py-32 lg:py-40 px-6 sm:px-8 relative overflow-hidden section-seamless transition-colors duration-300" ref={sectionRef}>
       <div className="max-w-7xl mx-auto">
-        <div className={`text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-black dark:text-white transition-colors duration-300 drop-shadow-lg px-2 sm:px-4 lg:px-0 leading-tight">
+        <div className={`text-center mb-16 sm:mb-20 md:mb-24 lg:mb-28 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 sm:mb-10 text-black dark:text-white transition-colors duration-300 drop-shadow-lg px-4 sm:px-6 lg:px-0 leading-tight">
             Features for Every Traveler
           </h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed transition-colors duration-300 px-4 sm:px-6 lg:px-0">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed transition-colors duration-300 px-6 sm:px-8 lg:px-0">
             Budget-conscious? Seeking emotional healing? Want luxury without effort? Our AI adapts to your exact travel personality.
           </p>
         </div>

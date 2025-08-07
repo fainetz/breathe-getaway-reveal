@@ -52,19 +52,19 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="pt-16 pb-16 sm:pt-24 sm:pb-24 md:pt-32 md:pb-32 px-4 sm:px-6 relative" ref={sectionRef}>
+    <section id="how-it-works" className="pt-24 pb-24 sm:pt-32 sm:pb-32 md:pt-40 md:pb-40 px-6 sm:px-8 relative" ref={sectionRef}>
       
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-12 sm:mb-16 md:mb-20 opacity-0 animate-fade-in">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 md:mb-8 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:via-gray-100 dark:to-gray-300 bg-clip-text text-transparent transition-colors duration-300 drop-shadow-lg leading-tight">
+        <div className="text-center mb-20 sm:mb-24 md:mb-28 opacity-0 animate-fade-in">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 sm:mb-10 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:via-gray-100 dark:to-gray-300 bg-clip-text text-transparent transition-colors duration-300 drop-shadow-lg leading-tight">
             How It Works for Everyone
           </h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors duration-300 px-2 sm:px-4 lg:px-0">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed transition-colors duration-300 px-4 sm:px-6 lg:px-0">
             One intelligent system that adapts to your style—whether budget-conscious, emotionally seeking, or craving luxury.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-12" ref={stepsRef}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12 lg:gap-16" ref={stepsRef}>
           {steps.map((step, index) => (
             <div key={index} className="text-center group step-card opacity-0 transform translate-y-10 transition-all duration-1000 ease-out">
               <div className="bg-white/80 dark:bg-white/20 backdrop-blur-xl border border-gray-200 dark:border-white/30 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 hover:bg-white/90 dark:hover:bg-white/30 transition-all duration-500 hover:scale-105 active:scale-95 relative overflow-hidden shadow-2xl hover:shadow-3xl dark:shadow-black/50 dark:hover:shadow-black/70 touch-manipulation">
