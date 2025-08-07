@@ -124,6 +124,10 @@ export default {
 					'0%': { transform: 'translateX(0)', opacity: '1' },
 					'100%': { transform: 'translateX(-100%)', opacity: '0' }
 				},
+				'slide-in-bottom': {
+					'0%': { transform: 'translateY(100%)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
 				'gradient': {
 					'0%, 100%': {
 						'background-size': '200% 200%',
@@ -143,6 +147,7 @@ export default {
 				'slide-in-left': 'slide-in-left 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)',
 				'slide-out-right': 'slide-out-right 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)',
 				'slide-out-left': 'slide-out-left 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)',
+				'slide-in-bottom': 'slide-in-bottom 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)',
 				'float': 'float 3s ease-in-out infinite',
 				'gradient': 'gradient 3s ease-in-out infinite'
 			}
