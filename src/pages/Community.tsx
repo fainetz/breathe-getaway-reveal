@@ -111,10 +111,27 @@ const Community = () => {
               </div>
               <h3 className="text-base font-medium text-muted-foreground">Currently in Development</h3>
             </div>
-            <p className="text-sm text-muted-foreground/80 max-w-2xl mx-auto">
-              Our community features are being built. Soon you'll connect with fellow travelers, 
-              share experiences, and get insider tips from locals and seasoned adventurers.
+            <p className="text-sm text-muted-foreground/80 max-w-2xl mx-auto mb-4">
+              Our community features are being built. Join the waitlist to get notified when we launch 
+              and unlock exclusive founding member perks!
             </p>
+            <Button variant="outline" size="sm" className="mb-4">
+              Join Waitlist for Founding Perks
+            </Button>
+            
+            {/* Scrolling animation */}
+            <div className="overflow-hidden whitespace-nowrap">
+              <div className="animate-[scroll_20s_linear_infinite] inline-block">
+                <span className="text-xs text-muted-foreground/60 mx-8">
+                  🌟 Early access to communities 🗺️ Exclusive travel guides 🎁 Founding member badge 
+                  ✈️ Priority support 🌍 Beta features access 🏆 Special recognition
+                </span>
+                <span className="text-xs text-muted-foreground/60 mx-8">
+                  🌟 Early access to communities 🗺️ Exclusive travel guides 🎁 Founding member badge 
+                  ✈️ Priority support 🌍 Beta features access 🏆 Special recognition
+                </span>
+              </div>
+            </div>
           </div>
 
           {/* Search and Filters */}
