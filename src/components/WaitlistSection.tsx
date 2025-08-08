@@ -109,15 +109,75 @@ const WaitlistSection = () => {
           </h2>
         </div>
 
-        {/* Mobile-first layout: Waitlist form first, then carousel */}
-        <div className="space-y-12 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
-          {/* Waitlist Form - First on mobile */}
-          <div className="text-center lg:text-left order-2 lg:order-1">
+        {/* Image Carousel and Waitlist Combined */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left side - Image Carousel */}
+          <div className="relative">
+            <div className="overflow-hidden rounded-2xl shadow-2xl" ref={emblaRef}>
+              <div className="flex">
+                {carouselSlides.map((slide) => (
+                  <div key={slide.id} className="flex-none w-full relative">
+                    <div className="relative h-[400px] sm:h-[500px] group">
+                      {/* Background Image */}
+                      <img 
+                        src={slide.image}
+                        alt={slide.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+                      
+                      {/* Category Label - Top Right */}
+                      <div className="absolute top-6 right-6 flex items-center gap-2">
+                        <div className={`${slide.labelColor} backdrop-blur-sm rounded-full px-4 py-2`}>
+                          <span className="text-sm font-bold text-white">{slide.label}</span>
+                        </div>
+                        {slide.comingSoon && (
+                          <div className="bg-gradient-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-full px-4 py-2 border border-slate-600/30">
+                            <span className="text-sm font-bold text-slate-300">COMING SOON</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Content */}
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 group-hover:translate-y-[-4px] transition-transform duration-300">
+                          {slide.title}
+                        </h3>
+                        <p className="text-gray-200 text-base sm:text-lg group-hover:translate-y-[-4px] transition-transform duration-300 delay-75">
+                          {slide.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation buttons */}
+            <button
+              onClick={scrollPrev}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 transition-all duration-300 shadow-xl"
+            >
+              <ChevronLeft className="w-6 h-6 text-white" />
+            </button>
+
+            <button
+              onClick={scrollNext}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full p-3 transition-all duration-300 shadow-xl"
+            >
+              <ChevronRight className="w-6 h-6 text-white" />
+            </button>
+          </div>
+
+          {/* Right side - Waitlist Form */}
+          <div className="text-center lg:text-left">
             <h3 className="text-3xl sm:text-4xl font-bold mb-6 text-foreground">
               Join the <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">Waitlist</span>
             </h3>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Be the first to experience AI-powered travel that gets you. Early access to premium features and exclusive destinations.
+              Be among the first to experience AI that truly gets you. Early waitlist members receive grandfathered pricing on all premium features, exclusive access to beta destinations, and special discounts on our on-trip AI assistant that provides hostel reviews and local information.
             </p>
             
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -143,51 +203,31 @@ const WaitlistSection = () => {
             <p className="text-sm text-muted-foreground mt-4">
               No spam, ever. Unsubscribe at any time.
             </p>
-          </div>
 
-          {/* Simplified Image Carousel - Second on mobile */}
-          <div className="relative order-1 lg:order-2">
-            <div className="overflow-hidden rounded-2xl shadow-2xl" ref={emblaRef}>
-              <div className="flex">
-                {carouselSlides.map((slide) => (
-                  <div key={slide.id} className="flex-none w-full relative">
-                    <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] group">
-                      {/* Background Image */}
-                      <img 
-                        src={slide.image}
-                        alt={slide.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                      
-                      {/* Minimal overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                      
-                      {/* Simplified category label - mobile hidden, desktop minimal */}
-                      <div className="absolute top-4 right-4 hidden sm:block">
-                        <div className={`${slide.labelColor} backdrop-blur-sm rounded-full px-3 py-1`}>
-                          <span className="text-xs font-semibold text-white">{slide.label}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+            {/* Features Preview */}
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <div className="w-6 h-6 bg-emerald-600 rounded-full"></div>
+                </div>
+                <h4 className="font-semibold text-foreground mb-1">Hotels</h4>
+                <p className="text-sm text-muted-foreground">Luxury accommodations</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full"></div>
+                </div>
+                <h4 className="font-semibold text-foreground mb-1">Flights</h4>
+                <p className="text-sm text-muted-foreground">Premium travel options</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <div className="w-6 h-6 bg-amber-600 rounded-full"></div>
+                </div>
+                <h4 className="font-semibold text-foreground mb-1">Retreats</h4>
+                <p className="text-sm text-muted-foreground">Exclusive getaways</p>
               </div>
             </div>
-
-            {/* Simplified navigation buttons */}
-            <button
-              onClick={scrollPrev}
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full p-2 transition-all duration-300"
-            >
-              <ChevronLeft className="w-5 h-5 text-white" />
-            </button>
-
-            <button
-              onClick={scrollNext}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full p-2 transition-all duration-300"
-            >
-              <ChevronRight className="w-5 h-5 text-white" />
-            </button>
           </div>
         </div>
       </div>
