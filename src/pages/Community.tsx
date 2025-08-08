@@ -104,7 +104,7 @@ const Community = () => {
           </div>
 
           {/* Working on this section notice */}
-          <div className="mt-8 mb-6 bg-muted/50 border border-border/50 rounded-xl p-6 text-center">
+          <div className="mt-16 mb-6 bg-muted/50 border border-border/50 rounded-xl p-6 text-center">
             <div className="flex items-center justify-center mb-3">
               <div className="w-6 h-6 bg-muted-foreground/20 rounded-full flex items-center justify-center mr-3">
                 <Users className="w-3 h-3 text-muted-foreground" />
