@@ -163,8 +163,10 @@ const Hero = () => {
           </h1>
           
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <span className="block mb-2 sm:mb-1">Join early. Travel smarter.</span>
-            <span className="block">Get lifetime discounted pricing, first access to new destinations, and special rates on our on-trip AI assistant — with real-time hostel reviews and local tips.</span>
+            <span className="block mb-2 sm:mb-1">Because someone in your travel community</span>
+            <span className="block mb-2 sm:mb-1">has already been there, solved that —</span>
+            <span className="block">and our AI turns those real experiences</span>
+            <span className="block">into trips you can book in minutes.</span>
           </p>
           
           {/* Waitlist text - positioned to appear under search */}
@@ -175,7 +177,7 @@ const Hero = () => {
           </div>
 
           {/* Scroll indicators positioned under "for" in waitlist text */}
-          <div className="flex flex-col items-center space-y-1 animate-fade-in ml-28" style={{ animationDelay: '0.9s' }}>
+          <div className="flex flex-col items-start space-y-1 animate-fade-in ml-28" style={{ animationDelay: '0.9s' }}>
             <span className="text-xs font-medium text-muted-foreground">scroll</span>
             <div className="flex flex-col items-center -space-y-1">
               <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '0ms' }} />
