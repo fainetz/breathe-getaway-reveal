@@ -8,7 +8,7 @@ interface ExpandableSearchProps {
 }
 
 const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -19,11 +19,15 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
   
 
   useEffect(() => {
+    // Delay mobile check to avoid layout shift on initial load
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
     
+    // Set initial state immediately without animation
     checkMobile();
+    setIsExpanded(true); // Start expanded on initial load
+    
     window.addEventListener('resize', checkMobile);
     
     return () => window.removeEventListener('resize', checkMobile);
