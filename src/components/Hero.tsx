@@ -163,17 +163,16 @@ const Hero = () => {
           </h1>
           
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <span className="block mb-2 sm:mb-1">Because someone in your travel community</span>
-            <span className="block mb-2 sm:mb-1">has already been there, solved that —</span>
-            <span className="block">and our AI turns those real experiences</span>
-            <span className="block">into trips you can book in minutes.</span>
+            <span className="block mb-2 sm:mb-1"><strong>Join early. Travel smarter.</strong></span>
+            <span className="block mb-2 sm:mb-1">Get lifetime discounted pricing, first access to new destinations,</span>
+            <span className="block">and special rates on our on-trip AI assistant — with real-time</span>
+            <span className="block">hostel reviews and local tips.</span>
           </p>
           
           {/* Waitlist text - positioned to appear under search */}
           <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
             <p className="text-sm sm:text-base text-muted-foreground">
-              <strong>Join early. Travel smarter.</strong><br />
-              Get lifetime discounted pricing, first access to new destinations, and special rates on our on-trip AI assistant — with real-time hostel reviews and local tips.
+              Join the waitlist for founding user perks
             </p>
           </div>
           
