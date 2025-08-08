@@ -184,9 +184,9 @@ const Community = () => {
         {filteredCommunities.length === 0 ? (
           <div className="text-center py-12">
             <Users className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-foreground mb-2">Connect with fellow travelers and share your experiences</h3>
+            <h3 className="text-lg font-medium text-foreground mb-2">AI that gets you. A community that's lived it.</h3>
             <p className="text-muted-foreground mb-4">
-              A space where travelers share real safety tips, honest reviews, and hidden details booking sites ignore — so you book with confidence, not guesswork.
+              Because someone in your travel community has already been there, solved that — and our AI turns those real experiences into trips you can book in minutes.
             </p>
             {user && !searchTerm && (
               <Button onClick={() => setShowCreateDialog(true)}>
