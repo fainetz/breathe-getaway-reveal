@@ -159,14 +159,11 @@ const Hero = () => {
         <div className="text-left lg:pr-8 order-1 lg:order-1">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-geist font-semibold leading-tight text-foreground mb-4 sm:mb-6 animate-fade-in">
             <span className="block">AI that gets you.</span>
-            <span className="block">A community that's <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">lived it</span></span>
+            <span className="block">A community that's <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">lived it</span>.</span>
           </h1>
           
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <span className="block mb-2 sm:mb-1">Because someone in your travel community</span>
-            <span className="block mb-2 sm:mb-1">has already been there, solved that —</span>
-            <span className="block">and our AI turns those real experiences</span>
-            <span className="block">into trips you can book in minutes.</span>
+            Real traveler experiences turned into bookable trips in minutes.
           </p>
           
           {/* Waitlist text - positioned to appear under search */}
