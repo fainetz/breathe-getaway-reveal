@@ -103,6 +103,20 @@ const Community = () => {
             )}
           </div>
 
+          {/* Working on this section notice */}
+          <div className="mt-8 mb-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 border border-blue-200 dark:border-blue-800 rounded-lg p-6 text-center">
+            <div className="flex items-center justify-center mb-3">
+              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                <Users className="w-4 h-4 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold text-blue-800 dark:text-blue-200">🚧 We're Working on This Section</h3>
+            </div>
+            <p className="text-blue-700 dark:text-blue-300 max-w-2xl mx-auto">
+              Our community features are currently under development. Soon you'll be able to connect with fellow travelers, 
+              share experiences, and get insider tips from locals and seasoned adventurers.
+            </p>
+          </div>
+
           {/* Search and Filters */}
           <div className="mt-6 space-y-4">
             <div className="flex flex-col sm:flex-row gap-4">
