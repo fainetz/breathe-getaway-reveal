@@ -12,6 +12,7 @@ const Hero = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cart, setCart] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   // Premium resort category slides with new luxury images
   const categorySlides = [
@@ -80,6 +81,20 @@ const Hero = () => {
 
     return () => clearInterval(interval);
   }, [categorySlides.length]);
+
+  // Scroll detection to hide arrows on mobile
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const getCartItemCount = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
@@ -174,12 +189,14 @@ const Hero = () => {
           </div>
 
           {/* Scroll indicators positioned right under search bar on mobile, under waitlist text on desktop */}
-          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center space-y-1 animate-fade-in md:relative md:bottom-auto md:left-auto md:transform-none md:z-auto md:items-start md:ml-32" style={{ animationDelay: '0.9s' }}>
-            <div className="flex flex-col items-center -space-y-1">
-              <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '0ms' }} />
-              <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '300ms' }} />
+          {!hasScrolled && (
+            <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center space-y-1 animate-fade-in md:relative md:bottom-auto md:left-auto md:transform-none md:z-auto md:items-start md:ml-32 transition-opacity duration-300" style={{ animationDelay: '0.9s' }}>
+              <div className="flex flex-col items-center -space-y-1">
+                <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '0ms' }} />
+                <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '300ms' }} />
+              </div>
             </div>
-          </div>
+          )}
           
           {/* Mobile search functionality is now handled by the floating ExpandableSearch component */}
         </div>
