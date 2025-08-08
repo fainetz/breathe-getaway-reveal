@@ -461,7 +461,7 @@ const TripResults = () => {
                 Example Response
               </div>
             </div>
-            <h1 className="text-base sm:text-lg font-semibold text-foreground truncate">Your Perfect Escape</h1>
+            <h1 className="text-base sm:text-lg font-semibold text-foreground truncate">AI understands you. The community's been there</h1>
             <p className="text-xs sm:text-sm text-muted-foreground truncate">Based on: "{query}"</p>
           </div>
         </div>
