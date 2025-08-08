@@ -456,6 +456,11 @@ const TripResults = () => {
             <ArrowLeft className="w-5 h-5 group-hover:translate-x-[-2px] transition-transform duration-200" />
           </button>
           <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-1">
+              <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-2 py-1 rounded-md text-xs font-semibold">
+                Example Response
+              </div>
+            </div>
             <h1 className="text-base sm:text-lg font-semibold text-foreground truncate">Your Perfect Escape</h1>
             <p className="text-xs sm:text-sm text-muted-foreground truncate">Based on: "{query}"</p>
           </div>
@@ -766,6 +771,28 @@ const TripResults = () => {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+        
+        {/* Waitlist Section */}
+        <div className="mt-12 max-w-2xl mx-auto">
+          <div className="bg-gradient-to-br from-primary/5 to-accent/5 backdrop-blur-sm rounded-2xl border border-primary/10 p-8 text-center">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-accent text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <Sparkles className="w-4 h-4" />
+              Coming Soon
+            </div>
+            <h3 className="text-2xl font-bold text-foreground mb-3">
+              Love what you see?
+            </h3>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              This is just a preview of what's possible. Join our waitlist to be the first to experience fully personalized travel planning powered by AI.
+            </p>
+            <button 
+              onClick={() => navigate('/#waitlist')}
+              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              Join the Waitlist
+            </button>
           </div>
         </div>
       </div>
