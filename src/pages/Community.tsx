@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, Plus, TrendingUp, MessageCircle, Calendar, Search, Filter } from 'lucide-react';
+import { Users, Plus, TrendingUp, MessageCircle, Calendar, Search, Filter, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -169,6 +169,11 @@ const Community = () => {
                   {tag.name}
                 </Button>
               ))}
+            </div>
+            
+            {/* Scroll indicator */}
+            <div className="flex justify-center mt-4">
+              <ChevronDown className="w-5 h-5 text-muted-foreground animate-bounce" />
             </div>
           </div>
         </div>

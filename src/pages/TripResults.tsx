@@ -788,7 +788,9 @@ const TripResults = () => {
               This is just a preview of what's possible. Join our waitlist to be the first to experience fully personalized travel planning powered by AI.
             </p>
             <button 
-              onClick={() => navigate('/#waitlist')}
+              onClick={() => {
+                window.location.href = '/#waitlist';
+              }}
               className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               Join the Waitlist
