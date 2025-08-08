@@ -9,6 +9,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { formatDistanceToNow } from 'date-fns';
 import CreateCommunityDialog from '@/components/community/CreateCommunityDialog';
+import WaitlistForm from '@/components/WaitlistForm';
 
 interface Community {
   id: string;
@@ -92,8 +93,11 @@ const Community = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-foreground mb-2">Travel Communities</h1>
-              <p className="text-muted-foreground">Connect with fellow travelers and share your experiences</p>
+              <h1 className="text-3xl font-bold text-foreground mb-2">AI that gets you. A community that's lived it.</h1>
+              <p className="text-muted-foreground mb-4">Connect with fellow travelers and share your experiences</p>
+              <p className="text-sm text-muted-foreground/80 italic">
+                A space where travelers share real safety tips, honest reviews, and hidden details booking sites ignore — so you book with confidence, not guesswork.
+              </p>
             </div>
             {user && (
               <Button onClick={() => setShowCreateDialog(true)} className="w-fit">
@@ -115,19 +119,12 @@ const Community = () => {
               Our community features are being built. Join the waitlist to get notified when we launch 
               and unlock exclusive founding member perks!
             </p>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="mb-4"
-              onClick={() => {
-                window.location.href = '/#waitlist';
-              }}
-            >
-              Join Waitlist for Founding Perks
-            </Button>
+            
+            {/* Waitlist Form */}
+            <WaitlistForm />
             
             {/* Scrolling animation */}
-            <div className="overflow-hidden whitespace-nowrap">
+            <div className="overflow-hidden whitespace-nowrap mt-6">
               <div className="animate-[scroll_20s_linear_infinite] inline-block">
                 <span className="text-xs text-muted-foreground/60 mx-8">
                   🌟 Early access to communities 🗺️ Exclusive travel guides 🎁 Founding member badge 
