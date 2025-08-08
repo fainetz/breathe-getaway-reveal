@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Search, ArrowRight, ChevronDown } from 'lucide-react';
+import { Search, ArrowRight, ArrowDownRight } from 'lucide-react';
 
 
 
@@ -188,10 +188,9 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
         <div className={`fixed ${isMobile ? 'bottom-8' : 'bottom-[max(5.5rem,calc(env(safe-area-inset-bottom)+4rem))]'} left-1/2 -translate-x-1/2 z-30 transition-all duration-700 ease-out animate-fade-in`}>
           <div className="flex flex-col items-center space-y-1">
             <span className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">scroll</span>
-            <div className="flex flex-col items-center space-y-0.5">
-              <ChevronDown className="w-3 h-3 text-gray-400 dark:text-gray-500 animate-[bounce_2s_infinite]" style={{ animationDelay: '0ms' }} />
-              <ChevronDown className="w-3 h-3 text-gray-400 dark:text-gray-500 animate-[bounce_2s_infinite]" style={{ animationDelay: '200ms' }} />
-              <ChevronDown className="w-3 h-3 text-gray-400 dark:text-gray-500 animate-[bounce_2s_infinite]" style={{ animationDelay: '400ms' }} />
+            <div className="flex flex-col items-center space-y-1">
+              <ArrowDownRight className="w-5 h-5 text-gray-400 dark:text-gray-500 animate-[bounce_2s_infinite] transform rotate-12" style={{ animationDelay: '0ms' }} />
+              <ArrowDownRight className="w-5 h-5 text-gray-400 dark:text-gray-500 animate-[bounce_2s_infinite] transform rotate-12" style={{ animationDelay: '300ms' }} />
             </div>
           </div>
         </div>
