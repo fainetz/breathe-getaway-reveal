@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MessageSquare, X, Send, Lightbulb } from 'lucide-react';
 
 const FeatureRequestBox = () => {
@@ -7,6 +7,33 @@ const FeatureRequestBox = () => {
   const [featureRequest, setFeatureRequest] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
+  const [showMobileBanner, setShowMobileBanner] = useState(false);
+  const [hasVisited, setHasVisited] = useState(false);
+
+  // Check if user has visited before and show mobile banner
+  useEffect(() => {
+    const hasVisitedBefore = localStorage.getItem('hasVisitedBefore');
+    if (!hasVisitedBefore && window.innerWidth < 768) {
+      setHasVisited(false);
+      // Show banner after a short delay
+      const showTimer = setTimeout(() => {
+        setShowMobileBanner(true);
+      }, 1500);
+      
+      // Hide banner after 4 seconds
+      const hideTimer = setTimeout(() => {
+        setShowMobileBanner(false);
+        localStorage.setItem('hasVisitedBefore', 'true');
+      }, 5500);
+      
+      return () => {
+        clearTimeout(showTimer);
+        clearTimeout(hideTimer);
+      };
+    } else {
+      setHasVisited(true);
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -95,6 +122,25 @@ const FeatureRequestBox = () => {
                 </p>
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Sliding Banner */}
+      {showMobileBanner && (
+        <div className="md:hidden fixed top-1/2 left-4 z-50 transform -translate-y-1/2">
+          <div className={`bg-gradient-to-r from-primary/95 to-accent/95 backdrop-blur-sm rounded-2xl border border-primary/20 shadow-lg p-4 max-w-xs transition-all duration-700 ease-out ${
+            showMobileBanner ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'
+          }`}>
+            <div className="flex items-center gap-2 mb-2">
+              <Lightbulb className="h-4 w-4 text-primary-foreground animate-pulse flex-shrink-0" />
+              <div className="text-sm font-semibold text-primary-foreground">
+                We're building for you! 👋
+              </div>
+            </div>
+            <div className="text-xs text-primary-foreground/90 leading-relaxed">
+              Share ideas to shape the future of travel planning
+            </div>
           </div>
         </div>
       )}
