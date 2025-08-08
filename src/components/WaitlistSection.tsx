@@ -180,7 +180,7 @@ const WaitlistSection = () => {
               Join the <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">Waitlist</span>
             </h3>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Be among the first to experience AI that truly gets you. Early waitlist members receive grandfathered pricing on all premium features and exclusive access to beta destinations.
+              Be among the first to experience AI that truly gets you. Early waitlist members receive grandfathered pricing on all premium features, exclusive access to beta destinations, and special discounts on our on-trip AI assistant that provides hostel reviews and local information.
             </p>
             
             <form onSubmit={handleSubmit} className="space-y-4">
