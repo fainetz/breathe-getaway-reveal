@@ -34,6 +34,12 @@ const Features = () => {
       persona: "explorer"
     },
     {
+      title: "Community-Driven Insights",
+      description: "Connect with fellow travelers who've been there. Get real reviews, safety tips, and insider recommendations from our trusted community of explorers.",
+      gradient: "from-blue-500 to-indigo-500",
+      persona: "community"
+    },
+    {
       title: "Emotional Intelligence",
       description: "AI that reads your mood, energy, and deepest travel desires to match you with transformative healing experiences.",
       gradient: "from-purple-500 to-blue-500",
@@ -50,6 +56,12 @@ const Features = () => {
       description: "Students and young professionals: we find the cheapest times to travel with smart date flexibility and last-minute deals.",
       gradient: "from-cyan-500 to-blue-500",
       persona: "budget"
+    },
+    {
+      title: "Local Community Access",
+      description: "Join traveler meetups, find local guides from our community, and connect with others exploring the same destinations at the same time.",
+      gradient: "from-emerald-500 to-teal-500",
+      persona: "community"
     },
     {
       title: "Soul-Centered Escapes",
