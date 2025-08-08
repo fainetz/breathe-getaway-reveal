@@ -165,7 +165,7 @@ const Hero = () => {
           </h1>
           
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>{/* Better mobile text sizing */}
-            A Good trip doesn't start with filters and compromises. It starts with clarity — and a booking that just feels right, no second-guessing, no stress.
+            Because someone in your community has already been there, solved that — and our AI makes every trip smarter
           </p>
           
           {/* Waitlist text - positioned to appear under search */}
