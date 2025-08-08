@@ -93,7 +93,7 @@ const Community = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-foreground mb-2">AI that gets you. A community that's lived it.</h1>
+              <h1 className="text-3xl font-bold text-foreground mb-2">Travel Communities</h1>
               <p className="text-muted-foreground mb-4">Connect with fellow travelers and share your experiences</p>
               <p className="text-sm text-muted-foreground/80 italic">
                 A space where travelers share real safety tips, honest reviews, and hidden details booking sites ignore — so you book with confidence, not guesswork.
