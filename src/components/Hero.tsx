@@ -177,7 +177,7 @@ const Hero = () => {
           </div>
 
           {/* Scroll indicators positioned right under search bar on mobile, under waitlist text on desktop */}
-          <div className="fixed bottom-32 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center space-y-1 animate-fade-in md:relative md:bottom-auto md:left-auto md:transform-none md:z-auto md:items-start md:ml-32" style={{ animationDelay: '0.9s' }}>
+          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center space-y-1 animate-fade-in md:relative md:bottom-auto md:left-auto md:transform-none md:z-auto md:items-start md:ml-32" style={{ animationDelay: '0.9s' }}>
             <div className="flex flex-col items-center -space-y-1">
               <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '0ms' }} />
               <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '300ms' }} />
