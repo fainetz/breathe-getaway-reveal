@@ -176,9 +176,8 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* Scroll indicators positioned under "for" in waitlist text */}
-          <div className="flex flex-col items-start space-y-1 animate-fade-in ml-32" style={{ animationDelay: '0.9s' }}>
-            <span className="text-xs font-medium text-muted-foreground">scroll</span>
+          {/* Scroll indicators positioned under search bar on mobile, under waitlist text on desktop */}
+          <div className="flex flex-col items-center space-y-1 animate-fade-in md:items-start md:ml-32" style={{ animationDelay: '0.9s' }}>
             <div className="flex flex-col items-center -space-y-1">
               <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '0ms' }} />
               <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '300ms' }} />
