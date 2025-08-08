@@ -172,12 +172,12 @@ const Hero = () => {
       <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 max-w-7xl mx-auto mt-16 md:mt-8">{/* Add top margin for mobile nav spacing */}
         {/* Left side - Main heading and description */}
         <div className="text-center lg:text-left lg:pr-8 order-1 lg:order-1">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-geist font-semibold leading-tight text-foreground mb-4 sm:mb-6 animate-fade-in">
-            <span className="block">AI that gets you.</span>
+          <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-geist font-semibold leading-[1.1] sm:leading-tight text-foreground mb-6 sm:mb-6 animate-fade-in px-4 sm:px-0">
+            <span className="block mb-2">AI that gets you.</span>
             <span className="block">A community that's <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">lived it</span>.</span>
           </h1>
           
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <p className="text-base sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-8 sm:mb-8 animate-fade-in px-4 sm:px-0 max-w-lg mx-auto lg:mx-0" style={{ animationDelay: '0.3s' }}>
             Real traveler experiences turned into bookable trips in minutes.
           </p>
           
