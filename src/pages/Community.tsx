@@ -94,10 +94,6 @@ const Community = () => {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <h1 className="text-3xl font-bold text-foreground mb-2">Travel Communities</h1>
-              <p className="text-muted-foreground mb-4">Connect with fellow travelers and share your experiences</p>
-              <p className="text-sm text-muted-foreground/80 italic">
-                A space where travelers share real safety tips, honest reviews, and hidden details booking sites ignore — so you book with confidence, not guesswork.
-              </p>
             </div>
             {user && (
               <Button onClick={() => setShowCreateDialog(true)} className="w-fit">
@@ -183,9 +179,9 @@ const Community = () => {
         {filteredCommunities.length === 0 ? (
           <div className="text-center py-12">
             <Users className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-foreground mb-2">No communities found</h3>
+            <h3 className="text-lg font-medium text-foreground mb-2">Connect with fellow travelers and share your experiences</h3>
             <p className="text-muted-foreground mb-4">
-              {searchTerm ? 'Try adjusting your search terms' : 'Be the first to create a community!'}
+              A space where travelers share real safety tips, honest reviews, and hidden details booking sites ignore — so you book with confidence, not guesswork.
             </p>
             {user && !searchTerm && (
               <Button onClick={() => setShowCreateDialog(true)}>
