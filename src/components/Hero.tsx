@@ -179,9 +179,9 @@ const Hero = () => {
           {/* Scroll indicators positioned under subheading */}
           <div className="flex items-center space-x-2 animate-fade-in" style={{ animationDelay: '0.9s' }}>
             <span className="text-xs font-medium text-muted-foreground mr-2">scroll</span>
-            <div className="relative flex items-center">
+            <div className="flex flex-col items-center -space-y-1">
               <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '0ms' }} />
-              <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite] -ml-3" style={{ animationDelay: '300ms' }} />
+              <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '300ms' }} />
             </div>
           </div>
           
