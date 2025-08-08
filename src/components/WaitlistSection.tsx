@@ -108,7 +108,7 @@ const WaitlistSection = () => {
             Experience What's <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">Coming Soon</span>
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-            Where intuitive AI transforms wanderlust into reality. Our intelligence curates luxury hotels, premium flights, and exclusive retreats that match your desires before you even know them.
+            Our intelligence curates luxury hotels, premium flights, and exclusive retreats that match your desires before you even know them.
           </p>
         </div>
 
