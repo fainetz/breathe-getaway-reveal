@@ -108,8 +108,7 @@ const WaitlistSection = () => {
             Join the <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">Waitlist</span>
           </h3>
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-            Join early. Travel smarter.<br />
-            Get lifetime discounted pricing, first access to new destinations, and special rates on our on-trip AI assistant — with real-time hostel reviews and local tips.
+            Get lifetime discounted pricing, priority access to new trip features, and special rates on our on-trip AI assistant — with real hostel reviews and local tips from travelers who've been there.
           </p>
           
           <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
