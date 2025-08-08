@@ -12,18 +12,29 @@ const FeatureRequestBox = () => {
 
   // Check if user has visited before and show mobile banner
   useEffect(() => {
+    // Always check localStorage first
     const hasVisitedBefore = localStorage.getItem('hasVisitedBefore');
-    if (!hasVisitedBefore && window.innerWidth < 768) {
+    if (hasVisitedBefore) {
+      setHasVisited(true);
+      return;
+    }
+    
+    // Only show on mobile and for first-time visitors
+    const checkMobile = () => window.innerWidth < 768;
+    
+    if (!hasVisitedBefore && checkMobile()) {
       setHasVisited(false);
+      
       // Show banner after a short delay
       const showTimer = setTimeout(() => {
         setShowMobileBanner(true);
       }, 1500);
       
-      // Hide banner after 4 seconds
+      // Hide banner after 4 seconds and mark as visited
       const hideTimer = setTimeout(() => {
         setShowMobileBanner(false);
         localStorage.setItem('hasVisitedBefore', 'true');
+        setHasVisited(true);
       }, 5500);
       
       return () => {
