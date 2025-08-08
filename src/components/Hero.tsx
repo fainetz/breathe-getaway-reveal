@@ -158,10 +158,10 @@ const Hero = () => {
         {/* Left side - Main heading and description */}
         <div className="text-left lg:pr-8 order-1 lg:order-1">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-geist font-semibold leading-tight text-foreground mb-4 sm:mb-6 animate-fade-in">{/* Responsive text size and spacing */}
-            <span>AI understands you.</span>
+            <span>AI that gets you.</span>
             <br />
-            <span>The community's been </span>
-            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">there</span>
+            <span>A community that's </span>
+            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">lived it</span>
           </h1>
           
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>{/* Better mobile text sizing */}

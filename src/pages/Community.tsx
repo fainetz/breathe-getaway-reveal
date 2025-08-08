@@ -115,7 +115,14 @@ const Community = () => {
               Our community features are being built. Join the waitlist to get notified when we launch 
               and unlock exclusive founding member perks!
             </p>
-            <Button variant="outline" size="sm" className="mb-4">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="mb-4"
+              onClick={() => {
+                window.location.href = '/#waitlist';
+              }}
+            >
               Join Waitlist for Founding Perks
             </Button>
             
