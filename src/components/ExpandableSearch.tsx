@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Search, ArrowRight } from 'lucide-react';
+import { Search, ArrowRight, ChevronDown } from 'lucide-react';
 
 
 
@@ -104,83 +104,99 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
 
 
   return (
-    <div className={`fixed ${isMobile ? 'bottom-20 px-4' : 'bottom-[max(1.5rem,env(safe-area-inset-bottom))]'} left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out ${
-      isMobile && !shouldShowOnMobile ? 'translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100 pointer-events-auto'
-    }`}>
-      <div 
-        className={`${isMobile ? 'w-full max-w-sm' : 'w-80'} ${isExpanded ? 'h-[48px]' : 'h-[40px]'} relative overflow-visible transition-all duration-500 ease-out origin-center ${
-          isExpanded ? 'scale-100' : 'scale-90'
-        }`}
-        onMouseEnter={() => {
-          setIsHovered(true);
-          setIsExpanded(true);
-        }}
-        onMouseLeave={() => {
-          setIsHovered(false);
-          if (!isFocused && !isUserTyping) {
-            setIsExpanded(false);
-          }
-        }}
-        onClick={() => {
-          setIsExpanded(true);
-        }}
-      >
-        <div className={`absolute inset-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border border-gray-200 dark:border-gray-700 shadow-md transition-all duration-300 ${
-          isExpanded ? 'rounded-2xl' : 'rounded-full'
-        }`}>
+    <>
+      <div className={`fixed ${isMobile ? 'bottom-20 px-4' : 'bottom-[max(1.5rem,env(safe-area-inset-bottom))]'} left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out ${
+        isMobile && !shouldShowOnMobile ? 'translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100 pointer-events-auto'
+      }`}>
+        <div 
+          className={`${isMobile ? 'w-full max-w-sm' : 'w-80'} ${isExpanded ? 'h-[48px]' : 'h-[40px]'} relative overflow-visible transition-all duration-500 ease-out origin-center ${
+            isExpanded ? 'scale-100' : 'scale-90'
+          }`}
+          onMouseEnter={() => {
+            setIsHovered(true);
+            setIsExpanded(true);
+          }}
+          onMouseLeave={() => {
+            setIsHovered(false);
+            if (!isFocused && !isUserTyping) {
+              setIsExpanded(false);
+            }
+          }}
+          onClick={() => {
+            setIsExpanded(true);
+          }}
+        >
+          <div className={`absolute inset-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border border-gray-200 dark:border-gray-700 shadow-md transition-all duration-300 ${
+            isExpanded ? 'rounded-2xl' : 'rounded-full'
+          }`}>
+          </div>
+          
+          {/* Contemporary Preview Tag - only shows when expanded */}
+          {isExpanded && (
+            <div className="absolute -top-3 left-4 animate-fade-in">
+              <div className="bg-gradient-to-r from-blue-900/90 to-blue-700/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg border border-white/20">
+                Preview
+              </div>
+            </div>
+          )}
+
+          {/* Collapsed state - round search pill */}
+          {!isExpanded ? (
+            <div className="relative w-full h-full flex items-center justify-center px-6">
+              <Search className="w-4 h-4 text-gray-600 dark:text-gray-400 mr-2 transition-colors duration-300" />
+              <span className="text-gray-600 dark:text-gray-400 text-sm font-medium transition-colors duration-300">Search</span>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className={`relative w-full h-full flex items-center ${isMobile ? 'px-4' : 'px-5'}`}>
+              <Search className={`${isMobile ? 'w-4 h-4 mr-2' : 'w-4 h-4 mr-3'} text-gray-400 dark:text-gray-500 flex-shrink-0`} />
+              <input
+                type="text"
+                value={prompt}
+                onChange={(e) => {
+                  setPrompt(e.target.value);
+                  setIsUserTyping(true); // Mark as typing when user inputs text
+                }}
+                placeholder="Need escape..."
+                className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm font-medium transition-all duration-300 focus:scale-[1.01]"
+                style={{ fontSize: '16px' }}
+                onFocus={(e) => {
+                  setIsFocused(true);
+                  e.target.placeholder = "Heartbroken, excited, adventurous...";
+                  setIsExpanded(true);
+                }}
+                onBlur={(e) => {
+                  setIsFocused(false);
+                  e.target.placeholder = "Need escape...";
+                  if (!isHovered && !isUserTyping) {
+                    setIsExpanded(false);
+                  }
+                }}
+              />
+              <button
+                type="submit"
+                className={`${isMobile ? 'ml-2 p-1.5' : 'ml-1.5 p-[7px]'} bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0`}
+              >
+                <ArrowRight className={`${isMobile ? 'w-3.5 h-3.5' : 'w-3.5 h-3.5'}`} />
+              </button>
+            </form>
+          )}
         </div>
-        
-        {/* Contemporary Preview Tag - only shows when expanded */}
-        {isExpanded && (
-          <div className="absolute -top-3 left-4 animate-fade-in">
-            <div className="bg-gradient-to-r from-blue-900/90 to-blue-700/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg border border-white/20">
-              Preview
+      </div>
+
+      {/* Scroll Indicator - appears below search bar only at hero section */}
+      {isAtHeroSection && !isFocused && (
+        <div className={`fixed ${isMobile ? 'bottom-14' : 'bottom-[max(5.5rem,calc(env(safe-area-inset-bottom)+4rem))]'} left-1/2 -translate-x-1/2 z-30 transition-all duration-700 ease-out animate-fade-in`}>
+          <div className="flex flex-col items-center space-y-1">
+            <span className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">scroll</span>
+            <div className="flex flex-col items-center space-y-0.5">
+              <ChevronDown className="w-3 h-3 text-gray-400 dark:text-gray-500 animate-[bounce_2s_infinite]" style={{ animationDelay: '0ms' }} />
+              <ChevronDown className="w-3 h-3 text-gray-400 dark:text-gray-500 animate-[bounce_2s_infinite]" style={{ animationDelay: '200ms' }} />
+              <ChevronDown className="w-3 h-3 text-gray-400 dark:text-gray-500 animate-[bounce_2s_infinite]" style={{ animationDelay: '400ms' }} />
             </div>
           </div>
-        )}
-
-        {/* Collapsed state - round search pill */}
-        {!isExpanded ? (
-          <div className="relative w-full h-full flex items-center justify-center px-6">
-            <Search className="w-4 h-4 text-gray-600 dark:text-gray-400 mr-2 transition-colors duration-300" />
-            <span className="text-gray-600 dark:text-gray-400 text-sm font-medium transition-colors duration-300">Search</span>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className={`relative w-full h-full flex items-center ${isMobile ? 'px-4' : 'px-5'}`}>
-            <Search className={`${isMobile ? 'w-4 h-4 mr-2' : 'w-4 h-4 mr-3'} text-gray-400 dark:text-gray-500 flex-shrink-0`} />
-            <input
-              type="text"
-              value={prompt}
-              onChange={(e) => {
-                setPrompt(e.target.value);
-                setIsUserTyping(true); // Mark as typing when user inputs text
-              }}
-              placeholder="Need escape..."
-              className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm font-medium transition-all duration-300 focus:scale-[1.01]"
-              style={{ fontSize: '16px' }}
-              onFocus={(e) => {
-                setIsFocused(true);
-                e.target.placeholder = "Heartbroken, excited, adventurous...";
-                setIsExpanded(true);
-              }}
-              onBlur={(e) => {
-                setIsFocused(false);
-                e.target.placeholder = "Need escape...";
-                if (!isHovered && !isUserTyping) {
-                  setIsExpanded(false);
-                }
-              }}
-            />
-            <button
-              type="submit"
-              className={`${isMobile ? 'ml-2 p-1.5' : 'ml-1.5 p-[7px]'} bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex-shrink-0`}
-            >
-              <ArrowRight className={`${isMobile ? 'w-3.5 h-3.5' : 'w-3.5 h-3.5'}`} />
-            </button>
-          </form>
-        )}
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 };
 
