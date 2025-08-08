@@ -102,13 +102,6 @@ const WaitlistSection = () => {
       <div className="absolute bottom-0 right-1/4 w-40 h-40 bg-stone-200/20 dark:bg-stone-800/10 rounded-full blur-3xl"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
-            Experience What's <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">Coming Soon</span>
-          </h2>
-        </div>
-
         {/* Waitlist Form First */}
         <div className="text-center lg:text-left mb-16">
           <h3 className="text-3xl sm:text-4xl font-bold mb-6 text-foreground">
