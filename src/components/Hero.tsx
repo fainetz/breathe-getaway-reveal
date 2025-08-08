@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, ShoppingCart, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronDown, Menu, X, ShoppingCart, ChevronLeft, ChevronRight, ArrowDownRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import ThreeBackground from './ThreeBackground';
@@ -170,10 +170,19 @@ const Hero = () => {
           </p>
           
           {/* Waitlist text - positioned to appear under search */}
-          <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+          <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
             <p className="text-sm sm:text-base text-muted-foreground">
               Join the waitlist for founding user perks
             </p>
+          </div>
+
+          {/* Scroll indicators positioned under subheading */}
+          <div className="flex items-center space-x-2 animate-fade-in" style={{ animationDelay: '0.9s' }}>
+            <span className="text-xs font-medium text-muted-foreground mr-2">scroll</span>
+            <div className="flex items-center space-x-1">
+              <ArrowDownRight className="w-4 h-4 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '0ms' }} />
+              <ArrowDownRight className="w-4 h-4 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '300ms' }} />
+            </div>
           </div>
           
           {/* Mobile search functionality is now handled by the floating ExpandableSearch component */}
