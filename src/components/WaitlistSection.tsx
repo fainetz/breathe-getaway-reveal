@@ -107,9 +107,6 @@ const WaitlistSection = () => {
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
             Experience What's <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">Coming Soon</span>
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-            Our intelligence curates luxury hotels, premium flights, and exclusive retreats that match your desires before you even know them.
-          </p>
         </div>
 
         {/* Image Carousel and Waitlist Combined */}
