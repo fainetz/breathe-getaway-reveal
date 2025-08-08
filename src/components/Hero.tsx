@@ -172,8 +172,7 @@ const Hero = () => {
           {/* Waitlist text - positioned to appear under search */}
           <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
             <p className="text-sm sm:text-base text-muted-foreground">
-              Join early. Travel smarter.<br />
-              Get lifetime discounted pricing, first access to new destinations, and special rates on our on-trip AI assistant — with real-time hostel reviews and local tips.
+              Join the waitlist for founding user perks
             </p>
           </div>
 
