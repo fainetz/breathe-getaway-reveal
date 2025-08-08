@@ -137,26 +137,23 @@ const FeatureRequestBox = () => {
         </div>
       )}
 
-      {/* Mobile Sliding Banner */}
+      {/* Mobile Sliding Banner - Only on mobile for first-time visitors */}
       {showMobileBanner && (
-        <div className="md:hidden fixed top-1/2 left-4 z-50 transform -translate-y-1/2">
-          <div className={`bg-gradient-to-r from-primary/95 to-accent/95 backdrop-blur-sm rounded-2xl border border-primary/20 shadow-lg p-4 max-w-xs transition-all duration-700 ease-out ${
-            showMobileBanner ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'
+        <div className="md:hidden fixed top-1/2 left-0 z-50 transform -translate-y-1/2">
+          <div className={`bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-r-2xl shadow-lg p-3 transition-transform duration-700 ease-out ${
+            showMobileBanner ? 'translate-x-0' : '-translate-x-full'
           }`}>
-            <div className="flex items-center gap-2 mb-2">
-              <Lightbulb className="h-4 w-4 text-primary-foreground animate-pulse flex-shrink-0" />
-              <div className="text-sm font-semibold text-primary-foreground">
-                We're building for you! 👋
+            <div className="flex items-center gap-2">
+              <Lightbulb className="h-4 w-4 animate-pulse flex-shrink-0" />
+              <div className="text-sm font-medium">
+                Share feature ideas! →
               </div>
-            </div>
-            <div className="text-xs text-primary-foreground/90 leading-relaxed">
-              Share ideas to shape the future of travel planning
             </div>
           </div>
         </div>
       )}
 
-      {/* Development Banner - Desktop chat bubble */}
+      {/* Development Banner - Desktop only */}
       {showBanner && (
         <div className="hidden md:block fixed bottom-24 right-20 z-40 max-w-xs">
           <div className="relative">
