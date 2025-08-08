@@ -103,7 +103,7 @@ const WaitlistSection = () => {
       
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Waitlist Form First */}
-        <div className="text-center lg:text-left mb-16">
+        <div className="text-center mb-16">
           <h3 className="text-3xl sm:text-4xl font-bold mb-6 text-foreground">
             Join the <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">Waitlist</span>
           </h3>
@@ -112,7 +112,7 @@ const WaitlistSection = () => {
             Get lifetime discounted pricing, first access to new destinations, and special rates on our on-trip AI assistant — with real-time hostel reviews and local tips.
           </p>
           
-          <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto lg:mx-0">
+          <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
             <div className="flex flex-col sm:flex-row gap-3">
               <Input
                 type="email"
