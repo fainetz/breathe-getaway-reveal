@@ -8,7 +8,7 @@ const MobileMenu = () => {
   const [showFeedback, setShowFeedback] = useState(false);
   const [featureRequest, setFeatureRequest] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [showBanner, setShowBanner] = useState(true);
+  const [showBanner, setShowBanner] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
   const isOnChatPage = location.pathname === '/chat';
