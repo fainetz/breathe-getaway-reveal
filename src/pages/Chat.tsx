@@ -7,6 +7,14 @@ const Chat = () => {
   const navigate = useNavigate();
   const initialPrompt = searchParams.get('q') || '';
 
+  // Scroll to top on mobile when component mounts
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, []);
+
   const handleChatClose = () => {
     navigate('/');
   };
