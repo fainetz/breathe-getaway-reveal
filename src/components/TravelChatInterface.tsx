@@ -485,10 +485,10 @@ const fetchUnsplashImage = async (query: string): Promise<string | null> => {
         ) : (
           <>
             {/* Chat Panel - Mobile: Full width, Desktop: 1/3 */}
-            <div className={`${isChatMinimized && !isMobile ? 'w-16' : isMobile ? 'flex-1' : 'w-1/3'} transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-white/5 backdrop-blur-xl ${isMobile ? '' : 'border-r border-white/10'} flex flex-col`}>
-              <div className="flex items-center justify-between p-4 md:p-6 border-b border-white/10">
+            <div className={`${isChatMinimized && !isMobile ? 'w-16' : isMobile ? 'flex-1' : 'w-1/3'} transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-white/5 backdrop-blur-xl ${isMobile ? '' : 'border-r border-white/10'} flex flex-col animate-fade-in`}>
+              <div className="flex items-center justify-between p-4 md:p-6 border-b border-white/10 animate-slide-in-right delay-100">
                 {!isChatMinimized && (
-                  <div className="flex-1 animate-fade-in">
+                  <div className="flex-1 animate-fade-in delay-200">
                     <h2 className="text-lg md:text-xl font-bold text-white mb-1 tracking-tight">AI Travel Concierge</h2>
                     <p className="text-sm text-white/60 font-medium">Your personal travel curator</p>
                   </div>

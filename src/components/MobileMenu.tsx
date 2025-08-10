@@ -64,8 +64,10 @@ const MobileMenu = () => {
         </div>
       )}
 
-      {/* Floating Action Button - Fixed position, no animation */}
-      <div className="fixed right-6 bottom-6 z-[70] md:hidden">
+  {/* Floating Action Button - Slides up on chat page */}
+      <div className={`fixed right-6 z-[70] md:hidden transition-all duration-500 ease-out ${
+        isOnChatPage ? 'bottom-32' : 'bottom-6'
+      }`}>
         <button
           onClick={toggleMenu}
           className={`w-14 h-14 rounded-full shadow-lg transition-all duration-300 ${

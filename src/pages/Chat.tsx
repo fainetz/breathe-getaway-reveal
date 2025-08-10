@@ -12,7 +12,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-24">
+    <div className="min-h-screen bg-background text-foreground pt-24 animate-fade-in">
       <TravelChatInterface 
         isOpen={true} 
         onClose={handleChatClose}
