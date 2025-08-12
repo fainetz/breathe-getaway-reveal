@@ -17,8 +17,7 @@ const WaitlistSection = () => {
   const [submittedEmail, setSubmittedEmail] = useState('');
   const [followUpData, setFollowUpData] = useState({
     interestedFeatures: '',
-    accommodationNeeds: '',
-    desiredFeatures: ''
+    accommodationNeeds: ''
   });
   const [isSubmittingFollowUp, setIsSubmittingFollowUp] = useState(false);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
@@ -120,7 +119,6 @@ const WaitlistSection = () => {
             email: submittedEmail,
             interested_features: followUpData.interestedFeatures,
             accommodation_needs: followUpData.accommodationNeeds,
-            desired_features: followUpData.desiredFeatures,
           }
         ]);
 
@@ -132,8 +130,7 @@ const WaitlistSection = () => {
         setShowFollowUp(false);
         setFollowUpData({
           interestedFeatures: '',
-          accommodationNeeds: '',
-          desiredFeatures: ''
+          accommodationNeeds: ''
         });
         setSubmittedEmail('');
       }
@@ -249,16 +246,16 @@ const WaitlistSection = () => {
       </div>
 
       <Dialog open={showFollowUp} onOpenChange={setShowFollowUp}>
-        <DialogContent className="sm:max-w-md bg-background/95 backdrop-blur-sm border border-border/50">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-semibold text-center text-foreground">
-              Help us personalize your experience
+        <DialogContent className="sm:max-w-lg w-[95vw] max-h-[90vh] overflow-y-auto bg-background/98 backdrop-blur-xl border-2 border-border/30 rounded-3xl shadow-2xl">
+          <DialogHeader className="pb-4">
+            <DialogTitle className="text-xl sm:text-2xl font-bold text-center text-foreground leading-tight">
+              Help us personalize your experience ✨
             </DialogTitle>
           </DialogHeader>
           
-          <form onSubmit={handleFollowUpSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="interestedFeatures" className="text-sm font-medium text-foreground">
+          <form onSubmit={handleFollowUpSubmit} className="space-y-6">
+            <div className="space-y-3">
+              <Label htmlFor="interestedFeatures" className="text-sm font-semibold text-foreground">
                 What features are you most interested in?
               </Label>
               <Textarea
@@ -266,12 +263,12 @@ const WaitlistSection = () => {
                 placeholder="AI trip planning, destination recommendations, community features..."
                 value={followUpData.interestedFeatures}
                 onChange={(e) => setFollowUpData(prev => ({ ...prev, interestedFeatures: e.target.value }))}
-                className="min-h-[80px] text-sm"
+                className="min-h-[100px] text-sm rounded-2xl border-2 border-border/50 focus:border-primary/50 bg-background/90 backdrop-blur-sm resize-none"
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="accommodationNeeds" className="text-sm font-medium text-foreground">
+            <div className="space-y-3">
+              <Label htmlFor="accommodationNeeds" className="text-sm font-semibold text-foreground">
                 What should our website accommodate for you?
               </Label>
               <Textarea
@@ -279,36 +276,23 @@ const WaitlistSection = () => {
                 placeholder="Accessibility needs, specific travel requirements, budget considerations..."
                 value={followUpData.accommodationNeeds}
                 onChange={(e) => setFollowUpData(prev => ({ ...prev, accommodationNeeds: e.target.value }))}
-                className="min-h-[80px] text-sm"
+                className="min-h-[100px] text-sm rounded-2xl border-2 border-border/50 focus:border-primary/50 bg-background/90 backdrop-blur-sm resize-none"
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="desiredFeatures" className="text-sm font-medium text-foreground">
-                What other features or sections would you like to see?
-              </Label>
-              <Textarea
-                id="desiredFeatures"
-                placeholder="Travel blogs, local experiences, group planning, travel insurance..."
-                value={followUpData.desiredFeatures}
-                onChange={(e) => setFollowUpData(prev => ({ ...prev, desiredFeatures: e.target.value }))}
-                className="min-h-[80px] text-sm"
-              />
-            </div>
-
-            <div className="flex gap-2 pt-2">
+            <div className="flex flex-col sm:flex-row gap-3 pt-4">
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => setShowFollowUp(false)}
-                className="flex-1"
+                className="flex-1 h-12 rounded-2xl border-2 font-semibold"
                 disabled={isSubmittingFollowUp}
               >
-                Skip
+                Skip for now
               </Button>
               <Button
                 type="submit"
-                className="flex-1"
+                className="flex-1 h-12 rounded-2xl bg-gradient-to-r from-slate-700 to-gray-600 hover:from-slate-800 hover:to-gray-700 dark:from-slate-600 dark:to-gray-500 dark:hover:from-slate-700 dark:hover:to-gray-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                 disabled={isSubmittingFollowUp}
               >
                 {isSubmittingFollowUp ? 'Submitting...' : 'Submit Feedback'}
