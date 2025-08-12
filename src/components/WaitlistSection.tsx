@@ -17,7 +17,7 @@ const WaitlistSection = () => {
   const [submittedEmail, setSubmittedEmail] = useState('');
   const [followUpData, setFollowUpData] = useState({
     interestedFeatures: '',
-    travelPreferences: ''
+    desiredSections: ''
   });
   const [isSubmittingFollowUp, setIsSubmittingFollowUp] = useState(false);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
@@ -118,7 +118,7 @@ const WaitlistSection = () => {
           {
             email: submittedEmail,
             interested_features: followUpData.interestedFeatures,
-            accommodation_needs: followUpData.travelPreferences,
+            accommodation_needs: followUpData.desiredSections,
           }
         ]);
 
@@ -130,7 +130,7 @@ const WaitlistSection = () => {
         setShowFollowUp(false);
         setFollowUpData({
           interestedFeatures: '',
-          travelPreferences: ''
+          desiredSections: ''
         });
         setSubmittedEmail('');
       }
@@ -271,14 +271,14 @@ const WaitlistSection = () => {
             </div>
 
             <div className="space-y-3">
-              <Label htmlFor="travelPreferences" className="text-sm font-semibold text-foreground">
-                What are your travel preferences and style?
+              <Label htmlFor="desiredSections" className="text-sm font-semibold text-foreground">
+                What features or sections would you like to see on our platform?
               </Label>
               <Textarea
-                id="travelPreferences"
-                placeholder="Budget range, travel style (luxury/budget/mid-range), preferred destinations, travel frequency..."
-                value={followUpData.travelPreferences}
-                onChange={(e) => setFollowUpData(prev => ({ ...prev, travelPreferences: e.target.value }))}
+                id="desiredSections"
+                placeholder="Trip planning tools, community forums, destination guides, booking comparisons, travel journals..."
+                value={followUpData.desiredSections}
+                onChange={(e) => setFollowUpData(prev => ({ ...prev, desiredSections: e.target.value }))}
                 className="min-h-[100px] text-sm rounded-2xl border-2 border-border/50 focus:border-primary/50 bg-background resize-none"
               />
             </div>
