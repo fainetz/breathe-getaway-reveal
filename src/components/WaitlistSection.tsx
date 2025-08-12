@@ -17,7 +17,7 @@ const WaitlistSection = () => {
   const [submittedEmail, setSubmittedEmail] = useState('');
   const [followUpData, setFollowUpData] = useState({
     interestedFeatures: '',
-    accommodationNeeds: ''
+    travelPreferences: ''
   });
   const [isSubmittingFollowUp, setIsSubmittingFollowUp] = useState(false);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
@@ -118,7 +118,7 @@ const WaitlistSection = () => {
           {
             email: submittedEmail,
             interested_features: followUpData.interestedFeatures,
-            accommodation_needs: followUpData.accommodationNeeds,
+            accommodation_needs: followUpData.travelPreferences,
           }
         ]);
 
@@ -130,7 +130,7 @@ const WaitlistSection = () => {
         setShowFollowUp(false);
         setFollowUpData({
           interestedFeatures: '',
-          accommodationNeeds: ''
+          travelPreferences: ''
         });
         setSubmittedEmail('');
       }
@@ -271,14 +271,14 @@ const WaitlistSection = () => {
             </div>
 
             <div className="space-y-3">
-              <Label htmlFor="accommodationNeeds" className="text-sm font-semibold text-foreground">
-                What should our website accommodate for you?
+              <Label htmlFor="travelPreferences" className="text-sm font-semibold text-foreground">
+                What are your travel preferences and style?
               </Label>
               <Textarea
-                id="accommodationNeeds"
-                placeholder="Accessibility needs, specific travel requirements, budget considerations..."
-                value={followUpData.accommodationNeeds}
-                onChange={(e) => setFollowUpData(prev => ({ ...prev, accommodationNeeds: e.target.value }))}
+                id="travelPreferences"
+                placeholder="Budget range, travel style (luxury/budget/mid-range), preferred destinations, travel frequency..."
+                value={followUpData.travelPreferences}
+                onChange={(e) => setFollowUpData(prev => ({ ...prev, travelPreferences: e.target.value }))}
                 className="min-h-[100px] text-sm rounded-2xl border-2 border-border/50 focus:border-primary/50 bg-background resize-none"
               />
             </div>
