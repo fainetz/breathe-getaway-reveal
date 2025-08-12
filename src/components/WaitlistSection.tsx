@@ -247,58 +247,49 @@ const WaitlistSection = () => {
 
       <Dialog open={showFollowUp} onOpenChange={setShowFollowUp}>
         <DialogContent 
-          className="sm:max-w-md w-[92vw] max-w-[420px] max-h-[85vh] overflow-y-auto bg-background border-2 border-border/30 rounded-2xl shadow-2xl z-[100]"
+          className="sm:max-w-sm w-[88vw] max-w-[380px] max-h-[80vh] overflow-y-auto bg-background border-2 border-border/30 rounded-xl shadow-2xl z-[100]"
           onInteractOutside={(e) => e.preventDefault()}
         >
-          <DialogHeader className="pb-4">
-            <DialogTitle className="text-xl sm:text-2xl font-bold text-center text-foreground leading-tight">
-              Help us personalize your experience ✨
+          <DialogHeader className="pb-3">
+            <DialogTitle className="text-lg sm:text-xl font-bold text-center text-foreground leading-tight">
+              Help us personalize ✨
             </DialogTitle>
           </DialogHeader>
           
-          <form onSubmit={handleFollowUpSubmit} className="space-y-6">
-            <div className="space-y-3">
+          <form onSubmit={handleFollowUpSubmit} className="space-y-5">
+            <div className="space-y-2">
               <Label htmlFor="interestedFeatures" className="text-sm font-semibold text-foreground">
-                What features are you most interested in?
+                What features interest you?
               </Label>
               <Textarea
                 id="interestedFeatures"
-                placeholder="AI trip planning, destination recommendations, community features..."
+                placeholder="AI planning, recommendations, community..."
                 value={followUpData.interestedFeatures}
                 onChange={(e) => setFollowUpData(prev => ({ ...prev, interestedFeatures: e.target.value }))}
-                className="min-h-[100px] text-sm rounded-2xl border-2 border-border/50 focus:border-primary/50 bg-background resize-none"
+                className="min-h-[80px] text-sm rounded-xl border-2 border-border/50 focus:border-primary/50 bg-background resize-none"
               />
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2">
               <Label htmlFor="desiredSections" className="text-sm font-semibold text-foreground">
-                What features or sections would you like to see on our platform?
+                What sections would you like?
               </Label>
               <Textarea
                 id="desiredSections"
-                placeholder="Trip planning tools, community forums, destination guides, booking comparisons, travel journals..."
+                placeholder="Trip tools, forums, guides, bookings..."
                 value={followUpData.desiredSections}
                 onChange={(e) => setFollowUpData(prev => ({ ...prev, desiredSections: e.target.value }))}
-                className="min-h-[100px] text-sm rounded-2xl border-2 border-border/50 focus:border-primary/50 bg-background resize-none"
+                className="min-h-[80px] text-sm rounded-xl border-2 border-border/50 focus:border-primary/50 bg-background resize-none"
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 pt-4">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setShowFollowUp(false)}
-                className="flex-1 h-12 rounded-2xl border-2 font-semibold"
-                disabled={isSubmittingFollowUp}
-              >
-                Skip for now
-              </Button>
+            <div className="pt-3">
               <Button
                 type="submit"
-                className="flex-1 h-12 rounded-2xl bg-gradient-to-r from-slate-700 to-gray-600 hover:from-slate-800 hover:to-gray-700 dark:from-slate-600 dark:to-gray-500 dark:hover:from-slate-700 dark:hover:to-gray-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full h-11 rounded-xl bg-gradient-to-r from-slate-700 to-gray-600 hover:from-slate-800 hover:to-gray-700 dark:from-slate-600 dark:to-gray-500 dark:hover:from-slate-700 dark:hover:to-gray-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                 disabled={isSubmittingFollowUp}
               >
-                {isSubmittingFollowUp ? 'Submitting...' : 'Submit Feedback'}
+                {isSubmittingFollowUp ? 'Submitting...' : 'Submit'}
               </Button>
             </div>
           </form>
