@@ -247,7 +247,7 @@ const WaitlistSection = () => {
 
       <Dialog open={showFollowUp} onOpenChange={setShowFollowUp}>
         <DialogContent 
-          className="sm:max-w-lg w-[95vw] max-h-[90vh] overflow-y-auto bg-background border-2 border-border/30 rounded-3xl shadow-2xl"
+          className="sm:max-w-md w-[92vw] max-w-[420px] max-h-[85vh] overflow-y-auto bg-background border-2 border-border/30 rounded-2xl shadow-2xl z-[100]"
           onInteractOutside={(e) => e.preventDefault()}
         >
           <DialogHeader className="pb-4">
