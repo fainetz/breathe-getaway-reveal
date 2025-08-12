@@ -1,14 +1,26 @@
 import { useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import useEmblaCarousel from 'embla-carousel-react';
+import { supabase } from '@/integrations/supabase/client';
 
 const WaitlistSection = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showFollowUp, setShowFollowUp] = useState(false);
+  const [submittedEmail, setSubmittedEmail] = useState('');
+  const [followUpData, setFollowUpData] = useState({
+    interestedFeatures: '',
+    accommodationNeeds: '',
+    desiredFeatures: ''
+  });
+  const [isSubmittingFollowUp, setIsSubmittingFollowUp] = useState(false);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
   // Carousel images data
@@ -81,8 +93,10 @@ const WaitlistSection = () => {
       });
 
       if (response.ok) {
-        toast.success('You\'ve been added to the waitlist! We\'ll notify you when hotels, flights, and resorts launch.');
+        toast.success('You\'ve been added to the waitlist! Please share a bit more about your interests.');
+        setSubmittedEmail(email);
         setEmail('');
+        setShowFollowUp(true);
       } else {
         toast.error('Something went wrong. Please try again.');
       }
@@ -91,6 +105,43 @@ const WaitlistSection = () => {
       console.error('Waitlist submission error:', error);
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleFollowUpSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingFollowUp(true);
+    
+    try {
+      const { error } = await supabase
+        .from('waitlist_feedback')
+        .insert([
+          {
+            email: submittedEmail,
+            interested_features: followUpData.interestedFeatures,
+            accommodation_needs: followUpData.accommodationNeeds,
+            desired_features: followUpData.desiredFeatures,
+          }
+        ]);
+
+      if (error) {
+        toast.error('Something went wrong. Please try again.');
+        console.error('Follow-up submission error:', error);
+      } else {
+        toast.success('Thank you for your feedback! We\'ll use this to make Breathe & Getaway perfect for you.');
+        setShowFollowUp(false);
+        setFollowUpData({
+          interestedFeatures: '',
+          accommodationNeeds: '',
+          desiredFeatures: ''
+        });
+        setSubmittedEmail('');
+      }
+    } catch (error) {
+      toast.error('Something went wrong. Please try again.');
+      console.error('Follow-up submission error:', error);
+    } finally {
+      setIsSubmittingFollowUp(false);
     }
   };
 
@@ -196,6 +247,76 @@ const WaitlistSection = () => {
           </button>
         </div>
       </div>
+
+      <Dialog open={showFollowUp} onOpenChange={setShowFollowUp}>
+        <DialogContent className="sm:max-w-md bg-background/95 backdrop-blur-sm border border-border/50">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold text-center text-foreground">
+              Help us personalize your experience
+            </DialogTitle>
+          </DialogHeader>
+          
+          <form onSubmit={handleFollowUpSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="interestedFeatures" className="text-sm font-medium text-foreground">
+                What features are you most interested in?
+              </Label>
+              <Textarea
+                id="interestedFeatures"
+                placeholder="AI trip planning, destination recommendations, community features..."
+                value={followUpData.interestedFeatures}
+                onChange={(e) => setFollowUpData(prev => ({ ...prev, interestedFeatures: e.target.value }))}
+                className="min-h-[80px] text-sm"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="accommodationNeeds" className="text-sm font-medium text-foreground">
+                What should our website accommodate for you?
+              </Label>
+              <Textarea
+                id="accommodationNeeds"
+                placeholder="Accessibility needs, specific travel requirements, budget considerations..."
+                value={followUpData.accommodationNeeds}
+                onChange={(e) => setFollowUpData(prev => ({ ...prev, accommodationNeeds: e.target.value }))}
+                className="min-h-[80px] text-sm"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="desiredFeatures" className="text-sm font-medium text-foreground">
+                What other features or sections would you like to see?
+              </Label>
+              <Textarea
+                id="desiredFeatures"
+                placeholder="Travel blogs, local experiences, group planning, travel insurance..."
+                value={followUpData.desiredFeatures}
+                onChange={(e) => setFollowUpData(prev => ({ ...prev, desiredFeatures: e.target.value }))}
+                className="min-h-[80px] text-sm"
+              />
+            </div>
+
+            <div className="flex gap-2 pt-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setShowFollowUp(false)}
+                className="flex-1"
+                disabled={isSubmittingFollowUp}
+              >
+                Skip
+              </Button>
+              <Button
+                type="submit"
+                className="flex-1"
+                disabled={isSubmittingFollowUp}
+              >
+                {isSubmittingFollowUp ? 'Submitting...' : 'Submit Feedback'}
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
