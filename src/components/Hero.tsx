@@ -119,8 +119,8 @@ const Hero = () => {
       <nav className="relative z-50 px-4 sm:px-6 py-6">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 relative overflow-hidden rounded-lg">
+          <Link to="/" className="flex items-center space-x-2 group">
+            <div className="w-7 h-7 sm:w-10 sm:h-10 relative overflow-hidden rounded-lg">
               <img 
                 src={theme === 'dark' 
                   ? "/lovable-uploads/62358993-d15b-4b81-9c51-49ab4c2e8d79.png"
@@ -132,9 +132,9 @@ const Hero = () => {
                 }`}
               />
             </div>
-            <span className="text-xl sm:text-2xl font-bold text-foreground">
+            <span className="text-lg sm:text-2xl font-bold text-foreground">
               <span className="hidden sm:inline">Breathe & Getaway</span>
-              <span className="sm:hidden">B&G</span>
+              <span className="sm:hidden text-base">B&G</span>
             </span>
           </Link>
 
@@ -190,7 +190,7 @@ const Hero = () => {
 
           {/* Scroll indicators positioned right under search bar on mobile, under waitlist text on desktop */}
           {!hasScrolled && (
-            <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center space-y-1 animate-fade-in md:relative md:bottom-auto md:left-auto md:transform-none md:z-auto md:items-start md:ml-32 transition-opacity duration-300" style={{ animationDelay: '0.9s' }}>
+            <div className="fixed bottom-12 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center space-y-1 animate-fade-in md:relative md:bottom-auto md:left-auto md:transform-none md:z-auto md:items-start md:ml-32 transition-opacity duration-300" style={{ animationDelay: '0.9s' }}>
               <div className="flex flex-col items-center -space-y-1">
                 <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '0ms' }} />
                 <ChevronDown className="w-5 h-5 text-muted-foreground animate-[bounce_2s_infinite]" style={{ animationDelay: '300ms' }} />
