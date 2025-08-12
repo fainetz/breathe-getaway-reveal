@@ -246,8 +246,7 @@ const WaitlistSection = () => {
       </div>
 
       <Dialog open={showFollowUp} onOpenChange={setShowFollowUp}>
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-lg" />
-        <DialogContent className="sm:max-w-lg w-[95vw] max-h-[90vh] overflow-y-auto bg-background border-2 border-border/30 rounded-3xl shadow-2xl z-50">
+        <DialogContent className="sm:max-w-lg w-[95vw] max-h-[90vh] overflow-y-auto bg-background border-2 border-border/30 rounded-3xl shadow-2xl">
           <DialogHeader className="pb-4">
             <DialogTitle className="text-xl sm:text-2xl font-bold text-center text-foreground leading-tight">
               Help us personalize your experience ✨
