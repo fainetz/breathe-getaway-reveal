@@ -246,7 +246,8 @@ const WaitlistSection = () => {
       </div>
 
       <Dialog open={showFollowUp} onOpenChange={setShowFollowUp}>
-        <DialogContent className="sm:max-w-lg w-[95vw] max-h-[90vh] overflow-y-auto bg-background/98 backdrop-blur-xl border-2 border-border/30 rounded-3xl shadow-2xl">
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-lg" />
+        <DialogContent className="sm:max-w-lg w-[95vw] max-h-[90vh] overflow-y-auto bg-background border-2 border-border/30 rounded-3xl shadow-2xl z-50">
           <DialogHeader className="pb-4">
             <DialogTitle className="text-xl sm:text-2xl font-bold text-center text-foreground leading-tight">
               Help us personalize your experience ✨
@@ -263,7 +264,7 @@ const WaitlistSection = () => {
                 placeholder="AI trip planning, destination recommendations, community features..."
                 value={followUpData.interestedFeatures}
                 onChange={(e) => setFollowUpData(prev => ({ ...prev, interestedFeatures: e.target.value }))}
-                className="min-h-[100px] text-sm rounded-2xl border-2 border-border/50 focus:border-primary/50 bg-background/90 backdrop-blur-sm resize-none"
+                className="min-h-[100px] text-sm rounded-2xl border-2 border-border/50 focus:border-primary/50 bg-background resize-none"
               />
             </div>
 
@@ -276,7 +277,7 @@ const WaitlistSection = () => {
                 placeholder="Accessibility needs, specific travel requirements, budget considerations..."
                 value={followUpData.accommodationNeeds}
                 onChange={(e) => setFollowUpData(prev => ({ ...prev, accommodationNeeds: e.target.value }))}
-                className="min-h-[100px] text-sm rounded-2xl border-2 border-border/50 focus:border-primary/50 bg-background/90 backdrop-blur-sm resize-none"
+                className="min-h-[100px] text-sm rounded-2xl border-2 border-border/50 focus:border-primary/50 bg-background resize-none"
               />
             </div>
 
