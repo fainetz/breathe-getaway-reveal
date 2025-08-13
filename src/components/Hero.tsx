@@ -188,9 +188,12 @@ const Hero = () => {
               <Button className="bg-black dark:bg-white text-white dark:text-black font-medium px-8 py-3 text-lg rounded-lg hover:bg-black/90 dark:hover:bg-white/90 transition-colors duration-200 flex items-center gap-3">
                 Join the Waitlist
                 <img 
-                  src="/lovable-uploads/420c8eec-6663-4cc2-87c9-d0cbfcfcad0e.png"
+                  src={theme === 'dark' 
+                    ? "/lovable-uploads/323d24a5-b33e-4aae-941e-a90580951450.png"
+                    : "/lovable-uploads/0b267d24-4263-467e-9777-e1627c730fa4.png"
+                  }
                   alt="Logo"
-                  className="w-10 h-10 object-cover"
+                  className="w-6 h-6 object-contain"
                 />
               </Button>
             </Link>
