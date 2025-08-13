@@ -165,10 +165,10 @@ const WaitlistSection = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Waitlist Form First */}
         <div className="text-center mb-16">
-          <h3 className="text-3xl sm:text-4xl font-bold mb-6 text-foreground">
+          <h3 className="text-3xl sm:text-4xl font-bold sm:font-bold font-extrabold mb-6 text-foreground">
             Join the <span className="bg-gradient-to-r from-slate-700 to-gray-600 dark:from-slate-300 dark:to-gray-400 bg-clip-text text-transparent">Waitlist</span>
           </h3>
-          <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+          <p className="text-lg font-medium sm:font-normal text-muted-foreground mb-8 leading-relaxed">
             Get lifetime discounted pricing, priority access to new trip features, and special rates on our on-trip AI assistant — with real hostel reviews and local tips from travelers who've been there.
           </p>
           
@@ -185,14 +185,14 @@ const WaitlistSection = () => {
               <Button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="bg-gradient-to-r from-slate-700 to-gray-600 hover:from-slate-800 hover:to-gray-700 dark:from-slate-600 dark:to-gray-500 dark:hover:from-slate-700 dark:hover:to-gray-600 text-white font-semibold px-8 h-12 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-gradient-to-r from-slate-700 to-gray-600 hover:from-slate-800 hover:to-gray-700 dark:from-slate-600 dark:to-gray-500 dark:hover:from-slate-700 dark:hover:to-gray-600 text-white font-bold sm:font-semibold px-8 h-12 shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {isSubmitting ? 'Joining...' : 'Join Waitlist'}
               </Button>
             </div>
           </form>
           
-          <p className="text-sm text-muted-foreground mt-4">
+          <p className="text-sm font-medium sm:font-normal text-muted-foreground mt-4">
             No spam, ever. Unsubscribe at any time.
           </p>
         </div>
@@ -228,10 +228,10 @@ const WaitlistSection = () => {
 
                     {/* Content */}
                     <div className="absolute bottom-6 left-6 right-6">
-                      <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 group-hover:translate-y-[-4px] transition-transform duration-300">
+                      <h3 className="text-2xl sm:text-3xl font-black sm:font-bold text-white mb-3 group-hover:translate-y-[-4px] transition-transform duration-300">
                         {slide.title}
                       </h3>
-                      <p className="text-gray-200 text-base sm:text-lg group-hover:translate-y-[-4px] transition-transform duration-300 delay-75">
+                      <p className="text-gray-200 text-base sm:text-lg font-medium sm:font-normal group-hover:translate-y-[-4px] transition-transform duration-300 delay-75">
                         {slide.description}
                       </p>
                     </div>
