@@ -32,22 +32,22 @@ const HowItWorks = () => {
 
   const steps = [
     {
-      title: "Tell Us Your Story",
-      description: "Whether it's 'cheapest way to leave this weekend' or 'I need to disappear in luxury'—we understand every travel need.",
-      icon: "💭",
-      examples: ["Under $200 trip", "I need to get away", "Something stress-free"]
+      title: "AI Trip Planner",
+      description: "Skip the planning — we've got it covered. One prompt gives you a complete trip — flights, stays, activities — without you planning a thing. You can easily adjust any part with a simple prompt and book it instantly.",
+      icon: "🤖",
+      examples: ["Complete trips", "Instant adjustments", "One-click booking"]
     },
     {
-      title: "AI Reads Your Needs", 
-      description: "Our intelligence adapts: budget optimization for students, emotional healing for escapists, concierge service for executives.",
-      icon: "🧠",
-      examples: ["Smart deals", "Healing destinations", "Luxury coordination"]
+      title: "Travel Communities", 
+      description: "Where travelers like you connect. Join a community for travelers like you — a place to ask questions, share safety tips, discuss local secrets, and connect with others who are going where you're going or looking to travel together.",
+      icon: "🌐",
+      examples: ["Safety tips", "Local secrets", "Travel partners"]
     },
     {
-      title: "Perfect Match Delivered",
-      description: "From hostels to private jets, from group tours to personal chefs—receive exactly what your situation calls for.",
-      icon: "✨",
-      examples: ["Budget adventures", "Soul retreats", "VIP experiences"]
+      title: "On-Trip Assistant",
+      description: "We don't just get you there — we go with you. Once your trip begins, our AI stays with you. Find the fastest local transport/ways to get around, discover hidden gems, and connect with others in your travel community — all without breaking your flow.",
+      icon: "🧭",
+      examples: ["Local transport", "Hidden gems", "Community connections"]
     }
   ];
 
@@ -57,10 +57,10 @@ const HowItWorks = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-20 opacity-0 animate-fade-in">
           <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:via-gray-100 dark:to-gray-300 bg-clip-text text-transparent transition-colors duration-300 drop-shadow-lg">
-            How It Works for Everyone
+            Why Breathe and Get Away?
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
-            One intelligent system that adapts to your style—whether budget-conscious, emotionally seeking, or craving luxury.
+            We handle everything so you can focus on what matters — getting away and reconnecting with yourself.
           </p>
         </div>
 
