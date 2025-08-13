@@ -323,22 +323,11 @@ const WaitlistSection = () => {
             <p className="text-sm text-muted-foreground text-center leading-relaxed">
               For the best travel planning experience with our AI assistant, interactive maps, and detailed itineraries, we recommend using a desktop or tablet.
             </p>
-            
-            <p className="text-sm text-muted-foreground text-center leading-relaxed">
-              Mobile works great for browsing and joining our waitlist though! 📱
-            </p>
 
-            <div className="pt-3 space-y-3">
+            <div className="pt-3">
               <Button
                 onClick={() => setShowDesktopRecommendation(false)}
                 className="w-full h-11 rounded-xl bg-gradient-to-r from-slate-700 to-gray-600 hover:from-slate-800 hover:to-gray-700 dark:from-slate-600 dark:to-gray-500 dark:hover:from-slate-700 dark:hover:to-gray-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Got it!
-              </Button>
-              <Button
-                onClick={() => setShowDesktopRecommendation(false)}
-                variant="ghost"
-                className="w-full h-11 rounded-xl text-muted-foreground hover:text-foreground"
               >
                 Continue anyway
               </Button>
