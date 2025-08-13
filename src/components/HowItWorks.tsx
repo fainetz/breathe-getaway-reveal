@@ -34,19 +34,19 @@ const HowItWorks = () => {
     {
       title: "AI Trip Planner",
       description: "Skip the planning — we've got it covered. One prompt gives you a complete trip — flights, stays, activities — without you planning a thing. You can easily adjust any part with a simple prompt and book it instantly.",
-      icon: "🤖",
+      icon: "✈️",
       examples: ["Complete trips", "Instant adjustments", "One-click booking"]
     },
     {
       title: "Travel Communities", 
       description: "Where travelers like you connect. Join a community for travelers like you — a place to ask questions, share safety tips, discuss local secrets, and connect with others who are going where you're going or looking to travel together.",
-      icon: "🌐",
+      icon: "👥",
       examples: ["Safety tips", "Local secrets", "Travel partners"]
     },
     {
       title: "On-Trip Assistant",
       description: "We don't just get you there — we go with you. Once your trip begins, our AI stays with you. Find the fastest local transport/ways to get around, discover hidden gems, and connect with others in your travel community — all without breaking your flow.",
-      icon: "🧭",
+      icon: "🗺️",
       examples: ["Local transport", "Hidden gems", "Community connections"]
     }
   ];
