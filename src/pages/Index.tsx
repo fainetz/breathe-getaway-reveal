@@ -5,7 +5,7 @@ import Hero from '../components/Hero';
 import WaitlistSection from '../components/WaitlistSection';
 import HowItWorks from '../components/HowItWorks';
 import Features from '../components/Features';
-import LuxuryShowcase from '../components/LuxuryShowcase';
+import WhyBreatheGetaway from '../components/WhyBreatheGetaway';
 import EmotionalHooks from '../components/EmotionalHooks';
 import Vision from '../components/Vision';
 import Footer from '../components/Footer';
@@ -42,9 +42,9 @@ const Index = () => {
       <Features />
       <div className="transition-features-emotional"></div>
       <EmotionalHooks />
-      <div className="transition-emotional-luxury"></div>
-      <LuxuryShowcase />
-      <div className="transition-luxury-vision"></div>
+      <div className="transition-emotional-why"></div>
+      <WhyBreatheGetaway />
+      <div className="transition-why-vision"></div>
       <Vision />
       <div id="resultsSection" className="min-h-0"></div>
       <Footer />
