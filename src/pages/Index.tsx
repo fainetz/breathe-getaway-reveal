@@ -37,11 +37,11 @@ const Index = () => {
       <Hero />
       <div className="transition-hero-waitlist"></div>
       <WaitlistSection />
-      <div className="transition-waitlist-features"></div>
-      <Features />
-      <div className="transition-features-howitworks"></div>
+      <div className="transition-waitlist-howitworks"></div>
       <HowItWorks />
-      <div className="transition-howitworks-emotional"></div>
+      <div className="transition-howitworks-features"></div>
+      <Features />
+      <div className="transition-features-emotional"></div>
       <EmotionalHooks />
       <div className="transition-emotional-luxury"></div>
       <LuxuryShowcase />
