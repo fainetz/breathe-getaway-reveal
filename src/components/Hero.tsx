@@ -187,7 +187,11 @@ const Hero = () => {
             <Link to="/waitlist">
               <Button className="bg-black dark:bg-white text-white dark:text-black font-medium px-8 py-3 text-lg rounded-lg hover:bg-black/90 dark:hover:bg-white/90 transition-colors duration-200 flex items-center gap-3">
                 Join the Waitlist
-                <div className="w-4 h-4 border-2 border-white dark:border-black rounded-sm"></div>
+                <img 
+                  src="/lovable-uploads/420c8eec-6663-4cc2-87c9-d0cbfcfcad0e.png"
+                  alt="Logo"
+                  className="w-5 h-5 object-contain"
+                />
               </Button>
             </Link>
             <p className="text-sm text-muted-foreground font-medium mt-3">
