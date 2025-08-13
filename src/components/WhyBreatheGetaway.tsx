@@ -61,12 +61,12 @@ const WhyBreatheGetaway = () => {
             {/* Left side - Content */}
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                Start chatting with us.
+                AI trip planning made simple.
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Ask us for suggestions for any destination or ask us for an entire itinerary. 
-                Be as specific as you can about the types of experiences that you like or take 
-                our quiz to determine your travel style.
+                Skip the endless research. Our AI understands your preferences and creates 
+                personalized itineraries in minutes. Just tell us what you like and we'll 
+                handle the rest.
               </p>
               <div className="relative">
                 <div className="bg-white dark:bg-slate-800 rounded-2xl border p-4 shadow-lg">
@@ -171,11 +171,11 @@ const WhyBreatheGetaway = () => {
             {/* Right side - Content */}
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                Popular itineraries.
+                Discover inspiring destinations.
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Visit our Inspiration page to get ideas and inspiration from other Mindtrippers. 
-                Add their suggestions to a new trip plan and customize it to make it your own.
+                Browse curated travel experiences from real travelers. Save your favorites 
+                and customize them to create your perfect trip.
               </p>
               <Button className="group">
                 Browse Inspiration
@@ -262,11 +262,11 @@ const WhyBreatheGetaway = () => {
             {/* Right side - Content */}
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                Get personalized recommendations.
+                Book with confidence.
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We'll provide personalized, actionable travel experiences based on your preferences. 
-                Check out photos, reviews, maps and more. Favorite the items you like and add them to your trip plan.
+                Get detailed recommendations with photos, reviews, and real pricing. 
+                Everything you need to book your perfect getaway in one place.
               </p>
               <Button className="group">
                 Start Planning
