@@ -16,6 +16,7 @@ import Chat from "./pages/Chat";
 import FAQ from "./pages/FAQ";
 import TripResults from "./pages/TripResults";
 import Auth from "./pages/Auth";
+import Waitlist from "./pages/Waitlist";
 import Community from "./pages/Community";
 import CommunityDetail from "./pages/CommunityDetail";
 import AdminFeedback from "./pages/AdminFeedback";
@@ -54,6 +55,7 @@ const App = () => (
               <Route path="/community/:slug" element={<CommunityDetail />} />
               <Route path="/admin/feedback" element={<AdminFeedback />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/waitlist" element={<Waitlist />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, ShoppingCart, ChevronLeft, ChevronRight, ArrowDownRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 import ThemeToggle from './ThemeToggle';
 import ThreeBackground from './ThreeBackground';
 import AuthButton from './AuthButton';
@@ -181,10 +182,15 @@ const Hero = () => {
             Real traveler experiences turned into bookable trips in minutes.
           </p>
           
-          {/* Waitlist text - positioned to appear under search */}
+          {/* Join Waitlist Button */}
           <div className="mb-6 animate-fade-in px-2 sm:px-0" style={{ animationDelay: '0.6s' }}>
-            <p className="text-base sm:text-base text-muted-foreground font-bold sm:font-medium">
-              Join the waitlist for founding user perks
+            <Link to="/waitlist">
+              <Button className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-bold px-8 py-3 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                Join the Waitlist
+              </Button>
+            </Link>
+            <p className="text-sm text-muted-foreground font-medium mt-3">
+              Get founding user perks and early access
             </p>
           </div>
 

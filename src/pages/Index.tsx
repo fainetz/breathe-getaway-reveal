@@ -36,8 +36,7 @@ const Index = () => {
     <div className="min-h-screen min-h-dvh bg-background text-foreground overflow-x-hidden transition-colors duration-300">
       <Hero />
       <div className="transition-hero-waitlist"></div>
-      <WaitlistSection />
-      <div className="transition-waitlist-howitworks"></div>
+      <div className="transition-hero-howitworks"></div>
       <HowItWorks />
       <div className="transition-howitworks-features"></div>
       <Features />
