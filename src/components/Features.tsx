@@ -46,34 +46,10 @@ const Features = () => {
       persona: "emotional"
     },
     {
-      title: "Luxury Concierge AI", 
-      description: "Stress-free, premium travel. Just say what you want—private jets, 5-star suites, exclusive access—we handle everything.",
-      gradient: "from-amber-500 to-orange-500",
-      persona: "luxury"
-    },
-    {
-      title: "Flexible Date Magic",
-      description: "Students and young professionals: we find the cheapest times to travel with smart date flexibility and last-minute deals.",
-      gradient: "from-cyan-500 to-blue-500",
-      persona: "budget"
-    },
-    {
       title: "Local Community Access",
       description: "Join traveler meetups, find local guides from our community, and connect with others exploring the same destinations at the same time.",
       gradient: "from-emerald-500 to-teal-500",
       persona: "community"
-    },
-    {
-      title: "Soul-Centered Escapes",
-      description: "Breakup? Burnout? We understand and curate restorative retreats, peaceful nature spots, and healing destinations.",
-      gradient: "from-rose-500 to-pink-500",
-      persona: "emotional"
-    },
-    {
-      title: "Zero-Effort Luxury",
-      description: "For busy executives: speak your needs once, we coordinate everything—flights, drivers, reservations, surprises.",
-      gradient: "from-purple-500 to-violet-500",
-      persona: "luxury"
     },
     {
       title: "Hostel to Resort Range",
