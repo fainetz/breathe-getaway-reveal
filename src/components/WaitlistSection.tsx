@@ -21,19 +21,8 @@ const WaitlistSection = () => {
     desiredSections: ''
   });
   const [isSubmittingFollowUp, setIsSubmittingFollowUp] = useState(false);
-  const [showDesktopRecommendation, setShowDesktopRecommendation] = useState(false);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const isMobile = useIsMobile();
-
-  useEffect(() => {
-    if (isMobile) {
-      const timer = setTimeout(() => {
-        setShowDesktopRecommendation(true);
-      }, 2000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [isMobile]);
 
   // Carousel images data
   const carouselSlides = [
@@ -309,32 +298,6 @@ const WaitlistSection = () => {
         </DialogContent>
       </Dialog>
 
-      <Dialog open={showDesktopRecommendation} onOpenChange={setShowDesktopRecommendation}>
-        <DialogContent 
-          className="sm:max-w-sm w-[88vw] max-w-[380px] max-h-[80vh] overflow-y-auto bg-background/95 backdrop-blur-sm border-2 border-border/30 rounded-xl shadow-2xl z-[100]"
-        >
-          <DialogHeader className="pb-3">
-            <DialogTitle className="text-lg sm:text-xl font-bold text-center text-foreground leading-tight">
-              💻 Best on Desktop
-            </DialogTitle>
-          </DialogHeader>
-          
-          <div className="space-y-4">
-            <p className="text-sm text-muted-foreground text-center leading-relaxed">
-              For the best travel planning experience with our AI assistant, interactive maps, and detailed itineraries, we recommend using a desktop or tablet.
-            </p>
-
-            <div className="pt-3">
-              <Button
-                onClick={() => setShowDesktopRecommendation(false)}
-                className="w-full h-11 rounded-xl bg-gradient-to-r from-slate-700 to-gray-600 hover:from-slate-800 hover:to-gray-700 dark:from-slate-600 dark:to-gray-500 dark:hover:from-slate-700 dark:hover:to-gray-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Continue anyway
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
     </section>
   );
 };
