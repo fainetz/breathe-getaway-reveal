@@ -185,11 +185,16 @@ const Hero = () => {
           {/* Join Waitlist Button */}
           <div className="mb-6 animate-fade-in px-2 sm:px-0" style={{ animationDelay: '0.6s' }}>
             <Link to="/waitlist">
-              <Button className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-bold px-8 py-3 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                Join the Waitlist
+              <Button className="relative group bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 dark:from-slate-200 dark:via-slate-100 dark:to-slate-300 text-white dark:text-slate-900 font-bold px-10 py-4 text-lg rounded-2xl shadow-[0_8px_32px_-8px_rgba(15,23,42,0.3)] dark:shadow-[0_8px_32px_-8px_rgba(203,213,225,0.3)] hover:shadow-[0_12px_40px_-8px_rgba(15,23,42,0.4)] dark:hover:shadow-[0_12px_40px_-8px_rgba(203,213,225,0.4)] transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-1 border border-slate-600/20 dark:border-slate-400/20 overflow-hidden">
+                <span className="relative z-10 flex items-center gap-2">
+                  Join the Waitlist
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
               </Button>
             </Link>
-            <p className="text-sm text-muted-foreground font-medium mt-3">
+            <p className="text-sm text-muted-foreground font-medium mt-4 opacity-80">
               Get founding user perks and early access
             </p>
           </div>
