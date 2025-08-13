@@ -324,20 +324,12 @@ const WaitlistSection = () => {
               Mobile works great for browsing and joining our waitlist though! 📱
             </p>
 
-            <div className="pt-3 space-y-3">
+            <div className="pt-3">
               <Button
                 onClick={() => setShowDesktopRecommendation(false)}
                 className="w-full h-11 rounded-xl bg-gradient-to-r from-slate-700 to-gray-600 hover:from-slate-800 hover:to-gray-700 dark:from-slate-600 dark:to-gray-500 dark:hover:from-slate-700 dark:hover:to-gray-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Got it!
-              </Button>
-              
-              <Button
-                variant="outline"
-                onClick={() => setShowDesktopRecommendation(false)}
-                className="w-full h-11 rounded-xl border-2 font-semibold"
-              >
-                Continue anyway
               </Button>
             </div>
           </div>
