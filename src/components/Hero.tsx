@@ -169,21 +169,21 @@ const Hero = () => {
       </nav>
 
       {/* Main Content - Heading on right, carousel on left */}
-      <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 max-w-7xl mx-auto mt-16 md:mt-8">{/* Add top margin for mobile nav spacing */}
+      <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 max-w-7xl mx-auto mt-8 md:mt-8">{/* Reduced top margin for mobile nav spacing */}
         {/* Left side - Main heading and description */}
         <div className="text-center lg:text-left lg:pr-8 order-1 lg:order-1">
-          <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-geist font-semibold leading-[1.1] sm:leading-[1.1] text-foreground mb-6 sm:mb-6 animate-fade-in px-2 sm:px-0">
+          <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-geist font-black sm:font-semibold leading-[1.1] sm:leading-[1.1] text-foreground mb-6 sm:mb-6 animate-fade-in px-2 sm:px-0">
             <span className="block mb-1 sm:mb-2">AI that gets you.</span>
             <span className="block">A community that's <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">lived it</span>.</span>
           </h1>
           
-          <p className="text-lg sm:text-lg md:text-xl lg:text-xl text-muted-foreground leading-relaxed mb-8 sm:mb-8 animate-fade-in px-2 sm:px-0 max-w-md mx-auto lg:mx-0 font-medium" style={{ animationDelay: '0.3s' }}>
+          <p className="text-lg sm:text-lg md:text-xl lg:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 animate-fade-in px-2 sm:px-0 max-w-md mx-auto lg:mx-0 font-bold sm:font-medium" style={{ animationDelay: '0.3s' }}>
             Real traveler experiences turned into bookable trips in minutes.
           </p>
           
           {/* Waitlist text - positioned to appear under search */}
-          <div className="mb-8 animate-fade-in px-2 sm:px-0" style={{ animationDelay: '0.6s' }}>
-            <p className="text-base sm:text-base text-muted-foreground font-medium">
+          <div className="mb-6 animate-fade-in px-2 sm:px-0" style={{ animationDelay: '0.6s' }}>
+            <p className="text-base sm:text-base text-muted-foreground font-bold sm:font-medium">
               Join the waitlist for founding user perks
             </p>
           </div>
