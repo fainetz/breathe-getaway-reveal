@@ -193,7 +193,7 @@ const Hero = () => {
                     : "/lovable-uploads/0b267d24-4263-467e-9777-e1627c730fa4.png"
                   }
                   alt="Logo"
-                  className="w-8 h-8 object-contain"
+                  className="w-10 h-10 object-contain"
                 />
               </Button>
             </Link>
