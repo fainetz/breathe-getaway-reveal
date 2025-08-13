@@ -185,7 +185,17 @@ const Hero = () => {
           {/* Join Waitlist Button */}
           <div className="mb-6 animate-fade-in px-2 sm:px-0" style={{ animationDelay: '0.6s' }}>
             <Link to="/waitlist">
-              <Button className="bg-black dark:bg-white text-white dark:text-black font-medium px-8 py-3 text-lg rounded-lg hover:bg-black/90 dark:hover:bg-white/90 transition-colors duration-200">
+              <Button className="bg-black dark:bg-white text-white dark:text-black font-medium px-8 py-3 text-lg rounded-lg hover:bg-black/90 dark:hover:bg-white/90 transition-colors duration-200 flex items-center gap-3">
+                <div className="w-5 h-5 relative overflow-hidden rounded-sm">
+                  <img 
+                    src={theme === 'dark' 
+                      ? "/lovable-uploads/62358993-d15b-4b81-9c51-49ab4c2e8d79.png"
+                      : "/lovable-uploads/3a90338f-3b9b-4d7f-a769-846168db9d31.png"
+                    }
+                    alt="Logo"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
                 Join the Waitlist
               </Button>
             </Link>
