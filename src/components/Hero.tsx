@@ -174,12 +174,11 @@ const Hero = () => {
         {/* Left side - Main heading and description */}
         <div className="text-center lg:text-left lg:pr-8 order-1 lg:order-1">
           <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-geist font-black sm:font-semibold leading-[1.1] sm:leading-[1.1] text-foreground mb-6 sm:mb-6 animate-fade-in px-2 sm:px-0">
-            <span className="block mb-1 sm:mb-2">AI that gets you.</span>
-            <span className="block">A community that's <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">lived it</span>.</span>
+            made for spontaneous travelers
           </h1>
           
           <p className="text-lg sm:text-lg md:text-xl lg:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 animate-fade-in px-2 sm:px-0 max-w-md mx-auto lg:mx-0 font-bold sm:font-medium" style={{ animationDelay: '0.3s' }}>
-            Real traveler experiences turned into bookable trips in minutes.
+            you know the feeling.
           </p>
           
           {/* Join Waitlist Button */}
