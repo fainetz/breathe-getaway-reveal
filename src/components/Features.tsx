@@ -100,11 +100,10 @@ const Features = () => {
             </div>
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                Discover inspiring destinations.
+                Where travelers like you connect.
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Browse curated travel experiences from real travelers. Save your favorites 
-                and customize them to create your perfect trip.
+                Join a community for travelers like you — the ones who know where to go, what to avoid, and maybe how to sneak into that rooftop bar. a place to ask questions, share safety tips, trade local secrets, and even team up with others who share your values.
               </p>
             </div>
           </div>
@@ -115,11 +114,10 @@ const Features = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                Book with confidence.
+                Guess who's tagging along.
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Get detailed recommendations with photos, reviews, and real pricing. 
-                Everything you need to book your perfect getaway in one place.
+                we don't just get you there, we go with you. Our on-trip assistant helps you find local transport, cheapest routes , uncover hidden spots, and even meet other travelers in your community. Think of us as the travel buddy who somehow tagged along… only way more useful.
               </p>
             </div>
             <div className="relative">
