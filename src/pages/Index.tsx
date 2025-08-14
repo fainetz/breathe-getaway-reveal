@@ -50,7 +50,7 @@ const Index = () => {
       <FeatureRequestBox />
       
       {/* Mobile Waitlist Button - centered above search bar */}
-      <div className="md:hidden fixed bottom-36 left-1/2 -translate-x-1/2 z-30">
+      <div className="md:hidden fixed bottom-36 left-0 right-0 z-30 flex justify-center px-4">
         <Link to="/waitlist">
           <Button className="bg-black dark:bg-white text-white dark:text-black font-medium px-6 py-2 rounded-lg hover:bg-black/90 dark:hover:bg-white/90 transition-colors duration-200 shadow-lg">
             Join the Waitlist
