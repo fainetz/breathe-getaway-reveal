@@ -54,22 +54,48 @@ const Features = () => {
         <div className="mb-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500">
-                <div className="relative h-64">
-                  <img 
-                    src="/lovable-uploads/349adef3-59ea-405e-bc62-d704ea49bf62.png"
-                    alt="Tropical Paradise Destination"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-4 left-4">
-                    <h3 className="text-white text-xl font-bold">Tropical Paradise</h3>
-                    <p className="text-white/90 text-sm">⭐⭐⭐⭐⭐ (127 experiences)</p>
+              {/* Travel App Interface Mockup */}
+              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md">
+                {/* App Header */}
+                <div className="p-4 border-b border-gray-100 dark:border-slate-700">
+                  <div className="flex items-center justify-between">
+                    <div className="w-6 h-6 rounded-full bg-gray-300 dark:bg-slate-600"></div>
+                    <h3 className="text-sm font-medium text-muted-foreground">Popular itineraries</h3>
+                    <div className="w-6 h-6"></div>
                   </div>
-                  <div className="absolute top-4 right-4">
-                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
-                      <span className="text-white">❤️</span>
+                </div>
+                
+                {/* Destination Card */}
+                <div className="p-4">
+                  <div className="relative rounded-xl overflow-hidden mb-4">
+                    <img 
+                      src="/lovable-uploads/349adef3-59ea-405e-bc62-d704ea49bf62.png"
+                      alt="Explore Destination"
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                    <div className="absolute top-3 right-3 flex gap-2">
+                      <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      </div>
+                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                        <div className="w-3 h-3 bg-white rounded-full"></div>
+                      </div>
                     </div>
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h4 className="font-semibold">Explore Bali, Indonesia</h4>
+                      <p className="text-xs opacity-90">7 Day Event • Page 1</p>
+                    </div>
+                  </div>
+                  
+                  {/* Action Buttons */}
+                  <div className="space-y-3">
+                    <button className="w-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 py-3 px-4 rounded-lg text-sm font-medium hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
+                      + Customize a trip
+                    </button>
+                    <button className="w-full border border-gray-200 dark:border-slate-600 text-foreground py-3 px-4 rounded-lg text-sm font-medium hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                      ♡ Save
+                    </button>
                   </div>
                 </div>
               </div>
@@ -90,29 +116,77 @@ const Features = () => {
         <div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden">
-                <div className="relative h-48">
-                  <img 
-                    src="/lovable-uploads/01acecfb-4a5e-4651-8343-d178f52a9ff1.png"
-                    alt="Premium Resort"
-                    className="w-full h-full object-cover rounded-t-2xl"
-                  />
-                  <div className="absolute top-3 right-3">
-                    <div className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                      Best Price
+              {/* Hotel Booking Interface Mockup */}
+              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md">
+                {/* Hotel Card */}
+                <div className="relative">
+                  <div className="relative rounded-t-2xl overflow-hidden">
+                    <img 
+                      src="/lovable-uploads/01acecfb-4a5e-4651-8343-d178f52a9ff1.png"
+                      alt="Costa Luz Hotel"
+                      className="w-full h-40 object-cover"
+                    />
+                    <div className="absolute top-3 right-3 flex gap-2">
+                      <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      </div>
+                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                        <div className="w-3 h-3 bg-white rounded-full"></div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-2">Premium Resort & Spa</h3>
-                  <p className="text-sm text-muted-foreground mb-3">🏨 Luxury Hotel • ⭐⭐⭐⭐⭐</p>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-bold text-primary">$299/night</span>
-                    <span className="text-sm text-muted-foreground line-through">$459</span>
+                
+                {/* Hotel Details */}
+                <div className="p-4">
+                  <div className="mb-4">
+                    <h3 className="text-lg font-semibold text-foreground mb-1">Costa Luz</h3>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center">
+                        <span className="text-yellow-400">★</span>
+                        <span className="text-sm font-medium ml-1">4.9</span>
+                      </div>
+                      <span className="text-xs text-muted-foreground">•</span>
+                      <span className="text-sm text-muted-foreground">🏨 Luxury Hotel</span>
+                    </div>
                   </div>
-                  <button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 rounded-lg font-medium transition-colors">
-                    Book Now
-                  </button>
+                  
+                  {/* Photo Gallery Mockup */}
+                  <div className="grid grid-cols-3 gap-2 mb-4">
+                    <div className="h-16 bg-gradient-to-br from-blue-200 to-blue-300 dark:from-blue-800 dark:to-blue-900 rounded-lg"></div>
+                    <div className="h-16 bg-gradient-to-br from-amber-200 to-amber-300 dark:from-amber-800 dark:to-amber-900 rounded-lg"></div>
+                    <div className="relative h-16 bg-gradient-to-br from-green-200 to-green-300 dark:from-green-800 dark:to-green-900 rounded-lg flex items-center justify-center">
+                      <span className="text-xs font-medium text-foreground/70">Show all photos</span>
+                    </div>
+                  </div>
+                  
+                  {/* Booking Details */}
+                  <div className="space-y-3 mb-4">
+                    <div className="flex justify-between text-sm">
+                      <div>
+                        <p className="text-muted-foreground">Check-In</p>
+                        <p className="font-medium">Jul 21</p>
+                      </div>
+                      <div>
+                        <p className="text-muted-foreground">Check-Out</p>
+                        <p className="font-medium">Jul 23</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between border border-gray-200 dark:border-slate-600 rounded-lg p-3">
+                      <span className="text-sm">4 Travelers, 2 Rooms</span>
+                      <span className="text-muted-foreground">⌄</span>
+                    </div>
+                  </div>
+                  
+                  {/* Action Buttons */}
+                  <div className="space-y-3">
+                    <button className="w-full bg-black dark:bg-white text-white dark:text-black py-3 px-4 rounded-lg text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
+                      Book a room
+                    </button>
+                    <button className="w-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 py-3 px-4 rounded-lg text-sm font-medium hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
+                      + Add to trip
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
