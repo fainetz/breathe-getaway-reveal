@@ -18,7 +18,7 @@ const Features = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                Skip the planning — we've got it covered.
+                we plan. you breathe
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 One prompt gives you a complete trip — flights, stays, and activities — without you planning a thing. You can adjust any part with a simple prompt, and when it's perfect, book it instantly.
