@@ -25,25 +25,82 @@ const Features = () => {
               </p>
             </div>
             <div className="relative h-96 lg:h-[500px]">
-              {/* Floating category cards */}
-              <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float" style={{ top: '10%', left: '20%' }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-xl">🏖️</div>
-                  <span className="font-medium text-foreground">Beach</span>
+              {/* Central AI Brain */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">🧠</span>
                 </div>
               </div>
-              <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float-delayed" style={{ top: '30%', right: '15%' }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-pink-400 flex items-center justify-center text-white text-xl">🎭</div>
-                  <span className="font-medium text-foreground">Theater</span>
+              
+              {/* Floating input bubble */}
+              <div className="absolute bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-xl border border-gray-100 dark:border-slate-700 animate-float" style={{ top: '5%', left: '10%', maxWidth: '200px' }}>
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-sm">💬</div>
+                  <div className="flex-1">
+                    <p className="text-xs text-muted-foreground mb-1">You say:</p>
+                    <p className="text-sm font-medium text-foreground">"I want to go somewhere warm next weekend"</p>
+                  </div>
                 </div>
               </div>
-              <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float" style={{ top: '60%', left: '10%' }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-green-500 to-emerald-400 flex items-center justify-center text-white text-xl">🦜</div>
-                  <span className="font-medium text-foreground">Wildlife</span>
+
+              {/* Generated trip components */}
+              <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-3 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float-delayed" style={{ top: '15%', right: '5%' }}>
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-orange-500 to-red-400 flex items-center justify-center text-white text-sm">✈️</div>
+                  <div>
+                    <p className="text-xs font-medium text-foreground">Flight</p>
+                    <p className="text-xs text-muted-foreground">$280</p>
+                  </div>
                 </div>
               </div>
+
+              <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-3 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float" style={{ top: '45%', right: '10%' }}>
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-400 flex items-center justify-center text-white text-sm">🏨</div>
+                  <div>
+                    <p className="text-xs font-medium text-foreground">Hotel</p>
+                    <p className="text-xs text-muted-foreground">$120/night</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-3 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float-delayed" style={{ top: '70%', left: '5%' }}>
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-pink-400 flex items-center justify-center text-white text-sm">🎯</div>
+                  <div>
+                    <p className="text-xs font-medium text-foreground">Activities</p>
+                    <p className="text-xs text-muted-foreground">5 planned</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Complete trip card */}
+              <div className="absolute bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 rounded-2xl p-4 shadow-xl border-2 border-primary/20 animate-float" style={{ bottom: '10%', right: '15%', maxWidth: '180px' }}>
+                <div className="text-center">
+                  <div className="w-12 h-12 mx-auto mb-2 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center text-white">✨</div>
+                  <p className="text-sm font-semibold text-foreground mb-1">Trip Ready!</p>
+                  <p className="text-xs text-muted-foreground">Book in 1 click</p>
+                </div>
+              </div>
+
+              {/* Connection lines */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+                <defs>
+                  <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="rgb(59, 130, 246)" />
+                    <stop offset="100%" stopColor="rgb(147, 51, 234)" />
+                  </linearGradient>
+                </defs>
+                <path d="M 50% 50% Q 80% 20% 90% 25%" stroke="url(#connectionGradient)" strokeWidth="2" fill="none" strokeDasharray="5,5">
+                  <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 50% 50% Q 80% 70% 85% 60%" stroke="url(#connectionGradient)" strokeWidth="2" fill="none" strokeDasharray="5,5">
+                  <animate attributeName="stroke-dashoffset" values="0;10" dur="2.5s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 50% 50% Q 20% 80% 15% 75%" stroke="url(#connectionGradient)" strokeWidth="2" fill="none" strokeDasharray="5,5">
+                  <animate attributeName="stroke-dashoffset" values="0;10" dur="3s" repeatCount="indefinite"/>
+                </path>
+              </svg>
             </div>
           </div>
         </div>
