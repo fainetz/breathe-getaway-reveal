@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Hero from '../components/Hero';
 import WaitlistSection from '../components/WaitlistSection';
-import HowItWorks from '../components/HowItWorks';
+
 import Features from '../components/Features';
 
 import EmotionalHooks from '../components/EmotionalHooks';
@@ -36,10 +36,7 @@ const Index = () => {
   return (
     <div className="min-h-screen min-h-dvh bg-background text-foreground overflow-x-hidden transition-colors duration-300">
       <Hero />
-      <div className="transition-hero-waitlist"></div>
-      <div className="transition-hero-howitworks"></div>
-      <HowItWorks />
-      <div className="transition-howitworks-features"></div>
+      <div className="transition-hero-features"></div>
       <Features />
       <div className="transition-features-emotional"></div>
       <EmotionalHooks />

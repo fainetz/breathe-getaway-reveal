@@ -1,137 +1,11 @@
 
-import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-
 const Features = () => {
-  const navigate = useNavigate();
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-  const sectionRef = useRef<HTMLElement>(null);
-  const mobileScrollRef = useRef<HTMLDivElement>(null);
-  const slidesPerView = 3;
-
-  const features = [
-    {
-      title: "Budget-Smart Discovery",
-      description: "Find amazing deals under $200. Our AI optimizes for value, timing, and hidden discounts that fit your everyday budget.",
-      gradient: "from-green-500 to-emerald-500",
-      persona: "budget"
-    },
-    {
-      title: "Natural Language Requests",
-      description: "Skip checkboxes and dropdowns. Simply say 'book me a flight around sunset' or 'get me a window seat where I can see the sunset' and our AI handles the complex details.",
-      gradient: "from-teal-500 to-cyan-500",
-      persona: "smart"
-    },
-    {
-      title: "Hidden Gems Discovery",
-      description: "Our AI uncovers secret spots, local favorites, and off-the-beaten-path destinations that guidebooks miss. Find extraordinary places others never discover.",
-      gradient: "from-violet-500 to-purple-500",
-      persona: "explorer"
-    },
-    {
-      title: "Community-Driven Insights",
-      description: "Connect with fellow travelers who've been there. Get real reviews, safety tips, and insider recommendations from our trusted community of explorers.",
-      gradient: "from-blue-500 to-indigo-500",
-      persona: "community"
-    },
-    {
-      title: "Emotional Intelligence",
-      description: "AI that reads your mood, energy, and deepest travel desires to match you with transformative healing experiences.",
-      gradient: "from-purple-500 to-blue-500",
-      persona: "emotional"
-    },
-    {
-      title: "Local Community Access",
-      description: "Join traveler meetups, find local guides from our community, and connect with others exploring the same destinations at the same time.",
-      gradient: "from-emerald-500 to-teal-500",
-      persona: "community"
-    },
-    {
-      title: "Hostel to Resort Range",
-      description: "Whether it's a $30 hostel or a $3000 villa, we match accommodations to your budget and vibe perfectly.",
-      gradient: "from-indigo-500 to-blue-500",
-      persona: "mixed"
-    }
-  ];
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % Math.ceil(features.length / slidesPerView));
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + Math.ceil(features.length / slidesPerView)) % Math.ceil(features.length / slidesPerView));
-  };
-
-  const scrollLeft = () => {
-    if (mobileScrollRef.current) {
-      // Card width (320px) + gap (16px) = 336px per panel
-      mobileScrollRef.current.scrollBy({ left: -336, behavior: 'smooth' });
-    }
-  };
-
-  const scrollRight = () => {
-    if (mobileScrollRef.current) {
-      // Card width (320px) + gap (16px) = 336px per panel
-      mobileScrollRef.current.scrollBy({ left: 336, behavior: 'smooth' });
-    }
-  };
-
-  const handleMobileScroll = () => {
-    if (mobileScrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = mobileScrollRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-    }
-  };
-
-  useEffect(() => {
-    const scrollContainer = mobileScrollRef.current;
-    if (scrollContainer) {
-      scrollContainer.addEventListener('scroll', handleMobileScroll);
-      handleMobileScroll(); // Initial check
-      return () => scrollContainer.removeEventListener('scroll', handleMobileScroll);
-    }
-  }, []);
-
   return (
-    <section id="features" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden section-seamless transition-colors duration-300" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto">
-        <div className={`text-center mb-12 sm:mb-16 lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+    <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        
+        {/* Keep the original title */}
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 text-black dark:text-white transition-colors duration-300 drop-shadow-lg px-4 sm:px-0 leading-tight">
             Features for Every Traveler
           </h2>
@@ -139,145 +13,107 @@ const Features = () => {
             Budget-conscious? Seeking emotional healing? Want luxury without effort? Our AI adapts to your exact travel personality.
           </p>
         </div>
-
-        {/* Desktop: Horizontal Sliding Carousel */}
-        <div className="hidden lg:block relative">
-          <div className="overflow-hidden px-12">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out gap-6"
-              style={{ transform: `translateX(-${currentSlide * (100 / slidesPerView)}%)` }}
-            >
-              {features.map((feature, index) => (
-                <div key={index} className="w-1/3 flex-shrink-0">
-                  <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-                    <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 hover:bg-white dark:hover:bg-white/25 transition-all duration-500 hover:scale-102 h-full relative overflow-hidden shadow-xl hover:shadow-2xl dark:shadow-black/30 dark:hover:shadow-black/50">
-                      <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
-                      <div className="relative z-10">
-                        <div className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}></div>
-                        <h3 className="text-xl font-bold mb-4 text-black dark:text-white transition-colors duration-300 drop-shadow-sm">{feature.title}</h3>
-                        <p className="text-gray-700 dark:text-gray-200 leading-relaxed transition-colors duration-300">{feature.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+        
+        {/* Panel 1: AI Trip Planning */}
+        <div className="mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+                AI trip planning made simple.
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Skip the endless research. Our AI understands your preferences and creates 
+                personalized itineraries in minutes. Just tell us what you like and we'll 
+                handle the rest.
+              </p>
             </div>
-          </div>
-
-          {/* Navigation Buttons */}
-          <button 
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-3 hover:bg-white dark:hover:bg-white/30 transition-all duration-300 text-black dark:text-white shadow-lg hover:shadow-xl"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button 
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-3 hover:bg-white dark:hover:bg-white/30 transition-all duration-300 text-black dark:text-white shadow-lg hover:shadow-xl"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-
-          {/* Slide Indicators */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {Array.from({ length: Math.ceil(features.length / slidesPerView) }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 shadow-md ${
-                  currentSlide === index ? 'bg-purple-500 scale-125 shadow-purple-500/50' : 'bg-gray-400 dark:bg-white/30 hover:bg-gray-600 dark:hover:bg-white/50'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile/Tablet: Horizontal Scrolling Layout */}
-        <div className="lg:hidden relative">
-          {/* Left Arrow */}
-          <button 
-            onClick={scrollLeft}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-3 shadow-lg transition-all duration-300 ${
-              canScrollLeft ? 'opacity-100 hover:bg-white dark:hover:bg-white/30' : 'opacity-0 pointer-events-none'
-            }`}
-          >
-            <ChevronLeft className="w-5 h-5 text-black dark:text-white" />
-          </button>
-
-          {/* Right Arrow */}
-          <button 
-            onClick={scrollRight}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-white/20 backdrop-blur-sm border border-gray-200 dark:border-white/30 rounded-full p-3 shadow-lg transition-all duration-300 ${
-              canScrollRight ? 'opacity-100 hover:bg-white dark:hover:bg-white/30' : 'opacity-0 pointer-events-none'
-            }`}
-          >
-            <ChevronRight className="w-5 h-5 text-black dark:text-white" />
-          </button>
-
-            <div 
-            ref={mobileScrollRef}
-            className="overflow-x-auto pb-4 scrollbar-hide px-12 snap-x snap-mandatory"
-            onScroll={handleMobileScroll}
-          >
-            <div className="flex gap-4 w-max">
-              {features.map((feature, index) => (
-                <div key={index} className="w-80 flex-shrink-0 snap-start">
-                  <div className={`group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-                    <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-6 sm:p-8 transition-all duration-500 relative overflow-hidden shadow-xl dark:shadow-black/30 touch-manipulation hover:scale-102 active:scale-98 h-full">
-                      <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-30 group-active:opacity-40 transition-all duration-500`}></div>
-                      
-                      <div className="relative z-10">
-                        <div className={`w-14 h-14 bg-gradient-to-r ${feature.gradient} rounded-xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex items-center justify-center`}>
-                          <div className={`w-6 h-6 bg-white/30 rounded-md group-hover:bg-white/50 transition-colors duration-300`}></div>
-                        </div>
-                        
-                        <h3 className="text-xl sm:text-2xl font-bold mb-4 text-black dark:text-white transition-all duration-300 drop-shadow-sm group-hover:translate-x-1">
-                          {feature.title}
-                        </h3>
-                        
-                        <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-base sm:text-lg transition-all duration-300 group-hover:translate-x-1">
-                          {feature.description}
-                        </p>
-                        
-                        <div className="mt-6 flex items-center space-x-1">
-                          {Array.from({ length: 7 }).map((_, dotIndex) => (
-                            <div 
-                              key={dotIndex}
-                              className={`h-1 rounded-full transition-all duration-500 ${
-                                dotIndex <= index 
-                                  ? `bg-gradient-to-r ${feature.gradient} w-3` 
-                                  : 'bg-gray-300 dark:bg-white/20 w-1'
-                              }`}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <div className="relative h-96 lg:h-[500px]">
+              {/* Floating category cards */}
+              <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float" style={{ top: '10%', left: '20%' }}>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-xl">🏖️</div>
+                  <span className="font-medium text-foreground">Beach</span>
                 </div>
-              ))}
+              </div>
+              <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float-delayed" style={{ top: '30%', right: '15%' }}>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-pink-400 flex items-center justify-center text-white text-xl">🎭</div>
+                  <span className="font-medium text-foreground">Theater</span>
+                </div>
+              </div>
+              <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float" style={{ top: '60%', left: '10%' }}>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-green-500 to-emerald-400 flex items-center justify-center text-white text-xl">🦜</div>
+                  <span className="font-medium text-foreground">Wildlife</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Call to Action for Curated Trips */}
-        <div className="mt-16 text-center">
-          <div className="bg-white/90 dark:bg-white/15 backdrop-blur-lg border border-gray-200 dark:border-white/20 rounded-2xl p-8 max-w-2xl mx-auto shadow-xl">
-            <h3 className="text-2xl font-bold mb-4 text-black dark:text-white">
-              Need Something More Specific?
-            </h3>
-            <p className="text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
-              Discover trips curated for solo female travelers, families with neurodivergent children, accessibility needs, and other unique situations. 
-              Someone gets you.
-            </p>
-            <button 
-              onClick={() => navigate('/curated-trips')}
-              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              Browse Curated Trips
-            </button>
+        {/* Panel 2: Discover Destinations */}
+        <div className="mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500">
+                <div className="relative h-64">
+                  <img 
+                    src="/lovable-uploads/349adef3-59ea-405e-bc62-d704ea49bf62.png"
+                    alt="Beautiful Destination"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute bottom-4 left-4">
+                    <h3 className="text-white text-xl font-bold">Explore Destinations</h3>
+                    <p className="text-white/80 text-sm">AI Travel Expert</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+                Discover inspiring destinations.
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Browse curated travel experiences from real travelers. Save your favorites 
+                and customize them to create your perfect trip.
+              </p>
+            </div>
           </div>
         </div>
+
+        {/* Panel 3: Book with Confidence */}
+        <div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+                <div className="relative h-48">
+                  <img 
+                    src="/lovable-uploads/01acecfb-4a5e-4651-8343-d178f52a9ff1.png"
+                    alt="Premium Resort"
+                    className="w-full h-full object-cover rounded-t-2xl"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-2">Premium Resort</h3>
+                  <p className="text-sm text-muted-foreground mb-4">🏨 Luxury Hotel</p>
+                  <button className="w-full bg-black text-white hover:bg-black/90 py-2 rounded-lg font-medium">
+                    Book a room
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+                Book with confidence.
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Get detailed recommendations with photos, reviews, and real pricing. 
+                Everything you need to book your perfect getaway in one place.
+              </p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
