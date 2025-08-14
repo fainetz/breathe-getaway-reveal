@@ -6,10 +6,10 @@ const Features = () => {
         {/* Keep the original title */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 text-black dark:text-white transition-colors duration-300 drop-shadow-lg px-4 sm:px-0 leading-tight">
-            why breathe and getaway?
+            Why breathe & getaway?
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed transition-colors duration-300 px-4 sm:px-0">
-            Because life's too short for boring trips and endless planning.
+            Because when that urge hits, we're here to book your trip.
           </p>
         </div>
         
