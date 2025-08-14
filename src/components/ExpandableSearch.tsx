@@ -26,7 +26,7 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
     
     // Set initial state immediately without animation
     checkMobile();
-    setIsExpanded(true); // Start expanded on initial load
+    setIsExpanded(!isMobile); // Start collapsed on mobile, expanded on desktop
     
     window.addEventListener('resize', checkMobile);
     
@@ -45,12 +45,10 @@ const ExpandableSearch = ({ onSearchSubmit }: ExpandableSearchProps) => {
           
           const isAtHeroSection = scrollY <= 150; // More generous hero section
           
-          // For mobile, show search bar when scrolled down and not at hero section
+          // For mobile, keep collapsed unless focused or typing
           if (isMobile) {
-            if (shouldScroll && !isAtHeroSection && !isFocused && !isUserTyping) {
-              setIsExpanded(false); // Collapsed when scrolled
-            } else if (isAtHeroSection) {
-              setIsExpanded(true); // Expanded at hero section
+            if (!isFocused && !isUserTyping) {
+              setIsExpanded(false); // Stay collapsed unless user interacts
             }
           } else {
             // Desktop behavior - prevent collapse when user is actively typing or focused

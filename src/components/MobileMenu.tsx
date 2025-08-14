@@ -35,34 +35,6 @@ const MobileMenu = () => {
 
   return (
     <>
-      {/* Development Banner - Mobile chat bubble */}
-      {showBanner && (
-        <div className="md:hidden fixed right-2 bottom-[4.5rem] z-[60] max-w-[140px]">
-          <div className="relative">
-            {/* Chat bubble */}
-            <div 
-              className="bg-gradient-to-br from-primary/95 to-accent/95 backdrop-blur-sm rounded-xl border border-primary/20 shadow-lg p-2 cursor-pointer"
-              onClick={() => setShowBanner(false)}
-            >
-              <div className="flex items-start justify-between gap-1 mb-1">
-                <Lightbulb className="h-2 w-2 text-primary-foreground animate-pulse mt-0.5 flex-shrink-0" />
-                <button
-                  onClick={() => setShowBanner(false)}
-                  className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-white/10 h-3 w-3 p-0 rounded-full transition-colors flex items-center justify-center"
-                >
-                  <X className="h-1.5 w-1.5" />
-                </button>
-              </div>
-              <div className="text-[8px] text-primary-foreground">
-                <div className="font-semibold mb-0.5">Very early dev! 🚧</div>
-                <div className="opacity-90 leading-tight">Suggest features & give feedback!</div>
-              </div>
-            </div>
-            {/* Chat bubble tail pointing to menu button */}
-            <div className="absolute -bottom-1 left-[4.5rem] w-2 h-2 bg-gradient-to-br from-primary/95 to-accent/95 transform rotate-45 border-r border-b border-primary/20"></div>
-          </div>
-        </div>
-      )}
 
   {/* Floating Action Button - Slides up on chat page */}
       <div className={`fixed right-6 z-[70] md:hidden transition-all duration-500 ease-out ${
