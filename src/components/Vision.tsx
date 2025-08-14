@@ -3,7 +3,29 @@ import { useState, useEffect, useRef } from 'react';
 
 const Vision = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentCard, setCurrentCard] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const visionCards = [
+    {
+      icon: "🛫",
+      title: "Budget Adventures",
+      description: "Smart deals and value-focused trips that make amazing experiences accessible to everyone.",
+      gradient: "from-green-500 to-emerald-500"
+    },
+    {
+      icon: "🌿", 
+      title: "Wellness Escapes",
+      description: "Restorative journeys designed for healing, reflection, and personal growth through travel.",
+      gradient: "from-blue-500 to-indigo-500"
+    },
+    {
+      icon: "✨",
+      title: "Premium Experiences", 
+      description: "Full-service luxury travel with comprehensive planning and exclusive access to exceptional destinations.",
+      gradient: "from-amber-500 to-orange-500"
+    }
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,6 +45,16 @@ const Vision = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (isVisible) {
+      const interval = setInterval(() => {
+        setCurrentCard((prev) => (prev + 1) % visionCards.length);
+      }, 8000);
+
+      return () => clearInterval(interval);
+    }
+  }, [isVisible, visionCards.length]);
 
   return (
     <section id="vision" className="py-32 px-6 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300" ref={sectionRef}>
@@ -56,109 +88,50 @@ const Vision = () => {
           </p>
         </div>
 
-        {/* HowItWorks Content - moved from Features section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          
-          {/* Panel 1: AI Trip Planning */}
-          <div className="mb-32">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                  AI trip planning made simple.
-                </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Skip the endless research. Our AI understands your preferences and creates 
-                  personalized itineraries in minutes. Just tell us what you like and we'll 
-                  handle the rest.
-                </p>
-              </div>
-              <div className="relative h-96 lg:h-[500px]">
-                {/* Floating category cards */}
-                <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float" style={{ top: '10%', left: '20%' }}>
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-xl">🏖️</div>
-                    <span className="font-medium text-foreground">Beach</span>
-                  </div>
-                </div>
-                <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float-delayed" style={{ top: '30%', right: '15%' }}>
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-pink-400 flex items-center justify-center text-white text-xl">🎭</div>
-                    <span className="font-medium text-foreground">Theater</span>
-                  </div>
-                </div>
-                <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float" style={{ top: '60%', left: '10%' }}>
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-green-500 to-emerald-400 flex items-center justify-center text-white text-xl">🦜</div>
-                    <span className="font-medium text-foreground">Wildlife</span>
-                  </div>
+        {/* Simplified Card Carousel */}
+        <div className="relative mb-16 h-80">
+          {visionCards.map((card, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transform ${
+                currentCard === index
+                  ? 'opacity-100 scale-100 translate-y-0 z-20'
+                  : index === (currentCard + 1) % visionCards.length
+                  ? 'opacity-20 scale-95 translate-y-4 translate-x-8 z-10'
+                  : index === (currentCard - 1 + visionCards.length) % visionCards.length
+                  ? 'opacity-20 scale-95 translate-y-4 -translate-x-8 z-10'
+                  : 'opacity-0 scale-90 translate-y-8 z-0'
+              }`}
+              style={{
+                transition: 'all 3000ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+                transitionProperty: 'opacity, transform'
+              }}
+            >
+              <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-gray-200 dark:border-gray-700 rounded-2xl p-8 mx-auto max-w-md h-full relative overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-500">
+                <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                <div className="relative z-10 flex flex-col items-center justify-center h-full">
+                  <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500">{card.icon}</div>
+                  <h3 className="text-2xl font-bold mb-4 text-black dark:text-white transition-colors duration-300">{card.title}</h3>
+                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-center transition-colors duration-300">{card.description}</p>
                 </div>
               </div>
             </div>
-          </div>
+          ))}
+        </div>
 
-          {/* Panel 2: Discover Destinations */}
-          <div className="mb-32">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="relative">
-                <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500">
-                  <div className="relative h-64">
-                    <img 
-                      src="/lovable-uploads/349adef3-59ea-405e-bc62-d704ea49bf62.png"
-                      alt="Beautiful Destination"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute bottom-4 left-4">
-                      <h3 className="text-white text-xl font-bold">Explore Destinations</h3>
-                      <p className="text-white/80 text-sm">AI Travel Expert</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-6">
-                <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                  Discover inspiring destinations.
-                </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Browse curated travel experiences from real travelers. Save your favorites 
-                  and customize them to create your perfect trip.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Panel 3: Book with Confidence */}
-          <div className="mb-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="relative">
-                <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden">
-                  <div className="relative h-48">
-                    <img 
-                      src="/lovable-uploads/01acecfb-4a5e-4651-8343-d178f52a9ff1.png"
-                      alt="Premium Resort"
-                      className="w-full h-full object-cover rounded-t-2xl"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-foreground mb-2">Premium Resort</h3>
-                    <p className="text-sm text-muted-foreground mb-4">🏨 Luxury Hotel</p>
-                    <button className="w-full bg-black text-white hover:bg-black/90 py-2 rounded-lg font-medium">
-                      Book a room
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-6">
-                <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                  Book with confidence.
-                </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Get detailed recommendations with photos, reviews, and real pricing. 
-                  Everything you need to book your perfect getaway in one place.
-                </p>
-              </div>
-            </div>
-          </div>
-
+        {/* Simplified Navigation Dots */}
+        <div className="flex justify-center space-x-3 mb-16">
+          {visionCards.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentCard(index)}
+              className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                currentCard === index 
+                  ? 'bg-blue-500 scale-125 shadow-lg shadow-blue-500/50' 
+                  : 'bg-gray-400 dark:bg-white/40 hover:bg-gray-600 dark:hover:bg-white/60 hover:scale-110'
+              }`}
+            />
+          ))}
         </div>
 
         <div className={`transition-all duration-1200 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
