@@ -21,7 +21,7 @@ const Features = () => {
                 we plan. you breathe
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                One prompt gives you a complete trip — flights, stays, and activities — without you planning a thing. You can adjust any part with a simple prompt, and when it's perfect, book it instantly.
+                One prompt gives you a complete trip — flights, stays, and activities — without you planning a thing. You can adjust any part with a simple prompt, although we doubt it won't be perfect first try and when it's perfect, book it instantly, so you can be there right before sunset.
               </p>
             </div>
             <div className="relative h-96 lg:h-[500px]">
@@ -100,10 +100,10 @@ const Features = () => {
             </div>
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                Where travelers like you connect.
+                where travelers like you connect
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Join a community for travelers like you — the ones who know where to go, what to avoid, and maybe how to sneak into that rooftop bar. a place to ask questions, share safety tips, trade local secrets, and even team up with others who share your values.
+                Join a community with travelers who know where to go, what to avoid, and maybe how to sneak into that rooftop bar. A place to ask questions, share safety tips, trade local secrets, and even team up with others who share your values — making it easier to just leave.
               </p>
             </div>
           </div>
@@ -114,10 +114,10 @@ const Features = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                Guess who's tagging along.
+                guess whose tagging along
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                we don't just get you there, we go with you. Our on-trip assistant helps you find local transport, cheapest routes , uncover hidden spots, and even meet other travelers in your community. Think of us as the travel buddy who somehow tagged along… only way more useful.
+                We don't just get you there, we go with you. Our on-trip assistant helps you find local transport, cheapest routes, uncover hidden spots, and even meet other travelers in your community. especially useful for when you need a on trip advice
               </p>
             </div>
             <div className="relative">
