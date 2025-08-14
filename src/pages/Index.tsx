@@ -49,15 +49,6 @@ const Index = () => {
       <Footer />
       <FeatureRequestBox />
       
-      {/* Mobile Waitlist Button - positioned above search */}
-      <div className="md:hidden fixed bottom-44 left-1/2 -translate-x-1/2 z-30 px-4 w-full max-w-sm">
-        <Link to="/waitlist" className="block">
-          <Button className="w-full bg-gradient-to-r from-slate-700 to-gray-600 hover:from-slate-800 hover:to-gray-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-            Join the Waitlist
-          </Button>
-        </Link>
-      </div>
-      
       <ExpandableSearch onSearchSubmit={handleSearchSubmit} />
       <BackToChatButton 
         onBackToChat={handleBackToChat} 
