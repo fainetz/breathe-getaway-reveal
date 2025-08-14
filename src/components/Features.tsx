@@ -18,12 +18,10 @@ const Features = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                AI trip planning made simple.
+                Skip the planning — we've got it covered.
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Skip the endless research. Our AI understands your preferences and creates 
-                personalized itineraries in minutes. Just tell us what you like and we'll 
-                handle the rest.
+                One prompt gives you a complete trip — flights, stays, and activities — without you planning a thing. You can adjust any part with a simple prompt, and when it's perfect, book it instantly.
               </p>
             </div>
             <div className="relative h-96 lg:h-[500px]">
@@ -115,6 +113,15 @@ const Features = () => {
         {/* Panel 3: Book with Confidence */}
         <div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+                Book with confidence.
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Get detailed recommendations with photos, reviews, and real pricing. 
+                Everything you need to book your perfect getaway in one place.
+              </p>
+            </div>
             <div className="relative">
               {/* Hotel Booking Interface Mockup */}
               <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md">
@@ -189,15 +196,6 @@ const Features = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                Book with confidence.
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Get detailed recommendations with photos, reviews, and real pricing. 
-                Everything you need to book your perfect getaway in one place.
-              </p>
             </div>
           </div>
         </div>
