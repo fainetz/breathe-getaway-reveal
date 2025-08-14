@@ -18,7 +18,7 @@ const Features = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                we plan. you breathe
+                We plan. You breathe.
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 One prompt gives you a complete trip — flights, stays, and activities — without you planning a thing. You can adjust any part with a simple prompt, although we doubt it won't be perfect first try and when it's perfect, book it instantly, so you can be there right before sunset.
@@ -100,7 +100,7 @@ const Features = () => {
             </div>
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                where travelers like you connect
+                Where travelers like you connect
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Join a community with travelers who know where to go, what to avoid, and maybe how to sneak into that rooftop bar. A place to ask questions, share safety tips, trade local secrets, and even team up with others who share your values — making it easier to just leave.
@@ -114,10 +114,10 @@ const Features = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                guess whose tagging along
+                Guess who's tagging along
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We don't just get you there, we go with you. Our on-trip assistant helps you find local transport, cheapest routes, uncover hidden spots, and even meet other travelers in your community. especially useful for when you need a on trip advice
+                We don't just get you there, we go with you. Our on-trip assistant helps you find local transport, cheapest routes, uncover hidden spots, and even meet other travelers in your community. Especially useful when you need on-trip advice.
               </p>
             </div>
             <div className="relative">
