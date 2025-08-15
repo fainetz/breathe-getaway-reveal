@@ -269,131 +269,98 @@ const Features = () => {
                   </div>
                 </div>
                 
-                {/* Chat Messages */}
-                <div className="p-4 space-y-4 max-h-80 overflow-y-auto">
-                  {/* User Question */}
-                  <div className="flex justify-start gap-3">
-                    <img 
-                      src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
-                      alt="User"
-                      className="w-8 h-8 rounded-full object-cover"
-                    />
-                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
-                      <p className="text-sm text-foreground">What's happening tonight near my hotel?</p>
-                    </div>
-                  </div>
-
-                  {/* AI Response with Live Events */}
-                  <div className="flex justify-end gap-3">
-                    <div className="flex-1 space-y-3 flex justify-end">
-                      <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3 max-w-sm">
-                        <p className="text-sm text-foreground mb-3">I found amazing rooftop events happening tonight:</p>
+                {/* Overlapping Chat Examples */}
+                <div className="relative p-4 h-80 overflow-hidden">
+                  
+                  {/* First Chat - Places to Go (Background) */}
+                  <div className="absolute top-4 left-2 right-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 dark:border-slate-700/20 p-4 transform rotate-1 z-10">
+                    {/* AI Response First */}
+                    <div className="flex justify-start gap-3 mb-3">
+                      <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                        <span className="text-white text-sm">🤖</span>
+                      </div>
+                      <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3 max-w-sm backdrop-blur-sm border border-white/20 dark:border-white/10 hover:bg-primary/15 dark:hover:bg-primary/25 transition-all duration-300">
+                        <p className="text-sm text-foreground mb-3">🌆 Amazing rooftop events tonight:</p>
                         
-                        {/* Event 1 - Rooftop Cinema */}
-                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 mb-3 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 hover:shadow-lg cursor-pointer">
-                          <div className="flex gap-3">
-                            <img 
-                              src="/lovable-uploads/a1506915-e011-43ee-b8b7-034196d2c51e.png"
-                              alt="Rooftop cinema"
-                              className="w-12 h-12 rounded-lg object-cover"
-                            />
-                            <div className="flex-1">
-                              <div className="flex items-start justify-between">
-                                <div>
-                                  <p className="text-sm font-medium text-foreground">Rooftop Cinema Night</p>
-                                  <p className="text-xs text-muted-foreground">8:30 PM • Under the stars</p>
-                                </div>
-                                <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 px-2 py-1 rounded-full">🎬 Live</span>
+                        {/* Event Cards */}
+                        <div className="space-y-2">
+                          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-2 shadow-sm">
+                            <div className="flex gap-2">
+                              <img 
+                                src="/lovable-uploads/a1506915-e011-43ee-b8b7-034196d2c51e.png"
+                                alt="Rooftop cinema"
+                                className="w-10 h-10 rounded-lg object-cover"
+                              />
+                              <div className="flex-1">
+                                <p className="text-xs font-medium text-foreground">Rooftop Cinema</p>
+                                <p className="text-xs text-muted-foreground">8:30 PM</p>
                               </div>
+                              <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 px-2 py-1 rounded-full">🎬</span>
                             </div>
                           </div>
-                        </div>
-
-                        {/* Event 2 - Jazz Club */}
-                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 mb-3 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 hover:shadow-lg cursor-pointer">
-                          <div className="flex gap-3">
-                            <img 
-                              src="/lovable-uploads/b35a9b1b-a4f8-4fed-9304-1262070ceada.png"
-                              alt="Jazz performance"
-                              className="w-12 h-12 rounded-lg object-cover"
-                            />
-                            <div className="flex-1">
-                              <div className="flex items-start justify-between">
-                                <div>
-                                  <p className="text-sm font-medium text-foreground">Garden Jazz Session</p>
-                                  <p className="text-xs text-muted-foreground">9 PM • Acoustic vibes</p>
-                                </div>
-                                <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded-full">🎵 Live</span>
+                          
+                          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-2 shadow-sm">
+                            <div className="flex gap-2">
+                              <img 
+                                src="/lovable-uploads/b35a9b1b-a4f8-4fed-9304-1262070ceada.png"
+                                alt="Jazz club"
+                                className="w-10 h-10 rounded-lg object-cover"
+                              />
+                              <div className="flex-1">
+                                <p className="text-xs font-medium text-foreground">Jazz Session</p>
+                                <p className="text-xs text-muted-foreground">9 PM</p>
                               </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Event 3 - Rooftop Dining */}
-                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 hover:shadow-lg cursor-pointer">
-                          <div className="flex gap-3">
-                            <img 
-                              src="/lovable-uploads/d0e879ef-6715-4c4d-983e-8f4a84c6ff20.png"
-                              alt="Rooftop dining"
-                              className="w-12 h-12 rounded-lg object-cover"
-                            />
-                            <div className="flex-1">
-                              <div className="flex items-start justify-between">
-                                <div>
-                                  <p className="text-sm font-medium text-foreground">Skyline Dining</p>
-                                  <p className="text-xs text-muted-foreground">7 PM • City views</p>
-                                </div>
-                                <span className="text-xs bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 px-2 py-1 rounded-full">🍽️ Dining</span>
-                              </div>
+                              <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded-full">🎵</span>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm">🤖</span>
+
+                    {/* User Question */}
+                    <div className="flex justify-end gap-3">
+                      <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
+                        <p className="text-sm text-foreground">What's happening tonight near my hotel?</p>
+                      </div>
+                      <img 
+                        src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
+                        alt="User"
+                        className="w-8 h-8 rounded-full object-cover"
+                      />
                     </div>
                   </div>
 
-                  {/* Transport Routing Example */}
-                  <div className="flex justify-start gap-3">
-                    <img 
-                      src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
-                      alt="User"
-                      className="w-8 h-8 rounded-full object-cover"
-                    />
-                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
-                      <p className="text-sm text-foreground">How do I get to the jazz session?</p>
-                    </div>
-                  </div>
-
-                  {/* AI Transport Response with Glassmorphism */}
-                  <div className="flex justify-end gap-3">
-                    <div className="flex-1 space-y-3 flex justify-end">
-                      <div className="bg-gradient-to-br from-white/40 to-white/20 dark:from-slate-800/40 dark:to-slate-800/20 backdrop-blur-xl border border-white/30 dark:border-slate-700/30 rounded-2xl p-3 max-w-sm shadow-xl hover:shadow-2xl hover:bg-gradient-to-br hover:from-white/60 hover:to-white/30 dark:hover:from-slate-800/60 dark:hover:to-slate-800/30 transition-all duration-500 cursor-pointer">
-                        <p className="text-sm text-foreground mb-3">Here are your transport options:</p>
+                  {/* Second Chat - Transportation (Foreground) */}
+                  <div className="absolute top-16 left-4 right-0 bg-white/98 dark:bg-slate-800/98 backdrop-blur-md rounded-2xl shadow-xl border border-white/30 dark:border-slate-700/30 p-4 transform -rotate-1 z-20 max-w-sm ml-auto">
+                    {/* AI Transport Response with Glassmorphism */}
+                    <div className="flex justify-start gap-3 mb-3">
+                      <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                        <span className="text-white text-sm">🤖</span>
+                      </div>
+                      <div className="bg-gradient-to-br from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-800/30 backdrop-blur-xl border border-white/40 dark:border-slate-700/40 rounded-2xl p-3 max-w-sm shadow-xl hover:shadow-2xl hover:bg-gradient-to-br hover:from-white/80 hover:to-white/50 dark:hover:from-slate-800/80 dark:hover:to-slate-800/50 transition-all duration-500 cursor-pointer">
+                        <p className="text-sm text-foreground mb-3">🚌 Best routes to jazz:</p>
                         
                         {/* Transport Options */}
                         <div className="space-y-2">
-                          <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg p-3 border border-white/20 dark:border-slate-700/20">
+                          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-lg p-2 border border-white/30 dark:border-slate-700/30">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-2">
                                 <span className="text-green-600">🚇</span>
                                 <div>
-                                  <p className="text-sm font-medium text-foreground">BTS Skytrain</p>
+                                  <p className="text-xs font-medium text-foreground">BTS Skytrain</p>
                                   <p className="text-xs text-muted-foreground">15 min • ฿42</p>
                                 </div>
                               </div>
-                              <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-2 py-1 rounded-full">Fastest</span>
+                              <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-2 py-1 rounded-full">Fast</span>
                             </div>
                           </div>
                           
-                          <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg p-3 border border-white/20 dark:border-slate-700/20">
+                          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-lg p-2 border border-white/30 dark:border-slate-700/30">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-2">
                                 <span className="text-yellow-600">🛺</span>
                                 <div>
-                                  <p className="text-sm font-medium text-foreground">Tuk-tuk</p>
+                                  <p className="text-xs font-medium text-foreground">Tuk-tuk</p>
                                   <p className="text-xs text-muted-foreground">20 min • ฿120</p>
                                 </div>
                               </div>
@@ -403,17 +370,26 @@ const Features = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm">🤖</span>
+
+                    {/* User Transport Question */}
+                    <div className="flex justify-end gap-3">
+                      <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
+                        <p className="text-sm text-foreground">How do I get to the jazz club?</p>
+                      </div>
+                      <img 
+                        src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
+                        alt="User"
+                        className="w-8 h-8 rounded-full object-cover"
+                      />
                     </div>
                   </div>
 
-                  {/* Quick Actions */}
-                  <div className="flex gap-2 pt-2 border-t border-gray-100 dark:border-slate-700">
-                    <button className="flex-1 bg-primary/10 text-primary py-2 px-3 rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors">
+                  {/* Quick Actions at Bottom */}
+                  <div className="absolute bottom-4 left-4 right-4 flex gap-2 z-30">
+                    <button className="flex-1 bg-primary/10 text-primary py-2 px-3 rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors backdrop-blur-sm border border-white/20 dark:border-slate-700/20">
                       🗺️ Get Directions
                     </button>
-                    <button className="flex-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 py-2 px-3 rounded-lg text-xs font-medium hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
+                    <button className="flex-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 py-2 px-3 rounded-lg text-xs font-medium hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors backdrop-blur-sm border border-white/20 dark:border-slate-700/20">
                       📱 Book Tickets
                     </button>
                   </div>
