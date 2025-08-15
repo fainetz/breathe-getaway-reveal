@@ -59,23 +59,40 @@ const Features = () => {
                     </div>
                     
                      <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-4 border border-white/50 dark:border-slate-500/50">
-                       <div className="flex gap-4">
-                         <img 
-                           src="/lovable-uploads/937e23fd-265f-4986-991a-926a05637edf.png"
-                           alt="Luxury hotel room with modern design"
-                           className="w-20 h-20 rounded-xl object-cover"
-                         />
-                         <div className="flex-1">
-                           <h5 className="font-semibold text-foreground mb-1">Tropical Sky Sanctuary</h5>
-                           <p className="text-sm text-muted-foreground mb-2">Central Bangkok • 4.9★ • Luxury Resort</p>
-                           <div className="flex items-center gap-3">
-                             <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">Spa</span>
-                             <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">Pool & Garden</span>
-                             <span className="text-sm font-semibold text-foreground">₿2,200/night</span>
-                           </div>
-                         </div>
-                       </div>
-                     </div>
+                        {/* Mobile: Description first, then image below */}
+                        <div className="lg:hidden">
+                          <h5 className="font-semibold text-foreground mb-1">Tropical Sky Sanctuary</h5>
+                          <p className="text-sm text-muted-foreground mb-2">Central Bangkok • 4.9★ • Luxury Resort</p>
+                          <img 
+                            src="/lovable-uploads/937e23fd-265f-4986-991a-926a05637edf.png"
+                            alt="Luxury hotel room with modern design"
+                            className="w-full h-32 rounded-xl object-cover mb-3"
+                          />
+                          <div className="flex items-center gap-3">
+                            <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">Spa</span>
+                            <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">Pool & Garden</span>
+                            <span className="text-sm font-semibold text-foreground">₿2,200/night</span>
+                          </div>
+                        </div>
+                        
+                        {/* Desktop: Keep original layout */}
+                        <div className="hidden lg:flex gap-4">
+                          <img 
+                            src="/lovable-uploads/937e23fd-265f-4986-991a-926a05637edf.png"
+                            alt="Luxury hotel room with modern design"
+                            className="w-20 h-20 rounded-xl object-cover"
+                          />
+                          <div className="flex-1">
+                            <h5 className="font-semibold text-foreground mb-1">Tropical Sky Sanctuary</h5>
+                            <p className="text-sm text-muted-foreground mb-2">Central Bangkok • 4.9★ • Luxury Resort</p>
+                            <div className="flex items-center gap-3">
+                              <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">Spa</span>
+                              <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">Pool & Garden</span>
+                              <span className="text-sm font-semibold text-foreground">₿2,200/night</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                   </div>
                   
                   {/* Day-by-Day Grid Layout */}
@@ -89,7 +106,35 @@ const Features = () => {
                         <h4 className="font-semibold text-foreground">Day 1 - Cultural Immersion</h4>
                       </div>
                       
-                      <div className="grid grid-cols-2 gap-3">
+                       {/* Mobile: Stack vertically with descriptions first */}
+                       <div className="lg:hidden space-y-3">
+                        <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
+                          <h6 className="text-sm font-medium text-foreground mb-1">Grand Palace</h6>
+                          <p className="text-xs text-muted-foreground mb-1">9:00 AM</p>
+                          <p className="text-xs text-muted-foreground mb-2">Sacred temple complex with golden spires</p>
+                          <img 
+                            src="/lovable-uploads/369021b4-c3a0-475c-be3b-9f9a6a9832a9.png"
+                            alt="Temple"
+                            className="w-full h-24 rounded-lg object-cover mb-2"
+                          />
+                          <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 px-2 py-1 rounded-full">₿500</span>
+                        </div>
+                        
+                        <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
+                          <h6 className="text-sm font-medium text-foreground mb-1">Floating Market</h6>
+                          <p className="text-xs text-muted-foreground mb-1">2:00 PM</p>
+                          <p className="text-xs text-muted-foreground mb-2">Traditional boat vendors and local crafts</p>
+                          <img 
+                            src="/lovable-uploads/dea72317-53c3-46c5-9b99-aab06114fde8.png"
+                            alt="Market"
+                            className="w-full h-24 rounded-lg object-cover mb-2"
+                          />
+                          <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">₿200</span>
+                        </div>
+                      </div>
+                      
+                      {/* Desktop: Keep original grid layout */}
+                       <div className="hidden lg:grid grid-cols-2 gap-3">
                         <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
                           <div className="flex items-center gap-2 mb-2">
                             <img 
@@ -133,7 +178,39 @@ const Features = () => {
                         <h4 className="font-semibold text-foreground">Day 2 - Urban Adventures</h4>
                       </div>
                       
-                      <div className="space-y-3">
+                      {/* Mobile: Stack vertically with descriptions first */}
+                      <div className="lg:hidden space-y-3">
+                        <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
+                          <div className="flex justify-between items-start mb-1">
+                            <h6 className="text-sm font-medium text-foreground">Sky Bar Experience</h6>
+                            <span className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-2 py-1 rounded-full">₿800</span>
+                          </div>
+                          <p className="text-xs text-muted-foreground mb-1">6:00 PM - Sunset cocktails on 63rd floor</p>
+                          <p className="text-xs text-muted-foreground mb-2">Panoramic city views and craft cocktails</p>
+                          <img 
+                            src="/lovable-uploads/e619ccb5-67bb-4172-a634-8a6911184a7c.png"
+                            alt="Rooftop"
+                            className="w-full h-24 rounded-lg object-cover"
+                          />
+                        </div>
+                        
+                        <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
+                          <div className="flex justify-between items-start mb-1">
+                            <h6 className="text-sm font-medium text-foreground">Night Market Food Tour</h6>
+                            <span className="text-xs bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 px-2 py-1 rounded-full">₿300</span>
+                          </div>
+                          <p className="text-xs text-muted-foreground mb-1">9:00 PM - Guided food adventure</p>
+                          <p className="text-xs text-muted-foreground mb-2">Local street food favorites and hidden gems</p>
+                          <img 
+                            src="/lovable-uploads/42abd49b-cc9e-422e-863c-11d618b69cf3.png"
+                            alt="Street Food"
+                            className="w-full h-24 rounded-lg object-cover"
+                          />
+                        </div>
+                      </div>
+                      
+                      {/* Desktop: Keep original layout */}
+                      <div className="hidden lg:block space-y-3">
                         <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
                           <div className="flex items-start gap-3">
                             <img 
@@ -182,7 +259,23 @@ const Features = () => {
                       </div>
                       
                       <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-4 border border-white/50 dark:border-slate-500/50">
-                        <div className="flex items-center gap-4">
+                        {/* Mobile: Description first, then image below */}
+                        <div className="lg:hidden">
+                          <div className="flex justify-between items-start mb-2">
+                            <h6 className="text-base font-medium text-foreground">Luxury Spa Treatment</h6>
+                            <span className="text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-3 py-1 rounded-full font-medium">₿1,000</span>
+                          </div>
+                          <p className="text-sm text-muted-foreground mb-2">10:00 AM - 1:00 PM • Perfect before flight</p>
+                          <p className="text-sm text-muted-foreground mb-3">Traditional Thai massage and aromatherapy to end your trip relaxed</p>
+                          <img 
+                            src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
+                            alt="Spa"
+                            className="w-full h-32 rounded-xl object-cover"
+                          />
+                        </div>
+                        
+                        {/* Desktop: Keep original layout */}
+                        <div className="hidden lg:flex items-center gap-4">
                           <img 
                             src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
                             alt="Spa"
