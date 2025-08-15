@@ -126,7 +126,7 @@ const Hero = () => {
       <ThreeBackground />
 
       {/* Navigation - AICM layout style */}
-      <nav className="absolute top-0 left-0 right-0 z-50 px-4 sm:px-6 py-1 md:py-6">
+      <nav className="relative z-50 px-4 sm:px-6 py-4 md:py-6">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
@@ -142,7 +142,7 @@ const Hero = () => {
                 }`}
               />
             </div>
-            <span className="text-lg sm:text-2xl font-bold text-white md:text-foreground">
+            <span className="text-lg sm:text-2xl font-bold text-black dark:text-white">
               <span className="hidden sm:inline">Breathe & Getaway</span>
               <span className="sm:hidden text-base">B&G</span>
             </span>
@@ -154,7 +154,7 @@ const Hero = () => {
 
           {/* Desktop navigation - keep original position */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/faq" className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative group">
+            <Link to="/faq" className="text-white hover:text-white/80 transition-colors duration-300 font-medium relative group">
               FAQ
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-teal-600 transition-all duration-300 group-hover:w-full"></span>
             </Link>
