@@ -12,38 +12,18 @@ const FeatureRequestBox = () => {
 
   // Check if user has visited before and show mobile banner
   useEffect(() => {
-    // Always check localStorage first
-    const hasVisitedBefore = localStorage.getItem('hasVisitedBefore');
-    if (hasVisitedBefore) {
-      setHasVisited(true);
-      return;
-    }
-    
-    // Only show on mobile and for first-time visitors
-    const checkMobile = () => window.innerWidth < 768;
-    
-    if (!hasVisitedBefore && checkMobile()) {
-      setHasVisited(false);
-      
-      // Show banner after a short delay
-      const showTimer = setTimeout(() => {
-        setShowMobileBanner(true);
-      }, 1500);
-      
-      // Hide banner after 4 seconds and mark as visited
-      const hideTimer = setTimeout(() => {
-        setShowMobileBanner(false);
-        localStorage.setItem('hasVisitedBefore', 'true');
-        setHasVisited(true);
-      }, 5500);
-      
-      return () => {
-        clearTimeout(showTimer);
-        clearTimeout(hideTimer);
-      };
-    } else {
-      setHasVisited(true);
-    }
+    // Don't show mobile banner anymore - completely remove it
+    setShowMobileBanner(false);
+    setHasVisited(true);
+  }, []);
+
+  // Hide desktop banner after 3 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowBanner(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -137,21 +117,7 @@ const FeatureRequestBox = () => {
         </div>
       )}
 
-      {/* Mobile Sliding Banner - Only on mobile for first-time visitors */}
-      {showMobileBanner && (
-        <div className="md:hidden fixed top-1/2 left-0 z-50 transform -translate-y-1/2">
-          <div className={`bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-r-2xl shadow-lg p-3 transition-transform duration-700 ease-out ${
-            showMobileBanner ? 'translate-x-0' : '-translate-x-full'
-          }`}>
-            <div className="flex items-center gap-2">
-              <Lightbulb className="h-4 w-4 animate-pulse flex-shrink-0" />
-              <div className="text-sm font-medium">
-                Share feature ideas! →
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Mobile banner completely removed */}
 
       {/* Development Banner - Desktop only */}
       {showBanner && (
