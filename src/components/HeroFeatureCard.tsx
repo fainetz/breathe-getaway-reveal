@@ -4,14 +4,14 @@ interface HeroFeatureCardProps {
 
 const HeroFeatureCard = ({ image }: HeroFeatureCardProps) => {
   return (
-    <div className="absolute inset-8 z-0 rounded-3xl overflow-hidden">
+    <div className="absolute inset-x-8 top-16 bottom-8 z-0 rounded-3xl overflow-hidden">
       <img 
         src={image}
         alt="Luxury tropical resort"
         className="w-full h-full object-cover"
       />
-      {/* Light overlay to maintain readability but keep image visible */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 via-transparent to-slate-900/5" />
+      {/* Stronger overlay to improve text readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-slate-900/20 to-slate-900/30" />
     </div>
   );
 };
