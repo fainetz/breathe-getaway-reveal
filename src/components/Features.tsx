@@ -19,58 +19,38 @@ const Features = () => {
           <div className="lg:hidden">
             <div className="px-4 mb-6">
               <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/40 dark:border-slate-700/40 overflow-hidden mx-auto max-w-sm">
-                {/* Header */}
-                <div className="bg-gradient-to-r from-primary/30 to-primary/15 backdrop-blur-sm p-3 border-b border-white/30 dark:border-slate-700/30">
+                {/* Condensed Header */}
+                <div className="bg-gradient-to-r from-primary/30 to-primary/15 backdrop-blur-sm p-2 border-b border-white/30 dark:border-slate-700/30">
                   <div className="text-center">
-                    <div className="w-10 h-10 bg-white/30 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/40 mx-auto mb-2">
-                      <span className="text-primary text-lg font-bold">AI</span>
+                    <div className="w-8 h-8 bg-white/30 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/40 mx-auto mb-1">
+                      <span className="text-primary text-sm font-bold">AI</span>
                     </div>
-                    <h3 className="text-base font-bold text-foreground">Your Bangkok Getaway</h3>
+                    <h3 className="text-sm font-bold text-foreground">Your Bangkok Getaway</h3>
                     <p className="text-xs text-muted-foreground">3 days • Perfect for solo travelers</p>
-                    <p className="text-xs font-semibold text-foreground mt-1">Total: ₿4,200</p>
+                    <p className="text-xs font-semibold text-foreground mt-0.5">Total: ₿4,200</p>
                   </div>
                 </div>
                 
-                <div className="p-4 space-y-3">
-                  {/* Hotel */}
+                <div className="p-3 space-y-3">
+                  {/* Where You're Staying - Main Focus */}
                   <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
-                    <h5 className="font-semibold text-foreground text-sm mb-1">Tropical Sky Sanctuary</h5>
+                    <h5 className="font-semibold text-foreground text-sm mb-2">Where You're Staying</h5>
+                    <h6 className="font-medium text-foreground text-sm mb-1">Tropical Sky Sanctuary</h6>
                     <p className="text-xs text-muted-foreground mb-2">Central Bangkok • 4.9★ • Luxury Resort</p>
                     <img 
                       src="/lovable-uploads/937e23fd-265f-4986-991a-926a05637edf.png"
                       alt="Luxury hotel room with modern design"
-                      className="w-full h-16 rounded-xl object-cover mb-2"
+                      className="w-full h-20 rounded-xl object-cover mb-2"
                     />
                     <div className="flex flex-wrap gap-2">
                       <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">Spa</span>
-                      <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">Pool</span>
+                      <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">Pool & Garden</span>
                       <span className="text-xs font-semibold text-foreground">₿2,200/night</span>
                     </div>
                   </div>
                   
-                  {/* Day 1 */}
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-foreground flex items-center gap-2 text-sm">
-                      <div className="w-5 h-5 bg-gradient-to-r from-orange-500 to-red-400 rounded-lg flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">1</span>
-                      </div>
-                      Day 1 - Cultural Immersion
-                    </h4>
-                    
-                    <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
-                      <h6 className="text-xs font-medium text-foreground mb-1">Grand Palace</h6>
-                      <p className="text-xs text-muted-foreground mb-2">9:00 AM • Sacred temple complex with golden spires</p>
-                      <img 
-                        src="/lovable-uploads/369021b4-c3a0-475c-be3b-9f9a6a9832a9.png"
-                        alt="Temple"
-                        className="w-full h-14 rounded-lg object-cover mb-2"
-                      />
-                      <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 px-2 py-1 rounded-full">₿500</span>
-                    </div>
-                  </div>
-                  
                   {/* Actions */}
-                  <div className="flex gap-2 pt-1">
+                  <div className="flex gap-2">
                     <button className="flex-1 bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm text-foreground px-3 py-2 rounded-xl text-xs font-medium border border-white/50">
                       Customize
                     </button>
