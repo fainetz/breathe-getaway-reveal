@@ -251,7 +251,7 @@ const Features = () => {
               </p>
             </div>
             <div className="relative">
-              {/* AI Assistant Interface Mockup */}
+              {/* Main Chat Interface - Activities Example */}
               <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md">
                 {/* Assistant Header */}
                 <div className="bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 p-4 border-b border-gray-100 dark:border-slate-700">
@@ -270,7 +270,7 @@ const Features = () => {
                 </div>
                 
                 {/* Chat Messages */}
-                <div className="p-4 space-y-4 max-h-80 overflow-y-auto">
+                <div className="p-4 space-y-4 h-80">
                   {/* User Question */}
                   <div className="flex justify-start gap-3">
                     <img 
@@ -285,68 +285,33 @@ const Features = () => {
 
                   {/* AI Response with Live Events */}
                   <div className="flex justify-end gap-3">
-                    <div className="flex-1 space-y-3 flex justify-end">
-                      <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3 max-w-sm">
-                        <p className="text-sm text-foreground mb-3">I found amazing rooftop events happening tonight:</p>
+                    <div className="bg-gradient-to-r from-primary to-primary/90 rounded-2xl p-3 max-w-xs text-white">
+                      <p className="text-sm mb-3">Here are some great options near your hotel tonight! 🌃</p>
+                      
+                      {/* Events List */}
+                      <div className="space-y-2">
+                        <div className="bg-white/10 rounded-lg p-2">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-xs">🎵</span>
+                            <span className="text-xs font-medium">Rooftop Jazz Night</span>
+                          </div>
+                          <p className="text-xs opacity-90">Sky Bar • 8PM • 5 min walk</p>
+                        </div>
                         
-                        {/* Event 1 - Rooftop Cinema */}
-                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 mb-3 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 hover:shadow-lg cursor-pointer">
-                          <div className="flex gap-3">
-                            <img 
-                              src="/lovable-uploads/a1506915-e011-43ee-b8b7-034196d2c51e.png"
-                              alt="Rooftop cinema"
-                              className="w-12 h-12 rounded-lg object-cover"
-                            />
-                            <div className="flex-1">
-                              <div className="flex items-start justify-between">
-                                <div>
-                                  <p className="text-sm font-medium text-foreground">Rooftop Cinema Night</p>
-                                  <p className="text-xs text-muted-foreground">8:30 PM • Under the stars</p>
-                                </div>
-                                <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 px-2 py-1 rounded-full">🎬 Live</span>
-                              </div>
-                            </div>
+                        <div className="bg-white/10 rounded-lg p-2">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-xs">🍜</span>
+                            <span className="text-xs font-medium">Night Market</span>
                           </div>
+                          <p className="text-xs opacity-90">Chatuchak • Until 2AM • 10 min ride</p>
                         </div>
-
-                        {/* Event 2 - Jazz Club */}
-                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 mb-3 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 hover:shadow-lg cursor-pointer">
-                          <div className="flex gap-3">
-                            <img 
-                              src="/lovable-uploads/b35a9b1b-a4f8-4fed-9304-1262070ceada.png"
-                              alt="Jazz performance"
-                              className="w-12 h-12 rounded-lg object-cover"
-                            />
-                            <div className="flex-1">
-                              <div className="flex items-start justify-between">
-                                <div>
-                                  <p className="text-sm font-medium text-foreground">Garden Jazz Session</p>
-                                  <p className="text-xs text-muted-foreground">9 PM • Acoustic vibes</p>
-                                </div>
-                                <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded-full">🎵 Live</span>
-                              </div>
-                            </div>
+                        
+                        <div className="bg-white/10 rounded-lg p-2">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-xs">🏛️</span>
+                            <span className="text-xs font-medium">Temple Light Show</span>
                           </div>
-                        </div>
-
-                        {/* Event 3 - Rooftop Dining */}
-                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 hover:shadow-lg cursor-pointer">
-                          <div className="flex gap-3">
-                            <img 
-                              src="/lovable-uploads/d0e879ef-6715-4c4d-983e-8f4a84c6ff20.png"
-                              alt="Rooftop dining"
-                              className="w-12 h-12 rounded-lg object-cover"
-                            />
-                            <div className="flex-1">
-                              <div className="flex items-start justify-between">
-                                <div>
-                                  <p className="text-sm font-medium text-foreground">Skyline Dining</p>
-                                  <p className="text-xs text-muted-foreground">7 PM • City views</p>
-                                </div>
-                                <span className="text-xs bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 px-2 py-1 rounded-full">🍽️ Dining</span>
-                              </div>
-                            </div>
-                          </div>
+                          <p className="text-xs opacity-90">Wat Pho • 9PM • Free entry</p>
                         </div>
                       </div>
                     </div>
@@ -355,7 +320,7 @@ const Features = () => {
                     </div>
                   </div>
 
-                  {/* Transport Routing Example */}
+                  {/* Follow-up User Question */}
                   <div className="flex justify-start gap-3">
                     <img 
                       src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
@@ -363,59 +328,73 @@ const Features = () => {
                       className="w-8 h-8 rounded-full object-cover"
                     />
                     <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
-                      <p className="text-sm text-foreground">How do I get to the jazz session?</p>
+                      <p className="text-sm text-foreground">How do I get to the night market?</p>
                     </div>
                   </div>
 
-                  {/* AI Transport Response with Glassmorphism */}
+                  {/* AI Response with Transport Options */}
                   <div className="flex justify-end gap-3">
-                    <div className="flex-1 space-y-3 flex justify-end">
-                      <div className="bg-gradient-to-br from-white/40 to-white/20 dark:from-slate-800/40 dark:to-slate-800/20 backdrop-blur-xl border border-white/30 dark:border-slate-700/30 rounded-2xl p-3 max-w-sm shadow-xl hover:shadow-2xl hover:bg-gradient-to-br hover:from-white/60 hover:to-white/30 dark:hover:from-slate-800/60 dark:hover:to-slate-800/30 transition-all duration-500 cursor-pointer">
-                        <p className="text-sm text-foreground mb-3">Here are your transport options:</p>
-                        
-                        {/* Transport Options */}
-                        <div className="space-y-2">
-                          <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg p-3 border border-white/20 dark:border-slate-700/20">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-green-600">🚇</span>
-                                <div>
-                                  <p className="text-sm font-medium text-foreground">BTS Skytrain</p>
-                                  <p className="text-xs text-muted-foreground">15 min • ฿42</p>
-                                </div>
-                              </div>
-                              <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-2 py-1 rounded-full">Fastest</span>
-                            </div>
+                    <div className="bg-gradient-to-r from-primary to-primary/90 rounded-2xl p-3 max-w-xs text-white">
+                      <p className="text-sm mb-2">Several options to get there! 🚗</p>
+                      
+                      <div className="space-y-2">
+                        <div className="bg-white/10 rounded-lg p-2">
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs font-medium">🚇 BTS Skytrain</span>
+                            <span className="text-xs">₿45 • 12 min</span>
                           </div>
-                          
-                          <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg p-3 border border-white/20 dark:border-slate-700/20">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-yellow-600">🛺</span>
-                                <div>
-                                  <p className="text-sm font-medium text-foreground">Tuk-tuk</p>
-                                  <p className="text-xs text-muted-foreground">20 min • ฿120</p>
-                                </div>
-                              </div>
-                              <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 px-2 py-1 rounded-full">Scenic</span>
-                            </div>
+                        </div>
+                        
+                        <div className="bg-white/10 rounded-lg p-2">
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs font-medium">🛵 Motorbike Taxi</span>
+                            <span className="text-xs">₿80 • 8 min</span>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-white/10 rounded-lg p-2">
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs font-medium">🚕 Grab Car</span>
+                            <span className="text-xs">₿120 • 15 min</span>
                           </div>
                         </div>
                       </div>
+                      
+                      <p className="text-xs mt-2 opacity-90">I recommend the BTS - it's reliable and you'll avoid traffic!</p>
                     </div>
                     <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
                       <span className="text-white text-sm">🤖</span>
                     </div>
                   </div>
+                </div>
+              </div>
 
-                  {/* Quick Actions */}
-                  <div className="flex gap-2 pt-2 border-t border-gray-100 dark:border-slate-700">
-                    <button className="flex-1 bg-primary/10 text-primary py-2 px-3 rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors">
-                      🗺️ Get Directions
-                    </button>
-                    <button className="flex-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 py-2 px-3 rounded-lg text-xs font-medium hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
-                      📱 Book Tickets
-                    </button>
+              {/* Smaller Overlapping Route Example */}
+              <div className="absolute -left-16 top-16 w-64 bg-white/80 dark:bg-slate-800/80 backdrop-blur-lg rounded-xl shadow-xl border border-white/20 dark:border-slate-700/50 p-3">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs">🗺️</span>
+                    </div>
+                    <span className="text-xs font-medium text-foreground">Route Assistant</span>
+                  </div>
+                  
+                  <div className="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-2">
+                    <p className="text-xs text-muted-foreground mb-1">You asked:</p>
+                    <p className="text-xs text-foreground">"Fastest way to airport?"</p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-lg p-2">
+                    <div className="flex items-center gap-1 mb-1">
+                      <span className="text-xs">🚄</span>
+                      <span className="text-xs font-medium text-foreground">Airport Rail Link</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">35 min • ₿45 • Next train: 8:12 PM</p>
+                  </div>
+                  
+                  <div className="flex items-center gap-1 text-xs text-green-600 dark:text-green-400">
+                    <span>✓</span>
+                    <span>Avoiding rush hour traffic</span>
                   </div>
                 </div>
               </div>
