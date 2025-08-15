@@ -155,14 +155,14 @@ const ThreeBackground = () => {
   if (!hasWebGL || isMobile) {
     return (
       <div className="fixed inset-0 z-0 overflow-hidden">
-        <div className={`absolute inset-0 ${theme === 'light' ? 'bg-gradient-to-br from-gray-50/30 via-transparent to-blue-50/20' : 'bg-gradient-to-br from-gray-900/20 via-transparent to-slate-900/15'}`}>
+        <div className={`absolute inset-0 ${theme === 'light' ? 'bg-gradient-to-br from-gray-50/30 via-transparent to-gray-100/20' : 'bg-gradient-to-br from-gray-900/20 via-transparent to-gray-950/15'}`}>
           {/* Mobile-optimized decorative elements */}
-          <div className={`absolute top-1/4 left-[10%] w-16 h-16 md:w-32 md:h-32 ${theme === 'light' ? 'bg-blue-400/15' : 'bg-blue-600/10'} rounded-full blur-xl animate-pulse`}></div>
-          <div className={`absolute top-2/3 right-[15%] w-12 h-12 md:w-24 md:h-24 ${theme === 'light' ? 'bg-emerald-400/15' : 'bg-emerald-600/10'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '1s' }}></div>
-          <div className={`absolute top-1/2 left-3/4 w-14 h-14 md:w-28 md:h-28 ${theme === 'light' ? 'bg-pink-400/15' : 'bg-pink-600/10'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '2s' }}></div>
+          <div className={`absolute top-1/4 left-[10%] w-16 h-16 md:w-32 md:h-32 ${theme === 'light' ? 'bg-gray-400/15' : 'bg-gray-600/10'} rounded-full blur-xl animate-pulse`}></div>
+          <div className={`absolute top-2/3 right-[15%] w-12 h-12 md:w-24 md:h-24 ${theme === 'light' ? 'bg-gray-400/15' : 'bg-gray-600/10'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '1s' }}></div>
+          <div className={`absolute top-1/2 left-3/4 w-14 h-14 md:w-28 md:h-28 ${theme === 'light' ? 'bg-gray-400/15' : 'bg-gray-600/10'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '2s' }}></div>
           {/* Additional mobile elements */}
           <div className={`absolute top-[15%] right-[25%] w-8 h-8 md:w-20 md:h-20 ${theme === 'light' ? 'bg-gray-400/10' : 'bg-gray-600/8'} rounded-full blur-lg animate-pulse`} style={{ animationDelay: '0.5s' }}></div>
-          <div className={`absolute bottom-1/4 left-[20%] w-10 h-10 md:w-24 md:h-24 ${theme === 'light' ? 'bg-teal-400/12' : 'bg-teal-600/8'} rounded-full blur-lg animate-pulse`} style={{ animationDelay: '1.5s' }}></div>
+          <div className={`absolute bottom-1/4 left-[20%] w-10 h-10 md:w-24 md:h-24 ${theme === 'light' ? 'bg-gray-400/12' : 'bg-gray-600/8'} rounded-full blur-lg animate-pulse`} style={{ animationDelay: '1.5s' }}></div>
         </div>
       </div>
     );
