@@ -247,14 +247,20 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
                     isActive 
                       ? isChatPage 
                         ? 'text-white scale-105' 
-                        : 'text-white md:text-foreground scale-105'
+                        : isIntegrated
+                          ? 'text-white scale-105'
+                          : 'text-white md:text-foreground scale-105'
                       : distance === 1 
                         ? isChatPage
                           ? 'text-white/60 hover:text-white/80 scale-95 hover:scale-100'
-                          : 'text-white/60 md:text-foreground/50 hover:text-white/80 md:hover:text-foreground/70 scale-95 hover:scale-100'
+                          : isIntegrated
+                            ? 'text-white/60 hover:text-white/80 scale-95 hover:scale-100'
+                            : 'text-white/60 md:text-foreground/50 hover:text-white/80 md:hover:text-foreground/70 scale-95 hover:scale-100'
                         : isChatPage
                           ? 'text-white/30 scale-90'
-                          : 'text-white/30 md:text-foreground/25 scale-90'
+                          : isIntegrated
+                            ? 'text-white/30 scale-90'
+                            : 'text-white/30 md:text-foreground/25 scale-90'
                   }`}
                   style={{
                     transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
