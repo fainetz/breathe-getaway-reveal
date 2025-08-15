@@ -58,24 +58,24 @@ const Features = () => {
                       <h4 className="text-lg font-semibold text-foreground">Where You're Staying</h4>
                     </div>
                     
-                    <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-4 border border-white/50 dark:border-slate-500/50">
-                      <div className="flex gap-4">
-                        <img 
-                          src="/lovable-uploads/37d54649-724a-4949-a90c-e7ce7a18e976.png"
-                          alt="Hotel"
-                          className="w-20 h-20 rounded-xl object-cover"
-                        />
-                        <div className="flex-1">
-                          <h5 className="font-semibold text-foreground mb-1">The Siam Heritage Boutique</h5>
-                          <p className="text-sm text-muted-foreground mb-2">Khao San Road • 4.8★ • Historic District</p>
-                          <div className="flex items-center gap-3">
-                            <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">Free WiFi</span>
-                            <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">Pool</span>
-                            <span className="text-sm font-semibold text-foreground">₿1,400/night</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                     <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-4 border border-white/50 dark:border-slate-500/50">
+                       <div className="flex gap-4">
+                         <img 
+                           src="/lovable-uploads/937e23fd-265f-4986-991a-926a05637edf.png"
+                           alt="Luxury hotel room with modern design"
+                           className="w-20 h-20 rounded-xl object-cover"
+                         />
+                         <div className="flex-1">
+                           <h5 className="font-semibold text-foreground mb-1">Tropical Sky Sanctuary</h5>
+                           <p className="text-sm text-muted-foreground mb-2">Central Bangkok • 4.9★ • Luxury Resort</p>
+                           <div className="flex items-center gap-3">
+                             <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">Spa</span>
+                             <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">Pool & Garden</span>
+                             <span className="text-sm font-semibold text-foreground">₿2,200/night</span>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
                   </div>
                   
                   {/* Day-by-Day Grid Layout */}
