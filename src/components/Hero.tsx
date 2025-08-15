@@ -243,7 +243,7 @@ const Hero = () => {
 </div>
 </div>
   {/* Mobile version - floats at 40vh */}
-  <div className="sm:hidden absolute top-[30vh] left-1/2 transform -translate-x-1/2 text-white/70 text-sm flex flex-col items-center animate-bounce-slow pointer-events-none">
+  <div className="sm:hidden absolute top-[25vh] left-1/2 transform -translate-x-1/2 text-white/70 text-sm flex flex-col items-center animate-bounce-slow pointer-events-none">
     <span className="font-medium">Learn more</span>
     <svg
       className="w-5 h-5 mt-1 text-white/80"

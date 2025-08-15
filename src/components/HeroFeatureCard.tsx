@@ -9,7 +9,7 @@ const HeroFeatureCard = ({ image }: HeroFeatureCardProps) => {
 
     <div
       className="
-        absolute inset-x-0 top-12 bottom-6
+        absolute inset-x-0 top-12 bottom-10
         sm:inset-x-0 sm:top-16 sm:bottom-8
         z-10                  /* lift above page bg */
         isolate               /* block backdrop bleed */
