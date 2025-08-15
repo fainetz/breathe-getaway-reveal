@@ -6,6 +6,7 @@ import ThemeToggle from './ThemeToggle';
 import ThreeBackground from './ThreeBackground';
 import AuthButton from './AuthButton';
 import MiniCurvedNav from './MiniCurvedNav';
+import HeroFeatureCard from './HeroFeatureCard';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Hero = () => {
@@ -204,9 +205,15 @@ const Hero = () => {
           {/* Mobile search functionality is now handled by the floating ExpandableSearch component */}
         </div>
 
-        {/* Right side - Empty space where carousel was */}
-        <div className="relative order-2 lg:order-2">
-          {/* Left empty as requested */}
+        {/* Right side - Hero Feature Card */}
+        <div className="relative order-2 lg:order-2 hidden md:block">
+          <HeroFeatureCard 
+            image="/lovable-uploads/09538629-f30f-4bfd-907c-859a0de719a2.png"
+            title="Extraordinary trips,"
+            subtitle="effortlessly planned"
+            primaryButtonText="Join the waitlist"
+            secondaryButtonText="Discover more"
+          />
         </div>
       </div>
       
