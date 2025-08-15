@@ -269,7 +269,7 @@ const Features = () => {
                   </div>
                 </div>
                 
-                {/* Chat Messages */}
+                 {/* Chat Messages */}
                 <div className="p-4 space-y-4 h-80 overflow-y-auto">
                   {/* AI Response First */}
                   <div className="flex justify-start gap-3">
@@ -314,16 +314,45 @@ const Features = () => {
                     </div>
                   </div>
 
-                  {/* User Question */}
+                  {/* User Follow-up Question */}
                   <div className="flex justify-end gap-3">
-                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
-                      <p className="text-sm text-foreground">What's happening tonight near my hotel?</p>
+                    <div className="bg-blue-500 rounded-2xl p-3 max-w-xs">
+                      <p className="text-sm text-white">Perfect! Can you help me get to the Jazz Session? I'm staying near Khao San Road.</p>
                     </div>
                     <img 
                       src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
                       alt="User"
                       className="w-8 h-8 rounded-full object-cover"
                     />
+                  </div>
+
+                  {/* AI Transport Response */}
+                  <div className="flex justify-start gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm">🤖</span>
+                    </div>
+                    <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3 max-w-sm">
+                      <p className="text-sm text-foreground mb-3">🚗 Here are your best routes:</p>
+                      
+                      {/* Route Options */}
+                      <div className="space-y-2">
+                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm border-l-2 border-green-500">
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="text-xs font-medium text-foreground">🚕 Taxi</span>
+                            <span className="text-xs text-green-600 dark:text-green-400">Fastest</span>
+                          </div>
+                          <p className="text-xs text-muted-foreground">15 min • ฿180 • Direct route</p>
+                        </div>
+                        
+                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="text-xs font-medium text-foreground">🚇 BTS</span>
+                            <span className="text-xs text-blue-600 dark:text-blue-400">Cheapest</span>
+                          </div>
+                          <p className="text-xs text-muted-foreground">25 min • ฿42 • Saphan Taksin + walk</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Quick Actions */}
@@ -336,6 +365,34 @@ const Features = () => {
                     </button>
                   </div>
                 </div>
+
+              {/* Smaller Transport Example - Glassmorphism overlay */}
+              <div className="absolute -right-8 top-20 w-44 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-xl shadow-lg border border-white/50 dark:border-slate-700/50 p-3 animate-float-delayed">
+                <div className="flex items-center gap-2 mb-3 pb-2 border-b border-gray-200/50 dark:border-slate-600/50">
+                  <div className="w-5 h-5 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                    <span className="text-white text-xs">🤖</span>
+                  </div>
+                  <span className="text-xs font-medium text-foreground">Transport Helper</span>
+                </div>
+                
+                <div className="space-y-2">
+                  {/* User Question */}
+                  <div className="flex justify-end">
+                    <div className="bg-blue-500 rounded-lg p-2 max-w-28">
+                      <p className="text-xs text-white">Best way to Sky Bar?</p>
+                    </div>
+                  </div>
+                  
+                  {/* AI Response */}
+                  <div className="flex justify-start">
+                    <div className="bg-primary/10 dark:bg-primary/20 rounded-lg p-2 max-w-32">
+                      <p className="text-xs text-foreground mb-1">🚕 Taxi: 15 min, ฿200</p>
+                      <p className="text-xs text-foreground">🚇 BTS: 25 min, ฿42</p>
+                      <p className="text-xs text-muted-foreground mt-1">💡 Use Grab app</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               </div>
 
               {/* Smaller overlapping transport routing chat example */}
