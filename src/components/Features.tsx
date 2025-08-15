@@ -111,81 +111,118 @@ const Features = () => {
             <div className="relative">
               {/* Community App Interface Mockup */}
               <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md">
-                {/* App Header */}
-                <div className="p-4 border-b border-gray-100 dark:border-slate-700">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
-                      <h3 className="text-sm font-medium text-foreground">Solo Travelers</h3>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      <span className="text-xs text-muted-foreground">127 online</span>
+                {/* App Header with Cover Photo */}
+                <div className="relative">
+                  {/* Community Cover */}
+                  <div className="h-20 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-black/20"></div>
+                    <div className="absolute bottom-2 left-4 flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                        <span className="text-white text-sm">🏔️</span>
+                      </div>
+                      <div>
+                        <h3 className="text-sm font-semibold text-white">Solo Travelers</h3>
+                        <div className="flex items-center gap-1">
+                          <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
+                          <span className="text-xs text-white/90">127 online</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
                 
                 {/* Discussion Feed */}
                 <div className="p-4 space-y-4">
-                  {/* Featured Discussion */}
-                  <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-3 border border-blue-100 dark:border-blue-800">
+                  {/* Live Question from User */}
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-4 border border-blue-200 dark:border-blue-800">
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold">A</div>
+                      <div className="relative">
+                        <img 
+                          src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
+                          alt="User avatar"
+                          className="w-10 h-10 rounded-full object-cover"
+                        />
+                        <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-slate-800"></div>
+                      </div>
                       <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-sm font-medium text-foreground">Alex_Solo</span>
-                          <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 px-2 py-1 rounded-full">Top Contributor</span>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="text-sm font-semibold text-foreground">Marcus_Explorer</span>
+                          <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">📍 Bangkok</span>
+                          <span className="text-xs text-muted-foreground">• just now</span>
                         </div>
-                        <p className="text-sm text-foreground mb-2">"Best rooftop bars in Bangkok for solo travelers? Looking for safe spots to meet locals 🍻"</p>
-                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                          <span>❤️ 23</span>
-                          <span>💬 8 replies</span>
-                          <span>2h ago</span>
+                        <p className="text-sm text-foreground mb-3">"Hey everyone! First time in Bangkok solo. Any recommendations for rooftop bars where I can actually meet other travelers? Not looking for tourist traps 🌆"</p>
+                        
+                        {/* Attached Image */}
+                        <div className="mb-3">
+                          <div className="relative rounded-lg overflow-hidden">
+                            <img 
+                              src="/lovable-uploads/42abd49b-cc9e-422e-863c-11d618b69cf3.png"
+                              alt="Bangkok skyline"
+                              className="w-full h-32 object-cover"
+                            />
+                            <div className="absolute top-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">Bangkok</div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                            <span className="flex items-center gap-1">❤️ 12</span>
+                            <span className="flex items-center gap-1">💬 3 replies</span>
+                            <span className="flex items-center gap-1">📤 2 shares</span>
+                          </div>
+                          <button className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-3 py-1 rounded-full hover:bg-orange-200 dark:hover:bg-orange-900/50 transition-colors">
+                            Send Invite
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Recent Posts */}
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-500 to-teal-500 flex items-center justify-center text-white text-xs font-bold">M</div>
+                  {/* Quick Responses */}
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-3 bg-gray-50 dark:bg-slate-700/50 rounded-lg p-3">
+                      <img 
+                        src="/lovable-uploads/37d54649-724a-4949-a90c-e7ce7a18e976.png"
+                        alt="User avatar"
+                        className="w-8 h-8 rounded-full object-cover"
+                      />
                       <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-sm font-medium text-foreground">Maya_Wanders</span>
-                          <span className="text-xs text-muted-foreground">• 30min ago</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-medium text-foreground">Sarah_Backpacker</span>
+                          <span className="text-xs text-green-600 dark:text-green-400">• typing...</span>
                         </div>
-                        <p className="text-sm text-muted-foreground">"Just landed in Tokyo! Any solo female travelers want to explore Shibuya together?"</p>
-                        <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1">
-                          <span>👍 12</span>
-                          <span>💬 3</span>
-                        </div>
+                      </div>
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                       </div>
                     </div>
 
+                    {/* Quick Reply */}
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white text-xs font-bold">J</div>
+                      <img 
+                        src="/lovable-uploads/89cebcb0-e02d-4029-ad34-dde0c27c4bd9.png"
+                        alt="User avatar"
+                        className="w-8 h-8 rounded-full object-cover"
+                      />
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="text-sm font-medium text-foreground">Jake_Nomad</span>
-                          <span className="text-xs text-muted-foreground">• 1h ago</span>
+                          <span className="text-sm font-medium text-foreground">Alex_Rooftops</span>
+                          <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 px-2 py-1 rounded-full">Local Guide</span>
                         </div>
-                        <p className="text-sm text-muted-foreground">"Pro tip: Hostel common rooms in Lisbon are perfect for meeting other solo travelers 🎒"</p>
-                        <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1">
-                          <span>🔥 8</span>
-                          <span>💬 5</span>
-                        </div>
+                        <p className="text-sm text-muted-foreground">"Sky Bar at Lebua is amazing! Go around sunset, lots of solo travelers there ✨"</p>
                       </div>
                     </div>
                   </div>
 
-                  {/* Quick Actions */}
-                  <div className="flex gap-2 pt-2">
-                    <button className="flex-1 bg-primary/10 text-primary py-2 px-3 rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors">
-                      💬 Start Discussion
+                  {/* Community Actions */}
+                  <div className="flex gap-2 pt-2 border-t border-gray-100 dark:border-slate-700">
+                    <button className="flex-1 bg-gradient-to-r from-primary/10 to-primary/5 text-primary py-2.5 px-3 rounded-lg text-xs font-medium hover:from-primary/20 hover:to-primary/10 transition-all duration-300">
+                      💬 Ask Question
                     </button>
-                    <button className="flex-1 border border-gray-200 dark:border-slate-600 text-foreground py-2 px-3 rounded-lg text-xs font-medium hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
-                      🔍 Find Travel Buddy
+                    <button className="flex-1 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 text-green-600 dark:text-green-400 py-2.5 px-3 rounded-lg text-xs font-medium hover:from-green-100 hover:to-emerald-100 dark:hover:from-green-900/30 dark:hover:to-emerald-900/30 transition-all duration-300">
+                      🌍 Join Meetup
                     </button>
                   </div>
                 </div>
