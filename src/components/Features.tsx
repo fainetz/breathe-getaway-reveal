@@ -40,7 +40,7 @@ const Features = () => {
                     <img 
                       src="/lovable-uploads/937e23fd-265f-4986-991a-926a05637edf.png"
                       alt="Luxury hotel room with modern design"
-                      className="w-full h-20 rounded-xl object-cover mb-2"
+                      className="w-full h-24 rounded-xl object-contain mb-2 bg-gray-50 dark:bg-gray-800"
                     />
                     <div className="flex flex-wrap gap-2">
                       <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">Spa</span>
@@ -151,7 +151,7 @@ const Features = () => {
                             <img 
                               src="/lovable-uploads/369021b4-c3a0-475c-be3b-9f9a6a9832a9.png"
                               alt="Temple"
-                              className="w-12 h-12 rounded-lg object-cover"
+                              className="w-12 h-12 rounded-lg object-contain bg-gray-50 dark:bg-gray-800"
                             />
                             <div>
                               <h6 className="text-sm font-medium text-foreground">Grand Palace</h6>
@@ -167,7 +167,7 @@ const Features = () => {
                             <img 
                               src="/lovable-uploads/dea72317-53c3-46c5-9b99-aab06114fde8.png"
                               alt="Market"
-                              className="w-12 h-12 rounded-lg object-cover"
+                              className="w-12 h-12 rounded-lg object-contain bg-gray-50 dark:bg-gray-800"
                             />
                             <div>
                               <h6 className="text-sm font-medium text-foreground">Floating Market</h6>
@@ -195,7 +195,7 @@ const Features = () => {
                             <img 
                               src="/lovable-uploads/e619ccb5-67bb-4172-a634-8a6911184a7c.png"
                               alt="Rooftop"
-                              className="w-16 h-16 rounded-lg object-cover"
+                              className="w-16 h-16 rounded-lg object-contain bg-gray-50 dark:bg-gray-800"
                             />
                             <div className="flex-1">
                               <div className="flex justify-between items-start mb-1">
@@ -213,7 +213,7 @@ const Features = () => {
                             <img 
                               src="/lovable-uploads/42abd49b-cc9e-422e-863c-11d618b69cf3.png"
                               alt="Street Food"
-                              className="w-16 h-16 rounded-lg object-cover"
+                              className="w-16 h-16 rounded-lg object-contain bg-gray-50 dark:bg-gray-800"
                             />
                             <div className="flex-1">
                               <div className="flex justify-between items-start mb-1">
@@ -242,7 +242,7 @@ const Features = () => {
                           <img 
                             src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
                             alt="Spa"
-                            className="w-20 h-20 rounded-xl object-cover"
+                            className="w-20 h-20 rounded-xl object-contain bg-gray-50 dark:bg-gray-800"
                           />
                           <div className="flex-1">
                             <div className="flex justify-between items-start mb-2">
