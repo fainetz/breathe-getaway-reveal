@@ -31,9 +31,9 @@ const Features = () => {
                   </div>
                 </div>
                 
-                <div className="p-3 space-y-3">
-                  {/* Where You're Staying - Main Focus */}
-                  <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
+                 <div className="p-3 space-y-3">
+                   {/* Where You're Staying - Main Focus */}
+                   <div className="bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
                     <h5 className="font-semibold text-foreground text-sm mb-2">Where You're Staying</h5>
                     <h6 className="font-medium text-foreground text-sm mb-1">Tropical Sky Sanctuary</h6>
                     <p className="text-xs text-muted-foreground mb-2">Central Bangkok • 4.9★ • Luxury Resort</p>
@@ -49,9 +49,9 @@ const Features = () => {
                     </div>
                   </div>
                   
-                  {/* Actions */}
-                  <div className="flex gap-2">
-                    <button className="flex-1 bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm text-foreground px-3 py-2 rounded-xl text-xs font-medium border border-white/50">
+                   {/* Actions */}
+                   <div className="flex gap-2">
+                     <button className="flex-1 bg-white/70 dark:bg-black/70 backdrop-blur-sm text-foreground px-3 py-2 rounded-xl text-xs font-medium border border-white/50">
                       Customize
                     </button>
                     <button className="flex-1 bg-primary text-primary-foreground px-3 py-2 rounded-xl text-xs font-medium">
@@ -84,7 +84,7 @@ const Features = () => {
             </div>
             
             <div className="relative">
-              <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/40 dark:border-slate-700/40 overflow-hidden max-w-2xl">
+              <div className="bg-white/60 dark:bg-black/60 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/40 dark:border-slate-700/40 overflow-hidden max-w-2xl">
                 {/* Header */}
                 <div className="bg-gradient-to-r from-primary/30 to-primary/15 backdrop-blur-sm p-5 border-b border-white/30 dark:border-slate-700/30">
                   <div className="flex items-center justify-between">
@@ -105,8 +105,8 @@ const Features = () => {
                 </div>
                 
                 <div className="p-5 space-y-5 h-[480px] overflow-y-auto">
-                  {/* Where You're Staying */}
-                  <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40">
+                   {/* Where You're Staying */}
+                   <div className="bg-white/50 dark:bg-black/50 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-xl flex items-center justify-center">
                         <span className="text-white text-sm font-bold">H</span>
@@ -114,7 +114,7 @@ const Features = () => {
                       <h4 className="text-lg font-semibold text-foreground">Where You're Staying</h4>
                     </div>
                     
-                    <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-4 border border-white/50 dark:border-slate-500/50">
+                     <div className="bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl p-4 border border-white/50 dark:border-slate-500/50">
                       <div className="flex items-center gap-4">
                         <img 
                           src="/lovable-uploads/937e23fd-265f-4986-991a-926a05637edf.png"
@@ -136,8 +136,8 @@ const Features = () => {
                   
                   {/* Day-by-Day Grid Layout */}
                   <div className="space-y-4">
-                    {/* Day 1 - Horizontal Layout */}
-                    <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40">
+                     {/* Day 1 - Horizontal Layout */}
+                     <div className="bg-white/50 dark:bg-black/50 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40">
                       <div className="flex items-center gap-2 mb-3">
                         <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-400 rounded-xl flex items-center justify-center">
                           <span className="text-white text-sm font-bold">1</span>
@@ -146,7 +146,7 @@ const Features = () => {
                       </div>
                       
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
+                         <div className="bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
                           <div className="flex items-center gap-2 mb-2">
                             <img 
                               src="/lovable-uploads/369021b4-c3a0-475c-be3b-9f9a6a9832a9.png"
@@ -162,7 +162,7 @@ const Features = () => {
                           <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 px-2 py-1 rounded-full mt-2 inline-block">₿500</span>
                         </div>
                         
-                        <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
+                         <div className="bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
                           <div className="flex items-center gap-2 mb-2">
                             <img 
                               src="/lovable-uploads/dea72317-53c3-46c5-9b99-aab06114fde8.png"
@@ -180,8 +180,8 @@ const Features = () => {
                       </div>
                     </div>
                     
-                    {/* Day 2 - Vertical Layout */}
-                    <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40">
+                     {/* Day 2 - Vertical Layout */}
+                     <div className="bg-white/50 dark:bg-black/50 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40">
                       <div className="flex items-center gap-2 mb-3">
                         <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-xl flex items-center justify-center">
                           <span className="text-white text-sm font-bold">2</span>
@@ -190,7 +190,7 @@ const Features = () => {
                       </div>
                       
                       <div className="space-y-3">
-                        <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
+                         <div className="bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
                           <div className="flex items-start gap-3">
                             <img 
                               src="/lovable-uploads/e619ccb5-67bb-4172-a634-8a6911184a7c.png"
@@ -208,7 +208,7 @@ const Features = () => {
                           </div>
                         </div>
                         
-                        <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
+                        <div className="bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
                           <div className="flex items-start gap-3">
                             <img 
                               src="/lovable-uploads/42abd49b-cc9e-422e-863c-11d618b69cf3.png"
@@ -228,8 +228,8 @@ const Features = () => {
                       </div>
                     </div>
                     
-                    {/* Day 3 - Single Feature */}
-                    <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40">
+                     {/* Day 3 - Single Feature */}
+                     <div className="bg-white/50 dark:bg-black/50 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40">
                       <div className="flex items-center gap-2 mb-3">
                         <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-400 rounded-xl flex items-center justify-center">
                           <span className="text-white text-sm font-bold">3</span>
@@ -237,7 +237,7 @@ const Features = () => {
                         <h4 className="font-semibold text-foreground">Day 3 - Departure Day</h4>
                       </div>
                       
-                      <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-4 border border-white/50 dark:border-slate-500/50">
+                      <div className="bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl p-4 border border-white/50 dark:border-slate-500/50">
                         <div className="flex items-center gap-4">
                           <img 
                             src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
@@ -265,7 +265,7 @@ const Features = () => {
                         <p className="text-sm text-muted-foreground">5 experiences • 3 nights stay</p>
                       </div>
                       <div className="flex gap-2">
-                        <button className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm text-foreground px-4 py-2 rounded-xl text-sm font-medium border border-white/50 hover:bg-white/80 transition-colors">
+                        <button className="bg-white/70 dark:bg-black/70 backdrop-blur-sm text-foreground px-4 py-2 rounded-xl text-sm font-medium border border-white/50 hover:bg-white/80 dark:hover:bg-black/80 transition-colors">
                           Customize
                         </button>
                         <button className="bg-primary text-primary-foreground px-6 py-2 rounded-xl text-sm font-medium hover:bg-primary/90 transition-colors">
