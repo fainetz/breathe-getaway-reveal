@@ -105,51 +105,87 @@ const Features = () => {
           </div>
         </div>
 
-        {/* Panel 2: Discover Destinations */}
+        {/* Panel 2: Community Discussions */}
         <div className="mb-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              {/* Travel App Interface Mockup */}
+              {/* Community App Interface Mockup */}
               <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md">
                 {/* App Header */}
                 <div className="p-4 border-b border-gray-100 dark:border-slate-700">
                   <div className="flex items-center justify-between">
-                    <div className="w-6 h-6 rounded-full bg-gray-300 dark:bg-slate-600"></div>
-                    <h3 className="text-sm font-medium text-muted-foreground">Popular itineraries</h3>
-                    <div className="w-6 h-6"></div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
+                      <h3 className="text-sm font-medium text-foreground">Solo Travelers</h3>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span className="text-xs text-muted-foreground">127 online</span>
+                    </div>
                   </div>
                 </div>
                 
-                {/* Destination Card */}
-                <div className="p-4">
-                  <div className="relative rounded-xl overflow-hidden mb-4">
-                    <img 
-                      src="/lovable-uploads/349adef3-59ea-405e-bc62-d704ea49bf62.png"
-                      alt="Explore Destination"
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                    <div className="absolute top-3 right-3 flex gap-2">
-                      <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                {/* Discussion Feed */}
+                <div className="p-4 space-y-4">
+                  {/* Featured Discussion */}
+                  <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-3 border border-blue-100 dark:border-blue-800">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold">A</div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-sm font-medium text-foreground">Alex_Solo</span>
+                          <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 px-2 py-1 rounded-full">Top Contributor</span>
+                        </div>
+                        <p className="text-sm text-foreground mb-2">"Best rooftop bars in Bangkok for solo travelers? Looking for safe spots to meet locals 🍻"</p>
+                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                          <span>❤️ 23</span>
+                          <span>💬 8 replies</span>
+                          <span>2h ago</span>
+                        </div>
                       </div>
-                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                        <div className="w-3 h-3 bg-white rounded-full"></div>
-                      </div>
-                    </div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="font-semibold">Explore Bali, Indonesia</h4>
-                      <p className="text-xs opacity-90">7 Day Event • Page 1</p>
                     </div>
                   </div>
-                  
-                  {/* Action Buttons */}
+
+                  {/* Recent Posts */}
                   <div className="space-y-3">
-                    <button className="w-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 py-3 px-4 rounded-lg text-sm font-medium hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
-                      + Customize a trip
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-500 to-teal-500 flex items-center justify-center text-white text-xs font-bold">M</div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-sm font-medium text-foreground">Maya_Wanders</span>
+                          <span className="text-xs text-muted-foreground">• 30min ago</span>
+                        </div>
+                        <p className="text-sm text-muted-foreground">"Just landed in Tokyo! Any solo female travelers want to explore Shibuya together?"</p>
+                        <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1">
+                          <span>👍 12</span>
+                          <span>💬 3</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white text-xs font-bold">J</div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-sm font-medium text-foreground">Jake_Nomad</span>
+                          <span className="text-xs text-muted-foreground">• 1h ago</span>
+                        </div>
+                        <p className="text-sm text-muted-foreground">"Pro tip: Hostel common rooms in Lisbon are perfect for meeting other solo travelers 🎒"</p>
+                        <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1">
+                          <span>🔥 8</span>
+                          <span>💬 5</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Quick Actions */}
+                  <div className="flex gap-2 pt-2">
+                    <button className="flex-1 bg-primary/10 text-primary py-2 px-3 rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors">
+                      💬 Start Discussion
                     </button>
-                    <button className="w-full border border-gray-200 dark:border-slate-600 text-foreground py-3 px-4 rounded-lg text-sm font-medium hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
-                      ♡ Save
+                    <button className="flex-1 border border-gray-200 dark:border-slate-600 text-foreground py-2 px-3 rounded-lg text-xs font-medium hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                      🔍 Find Travel Buddy
                     </button>
                   </div>
                 </div>
