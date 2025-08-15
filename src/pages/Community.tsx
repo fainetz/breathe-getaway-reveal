@@ -94,7 +94,7 @@ const Community = () => {
       {/* Hero Section - Following Home Page Structure */}
       <section className="relative min-h-screen overflow-hidden">
         {/* Background Images */}
-        <div className="absolute inset-x-4 top-16 bottom-8 z-0 rounded-3xl overflow-hidden">
+        <div className="absolute inset-x-0 top-12 bottom-8 z-0 rounded-3xl overflow-hidden">
           {/* Desktop Background */}
           <img 
             src="/lovable-uploads/ece0129b-689b-46a6-a1b7-9d3cea96348b.png"
@@ -120,20 +120,21 @@ const Community = () => {
         <div className="relative z-10 grid lg:grid-cols-2 min-h-screen">
           {/* Left Column - Main Content */}
           <div className="flex flex-col justify-center px-4 sm:px-6 lg:px-8 xl:px-12 py-12">
-            <div className="max-w-xl mx-auto lg:mx-0">
-              {/* Join Waitlist Button at Top */}
-              <div className="mb-8">
-                <Link to="/waitlist">
-                  <Button 
-                    size="lg"
-                    className="w-full sm:w-auto bg-white/20 text-white border border-white/30 hover:bg-white/30 backdrop-blur-sm"
-                  >
-                    <Sparkles className="w-4 h-4 mr-2" />
-                    Join the Community Waitlist
-                  </Button>
-                </Link>
-              </div>
+          <div className="max-w-xl mx-auto lg:mx-0 flex flex-col">
 
+              {/* Join Waitlist Button at Top */}
+   
+             <div className="absolute inset-x-0 bottom-20 sm:bottom-6 z-30 flex justify-center">
+  <Link to="/waitlist">
+    <Button
+      size="lg"
+      className="bg-white text-black hover:bg-black/90 border border-grey px-8"
+    >
+      <Sparkles className="w-4 h-4 mr-4" />
+      Join the Community Waitlist
+    </Button>
+  </Link>
+</div>
               {/* Main Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
                 Connect with{' '}
@@ -308,17 +309,7 @@ const Community = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center mt-12">
-            <Link to="/waitlist">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                <Sparkles className="w-4 h-4 mr-2" />
-                Join the Community Waitlist
-              </Button>
-            </Link>
-            <p className="text-muted-foreground text-sm mt-4">
-              Be among the first to connect with fellow travelers and share authentic experiences.
-            </p>
-          </div>
+        
         </div>
       </section>
 
