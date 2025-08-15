@@ -246,22 +246,16 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
                   onClick={() => handleNavigation(item.path, index)}
                   className={`relative px-3 py-2 text-xs font-semibold whitespace-nowrap transition-all duration-700 ease-out select-none min-w-[95px] flex items-center justify-center tracking-wide ${
                     isActive 
-                      ? isChatPage || isHomePage
-                        ? 'text-white scale-105' 
-                        : isIntegrated
-                          ? theme === 'dark' ? 'text-white scale-105' : 'text-black scale-105'
-                          : 'text-white md:text-foreground scale-105'
+                      ? isHomePage
+                        ? 'text-white scale-105'
+                        : theme === 'dark' ? 'text-white scale-105' : 'text-black scale-105'
                       : distance === 1 
-                        ? isChatPage || isHomePage
+                        ? isHomePage
                           ? 'text-white/60 hover:text-white/80 scale-95 hover:scale-100'
-                          : isIntegrated
-                            ? theme === 'dark' ? 'text-white/60 hover:text-white/80 scale-95 hover:scale-100' : 'text-black/60 hover:text-black/80 scale-95 hover:scale-100'
-                            : 'text-white/60 md:text-foreground/50 hover:text-white/80 md:hover:text-foreground/70 scale-95 hover:scale-100'
-                        : isChatPage || isHomePage
+                          : theme === 'dark' ? 'text-white/60 hover:text-white/80 scale-95 hover:scale-100' : 'text-black/60 hover:text-black/80 scale-95 hover:scale-100'
+                        : isHomePage
                           ? 'text-white/30 scale-90'
-                          : isIntegrated
-                            ? theme === 'dark' ? 'text-white/30 scale-90' : 'text-black/30 scale-90'
-                            : 'text-white/30 md:text-foreground/25 scale-90'
+                          : theme === 'dark' ? 'text-white/30 scale-90' : 'text-black/30 scale-90'
                   }`}
                   style={{
                     transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
