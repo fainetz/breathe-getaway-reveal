@@ -166,7 +166,7 @@ const Community = () => {
               {/* Development Notice */}
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4">
                 <p className="text-white/90 text-sm">
-                  🌟 <strong>Coming Soon:</strong> Our community features are in development. 
+                   <strong>Coming Soon:</strong> Our community features are in development. 
                   Join the waitlist for early access and founding member perks!
                 </p>
               </div>
@@ -309,7 +309,7 @@ const Community = () => {
           {/* Call to Action */}
           <div className="text-center mt-12">
             <Link to="/waitlist">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+              <Button size="lg" className="bg-black dark:bg-white text-white dark:text-black font-medium px-8 py-3 text-lg rounded-lg hover:bg-black/90 dark:hover:bg-white/90 transition-colors duration-200 flex items-center gap-3">
                 <Sparkles className="w-4 h-4 mr-2" />
                 Join the Community Waitlist
               </Button>
