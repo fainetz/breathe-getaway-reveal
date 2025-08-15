@@ -251,7 +251,7 @@ const Features = () => {
               </p>
             </div>
             <div className="relative">
-              {/* AI Assistant Interface Mockup */}
+              {/* Main AI Assistant Interface */}
               <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md">
                 {/* Assistant Header */}
                 <div className="bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 p-4 border-b border-gray-100 dark:border-slate-700">
@@ -269,152 +269,111 @@ const Features = () => {
                   </div>
                 </div>
                 
-                {/* AI Assistant Interface Mockup */}
-                <div className="relative group cursor-pointer">
-                  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md transition-all duration-300 group-hover:shadow-3xl">
-                    {/* Assistant Header */}
-                    <div className="bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 p-4 border-b border-gray-100 dark:border-slate-700">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center animate-pulse">
-                          <span className="text-white text-lg">🤖</span>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-foreground">AI Travel Assistant</h3>
-                          <div className="flex items-center gap-1">
-                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                            <span className="text-xs text-muted-foreground">Active in Bangkok</span>
-                          </div>
-                        </div>
-                      </div>
+                {/* Chat Messages */}
+                <div className="p-4 space-y-4 h-80 overflow-y-auto">
+                  {/* AI Response First */}
+                  <div className="flex justify-start gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm">🤖</span>
                     </div>
-                    
-                    {/* Chat Messages */}
-                    <div className="p-4 space-y-4 h-80 overflow-y-auto">
-                      {/* AI Response First */}
-                      <div className="flex justify-start gap-3">
-                        <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                          <span className="text-white text-sm">🤖</span>
-                        </div>
-                        <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3 max-w-sm">
-                          <p className="text-sm text-foreground mb-3">🌆 Amazing rooftop events tonight:</p>
-                          
-                          {/* Event Cards */}
-                          <div className="space-y-2">
-                            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
-                              <div className="flex gap-3">
-                                <img 
-                                  src="/lovable-uploads/a1506915-e011-43ee-b8b7-034196d2c51e.png"
-                                  alt="Rooftop cinema"
-                                  className="w-12 h-12 rounded-lg object-cover"
-                                />
-                                <div className="flex-1">
-                                  <p className="text-sm font-medium text-foreground">Rooftop Cinema</p>
-                                  <p className="text-xs text-muted-foreground">8:30 PM • Under the stars</p>
-                                  <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 px-2 py-1 rounded-full">🎬 Live</span>
-                                </div>
-                              </div>
-                            </div>
-                            
-                            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
-                              <div className="flex gap-3">
-                                <img 
-                                  src="/lovable-uploads/b35a9b1b-a4f8-4fed-9304-1262070ceada.png"
-                                  alt="Jazz club"
-                                  className="w-12 h-12 rounded-lg object-cover"
-                                />
-                                <div className="flex-1">
-                                  <p className="text-sm font-medium text-foreground">Jazz Session</p>
-                                  <p className="text-xs text-muted-foreground">9 PM • Garden vibes</p>
-                                  <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded-full">🎵 Live</span>
-                                </div>
-                              </div>
+                    <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3 max-w-sm">
+                      <p className="text-sm text-foreground mb-3">🌆 Amazing rooftop events tonight:</p>
+                      
+                      {/* Event Cards */}
+                      <div className="space-y-2">
+                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
+                          <div className="flex gap-3">
+                            <img 
+                              src="/lovable-uploads/a1506915-e011-43ee-b8b7-034196d2c51e.png"
+                              alt="Rooftop cinema"
+                              className="w-12 h-12 rounded-lg object-cover"
+                            />
+                            <div className="flex-1">
+                              <p className="text-sm font-medium text-foreground">Rooftop Cinema</p>
+                              <p className="text-xs text-muted-foreground">8:30 PM • Under the stars</p>
+                              <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 px-2 py-1 rounded-full">🎬 Live</span>
                             </div>
                           </div>
                         </div>
-                      </div>
-
-                      {/* User Question */}
-                      <div className="flex justify-end gap-3">
-                        <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
-                          <p className="text-sm text-foreground">What's happening tonight near my hotel?</p>
+                        
+                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
+                          <div className="flex gap-3">
+                            <img 
+                              src="/lovable-uploads/b35a9b1b-a4f8-4fed-9304-1262070ceada.png"
+                              alt="Jazz club"
+                              className="w-12 h-12 rounded-lg object-cover"
+                            />
+                            <div className="flex-1">
+                              <p className="text-sm font-medium text-foreground">Jazz Session</p>
+                              <p className="text-xs text-muted-foreground">9 PM • Garden vibes</p>
+                              <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded-full">🎵 Live</span>
+                            </div>
+                          </div>
                         </div>
-                        <img 
-                          src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
-                          alt="User"
-                          className="w-8 h-8 rounded-full object-cover"
-                        />
-                      </div>
-
-                      {/* Quick Actions */}
-                      <div className="flex gap-2 pt-2 border-t border-gray-100 dark:border-slate-700">
-                        <button className="flex-1 bg-primary/10 text-primary py-2 px-3 rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors">
-                          🎫 Get Tickets
-                        </button>
-                        <button className="flex-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 py-2 px-3 rounded-lg text-xs font-medium hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
-                          📍 Directions
-                        </button>
                       </div>
                     </div>
                   </div>
 
-                  {/* Hover Overlay - Transport Routing with Glassmorphism */}
-                  <div className="absolute inset-0 bg-white/10 dark:bg-slate-800/10 backdrop-blur-2xl rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center z-10">
-                    <div className="bg-white/20 dark:bg-slate-800/20 backdrop-blur-xl border border-white/30 dark:border-white/10 rounded-2xl p-6 shadow-2xl max-w-xs">
-                      <div className="space-y-4">
-                        {/* Transport Header */}
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                            <span className="text-white text-sm">🤖</span>
-                          </div>
-                          <div>
-                            <h4 className="font-semibold text-foreground text-sm">Transport Routes</h4>
-                            <div className="flex items-center gap-1">
-                              <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-                              <span className="text-xs text-muted-foreground">Live routing</span>
-                            </div>
-                          </div>
-                        </div>
+                  {/* User Question */}
+                  <div className="flex justify-end gap-3">
+                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
+                      <p className="text-sm text-foreground">What's happening tonight near my hotel?</p>
+                    </div>
+                    <img 
+                      src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
+                      alt="User"
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                  </div>
 
-                        {/* User Question */}
-                        <div className="flex justify-end mb-3">
-                          <div className="bg-white/40 dark:bg-slate-700/40 backdrop-blur-sm rounded-xl p-2 max-w-xs border border-white/20">
-                            <p className="text-xs text-foreground">How do I get to the jazz club?</p>
-                          </div>
-                        </div>
+                  {/* Quick Actions */}
+                  <div className="flex gap-2 pt-2 border-t border-gray-100 dark:border-slate-700">
+                    <button className="flex-1 bg-primary/10 text-primary py-2 px-3 rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors">
+                      🎫 Get Tickets
+                    </button>
+                    <button className="flex-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 py-2 px-3 rounded-lg text-xs font-medium hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
+                      📍 Directions
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-                        {/* AI Transport Response */}
-                        <div className="bg-white/30 dark:bg-slate-800/30 backdrop-blur-sm rounded-xl p-3 border border-white/20">
-                          <p className="text-xs text-foreground mb-3">🚌 Best routes to Jazz Garden:</p>
-                          
-                          {/* Transport Options */}
-                          <div className="space-y-2">
-                            <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg p-2 border border-white/20">
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                  <span className="text-green-600 text-xs">🚇</span>
-                                  <div>
-                                    <p className="text-xs font-medium text-foreground">BTS Skytrain</p>
-                                    <p className="text-xs text-muted-foreground">15 min • ฿42</p>
-                                  </div>
-                                </div>
-                                <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-2 py-1 rounded-full">Fast</span>
-                              </div>
-                            </div>
-                            
-                            <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg p-2 border border-white/20">
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                  <span className="text-yellow-600 text-xs">🛺</span>
-                                  <div>
-                                    <p className="text-xs font-medium text-foreground">Tuk-tuk</p>
-                                    <p className="text-xs text-muted-foreground">20 min • ฿120</p>
-                                  </div>
-                                </div>
-                                <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 px-2 py-1 rounded-full">Scenic</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+              {/* Smaller overlapping transport routing chat example */}
+              <div className="absolute -left-8 top-12 z-10 animate-float">
+                <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-lg rounded-xl p-4 shadow-xl border border-white/30 dark:border-slate-700/50 max-w-[240px]">
+                  <div className="flex items-center gap-2 mb-3 pb-2 border-b border-gray-200/50 dark:border-slate-600/50">
+                    <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs">🗺️</span>
+                    </div>
+                    <span className="text-xs font-medium text-foreground">Route Assistant</span>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex justify-end">
+                      <div className="bg-blue-500 text-white rounded-lg px-2 py-1 text-xs max-w-[160px]">
+                        How do I get from airport to my hotel?
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-2">
+                      <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-white text-[8px]">🤖</span>
+                      </div>
+                      <div className="bg-gray-100/80 dark:bg-slate-700/80 rounded-lg px-2 py-1 text-xs text-muted-foreground">
+                        🚄 **Airport Rail Link**
+                        45 mins • 45฿ • Most reliable
+                        
+                        🚕 **Taxi**
+                        60 mins • 400฿ • Door-to-door
+                        
+                        🚌 **Bus A1**
+                        60 mins • 30฿ • Budget option
+                      </div>
+                    </div>
+                    
+                    <div className="flex justify-end">
+                      <div className="bg-blue-500 text-white rounded-lg px-2 py-1 text-xs">
+                        Book the train!
                       </div>
                     </div>
                   </div>
