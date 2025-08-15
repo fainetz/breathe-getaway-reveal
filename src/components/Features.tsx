@@ -269,10 +269,9 @@ const Features = () => {
                   </div>
                 </div>
                 
-                {/* Main Chat Interface */}
-                <div className="relative">
-                  {/* Primary Chat Example */}
-                  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md">
+                {/* AI Assistant Interface Mockup */}
+                <div className="relative group cursor-pointer">
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md transition-all duration-300 group-hover:shadow-3xl">
                     {/* Assistant Header */}
                     <div className="bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 p-4 border-b border-gray-100 dark:border-slate-700">
                       <div className="flex items-center gap-3">
@@ -289,7 +288,7 @@ const Features = () => {
                       </div>
                     </div>
                     
-                    {/* Main Chat Messages */}
+                    {/* Chat Messages */}
                     <div className="p-4 space-y-4 h-80 overflow-y-auto">
                       {/* AI Response First */}
                       <div className="flex justify-start gap-3">
@@ -358,56 +357,63 @@ const Features = () => {
                     </div>
                   </div>
 
-                  {/* Floating Glassmorphism Transport Chat */}
-                  <div className="absolute -bottom-6 -right-8 w-80 bg-white/20 dark:bg-slate-800/20 backdrop-blur-xl border border-white/30 dark:border-white/10 rounded-2xl p-4 shadow-2xl hover:bg-white/30 dark:hover:bg-slate-800/30 hover:shadow-3xl transition-all duration-500 z-10">
-                    <div className="space-y-3">
-                      {/* Transport Header */}
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-6 h-6 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                          <span className="text-white text-xs">🤖</span>
-                        </div>
-                        <span className="text-xs font-medium text-foreground/80">Transport Assistant</span>
-                        <div className="w-1 h-1 bg-green-500 rounded-full animate-pulse ml-auto"></div>
-                      </div>
-
-                      {/* AI Transport Response */}
-                      <div className="bg-white/40 dark:bg-slate-800/40 backdrop-blur-sm rounded-xl p-3 border border-white/20 dark:border-white/10">
-                        <p className="text-xs text-foreground mb-2">🚌 Routes to Jazz Garden:</p>
-                        
-                        {/* Transport Options */}
-                        <div className="space-y-2">
-                          <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-lg p-2 border border-white/20">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-green-600 text-xs">🚇</span>
-                                <div>
-                                  <p className="text-xs font-medium text-foreground">BTS Skytrain</p>
-                                  <p className="text-xs text-muted-foreground">15 min • ฿42</p>
-                                </div>
-                              </div>
-                              <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-2 py-1 rounded-full">Fast</span>
+                  {/* Hover Overlay - Transport Routing with Glassmorphism */}
+                  <div className="absolute inset-0 bg-white/10 dark:bg-slate-800/10 backdrop-blur-2xl rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center z-10">
+                    <div className="bg-white/20 dark:bg-slate-800/20 backdrop-blur-xl border border-white/30 dark:border-white/10 rounded-2xl p-6 shadow-2xl max-w-xs">
+                      <div className="space-y-4">
+                        {/* Transport Header */}
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                            <span className="text-white text-sm">🤖</span>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-foreground text-sm">Transport Routes</h4>
+                            <div className="flex items-center gap-1">
+                              <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                              <span className="text-xs text-muted-foreground">Live routing</span>
                             </div>
                           </div>
+                        </div>
+
+                        {/* User Question */}
+                        <div className="flex justify-end mb-3">
+                          <div className="bg-white/40 dark:bg-slate-700/40 backdrop-blur-sm rounded-xl p-2 max-w-xs border border-white/20">
+                            <p className="text-xs text-foreground">How do I get to the jazz club?</p>
+                          </div>
+                        </div>
+
+                        {/* AI Transport Response */}
+                        <div className="bg-white/30 dark:bg-slate-800/30 backdrop-blur-sm rounded-xl p-3 border border-white/20">
+                          <p className="text-xs text-foreground mb-3">🚌 Best routes to Jazz Garden:</p>
                           
-                          <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-lg p-2 border border-white/20">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-yellow-600 text-xs">🛺</span>
-                                <div>
-                                  <p className="text-xs font-medium text-foreground">Tuk-tuk</p>
-                                  <p className="text-xs text-muted-foreground">20 min • ฿120</p>
+                          {/* Transport Options */}
+                          <div className="space-y-2">
+                            <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg p-2 border border-white/20">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-green-600 text-xs">🚇</span>
+                                  <div>
+                                    <p className="text-xs font-medium text-foreground">BTS Skytrain</p>
+                                    <p className="text-xs text-muted-foreground">15 min • ฿42</p>
+                                  </div>
                                 </div>
+                                <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-2 py-1 rounded-full">Fast</span>
                               </div>
-                              <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 px-2 py-1 rounded-full">Scenic</span>
+                            </div>
+                            
+                            <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg p-2 border border-white/20">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-yellow-600 text-xs">🛺</span>
+                                  <div>
+                                    <p className="text-xs font-medium text-foreground">Tuk-tuk</p>
+                                    <p className="text-xs text-muted-foreground">20 min • ฿120</p>
+                                  </div>
+                                </div>
+                                <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 px-2 py-1 rounded-full">Scenic</span>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-
-                      {/* User Question */}
-                      <div className="flex justify-end">
-                        <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-sm rounded-xl p-2 max-w-xs border border-white/20">
-                          <p className="text-xs text-foreground">How do I get there?</p>
                         </div>
                       </div>
                     </div>
