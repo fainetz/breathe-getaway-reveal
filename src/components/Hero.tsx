@@ -31,7 +31,7 @@ const Hero = () => {
       id: 'azure-beach-club',
       title: 'Azure Beach Club',
       description: 'Pristine white sands meet crystal-clear waters in this exclusive retreat',
-      image: '/lovable-uploads/349adef3-59ea-405e-bc62-d704ea49bf62.png',
+      image: '/lovable-uploads/phonebg.png',
       label: 'FLIGHT DESTINATION',
       labelColor: 'bg-gradient-to-r from-blue-500 to-cyan-600',
       comingSoon: false
@@ -232,7 +232,7 @@ const Hero = () => {
   <div className="hidden sm:flex mt-4 text-white/70 text-sm flex-col items-center w-fit animate-bounce-slow sm:ml-2">
     <span className="font-medium">Learn more</span>
     <svg
-      className="w-5 h-5 mt-1 text-white/80"
+      className="w-5 h-5 mt-4 text-white/80"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
