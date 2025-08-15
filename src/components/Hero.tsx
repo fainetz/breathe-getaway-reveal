@@ -118,9 +118,9 @@ const Hero = () => {
       <div className="hidden md:block">
         <HeroFeatureCard image="/lovable-uploads/8fa65681-7ecf-47e5-9043-3e9404f82eb6.png" />
       </div>
-      {/* Hero Background Image Overlay - Mobile - using lighter image for better text visibility */}
+      {/* Hero Background Image Overlay - Mobile - using jungle pool villa image */}
       <div className="block md:hidden">
-        <HeroFeatureCard image="/lovable-uploads/01acecfb-4a5e-4651-8343-d178f52a9ff1.png" />
+        <HeroFeatureCard image="/lovable-uploads/bd211cbe-1c3c-4836-9efb-bb3bec1325de.png" />
       </div>
       {/* 3D Background */}
       <ThreeBackground />
