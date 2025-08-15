@@ -164,7 +164,7 @@ const Waitlist = () => {
             {/* Travel Tools */}
             <div className="space-y-2">
               <Label htmlFor="desiredSections" className="text-sm font-medium text-gray-700">
-                What travel tools would you use?
+                What feature would you like to see on this site?
               </Label>
               <Textarea
                 id="desiredSections"
