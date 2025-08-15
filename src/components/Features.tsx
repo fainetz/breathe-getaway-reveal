@@ -285,33 +285,33 @@ const Features = () => {
 
                   {/* AI Response with Live Events */}
                   <div className="flex justify-end gap-3">
-                    <div className="bg-gradient-to-r from-primary to-primary/90 rounded-2xl p-3 max-w-xs text-white">
-                      <p className="text-sm mb-3">Here are some great options near your hotel tonight! 🌃</p>
+                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
+                      <p className="text-sm mb-3 text-foreground">Here are some great options near your hotel tonight! 🌃</p>
                       
                       {/* Events List */}
                       <div className="space-y-2">
-                        <div className="bg-white/10 rounded-lg p-2">
+                        <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
                           <div className="flex items-center gap-2 mb-1">
                             <span className="text-xs">🎵</span>
-                            <span className="text-xs font-medium">Rooftop Jazz Night</span>
+                            <span className="text-xs font-medium text-foreground">Rooftop Jazz Night</span>
                           </div>
-                          <p className="text-xs opacity-90">Sky Bar • 8PM • 5 min walk</p>
+                          <p className="text-xs text-muted-foreground">Sky Bar • 8PM • 5 min walk</p>
                         </div>
                         
-                        <div className="bg-white/10 rounded-lg p-2">
+                        <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
                           <div className="flex items-center gap-2 mb-1">
                             <span className="text-xs">🍜</span>
-                            <span className="text-xs font-medium">Night Market</span>
+                            <span className="text-xs font-medium text-foreground">Night Market</span>
                           </div>
-                          <p className="text-xs opacity-90">Chatuchak • Until 2AM • 10 min ride</p>
+                          <p className="text-xs text-muted-foreground">Chatuchak • Until 2AM • 10 min ride</p>
                         </div>
                         
-                        <div className="bg-white/10 rounded-lg p-2">
+                        <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
                           <div className="flex items-center gap-2 mb-1">
                             <span className="text-xs">🏛️</span>
-                            <span className="text-xs font-medium">Temple Light Show</span>
+                            <span className="text-xs font-medium text-foreground">Temple Light Show</span>
                           </div>
-                          <p className="text-xs opacity-90">Wat Pho • 9PM • Free entry</p>
+                          <p className="text-xs text-muted-foreground">Wat Pho • 9PM • Free entry</p>
                         </div>
                       </div>
                     </div>
@@ -334,33 +334,33 @@ const Features = () => {
 
                   {/* AI Response with Transport Options */}
                   <div className="flex justify-end gap-3">
-                    <div className="bg-gradient-to-r from-primary to-primary/90 rounded-2xl p-3 max-w-xs text-white">
-                      <p className="text-sm mb-2">Several options to get there! 🚗</p>
+                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
+                      <p className="text-sm mb-2 text-foreground">Several options to get there! 🚗</p>
                       
                       <div className="space-y-2">
-                        <div className="bg-white/10 rounded-lg p-2">
+                        <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
                           <div className="flex justify-between items-center">
-                            <span className="text-xs font-medium">🚇 BTS Skytrain</span>
-                            <span className="text-xs">₿45 • 12 min</span>
+                            <span className="text-xs font-medium text-foreground">🚇 BTS Skytrain</span>
+                            <span className="text-xs text-muted-foreground">₿45 • 12 min</span>
                           </div>
                         </div>
                         
-                        <div className="bg-white/10 rounded-lg p-2">
+                        <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
                           <div className="flex justify-between items-center">
-                            <span className="text-xs font-medium">🛵 Motorbike Taxi</span>
-                            <span className="text-xs">₿80 • 8 min</span>
+                            <span className="text-xs font-medium text-foreground">🛵 Motorbike Taxi</span>
+                            <span className="text-xs text-muted-foreground">₿80 • 8 min</span>
                           </div>
                         </div>
                         
-                        <div className="bg-white/10 rounded-lg p-2">
+                        <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
                           <div className="flex justify-between items-center">
-                            <span className="text-xs font-medium">🚕 Grab Car</span>
-                            <span className="text-xs">₿120 • 15 min</span>
+                            <span className="text-xs font-medium text-foreground">🚕 Grab Car</span>
+                            <span className="text-xs text-muted-foreground">₿120 • 15 min</span>
                           </div>
                         </div>
                       </div>
                       
-                      <p className="text-xs mt-2 opacity-90">I recommend the BTS - it's reliable and you'll avoid traffic!</p>
+                      <p className="text-xs mt-2 text-muted-foreground">I recommend the BTS - it's reliable and you'll avoid traffic!</p>
                     </div>
                     <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
                       <span className="text-white text-sm">🤖</span>
@@ -370,7 +370,7 @@ const Features = () => {
               </div>
 
               {/* Smaller Overlapping Route Example */}
-              <div className="absolute -left-16 top-16 w-64 bg-white/80 dark:bg-slate-800/80 backdrop-blur-lg rounded-xl shadow-xl border border-white/20 dark:border-slate-700/50 p-3">
+              <div className="absolute -left-8 top-20 w-56 bg-white/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-xl shadow-lg border border-white/30 dark:border-slate-700/60 p-3">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center">
