@@ -138,7 +138,7 @@ const Hero = () => {
         </div>
       </nav>
 
-      <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 pt-16 md:pt-0 overflow-hidden">{/* Added mobile padding for nav */}
+      <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 pt-16 md:pt-0 overflow-hidden">{/* Fixed dark mode colors */}
         {/* Hero Background Image Overlay - Desktop */}
         <div className="hidden md:block">
           <HeroFeatureCard image="/lovable-uploads/8fa65681-7ecf-47e5-9043-3e9404f82eb6.png" />
