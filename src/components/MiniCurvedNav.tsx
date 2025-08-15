@@ -36,6 +36,7 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
 
   const currentPath = location.pathname;
   const isChatPage = currentPath === '/chat';
+  const isHomePage = currentPath === '/';
 
   // Update active index based on current path
   useEffect(() => {
@@ -245,21 +246,21 @@ const MiniCurvedNav = ({ isIntegrated = false }: MiniCurvedNavProps) => {
                   onClick={() => handleNavigation(item.path, index)}
                   className={`relative px-3 py-2 text-xs font-semibold whitespace-nowrap transition-all duration-700 ease-out select-none min-w-[95px] flex items-center justify-center tracking-wide ${
                     isActive 
-                      ? isChatPage 
+                      ? isChatPage || isHomePage
                         ? 'text-white scale-105' 
                         : isIntegrated
-                          ? 'text-white scale-105'
+                          ? theme === 'dark' ? 'text-white scale-105' : 'text-black scale-105'
                           : 'text-white md:text-foreground scale-105'
                       : distance === 1 
-                        ? isChatPage
+                        ? isChatPage || isHomePage
                           ? 'text-white/60 hover:text-white/80 scale-95 hover:scale-100'
                           : isIntegrated
-                            ? 'text-white/60 hover:text-white/80 scale-95 hover:scale-100'
+                            ? theme === 'dark' ? 'text-white/60 hover:text-white/80 scale-95 hover:scale-100' : 'text-black/60 hover:text-black/80 scale-95 hover:scale-100'
                             : 'text-white/60 md:text-foreground/50 hover:text-white/80 md:hover:text-foreground/70 scale-95 hover:scale-100'
-                        : isChatPage
+                        : isChatPage || isHomePage
                           ? 'text-white/30 scale-90'
                           : isIntegrated
-                            ? 'text-white/30 scale-90'
+                            ? theme === 'dark' ? 'text-white/30 scale-90' : 'text-black/30 scale-90'
                             : 'text-white/30 md:text-foreground/25 scale-90'
                   }`}
                   style={{
