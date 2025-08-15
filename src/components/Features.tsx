@@ -24,83 +24,189 @@ const Features = () => {
                 One prompt gives you a complete trip — flights, stays, and activities — without you planning a thing. You can adjust any part with a simple prompt, although we doubt it won't be perfect first try and when it's perfect, book it instantly, so you can be there right before sunset.
               </p>
             </div>
-            <div className="relative h-96 lg:h-[500px]">
-              {/* Central AI Brain */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">AI</span>
+            
+            <div className="relative">
+              {/* Glassmorphism Trip Plan Interface */}
+              <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/30 dark:border-slate-700/30 overflow-hidden max-w-lg">
+                {/* Header */}
+                <div className="bg-gradient-to-r from-primary/20 to-primary/10 backdrop-blur-sm p-4 border-b border-white/20 dark:border-slate-700/20">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                      <span className="text-primary text-lg font-bold">AI</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground">Your Perfect Bangkok Trip</h3>
+                      <p className="text-xs text-muted-foreground">3 days • Generated in 2.3 seconds</p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Trip Plan List */}
+                <div className="p-4 space-y-3 h-[450px] overflow-y-auto">
+                  
+                  {/* Day 1 */}
+                  <div className="bg-white/40 dark:bg-slate-700/40 backdrop-blur-sm rounded-2xl p-4 border border-white/30 dark:border-slate-600/30">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center">
+                        <span className="text-white text-xs font-bold">1</span>
+                      </div>
+                      <h4 className="font-semibold text-foreground">Day 1 - Arrival & Old City</h4>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      {/* Activity 1 */}
+                      <div className="bg-white/60 dark:bg-slate-600/60 backdrop-blur-sm rounded-xl p-3 border border-white/40 dark:border-slate-500/40">
+                        <div className="flex items-start gap-3">
+                          <img 
+                            src="/lovable-uploads/369021b4-c3a0-475c-be3b-9f9a6a9832a9.png"
+                            alt="Grand Palace"
+                            className="w-16 h-16 rounded-lg object-cover"
+                          />
+                          <div className="flex-1">
+                            <h5 className="text-sm font-medium text-foreground">Grand Palace & Wat Pho</h5>
+                            <p className="text-xs text-muted-foreground mb-1">9:00 AM - 12:00 PM</p>
+                            <p className="text-xs text-muted-foreground">Early morning visit to avoid crowds. Temple complex with stunning architecture.</p>
+                            <div className="flex items-center gap-2 mt-2">
+                              <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">Must-see</span>
+                              <span className="text-xs text-muted-foreground">₿500</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Activity 2 */}
+                      <div className="bg-white/60 dark:bg-slate-600/60 backdrop-blur-sm rounded-xl p-3 border border-white/40 dark:border-slate-500/40">
+                        <div className="flex items-start gap-3">
+                          <img 
+                            src="/lovable-uploads/dea72317-53c3-46c5-9b99-aab06114fde8.png"
+                            alt="Floating Market"
+                            className="w-16 h-16 rounded-lg object-cover"
+                          />
+                          <div className="flex-1">
+                            <h5 className="text-sm font-medium text-foreground">Chatuchak Weekend Market</h5>
+                            <p className="text-xs text-muted-foreground mb-1">2:00 PM - 5:00 PM</p>
+                            <p className="text-xs text-muted-foreground">Massive market with local food, crafts, and vintage finds.</p>
+                            <div className="flex items-center gap-2 mt-2">
+                              <span className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-2 py-1 rounded-full">Shopping</span>
+                              <span className="text-xs text-muted-foreground">Free entry</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Day 2 */}
+                  <div className="bg-white/40 dark:bg-slate-700/40 backdrop-blur-sm rounded-2xl p-4 border border-white/30 dark:border-slate-600/30">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-400 rounded-full flex items-center justify-center">
+                        <span className="text-white text-xs font-bold">2</span>
+                      </div>
+                      <h4 className="font-semibold text-foreground">Day 2 - Modern Bangkok</h4>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      {/* Activity 3 */}
+                      <div className="bg-white/60 dark:bg-slate-600/60 backdrop-blur-sm rounded-xl p-3 border border-white/40 dark:border-slate-500/40">
+                        <div className="flex items-start gap-3">
+                          <img 
+                            src="/lovable-uploads/e619ccb5-67bb-4172-a634-8a6911184a7c.png"
+                            alt="Rooftop Bar"
+                            className="w-16 h-16 rounded-lg object-cover"
+                          />
+                          <div className="flex-1">
+                            <h5 className="text-sm font-medium text-foreground">Sky Bar Rooftop Experience</h5>
+                            <p className="text-xs text-muted-foreground mb-1">6:00 PM - 10:00 PM</p>
+                            <p className="text-xs text-muted-foreground">Sunset cocktails with panoramic city views from 63rd floor.</p>
+                            <div className="flex items-center gap-2 mt-2">
+                              <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 px-2 py-1 rounded-full">Nightlife</span>
+                              <span className="text-xs text-muted-foreground">₿800/drink</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Activity 4 */}
+                      <div className="bg-white/60 dark:bg-slate-600/60 backdrop-blur-sm rounded-xl p-3 border border-white/40 dark:border-slate-500/40">
+                        <div className="flex items-start gap-3">
+                          <img 
+                            src="/lovable-uploads/42abd49b-cc9e-422e-863c-11d618b69cf3.png"
+                            alt="Street Food"
+                            className="w-16 h-16 rounded-lg object-cover"
+                          />
+                          <div className="flex-1">
+                            <h5 className="text-sm font-medium text-foreground">Khao San Road Food Tour</h5>
+                            <p className="text-xs text-muted-foreground mb-1">8:00 PM - 11:00 PM</p>
+                            <p className="text-xs text-muted-foreground">Local street food adventure with hidden gems and classics.</p>
+                            <div className="flex items-center gap-2 mt-2">
+                              <span className="text-xs bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 px-2 py-1 rounded-full">Food</span>
+                              <span className="text-xs text-muted-foreground">₿300</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Day 3 */}
+                  <div className="bg-white/40 dark:bg-slate-700/40 backdrop-blur-sm rounded-2xl p-4 border border-white/30 dark:border-slate-600/30">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-6 h-6 bg-gradient-to-r from-green-500 to-emerald-400 rounded-full flex items-center justify-center">
+                        <span className="text-white text-xs font-bold">3</span>
+                      </div>
+                      <h4 className="font-semibold text-foreground">Day 3 - Relaxation</h4>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      {/* Activity 5 */}
+                      <div className="bg-white/60 dark:bg-slate-600/60 backdrop-blur-sm rounded-xl p-3 border border-white/40 dark:border-slate-500/40">
+                        <div className="flex items-start gap-3">
+                          <img 
+                            src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
+                            alt="Spa Treatment"
+                            className="w-16 h-16 rounded-lg object-cover"
+                          />
+                          <div className="flex-1">
+                            <h5 className="text-sm font-medium text-foreground">Traditional Thai Spa</h5>
+                            <p className="text-xs text-muted-foreground mb-1">10:00 AM - 1:00 PM</p>
+                            <p className="text-xs text-muted-foreground">Authentic Thai massage and spa treatments for ultimate relaxation.</p>
+                            <div className="flex items-center gap-2 mt-2">
+                              <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">Wellness</span>
+                              <span className="text-xs text-muted-foreground">₿1,200</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Trip Summary */}
+                  <div className="bg-gradient-to-r from-primary/20 to-primary/10 backdrop-blur-sm rounded-2xl p-4 border border-primary/30">
+                    <div className="text-center">
+                      <h4 className="font-semibold text-foreground mb-2">Trip Summary</h4>
+                      <div className="flex justify-center gap-4 text-xs text-muted-foreground">
+                        <span>5 Activities</span>
+                        <span>•</span>
+                        <span>3 Days</span>
+                        <span>•</span>
+                        <span>₿2,800 total</span>
+                      </div>
+                      <button className="mt-3 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
+                        Book Complete Trip
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
               
-              {/* Floating input bubble */}
-              <div className="absolute bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-xl border border-gray-100 dark:border-slate-700 animate-float" style={{ top: '5%', left: '10%', maxWidth: '200px' }}>
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-sm">AI</div>
-                  <div className="flex-1">
-                    <p className="text-xs text-muted-foreground mb-1">You say:</p>
-                    <p className="text-sm font-medium text-foreground">"I want to go somewhere warm next weekend"</p>
-                  </div>
-                </div>
+              {/* Floating Elements */}
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-primary/20 to-primary/10 rounded-full backdrop-blur-sm flex items-center justify-center animate-pulse">
+                <span className="text-primary text-sm font-bold">Perfect</span>
               </div>
-
-              {/* Generated trip components */}
-              <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-3 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float-delayed" style={{ top: '15%', right: '5%' }}>
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-orange-500 to-red-400 flex items-center justify-center text-white text-sm">F</div>
-                  <div>
-                    <p className="text-xs font-medium text-foreground">Flight</p>
-                    <p className="text-xs text-muted-foreground">$280</p>
-                  </div>
-                </div>
+              
+              <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-r from-green-500/20 to-emerald-400/20 rounded-full backdrop-blur-sm flex items-center justify-center">
+                <span className="text-green-600 text-xs font-bold">Ready</span>
               </div>
-
-              <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-3 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float" style={{ top: '45%', right: '10%' }}>
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-400 flex items-center justify-center text-white text-sm">H</div>
-                  <div>
-                    <p className="text-xs font-medium text-foreground">Hotel</p>
-                    <p className="text-xs text-muted-foreground">$120/night</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute bg-white dark:bg-slate-800 rounded-xl p-3 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-float-delayed" style={{ top: '70%', left: '5%' }}>
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-pink-400 flex items-center justify-center text-white text-sm">A</div>
-                  <div>
-                    <p className="text-xs font-medium text-foreground">Activities</p>
-                    <p className="text-xs text-muted-foreground">5 planned</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Complete trip card */}
-              <div className="absolute bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 rounded-2xl p-4 shadow-xl border-2 border-primary/20 animate-float" style={{ bottom: '10%', right: '15%', maxWidth: '180px' }}>
-                <div className="text-center">
-                  <div className="w-12 h-12 mx-auto mb-2 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center text-white">Ready</div>
-                  <p className="text-sm font-semibold text-foreground mb-1">Trip Ready!</p>
-                  <p className="text-xs text-muted-foreground">Book in 1 click</p>
-                </div>
-              </div>
-
-              {/* Connection lines */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
-                <defs>
-                  <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="rgb(59, 130, 246)" />
-                    <stop offset="100%" stopColor="rgb(147, 51, 234)" />
-                  </linearGradient>
-                </defs>
-                <path d="M 50% 50% Q 80% 20% 90% 25%" stroke="url(#connectionGradient)" strokeWidth="2" fill="none" strokeDasharray="5,5">
-                  <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite"/>
-                </path>
-                <path d="M 50% 50% Q 80% 70% 85% 60%" stroke="url(#connectionGradient)" strokeWidth="2" fill="none" strokeDasharray="5,5">
-                  <animate attributeName="stroke-dashoffset" values="0;10" dur="2.5s" repeatCount="indefinite"/>
-                </path>
-                <path d="M 50% 50% Q 20% 80% 15% 75%" stroke="url(#connectionGradient)" strokeWidth="2" fill="none" strokeDasharray="5,5">
-                  <animate attributeName="stroke-dashoffset" values="0;10" dur="3s" repeatCount="indefinite"/>
-                </path>
-              </svg>
             </div>
           </div>
         </div>
@@ -252,7 +358,7 @@ const Features = () => {
             </div>
             <div className="relative">
               {/* Main Chat Interface - Activities Example */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-lg">"
+              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-lg">
                 {/* Assistant Header */}
                 <div className="bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 p-4 border-b border-gray-100 dark:border-slate-700">
                   <div className="flex items-center gap-3">
@@ -270,7 +376,7 @@ const Features = () => {
                 </div>
                 
                 {/* Chat Messages */}
-                <div className="p-4 space-y-4 h-[500px] overflow-y-auto">"
+                <div className="p-4 space-y-4 h-[500px] overflow-y-auto">
                   {/* User Question */}
                   <div className="flex justify-start gap-3">
                     <img 
