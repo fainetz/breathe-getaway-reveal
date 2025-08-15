@@ -191,7 +191,7 @@ const Hero = () => {
           </p>
           
           {/* Join Waitlist Button */}
-          <div className="mb-6 animate-fade-in px-2 sm:px-0 flex justify-center lg:justify-start lg:ml-8" style={{ animationDelay: '0.6s' }}>
+          <div className="mb-6 animate-fade-in px-2 sm:px-0 flex justify-center" style={{ animationDelay: '0.6s' }}>
             <Link to="/waitlist">
               <Button className="bg-black dark:bg-white text-white dark:text-black font-medium px-12 py-3 text-lg rounded-lg hover:bg-black/90 dark:hover:bg-white/90 transition-colors duration-200 flex items-center gap-3 w-full sm:w-auto min-w-[280px]">
                 Join the Waitlist
