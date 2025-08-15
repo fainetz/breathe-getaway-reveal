@@ -96,12 +96,6 @@ const Waitlist = () => {
 
       <div className="flex min-h-screen items-center justify-center px-4 py-12">
         <div className="w-full max-w-md space-y-8">
-          {/* Icon */}
-          <div className="text-center">
-            <div className="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-gray-100 mb-6">
-              <Plane className="w-8 h-8 text-gray-700" />
-            </div>
-          </div>
 
           {/* Header */}
           <div className="text-center space-y-2">
