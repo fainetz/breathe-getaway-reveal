@@ -270,7 +270,7 @@ const Features = () => {
                 </div>
                 
                 {/* Overlapping Chat Examples */}
-                <div className="relative p-4 h-80 overflow-hidden">
+                <div className="relative p-4 h-96 overflow-hidden bg-gradient-to-br from-gray-50/50 to-white/50 dark:from-slate-900/50 dark:to-slate-800/50 rounded-xl">
                   
                   {/* First Chat - Places to Go (Background) */}
                   <div className="absolute top-4 left-2 right-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 dark:border-slate-700/20 p-4 transform rotate-1 z-10">
