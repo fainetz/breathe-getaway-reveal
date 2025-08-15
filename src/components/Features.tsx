@@ -252,7 +252,7 @@ const Features = () => {
             </div>
             <div className="relative">
               {/* Main Chat Interface - Activities Example */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-lg">"
                 {/* Assistant Header */}
                 <div className="bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 p-4 border-b border-gray-100 dark:border-slate-700">
                   <div className="flex items-center gap-3">
@@ -270,7 +270,7 @@ const Features = () => {
                 </div>
                 
                 {/* Chat Messages */}
-                <div className="p-4 space-y-4 h-96">
+                <div className="p-4 space-y-4 h-[500px] overflow-y-auto">"
                   {/* User Question */}
                   <div className="flex justify-start gap-3">
                     <img 
@@ -431,39 +431,104 @@ const Features = () => {
                 </div>
               </div>
 
-              {/* Single Transport Example */}
-              <div className="absolute -bottom-12 -left-12 w-64 bg-white/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-xl shadow-lg border border-white/30 dark:border-slate-700/60 p-4 z-10">
-                <div className="space-y-3">
-                  <div className="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-3">
-                    <div className="flex justify-start gap-2">
-                      <img 
-                        src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
-                        alt="User"
-                        className="w-6 h-6 rounded-full object-cover"
-                      />
-                      <div className="bg-white dark:bg-slate-600 rounded-lg p-2 px-3">
-                        <p className="text-sm text-foreground">Need to get to the airport early morning. What's the best transport option?</p>
-                      </div>
+              {/* Enhanced Transport Example */}
+              <div className="absolute -right-16 top-8 w-80 bg-white/95 dark:bg-slate-800/95 backdrop-blur-lg rounded-2xl shadow-xl border border-white/40 dark:border-slate-700/60 p-5 z-10">
+                <div className="space-y-4">
+                  {/* Header */}
+                  <div className="flex items-center gap-3 pb-3 border-b border-gray-100 dark:border-slate-700">
+                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm">AI</span>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold text-foreground">Local Transport Helper</h4>
+                      <p className="text-xs text-muted-foreground">Live in Bangkok</p>
                     </div>
                   </div>
                   
-                  <div className="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-3">
-                    <div className="flex justify-end gap-2">
-                      <div className="bg-white dark:bg-slate-600 rounded-lg p-2 px-3">
-                        <div className="space-y-2">
-                          <p className="text-sm text-foreground">For early morning (5-7 AM):</p>
-                          <div className="space-y-1">
-                            <p className="text-xs text-foreground">Airport Link - 35min, ฿45</p>
-                            <p className="text-xs text-foreground">Taxi - 45min, ฿250</p>
-                            <p className="text-xs text-foreground">Grab - 40min, ฿200</p>
+                  {/* User Question */}
+                  <div className="flex justify-start gap-3">
+                    <img 
+                      src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
+                      alt="User"
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                    <div className="bg-gray-100 dark:bg-slate-700 rounded-xl p-3 max-w-xs">
+                      <p className="text-sm text-foreground">What's the cheapest way to get from Khao San Road to the airport at 6 AM?</p>
+                    </div>
+                  </div>
+                  
+                  {/* AI Response with visual transport options */}
+                  <div className="flex justify-end gap-3">
+                    <div className="bg-gray-100 dark:bg-slate-700 rounded-xl p-4 max-w-xs">
+                      <p className="text-sm text-foreground mb-3">Here are your best options for early morning travel:</p>
+                      
+                      {/* Transport Options with Icons */}
+                      <div className="space-y-3">
+                        <div className="bg-white dark:bg-slate-600 rounded-lg p-3 border border-green-200 dark:border-green-800">
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+                              <span className="text-green-600 text-lg">🚌</span>
+                            </div>
+                            <div className="flex-1">
+                              <div className="flex justify-between items-center">
+                                <span className="text-sm font-medium text-foreground">Airport Bus A1</span>
+                                <span className="text-sm font-bold text-green-600">฿30</span>
+                              </div>
+                              <p className="text-xs text-muted-foreground">60 min • Runs 24/7</p>
+                            </div>
                           </div>
-                          <p className="text-xs text-muted-foreground mt-2">Airport Link starts at 6 AM. For earlier flights, book a taxi the night before!</p>
+                          <div className="bg-green-50 dark:bg-green-900/20 rounded p-2">
+                            <p className="text-xs text-green-700 dark:text-green-400">💰 Cheapest option • Walk 5 min to Democracy Monument</p>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-white dark:bg-slate-600 rounded-lg p-3">
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center">
+                              <span className="text-orange-600 text-lg">🚕</span>
+                            </div>
+                            <div className="flex-1">
+                              <div className="flex justify-between items-center">
+                                <span className="text-sm font-medium text-foreground">Taxi</span>
+                                <span className="text-sm font-bold text-foreground">฿300-400</span>
+                              </div>
+                              <p className="text-xs text-muted-foreground">45 min • Door to door</p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-white dark:bg-slate-600 rounded-lg p-3">
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+                              <span className="text-purple-600 text-lg">📱</span>
+                            </div>
+                            <div className="flex-1">
+                              <div className="flex justify-between items-center">
+                                <span className="text-sm font-medium text-foreground">Grab</span>
+                                <span className="text-sm font-bold text-foreground">฿250-350</span>
+                              </div>
+                              <p className="text-xs text-muted-foreground">40 min • Book ahead</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <div className="w-6 h-6 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                        <span className="text-white text-xs">AI</span>
+                      
+                      <div className="mt-3 p-2 bg-blue-50 dark:bg-blue-900/20 rounded">
+                        <p className="text-xs text-blue-700 dark:text-blue-400">💡 Pro tip: Book a Grab the night before for 6 AM pickup to guarantee availability!</p>
                       </div>
                     </div>
+                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm">AI</span>
+                    </div>
+                  </div>
+                  
+                  {/* Live Location Feature */}
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-3 border border-blue-200 dark:border-blue-800">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-medium text-foreground">Live tracking available</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">I can track your transport and send updates if there are delays or better routes!</p>
                   </div>
                 </div>
               </div>
