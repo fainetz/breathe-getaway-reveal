@@ -126,9 +126,8 @@ const Community = () => {
                 <Link to="/waitlist">
                   <Button 
                     size="lg"
-                    className="w-full sm:w-auto bg-white/20 text-white border border-white/30 hover:bg-white/30 backdrop-blur-sm"
-                  >
-                    <Sparkles className="w-4 h-4 mr-2" />
+                    className="bg-black dark:bg-white text-white dark:text-black font-medium px-8 py-3 text-lg rounded-lg hover:bg-black/90 dark:hover:bg-white/90 transition-colors duration-200 flex items-center gap-3">
+                   
                     Join the Community Waitlist
                   </Button>
                 </Link>
