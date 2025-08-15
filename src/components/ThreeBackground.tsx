@@ -123,31 +123,31 @@ const ThreeBackground = () => {
   }, []);
 
   const shapes = useMemo(() => {
-    // Mobile-optimized positions - closer and fewer shapes
+    // Mobile-optimized positions - closer and fewer shapes with neutral colors
     if (isMobile) {
       return [
-        { position: [-2, 1, -2] as [number, number, number], color: theme === 'light' ? '#1e40af' : '#3b82f6', type: 'sphere' as const },
-        { position: [2, -1, -3] as [number, number, number], color: theme === 'light' ? '#059669' : '#10b981', type: 'octahedron' as const },
-        { position: [-1, -2, -2] as [number, number, number], color: theme === 'light' ? '#ec4899' : '#f472b6', type: 'torus' as const },
+        { position: [-2, 1, -2] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'sphere' as const },
+        { position: [2, -1, -3] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'octahedron' as const },
+        { position: [-1, -2, -2] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'torus' as const },
         { position: [1, 2, -4] as [number, number, number], color: theme === 'light' ? '#374151' : '#6b7280', type: 'tetrahedron' as const },
-        { position: [-2, 0, -3] as [number, number, number], color: theme === 'light' ? '#0f766e' : '#14b8a6', type: 'sphere' as const },
+        { position: [-2, 0, -3] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'sphere' as const },
       ];
     }
     
-    // Desktop positions - more spread out
+    // Desktop positions - more spread out with neutral colors
     return [
-      { position: [-4, 1, -3] as [number, number, number], color: theme === 'light' ? '#1e40af' : '#3b82f6', type: 'sphere' as const },
-      { position: [3, -1, -2] as [number, number, number], color: theme === 'light' ? '#059669' : '#10b981', type: 'octahedron' as const },
-      { position: [-2, -2, -4] as [number, number, number], color: theme === 'light' ? '#ec4899' : '#f472b6', type: 'torus' as const },
+      { position: [-4, 1, -3] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'sphere' as const },
+      { position: [3, -1, -2] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'octahedron' as const },
+      { position: [-2, -2, -4] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'torus' as const },
       { position: [5, 2, -5] as [number, number, number], color: theme === 'light' ? '#374151' : '#6b7280', type: 'tetrahedron' as const },
-      { position: [-3, 3, -2] as [number, number, number], color: theme === 'light' ? '#1e3a8a' : '#2563eb', type: 'sphere' as const },
-      { position: [2, -3, -6] as [number, number, number], color: theme === 'light' ? '#065f46' : '#047857', type: 'octahedron' as const },
+      { position: [-3, 3, -2] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'sphere' as const },
+      { position: [2, -3, -6] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'octahedron' as const },
       { position: [-5, -1, -1] as [number, number, number], color: theme === 'light' ? '#1f2937' : '#4b5563', type: 'sphere' as const },
-      { position: [1, 4, -4] as [number, number, number], color: theme === 'light' ? '#0f766e' : '#14b8a6', type: 'torus' as const },
+      { position: [1, 4, -4] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'torus' as const },
       { position: [4, 0, -7] as [number, number, number], color: theme === 'light' ? '#111827' : '#1f2937', type: 'sphere' as const },
-      { position: [-1, -4, -3] as [number, number, number], color: theme === 'light' ? '#1d4ed8' : '#3b82f6', type: 'tetrahedron' as const },
-      { position: [6, -2, -3] as [number, number, number], color: theme === 'light' ? '#047857' : '#059669', type: 'octahedron' as const },
-      { position: [-6, 2, -5] as [number, number, number], color: theme === 'light' ? '#1e40af' : '#2563eb', type: 'torus' as const },
+      { position: [-1, -4, -3] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'tetrahedron' as const },
+      { position: [6, -2, -3] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'octahedron' as const },
+      { position: [-6, 2, -5] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'torus' as const },
     ];
   }, [theme, isMobile]);
 
