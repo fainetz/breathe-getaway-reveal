@@ -114,9 +114,13 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 pt-0 md:pt-0 overflow-hidden">{/* Mobile spacing for nav */}
-      {/* Hero Background Image Overlay - Desktop only */}
+      {/* Hero Background Image Overlay - Desktop */}
       <div className="hidden md:block">
         <HeroFeatureCard image="/lovable-uploads/8fa65681-7ecf-47e5-9043-3e9404f82eb6.png" />
+      </div>
+      {/* Hero Background Image Overlay - Mobile */}
+      <div className="block md:hidden">
+        <HeroFeatureCard image="/lovable-uploads/16800de7-0a81-435a-9ba5-8963d70d8c39.png" />
       </div>
       {/* 3D Background */}
       <ThreeBackground />
@@ -178,11 +182,11 @@ const Hero = () => {
       <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 max-w-7xl mx-auto mt-8 md:mt-8">{/* Reduced top margin for mobile nav spacing */}
         {/* Left side - Main heading and description */}
         <div className="text-center lg:text-left lg:pr-8 order-1 lg:order-1">
-          <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-geist font-black sm:font-semibold leading-[1.1] sm:leading-[1.1] text-white mb-6 sm:mb-6 animate-fade-in px-2 sm:px-0">
+          <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-geist font-black leading-[1.1] sm:leading-[1.1] text-white mb-6 sm:mb-6 animate-fade-in px-2 sm:px-0 drop-shadow-lg">
             Skip the Plan. Get the Thrill.
           </h1>
           
-          <p className="text-lg sm:text-lg md:text-xl lg:text-xl text-white/90 leading-relaxed mb-6 sm:mb-8 animate-fade-in px-2 sm:px-0 max-w-md mx-auto lg:mx-0 font-bold sm:font-medium" style={{ animationDelay: '0.3s' }}>
+          <p className="text-lg sm:text-lg md:text-xl lg:text-xl text-white leading-relaxed mb-6 sm:mb-8 animate-fade-in px-2 sm:px-0 max-w-md mx-auto lg:mx-0 font-bold drop-shadow-md" style={{ animationDelay: '0.3s' }}>
             the only travel platform made for spontaneous travelers.
           </p>
           
