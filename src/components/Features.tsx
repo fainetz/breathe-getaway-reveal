@@ -369,8 +369,8 @@ const Features = () => {
                 </div>
               </div>
 
-              {/* Smaller Overlapping Example - Bottom Left */}
-              <div className="absolute left-0 bottom-0 w-52 bg-white/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-xl shadow-lg border border-white/30 dark:border-slate-700/60 p-3">
+              {/* First Overlapping Example - Transport */}
+              <div className="absolute -left-6 top-16 w-52 bg-white/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-xl shadow-lg border border-white/30 dark:border-slate-700/60 p-3">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-6 h-6 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
@@ -400,6 +400,46 @@ const Features = () => {
                           <span className="text-xs font-medium text-foreground">Airport Rail Link</span>
                         </div>
                         <p className="text-xs text-muted-foreground">35 min • ₿45</p>
+                      </div>
+                      <div className="w-5 h-5 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                        <span className="text-white text-[8px]">🤖</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Second Overlapping Example - Local Spots */}
+              <div className="absolute -left-2 bottom-8 w-52 bg-white/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-xl shadow-lg border border-white/30 dark:border-slate-700/60 p-3">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-6 h-6 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs">🤖</span>
+                    </div>
+                    <span className="text-xs font-medium text-foreground">AI Travel Assistant</span>
+                  </div>
+                  
+                  <div className="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-2">
+                    <div className="flex justify-start gap-2">
+                      <img 
+                        src="/lovable-uploads/37d54649-724a-4949-a90c-e7ce7a18e976.png"
+                        alt="User"
+                        className="w-5 h-5 rounded-full object-cover"
+                      />
+                      <div className="bg-white dark:bg-slate-600 rounded-lg p-1 px-2">
+                        <p className="text-xs text-foreground">"Best coffee shop nearby?"</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-2">
+                    <div className="flex justify-end gap-2">
+                      <div className="bg-white dark:bg-slate-600 rounded-lg p-1 px-2">
+                        <div className="flex items-center gap-1 mb-1">
+                          <span className="text-xs">☕</span>
+                          <span className="text-xs font-medium text-foreground">Blue Bottle Coffee</span>
+                        </div>
+                        <p className="text-xs text-muted-foreground">2 min walk • 4.8⭐</p>
                       </div>
                       <div className="w-5 h-5 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
                         <span className="text-white text-[8px]">🤖</span>
