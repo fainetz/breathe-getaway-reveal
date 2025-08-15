@@ -288,32 +288,50 @@ const Features = () => {
                     <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
                       <p className="text-sm mb-3 text-foreground">Here are some great options near your hotel tonight! 🌃</p>
                       
-                      {/* Events List */}
-                      <div className="space-y-2">
-                        <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="text-xs">🎵</span>
-                            <span className="text-xs font-medium text-foreground">Rooftop Jazz Night</span>
-                          </div>
-                          <p className="text-xs text-muted-foreground">Sky Bar • 8PM • 5 min walk</p>
-                        </div>
-                        
-                        <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="text-xs">🍜</span>
-                            <span className="text-xs font-medium text-foreground">Night Market</span>
-                          </div>
-                          <p className="text-xs text-muted-foreground">Chatuchak • Until 2AM • 10 min ride</p>
-                        </div>
-                        
-                        <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="text-xs">🏛️</span>
-                            <span className="text-xs font-medium text-foreground">Temple Light Show</span>
-                          </div>
-                          <p className="text-xs text-muted-foreground">Wat Pho • 9PM • Free entry</p>
-                        </div>
-                      </div>
+                       {/* Events List with Images */}
+                       <div className="space-y-2">
+                         <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
+                           <div className="flex items-center gap-2 mb-1">
+                             <img 
+                               src="/lovable-uploads/e619ccb5-67bb-4172-a634-8a6911184a7c.png"
+                               alt="Rooftop Jazz"
+                               className="w-8 h-8 rounded object-cover"
+                             />
+                             <div>
+                               <span className="text-xs font-medium text-foreground">Rooftop Jazz Night</span>
+                               <p className="text-xs text-muted-foreground">Sky Bar • 8PM • 5 min walk</p>
+                             </div>
+                           </div>
+                         </div>
+                         
+                         <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
+                           <div className="flex items-center gap-2 mb-1">
+                             <img 
+                               src="/lovable-uploads/dea72317-53c3-46c5-9b99-aab06114fde8.png"
+                               alt="Night Market"
+                               className="w-8 h-8 rounded object-cover"
+                             />
+                             <div>
+                               <span className="text-xs font-medium text-foreground">Night Market</span>
+                               <p className="text-xs text-muted-foreground">Chatuchak • Until 2AM • 10 min ride</p>
+                             </div>
+                           </div>
+                         </div>
+                         
+                         <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
+                           <div className="flex items-center gap-2 mb-1">
+                             <img 
+                               src="/lovable-uploads/369021b4-c3a0-475c-be3b-9f9a6a9832a9.png"
+                               alt="Temple Light Show"
+                               className="w-8 h-8 rounded object-cover"
+                             />
+                             <div>
+                               <span className="text-xs font-medium text-foreground">Temple Light Show</span>
+                               <p className="text-xs text-muted-foreground">Wat Pho • 9PM • Free entry</p>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
                     </div>
                     <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
                       <span className="text-white text-sm">🤖</span>
@@ -369,8 +387,8 @@ const Features = () => {
                 </div>
               </div>
 
-              {/* First Side Example - Transport */}
-              <div className="absolute -right-8 top-12 w-48 bg-white/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-xl shadow-lg border border-white/30 dark:border-slate-700/60 p-3 z-10">
+              {/* Single Transport Example */}
+              <div className="absolute -right-6 top-20 w-48 bg-white/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-xl shadow-lg border border-white/30 dark:border-slate-700/60 p-3 z-10">
                 <div className="space-y-2">
                   <div className="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-2">
                     <div className="flex justify-start gap-2">
@@ -380,7 +398,7 @@ const Features = () => {
                         className="w-4 h-4 rounded-full object-cover"
                       />
                       <div className="bg-white dark:bg-slate-600 rounded-lg p-1 px-2">
-                        <p className="text-xs text-foreground">"Best way to airport?"</p>
+                        <p className="text-xs text-foreground">"How to get to airport?"</p>
                       </div>
                     </div>
                   </div>
@@ -388,36 +406,8 @@ const Features = () => {
                   <div className="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-2">
                     <div className="flex justify-end gap-2">
                       <div className="bg-white dark:bg-slate-600 rounded-lg p-1 px-2">
-                        <p className="text-xs text-foreground">🚄 Airport Rail - 35min</p>
-                      </div>
-                      <div className="w-4 h-4 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                        <span className="text-white text-[8px]">🤖</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Second Side Example - Local Spots */}
-              <div className="absolute -right-4 bottom-16 w-48 bg-white/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-xl shadow-lg border border-white/30 dark:border-slate-700/60 p-3 z-20">
-                <div className="space-y-2">
-                  <div className="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-2">
-                    <div className="flex justify-start gap-2">
-                      <img 
-                        src="/lovable-uploads/37d54649-724a-4949-a90c-e7ce7a18e976.png"
-                        alt="User"
-                        className="w-4 h-4 rounded-full object-cover"
-                      />
-                      <div className="bg-white dark:bg-slate-600 rounded-lg p-1 px-2">
-                        <p className="text-xs text-foreground">"Coffee nearby?"</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-2">
-                    <div className="flex justify-end gap-2">
-                      <div className="bg-white dark:bg-slate-600 rounded-lg p-1 px-2">
-                        <p className="text-xs text-foreground">☕ Blue Bottle - 2min walk</p>
+                        <p className="text-xs text-foreground">🚄 Airport Link - 35min, ฿45</p>
+                        <p className="text-xs text-muted-foreground">🚕 Taxi - 45min, ฿250</p>
                       </div>
                       <div className="w-4 h-4 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
                         <span className="text-white text-[8px]">🤖</span>
