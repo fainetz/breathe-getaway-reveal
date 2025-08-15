@@ -107,7 +107,7 @@ const Waitlist = () => {
           {/* Header */}
           <div className="text-center space-y-2">
             <h1 className="text-3xl font-bold text-gray-900">
-              Join Early, Get Discounts for Being on the Waitlist
+              Join Early Get Future Discounts
             </h1>
             <p className="text-gray-600">
               Get lifetime discounted pricing, priority access to new trip features, and special rates on our on-trip AI assistant — with real hostel reviews and local tips from travelers who've been there.
