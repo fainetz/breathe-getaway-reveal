@@ -39,8 +39,8 @@ const App = () => (
             <div className="md:hidden fixed top-8 left-1/2 transform -translate-x-1/2 z-[60]" style={{ position: 'fixed' }}>
               <MiniCurvedNav />
             </div>
-            {/* Desktop nav - positioned lower with scroll behavior */}
-            <div className="hidden md:flex fixed top-24 left-1/2 transform -translate-x-1/2 z-[60] transition-all duration-300" style={{ position: 'fixed' }}>
+            {/* Desktop nav - hidden completely on desktop */}
+            <div className="hidden" style={{ display: 'none' }}>
               <MiniCurvedNav isIntegrated={true} />
             </div>
             <Routes>
