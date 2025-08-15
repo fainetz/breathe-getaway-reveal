@@ -269,83 +269,117 @@ const Features = () => {
                   </div>
                 </div>
                 
-                {/* Overlapping Chat Examples */}
-                <div className="relative p-4 h-96 overflow-hidden bg-gradient-to-br from-gray-50/50 to-white/50 dark:from-slate-900/50 dark:to-slate-800/50 rounded-xl">
-                  
-                  {/* First Chat - Places to Go (Background) */}
-                  <div className="absolute top-4 left-2 right-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 dark:border-slate-700/20 p-4 transform rotate-1 z-10">
-                    {/* AI Response First */}
-                    <div className="flex justify-start gap-3 mb-3">
-                      <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                        <span className="text-white text-sm">🤖</span>
-                      </div>
-                      <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3 max-w-sm backdrop-blur-sm border border-white/20 dark:border-white/10 hover:bg-primary/15 dark:hover:bg-primary/25 transition-all duration-300">
-                        <p className="text-sm text-foreground mb-3">🌆 Amazing rooftop events tonight:</p>
-                        
-                        {/* Event Cards */}
-                        <div className="space-y-2">
-                          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-2 shadow-sm">
-                            <div className="flex gap-2">
-                              <img 
-                                src="/lovable-uploads/a1506915-e011-43ee-b8b7-034196d2c51e.png"
-                                alt="Rooftop cinema"
-                                className="w-10 h-10 rounded-lg object-cover"
-                              />
-                              <div className="flex-1">
-                                <p className="text-xs font-medium text-foreground">Rooftop Cinema</p>
-                                <p className="text-xs text-muted-foreground">8:30 PM</p>
-                              </div>
-                              <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 px-2 py-1 rounded-full">🎬</span>
-                            </div>
-                          </div>
-                          
-                          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-2 shadow-sm">
-                            <div className="flex gap-2">
-                              <img 
-                                src="/lovable-uploads/b35a9b1b-a4f8-4fed-9304-1262070ceada.png"
-                                alt="Jazz club"
-                                className="w-10 h-10 rounded-lg object-cover"
-                              />
-                              <div className="flex-1">
-                                <p className="text-xs font-medium text-foreground">Jazz Session</p>
-                                <p className="text-xs text-muted-foreground">9 PM</p>
-                              </div>
-                              <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded-full">🎵</span>
-                            </div>
+                {/* Main Chat Interface */}
+                <div className="relative">
+                  {/* Primary Chat Example */}
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md">
+                    {/* Assistant Header */}
+                    <div className="bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 p-4 border-b border-gray-100 dark:border-slate-700">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center animate-pulse">
+                          <span className="text-white text-lg">🤖</span>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-foreground">AI Travel Assistant</h3>
+                          <div className="flex items-center gap-1">
+                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                            <span className="text-xs text-muted-foreground">Active in Bangkok</span>
                           </div>
                         </div>
                       </div>
                     </div>
-
-                    {/* User Question */}
-                    <div className="flex justify-end gap-3">
-                      <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
-                        <p className="text-sm text-foreground">What's happening tonight near my hotel?</p>
+                    
+                    {/* Main Chat Messages */}
+                    <div className="p-4 space-y-4 h-80 overflow-y-auto">
+                      {/* AI Response First */}
+                      <div className="flex justify-start gap-3">
+                        <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                          <span className="text-white text-sm">🤖</span>
+                        </div>
+                        <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3 max-w-sm">
+                          <p className="text-sm text-foreground mb-3">🌆 Amazing rooftop events tonight:</p>
+                          
+                          {/* Event Cards */}
+                          <div className="space-y-2">
+                            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
+                              <div className="flex gap-3">
+                                <img 
+                                  src="/lovable-uploads/a1506915-e011-43ee-b8b7-034196d2c51e.png"
+                                  alt="Rooftop cinema"
+                                  className="w-12 h-12 rounded-lg object-cover"
+                                />
+                                <div className="flex-1">
+                                  <p className="text-sm font-medium text-foreground">Rooftop Cinema</p>
+                                  <p className="text-xs text-muted-foreground">8:30 PM • Under the stars</p>
+                                  <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 px-2 py-1 rounded-full">🎬 Live</span>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
+                              <div className="flex gap-3">
+                                <img 
+                                  src="/lovable-uploads/b35a9b1b-a4f8-4fed-9304-1262070ceada.png"
+                                  alt="Jazz club"
+                                  className="w-12 h-12 rounded-lg object-cover"
+                                />
+                                <div className="flex-1">
+                                  <p className="text-sm font-medium text-foreground">Jazz Session</p>
+                                  <p className="text-xs text-muted-foreground">9 PM • Garden vibes</p>
+                                  <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded-full">🎵 Live</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <img 
-                        src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
-                        alt="User"
-                        className="w-8 h-8 rounded-full object-cover"
-                      />
+
+                      {/* User Question */}
+                      <div className="flex justify-end gap-3">
+                        <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
+                          <p className="text-sm text-foreground">What's happening tonight near my hotel?</p>
+                        </div>
+                        <img 
+                          src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
+                          alt="User"
+                          className="w-8 h-8 rounded-full object-cover"
+                        />
+                      </div>
+
+                      {/* Quick Actions */}
+                      <div className="flex gap-2 pt-2 border-t border-gray-100 dark:border-slate-700">
+                        <button className="flex-1 bg-primary/10 text-primary py-2 px-3 rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors">
+                          🎫 Get Tickets
+                        </button>
+                        <button className="flex-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 py-2 px-3 rounded-lg text-xs font-medium hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
+                          📍 Directions
+                        </button>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Second Chat - Transportation (Foreground) */}
-                  <div className="absolute top-16 left-4 right-0 bg-white/98 dark:bg-slate-800/98 backdrop-blur-md rounded-2xl shadow-xl border border-white/30 dark:border-slate-700/30 p-4 transform -rotate-1 z-20 max-w-sm ml-auto">
-                    {/* AI Transport Response with Glassmorphism */}
-                    <div className="flex justify-start gap-3 mb-3">
-                      <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                        <span className="text-white text-sm">🤖</span>
+                  {/* Floating Glassmorphism Transport Chat */}
+                  <div className="absolute -bottom-6 -right-8 w-80 bg-white/20 dark:bg-slate-800/20 backdrop-blur-xl border border-white/30 dark:border-white/10 rounded-2xl p-4 shadow-2xl hover:bg-white/30 dark:hover:bg-slate-800/30 hover:shadow-3xl transition-all duration-500 z-10">
+                    <div className="space-y-3">
+                      {/* Transport Header */}
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-6 h-6 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                          <span className="text-white text-xs">🤖</span>
+                        </div>
+                        <span className="text-xs font-medium text-foreground/80">Transport Assistant</span>
+                        <div className="w-1 h-1 bg-green-500 rounded-full animate-pulse ml-auto"></div>
                       </div>
-                      <div className="bg-gradient-to-br from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-800/30 backdrop-blur-xl border border-white/40 dark:border-slate-700/40 rounded-2xl p-3 max-w-sm shadow-xl hover:shadow-2xl hover:bg-gradient-to-br hover:from-white/80 hover:to-white/50 dark:hover:from-slate-800/80 dark:hover:to-slate-800/50 transition-all duration-500 cursor-pointer">
-                        <p className="text-sm text-foreground mb-3">🚌 Best routes to jazz:</p>
+
+                      {/* AI Transport Response */}
+                      <div className="bg-white/40 dark:bg-slate-800/40 backdrop-blur-sm rounded-xl p-3 border border-white/20 dark:border-white/10">
+                        <p className="text-xs text-foreground mb-2">🚌 Routes to Jazz Garden:</p>
                         
                         {/* Transport Options */}
                         <div className="space-y-2">
-                          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-lg p-2 border border-white/30 dark:border-slate-700/30">
+                          <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-lg p-2 border border-white/20">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-2">
-                                <span className="text-green-600">🚇</span>
+                                <span className="text-green-600 text-xs">🚇</span>
                                 <div>
                                   <p className="text-xs font-medium text-foreground">BTS Skytrain</p>
                                   <p className="text-xs text-muted-foreground">15 min • ฿42</p>
@@ -355,10 +389,10 @@ const Features = () => {
                             </div>
                           </div>
                           
-                          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-lg p-2 border border-white/30 dark:border-slate-700/30">
+                          <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-lg p-2 border border-white/20">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-2">
-                                <span className="text-yellow-600">🛺</span>
+                                <span className="text-yellow-600 text-xs">🛺</span>
                                 <div>
                                   <p className="text-xs font-medium text-foreground">Tuk-tuk</p>
                                   <p className="text-xs text-muted-foreground">20 min • ฿120</p>
@@ -369,29 +403,14 @@ const Features = () => {
                           </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* User Transport Question */}
-                    <div className="flex justify-end gap-3">
-                      <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
-                        <p className="text-sm text-foreground">How do I get to the jazz club?</p>
+                      {/* User Question */}
+                      <div className="flex justify-end">
+                        <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-sm rounded-xl p-2 max-w-xs border border-white/20">
+                          <p className="text-xs text-foreground">How do I get there?</p>
+                        </div>
                       </div>
-                      <img 
-                        src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
-                        alt="User"
-                        className="w-8 h-8 rounded-full object-cover"
-                      />
                     </div>
-                  </div>
-
-                  {/* Quick Actions at Bottom */}
-                  <div className="absolute bottom-4 left-4 right-4 flex gap-2 z-30">
-                    <button className="flex-1 bg-primary/10 text-primary py-2 px-3 rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors backdrop-blur-sm border border-white/20 dark:border-slate-700/20">
-                      🗺️ Get Directions
-                    </button>
-                    <button className="flex-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 py-2 px-3 rounded-lg text-xs font-medium hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors backdrop-blur-sm border border-white/20 dark:border-slate-700/20">
-                      📱 Book Tickets
-                    </button>
                   </div>
                 </div>
               </div>
