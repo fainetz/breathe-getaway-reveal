@@ -150,7 +150,7 @@ const Features = () => {
                           <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">📍 Bangkok</span>
                           <span className="text-xs text-muted-foreground">• just now</span>
                         </div>
-                        <p className="text-sm text-foreground mb-3">"Hey everyone! First time in Bangkok solo. Any recommendations for rooftop bars where I can actually meet other travelers? Not looking for tourist traps 🌆"</p>
+                        <p className="text-sm text-foreground mb-3">Hey everyone! First time in Bangkok solo. Any recommendations for rooftop bars where I can actually meet other travelers? Not looking for tourist traps 🌆</p>
                         
                         {/* Attached Image */}
                         <div className="mb-3">
@@ -211,7 +211,7 @@ const Features = () => {
                           <span className="text-sm font-medium text-foreground">Alex_Rooftops</span>
                           <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 px-2 py-1 rounded-full">Local Guide</span>
                         </div>
-                        <p className="text-sm text-muted-foreground">"Sky Bar at Lebua is amazing! Go around sunset, lots of solo travelers there ✨"</p>
+                        <p className="text-sm text-muted-foreground">Sky Bar at Lebua is amazing! Go around sunset, lots of solo travelers there ✨</p>
                       </div>
                     </div>
                   </div>
@@ -272,86 +272,139 @@ const Features = () => {
                 {/* Chat Messages */}
                 <div className="p-4 space-y-4 max-h-80 overflow-y-auto">
                   {/* User Question */}
-                  <div className="flex gap-3">
+                  <div className="flex justify-start gap-3">
                     <img 
                       src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
                       alt="User"
                       className="w-8 h-8 rounded-full object-cover"
                     />
                     <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
-                      <p className="text-sm text-foreground">"What's happening tonight near my hotel?"</p>
+                      <p className="text-sm text-foreground">What's happening tonight near my hotel?</p>
                     </div>
                   </div>
 
                   {/* AI Response with Live Events */}
-                  <div className="flex gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm">🤖</span>
-                    </div>
-                    <div className="flex-1 space-y-3">
-                      <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3">
-                        <p className="text-sm text-foreground mb-3">Found 3 events happening within 2km of your location:</p>
+                  <div className="flex justify-end gap-3">
+                    <div className="flex-1 space-y-3 flex justify-end">
+                      <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3 max-w-sm">
+                        <p className="text-sm text-foreground mb-3">I found amazing rooftop events happening tonight:</p>
                         
-                        {/* Event 1 - Movie */}
-                        <div className="bg-white dark:bg-slate-800 rounded-lg p-3 mb-3 shadow-sm">
+                        {/* Event 1 - Rooftop Cinema */}
+                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 mb-3 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 hover:shadow-lg cursor-pointer">
                           <div className="flex gap-3">
                             <img 
-                              src="/lovable-uploads/42abd49b-cc9e-422e-863c-11d618b69cf3.png"
-                              alt="Cinema"
+                              src="/lovable-uploads/a1506915-e011-43ee-b8b7-034196d2c51e.png"
+                              alt="Rooftop cinema"
                               className="w-12 h-12 rounded-lg object-cover"
                             />
                             <div className="flex-1">
                               <div className="flex items-start justify-between">
                                 <div>
-                                  <p className="text-sm font-medium text-foreground">Rooftop Cinema</p>
-                                  <p className="text-xs text-muted-foreground">8:30 PM • 0.8km away</p>
+                                  <p className="text-sm font-medium text-foreground">Rooftop Cinema Night</p>
+                                  <p className="text-xs text-muted-foreground">8:30 PM • Under the stars</p>
                                 </div>
-                                <span className="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-2 py-1 rounded-full">🎬 Live</span>
+                                <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 px-2 py-1 rounded-full">🎬 Live</span>
                               </div>
                             </div>
                           </div>
                         </div>
 
-                        {/* Event 2 - Night Market */}
-                        <div className="bg-white dark:bg-slate-800 rounded-lg p-3 mb-3 shadow-sm">
+                        {/* Event 2 - Jazz Club */}
+                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 mb-3 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 hover:shadow-lg cursor-pointer">
                           <div className="flex gap-3">
                             <img 
-                              src="/lovable-uploads/37d54649-724a-4949-a90c-e7ce7a18e976.png"
-                              alt="Night market"
+                              src="/lovable-uploads/b35a9b1b-a4f8-4fed-9304-1262070ceada.png"
+                              alt="Jazz performance"
                               className="w-12 h-12 rounded-lg object-cover"
                             />
                             <div className="flex-1">
                               <div className="flex items-start justify-between">
                                 <div>
-                                  <p className="text-sm font-medium text-foreground">Chatuchak Night Market</p>
-                                  <p className="text-xs text-muted-foreground">Until 2 AM • 1.2km away</p>
+                                  <p className="text-sm font-medium text-foreground">Garden Jazz Session</p>
+                                  <p className="text-xs text-muted-foreground">9 PM • Acoustic vibes</p>
                                 </div>
-                                <span className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-2 py-1 rounded-full">🍜 Food</span>
+                                <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded-full">🎵 Live</span>
                               </div>
                             </div>
                           </div>
                         </div>
 
-                        {/* Event 3 - Live Music */}
-                        <div className="bg-white dark:bg-slate-800 rounded-lg p-3 shadow-sm">
+                        {/* Event 3 - Rooftop Dining */}
+                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 hover:shadow-lg cursor-pointer">
                           <div className="flex gap-3">
                             <img 
-                              src="/lovable-uploads/89cebcb0-e02d-4029-ad34-dde0c27c4bd9.png"
-                              alt="Live music"
+                              src="/lovable-uploads/d0e879ef-6715-4c4d-983e-8f4a84c6ff20.png"
+                              alt="Rooftop dining"
                               className="w-12 h-12 rounded-lg object-cover"
                             />
                             <div className="flex-1">
                               <div className="flex items-start justify-between">
                                 <div>
-                                  <p className="text-sm font-medium text-foreground">Jazz Club Live</p>
-                                  <p className="text-xs text-muted-foreground">9 PM • 0.5km away</p>
+                                  <p className="text-sm font-medium text-foreground">Skyline Dining</p>
+                                  <p className="text-xs text-muted-foreground">7 PM • City views</p>
                                 </div>
-                                <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded-full">🎵 Music</span>
+                                <span className="text-xs bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 px-2 py-1 rounded-full">🍽️ Dining</span>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
+                    </div>
+                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm">🤖</span>
+                    </div>
+                  </div>
+
+                  {/* Transport Routing Example */}
+                  <div className="flex justify-start gap-3">
+                    <img 
+                      src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
+                      alt="User"
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
+                      <p className="text-sm text-foreground">How do I get to the jazz session?</p>
+                    </div>
+                  </div>
+
+                  {/* AI Transport Response with Glassmorphism */}
+                  <div className="flex justify-end gap-3">
+                    <div className="flex-1 space-y-3 flex justify-end">
+                      <div className="bg-gradient-to-br from-white/40 to-white/20 dark:from-slate-800/40 dark:to-slate-800/20 backdrop-blur-xl border border-white/30 dark:border-slate-700/30 rounded-2xl p-3 max-w-sm shadow-xl hover:shadow-2xl hover:bg-gradient-to-br hover:from-white/60 hover:to-white/30 dark:hover:from-slate-800/60 dark:hover:to-slate-800/30 transition-all duration-500 cursor-pointer">
+                        <p className="text-sm text-foreground mb-3">Here are your transport options:</p>
+                        
+                        {/* Transport Options */}
+                        <div className="space-y-2">
+                          <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg p-3 border border-white/20 dark:border-slate-700/20">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <span className="text-green-600">🚇</span>
+                                <div>
+                                  <p className="text-sm font-medium text-foreground">BTS Skytrain</p>
+                                  <p className="text-xs text-muted-foreground">15 min • ฿42</p>
+                                </div>
+                              </div>
+                              <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-2 py-1 rounded-full">Fastest</span>
+                            </div>
+                          </div>
+                          
+                          <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg p-3 border border-white/20 dark:border-slate-700/20">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <span className="text-yellow-600">🛺</span>
+                                <div>
+                                  <p className="text-sm font-medium text-foreground">Tuk-tuk</p>
+                                  <p className="text-xs text-muted-foreground">20 min • ฿120</p>
+                                </div>
+                              </div>
+                              <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 px-2 py-1 rounded-full">Scenic</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm">🤖</span>
                     </div>
                   </div>
 
