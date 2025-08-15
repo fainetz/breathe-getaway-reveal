@@ -14,40 +14,96 @@ const Features = () => {
         </div>
         
         {/* Panel 1: AI Trip Planning */}
-        <div className="mb-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+        <div className="mb-16 lg:mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="space-y-4 lg:space-y-6 order-2 lg:order-1">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
                 We plan. You breathe.
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                 One prompt gives you a complete trip — flights, stays, and activities — without you planning a thing. You can adjust any part with a simple prompt, although we doubt it won't be perfect first try and when it's perfect, book it instantly, so you can be there right before sunset.
               </p>
             </div>
             
-            <div className="relative">
-              {/* Alternative Glassmorphism Trip Plan Interface */}
+            <div className="relative order-1 lg:order-2">
+              {/* Mobile: Compact Card Stack, Desktop: Full Interface */}
               <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/40 dark:border-slate-700/40 overflow-hidden max-w-2xl">
                 {/* Header */}
-                <div className="bg-gradient-to-r from-primary/30 to-primary/15 backdrop-blur-sm p-5 border-b border-white/30 dark:border-slate-700/30">
+                <div className="bg-gradient-to-r from-primary/30 to-primary/15 backdrop-blur-sm p-3 lg:p-5 border-b border-white/30 dark:border-slate-700/30">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-white/30 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/40">
-                        <span className="text-primary text-xl font-bold">AI</span>
+                    <div className="flex items-center gap-2 lg:gap-3">
+                      <div className="w-8 h-8 lg:w-12 lg:h-12 bg-white/30 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/40">
+                        <span className="text-primary text-sm lg:text-xl font-bold">AI</span>
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold text-foreground">Your Bangkok Getaway</h3>
-                        <p className="text-sm text-muted-foreground">3 days • Perfect for solo travelers</p>
+                        <h3 className="text-sm lg:text-lg font-bold text-foreground">Your Bangkok Getaway</h3>
+                        <p className="text-xs lg:text-sm text-muted-foreground">3 days • Perfect for solo travelers</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm font-semibold text-foreground">Total: ₿4,200</p>
-                      <p className="text-xs text-muted-foreground">Generated in 1.8s</p>
+                      <p className="text-xs lg:text-sm font-semibold text-foreground">Total: ₿4,200</p>
+                      <p className="text-xs text-muted-foreground hidden lg:block">Generated in 1.8s</p>
                     </div>
                   </div>
                 </div>
                 
-                <div className="p-5 space-y-5 h-[480px] overflow-y-auto">
+                {/* Mobile: Compact Stack Layout */}
+                <div className="lg:hidden p-3 space-y-3 h-[300px] overflow-y-auto">
+                  {/* Hotel - Horizontal */}
+                  <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-xl p-3 border border-white/40 dark:border-slate-600/40">
+                    <div className="flex items-center gap-3">
+                      <img 
+                        src="/lovable-uploads/937e23fd-265f-4986-991a-926a05637edf.png"
+                        alt="Luxury hotel room"
+                        className="w-12 h-12 rounded-lg object-cover"
+                      />
+                      <div className="flex-1">
+                        <h5 className="text-sm font-semibold text-foreground">Tropical Sky Sanctuary</h5>
+                        <p className="text-xs text-muted-foreground">Central Bangkok • 4.9★</p>
+                        <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">₿2,200/night</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Activities - Grid */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-xl p-2 border border-white/40 dark:border-slate-600/40">
+                      <img 
+                        src="/lovable-uploads/369021b4-c3a0-475c-be3b-9f9a6a9832a9.png"
+                        alt="Temple"
+                        className="w-full h-16 rounded-lg object-cover mb-2"
+                      />
+                      <h6 className="text-xs font-medium text-foreground">Grand Palace</h6>
+                      <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 px-1 py-0.5 rounded-full">₿500</span>
+                    </div>
+                    
+                    <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-xl p-2 border border-white/40 dark:border-slate-600/40">
+                      <img 
+                        src="/lovable-uploads/e619ccb5-67bb-4172-a634-8a6911184a7c.png"
+                        alt="Rooftop"
+                        className="w-full h-16 rounded-lg object-cover mb-2"
+                      />
+                      <h6 className="text-xs font-medium text-foreground">Sky Bar</h6>
+                      <span className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-1 py-0.5 rounded-full">₿800</span>
+                    </div>
+                  </div>
+                  
+                  {/* Book Button */}
+                  <div className="bg-gradient-to-r from-primary/30 to-primary/15 backdrop-blur-xl rounded-xl p-3 border border-primary/40">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h5 className="text-sm font-semibold text-foreground">Ready to Book?</h5>
+                        <p className="text-xs text-muted-foreground">5 experiences • 3 nights</p>
+                      </div>
+                      <button className="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-xs font-medium">
+                        Book Trip
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Desktop: Full Layout */}
+                <div className="hidden lg:block p-5 space-y-5 h-[480px] overflow-y-auto">
                   
                   {/* Where You're Staying */}
                   <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-2xl p-4 border border-white/40 dark:border-slate-600/40">
@@ -230,11 +286,11 @@ const Features = () => {
         </div>
 
         {/* Panel 2: Community Discussions */}
-        <div className="mb-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative">
+        <div className="mb-16 lg:mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="relative order-2 lg:order-1">
               {/* Community App Interface Mockup */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md">
+              <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-2xl rounded-2xl shadow-2xl overflow-hidden max-w-md border border-white/40 dark:border-slate-700/40">
                 {/* App Header with Cover Photo */}
                 <div className="relative">
                   {/* Community Cover */}
@@ -256,7 +312,7 @@ const Features = () => {
                 </div>
                 
                 {/* Discussion Feed */}
-                <div className="p-4 space-y-4">
+                <div className="p-3 lg:p-4 space-y-3 lg:space-y-4 h-[280px] lg:h-auto max-h-[400px] overflow-y-auto">
                   {/* Live Question from User */}
                   <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-4 border border-blue-200 dark:border-blue-800">
                     <div className="flex items-start gap-3">
@@ -352,11 +408,11 @@ const Features = () => {
                 </div>
               </div>
             </div>
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            <div className="space-y-4 lg:space-y-6 order-1 lg:order-2">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
                 Where travelers like you connect
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                 Join a community with travelers who know where to go, what to avoid, and maybe how to sneak into that rooftop bar. A place to ask questions, share safety tips, trade local secrets, and even team up with others who share your values — making it easier to just leave.
               </p>
             </div>
@@ -364,13 +420,13 @@ const Features = () => {
         </div>
 
         {/* Panel 3: Book with Confidence */}
-        <div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+        <div className="mb-16 lg:mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="space-y-4 lg:space-y-6 order-2 lg:order-1">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
                 Guess who's tagging along
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                 We don't just get you there, we go with you. Our on-trip assistant helps you find local transport, cheapest routes, uncover hidden spots, and even meet other travelers in your community. Especially useful when you need on-trip advice.
               </p>
             </div>
