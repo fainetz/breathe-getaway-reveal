@@ -116,7 +116,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 pt-0 md:pt-0 overflow-hidden">{/* Mobile spacing for nav */}
       {/* Hero Background Image Overlay - Desktop only */}
       <div className="hidden md:block">
-        <HeroFeatureCard image="/lovable-uploads/09538629-f30f-4bfd-907c-859a0de719a2.png" />
+        <HeroFeatureCard image="/lovable-uploads/7c6aca47-d191-4e6b-88ae-767044379f4b.png" />
       </div>
       {/* 3D Background */}
       <ThreeBackground />
