@@ -114,7 +114,7 @@ const Features = () => {
                 {/* App Header with Cover Photo */}
                 <div className="relative">
                   {/* Community Cover */}
-                  <div className="h-20 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 relative overflow-hidden">
+                  <div className="h-20 bg-gradient-to-r from-slate-600 via-blue-600 to-indigo-500 relative overflow-hidden">
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute bottom-2 left-4 flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
@@ -251,75 +251,117 @@ const Features = () => {
               </p>
             </div>
             <div className="relative">
-              {/* Hotel Booking Interface Mockup */}
+              {/* AI Assistant Interface Mockup */}
               <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md">
-                {/* Hotel Card */}
-                <div className="relative">
-                  <div className="relative rounded-t-2xl overflow-hidden">
-                    <img 
-                      src="/lovable-uploads/01acecfb-4a5e-4651-8343-d178f52a9ff1.png"
-                      alt="Costa Luz Hotel"
-                      className="w-full h-40 object-cover"
-                    />
-                    <div className="absolute top-3 right-3 flex gap-2">
-                      <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      </div>
-                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                        <div className="w-3 h-3 bg-white rounded-full"></div>
+                {/* Assistant Header */}
+                <div className="bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 p-4 border-b border-gray-100 dark:border-slate-700">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center animate-pulse">
+                      <span className="text-white text-lg">🤖</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground">AI Travel Assistant</h3>
+                      <div className="flex items-center gap-1">
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span className="text-xs text-muted-foreground">Active in Bangkok</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 
-                {/* Hotel Details */}
-                <div className="p-4">
-                  <div className="mb-4">
-                    <h3 className="text-lg font-semibold text-foreground mb-1">Costa Luz</h3>
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="flex items-center">
-                        <span className="text-yellow-400">★</span>
-                        <span className="text-sm font-medium ml-1">4.9</span>
-                      </div>
-                      <span className="text-xs text-muted-foreground">•</span>
-                      <span className="text-sm text-muted-foreground">🏨 Luxury Hotel</span>
+                {/* Chat Messages */}
+                <div className="p-4 space-y-4 max-h-80 overflow-y-auto">
+                  {/* User Question */}
+                  <div className="flex gap-3">
+                    <img 
+                      src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
+                      alt="User"
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
+                      <p className="text-sm text-foreground">"What's happening tonight near my hotel?"</p>
                     </div>
                   </div>
-                  
-                  {/* Photo Gallery Mockup */}
-                  <div className="grid grid-cols-3 gap-2 mb-4">
-                    <div className="h-16 bg-gradient-to-br from-blue-200 to-blue-300 dark:from-blue-800 dark:to-blue-900 rounded-lg"></div>
-                    <div className="h-16 bg-gradient-to-br from-amber-200 to-amber-300 dark:from-amber-800 dark:to-amber-900 rounded-lg"></div>
-                    <div className="relative h-16 bg-gradient-to-br from-green-200 to-green-300 dark:from-green-800 dark:to-green-900 rounded-lg flex items-center justify-center">
-                      <span className="text-xs font-medium text-foreground/70">Show all photos</span>
+
+                  {/* AI Response with Live Events */}
+                  <div className="flex gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm">🤖</span>
+                    </div>
+                    <div className="flex-1 space-y-3">
+                      <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3">
+                        <p className="text-sm text-foreground mb-3">Found 3 events happening within 2km of your location:</p>
+                        
+                        {/* Event 1 - Movie */}
+                        <div className="bg-white dark:bg-slate-800 rounded-lg p-3 mb-3 shadow-sm">
+                          <div className="flex gap-3">
+                            <img 
+                              src="/lovable-uploads/42abd49b-cc9e-422e-863c-11d618b69cf3.png"
+                              alt="Cinema"
+                              className="w-12 h-12 rounded-lg object-cover"
+                            />
+                            <div className="flex-1">
+                              <div className="flex items-start justify-between">
+                                <div>
+                                  <p className="text-sm font-medium text-foreground">Rooftop Cinema</p>
+                                  <p className="text-xs text-muted-foreground">8:30 PM • 0.8km away</p>
+                                </div>
+                                <span className="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-2 py-1 rounded-full">🎬 Live</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Event 2 - Night Market */}
+                        <div className="bg-white dark:bg-slate-800 rounded-lg p-3 mb-3 shadow-sm">
+                          <div className="flex gap-3">
+                            <img 
+                              src="/lovable-uploads/37d54649-724a-4949-a90c-e7ce7a18e976.png"
+                              alt="Night market"
+                              className="w-12 h-12 rounded-lg object-cover"
+                            />
+                            <div className="flex-1">
+                              <div className="flex items-start justify-between">
+                                <div>
+                                  <p className="text-sm font-medium text-foreground">Chatuchak Night Market</p>
+                                  <p className="text-xs text-muted-foreground">Until 2 AM • 1.2km away</p>
+                                </div>
+                                <span className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-2 py-1 rounded-full">🍜 Food</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Event 3 - Live Music */}
+                        <div className="bg-white dark:bg-slate-800 rounded-lg p-3 shadow-sm">
+                          <div className="flex gap-3">
+                            <img 
+                              src="/lovable-uploads/89cebcb0-e02d-4029-ad34-dde0c27c4bd9.png"
+                              alt="Live music"
+                              className="w-12 h-12 rounded-lg object-cover"
+                            />
+                            <div className="flex-1">
+                              <div className="flex items-start justify-between">
+                                <div>
+                                  <p className="text-sm font-medium text-foreground">Jazz Club Live</p>
+                                  <p className="text-xs text-muted-foreground">9 PM • 0.5km away</p>
+                                </div>
+                                <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded-full">🎵 Music</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
-                  {/* Booking Details */}
-                  <div className="space-y-3 mb-4">
-                    <div className="flex justify-between text-sm">
-                      <div>
-                        <p className="text-muted-foreground">Check-In</p>
-                        <p className="font-medium">Jul 21</p>
-                      </div>
-                      <div>
-                        <p className="text-muted-foreground">Check-Out</p>
-                        <p className="font-medium">Jul 23</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between border border-gray-200 dark:border-slate-600 rounded-lg p-3">
-                      <span className="text-sm">4 Travelers, 2 Rooms</span>
-                      <span className="text-muted-foreground">⌄</span>
-                    </div>
-                  </div>
-                  
-                  {/* Action Buttons */}
-                  <div className="space-y-3">
-                    <button className="w-full bg-black dark:bg-white text-white dark:text-black py-3 px-4 rounded-lg text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
-                      Book a room
+
+                  {/* Quick Actions */}
+                  <div className="flex gap-2 pt-2 border-t border-gray-100 dark:border-slate-700">
+                    <button className="flex-1 bg-primary/10 text-primary py-2 px-3 rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors">
+                      🗺️ Get Directions
                     </button>
-                    <button className="w-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 py-3 px-4 rounded-lg text-sm font-medium hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
-                      + Add to trip
+                    <button className="flex-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 py-2 px-3 rounded-lg text-xs font-medium hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
+                      📱 Book Tickets
                     </button>
                   </div>
                 </div>
