@@ -131,7 +131,7 @@ const Hero = () => {
                 }`}
               />
             </div>
-            <span className="text-base font-bold text-white">
+            <span className="text-base font-bold text-black">
               B&G
             </span>
           </Link>

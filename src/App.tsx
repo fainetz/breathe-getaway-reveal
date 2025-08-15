@@ -36,7 +36,7 @@ const App = () => (
             <MobileMenu />
             
             {/* Mobile nav - positioned higher */}
-            <div className="md:hidden fixed top-12 left-1/2 transform -translate-x-1/2 z-[60]" style={{ position: 'fixed' }}>
+            <div className="md:hidden fixed top-8 left-1/2 transform -translate-x-1/2 z-[60]" style={{ position: 'fixed' }}>
               <MiniCurvedNav />
             </div>
             {/* Desktop nav - positioned lower with scroll behavior */}
