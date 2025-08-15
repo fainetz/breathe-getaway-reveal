@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, Plus, TrendingUp, MessageCircle, Calendar, Search, Filter, ChevronDown } from 'lucide-react';
+import { Users, Plus, MessageCircle, Heart, Share, Search, Filter, ChevronDown, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,6 +10,9 @@ import { useAuth } from '@/hooks/useAuth';
 import { formatDistanceToNow } from 'date-fns';
 import CreateCommunityDialog from '@/components/community/CreateCommunityDialog';
 import WaitlistForm from '@/components/WaitlistForm';
+import ThreeBackground from '@/components/ThreeBackground';
+import communityBeachDesktop from '@/assets/community-beach-desktop.jpg';
+import communityLagoonMobile from '@/assets/community-lagoon-mobile.jpg';
 
 interface Community {
   id: string;
@@ -88,167 +91,236 @@ const Community = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-background border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <h1 className="text-3xl font-bold text-foreground mb-2">Travel Communities</h1>
+      {/* Hero Section - Following Home Page Structure */}
+      <section className="relative min-h-screen overflow-hidden">
+        {/* Background Images */}
+        <div className="absolute inset-x-4 top-16 bottom-8 z-0 rounded-3xl overflow-hidden">
+          {/* Desktop Background */}
+          <img 
+            src="/lovable-uploads/ece0129b-689b-46a6-a1b7-9d3cea96348b.png"
+            alt="Tropical beach community"
+            className="hidden md:block w-full h-full object-cover"
+          />
+          {/* Mobile Background */}
+          <img 
+            src="/lovable-uploads/5005a51e-41f4-4bd1-ae76-79e08ad632f7.png"
+            alt="Lagoon swimming community"
+            className="md:hidden w-full h-full object-cover"
+          />
+          {/* Dark overlay for better text visibility */}
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+
+        {/* 3D Background */}
+        <div className="absolute inset-0 z-0">
+          <ThreeBackground />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 grid lg:grid-cols-2 min-h-screen">
+          {/* Left Column - Main Content */}
+          <div className="flex flex-col justify-center px-4 sm:px-6 lg:px-8 xl:px-12 py-12">
+            <div className="max-w-xl mx-auto lg:mx-0">
+              {/* Join Waitlist Button at Top */}
+              <div className="mb-8">
+                <Link to="/waitlist">
+                  <Button 
+                    size="lg"
+                    className="w-full sm:w-auto bg-white/20 text-white border border-white/30 hover:bg-white/30 backdrop-blur-sm"
+                  >
+                    <Sparkles className="w-4 h-4 mr-2" />
+                    Join the Community Waitlist
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Main Headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
+                Connect with{' '}
+                <span className="bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">
+                  Fellow Travelers
+                </span>
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-lg sm:text-xl text-white/90 mb-8 leading-relaxed">
+                Share real experiences, get honest reviews, and discover hidden gems with a community 
+                that values authentic travel stories over polished marketing.
+              </p>
+
+              {/* Features */}
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center text-white/80">
+                  <Heart className="w-5 h-5 mr-3 text-red-300" />
+                  <span>Real reviews from fellow travelers</span>
+                </div>
+                <div className="flex items-center text-white/80">
+                  <Share className="w-5 h-5 mr-3 text-blue-300" />
+                  <span>Share safety tips and hidden spots</span>
+                </div>
+                <div className="flex items-center text-white/80">
+                  <Users className="w-5 h-5 mr-3 text-green-300" />
+                  <span>Connect with like-minded adventurers</span>
+                </div>
+              </div>
+
+              {/* Development Notice */}
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4">
+                <p className="text-white/90 text-sm">
+                  🌟 <strong>Coming Soon:</strong> Our community features are in development. 
+                  Join the waitlist for early access and founding member perks!
+                </p>
+              </div>
             </div>
-            {user && (
-              <Button onClick={() => setShowCreateDialog(true)} className="w-fit">
-                <Plus className="w-4 h-4 mr-2" />
-                Create Community
-              </Button>
-            )}
           </div>
 
-          {/* Working on this section notice */}
-          <div className="mt-16 mb-6 bg-muted/50 border border-border/50 rounded-xl p-6 text-center">
-            <div className="flex items-center justify-center mb-3">
-              <div className="w-6 h-6 bg-muted-foreground/20 rounded-full flex items-center justify-center mr-3">
-                <Users className="w-3 h-3 text-muted-foreground" />
+          {/* Right Column - Example Community Images */}
+          <div className="hidden lg:flex flex-col justify-center px-8 xl:px-12 py-12">
+            <div className="space-y-6">
+              {/* Community Post Example 1 */}
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    M
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Maya_Explorer</p>
+                    <p className="text-white/60 text-sm">2 hours ago</p>
+                  </div>
+                </div>
+                <p className="text-white/90 text-sm mb-3">
+                  Just discovered this hidden cenote in Tulum! 🏊‍♀️ The water is crystal clear and it's way less crowded than the famous ones. DM me for exact location!
+                </p>
+                <div className="flex space-x-4 text-white/60 text-sm">
+                  <span className="flex items-center"><Heart className="w-4 h-4 mr-1" /> 24</span>
+                  <span className="flex items-center"><MessageCircle className="w-4 h-4 mr-1" /> 8</span>
+                </div>
               </div>
-              <h3 className="text-base font-medium text-muted-foreground">Currently in Development</h3>
-            </div>
-            <p className="text-sm text-muted-foreground/80 max-w-2xl mx-auto mb-4">
-              Our community features are being built. Join the waitlist to get notified when we launch 
-              and unlock exclusive founding member perks!
-            </p>
-            
-            {/* Waitlist Form */}
-            <WaitlistForm />
-            
-            {/* Scrolling animation */}
-            <div className="overflow-hidden whitespace-nowrap mt-6">
-              <div className="animate-[scroll_20s_linear_infinite] inline-block">
-                <span className="text-xs text-muted-foreground/60 mx-8">
-                  🌟 Early access to communities 🗺️ Exclusive travel guides 🎁 Founding member badge 
-                  ✈️ Priority support 🌍 Beta features access 🏆 Special recognition
-                </span>
-                <span className="text-xs text-muted-foreground/60 mx-8">
-                  🌟 Early access to communities 🗺️ Exclusive travel guides 🎁 Founding member badge 
-                  ✈️ Priority support 🌍 Beta features access 🏆 Special recognition
-                </span>
-              </div>
-            </div>
-          </div>
 
-          {/* Search and Filters */}
-          <div className="mt-6 space-y-4">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-                <Input
-                  placeholder="Search communities, tags, or topics..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10"
-                />
+              {/* Community Post Example 2 */}
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    A
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Alex_Backpacker</p>
+                    <p className="text-white/60 text-sm">1 day ago</p>
+                  </div>
+                </div>
+                <p className="text-white/90 text-sm mb-3">
+                  Safety tip for solo female travelers in Bali: Avoid the shortcut through the rice fields after sunset. Stick to main roads or grab a Blue Bird taxi. 🚗
+                </p>
+                <div className="flex space-x-4 text-white/60 text-sm">
+                  <span className="flex items-center"><Heart className="w-4 h-4 mr-1" /> 156</span>
+                  <span className="flex items-center"><MessageCircle className="w-4 h-4 mr-1" /> 42</span>
+                </div>
               </div>
-              <Button
-                variant={selectedFilter === 'all' ? 'default' : 'outline'}
-                onClick={() => setSelectedFilter('all')}
-                className="w-fit"
-              >
-                All Communities
-              </Button>
-            </div>
 
-            {/* Popular Filter Tags */}
-            <div className="flex flex-wrap gap-2">
-              {popularTags.map(tag => (
-                <Button
-                  key={tag.value}
-                  variant={selectedFilter === tag.value ? 'default' : 'outline'}
-                  size="sm"
-                  onClick={() => setSelectedFilter(selectedFilter === tag.value ? 'all' : tag.value)}
-                  className="text-xs"
-                >
-                  <Filter className="w-3 h-3 mr-1" />
-                  {tag.name}
-                </Button>
-              ))}
-            </div>
-            
-            {/* Scroll indicator */}
-            <div className="flex justify-center mt-4">
-              <ChevronDown className="w-5 h-5 text-muted-foreground animate-bounce" />
+              {/* Community Post Example 3 */}
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    J
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Jake_Nomad</p>
+                    <p className="text-white/60 text-sm">3 days ago</p>
+                  </div>
+                </div>
+                <p className="text-white/90 text-sm mb-3">
+                  That "luxury" resort in Goa? Don't believe the photos. The beach is dirty and the pool was under construction during my entire stay. Save your money! 💸
+                </p>
+                <div className="flex space-x-4 text-white/60 text-sm">
+                  <span className="flex items-center"><Heart className="w-4 h-4 mr-1" /> 89</span>
+                  <span className="flex items-center"><MessageCircle className="w-4 h-4 mr-1" /> 31</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Communities Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {filteredCommunities.length === 0 ? (
-          <div className="text-center py-12">
-            <Users className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-foreground mb-2">Connect with fellow travelers and share your experiences</h3>
-            <p className="text-muted-foreground mb-4">
-              A space where travelers share real safety tips, honest reviews, and hidden details booking sites ignore — so you book with confidence, not guesswork.
+      {/* Example Community Features Section */}
+      <section className="py-16 bg-gradient-to-b from-background to-muted/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">What You'll Find in Our Community</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Real experiences from real travelers. No sponsored content, just honest insights.
             </p>
-            {user && !searchTerm && (
-              <Button onClick={() => setShowCreateDialog(true)}>
-                <Plus className="w-4 h-4 mr-2" />
-                Create Community
-              </Button>
-            )}
           </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredCommunities.map((community) => (
-              <Card key={community.id} className="hover:shadow-lg transition-shadow cursor-pointer group">
-                <Link to={`/community/${community.slug}`}>
-                  <CardHeader className="pb-3">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                          {community.name}
-                        </CardTitle>
-                        <CardDescription className="text-sm text-muted-foreground mt-1">
-                          Created by {community.profiles?.username || 'Unknown'} · {formatDistanceToNow(new Date(community.created_at))} ago
-                        </CardDescription>
-                      </div>
-                      <div className="text-right">
-                        <div className="flex items-center text-muted-foreground text-sm mb-1">
-                          <Users className="w-4 h-4 mr-1" />
-                          {community.member_count}
-                        </div>
-                        <div className="flex items-center text-muted-foreground text-sm">
-                          <MessageCircle className="w-4 h-4 mr-1" />
-                          {community.post_count}
-                        </div>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
-                      {community.description || 'No description available'}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Feature 1 - Honest Reviews */}
+            <div className="group relative overflow-hidden rounded-2xl">
+              <div className="aspect-square bg-gradient-to-br from-blue-500 to-purple-600 p-8 text-white">
+                <div className="h-full flex flex-col justify-between">
+                  <div>
+                    <Heart className="w-8 h-8 mb-4" />
+                    <h3 className="text-xl font-semibold mb-2">Honest Reviews</h3>
+                    <p className="text-white/80 text-sm">
+                      Real experiences from travelers who actually stayed there, not paid influencers.
                     </p>
-                    
-                    {/* Tags */}
-                    {community.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1">
-                        {community.tags.slice(0, 3).map((tag, index) => (
-                          <Badge key={index} variant="secondary" className="text-xs">
-                            {tag}
-                          </Badge>
-                        ))}
-                        {community.tags.length > 3 && (
-                          <Badge variant="outline" className="text-xs">
-                            +{community.tags.length - 3} more
-                          </Badge>
-                        )}
-                      </div>
-                    )}
-                  </CardContent>
-                </Link>
-              </Card>
-            ))}
+                  </div>
+                  <div className="bg-white/20 rounded-lg p-3 mt-4">
+                    <p className="text-sm">"That 'luxury' resort? The pool was green and the WiFi didn't work!" - Sarah_Traveler</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature 2 - Safety Tips */}
+            <div className="group relative overflow-hidden rounded-2xl">
+              <div className="aspect-square bg-gradient-to-br from-green-500 to-teal-600 p-8 text-white">
+                <div className="h-full flex flex-col justify-between">
+                  <div>
+                    <Users className="w-8 h-8 mb-4" />
+                    <h3 className="text-xl font-semibold mb-2">Safety First</h3>
+                    <p className="text-white/80 text-sm">
+                      Share and discover crucial safety tips that guidebooks never mention.
+                    </p>
+                  </div>
+                  <div className="bg-white/20 rounded-lg p-3 mt-4">
+                    <p className="text-sm">"Avoid the shortcut through the market after 9pm - take the main road instead." - Mike_Solo</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature 3 - Hidden Gems */}
+            <div className="group relative overflow-hidden rounded-2xl">
+              <div className="aspect-square bg-gradient-to-br from-orange-500 to-red-600 p-8 text-white">
+                <div className="h-full flex flex-col justify-between">
+                  <div>
+                    <Sparkles className="w-8 h-8 mb-4" />
+                    <h3 className="text-xl font-semibold mb-2">Hidden Gems</h3>
+                    <p className="text-white/80 text-sm">
+                      Discover secret spots that only locals and experienced travelers know about.
+                    </p>
+                  </div>
+                  <div className="bg-white/20 rounded-lg p-3 mt-4">
+                    <p className="text-sm">"Found the most amazing cenote 20 mins from Tulum - zero tourists!" - Elena_Explorer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        )}
-      </div>
+
+          {/* Call to Action */}
+          <div className="text-center mt-12">
+            <Link to="/waitlist">
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
+                <Sparkles className="w-4 h-4 mr-2" />
+                Join the Community Waitlist
+              </Button>
+            </Link>
+            <p className="text-muted-foreground text-sm mt-4">
+              Be among the first to connect with fellow travelers and share authentic experiences.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Create Community Dialog */}
       <CreateCommunityDialog
