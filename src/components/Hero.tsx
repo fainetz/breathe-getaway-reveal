@@ -113,7 +113,11 @@ const Hero = () => {
   const itemCount = getCartItemCount();
 
   return (
-    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 pt-0 md:pt-0">{/* Mobile spacing for nav */}
+    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 pt-0 md:pt-0 overflow-hidden">{/* Mobile spacing for nav */}
+      {/* Hero Background Image Overlay - Desktop only */}
+      <div className="hidden md:block">
+        <HeroFeatureCard image="/lovable-uploads/09538629-f30f-4bfd-907c-859a0de719a2.png" />
+      </div>
       {/* 3D Background */}
       <ThreeBackground />
 
@@ -205,15 +209,9 @@ const Hero = () => {
           {/* Mobile search functionality is now handled by the floating ExpandableSearch component */}
         </div>
 
-        {/* Right side - Hero Feature Card */}
-        <div className="relative order-2 lg:order-2 hidden md:block">
-          <HeroFeatureCard 
-            image="/lovable-uploads/09538629-f30f-4bfd-907c-859a0de719a2.png"
-            title="Extraordinary trips,"
-            subtitle="effortlessly planned"
-            primaryButtonText="Join the waitlist"
-            secondaryButtonText="Discover more"
-          />
+        {/* Right side - Empty space */}
+        <div className="relative order-2 lg:order-2">
+          {/* Empty space */}
         </div>
       </div>
       
