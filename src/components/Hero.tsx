@@ -126,7 +126,7 @@ const Hero = () => {
       <ThreeBackground />
 
       {/* Navigation - AICM layout style */}
-      <nav className="relative z-50 px-4 sm:px-6 py-2 md:py-6">
+      <nav className="absolute top-0 left-0 right-0 z-50 px-4 sm:px-6 py-1 md:py-6">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
