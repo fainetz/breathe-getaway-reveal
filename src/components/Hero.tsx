@@ -191,21 +191,18 @@ const Hero = () => {
           </p>
           
           {/* Join Waitlist Button */}
-          <div className="mb-6 animate-fade-in px-2 sm:px-0 flex justify-center lg:justify-center" style={{ animationDelay: '0.6s' }}>
+          <div className="mb-6 animate-fade-in px-2 sm:px-0 flex flex-col items-center" style={{ animationDelay: '0.6s' }}>
             <Link to="/waitlist">
-              <Button className="bg-black dark:bg-white text-white dark:text-black font-medium px-8 py-3 text-lg rounded-lg hover:bg-black/90 dark:hover:bg-white/90 transition-colors duration-200 flex items-center gap-3">
+              <Button className="bg-white md:bg-black dark:md:bg-white text-black md:text-white dark:md:text-black font-medium px-8 py-3 text-lg rounded-lg hover:bg-white/90 md:hover:bg-black/90 dark:md:hover:bg-white/90 transition-colors duration-200 flex items-center gap-3">
                 Join the Waitlist
                 <img 
-                  src={theme === 'dark' 
-                    ? "/lovable-uploads/323d24a5-b33e-4aae-941e-a90580951450.png"
-                    : "/lovable-uploads/0b267d24-4263-467e-9777-e1627c730fa4.png"
-                  }
+                  src="/lovable-uploads/323d24a5-b33e-4aae-941e-a90580951450.png"
                   alt="Logo"
                   className="w-10 h-10 object-contain"
                 />
               </Button>
             </Link>
-            <p className="text-sm text-white/80 font-medium mt-3 text-center lg:text-left">
+            <p className="text-sm text-white/80 font-medium mt-3 text-center w-full">
               Get founding user perks and early access
             </p>
           </div>
