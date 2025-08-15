@@ -181,7 +181,7 @@ const Hero = () => {
       {/* Main Content - Heading on right, carousel on left */}
       <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 max-w-7xl mx-auto mt-8 md:mt-8">{/* Reduced top margin for mobile nav spacing */}
         {/* Left side - Main heading and description */}
-        <div className="text-center lg:text-left lg:pr-8 order-1 lg:order-1">
+        <div className="text-center lg:text-left lg:pr-8 order-1 lg:order-1 flex flex-col items-center lg:items-start">
           <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-geist font-black leading-[1.1] sm:leading-[1.1] text-white mb-6 sm:mb-6 animate-fade-in px-2 sm:px-0 drop-shadow-lg">
             Skip the Plan. Get the Thrill.
           </h1>
@@ -205,7 +205,7 @@ const Hero = () => {
                 />
               </Button>
             </Link>
-            <p className="text-sm text-white/80 font-medium mt-3">
+            <p className="text-sm text-white/80 font-medium mt-3 text-center lg:text-left">
               Get founding user perks and early access
             </p>
           </div>
