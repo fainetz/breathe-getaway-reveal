@@ -47,44 +47,41 @@ const Features = () => {
                   </div>
                 </div>
                 
-                {/* Mobile: Compact Stack Layout */}
-                <div className="lg:hidden p-3 space-y-3 h-[300px] overflow-y-auto">
-                  {/* Hotel - Horizontal */}
+                {/* Mobile: Alternating Description & Image Layout */}
+                <div className="lg:hidden p-3 space-y-3">
+                  {/* Hotel Description */}
                   <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-xl p-3 border border-white/40 dark:border-slate-600/40">
-                    <div className="flex items-center gap-3">
-                      <img 
-                        src="/lovable-uploads/937e23fd-265f-4986-991a-926a05637edf.png"
-                        alt="Luxury hotel room"
-                        className="w-12 h-12 rounded-lg object-cover"
-                      />
-                      <div className="flex-1">
-                        <h5 className="text-sm font-semibold text-foreground">Tropical Sky Sanctuary</h5>
-                        <p className="text-xs text-muted-foreground">Central Bangkok • 4.9★</p>
-                        <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">₿2,200/night</span>
-                      </div>
+                    <h5 className="text-sm font-semibold text-foreground mb-2">Where You're Staying</h5>
+                    <p className="text-xs text-muted-foreground">Tropical Sky Sanctuary in Central Bangkok - a luxury resort with spa, pool & garden. 4.9★ rating.</p>
+                  </div>
+                  
+                  {/* Hotel Image */}
+                  <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-xl p-2 border border-white/40 dark:border-slate-600/40">
+                    <img 
+                      src="/lovable-uploads/937e23fd-265f-4986-991a-926a05637edf.png"
+                      alt="Luxury hotel room"
+                      className="w-full h-32 rounded-lg object-cover object-top"
+                    />
+                    <div className="p-2">
+                      <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">₿2,200/night</span>
                     </div>
                   </div>
                   
-                  {/* Activities - Grid */}
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-xl p-2 border border-white/40 dark:border-slate-600/40">
-                      <img 
-                        src="/lovable-uploads/369021b4-c3a0-475c-be3b-9f9a6a9832a9.png"
-                        alt="Temple"
-                        className="w-full h-16 rounded-lg object-cover mb-2"
-                      />
-                      <h6 className="text-xs font-medium text-foreground">Grand Palace</h6>
-                      <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 px-1 py-0.5 rounded-full">₿500</span>
-                    </div>
-                    
-                    <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-xl p-2 border border-white/40 dark:border-slate-600/40">
-                      <img 
-                        src="/lovable-uploads/e619ccb5-67bb-4172-a634-8a6911184a7c.png"
-                        alt="Rooftop"
-                        className="w-full h-16 rounded-lg object-cover mb-2"
-                      />
-                      <h6 className="text-xs font-medium text-foreground">Sky Bar</h6>
-                      <span className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-1 py-0.5 rounded-full">₿800</span>
+                  {/* Activities Description */}
+                  <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-xl p-3 border border-white/40 dark:border-slate-600/40">
+                    <h5 className="text-sm font-semibold text-foreground mb-2">Your Adventures</h5>
+                    <p className="text-xs text-muted-foreground">Visit the Grand Palace, enjoy Sky Bar at sunset, explore floating markets, and end with a luxury spa treatment.</p>
+                  </div>
+                  
+                  {/* Activities Image */}
+                  <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-xl p-2 border border-white/40 dark:border-slate-600/40">
+                    <img 
+                      src="/lovable-uploads/369021b4-c3a0-475c-be3b-9f9a6a9832a9.png"
+                      alt="Grand Palace Temple"
+                      className="w-full h-32 rounded-lg object-cover object-top"
+                    />
+                    <div className="p-2">
+                      <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 px-2 py-1 rounded-full">5 experiences</span>
                     </div>
                   </div>
                   
@@ -93,7 +90,7 @@ const Features = () => {
                     <div className="flex items-center justify-between">
                       <div>
                         <h5 className="text-sm font-semibold text-foreground">Ready to Book?</h5>
-                        <p className="text-xs text-muted-foreground">5 experiences • 3 nights</p>
+                        <p className="text-xs text-muted-foreground">Total: ₿4,200 • 3 nights</p>
                       </div>
                       <button className="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-xs font-medium">
                         Book Trip
