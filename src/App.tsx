@@ -35,12 +35,12 @@ const App = () => (
             {/* Mobile Menu - Always available */}
             <MobileMenu />
             
-            {/* Mobile nav - positioned lower for better spacing */}
-            <div className="md:hidden fixed top-2 left-1/2 transform -translate-x-1/2 z-[60]" style={{ position: 'fixed' }}>
+            {/* Mobile nav - positioned higher for better visibility */}
+            <div className="md:hidden fixed top-4 left-1/2 transform -translate-x-1/2 z-[60]" style={{ position: 'fixed' }}>
               <MiniCurvedNav />
             </div>
-            {/* Desktop nav - centered and always visible */}
-            <div className="hidden md:flex fixed top-16 left-1/2 transform -translate-x-1/2 z-[60]" style={{ position: 'fixed' }}>
+            {/* Desktop nav - with scroll behavior */}
+            <div className="hidden md:flex fixed top-6 left-1/2 transform -translate-x-1/2 z-[60] transition-all duration-300" style={{ position: 'fixed' }}>
               <MiniCurvedNav isIntegrated={true} />
             </div>
             <Routes>

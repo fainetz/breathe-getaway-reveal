@@ -113,14 +113,14 @@ const Hero = () => {
   const itemCount = getCartItemCount();
 
   return (
-    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 pt-0 md:pt-0 overflow-hidden">{/* Mobile spacing for nav */}
+    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 pt-16 md:pt-0 overflow-hidden">{/* Added mobile padding for nav */}
       {/* Hero Background Image Overlay - Desktop */}
       <div className="hidden md:block">
         <HeroFeatureCard image="/lovable-uploads/8fa65681-7ecf-47e5-9043-3e9404f82eb6.png" />
       </div>
-      {/* Hero Background Image Overlay - Mobile */}
+      {/* Hero Background Image Overlay - Mobile - using lighter image for better text visibility */}
       <div className="block md:hidden">
-        <HeroFeatureCard image="/lovable-uploads/16800de7-0a81-435a-9ba5-8963d70d8c39.png" />
+        <HeroFeatureCard image="/lovable-uploads/01acecfb-4a5e-4651-8343-d178f52a9ff1.png" />
       </div>
       {/* 3D Background */}
       <ThreeBackground />

@@ -10,6 +10,8 @@ const HeroFeatureCard = ({ image }: HeroFeatureCardProps) => {
         alt="Luxury tropical resort"
         className="w-full h-full object-cover"
       />
+      {/* Dark overlay for better text visibility on mobile */}
+      <div className="absolute inset-0 bg-black/20 md:bg-transparent" />
     </div>
   );
 };
