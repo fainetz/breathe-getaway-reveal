@@ -47,7 +47,7 @@ const Features = () => {
                   </div>
                 </div>
                 
-                {/* Mobile: Alternating Description & Image Layout */}
+                {/* Mobile: Description first, then Image Layout */}
                 <div className="lg:hidden p-3 space-y-3">
                   {/* Hotel Description */}
                   <div className="bg-white/50 dark:bg-slate-700/50 backdrop-blur-xl rounded-xl p-3 border border-white/40 dark:border-slate-600/40">
@@ -60,7 +60,7 @@ const Features = () => {
                     <img 
                       src="/lovable-uploads/937e23fd-265f-4986-991a-926a05637edf.png"
                       alt="Luxury hotel room"
-                      className="w-full h-32 rounded-lg object-cover object-top"
+                      className="w-full h-24 rounded-lg object-contain"
                     />
                     <div className="p-2">
                       <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">₿2,200/night</span>
@@ -78,7 +78,7 @@ const Features = () => {
                     <img 
                       src="/lovable-uploads/369021b4-c3a0-475c-be3b-9f9a6a9832a9.png"
                       alt="Grand Palace Temple"
-                      className="w-full h-32 rounded-lg object-cover object-top"
+                      className="w-full h-24 rounded-lg object-contain"
                     />
                     <div className="p-2">
                       <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 px-2 py-1 rounded-full">5 experiences</span>
