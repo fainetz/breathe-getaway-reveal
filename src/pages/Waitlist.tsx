@@ -33,7 +33,7 @@ const Waitlist = () => {
     
     try {
       // Submit to Formspree
-      const formspreeResponse = await fetch('https://formspree.io/f/mjkrryrd', {
+      const formspreeResponse = await fetch('https://formspree.io/f/xdkdjppo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -83,19 +83,26 @@ const Waitlist = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div 
+      className="min-h-screen bg-cover bg-center bg-no-repeat relative"
+      style={{
+        backgroundImage: 'url(/lovable-uploads/12d95401-4631-4460-a195-b733185d01a7.png)'
+      }}
+    >
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/40"></div>
       {/* Back Button */}
       <button
         onClick={() => navigate(-1)}
         className="fixed top-8 left-8 z-50 group"
       >
-        <div className="relative p-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition-all duration-300 hover:scale-105">
+        <div className="relative p-3 rounded-xl bg-white/90 backdrop-blur-sm hover:bg-white transition-all duration-300 hover:scale-105 shadow-lg">
           <ArrowLeft className="w-6 h-6 text-gray-700 group-hover:text-gray-900 transition-colors" />
         </div>
       </button>
 
-      <div className="flex min-h-screen items-center justify-center px-4 py-12">
-        <div className="w-full max-w-md space-y-8">
+      <div className="flex min-h-screen items-center justify-center px-4 py-12 relative z-10">
+        <div className="w-full max-w-md space-y-8 bg-white rounded-2xl p-8 shadow-2xl">
 
           {/* Header */}
           <div className="text-center space-y-2">
@@ -103,7 +110,7 @@ const Waitlist = () => {
               Be Part of the Future of Travel
             </h1>
             <p className="text-gray-600">
-              We're in beta, adding new users weekly. Join the waitlist to be among the first to experience Tripsby.ai.
+              Get lifetime discounted pricing, priority access to new trip features, and special rates on our on-trip AI assistant — with real hostel reviews and local tips from travelers who've been there.
             </p>
           </div>
 
