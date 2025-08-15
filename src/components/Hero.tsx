@@ -126,7 +126,7 @@ const Hero = () => {
       <ThreeBackground />
 
       {/* Navigation - AICM layout style */}
-      <nav className="relative z-50 px-4 sm:px-6 py-6">
+      <nav className="relative z-50 px-4 sm:px-6 py-2 md:py-6">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
@@ -142,7 +142,7 @@ const Hero = () => {
                 }`}
               />
             </div>
-            <span className="text-lg sm:text-2xl font-bold text-foreground">
+            <span className="text-lg sm:text-2xl font-bold text-white md:text-foreground">
               <span className="hidden sm:inline">Breathe & Getaway</span>
               <span className="sm:hidden text-base">B&G</span>
             </span>
