@@ -15,91 +15,80 @@ const Features = () => {
         
         {/* Panel 1: AI Trip Planning */}
         <div className="mb-32">
-          {/* Mobile Layout: Text first, then visual */}
+          {/* Mobile Layout: Example first, then text */}
           <div className="lg:hidden">
-            <div className="text-center mb-8 px-4">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                We plan. You breathe.
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                One prompt gives you a complete trip — flights, stays, and activities — without you planning a thing. You can adjust any part with a simple prompt, although we doubt it won't be perfect first try and when it's perfect, book it instantly, so you can be there right before sunset.
-              </p>
-            </div>
-            
-            <div className="px-4">
+            <div className="px-4 mb-6">
               <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/40 dark:border-slate-700/40 overflow-hidden mx-auto max-w-sm">
                 {/* Header */}
-                <div className="bg-gradient-to-r from-primary/30 to-primary/15 backdrop-blur-sm p-4 border-b border-white/30 dark:border-slate-700/30">
+                <div className="bg-gradient-to-r from-primary/30 to-primary/15 backdrop-blur-sm p-3 border-b border-white/30 dark:border-slate-700/30">
                   <div className="text-center">
-                    <div className="w-12 h-12 bg-white/30 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/40 mx-auto mb-3">
-                      <span className="text-primary text-xl font-bold">AI</span>
+                    <div className="w-10 h-10 bg-white/30 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/40 mx-auto mb-2">
+                      <span className="text-primary text-lg font-bold">AI</span>
                     </div>
-                    <h3 className="text-lg font-bold text-foreground">Your Bangkok Getaway</h3>
-                    <p className="text-sm text-muted-foreground">3 days • Perfect for solo travelers</p>
-                    <p className="text-sm font-semibold text-foreground mt-1">Total: ₿4,200</p>
+                    <h3 className="text-base font-bold text-foreground">Your Bangkok Getaway</h3>
+                    <p className="text-xs text-muted-foreground">3 days • Perfect for solo travelers</p>
+                    <p className="text-xs font-semibold text-foreground mt-1">Total: ₿4,200</p>
                   </div>
                 </div>
                 
-                <div className="p-5 space-y-4">
+                <div className="p-4 space-y-3">
                   {/* Hotel */}
-                  <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-4 border border-white/50 dark:border-slate-500/50">
-                    <h5 className="font-semibold text-foreground mb-2">Tropical Sky Sanctuary</h5>
-                    <p className="text-sm text-muted-foreground mb-3">Central Bangkok • 4.9★ • Luxury Resort</p>
+                  <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
+                    <h5 className="font-semibold text-foreground text-sm mb-1">Tropical Sky Sanctuary</h5>
+                    <p className="text-xs text-muted-foreground mb-2">Central Bangkok • 4.9★ • Luxury Resort</p>
                     <img 
                       src="/lovable-uploads/937e23fd-265f-4986-991a-926a05637edf.png"
                       alt="Luxury hotel room with modern design"
-                      className="w-full h-24 rounded-xl object-cover mb-3"
+                      className="w-full h-16 rounded-xl object-cover mb-2"
                     />
                     <div className="flex flex-wrap gap-2">
                       <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">Spa</span>
-                      <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">Pool & Garden</span>
-                      <span className="text-sm font-semibold text-foreground">₿2,200/night</span>
+                      <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">Pool</span>
+                      <span className="text-xs font-semibold text-foreground">₿2,200/night</span>
                     </div>
                   </div>
                   
                   {/* Day 1 */}
-                  <div className="space-y-3">
-                    <h4 className="font-semibold text-foreground flex items-center gap-2">
-                      <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-red-400 rounded-lg flex items-center justify-center">
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-foreground flex items-center gap-2 text-sm">
+                      <div className="w-5 h-5 bg-gradient-to-r from-orange-500 to-red-400 rounded-lg flex items-center justify-center">
                         <span className="text-white text-xs font-bold">1</span>
                       </div>
                       Day 1 - Cultural Immersion
                     </h4>
                     
-                    <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-4 border border-white/50 dark:border-slate-500/50">
-                      <h6 className="text-sm font-medium text-foreground mb-1">Grand Palace</h6>
+                    <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-3 border border-white/50 dark:border-slate-500/50">
+                      <h6 className="text-xs font-medium text-foreground mb-1">Grand Palace</h6>
                       <p className="text-xs text-muted-foreground mb-2">9:00 AM • Sacred temple complex with golden spires</p>
                       <img 
                         src="/lovable-uploads/369021b4-c3a0-475c-be3b-9f9a6a9832a9.png"
                         alt="Temple"
-                        className="w-full h-20 rounded-lg object-cover mb-2"
+                        className="w-full h-14 rounded-lg object-cover mb-2"
                       />
                       <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 px-2 py-1 rounded-full">₿500</span>
-                    </div>
-                    
-                    <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-4 border border-white/50 dark:border-slate-500/50">
-                      <h6 className="text-sm font-medium text-foreground mb-1">Tropical Resort Walkway</h6>
-                      <p className="text-xs text-muted-foreground mb-2">2:00 PM • Scenic boardwalk over crystal waters</p>
-                      <img 
-                        src="/lovable-uploads/0e011dff-4ce7-49da-88d6-30ba45508629.png"
-                        alt="Tropical resort boardwalk over water"
-                        className="w-full h-20 rounded-lg object-cover mb-2"
-                      />
-                      <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">₿200</span>
                     </div>
                   </div>
                   
                   {/* Actions */}
-                  <div className="flex gap-3 pt-2">
-                    <button className="flex-1 bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm text-foreground px-4 py-3 rounded-xl text-sm font-medium border border-white/50">
+                  <div className="flex gap-2 pt-1">
+                    <button className="flex-1 bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm text-foreground px-3 py-2 rounded-xl text-xs font-medium border border-white/50">
                       Customize
                     </button>
-                    <button className="flex-1 bg-primary text-primary-foreground px-4 py-3 rounded-xl text-sm font-medium">
+                    <button className="flex-1 bg-primary text-primary-foreground px-3 py-2 rounded-xl text-xs font-medium">
                       Book Trip
                     </button>
                   </div>
                 </div>
               </div>
+            </div>
+            
+            <div className="text-center px-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                We plan. You breathe.
+              </h2>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                One prompt gives you a complete trip — flights, stays, and activities — without you planning a thing. You can adjust any part with a simple prompt, although we doubt it won't be perfect first try and when it's perfect, book it instantly, so you can be there right before sunset.
+              </p>
             </div>
           </div>
 
@@ -318,32 +307,23 @@ const Features = () => {
 
         {/* Panel 2: Community Discussions */}
         <div className="mb-32">
-          {/* Mobile Layout: Text first, then visual */}
+          {/* Mobile Layout: Example first, then text */}
           <div className="lg:hidden">
-            <div className="text-center mb-8 px-4">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Where travelers like you connect
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                Join a community with travelers who know where to go, what to avoid, and maybe how to sneak into that rooftop bar. A place to ask questions, share safety tips, trade local secrets, and even team up with others who share your values — making it easier to just leave.
-              </p>
-            </div>
-            
-            <div className="px-4">
+            <div className="px-4 mb-6">
               <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-sm mx-auto">
                 {/* App Header with Cover Photo */}
                 <div className="relative">
                   {/* Community Cover */}
-                  <div className="h-20 bg-gradient-to-r from-slate-600 via-blue-600 to-indigo-500 relative overflow-hidden">
+                  <div className="h-16 bg-gradient-to-r from-slate-600 via-blue-600 to-indigo-500 relative overflow-hidden">
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute bottom-2 left-4 flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                        <span className="text-white text-sm">ST</span>
+                      <div className="w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                        <span className="text-white text-xs">ST</span>
                       </div>
                       <div>
-                        <h3 className="text-sm font-semibold text-white">Solo Travelers</h3>
+                        <h3 className="text-xs font-semibold text-white">Solo Travelers</h3>
                         <div className="flex items-center gap-1">
-                          <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
+                          <div className="w-1 h-1 bg-green-400 rounded-full animate-pulse"></div>
                           <span className="text-xs text-white/90">127 online</span>
                         </div>
                       </div>
@@ -352,101 +332,86 @@ const Features = () => {
                 </div>
                 
                 {/* Discussion Feed */}
-                <div className="p-4 space-y-4">
+                <div className="p-3 space-y-3">
                   {/* Live Question from User */}
-                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-4 border border-blue-200 dark:border-blue-800">
-                    <div className="flex items-start gap-3">
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-3 border border-blue-200 dark:border-blue-800">
+                    <div className="flex items-start gap-2">
                       <div className="relative">
                         <img 
                           src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
                           alt="User avatar"
-                          className="w-10 h-10 rounded-full object-cover"
+                          className="w-8 h-8 rounded-full object-cover"
                         />
-                        <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-slate-800"></div>
+                        <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white dark:border-slate-800"></div>
                       </div>
                       <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="text-sm font-semibold text-foreground">Marcus_Explorer</span>
-                          <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">Bangkok</span>
-                          <span className="text-xs text-muted-foreground">• just now</span>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xs font-semibold text-foreground">Marcus_Explorer</span>
+                          <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-1.5 py-0.5 rounded-full">Bangkok</span>
                         </div>
-                        <p className="text-sm text-foreground mb-3">Hey everyone! First time in Bangkok solo. Any recommendations for rooftop bars where I can actually meet other travelers? Not looking for tourist traps</p>
+                        <p className="text-xs text-foreground mb-2">Hey everyone! First time in Bangkok solo. Any recommendations for rooftop bars where I can actually meet other travelers?</p>
                         
                         {/* Attached Image */}
-                        <div className="mb-3">
+                        <div className="mb-2">
                           <div className="relative rounded-lg overflow-hidden">
                             <img 
                               src="/lovable-uploads/42abd49b-cc9e-422e-863c-11d618b69cf3.png"
                               alt="Bangkok skyline"
-                              className="w-full h-40 object-cover"
+                              className="w-full h-20 object-cover"
                             />
-                            <div className="absolute top-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">Bangkok</div>
+                            <div className="absolute top-1 right-1 bg-black/50 text-white text-xs px-1.5 py-0.5 rounded">Bangkok</div>
                           </div>
                         </div>
                         
                         <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                            <span className="flex items-center gap-1">Like 12</span>
-                            <span className="flex items-center gap-1">Reply 3</span>
-                            <span className="flex items-center gap-1">Share 2</span>
+                          <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                            <span>Like 12</span>
+                            <span>Reply 3</span>
                           </div>
-                          <button className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-3 py-1 rounded-full hover:bg-orange-200 dark:hover:bg-orange-900/50 transition-colors">
-                            Send Invite
+                          <button className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-2 py-1 rounded-full">
+                            Invite
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Quick Responses */}
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-3 bg-gray-50 dark:bg-slate-700/50 rounded-lg p-3">
-                      <img 
-                        src="/lovable-uploads/37d54649-724a-4949-a90c-e7ce7a18e976.png"
-                        alt="User avatar"
-                        className="w-8 h-8 rounded-full object-cover"
-                      />
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm font-medium text-foreground">Sarah_Backpacker</span>
-                          <span className="text-xs text-green-600 dark:text-green-400">• typing...</span>
-                        </div>
+                  {/* Quick Reply */}
+                  <div className="flex items-start gap-2">
+                    <img 
+                      src="/lovable-uploads/89cebcb0-e02d-4029-ad34-dde0c27c4bd9.png"
+                      alt="User avatar"
+                      className="w-6 h-6 rounded-full object-cover"
+                    />
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-medium text-foreground">Alex_Rooftops</span>
+                        <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 px-1.5 py-0.5 rounded-full">Guide</span>
                       </div>
-                      <div className="flex gap-1">
-                        <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                      </div>
-                    </div>
-
-                    {/* Quick Reply */}
-                    <div className="flex items-start gap-3">
-                      <img 
-                        src="/lovable-uploads/89cebcb0-e02d-4029-ad34-dde0c27c4bd9.png"
-                        alt="User avatar"
-                        className="w-8 h-8 rounded-full object-cover"
-                      />
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-sm font-medium text-foreground">Alex_Rooftops</span>
-                          <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 px-2 py-1 rounded-full">Local Guide</span>
-                        </div>
-                        <p className="text-sm text-muted-foreground">Sky Bar at Lebua is amazing! Go around sunset, lots of solo travelers there</p>
-                      </div>
+                      <p className="text-xs text-muted-foreground">Sky Bar at Lebua is amazing! Go around sunset, lots of solo travelers there</p>
                     </div>
                   </div>
 
                   {/* Community Actions */}
-                  <div className="flex gap-2 pt-2 border-t border-gray-100 dark:border-slate-700">
-                    <button className="flex-1 bg-gradient-to-r from-primary/10 to-primary/5 text-primary py-2.5 px-3 rounded-lg text-xs font-medium hover:from-primary/20 hover:to-primary/10 transition-all duration-300">
+                  <div className="flex gap-2 pt-1 border-t border-gray-100 dark:border-slate-700">
+                    <button className="flex-1 bg-gradient-to-r from-primary/10 to-primary/5 text-primary py-2 px-2 rounded-lg text-xs font-medium">
                       Ask Question
                     </button>
-                    <button className="flex-1 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 text-green-600 dark:text-green-400 py-2.5 px-3 rounded-lg text-xs font-medium hover:from-green-100 hover:to-emerald-100 dark:hover:from-green-900/30 dark:hover:to-emerald-900/30 transition-all duration-300">
+                    <button className="flex-1 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 text-green-600 dark:text-green-400 py-2 px-2 rounded-lg text-xs font-medium">
                       Join Meetup
                     </button>
                   </div>
                 </div>
               </div>
+            </div>
+            
+            <div className="text-center px-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                Where travelers like you connect
+              </h2>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                Join a community with travelers who know where to go, what to avoid, and maybe how to sneak into that rooftop bar. A place to ask questions, share safety tips, trade local secrets, and even team up with others who share your values — making it easier to just leave.
+              </p>
             </div>
           </div>
 
@@ -585,29 +550,20 @@ const Features = () => {
 
         {/* Panel 3: Book with Confidence */}
         <div>
-          {/* Mobile Layout: Text first, then visual */}
+          {/* Mobile Layout: Example first, then text */}
           <div className="lg:hidden">
-            <div className="text-center mb-8 px-4">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Guess who's tagging along
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                We don't just get you there, we go with you. Our on-trip assistant helps you find local transport, cheapest routes, uncover hidden spots, and even meet other travelers in your community. Especially useful when you need on-trip advice.
-              </p>
-            </div>
-            
-            <div className="px-4">
+            <div className="px-4 mb-6">
               <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-sm mx-auto">
                 {/* Assistant Header */}
-                <div className="bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 p-4 border-b border-gray-100 dark:border-slate-700">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                      <span className="text-white text-lg">AI</span>
+                <div className="bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 p-3 border-b border-gray-100 dark:border-slate-700">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm">AI</span>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground">AI Travel Assistant</h3>
+                      <h3 className="text-sm font-semibold text-foreground">AI Travel Assistant</h3>
                       <div className="flex items-center gap-1">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
                         <span className="text-xs text-muted-foreground">Active in Bangkok</span>
                       </div>
                     </div>
@@ -615,32 +571,32 @@ const Features = () => {
                 </div>
                 
                 {/* Chat Messages */}
-                <div className="p-4 space-y-4 h-[400px] overflow-y-auto">
+                <div className="p-3 space-y-3 h-80 overflow-y-auto">
                   {/* User Question */}
-                  <div className="flex justify-start gap-3">
+                  <div className="flex justify-start gap-2">
                     <img 
                       src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
                       alt="User"
-                      className="w-8 h-8 rounded-full object-cover"
+                      className="w-6 h-6 rounded-full object-cover"
                     />
-                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
-                      <p className="text-sm text-foreground">What's happening tonight near my hotel?</p>
+                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-2 max-w-xs">
+                      <p className="text-xs text-foreground">What's happening tonight near my hotel?</p>
                     </div>
                   </div>
 
                   {/* AI Response with Live Events */}
-                  <div className="flex justify-end gap-3">
-                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
-                      <p className="text-sm mb-3 text-foreground">Here are some great options near your hotel tonight!</p>
+                  <div className="flex justify-end gap-2">
+                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-2 max-w-xs">
+                      <p className="text-xs mb-2 text-foreground">Here are some great options near your hotel tonight!</p>
                       
                        {/* Events List with Images */}
-                       <div className="space-y-2">
+                       <div className="space-y-1.5">
                          <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
-                           <div className="flex items-center gap-2 mb-1">
+                           <div className="flex items-center gap-2">
                              <img 
                                src="/lovable-uploads/e619ccb5-67bb-4172-a634-8a6911184a7c.png"
                                alt="Rooftop Jazz"
-                               className="w-12 h-12 rounded object-cover"
+                               className="w-8 h-8 rounded object-cover"
                              />
                              <div>
                                <span className="text-xs font-medium text-foreground">Rooftop Jazz Night</span>
@@ -650,25 +606,11 @@ const Features = () => {
                          </div>
                          
                          <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
-                           <div className="flex items-center gap-2 mb-1">
-                             <img 
-                               src="/lovable-uploads/dea72317-53c3-46c5-9b99-aab06114fde8.png"
-                               alt="Night Market"
-                               className="w-12 h-12 rounded object-cover"
-                             />
-                             <div>
-                               <span className="text-xs font-medium text-foreground">Night Market</span>
-                               <p className="text-xs text-muted-foreground">Chatuchak • Until 2AM • 10 min ride</p>
-                             </div>
-                           </div>
-                         </div>
-                         
-                         <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
-                           <div className="flex items-center gap-2 mb-1">
+                           <div className="flex items-center gap-2">
                              <img 
                                src="/lovable-uploads/369021b4-c3a0-475c-be3b-9f9a6a9832a9.png"
                                alt="Temple Light Show"
-                               className="w-12 h-12 rounded object-cover"
+                               className="w-8 h-8 rounded object-cover"
                              />
                              <div>
                                <span className="text-xs font-medium text-foreground">Temple Light Show</span>
@@ -678,29 +620,29 @@ const Features = () => {
                          </div>
                        </div>
                     </div>
-                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm">AI</span>
+                    <div className="w-6 h-6 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs">AI</span>
                     </div>
                   </div>
 
                   {/* Follow-up User Question */}
-                  <div className="flex justify-start gap-3">
+                  <div className="flex justify-start gap-2">
                     <img 
                       src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
                       alt="User"
-                      className="w-8 h-8 rounded-full object-cover"
+                      className="w-6 h-6 rounded-full object-cover"
                     />
-                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
-                      <p className="text-sm text-foreground">How do I get to the rooftop cinema?</p>
+                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-2 max-w-xs">
+                      <p className="text-xs text-foreground">How do I get to the rooftop jazz?</p>
                     </div>
                   </div>
 
                   {/* AI Response with Transport Options */}
-                  <div className="flex justify-end gap-3">
-                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
-                      <p className="text-sm mb-2 text-foreground">Several options to get there!</p>
+                  <div className="flex justify-end gap-2">
+                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-2 max-w-xs">
+                      <p className="text-xs mb-2 text-foreground">Several options to get there!</p>
                       
-                      <div className="space-y-2">
+                      <div className="space-y-1.5">
                         <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
                           <div className="flex justify-between items-center">
                             <span className="text-xs font-medium text-foreground">BTS Skytrain</span>
@@ -714,23 +656,25 @@ const Features = () => {
                             <span className="text-xs text-muted-foreground">₿80 • 8 min</span>
                           </div>
                         </div>
-                        
-                        <div className="bg-white dark:bg-slate-600 rounded-lg p-2">
-                          <div className="flex justify-between items-center">
-                            <span className="text-xs font-medium text-foreground">Grab Car</span>
-                            <span className="text-xs text-muted-foreground">₿120 • 15 min</span>
-                          </div>
-                        </div>
                       </div>
                       
-                      <p className="text-xs mt-2 text-muted-foreground">I recommend the BTS - it's reliable and you'll avoid traffic!</p>
+                      <p className="text-xs mt-1.5 text-muted-foreground">I recommend the BTS - it's reliable!</p>
                     </div>
-                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm">AI</span>
+                    <div className="w-6 h-6 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs">AI</span>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+            
+            <div className="text-center px-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                Guess who's tagging along
+              </h2>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                We don't just get you there, we go with you. Our on-trip assistant helps you find local transport, cheapest routes, uncover hidden spots, and even meet other travelers in your community. Especially useful when you need on-trip advice.
+              </p>
             </div>
           </div>
 
