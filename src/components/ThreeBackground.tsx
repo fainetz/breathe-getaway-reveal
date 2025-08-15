@@ -123,31 +123,31 @@ const ThreeBackground = () => {
   }, []);
 
   const shapes = useMemo(() => {
-    // Mobile-optimized positions - closer and fewer shapes with neutral colors
+    // Mobile-optimized positions - closer and fewer shapes
     if (isMobile) {
       return [
-        { position: [-2, 1, -2] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'sphere' as const },
-        { position: [2, -1, -3] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'octahedron' as const },
-        { position: [-1, -2, -2] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'torus' as const },
+        { position: [-2, 1, -2] as [number, number, number], color: theme === 'light' ? '#1e40af' : '#3b82f6', type: 'sphere' as const },
+        { position: [2, -1, -3] as [number, number, number], color: theme === 'light' ? '#059669' : '#10b981', type: 'octahedron' as const },
+        { position: [-1, -2, -2] as [number, number, number], color: theme === 'light' ? '#ec4899' : '#f472b6', type: 'torus' as const },
         { position: [1, 2, -4] as [number, number, number], color: theme === 'light' ? '#374151' : '#6b7280', type: 'tetrahedron' as const },
-        { position: [-2, 0, -3] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'sphere' as const },
+        { position: [-2, 0, -3] as [number, number, number], color: theme === 'light' ? '#0f766e' : '#14b8a6', type: 'sphere' as const },
       ];
     }
     
-    // Desktop positions - more spread out with neutral colors
+    // Desktop positions - more spread out
     return [
-      { position: [-4, 1, -3] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'sphere' as const },
-      { position: [3, -1, -2] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'octahedron' as const },
-      { position: [-2, -2, -4] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'torus' as const },
+      { position: [-4, 1, -3] as [number, number, number], color: theme === 'light' ? '#1e40af' : '#3b82f6', type: 'sphere' as const },
+      { position: [3, -1, -2] as [number, number, number], color: theme === 'light' ? '#059669' : '#10b981', type: 'octahedron' as const },
+      { position: [-2, -2, -4] as [number, number, number], color: theme === 'light' ? '#ec4899' : '#f472b6', type: 'torus' as const },
       { position: [5, 2, -5] as [number, number, number], color: theme === 'light' ? '#374151' : '#6b7280', type: 'tetrahedron' as const },
-      { position: [-3, 3, -2] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'sphere' as const },
-      { position: [2, -3, -6] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'octahedron' as const },
+      { position: [-3, 3, -2] as [number, number, number], color: theme === 'light' ? '#1e3a8a' : '#2563eb', type: 'sphere' as const },
+      { position: [2, -3, -6] as [number, number, number], color: theme === 'light' ? '#065f46' : '#047857', type: 'octahedron' as const },
       { position: [-5, -1, -1] as [number, number, number], color: theme === 'light' ? '#1f2937' : '#4b5563', type: 'sphere' as const },
-      { position: [1, 4, -4] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'torus' as const },
+      { position: [1, 4, -4] as [number, number, number], color: theme === 'light' ? '#0f766e' : '#14b8a6', type: 'torus' as const },
       { position: [4, 0, -7] as [number, number, number], color: theme === 'light' ? '#111827' : '#1f2937', type: 'sphere' as const },
-      { position: [-1, -4, -3] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'tetrahedron' as const },
-      { position: [6, -2, -3] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'octahedron' as const },
-      { position: [-6, 2, -5] as [number, number, number], color: theme === 'light' ? '#6b7280' : '#4b5563', type: 'torus' as const },
+      { position: [-1, -4, -3] as [number, number, number], color: theme === 'light' ? '#1d4ed8' : '#3b82f6', type: 'tetrahedron' as const },
+      { position: [6, -2, -3] as [number, number, number], color: theme === 'light' ? '#047857' : '#059669', type: 'octahedron' as const },
+      { position: [-6, 2, -5] as [number, number, number], color: theme === 'light' ? '#1e40af' : '#2563eb', type: 'torus' as const },
     ];
   }, [theme, isMobile]);
 
@@ -155,14 +155,14 @@ const ThreeBackground = () => {
   if (!hasWebGL || isMobile) {
     return (
       <div className="fixed inset-0 z-0 overflow-hidden">
-        <div className={`absolute inset-0 ${theme === 'light' ? 'bg-gradient-to-br from-gray-50/30 via-transparent to-gray-100/20' : 'bg-gradient-to-br from-gray-900/20 via-transparent to-gray-950/15'}`}>
+        <div className={`absolute inset-0 ${theme === 'light' ? 'bg-gradient-to-br from-gray-50/30 via-transparent to-blue-50/20' : 'bg-gradient-to-br from-gray-900/20 via-transparent to-slate-900/15'}`}>
           {/* Mobile-optimized decorative elements */}
-          <div className={`absolute top-1/4 left-[10%] w-16 h-16 md:w-32 md:h-32 ${theme === 'light' ? 'bg-gray-400/15' : 'bg-gray-600/10'} rounded-full blur-xl animate-pulse`}></div>
-          <div className={`absolute top-2/3 right-[15%] w-12 h-12 md:w-24 md:h-24 ${theme === 'light' ? 'bg-gray-400/15' : 'bg-gray-600/10'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '1s' }}></div>
-          <div className={`absolute top-1/2 left-3/4 w-14 h-14 md:w-28 md:h-28 ${theme === 'light' ? 'bg-gray-400/15' : 'bg-gray-600/10'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '2s' }}></div>
+          <div className={`absolute top-1/4 left-[10%] w-16 h-16 md:w-32 md:h-32 ${theme === 'light' ? 'bg-blue-400/15' : 'bg-blue-600/10'} rounded-full blur-xl animate-pulse`}></div>
+          <div className={`absolute top-2/3 right-[15%] w-12 h-12 md:w-24 md:h-24 ${theme === 'light' ? 'bg-emerald-400/15' : 'bg-emerald-600/10'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '1s' }}></div>
+          <div className={`absolute top-1/2 left-3/4 w-14 h-14 md:w-28 md:h-28 ${theme === 'light' ? 'bg-pink-400/15' : 'bg-pink-600/10'} rounded-full blur-xl animate-pulse`} style={{ animationDelay: '2s' }}></div>
           {/* Additional mobile elements */}
           <div className={`absolute top-[15%] right-[25%] w-8 h-8 md:w-20 md:h-20 ${theme === 'light' ? 'bg-gray-400/10' : 'bg-gray-600/8'} rounded-full blur-lg animate-pulse`} style={{ animationDelay: '0.5s' }}></div>
-          <div className={`absolute bottom-1/4 left-[20%] w-10 h-10 md:w-24 md:h-24 ${theme === 'light' ? 'bg-gray-400/12' : 'bg-gray-600/8'} rounded-full blur-lg animate-pulse`} style={{ animationDelay: '1.5s' }}></div>
+          <div className={`absolute bottom-1/4 left-[20%] w-10 h-10 md:w-24 md:h-24 ${theme === 'light' ? 'bg-teal-400/12' : 'bg-teal-600/8'} rounded-full blur-lg animate-pulse`} style={{ animationDelay: '1.5s' }}></div>
         </div>
       </div>
     );
