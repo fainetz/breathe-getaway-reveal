@@ -251,7 +251,7 @@ const Features = () => {
               </p>
             </div>
             <div className="relative">
-              {/* Main AI Assistant Interface */}
+              {/* AI Assistant Interface Mockup */}
               <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-md">
                 {/* Assistant Header */}
                 <div className="bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 p-4 border-b border-gray-100 dark:border-slate-700">
@@ -269,19 +269,28 @@ const Features = () => {
                   </div>
                 </div>
                 
-                 {/* Chat Messages */}
-                <div className="p-4 space-y-4 h-80 overflow-y-auto">
-                  {/* AI Response First */}
+                {/* Chat Messages */}
+                <div className="p-4 space-y-4 max-h-80 overflow-y-auto">
+                  {/* User Question */}
                   <div className="flex justify-start gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm">🤖</span>
+                    <img 
+                      src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
+                      alt="User"
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
+                      <p className="text-sm text-foreground">What's happening tonight near my hotel?</p>
                     </div>
-                    <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3 max-w-sm">
-                      <p className="text-sm text-foreground mb-3">🌆 Amazing rooftop events tonight:</p>
-                      
-                      {/* Event Cards */}
-                      <div className="space-y-2">
-                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
+                  </div>
+
+                  {/* AI Response with Live Events */}
+                  <div className="flex justify-end gap-3">
+                    <div className="flex-1 space-y-3 flex justify-end">
+                      <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3 max-w-sm">
+                        <p className="text-sm text-foreground mb-3">I found amazing rooftop events happening tonight:</p>
+                        
+                        {/* Event 1 - Rooftop Cinema */}
+                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 mb-3 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 hover:shadow-lg cursor-pointer">
                           <div className="flex gap-3">
                             <img 
                               src="/lovable-uploads/a1506915-e011-43ee-b8b7-034196d2c51e.png"
@@ -289,150 +298,124 @@ const Features = () => {
                               className="w-12 h-12 rounded-lg object-cover"
                             />
                             <div className="flex-1">
-                              <p className="text-sm font-medium text-foreground">Rooftop Cinema</p>
-                              <p className="text-xs text-muted-foreground">8:30 PM • Under the stars</p>
-                              <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 px-2 py-1 rounded-full">🎬 Live</span>
+                              <div className="flex items-start justify-between">
+                                <div>
+                                  <p className="text-sm font-medium text-foreground">Rooftop Cinema Night</p>
+                                  <p className="text-xs text-muted-foreground">8:30 PM • Under the stars</p>
+                                </div>
+                                <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 px-2 py-1 rounded-full">🎬 Live</span>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        
-                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
+
+                        {/* Event 2 - Jazz Club */}
+                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 mb-3 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 hover:shadow-lg cursor-pointer">
                           <div className="flex gap-3">
                             <img 
                               src="/lovable-uploads/b35a9b1b-a4f8-4fed-9304-1262070ceada.png"
-                              alt="Jazz club"
+                              alt="Jazz performance"
                               className="w-12 h-12 rounded-lg object-cover"
                             />
                             <div className="flex-1">
-                              <p className="text-sm font-medium text-foreground">Jazz Session</p>
-                              <p className="text-xs text-muted-foreground">9 PM • Garden vibes</p>
-                              <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded-full">🎵 Live</span>
+                              <div className="flex items-start justify-between">
+                                <div>
+                                  <p className="text-sm font-medium text-foreground">Garden Jazz Session</p>
+                                  <p className="text-xs text-muted-foreground">9 PM • Acoustic vibes</p>
+                                </div>
+                                <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded-full">🎵 Live</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Event 3 - Rooftop Dining */}
+                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 hover:shadow-lg cursor-pointer">
+                          <div className="flex gap-3">
+                            <img 
+                              src="/lovable-uploads/d0e879ef-6715-4c4d-983e-8f4a84c6ff20.png"
+                              alt="Rooftop dining"
+                              className="w-12 h-12 rounded-lg object-cover"
+                            />
+                            <div className="flex-1">
+                              <div className="flex items-start justify-between">
+                                <div>
+                                  <p className="text-sm font-medium text-foreground">Skyline Dining</p>
+                                  <p className="text-xs text-muted-foreground">7 PM • City views</p>
+                                </div>
+                                <span className="text-xs bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 px-2 py-1 rounded-full">🍽️ Dining</span>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm">🤖</span>
+                    </div>
                   </div>
 
-                  {/* User Follow-up Question */}
-                  <div className="flex justify-end gap-3">
-                    <div className="bg-blue-500 rounded-2xl p-3 max-w-xs">
-                      <p className="text-sm text-white">Perfect! Can you help me get to the Jazz Session? I'm staying near Khao San Road.</p>
-                    </div>
+                  {/* Transport Routing Example */}
+                  <div className="flex justify-start gap-3">
                     <img 
                       src="/lovable-uploads/6a3317c4-1f50-4152-9c40-e9b2a8c49675.png"
                       alt="User"
                       className="w-8 h-8 rounded-full object-cover"
                     />
+                    <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl p-3 max-w-xs">
+                      <p className="text-sm text-foreground">How do I get to the jazz session?</p>
+                    </div>
                   </div>
 
-                  {/* AI Transport Response */}
-                  <div className="flex justify-start gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm">🤖</span>
-                    </div>
-                    <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-3 max-w-sm">
-                      <p className="text-sm text-foreground mb-3">🚗 Here are your best routes:</p>
-                      
-                      {/* Route Options */}
-                      <div className="space-y-2">
-                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm border-l-2 border-green-500">
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-xs font-medium text-foreground">🚕 Taxi</span>
-                            <span className="text-xs text-green-600 dark:text-green-400">Fastest</span>
-                          </div>
-                          <p className="text-xs text-muted-foreground">15 min • ฿180 • Direct route</p>
-                        </div>
+                  {/* AI Transport Response with Glassmorphism */}
+                  <div className="flex justify-end gap-3">
+                    <div className="flex-1 space-y-3 flex justify-end">
+                      <div className="bg-gradient-to-br from-white/40 to-white/20 dark:from-slate-800/40 dark:to-slate-800/20 backdrop-blur-xl border border-white/30 dark:border-slate-700/30 rounded-2xl p-3 max-w-sm shadow-xl hover:shadow-2xl hover:bg-gradient-to-br hover:from-white/60 hover:to-white/30 dark:hover:from-slate-800/60 dark:hover:to-slate-800/30 transition-all duration-500 cursor-pointer">
+                        <p className="text-sm text-foreground mb-3">Here are your transport options:</p>
                         
-                        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-xs font-medium text-foreground">🚇 BTS</span>
-                            <span className="text-xs text-blue-600 dark:text-blue-400">Cheapest</span>
+                        {/* Transport Options */}
+                        <div className="space-y-2">
+                          <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg p-3 border border-white/20 dark:border-slate-700/20">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <span className="text-green-600">🚇</span>
+                                <div>
+                                  <p className="text-sm font-medium text-foreground">BTS Skytrain</p>
+                                  <p className="text-xs text-muted-foreground">15 min • ฿42</p>
+                                </div>
+                              </div>
+                              <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-2 py-1 rounded-full">Fastest</span>
+                            </div>
                           </div>
-                          <p className="text-xs text-muted-foreground">25 min • ฿42 • Saphan Taksin + walk</p>
+                          
+                          <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-lg p-3 border border-white/20 dark:border-slate-700/20">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <span className="text-yellow-600">🛺</span>
+                                <div>
+                                  <p className="text-sm font-medium text-foreground">Tuk-tuk</p>
+                                  <p className="text-xs text-muted-foreground">20 min • ฿120</p>
+                                </div>
+                              </div>
+                              <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 px-2 py-1 rounded-full">Scenic</span>
+                            </div>
+                          </div>
                         </div>
                       </div>
+                    </div>
+                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm">🤖</span>
                     </div>
                   </div>
 
                   {/* Quick Actions */}
                   <div className="flex gap-2 pt-2 border-t border-gray-100 dark:border-slate-700">
                     <button className="flex-1 bg-primary/10 text-primary py-2 px-3 rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors">
-                      🎫 Get Tickets
+                      🗺️ Get Directions
                     </button>
                     <button className="flex-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 py-2 px-3 rounded-lg text-xs font-medium hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
-                      📍 Directions
+                      📱 Book Tickets
                     </button>
-                  </div>
-                </div>
-
-              {/* Smaller Transport Example - Glassmorphism overlay */}
-              <div className="absolute -right-8 top-20 w-44 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-xl shadow-lg border border-white/50 dark:border-slate-700/50 p-3 animate-float-delayed">
-                <div className="flex items-center gap-2 mb-3 pb-2 border-b border-gray-200/50 dark:border-slate-600/50">
-                  <div className="w-5 h-5 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center">
-                    <span className="text-white text-xs">🤖</span>
-                  </div>
-                  <span className="text-xs font-medium text-foreground">Transport Helper</span>
-                </div>
-                
-                <div className="space-y-2">
-                  {/* User Question */}
-                  <div className="flex justify-end">
-                    <div className="bg-blue-500 rounded-lg p-2 max-w-28">
-                      <p className="text-xs text-white">Best way to Sky Bar?</p>
-                    </div>
-                  </div>
-                  
-                  {/* AI Response */}
-                  <div className="flex justify-start">
-                    <div className="bg-primary/10 dark:bg-primary/20 rounded-lg p-2 max-w-32">
-                      <p className="text-xs text-foreground mb-1">🚕 Taxi: 15 min, ฿200</p>
-                      <p className="text-xs text-foreground">🚇 BTS: 25 min, ฿42</p>
-                      <p className="text-xs text-muted-foreground mt-1">💡 Use Grab app</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </div>
-
-              {/* Smaller overlapping transport routing chat example */}
-              <div className="absolute -left-8 top-12 z-10 animate-float">
-                <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-lg rounded-xl p-4 shadow-xl border border-white/30 dark:border-slate-700/50 max-w-[240px]">
-                  <div className="flex items-center gap-2 mb-3 pb-2 border-b border-gray-200/50 dark:border-slate-600/50">
-                    <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center">
-                      <span className="text-white text-xs">🗺️</span>
-                    </div>
-                    <span className="text-xs font-medium text-foreground">Route Assistant</span>
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <div className="flex justify-end">
-                      <div className="bg-blue-500 text-white rounded-lg px-2 py-1 text-xs max-w-[160px]">
-                        How do I get from airport to my hotel?
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-2">
-                      <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-white text-[8px]">🤖</span>
-                      </div>
-                      <div className="bg-gray-100/80 dark:bg-slate-700/80 rounded-lg px-2 py-1 text-xs text-muted-foreground">
-                        🚄 **Airport Rail Link**
-                        45 mins • 45฿ • Most reliable
-                        
-                        🚕 **Taxi**
-                        60 mins • 400฿ • Door-to-door
-                        
-                        🚌 **Bus A1**
-                        60 mins • 30฿ • Budget option
-                      </div>
-                    </div>
-                    
-                    <div className="flex justify-end">
-                      <div className="bg-blue-500 text-white rounded-lg px-2 py-1 text-xs">
-                        Book the train!
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
