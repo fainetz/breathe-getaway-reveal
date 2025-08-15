@@ -118,8 +118,8 @@ const PremiumHorizontalNav = () => {
                   group relative flex-shrink-0 px-6 py-3 rounded-2xl text-sm font-semibold 
                   transition-all duration-500 ease-out select-none transform 
                   ${isActive 
-                    ? 'bg-gradient-to-r from-primary via-primary/90 to-accent text-primary-foreground shadow-2xl shadow-primary/30 scale-105 translate-y-[-2px]' 
-                    : 'bg-gradient-to-r from-card/80 to-card/60 text-muted-foreground hover:from-card hover:to-card/80 hover:text-foreground hover:scale-102 border border-border/30 hover:border-border/50'
+                    ? 'bg-gradient-to-r from-primary via-primary/90 to-accent text-white shadow-2xl shadow-primary/30 scale-105 translate-y-[-2px]' 
+                    : 'bg-gradient-to-r from-card/80 to-card/60 text-white hover:from-card hover:to-card/80 hover:text-white hover:scale-102 border border-border/30 hover:border-border/50'
                   }
                   ${isTransitioning ? 'opacity-75 pointer-events-none' : ''}
                   backdrop-blur-sm
