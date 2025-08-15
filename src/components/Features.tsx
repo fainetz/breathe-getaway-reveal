@@ -48,7 +48,7 @@ const Features = () => {
                     <img 
                       src="/lovable-uploads/937e23fd-265f-4986-991a-926a05637edf.png"
                       alt="Luxury hotel room with modern design"
-                      className="w-full h-32 rounded-xl object-cover mb-3"
+                      className="w-full h-24 rounded-xl object-cover mb-3"
                     />
                     <div className="flex flex-wrap gap-2">
                       <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">Spa</span>
@@ -72,18 +72,18 @@ const Features = () => {
                       <img 
                         src="/lovable-uploads/369021b4-c3a0-475c-be3b-9f9a6a9832a9.png"
                         alt="Temple"
-                        className="w-full h-24 rounded-lg object-cover mb-2"
+                        className="w-full h-20 rounded-lg object-cover mb-2"
                       />
                       <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 px-2 py-1 rounded-full">₿500</span>
                     </div>
                     
                     <div className="bg-white/70 dark:bg-slate-600/70 backdrop-blur-sm rounded-xl p-4 border border-white/50 dark:border-slate-500/50">
-                      <h6 className="text-sm font-medium text-foreground mb-1">Floating Market</h6>
-                      <p className="text-xs text-muted-foreground mb-2">2:00 PM • Traditional boat vendors and local crafts</p>
+                      <h6 className="text-sm font-medium text-foreground mb-1">Tropical Resort Walkway</h6>
+                      <p className="text-xs text-muted-foreground mb-2">2:00 PM • Scenic boardwalk over crystal waters</p>
                       <img 
-                        src="/lovable-uploads/dea72317-53c3-46c5-9b99-aab06114fde8.png"
-                        alt="Market"
-                        className="w-full h-24 rounded-lg object-cover mb-2"
+                        src="/lovable-uploads/0e011dff-4ce7-49da-88d6-30ba45508629.png"
+                        alt="Tropical resort boardwalk over water"
+                        className="w-full h-20 rounded-lg object-cover mb-2"
                       />
                       <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">₿200</span>
                     </div>
