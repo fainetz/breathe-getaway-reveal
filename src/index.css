@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Luxury smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted)) transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Heavy momentum scrolling for webkit */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
@@ -251,6 +284,36 @@ All colors MUST be HSL.
     }
   }
 
+  /* Luxury scroll animations */
+  @keyframes parallax-drift {
+    from {
+      transform: translateY(0) scale(1);
+    }
+    to {
+      transform: translateY(-100px) scale(1.05);
+    }
+  }
+
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      transform: translateY(60px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes scroll-glow {
+    0%, 100% {
+      background: linear-gradient(180deg, transparent 0%, hsl(var(--primary) / 0.03) 50%, transparent 100%);
+    }
+    50% {
+      background: linear-gradient(180deg, transparent 0%, hsl(var(--accent) / 0.08) 50%, transparent 100%);
+    }
+  }
+
   .animate-fade-in {
     animation: fade-in 0.6s ease-out forwards;
   }
@@ -277,6 +340,37 @@ All colors MUST be HSL.
 
   .animate-float-delayed {
     animation: float 6s ease-in-out infinite 3s;
+  }
+
+  /* Luxury scroll effects */
+  .parallax-drift {
+    animation: parallax-drift 20s linear infinite;
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(60px) scale(0.96);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .scroll-glow {
+    animation: scroll-glow 8s ease-in-out infinite;
+  }
+
+  /* Enhanced momentum scrolling */
+  .luxury-scroll {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .luxury-scroll::-webkit-scrollbar {
+    display: none;
   }
 
   /* Chat background */
