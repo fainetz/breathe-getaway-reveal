@@ -36,11 +36,11 @@ const App = () => (
             <MobileMenu />
             
             {/* Mobile nav - positioned higher */}
-            <div className="md:hidden fixed top-8 left-1/2 transform -translate-x-1/2 z-[60]">
+            <div className="md:hidden fixed top-8 left-1/2 transform -translate-x-1/2 z-[60]" style={{ position: 'fixed' }}>
               <MiniCurvedNav />
             </div>
             {/* Desktop nav - positioned lower with scroll behavior */}
-            <div className="hidden md:flex fixed top-24 left-1/2 transform -translate-x-1/2 z-[60] transition-all duration-300">
+            <div className="hidden md:flex fixed top-24 left-1/2 transform -translate-x-1/2 z-[60] transition-all duration-300" style={{ position: 'fixed' }}>
               <MiniCurvedNav isIntegrated={true} />
             </div>
             <Routes>
@@ -56,6 +56,7 @@ const App = () => (
               <Route path="/admin/feedback" element={<AdminFeedback />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/waitlist" element={<Waitlist />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
