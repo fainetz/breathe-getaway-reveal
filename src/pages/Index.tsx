@@ -14,11 +14,15 @@ import FeatureRequestBox from '../components/FeatureRequestBox';
 import ExpandableSearch from '../components/ExpandableSearch';
 import BackToChatButton from '../components/BackToChatButton';
 import MobileMenu from '../components/MobileMenu';
+import { useScrollEffects } from '../hooks/useScrollEffects';
 
 const Index = () => {
   const navigate = useNavigate();
   const [hasChatHistory, setHasChatHistory] = useState(false);
   const [showFlightAI, setShowFlightAI] = useState(false);
+
+  // Initialize scroll effects
+  useScrollEffects();
 
   const handleSearchSubmit = (query: string) => {
     console.log('Search submitted:', query);
@@ -34,16 +38,24 @@ const Index = () => {
   console.log('Index state - hasChatHistory:', hasChatHistory);
 
   return (
-    <div className="min-h-screen min-h-dvh bg-background text-foreground overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen min-h-dvh bg-background text-foreground overflow-x-hidden transition-colors duration-300 luxury-lighting dark:luxury-lighting-dark">
       <Hero />
-      <div className="transition-hero-features"></div>
-      <Features />
-      <div className="transition-features-emotional"></div>
-      <EmotionalHooks />
-      <div className="transition-emotional-luxury"></div>
-      <Vision />
+      <div className="transition-hero-features scroll-parallax"></div>
+      <div className="scroll-reveal">
+        <Features />
+      </div>
+      <div className="transition-features-emotional scroll-parallax"></div>
+      <div className="scroll-reveal">
+        <EmotionalHooks />
+      </div>
+      <div className="transition-emotional-luxury scroll-parallax"></div>
+      <div className="scroll-reveal">
+        <Vision />
+      </div>
       <div id="resultsSection" className="min-h-0"></div>
-      <Footer />
+      <div className="scroll-reveal">
+        <Footer />
+      </div>
       <FeatureRequestBox />
       
       <ExpandableSearch onSearchSubmit={handleSearchSubmit} />

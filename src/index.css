@@ -132,6 +132,9 @@ All colors MUST be HSL.
     height: 100vh;
     height: 100dvh;
     @apply bg-background;
+    /* Luxury smooth scrolling */
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
     /* Ensure no gaps on mobile Safari */
     margin: 0;
     padding: 0;
@@ -150,6 +153,8 @@ All colors MUST be HSL.
     padding: 0;
     width: 100%;
     overflow-x: hidden;
+    /* Luxury scrolling momentum */
+    -webkit-overflow-scrolling: touch;
     /* Ensure background extends into safe areas */
     margin-top: calc(-1 * env(safe-area-inset-top));
     margin-bottom: calc(-1 * env(safe-area-inset-bottom));
@@ -251,6 +256,53 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes parallax-slow {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-50px); }
+  }
+
+  @keyframes parallax-fast {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-100px); }
+  }
+
+  @keyframes lighting-shift {
+    0% { 
+      background-position: 0% 50%;
+      filter: brightness(1) contrast(1);
+    }
+    50% { 
+      background-position: 100% 50%;
+      filter: brightness(1.1) contrast(1.05);
+    }
+    100% { 
+      background-position: 0% 50%;
+      filter: brightness(1) contrast(1);
+    }
+  }
+
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      transform: translateY(80px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes reveal-fade {
+    from {
+      opacity: 0;
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
   .animate-fade-in {
     animation: fade-in 0.6s ease-out forwards;
   }
@@ -277,6 +329,75 @@ All colors MUST be HSL.
 
   .animate-float-delayed {
     animation: float 6s ease-in-out infinite 3s;
+  }
+
+  .animate-parallax-slow {
+    animation: parallax-slow linear infinite;
+    animation-timeline: scroll();
+  }
+
+  .animate-parallax-fast {
+    animation: parallax-fast linear infinite;
+    animation-timeline: scroll();
+  }
+
+  .animate-lighting-shift {
+    animation: lighting-shift 20s ease-in-out infinite;
+    background-size: 200% 200%;
+  }
+
+  .animate-reveal-up {
+    opacity: 0;
+    animation: reveal-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-reveal-fade {
+    opacity: 0;
+    animation: reveal-fade 1.2s ease-out forwards;
+  }
+
+  /* Scroll-triggered animations */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .scroll-parallax {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+  }
+
+  /* Luxury lighting effects */
+  .luxury-lighting {
+    background: linear-gradient(
+      45deg,
+      hsl(var(--background)) 0%,
+      hsl(var(--background) / 0.98) 25%,
+      hsl(var(--primary) / 0.02) 50%,
+      hsl(var(--background) / 0.98) 75%,
+      hsl(var(--background)) 100%
+    );
+    background-size: 300% 300%;
+    animation: lighting-shift 15s ease-in-out infinite;
+  }
+
+  .luxury-lighting-dark {
+    background: linear-gradient(
+      45deg,
+      hsl(var(--background)) 0%,
+      hsl(var(--background) / 0.95) 25%,
+      hsl(var(--primary) / 0.08) 50%,
+      hsl(var(--background) / 0.95) 75%,
+      hsl(var(--background)) 100%
+    );
+    background-size: 300% 300%;
+    animation: lighting-shift 15s ease-in-out infinite;
   }
 
   /* Chat background */
