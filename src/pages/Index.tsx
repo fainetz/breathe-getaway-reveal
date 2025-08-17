@@ -39,21 +39,23 @@ const Index = () => {
 
   return (
     <div className="min-h-screen min-h-dvh bg-background text-foreground overflow-x-hidden transition-colors duration-300 luxury-lighting dark:luxury-lighting-dark">
-      <Hero />
-      <div className="transition-hero-features scroll-parallax"></div>
-      <div className="scroll-reveal">
+      <div className="scroll-scale scroll-bg-scale">
+        <Hero />
+      </div>
+      <div className="transition-hero-features scroll-parallax scroll-morph"></div>
+      <div className="scroll-reveal scroll-perspective">
         <Features />
       </div>
-      <div className="transition-features-emotional scroll-parallax"></div>
-      <div className="scroll-reveal">
+      <div className="transition-features-emotional scroll-parallax scroll-rotate"></div>
+      <div className="scroll-reveal scroll-scale">
         <EmotionalHooks />
       </div>
-      <div className="transition-emotional-luxury scroll-parallax"></div>
-      <div className="scroll-reveal">
+      <div className="transition-emotional-luxury scroll-parallax scroll-morph"></div>
+      <div className="scroll-reveal scroll-perspective">
         <Vision />
       </div>
       <div id="resultsSection" className="min-h-0"></div>
-      <div className="scroll-reveal">
+      <div className="scroll-reveal scroll-text-scale">
         <Footer />
       </div>
       <FeatureRequestBox />

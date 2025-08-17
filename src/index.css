@@ -373,6 +373,42 @@ All colors MUST be HSL.
     transition: transform 0.1s ease-out;
   }
 
+  /* Interactive scroll effects */
+  .scroll-scale {
+    will-change: transform, opacity;
+    transition: all 0.1s ease-out;
+    transform-origin: center;
+  }
+
+  .scroll-rotate {
+    will-change: transform;
+    transition: transform 0.2s ease-out;
+    transform-origin: center;
+  }
+
+  .scroll-morph {
+    will-change: width, height, border-radius;
+    transition: all 0.3s ease-out;
+    transform-origin: center;
+  }
+
+  .scroll-text-scale {
+    will-change: font-size, letter-spacing;
+    transition: all 0.2s ease-out;
+  }
+
+  .scroll-perspective {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
+  }
+
+  .scroll-bg-scale {
+    will-change: background-size;
+    transition: background-size 0.3s ease-out;
+    background-position: center;
+  }
+
   /* Luxury lighting effects */
   .luxury-lighting {
     background: linear-gradient(
