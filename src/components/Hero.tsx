@@ -94,7 +94,8 @@ const Hero = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Use passive listener for better performance and to prevent scroll blocking
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
