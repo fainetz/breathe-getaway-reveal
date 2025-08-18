@@ -84,20 +84,6 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, [categorySlides.length]);
 
-  // Scroll detection to hide arrows on mobile
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setHasScrolled(true);
-      } else {
-        setHasScrolled(false);
-      }
-    };
-
-    // Use passive listener for better performance and to prevent scroll blocking
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const getCartItemCount = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
