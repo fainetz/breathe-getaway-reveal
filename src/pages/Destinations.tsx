@@ -1,309 +1,182 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, ChevronLeft, ChevronRight, MapPin, Star, Sparkles, Heart, Calendar, Clock } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, ShoppingCart, Star, Sparkles, Heart, Package, Plane, Shield, Wifi } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import FullScreenDestination from '../components/FullScreenDestination';
 
 import { useTheme } from '../contexts/ThemeContext';
 
-interface Destination {
+interface TravelProduct {
   id: number;
   name: string;
-  location: string;
+  brand: string;
   category: string;
-  type: 'hotel' | 'destination' | 'retreat';
+  type: 'comfort' | 'tech' | 'safety' | 'wellness';
   image: string;
   price: string;
-  duration: string;
+  originalPrice?: string;
   description: string;
-  mood: string;
-  tags: string[];
+  features: string[];
+  colors: string[];
   rating?: number;
   featured?: boolean;
-  comingSoon?: boolean;
+  newProduct?: boolean;
+  bestSeller?: boolean;
 }
 
 interface CategoryRow {
   title: string;
-  destinations: Destination[];
+  products: TravelProduct[];
 }
 
-const Destinations = () => {
+const BreatheGetawayShop = () => {
   const { theme } = useTheme();
-  const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
-  const [isFullScreenOpen, setIsFullScreenOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<TravelProduct | null>(null);
   const [heroIndex, setHeroIndex] = useState(0);
+  const [selectedColor, setSelectedColor] = useState<string>('');
 
-  const destinations: Destination[] = [
-    // DESTINATIONS
+  const travelProducts: TravelProduct[] = [
+    // COMFORT ESSENTIALS
     {
       id: 1,
-      name: "Bali Soul Sanctuary",
-      location: "Ubud, Indonesia",
-      category: "healing",
-      type: "hotel",
+      name: "CloudRest Memory Foam Travel Pillow",
+      brand: "Breathe & Getaway",
+      category: "comfort",
+      type: "comfort",
       image: "/lovable-uploads/5f365107-6261-4234-b664-965c3aea763b.png",
-      price: "$89/per night",
-      duration: "nightly",
-      description: "Find inner peace among rice terraces and ancient temples in this transformative wellness retreat",
-      mood: "Seeking Balance",
-      tags: ["Meditation", "Yoga", "Spa"],
+      price: "$89",
+      originalPrice: "$119",
+      description: "Revolutionary ergonomic neck pillow with premium memory foam and breathable bamboo cover. Perfect for long flights and peaceful sleep anywhere.",
+      features: ["Memory foam core", "Bamboo fiber cover", "360° neck support", "Compact carry case"],
+      colors: ["Sage Green", "Ocean Blue", "Stone Gray"],
       rating: 4.9,
-      featured: false,
-      comingSoon: true
+      featured: true,
+      bestSeller: true
     },
     {
       id: 2,
-      name: "Santorini Dreams",
-      location: "Santorini, Greece",
-      category: "luxury",
-      type: "destination",
+      name: "AirFlow Compression Socks",
+      brand: "Breathe & Getaway",
+      category: "wellness",
+      type: "wellness",
       image: "/lovable-uploads/92794f25-53c0-4644-af8d-3e9343c68684.png",
-      price: "$2,199",
-      duration: "5 days",
-      description: "Experience ultimate luxury with stunning cliffside views and pristine Aegean waters",
-      mood: "Craving Luxury",
-      tags: ["Cliffside", "Sunset", "Luxury"],
+      price: "$49",
+      description: "Medical-grade compression socks designed for travelers. Improves circulation and reduces swelling during long journeys.",
+      features: ["15-20 mmHg compression", "Moisture-wicking fabric", "Seamless toe design", "Available in 3 sizes"],
+      colors: ["Charcoal", "Navy", "Black"],
       rating: 4.8,
       featured: true
     },
     {
       id: 3,
-      name: "Tropical Beach Paradise",
-      location: "Turks & Caicos",
-      category: "relaxation",
-      type: "destination",
+      name: "ZenPack Portable Meditation Kit",
+      brand: "Breathe & Getaway",
+      category: "wellness",
+      type: "wellness",
       image: "/lovable-uploads/18aa8cb3-7178-47f3-b218-3aa6b8687db5.png",
-      price: "$1,899",
-      duration: "6 days",
-      description: "Unwind on pristine beaches with crystal clear waters and spectacular sunset views",
-      mood: "Need Relaxation",
-      tags: ["Beach", "Sunset", "Paradise"],
+      price: "$129",
+      description: "Complete meditation kit in a sleek travel case. Includes guided meditation device, aromatherapy pods, and comfort cushion.",
+      features: ["50+ guided sessions", "Essential oil diffuser", "Foldable cushion", "Bluetooth connectivity"],
+      colors: ["Himalayan Salt", "Forest Green", "Midnight Blue"],
       rating: 4.7,
-      featured: true
+      newProduct: true
     },
     {
       id: 4,
-      name: "Mountain Pool Resort",
-      location: "Bali, Indonesia", 
-      category: "luxury",
-      type: "destination",
+      name: "SafeGuard RFID Travel Wallet",
+      brand: "Breathe & Getaway",
+      category: "security",
+      type: "safety",
       image: "/lovable-uploads/5da0882d-c336-4a6c-b816-25ff575ea341.png",
-      price: "$2,499",
-      duration: "7 days",
-      description: "Luxury resort experience with infinity pools surrounded by lush tropical mountains",
-      mood: "Seeking Serenity",
-      tags: ["Infinity Pool", "Mountains", "Luxury"],
+      price: "$79",
+      description: "Premium leather wallet with RFID blocking technology. Keeps your cards safe while maintaining elegant style.",
+      features: ["RFID blocking", "Genuine leather", "6 card slots", "Hidden cash compartment"],
+      colors: ["Cognac Brown", "Midnight Black", "Slate Gray"],
       rating: 4.9,
-      featured: true
+      bestSeller: true
     },
     {
       id: 5,
-      name: "Luxury Pool Sanctuary",
-      location: "Tulum, Mexico",
-      category: "luxury",
-      type: "destination", 
+      name: "PowerFlow Portable Charger",
+      brand: "Breathe & Getaway",
+      category: "tech",
+      type: "tech",
       image: "/lovable-uploads/e2c6c5a8-65a5-4005-976d-25a14867e43e.png",
-      price: "$1,799",
-      duration: "5 days",
-      description: "Exclusive beachfront resort with pristine pools and tropical luxury",
-      mood: "Ultimate Relaxation",
-      tags: ["Pool", "Tropical", "Beachfront"],
+      price: "$159",
+      description: "High-capacity wireless charging station with solar panel backup. Never run out of power during your adventures.",
+      features: ["20,000mAh capacity", "Solar charging", "Wireless charging pad", "USB-C fast charge"],
+      colors: ["Arctic White", "Space Gray", "Desert Sand"],
       rating: 4.8,
       featured: true
-    },
-    {
-      id: 114,
-      name: "Santorini Sunset",
-      location: "Santorini, Greece",
-      category: "romantic",
-      type: "destination",
-      image: "/lovable-uploads/6b7f673a-c32c-4c6e-9496-bf8f5b86ec9a.png",
-      price: "$1,699",
-      duration: "4 days",
-      description: "Romance awakens with Aegean sunsets and wine",
-      mood: "Feeling Romantic",
-      tags: ["Sunsets", "Wine", "Luxury"],
-      rating: 4.6
-    },
-    {
-      id: 115,
-      name: "Patagonia Wild",
-      location: "Torres del Paine, Chile",
-      category: "adventure",
-      type: "destination",
-      image: "/lovable-uploads/a993028f-ad55-4fcd-bf8e-60a2820594d1.png",
-      price: "$2,499",
-      duration: "8 days",
-      description: "Reconnect with raw nature and your wild spirit",
-      mood: "Need Freedom",
-      tags: ["Hiking", "Wildlife", "Glaciers"],
-      rating: 4.8
     },
     {
       id: 6,
-      name: "Tuscany Healing",
-      location: "Val d'Orcia, Italy",
-      category: "healing",
-      type: "destination",
-      image: "/lovable-uploads/b6902c70-0899-4bb8-b8ae-a982867eac3c.png",
-      price: "$1,799",
-      duration: "6 days",
-      description: "Heal your heart with rolling hills and fine wine",
-      mood: "Need Healing",
-      tags: ["Wine", "Countryside", "Cooking"],
-      rating: 4.5
+      name: "HydroMist Travel Humidifier",
+      brand: "Breathe & Getaway",
+      category: "wellness",
+      type: "wellness",
+      image: "/lovable-uploads/6b7f673a-c32c-4c6e-9496-bf8f5b86ec9a.png",
+      price: "$69",
+      description: "Compact ultrasonic humidifier perfect for hotel rooms and dry airplane cabins. Breathe better wherever you go.",
+      features: ["USB powered", "Whisper quiet", "Auto shut-off", "Essential oil compatible"],
+      colors: ["Pearl White", "Rose Gold", "Matte Black"],
+      rating: 4.6
     },
     {
       id: 7,
-      name: "Iceland Solitude",
-      location: "Reykjavik, Iceland",
-      category: "adventure",
-      type: "destination",
-      image: "/lovable-uploads/495f63b6-10b4-4636-9eaa-039faf98b098.png",
-      price: "$2,299",
-      duration: "6 days",
-      description: "Find solitude among glaciers and geysers",
-      mood: "Need Escape",
-      tags: ["Glaciers", "Hot Springs", "Northern Lights"],
-      rating: 4.7
+      name: "TravelFit Resistance Band Set",
+      brand: "Breathe & Getaway",
+      category: "fitness",
+      type: "wellness",
+      image: "/lovable-uploads/a993028f-ad55-4fcd-bf8e-60a2820594d1.png",
+      price: "$45",
+      description: "Complete workout system in a compact pouch. Maintain your fitness routine anywhere with multiple resistance levels.",
+      features: ["5 resistance levels", "Door anchor included", "Exercise guide", "Travel pouch"],
+      colors: ["Ocean Teal", "Sunset Orange", "Mountain Gray"],
+      rating: 4.8
     },
     {
       id: 8,
-      name: "Morocco Mystique",
-      location: "Marrakech, Morocco",
-      category: "cultural",
-      type: "destination",
-      image: "/lovable-uploads/a3d874ac-cf9d-49d9-8c6a-05b9ea62da47.png",
-      price: "$1,599",
-      duration: "5 days",
-      description: "Immerse in ancient traditions and vibrant markets",
-      mood: "Seeking Adventure",
-      tags: ["Markets", "Architecture", "Cuisine"],
-      rating: 4.4
-    },
-    // HOTELS
-    {
-      id: 11,
-      name: "Maldives Overwater Villa",
-      location: "Maldives",
-      category: "luxury",
-      type: "hotel",
-      image: "/lovable-uploads/84e83280-d2ee-48a4-ba76-9feb7362ed10.png",
-      price: "$199/per night",
-      duration: "nightly",
-      description: "Private overwater villa with infinity pool and direct ocean access",
-      mood: "Ultimate Luxury",
-      tags: ["Overwater", "Private Pool", "Ocean"],
-      rating: 4.9,
-      comingSoon: true
-    },
-    {
-      id: 12,
-      name: "Infinity City Escape",
-      location: "Dubai, UAE",
-      category: "luxury",
-      type: "hotel",
-      image: "/lovable-uploads/9f082fcd-2f60-40ba-a703-582f95955704.png",
-      price: "$149/per night",
-      duration: "nightly",
-      description: "Luxury hotel with infinity pool overlooking stunning city skyline",
-      mood: "Urban Luxury",
-      tags: ["City Views", "Infinity Pool", "Luxury"],
-      rating: 4.8,
-      comingSoon: true
-    },
-    // LUXURY RETREATS
-    {
-      id: 14,
-      name: "Desert Mountain Spa Retreat",
-      location: "Atacama Desert, Chile",
-      category: "wellness",
-      type: "retreat",
-      image: "/lovable-uploads/f9ec0008-a534-4dc2-912a-1d3d3177027f.png",
-      price: "$3,299",
-      duration: "7 days",
-      description: "Transform your mind and body in a luxury mountain retreat with world-class spa treatments and meditation overlooking endless desert vistas",
-      mood: "Complete Transformation",
-      tags: ["Wellness", "Spa", "Mountain Views"],
-      rating: 4.9,
-      comingSoon: false
-    },
-    {
-      id: 15,
-      name: "Bamboo Luxury Wellness Resort",
-      location: "Bali, Indonesia",
-      category: "luxury",
-      type: "retreat",
-      image: "/lovable-uploads/c19085d5-4229-450c-8c8c-aa391d6902a5.png",
-      price: "$4,999",
-      duration: "10 days",
-      description: "Ultimate luxury retreat featuring contemporary architecture with personal wellness coaches and transformative healing experiences",
-      mood: "Pure Bliss",
-      tags: ["Luxury Design", "Wellness", "Architecture"],
-      rating: 5.0,
-      featured: true
-    },
-    {
-      id: 16,
-      name: "Tropical Island Paradise Retreat",
-      location: "Maldives",
-      category: "tropical",
-      type: "retreat",
-      image: "/lovable-uploads/ffc754fe-1273-4ca4-a581-9118a1694b6c.png",
-      price: "$2,799",
-      duration: "6 days",
-      description: "Immerse yourself in tropical paradise with pristine beaches, crystal clear waters and luxurious overwater accommodations",
-      mood: "Tropical Escape",
-      tags: ["Beach", "Overwater", "Paradise"],
-      rating: 4.8,
-      featured: true
-    },
-    {
-      id: 17,
-      name: "Sacred Cenote Spiritual Retreat",
-      location: "Riviera Maya, Mexico",
-      category: "spiritual",
-      type: "retreat",
-      image: "/lovable-uploads/5e12c786-7c01-4fb4-bf1b-eea0010773a6.png",
-      price: "$3,599",
-      duration: "8 days",
-      description: "Connect with ancient Mayan wisdom through sacred cenote ceremonies and underground meditation experiences in crystal-clear waters",
-      mood: "Spiritual Awakening",
-      tags: ["Cenote", "Sacred", "Meditation"],
-      rating: 4.9,
-      featured: true
+      name: "NoiseShield Pro Earbuds",
+      brand: "Breathe & Getaway",
+      category: "tech",
+      type: "tech",
+      image: "/lovable-uploads/b6902c70-0899-4bb8-b8ae-a982867eac3c.png",
+      price: "$199",
+      description: "Premium noise-canceling earbuds designed for travelers. Crystal clear audio with 30-hour battery life.",
+      features: ["Active noise canceling", "30hr battery", "Wireless charging case", "Touch controls"],
+      colors: ["Polar White", "Carbon Black", "Rose Gold"],
+      rating: 4.5,
+      newProduct: true
     }
   ];
 
-  const featuredDestinations = destinations.filter(dest => dest.featured);
+  const featuredProducts = travelProducts.filter(product => product.featured);
   const categoryRows: CategoryRow[] = [
     {
-      title: "AI-Curated Flight Destinations",
-      destinations: destinations.filter(dest => dest.type === 'destination')
+      title: "Travel Comfort Essentials",
+      products: travelProducts.filter(product => product.type === 'comfort')
     },
     {
-      title: "Smart Hotel Matching",
-      destinations: destinations.filter(dest => dest.type === 'hotel')
+      title: "Smart Travel Technology",
+      products: travelProducts.filter(product => product.type === 'tech')
     },
     {
-      title: "Wellness-Focused Retreats",
-      destinations: destinations.filter(dest => dest.type === 'retreat')
+      title: "Wellness & Self-Care",
+      products: travelProducts.filter(product => product.type === 'wellness')
+    },
+    {
+      title: "Safety & Security",
+      products: travelProducts.filter(product => product.type === 'safety')
     }
   ];
 
-  const handleCardClick = (destination: Destination) => {
-    if (destination.comingSoon) return;
-    setSelectedDestination(destination);
-    setIsFullScreenOpen(true);
+  const handleProductClick = (product: TravelProduct) => {
+    setSelectedProduct(product);
+    setSelectedColor(product.colors[0]);
   };
 
-  const handleCloseFullScreen = () => {
-    setIsFullScreenOpen(false);
-    setSelectedDestination(null);
-  };
-
-  const handleNavigateDestination = (destination: Destination) => {
-    setSelectedDestination(destination);
+  const handleAddToCart = (product: TravelProduct) => {
+    // Add to cart logic here
+    console.log('Adding to cart:', product.name, 'Color:', selectedColor);
   };
 
   const scrollRow = (direction: 'left' | 'right', rowIndex: number) => {
@@ -319,12 +192,12 @@ const Destinations = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setHeroIndex((prev) => (prev + 1) % featuredDestinations.length);
+      setHeroIndex((prev) => (prev + 1) % featuredProducts.length);
     }, 8000);
     return () => clearInterval(interval);
-  }, [featuredDestinations.length]);
+  }, [featuredProducts.length]);
 
-  const currentHero = featuredDestinations[heroIndex];
+  const currentHero = featuredProducts[heroIndex];
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden pt-24 transition-colors duration-300">
@@ -354,42 +227,46 @@ const Destinations = () => {
           <div className="text-center mb-20 space-y-8 animate-fade-in">
             <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-xl border border-primary/30 rounded-full px-4 py-2 text-sm font-medium">
               <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-foreground/80">AI-Powered Discovery</span>
+              <Package className="w-4 h-4 text-primary" />
+              <span className="text-foreground/80">Premium Travel Gear</span>
             </div>
             
             <div className="relative">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight">
                 <span className="block text-foreground/90 mb-2">
-                  Find Your
+                  Breathe &
                 </span>
                 <span className="block text-foreground font-medium">
-                  Perfect Escape
+                  Getaway Shop
                 </span>
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Discover destinations tailored to your preferences through intelligent travel curation
+              Curated travel essentials designed to enhance every journey
             </p>
             
-            {/* Subtle Mood Selector */}
+            {/* Product Categories */}
             <div className="flex flex-wrap justify-center gap-3 pt-6">
               {[
-                { text: "Beach Vibes" },
-                { text: "Mountain Magic" },
-                { text: "Soul Healing" },
-                { text: "Luxury Life" }
-              ].map((mood, index) => (
-                <button
-                  key={index}
-                  className="group bg-primary/5 hover:bg-primary/15 backdrop-blur-xl border border-primary/20 rounded-2xl px-5 py-3 transition-all duration-300 hover:scale-105"
-                >
-                  <span className="text-sm font-medium text-foreground">
-                    {mood.text}
-                  </span>
-                </button>
-              ))}
+                { text: "Comfort", icon: Heart },
+                { text: "Technology", icon: Wifi },
+                { text: "Wellness", icon: Sparkles },
+                { text: "Security", icon: Shield }
+              ].map((category, index) => {
+                const Icon = category.icon;
+                return (
+                  <button
+                    key={index}
+                    className="group bg-primary/5 hover:bg-primary/15 backdrop-blur-xl border border-primary/20 rounded-2xl px-5 py-3 transition-all duration-300 hover:scale-105"
+                  >
+                    <span className="flex items-center gap-2 text-sm font-medium text-foreground">
+                      <Icon className="w-4 h-4" />
+                      {category.text}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -399,98 +276,128 @@ const Destinations = () => {
               {/* Large Featured Card - Left Side */}
               <div className="lg:col-span-2">
                 <div 
-                  className="relative h-full rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
-                  onClick={() => currentHero && handleCardClick(currentHero)}
+                  className="relative h-full rounded-3xl overflow-hidden group cursor-pointer shadow-2xl bg-gradient-to-br from-primary/10 to-accent/5"
+                  onClick={() => currentHero && handleProductClick(currentHero)}
                 >
-                  <div className="absolute inset-0">
-                    {currentHero?.image ? (
-                      <img 
-                        src={currentHero.image} 
-                        alt={currentHero.name}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-card"></div>
-                    )}
-                  </div>
-                  
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                  
-                  <div className="absolute bottom-8 left-8 right-8">
-                    <div className="space-y-4">
+                  <div className="absolute inset-0 p-12 flex flex-col justify-center">
+                    <div className="space-y-6">
                       <div className="flex items-center gap-3">
-                        <div className="bg-primary/90 backdrop-blur-sm rounded-lg px-3 py-1">
-                          <span className="text-sm font-medium text-primary-foreground">AI Recommended</span>
-                        </div>
+                        {currentHero?.bestSeller && (
+                          <div className="bg-primary/90 backdrop-blur-sm rounded-lg px-3 py-1">
+                            <span className="text-sm font-medium text-primary-foreground">Best Seller</span>
+                          </div>
+                        )}
+                        {currentHero?.newProduct && (
+                          <div className="bg-accent/90 backdrop-blur-sm rounded-lg px-3 py-1">
+                            <span className="text-sm font-medium text-accent-foreground">New</span>
+                          </div>
+                        )}
                         {currentHero?.rating && (
-                          <div className="flex items-center gap-1 bg-background/20 backdrop-blur-xl rounded-lg px-3 py-1">
+                          <div className="flex items-center gap-1 bg-background/50 backdrop-blur-xl rounded-lg px-3 py-1">
                             <Star className="w-4 h-4 text-primary fill-current" />
-                            <span className="text-sm font-medium text-white">{currentHero.rating}</span>
+                            <span className="text-sm font-medium">{currentHero.rating}</span>
                           </div>
                         )}
                       </div>
                       
-                      <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+                      <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
                         {currentHero?.name}
                       </h2>
                       
-                      <div className="flex items-center gap-2 text-white/90">
-                        <MapPin className="w-5 h-5" />
-                        <span className="text-lg">{currentHero?.location}</span>
+                      <div className="flex items-center gap-2 text-muted-foreground">
+                        <span className="text-lg font-medium">{currentHero?.brand}</span>
                       </div>
                       
-                      <p className="text-white/90 text-lg max-w-2xl">
+                      <p className="text-foreground/80 text-lg max-w-2xl leading-relaxed">
                         {currentHero?.description}
                       </p>
                       
-                        <div className="flex items-center gap-4 pt-2">
-                         <div className="bg-primary/90 backdrop-blur-sm rounded-xl px-4 py-2">
-                           <span className="text-lg font-bold text-primary-foreground">{currentHero?.price}</span>
-                         </div>
-                         <button 
-                           className="bg-background/20 hover:bg-background/30 backdrop-blur-xl border border-primary/30 rounded-xl px-6 py-2 text-white font-medium transition-all duration-300"
+                      <div className="flex items-center gap-4 pt-2">
+                        <div className="flex items-center gap-2">
+                          <span className="text-2xl font-bold text-foreground">{currentHero?.price}</span>
+                          {currentHero?.originalPrice && (
+                            <span className="text-lg text-muted-foreground line-through">{currentHero.originalPrice}</span>
+                          )}
+                        </div>
+                        <button 
+                          className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl px-6 py-3 font-medium transition-all duration-300 flex items-center gap-2"
                           onClick={(e) => {
                             e.stopPropagation();
-                            currentHero && handleCardClick(currentHero);
+                            currentHero && handleAddToCart(currentHero);
                           }}
                         >
-                          Explore Now
+                          <ShoppingCart className="w-4 h-4" />
+                          Add to Cart
                         </button>
                       </div>
                     </div>
                   </div>
+                  
+                  <div className="absolute top-8 right-8 w-80 h-80">
+                    {currentHero?.image ? (
+                      <img 
+                        src={currentHero.image} 
+                        alt={currentHero.name}
+                        className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-muted rounded-2xl"></div>
+                    )}
+                  </div>
                 </div>
               </div>
               
-              {/* Right Side - Two Stacked Cards */}
+              {/* Right Side - Two Stacked Product Cards */}
               <div className="space-y-8">
-                {featuredDestinations.slice(1, 3).map((destination, index) => (
-                  <div 
-                    key={destination.id}
-                    className="relative h-[calc(50%-1rem)] rounded-2xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300"
-                    onClick={() => handleCardClick(destination)}
+                {featuredProducts.slice(1, 3).map((product, index) => (
+                  <div
+                    key={product.id}
+                    className="relative h-[calc(50%-1rem)] rounded-2xl overflow-hidden group cursor-pointer shadow-xl bg-gradient-to-br from-card to-muted/50 border border-border/50"
+                    onClick={() => handleProductClick(product)}
                   >
-                    <div className="absolute inset-0">
-                      {destination.image ? (
-                        <img 
-                          src={destination.image} 
-                          alt={destination.name}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-card"></div>
-                      )}
-                    </div>
-                    
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-xl font-bold text-white mb-1">{destination.name}</h3>
-                      <div className="flex items-center gap-2 text-white/80 mb-2">
-                        <MapPin className="w-4 h-4" />
-                        <span className="text-sm">{destination.location}</span>
+                    <div className="absolute inset-0 p-6 flex items-center justify-between">
+                      <div className="flex-1 space-y-3">
+                        <div className="flex items-center gap-2">
+                          {product.bestSeller && (
+                            <div className="bg-primary/90 backdrop-blur-sm rounded px-2 py-1">
+                              <span className="text-xs font-medium text-primary-foreground">Best Seller</span>
+                            </div>
+                          )}
+                          {product.newProduct && (
+                            <div className="bg-accent/90 backdrop-blur-sm rounded px-2 py-1">
+                              <span className="text-xs font-medium text-accent-foreground">New</span>
+                            </div>
+                          )}
+                          {product.rating && (
+                            <div className="flex items-center gap-1 bg-background/50 backdrop-blur-xl rounded px-2 py-1">
+                              <Star className="w-3 h-3 text-primary fill-current" />
+                              <span className="text-xs font-medium">{product.rating}</span>
+                            </div>
+                          )}
+                        </div>
+                        
+                        <h3 className="text-xl font-bold text-foreground leading-tight">
+                          {product.name}
+                        </h3>
+                        
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm text-muted-foreground font-medium">{product.brand}</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-lg font-bold text-foreground">{product.price}</span>
+                            {product.originalPrice && (
+                              <span className="text-sm text-muted-foreground line-through">{product.originalPrice}</span>
+                            )}
+                          </div>
+                        </div>
                       </div>
-                      <div className="text-primary font-bold">{destination.price}</div>
+                      
+                      <div className="w-32 h-32 ml-4">
+                        <img 
+                          src={product.image} 
+                          alt={product.name}
+                          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -498,253 +405,145 @@ const Destinations = () => {
             </div>
           </div>
 
-          {/* AI-Powered Discovery Sections */}
-          <div className="space-y-24">
-            {categoryRows.map((row, rowIndex) => (
-              <section key={rowIndex} className="space-y-8">
-                {/* AI Section Header */}
-                <div className="text-center space-y-6 max-w-4xl mx-auto">
-                  <div className="inline-flex items-center gap-3 bg-primary/10 backdrop-blur-sm border border-primary/20 rounded-full px-6 py-3">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-primary">AI-Powered Discovery</span>
-                  </div>
+          {/* Product Category Carousels */}
+          <div className="space-y-16">
+            {categoryRows.map((category, categoryIndex) => (
+              <div key={categoryIndex} className="space-y-8">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-3xl md:text-4xl font-light text-foreground">
+                    {category.title}
+                  </h2>
                   
-                  <h2 className="text-4xl md:text-5xl font-bold text-foreground">{row.title}</h2>
-                  
-                  <div className="space-y-4">
-                    {rowIndex === 0 && (
-                      <div className="space-y-3">
-                        <p className="text-xl text-muted-foreground leading-relaxed">
-                          Our advanced AI analyzes over 50,000 destinations worldwide, matching your travel personality with perfect locations.
-                        </p>
-                        <p className="text-lg text-muted-foreground">
-                          Using machine learning algorithms trained on millions of traveler preferences, weather patterns, cultural experiences, and real-time availability to curate your ideal escape.
-                        </p>
-                      </div>
-                    )}
-                    {rowIndex === 1 && (
-                      <div className="space-y-3">
-                        <p className="text-xl text-muted-foreground leading-relaxed">
-                          Smart accommodation matching powered by AI that understands luxury, comfort, and your unique preferences.
-                        </p>
-                        <p className="text-lg text-muted-foreground">
-                          Our neural networks process guest reviews, amenity quality scores, location data, and service excellence ratings to find hotels that exceed your expectations.
-                        </p>
-                      </div>
-                    )}
-                    {rowIndex === 2 && (
-                      <div className="space-y-3">
-                        <p className="text-xl text-muted-foreground leading-relaxed">
-                          Transformative retreat recommendations using biometric wellness data and mindfulness compatibility scoring.
-                        </p>
-                        <p className="text-lg text-muted-foreground">
-                          Advanced AI processes your stress levels, wellness goals, and spiritual preferences to match you with life-changing retreat experiences tailored to your inner journey.
-                        </p>
-                      </div>
-                    )}
+                  <div className="flex gap-2">
+                    <button 
+                      onClick={() => scrollRow('left', categoryIndex)}
+                      className="p-3 rounded-2xl bg-background/60 backdrop-blur-xl border border-primary/20 text-foreground hover:bg-primary/10 transition-all duration-300"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button 
+                      onClick={() => scrollRow('right', categoryIndex)}
+                      className="p-3 rounded-2xl bg-background/60 backdrop-blur-xl border border-primary/20 text-foreground hover:bg-primary/10 transition-all duration-300"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
                   </div>
                 </div>
                 
-                {/* Image Carousel */}
-                <div className="relative">
-                  <div 
-                    id={`carousel-${rowIndex}`}
-                    className="flex gap-8 overflow-x-auto scrollbar-hide pb-8 px-4 overscroll-x-contain"
-                    style={{ 
-                      scrollSnapType: 'x mandatory',
-                      WebkitOverflowScrolling: 'touch'
-                    }}
-                  >
-                    {row.destinations.map((destination, index) => (
-                      <div 
-                        key={destination.id}
-                        className="group flex-shrink-0 w-[500px] cursor-pointer"
-                        style={{ scrollSnapAlign: 'start' }}
-                        onClick={() => handleCardClick(destination)}
-                      >
-                        {/* Horizontal Card Layout */}
-                        <div className="bg-card/80 backdrop-blur-sm border border-border rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
-                          <div className="flex h-64">
-                            {/* Large Image - Left Side */}
-                            <div className="relative w-3/5 overflow-hidden">
-                              {destination.image ? (
-                                <img 
-                                  src={destination.image} 
-                                  alt={destination.name}
-                                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                              ) : (
-                                <div className="w-full h-full bg-card flex items-center justify-center">
-                                  <div className="text-center text-muted-foreground">
-                                    <div className="w-16 h-16 mx-auto mb-4 opacity-30">
-                                      <svg viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                                      </svg>
-                                    </div>
-                                    <p>High-Quality Image Loading</p>
-                                  </div>
-                                </div>
-                              )}
-                              
-                              {/* Image Overlay */}
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20"></div>
-                              
-                              {/* Top Badges */}
-                              <div className="absolute top-4 left-4 space-y-2">
-                                 {destination.featured && (
-                                   <div className="bg-primary/90 backdrop-blur-sm rounded-xl px-3 py-1">
-                                     <span className="text-xs font-bold text-primary-foreground">AI RECOMMENDED</span>
-                                   </div>
-                                 )}
-                                {destination.comingSoon && (
-                                  <div className="bg-background/90 backdrop-blur-sm rounded-xl px-3 py-1">
-                                    <span className="text-xs font-medium text-muted-foreground">Coming Soon</span>
-                                  </div>
+                <div 
+                  id={`carousel-${categoryIndex}`}
+                  className="flex gap-6 overflow-x-auto scrollbar-hide pb-4"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+                  {category.products.map((product, productIndex) => (
+                    <div
+                      key={product.id}
+                      className="flex-shrink-0 w-[480px] group cursor-pointer"
+                      onClick={() => handleProductClick(product)}
+                    >
+                      <div className="relative rounded-2xl overflow-hidden shadow-xl bg-card border border-border/50">
+                        <div className="aspect-[4/3] relative bg-gradient-to-br from-muted/30 to-muted/10 flex items-center justify-center">
+                          <img 
+                            src={product.image} 
+                            alt={product.name}
+                            className="w-3/4 h-3/4 object-contain transition-transform duration-500 group-hover:scale-105"
+                          />
+                          
+                          {/* Status badges */}
+                          <div className="absolute top-4 left-4 flex gap-2">
+                            {product.bestSeller && (
+                              <div className="bg-primary/90 backdrop-blur-sm rounded-lg px-3 py-1">
+                                <span className="text-sm font-medium text-primary-foreground">Best Seller</span>
+                              </div>
+                            )}
+                            {product.newProduct && (
+                              <div className="bg-accent/90 backdrop-blur-sm rounded-lg px-3 py-1">
+                                <span className="text-sm font-medium text-accent-foreground">New</span>
+                              </div>
+                            )}
+                          </div>
+                          
+                          {/* Rating */}
+                          {product.rating && (
+                            <div className="absolute top-4 right-4 flex items-center gap-1 bg-background/80 backdrop-blur-xl rounded-lg px-3 py-1">
+                              <Star className="w-4 h-4 text-primary fill-current" />
+                              <span className="text-sm font-medium">{product.rating}</span>
+                            </div>
+                          )}
+                        </div>
+                        
+                        {/* Content */}
+                        <div className="p-6 space-y-4">
+                          <div className="space-y-2">
+                            <div className="flex items-center justify-between">
+                              <span className="text-sm text-muted-foreground font-medium">{product.brand}</span>
+                              <div className="flex items-center gap-2">
+                                <span className="text-lg font-bold text-foreground">{product.price}</span>
+                                {product.originalPrice && (
+                                  <span className="text-sm text-muted-foreground line-through">{product.originalPrice}</span>
                                 )}
                               </div>
-                              
-                              {destination.rating && (
-                                <div className="absolute top-4 right-4 flex items-center gap-2 bg-background/90 backdrop-blur-sm rounded-xl px-3 py-2">
-                                  <Star className="w-4 h-4 text-primary fill-current" />
-                                  <span className="text-sm font-bold text-foreground">{destination.rating}</span>
-                                </div>
-                              )}
                             </div>
                             
-                            {/* Content - Right Side */}
-                            <div className="w-2/5 p-6 flex flex-col justify-between">
-                              <div className="space-y-4">
-                                {/* Header */}
-                                <div className="space-y-2">
-                                  <h3 className="text-xl font-semibold text-card-foreground group-hover:text-primary transition-colors duration-300 leading-tight">
-                                    {destination.name}
-                                  </h3>
-                                  <div className="flex items-center gap-2 text-muted-foreground">
-                                    <MapPin className="w-4 h-4" />
-                                    <span className="text-sm font-medium">{destination.location}</span>
-                                  </div>
-                                </div>
-                                
-                                {/* AI Match Score */}
-                                <div className="bg-primary/10 border border-primary/20 rounded-xl p-3">
-                                  <div className="flex items-center justify-between mb-2">
-                                    <span className="text-sm font-medium text-primary">AI Match Score</span>
-                                    <span className="text-sm font-bold text-primary">
-                                      {95 - index * 3}%
-                                    </span>
-                                  </div>
-                                  <div className="w-full bg-primary/20 rounded-full h-2">
-                                    <div 
-                                      className="bg-primary h-2 rounded-full transition-all duration-1000" 
-                                      style={{ width: `${95 - index * 3}%` }}
-                                    ></div>
-                                  </div>
-                                </div>
-                                
-                                {/* Description */}
-                                <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                                  {destination.description}
-                                </p>
-                                
-                                {/* Mood & Tags */}
-                                <div className="space-y-2">
-                                  <div className="inline-flex items-center gap-2 bg-card/50 rounded-full px-3 py-1">
-                                    <Heart className="w-3 h-3 text-primary" />
-                                    <span className="text-xs font-medium text-foreground">{destination.mood}</span>
-                                  </div>
-                                  
-                                  <div className="flex flex-wrap gap-1">
-                                    {destination.tags.slice(0, 2).map((tag, tagIndex) => (
-                                      <div key={tagIndex} className="bg-card/30 rounded-md px-2 py-1">
-                                        <span className="text-xs text-muted-foreground">{tag}</span>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
-                              </div>
-                              
-                              {/* Price & Action */}
-                              <div className="flex items-center justify-between pt-4 border-t border-border/30">
-                                <div className="space-y-1">
-                                  <div className="text-lg font-semibold text-primary">
-                                    {destination.price}
-                                  </div>
-                                  <div className="text-xs text-muted-foreground flex items-center gap-1">
-                                    <Clock className="w-3 h-3" />
-                                    {destination.duration}
-                                  </div>
-                                </div>
-                                
-                                {!destination.comingSoon && (
-                                  <button 
-                                    className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl px-4 py-2 font-bold transition-all duration-300 hover:scale-105 shadow-lg"
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      handleCardClick(destination);
-                                    }}
-                                  >
-                                    <span className="flex items-center gap-2 text-sm">
-                                      Book Now
-                                      <ChevronRight className="w-3 h-3" />
-                                    </span>
-                                  </button>
-                                )}
+                            <h3 className="text-xl font-bold text-foreground leading-tight">
+                              {product.name}
+                            </h3>
+                            
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                              {product.description}
+                            </p>
+                          </div>
+                          
+                          <div className="space-y-3">
+                            <div className="flex flex-wrap gap-1">
+                              {product.features.slice(0, 2).map((feature, featureIndex) => (
+                                <span 
+                                  key={featureIndex}
+                                  className="bg-muted/50 rounded px-2 py-1 text-xs text-muted-foreground"
+                                >
+                                  {feature}
+                                </span>
+                              ))}
+                            </div>
+                            
+                            <div className="flex items-center gap-2">
+                              <span className="text-sm text-muted-foreground">Colors:</span>
+                              <div className="flex gap-1">
+                                {product.colors.slice(0, 3).map((color, colorIndex) => (
+                                  <div 
+                                    key={colorIndex}
+                                    className="w-4 h-4 rounded-full bg-primary/20 border border-border"
+                                    title={color}
+                                  ></div>
+                                ))}
                               </div>
                             </div>
+                            
+                            <button
+                              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl py-3 font-medium transition-all duration-300 flex items-center justify-center gap-2"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleAddToCart(product);
+                              }}
+                            >
+                              <ShoppingCart className="w-4 h-4" />
+                              Add to Cart
+                            </button>
                           </div>
                         </div>
                       </div>
-                    ))}
-                  </div>
-                  
-                  {/* Carousel Navigation */}
-                  <div className="flex justify-center gap-3 mt-8">
-                    <button
-                      onClick={() => scrollRow('left', rowIndex)}
-                      className="bg-primary/10 hover:bg-primary/20 border border-primary/30 rounded-xl p-3 transition-all duration-300 hover:scale-105"
-                    >
-                      <ChevronLeft className="w-5 h-5 text-primary" />
-                    </button>
-                    <button
-                      onClick={() => scrollRow('right', rowIndex)}
-                      className="bg-primary/10 hover:bg-primary/20 border border-primary/30 rounded-xl p-3 transition-all duration-300 hover:scale-105"
-                    >
-                      <ChevronRight className="w-5 h-5 text-primary" />
-                    </button>
-                  </div>
+                    </div>
+                  ))}
                 </div>
-                
-                {/* AI Insights Footer */}
-                <div className="text-center space-y-3 max-w-3xl mx-auto">
-                  <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-                    <div className="w-1 h-1 bg-primary rounded-full animate-pulse"></div>
-                    <span>Powered by advanced machine learning and real-time travel data</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    {rowIndex === 0 && "Our AI processes 10M+ data points daily including weather patterns, local events, safety scores, and traveler sentiment to ensure perfect timing for your journey."}
-                    {rowIndex === 1 && "Smart algorithms analyze room quality, service excellence, location convenience, and guest satisfaction to match you with accommodations that exceed expectations."}
-                    {rowIndex === 2 && "Wellness AI evaluates your stress levels, sleep patterns, mindfulness goals, and spiritual preferences to recommend transformative retreat experiences."}
-                  </p>
-                </div>
-              </section>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
 
-      {/* Full Screen Destination Modal */}
-      {selectedDestination && (
-        <FullScreenDestination
-          destination={selectedDestination}
-          destinations={destinations}
-          isOpen={isFullScreenOpen}
-          onClose={handleCloseFullScreen}
-          onNavigate={handleNavigateDestination}
-        />
-      )}
     </div>
   );
 };
 
-export default Destinations;
+export default BreatheGetawayShop;
