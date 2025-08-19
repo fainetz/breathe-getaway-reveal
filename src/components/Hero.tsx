@@ -84,19 +84,6 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, [categorySlides.length]);
 
-  // Scroll detection to hide arrows on mobile
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setHasScrolled(true);
-      } else {
-        setHasScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const getCartItemCount = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
@@ -201,11 +188,11 @@ const Hero = () => {
           {/* Left side - Main heading and description */}
           <div className="text-center lg:text-left lg:pr-8 order-1 lg:order-1 flex flex-col items-center lg:items-start">
             <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-geist font-black leading-[1.1] sm:leading-[1.1] text-white mb-6 sm:mb-6 animate-fade-in px-2 sm:px-0 drop-shadow-lg">
-              Skip the Plan. Get the Thrill.
+              Go explore the world
             </h1>
             
             <p className="text-lg sm:text-lg md:text-xl lg:text-xl text-white leading-relaxed mb-6 sm:mb-8 animate-fade-in px-2 sm:px-0 max-w-md mx-auto lg:mx-0 font-bold drop-shadow-md" style={{ animationDelay: '0.3s' }}>
-              the only travel platform made for spontaneous travelers.
+              The only travel platform made to help you see what your missing.
             </p>
             
             {/* Join Waitlist Button */}

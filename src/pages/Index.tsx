@@ -15,10 +15,12 @@ import ExpandableSearch from '../components/ExpandableSearch';
 import BackToChatButton from '../components/BackToChatButton';
 import MobileMenu from '../components/MobileMenu';
 
+
 const Index = () => {
   const navigate = useNavigate();
   const [hasChatHistory, setHasChatHistory] = useState(false);
   const [showFlightAI, setShowFlightAI] = useState(false);
+
 
   const handleSearchSubmit = (query: string) => {
     console.log('Search submitted:', query);
@@ -36,11 +38,8 @@ const Index = () => {
   return (
     <div className="min-h-screen min-h-dvh bg-background text-foreground overflow-x-hidden transition-colors duration-300">
       <Hero />
-      <div className="transition-hero-features"></div>
       <Features />
-      <div className="transition-features-emotional"></div>
       <EmotionalHooks />
-      <div className="transition-emotional-luxury"></div>
       <Vision />
       <div id="resultsSection" className="min-h-0"></div>
       <Footer />
