@@ -583,8 +583,8 @@ def build():
         os.makedirs(f"news/{n['slug']}", exist_ok=True)
         open(f"news/{n['slug']}/index.html", "w").write(page(n["title"] + f" | {NAME} News", n["desc"], url, ld, body))
     ncards = "".join(f'<a class="card" href="/news/{n["slug"]}/"><h2>{html.escape(n["title"])}</h2><p>{html.escape(n["desc"])}</p></a>' for n in NEWS)
-    open("news/index.html", "w").write(page(f"{NAME} News: AI Tools, Startups and Launches", "News on AI tools for studying and job hunting, startup launches and the apps behind them.", SITE + "/news/",
-        [{"@context": "https://schema.org", "@type": "CollectionPage", "name": f"{NAME} News", "url": SITE + "/news/", "publisher": ORG}], f"<h1>News</h1>{ncards}"))
+    open("news/index.html", "w").write(page(f"{NAME} News: AI Tool Spotlights and Roundups", "News on AI tools for studying and job hunting, startup launches and the apps behind them.", SITE + "/news/",
+        [{"@context": "https://schema.org", "@type": "CollectionPage", "name": f"{NAME} News", "url": SITE + "/news/", "publisher": ORG}], f"<h1>News and tool spotlights</h1>{ncards}"))
     urls.append(SITE + "/news/")
     cards = "".join(f'<a class="card" href="/{p["slug"]}/"><h2>{html.escape(p["title"])}</h2><p>{html.escape(p["desc"])}</p></a>' for p in POSTS)
     body = f"""<h1>Study smarter and job hunt faster with AI</h1><p class="meta">Plain-English guides that save you hours of busywork.</p><h2>Latest news</h2>{ncards}<h2>Guides</h2>{cards}"""
