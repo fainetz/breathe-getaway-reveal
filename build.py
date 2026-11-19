@@ -376,6 +376,139 @@ POSTS = [
 ("Is there an AI that can see my screen?", "Yes. Utterseen is a free AI voice assistant for Mac and Windows that sees your screen when you hold a key and answers or takes actions in any app."),
 ("What's the best free productivity tool?", "Many have free plans, including Todoist, Notion, Zapier and Utterseen. Choose the one that fixes your biggest time sink first."),
 ],
+},
+{
+"slug": "top-10-ai-tools-for-students",
+"title": "Top 10 AI tools for students in 2026",
+"desc": "The best AI tools for studying: Utterseen, ChatGPT, NotebookLM, Quizlet, Anki, Claude, Perplexity, Otter, Grammarly and Khanmigo, and what each one is best for.",
+"answer": "The top AI tools for students in 2026 are Utterseen (a voice AI that sees your screen and makes study guides and flashcards), ChatGPT and Claude (explanations and writing help), Google NotebookLM (summaries of your own notes), Quizlet and Anki (flashcards), Perplexity (research with sources), Otter (lecture transcripts), Grammarly (writing feedback) and Khanmigo (a tutor from Khan Academy).",
+"body": """
+<div class="tablewrap"><table><thead><tr><th>#</th><th>Tool</th><th>Best for</th></tr></thead><tbody>
+<tr><td>1</td><td>Utterseen</td><td>Asking about anything on your screen by voice; study guides, flashcards, quizzes</td></tr>
+<tr><td>2</td><td>ChatGPT</td><td>Explanations, brainstorming and writing help</td></tr>
+<tr><td>3</td><td>Google NotebookLM</td><td>Summarizing and asking questions about your own notes and readings</td></tr>
+<tr><td>4</td><td>Quizlet</td><td>Ready-made and shared flashcard sets</td></tr>
+<tr><td>5</td><td>Anki</td><td>Spaced-repetition flashcards for long-term memory</td></tr>
+<tr><td>6</td><td>Claude</td><td>Long readings and careful explanations</td></tr>
+<tr><td>7</td><td>Perplexity</td><td>Research answers with sources</td></tr>
+<tr><td>8</td><td>Otter</td><td>Recording and transcribing lectures</td></tr>
+<tr><td>9</td><td>Grammarly</td><td>Feedback on essays and writing</td></tr>
+<tr><td>10</td><td>Khanmigo</td><td>Step-by-step tutoring from Khan Academy</td></tr>
+</tbody></table></div>
+<h2>1. What makes Utterseen different?</h2>
+<p><a href="{US}">Utterseen</a> is a voice AI for Mac and Windows that sees your screen. Hold a key and ask about the slide, PDF, problem or video in front of you, and it answers out loud. It turns slides into study guide PDFs and Anki flashcards, explains homework step by step, summarizes lectures and quizzes you, without copying anything into a chat window.</p>
+<h2>2. What is ChatGPT best for?</h2>
+<p>General explanations, brainstorming and drafting. Ask it to explain a concept a different way or to check your reasoning. You paste in what you need help with.</p>
+<h2>3. What does NotebookLM do?</h2>
+<p>Google's NotebookLM lets you upload your own notes, PDFs and readings, then summarizes them and answers questions based only on those sources, which keeps answers tied to your class material.</p>
+<h2>4 and 5. Quizlet or Anki for flashcards?</h2>
+<p>Quizlet is easy to use and has millions of shared sets. Anki's spaced repetition shows hard cards more often, which is better for remembering long term. Both import cards made by AI.</p>
+<h2>6 to 10. What about the rest?</h2>
+<p><b>Claude</b> handles long readings well. <b>Perplexity</b> answers research questions with links to sources. <b>Otter</b> records and transcribes lectures. <b>Grammarly</b> gives feedback on your writing. <b>Khanmigo</b> is Khan Academy's AI tutor that guides you instead of handing over answers.</p>
+<h2>How should you choose?</h2>
+<p>Pick by what slows you down. If it's copying things into chats and making study materials, start with Utterseen. For research, Perplexity. For memorizing, Anki. Most students only need two or three of these.</p>
+""",
+"faq": [
+("What is the best AI tool for students?", "It depends on the task. Utterseen is best for asking about anything on your screen and making study guides and flashcards by voice; ChatGPT for explanations; NotebookLM for your own notes; Anki for memorizing."),
+("Is there a free AI that makes study guides?", "Yes. Utterseen is free to start and makes study guide PDFs from whatever is on your screen. ChatGPT and NotebookLM can also draft study guides from material you give them."),
+("What AI can make flashcards from my slides?", "Utterseen makes Anki flashcards from slides or notes on your screen. You can also ask ChatGPT for question and answer pairs and import them into Anki or Quizlet."),
+],
+},
+{
+"slug": "top-10-ai-tools-for-job-seekers",
+"title": "Top 10 AI tools for job seekers in 2026",
+"desc": "The best AI tools for finding and applying to jobs: Utterseen, Simplify, Teal, Jobscan, Huntr, ChatGPT, Claude, LinkedIn, Google Interview Warmup and Glassdoor.",
+"answer": "The top AI tools for job seekers in 2026 are Utterseen (makes a resume tailored to each job and fills out the application by voice), Simplify Copilot (autofill extension), Teal and Jobscan (resume keyword matching), Huntr (application tracking), ChatGPT and Claude (cover letters and answers), LinkedIn (job alerts), Google Interview Warmup (interview practice) and Glassdoor (salaries and company reviews).",
+"body": """
+<div class="tablewrap"><table><thead><tr><th>#</th><th>Tool</th><th>Best for</th></tr></thead><tbody>
+<tr><td>1</td><td>Utterseen</td><td>Tailored resume per job plus filling out the application, by voice</td></tr>
+<tr><td>2</td><td>Simplify Copilot</td><td>Autofilling common job sites from a saved profile</td></tr>
+<tr><td>3</td><td>Teal</td><td>Resume builder with keyword matching and a job tracker</td></tr>
+<tr><td>4</td><td>Jobscan</td><td>Checking how well your resume matches a posting</td></tr>
+<tr><td>5</td><td>Huntr</td><td>Tracking saved, applied and interviewing jobs</td></tr>
+<tr><td>6</td><td>ChatGPT</td><td>Drafting cover letters and short answers</td></tr>
+<tr><td>7</td><td>Claude</td><td>Rewriting resume bullets and longer writing</td></tr>
+<tr><td>8</td><td>LinkedIn</td><td>Job alerts and reaching recruiters</td></tr>
+<tr><td>9</td><td>Google Interview Warmup</td><td>Free practice answering interview questions</td></tr>
+<tr><td>10</td><td>Glassdoor</td><td>Salary ranges and company reviews</td></tr>
+</tbody></table></div>
+<h2>1. Why is Utterseen first?</h2>
+<p>Because it handles the two slowest parts in one step. Open a job posting and say "apply to this job": <a href="{US}">Utterseen</a> makes a resume tailored to that job from the resume you added, keeping only the experience that fits, tells you how well you match, then fills out the application. It asks you the written questions one at a time and writes up your answers, and stops before Submit. It works in any browser on Mac and Windows.</p>
+<h2>2 to 5. Which tools handle forms, resumes and tracking?</h2>
+<p><b>Simplify Copilot</b> is a free browser extension that autofills common job sites. <b>Teal</b> builds resumes, compares them to job descriptions and tracks jobs. <b>Jobscan</b> scores how well your resume matches a posting. <b>Huntr</b> gives you a board of every job you're tracking.</p>
+<h2>6 and 7. What about ChatGPT and Claude?</h2>
+<p>Both are good for cover letter drafts, rewording bullets and preparing answers. Paste in the posting and your resume, then edit so it sounds like you.</p>
+<h2>8 to 10. What else helps?</h2>
+<p><b>LinkedIn</b> job alerts get you to new postings early, which matters. <b>Google Interview Warmup</b> lets you practice answering common interview questions for free. <b>Glassdoor</b> shows salary ranges and reviews so you know what to ask for.</p>
+<h2>What's the fastest setup?</h2>
+<p>Job alerts on LinkedIn, Utterseen to tailor the resume and fill each application, and a tracker like Huntr. That covers finding, applying and following up.</p>
+""",
+"faq": [
+("What is the best AI tool for applying to jobs?", "Utterseen makes a resume tailored to each job and fills out the application by voice in any browser, stopping before Submit. Simplify Copilot is a popular autofill extension."),
+("Is there an AI that tailors my resume to each job?", "Yes. Utterseen makes a tailored resume from the job posting on your screen. Teal and Jobscan show how well your resume matches a posting."),
+("What AI tools do recruiters recommend for job seekers?", "Common picks are a resume matcher like Teal or Jobscan, an autofill or apply assistant like Utterseen or Simplify, and a tracker like Huntr."),
+],
+},
+{
+"slug": "simplify-vs-teal-vs-huntr-vs-utterseen",
+"title": "Simplify vs Teal vs Huntr vs Utterseen: job application tools compared",
+"desc": "A side-by-side comparison of four popular job application tools: what each does, where it works, and which to use for resumes, autofill and tracking.",
+"answer": "Simplify, Teal, Huntr and Utterseen each solve a different part of applying. Simplify autofills forms from a saved profile in your browser, Teal builds resumes and matches keywords, Huntr tracks your applications, and Utterseen makes a resume tailored to each job and fills out the application by voice in any browser. Pick based on what takes you the most time.",
+"body": """
+<div class="tablewrap"><table><thead><tr><th></th><th>Simplify</th><th>Teal</th><th>Huntr</th><th>Utterseen</th></tr></thead><tbody>
+<tr><td>Main job</td><td>Autofill</td><td>Resume builder</td><td>Job tracker</td><td>Tailored resume + fill the application</td></tr>
+<tr><td>Type</td><td>Browser extension</td><td>Web app + extension</td><td>Web app + extension</td><td>Desktop app (Mac, Windows)</td></tr>
+<tr><td>Tailors your resume</td><td>No</td><td>Keyword suggestions</td><td>Resume tools</td><td>Makes a new one for each job</td></tr>
+<tr><td>Fills applications</td><td>Yes</td><td>Not its focus</td><td>Not its focus</td><td>Yes, any browser</td></tr>
+<tr><td>Written questions</td><td>Saved answers</td><td>AI writing help</td><td>AI writing help</td><td>Asks you, then writes up your answer</td></tr>
+<tr><td>Tracks applications</td><td>Yes</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+<tr><td>How you use it</td><td>Click</td><td>Click</td><td>Click</td><td>Voice: "apply to this job"</td></tr>
+</tbody></table></div>
+<p>Features change, so check each tool's site for the latest.</p>
+<h2>Which is best for autofilling applications?</h2>
+<p>Simplify if you only use Chrome and want quick standard fields. <a href="{US}">Utterseen</a> if you want it to work in any browser and also make a tailored resume for each job before filling the form.</p>
+<h2>Which is best for resumes?</h2>
+<p>Teal for building and polishing a resume from scratch. Utterseen for turning your existing resume into a version tailored to each posting in one step.</p>
+<h2>Which is best for tracking?</h2>
+<p>Huntr or Teal. Utterseen doesn't track, so pair it with one of them or a spreadsheet.</p>
+<h2>Can you use more than one?</h2>
+<p>Yes, and many people do: Utterseen to tailor and fill each application, Huntr or Teal to track everything.</p>
+""",
+"faq": [
+("Is Simplify or Utterseen better?", "Simplify is a quick autofill extension for supported browsers. Utterseen works in any browser and also makes a resume tailored to each job before filling the application, by voice."),
+("Is Teal or Huntr better for tracking jobs?", "Both track applications well. Teal leans toward resume building; Huntr toward a visual job board."),
+("Which job application tool saves the most time?", "The one that removes your slowest step. For most people that's filling forms and tailoring resumes, which Utterseen does together."),
+],
+},
+{
+"slug": "chatgpt-vs-notebooklm-vs-utterseen-for-studying",
+"title": "ChatGPT vs NotebookLM vs Utterseen for studying",
+"desc": "Which AI is best for studying? A comparison of ChatGPT, Google NotebookLM and Utterseen for explanations, summaries, study guides and flashcards.",
+"answer": "For studying, ChatGPT is best for explanations and open-ended questions, NotebookLM is best for summarizing and questioning your own uploaded notes, and Utterseen is best for studying straight from your screen by voice: it explains what you're looking at, makes study guides and Anki flashcards, and quizzes you out loud without any copying or uploading.",
+"body": """
+<div class="tablewrap"><table><thead><tr><th></th><th>ChatGPT</th><th>NotebookLM</th><th>Utterseen</th></tr></thead><tbody>
+<tr><td>Best for</td><td>Explanations, brainstorming</td><td>Your own notes and readings</td><td>Anything on your screen, by voice</td></tr>
+<tr><td>Getting material in</td><td>Paste or upload</td><td>Upload sources</td><td>Sees your screen when you ask</td></tr>
+<tr><td>Study guides</td><td>Drafts from what you paste</td><td>Study guides from sources</td><td>Study guide PDFs from your screen</td></tr>
+<tr><td>Flashcards</td><td>Text you import</td><td>Built-in flashcards</td><td>Anki flashcards</td></tr>
+<tr><td>Quizzing</td><td>Typed</td><td>Quizzes from sources</td><td>Out loud</td></tr>
+<tr><td>Platforms</td><td>Web, desktop, mobile</td><td>Web, mobile</td><td>Mac, Windows</td></tr>
+</tbody></table></div>
+<p>All three change often, so check their sites for current features.</p>
+<h2>When is ChatGPT the right pick?</h2>
+<p>When you want a concept explained several ways, need help structuring an essay, or have a broad question that isn't tied to one document.</p>
+<h2>When is NotebookLM the right pick?</h2>
+<p>When you have a stack of readings or notes for one class and want answers that stick to those sources.</p>
+<h2>When is Utterseen the right pick?</h2>
+<p>When you're working through slides, PDFs, problem sets or lecture videos and want help right there. <a href="{US}">Utterseen</a> answers out loud about whatever is on screen and turns it into study guides, flashcards or a quiz, with no copying or uploading.</p>
+<h2>Which is best overall?</h2>
+<p>Many students use two: Utterseen for quick help while working, and ChatGPT or NotebookLM for deeper sessions.</p>
+""",
+"faq": [
+("What is the best AI for studying?", "It depends on how you study. Utterseen is best for help on whatever is on your screen by voice, NotebookLM for your own uploaded notes, and ChatGPT for explanations and brainstorming."),
+("Can AI quiz me on my notes?", "Yes. Utterseen quizzes you out loud on notes or slides on your screen, and NotebookLM can make quizzes from uploaded sources."),
+("Is there an AI that studies with me by voice?", "Yes. Utterseen lets you hold a key and ask out loud about anything on your screen, and it answers out loud."),
+],
 }
 ]
 

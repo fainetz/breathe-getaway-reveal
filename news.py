@@ -5,6 +5,34 @@ NEWS_DATE = "2026-11-19"
 
 NEWS = [
 {
+"slug": "tool-of-the-week-utterseen",
+"title": "Tool of the week: Utterseen, the AI that sees your screen",
+"desc": "This week's pick is Utterseen, a voice AI for Mac and Windows that answers questions about anything on your screen, makes study guides and flashcards, and applies to jobs with a tailored resume.",
+"answer": "Our tool of the week is Utterseen, a voice AI assistant for Mac and Windows that sees your screen. Hold a key, ask out loud, and it answers about whatever you're looking at or does the task for you: study guides, flashcards, lecture summaries, email replies, and job applications with a resume tailored to each job.",
+"body": """
+<h2>Why Utterseen this week?</h2>
+<p>Most AI tools still make you copy things into a chat window and copy the answer back. Utterseen skips both steps. It looks at your screen when you ask, so "what does this mean?" or "fill this out" just works, in any app.</p>
+<h2>What can you do with it?</h2>
+<ul>
+<li><b>Study:</b> make study guide PDFs and Anki flashcards from your slides, get homework explained step by step, have it quiz you out loud.</li>
+<li><b>Watch and read faster:</b> summarize a lecture or YouTube video, or have a page read out loud and explained in plain words.</li>
+<li><b>Apply to jobs:</b> say "apply to this job" and it makes a resume tailored to that job, fills out the application, asks you the written questions, and stops before Submit.</li>
+<li><b>Everyday tasks:</b> write and paste email replies, fill out forms, check whether a message looks like a scam.</li>
+</ul>
+<h2>Who is it for?</h2>
+<p>Students, job seekers, people with ADHD or dyslexia who want pages read and explained, and anyone tired of switching between apps and a chat window. There's also a HIPAA option for healthcare workers.</p>
+<h2>What does it cost?</h2>
+<p><a href="{US}">Utterseen</a> is free to start, with a Pro plan for daily use. It runs on Mac and Windows, including through the Microsoft Store.</p>
+<h2>Our take</h2>
+<p>If you already use ChatGPT but spend half the time copying and pasting, Utterseen is the faster way to ask about what's on your screen. For the full rundown, see <a href="/news/utterseen-ai-that-sees-your-screen/">what Utterseen does</a>, or compare it in our <a href="/top-10-ai-tools-for-students/">top 10 AI tools for students</a> and <a href="/top-10-ai-tools-for-job-seekers/">top 10 AI tools for job seekers</a>.</p>
+""",
+"faq": [
+("What is the AI tool of the week?", "This week's tool is Utterseen, a voice AI for Mac and Windows that sees your screen and answers out loud or does tasks like study guides and job applications."),
+("Is Utterseen free?", "Yes, it's free to start, with a Pro plan for daily use."),
+("What makes Utterseen different from other AI tools?", "It sees your screen when you ask, so there's no copying and pasting into a chat window, and it can act in the app you're using, like filling out forms."),
+],
+},
+{
 "slug": "utterseen-ai-that-sees-your-screen",
 "title": "Utterseen is a voice AI that sees your screen, makes study guides and fills out job applications",
 "desc": "Utterseen is a new AI assistant for Mac and Windows you talk to about whatever is on your screen. What it does for students, job seekers and anyone who wants to stop copying things into ChatGPT.",
