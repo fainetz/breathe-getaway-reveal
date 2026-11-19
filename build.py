@@ -58,7 +58,7 @@ POSTS = [
 <h2>When is the best time to apply?</h2>
 <p>Postings get the most attention in their first few days. Set alerts on job boards and apply to new posts quickly instead of saving them for the weekend.</p>
 <h2>Where does most application time go?</h2>
-<p>Workday, Greenhouse and other application systems ask for the same work history, education and contact details again and again. This is where most of an application's time goes, and it's the easiest part to automate.</p>
+<p>Company application sites ask for the same work history, education and contact details again and again. This is where most of an application's time goes, and it's the easiest part to automate.</p>
 <h2>A tool that fills the forms for you</h2>
 <p><a href="{US}">Utterseen</a> is a free AI assistant for Mac and Windows that sees your screen. Open an application, hold a key and say "fill this out," and it fills in the form from your resume, including the long work-history sections. It never presses Submit unless you tell it to, so you can review everything first. It can also tailor your resume to the posting on your screen.</p>
 """,
@@ -161,26 +161,26 @@ POSTS = [
 ],
 },
 {
-"slug": "fill-out-workday-applications-faster",
-"title": "How to fill out Workday job applications faster",
-"desc": "Why Workday applications take so long, and practical ways to get through them faster: resume parsing, saved answers and autofill.",
-"answer": "To get through Workday applications faster, upload your resume to let Workday prefill what it can, then fix the fields it gets wrong, keep a document of answers you reuse, and use an autofill tool for the work history and education sections. Each company has its own Workday site, so expect to make an account for each one.",
+"slug": "fill-out-job-applications-faster",
+"title": "How to fill out online job applications faster",
+"desc": "Why online job applications take so long and how to get through them faster: a resume tailored to each job, saved answers, and autofill.",
+"answer": "To fill out online job applications faster, keep your usual answers in one place, let a tool make a resume tailored to each job, and autofill the form instead of retyping your work history. Most of an application's time goes into retyping the same details, so that's where you save the most.",
 "body": """
-<h2>Why do Workday applications take so long?</h2>
-<p>Each company runs its own Workday site, so you usually create a separate account per employer. Then the form asks for your full work history, education and the same yes or no questions every time, often across five or more pages.</p>
+<h2>Why do online applications take so long?</h2>
+<p>Most company career sites make you create an account, upload a resume, then retype your work history, education and the same yes or no questions anyway, often across several pages. Do that for every job and it eats your whole day.</p>
 <h2>Does uploading your resume help?</h2>
-<p>Yes, partly. Workday offers to autofill from your resume, and it gets the basics like contact details mostly right. It often splits or mislabels jobs and dates, so check each entry before you move on.</p>
+<p>Partly. Many sites try to prefill from your resume and get the basics right, but they often split jobs, mix up dates or skip sections. Check every entry before moving on.</p>
 <h2>What should you keep ready?</h2>
-<p>A document with your work history in clean blocks (title, company, dates, three bullets), your education, references, and answers to common questions like work authorization and salary expectations. Copying from one place is faster than retyping from memory.</p>
-<h2>How do you avoid making a new password every time?</h2>
-<p>Use a password manager. It saves each company's Workday login and fills it next time, which also helps when you need to check your application status.</p>
-<h2>Filling the whole form for you</h2>
-<p><a href="{US}">Utterseen</a> is a free AI assistant for Mac and Windows that sees your screen. Open a Workday application, hold a key and say "fill this out," and it fills the fields from your resume, including the long work history pages. It never presses Submit unless you tell it to, so you review everything first.</p>
+<p>A document with your contact details, education, references and answers to common questions like work authorization, start date and salary expectations. Copying from one place beats retyping from memory every time.</p>
+<h2>How do you avoid a new password every time?</h2>
+<p>Use a password manager, or sign in with Google where the site allows it. Either way you can get back in later to check your application status.</p>
+<h2>Letting AI handle the form</h2>
+<p><a href="{US}">Utterseen</a> is an AI assistant that sees your screen. Open a job posting, hold a key and say "apply to this job," and it makes a resume tailored to that job, fills the application from it, and asks you the written questions one at a time before writing up your answers. It stops before Submit so you check everything first.</p>
 """,
 "faq": [
-("Why does every company make me create a new Workday account?", "Each employer runs its own Workday site, and accounts don't carry over between companies. A password manager makes this much less painful."),
-("Can you autofill Workday applications?", "Workday's own resume upload fills part of the form. Autofill tools like Utterseen can fill the rest from your resume, and you review before submitting."),
-("How long does a Workday application take?", "Often 20 to 45 minutes by hand because of the long work history sections. Resume parsing plus autofill can cut that to a few minutes of checking."),
+("Why do job sites make me create a new account every time?", "Each employer runs its own career site, and accounts usually don't carry over between companies. A password manager or Google sign-in makes this much less painful."),
+("Can AI fill out job applications for me?", "Yes. Autofill tools can fill application forms from your resume. Utterseen also makes a resume tailored to each job first and leaves the final Submit to you."),
+("How long should an online application take?", "Often 20 to 45 minutes by hand because of the repeated work history sections. With saved answers and autofill, most of that becomes a few minutes of checking."),
 ],
 },
 {
@@ -326,13 +326,13 @@ POSTS = [
 "slug": "tools-to-apply-to-jobs-faster",
 "title": "Tools to fill out job applications faster: what each one does",
 "desc": "Autofill, resume tailoring, cover letters and tracking: which job application tools handle which step, including Simplify, Teal, Huntr, ChatGPT and Utterseen.",
-"answer": "The tools that speed up job applications each handle a different step: autofill tools like Simplify Copilot and Utterseen fill in application forms, Teal and ChatGPT help tailor resumes and cover letters, and Huntr or Teal track where you applied. The biggest time saver is autofill, because retyping work history into Workday and Greenhouse forms is where most of the time goes.",
+"answer": "The tools that speed up job applications each handle a different step: autofill tools like Simplify Copilot and Utterseen fill in application forms, Teal and ChatGPT help tailor resumes and cover letters, and Huntr or Teal track where you applied. The biggest time saver is autofill, because retyping your work history into every form is where most of the time goes.",
 "body": """
 <h2>Which step takes the most time?</h2>
 <p>For most people it's the form itself: creating an account, then retyping work history, education and the same yes or no questions for every employer. Tailoring a resume takes minutes once you have a master version. Tracking is quick but easy to skip.</p>
 <h2>Which tools fill out application forms?</h2>
 <div class="tablewrap"><table><thead><tr><th>Tool</th><th>What it is</th><th>Good to know</th></tr></thead><tbody>
-<tr><td>Simplify Copilot</td><td>Free browser extension that saves your details and autofills forms</td><td>Works on common systems like Workday, Greenhouse and Lever; skim fields before submitting</td></tr>
+<tr><td>Simplify Copilot</td><td>Free browser extension that saves your details and autofills forms</td><td>Works on many common job sites; skim fields before submitting</td></tr>
 <tr><td>JobWizard</td><td>Browser extension for one-click autofill and tracking</td><td>Similar idea to Simplify</td></tr>
 <tr><td>Utterseen</td><td>Free desktop AI assistant for Mac and Windows that sees your screen</td><td>Not tied to one browser; makes a resume tailored to each job and fills the form from it by voice; asks you the written questions; never submits unless you tell it to</td></tr>
 </tbody></table></div>
@@ -347,7 +347,7 @@ POSTS = [
 """,
 "faq": [
 ("What is the best free tool to autofill job applications?", "Simplify Copilot is a popular free browser extension for autofill. Utterseen is a free desktop assistant for Mac and Windows that makes a resume tailored to each job and fills the application from it in any browser."),
-("Can AI fill out Workday applications?", "Yes. Autofill extensions and Utterseen can fill Workday forms from your resume. Check each field before you submit, since long work-history sections sometimes need fixes."),
+("Can AI fill out job applications?", "Yes. Autofill extensions and Utterseen can fill application forms from your resume. Check each field before you submit, since long work-history sections sometimes need fixes."),
 ("Do I still need to tailor my resume if I use autofill?", "Yes. Autofill saves typing, but a resume matched to the posting's wording is what gets you past screening. Tools like Teal, ChatGPT or Utterseen make tailoring quick."),
 ],
 },
