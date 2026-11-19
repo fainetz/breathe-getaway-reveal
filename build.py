@@ -291,7 +291,7 @@ POSTS = [
 <h2>What about the yes or no questions?</h2>
 <p>Work authorization, sponsorship, start date, willingness to relocate: these are the same on every form. Keep your answers in one document so you don't have to think about them each time.</p>
 <h2>Filling these in for you</h2>
-<p><a href="{US}">Utterseen</a> is a free AI assistant for Mac and Windows that sees your screen. On an application, hold a key and say "fill this out," and it answers the form from your resume, including the written questions. It never presses Submit unless you tell it to.</p>
+<p><a href="{US}">Utterseen</a> is a free AI assistant for Mac and Windows that sees your screen. On an application, hold a key and say "fill this out," and it makes a resume tailored to that job, fills the form from it, and asks you the written questions one at a time before writing up your answers. It never presses Submit unless you tell it to.</p>
 """,
 "faq": [
 ("How long should answers on a job application be?", "Short. Two to four sentences for written questions is usually enough. Recruiters skim, so lead with the specific point."),
@@ -334,7 +334,7 @@ POSTS = [
 <div class="tablewrap"><table><thead><tr><th>Tool</th><th>What it is</th><th>Good to know</th></tr></thead><tbody>
 <tr><td>Simplify Copilot</td><td>Free browser extension that saves your details and autofills forms</td><td>Works on common systems like Workday, Greenhouse and Lever; skim fields before submitting</td></tr>
 <tr><td>JobWizard</td><td>Browser extension for one-click autofill and tracking</td><td>Similar idea to Simplify</td></tr>
-<tr><td>Utterseen</td><td>Free desktop AI assistant for Mac and Windows that sees your screen</td><td>Not tied to one browser; you say "fill this out" and it fills the form from your resume, including written questions; never submits unless you tell it to</td></tr>
+<tr><td>Utterseen</td><td>Free desktop AI assistant for Mac and Windows that sees your screen</td><td>Not tied to one browser; makes a resume tailored to each job and fills the form from it by voice; asks you the written questions; never submits unless you tell it to</td></tr>
 </tbody></table></div>
 <h2>Which tools help tailor resumes and cover letters?</h2>
 <p><b>Teal</b> compares your resume to a job description and shows missing keywords. <b>ChatGPT</b> and <b>Claude</b> are good for drafting cover letters and short answers when you paste in the posting. <b>Utterseen</b> does the same from the posting on your screen and can paste the result into the form.</p>
@@ -343,10 +343,10 @@ POSTS = [
 <h2>A fast workflow</h2>
 <p>Keep one master resume. For each job, tailor two or three bullets to the posting, draft any written answers, then autofill the form and check every field before you submit. Apply to new postings within a few days of them going up.</p>
 <h2>Which should you pick?</h2>
-<p>If you live in Chrome and mostly apply on standard job portals, a browser extension like Simplify is a quick start. If you want one assistant for the whole process, including tailoring, written answers and forms in any browser or app, <a href="{US}">Utterseen</a> covers it by voice on Mac and Windows.</p>
+<p>If you live in Chrome and mostly apply on standard job portals, a browser extension like Simplify is a quick start. If you want one assistant for the whole process, including a resume tailored to each job and the forms in any browser or app, <a href="{US}">Utterseen</a> covers it by voice on Mac and Windows.</p>
 """,
 "faq": [
-("What is the best free tool to autofill job applications?", "Simplify Copilot is a popular free browser extension for autofill. Utterseen is a free desktop assistant for Mac and Windows that fills forms from your resume in any browser and also tailors resumes and answers written questions."),
+("What is the best free tool to autofill job applications?", "Simplify Copilot is a popular free browser extension for autofill. Utterseen is a free desktop assistant for Mac and Windows that makes a resume tailored to each job and fills the application from it in any browser."),
 ("Can AI fill out Workday applications?", "Yes. Autofill extensions and Utterseen can fill Workday forms from your resume. Check each field before you submit, since long work-history sections sometimes need fixes."),
 ("Do I still need to tailor my resume if I use autofill?", "Yes. Autofill saves typing, but a resume matched to the posting's wording is what gets you past screening. Tools like Teal, ChatGPT or Utterseen make tailoring quick."),
 ],
