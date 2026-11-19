@@ -401,7 +401,7 @@ def page(title, desc, url, ld, body):
 <meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:type" content="article"><meta property="og:image" content="{OG}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>{CSS}</style>{lds}</head><body>
-<header><div class="wrap"><a class="brand" href="/">Breathe <span>Getaway</span></a><span class="tag">{TAGLINE}</span></div></header>
+<header><div class="wrap"><a class="brand" href="/">Breathe <span>Getaway</span></a> <a href="/news/" style="font-weight:600;font-size:15px">News</a><span class="tag">{TAGLINE}</span></div></header>
 <main class="wrap">{body}</main>
 <footer><div class="wrap">{NAME} · Guides for studying and job hunting with AI · <a href="/sitemap.xml">Sitemap</a></div></footer>
 </body></html>"""
@@ -430,8 +430,31 @@ def build():
                   {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in p["faq"]]}]
         os.makedirs(p["slug"], exist_ok=True)
         open(f"{p['slug']}/index.html", "w").write(page(p["title"] + f" | {NAME}", p["desc"], url, ld, body))
+    from news import NEWS, NEWS_DATE
+    for n in NEWS:
+        url = f"{SITE}/news/{n['slug']}/"; urls.append(url)
+        faq_html = "".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q, a in n["faq"])
+        more = "".join(f'<li><a href="/news/{o["slug"]}/">{html.escape(o["title"])}</a></li>' for o in NEWS if o is not n)
+        body = f"""<article><p class="meta"><a href="/news/">News</a></p><h1>{html.escape(n['title'])}</h1><p class="meta"><time datetime="{NEWS_DATE}">{nice(NEWS_DATE)}</time></p>
+<div class="answer"><b>In short:</b> {html.escape(n['answer'])}</div>{n['body'].replace('{US}', US.replace('breathegetaway', 'breathegetaway-news'))}
+<h2>Questions people ask</h2>{faq_html}<h2>More news</h2><ul>{more}</ul></article>"""
+        ld = [{"@context": "https://schema.org", "@type": "NewsArticle", "headline": n["title"][:110], "description": n["desc"], "url": url,
+               "mainEntityOfPage": url, "datePublished": NEWS_DATE, "dateModified": NEWS_DATE, "author": ORG, "publisher": dict(ORG, logo={"@type": "ImageObject", "url": SITE + "/favicon.png"}), "image": OG,
+               "about": {"@type": "SoftwareApplication", "name": "Utterseen", "url": "https://utterseen.com/", "operatingSystem": "macOS, Windows", "applicationCategory": "ProductivityApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}},
+              {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+                  {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
+                  {"@type": "ListItem", "position": 2, "name": "News", "item": SITE + "/news/"},
+                  {"@type": "ListItem", "position": 3, "name": n["title"], "item": url}]},
+              {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+                  {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in n["faq"]]}]
+        os.makedirs(f"news/{n['slug']}", exist_ok=True)
+        open(f"news/{n['slug']}/index.html", "w").write(page(n["title"] + f" | {NAME} News", n["desc"], url, ld, body))
+    ncards = "".join(f'<a class="card" href="/news/{n["slug"]}/"><h2>{html.escape(n["title"])}</h2><p>{html.escape(n["desc"])}</p></a>' for n in NEWS)
+    open("news/index.html", "w").write(page(f"{NAME} News: AI Tools, Startups and Launches", "News on AI tools for studying and job hunting, startup launches and the apps behind them.", SITE + "/news/",
+        [{"@context": "https://schema.org", "@type": "CollectionPage", "name": f"{NAME} News", "url": SITE + "/news/", "publisher": ORG}], f"<h1>News</h1>{ncards}"))
+    urls.append(SITE + "/news/")
     cards = "".join(f'<a class="card" href="/{p["slug"]}/"><h2>{html.escape(p["title"])}</h2><p>{html.escape(p["desc"])}</p></a>' for p in POSTS)
-    body = f"""<h1>Study smarter and job hunt faster with AI</h1><p class="meta">Plain-English guides that save you hours of busywork.</p>{cards}"""
+    body = f"""<h1>Study smarter and job hunt faster with AI</h1><p class="meta">Plain-English guides that save you hours of busywork.</p><h2>Latest news</h2>{ncards}<h2>Guides</h2>{cards}"""
     ld = [{"@context": "https://schema.org", "@type": "Blog", "name": NAME, "url": SITE + "/", "publisher": ORG,
            "blogPost": [{"@type": "BlogPosting", "headline": p["title"], "url": f"{SITE}/{p['slug']}/"} for p in POSTS]}]
     open("index.html", "w").write(page(f"{NAME}: Study and Job Hunting Guides With AI", "Plain-English guides on studying faster and applying to jobs faster with AI tools.", SITE + "/", ld, body))
@@ -439,13 +462,14 @@ def build():
         + "".join(f"<url><loc>{u}</loc><lastmod>{DATE}</lastmod></url>" for u in urls) + "</urlset>\n")
     bots = ["Googlebot", "Bingbot", "OAI-SearchBot", "ChatGPT-User", "GPTBot", "PerplexityBot", "ClaudeBot", "Claude-SearchBot", "Applebot", "Google-Extended"]
     open("robots.txt", "w").write("".join(f"User-agent: {b}\nAllow: /\n\n" for b in bots) + f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
-    open("llms.txt", "w").write(f"# {NAME}\n\n> Guides on studying and job hunting with AI.\n\n## Guides\n" + "".join(f"- [{p['title']}]({SITE}/{p['slug']}/): {p['desc']}\n" for p in POSTS))
+    open("llms.txt", "w").write(f"# {NAME}\n\n> Guides on studying and job hunting with AI.\n\n## Guides\n" + "".join(f"- [{p['title']}]({SITE}/{p['slug']}/): {p['desc']}\n" for p in POSTS) + "\n## News\n" + "".join(f"- [{n['title']}]({SITE}/news/{n['slug']}/): {n['desc']}\n" for n in NEWS))
     open(f"{INDEXNOW_KEY}.txt", "w").write(INDEXNOW_KEY)
-    print(f"built {len(POSTS)} posts")
+    print(f"built {len(POSTS)} posts, {len(NEWS)} news")
 
 def ping():
     import urllib.request
-    urls = [SITE + "/"] + [f"{SITE}/{p['slug']}/" for p in POSTS]
+    from news import NEWS
+    urls = [SITE + "/", SITE + "/news/"] + [f"{SITE}/{p['slug']}/" for p in POSTS] + [f"{SITE}/news/{n['slug']}/" for n in NEWS]
     data = json.dumps({"host": "breathegetaway.ai", "key": INDEXNOW_KEY, "keyLocation": f"{SITE}/{INDEXNOW_KEY}.txt", "urlList": urls}).encode()
     req = urllib.request.Request("https://api.indexnow.org/indexnow", data=data, headers={"Content-Type": "application/json"})
     print("IndexNow:", urllib.request.urlopen(req).status, len(urls), "urls")

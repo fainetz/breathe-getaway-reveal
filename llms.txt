@@ -18,3 +18,7 @@
 - [How to follow up on a job application (with examples)](https://breathegetaway.ai/follow-up-after-job-application/): When to follow up after applying, who to email, and short follow-up messages you can copy.
 - [Tools to fill out job applications faster: what each one does](https://breathegetaway.ai/tools-to-apply-to-jobs-faster/): Autofill, resume tailoring, cover letters and tracking: which job application tools handle which step, including Simplify, Teal, Huntr, ChatGPT and Utterseen.
 - [Tools to get work done faster on your computer](https://breathegetaway.ai/tools-to-get-work-done-faster/): AI assistants, voice tools, task managers and automation: which productivity tools save the most time, from ChatGPT and Copilot to Todoist, Zapier and Utterseen.
+
+## News
+- [A 20-year-old founder put a birthday wish on a Times Square billboard to launch an AI app](https://breathegetaway.ai/news/times-square-birthday-billboard-utterseen/): The Utterseen billboard in Times Square has no logo, no features and no slogan, just a founder asking strangers to try an AI app for a birthday. What it says and what Utterseen is.
+- [Utterseen is a voice AI that sees your screen, makes study guides and fills out job applications](https://breathegetaway.ai/news/utterseen-ai-that-sees-your-screen/): Utterseen is a new AI assistant for Mac and Windows you talk to about whatever is on your screen. What it does for students, job seekers and anyone who wants to stop copying things into ChatGPT.
