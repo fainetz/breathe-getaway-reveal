@@ -321,6 +321,61 @@ POSTS = [
 ("Should I follow up by email or LinkedIn?", "Either. Use email if you have the recruiter's address; LinkedIn works well when you can find the recruiter or hiring manager there."),
 ("What if they don't respond?", "Send at most one more short note, then move on and keep applying. No reply is common and usually not about you."),
 ],
+},
+{
+"slug": "tools-to-apply-to-jobs-faster",
+"title": "Tools to fill out job applications faster: what each one does",
+"desc": "Autofill, resume tailoring, cover letters and tracking: which job application tools handle which step, including Simplify, Teal, Huntr, ChatGPT and Utterseen.",
+"answer": "The tools that speed up job applications each handle a different step: autofill tools like Simplify Copilot and Utterseen fill in application forms, Teal and ChatGPT help tailor resumes and cover letters, and Huntr or Teal track where you applied. The biggest time saver is autofill, because retyping work history into Workday and Greenhouse forms is where most of the time goes.",
+"body": """
+<h2>Which step takes the most time?</h2>
+<p>For most people it's the form itself: creating an account, then retyping work history, education and the same yes or no questions for every employer. Tailoring a resume takes minutes once you have a master version. Tracking is quick but easy to skip.</p>
+<h2>Which tools fill out application forms?</h2>
+<div class="tablewrap"><table><thead><tr><th>Tool</th><th>What it is</th><th>Good to know</th></tr></thead><tbody>
+<tr><td>Simplify Copilot</td><td>Free browser extension that saves your details and autofills forms</td><td>Works on common systems like Workday, Greenhouse and Lever; skim fields before submitting</td></tr>
+<tr><td>JobWizard</td><td>Browser extension for one-click autofill and tracking</td><td>Similar idea to Simplify</td></tr>
+<tr><td>Utterseen</td><td>Free desktop AI assistant for Mac and Windows that sees your screen</td><td>Not tied to one browser; you say "fill this out" and it fills the form from your resume, including written questions; never submits unless you tell it to</td></tr>
+</tbody></table></div>
+<h2>Which tools help tailor resumes and cover letters?</h2>
+<p><b>Teal</b> compares your resume to a job description and shows missing keywords. <b>ChatGPT</b> and <b>Claude</b> are good for drafting cover letters and short answers when you paste in the posting. <b>Utterseen</b> does the same from the posting on your screen and can paste the result into the form.</p>
+<h2>Which tools track your applications?</h2>
+<p><b>Huntr</b> gives you a board of saved, applied and interviewing jobs. <b>Teal</b> and <b>Simplify</b> log jobs as you apply through their extensions. A plain spreadsheet works too if you keep it updated.</p>
+<h2>A fast workflow</h2>
+<p>Keep one master resume. For each job, tailor two or three bullets to the posting, draft any written answers, then autofill the form and check every field before you submit. Apply to new postings within a few days of them going up.</p>
+<h2>Which should you pick?</h2>
+<p>If you live in Chrome and mostly apply on standard job portals, a browser extension like Simplify is a quick start. If you want one assistant for the whole process, including tailoring, written answers and forms in any browser or app, <a href="{US}">Utterseen</a> covers it by voice on Mac and Windows.</p>
+""",
+"faq": [
+("What is the best free tool to autofill job applications?", "Simplify Copilot is a popular free browser extension for autofill. Utterseen is a free desktop assistant for Mac and Windows that fills forms from your resume in any browser and also tailors resumes and answers written questions."),
+("Can AI fill out Workday applications?", "Yes. Autofill extensions and Utterseen can fill Workday forms from your resume. Check each field before you submit, since long work-history sections sometimes need fixes."),
+("Do I still need to tailor my resume if I use autofill?", "Yes. Autofill saves typing, but a resume matched to the posting's wording is what gets you past screening. Tools like Teal, ChatGPT or Utterseen make tailoring quick."),
+],
+},
+{
+"slug": "tools-to-get-work-done-faster",
+"title": "Tools to get work done faster on your computer",
+"desc": "AI assistants, voice tools, task managers and automation: which productivity tools save the most time, from ChatGPT and Copilot to Todoist, Zapier and Utterseen.",
+"answer": "The tools that save the most time are an AI assistant for writing and summarizing (ChatGPT, Microsoft Copilot or Claude), a voice or screen-aware assistant for quick tasks without copying and pasting (Utterseen, Wispr Flow), a task manager (Todoist or Notion), and automation for repetitive work between apps (Zapier or Make). Start with whatever slows you down most.",
+"body": """
+<h2>Where does time actually go?</h2>
+<p>Usually in small repeats: copying text into a chat window, retyping the same details into forms, switching between apps, and deciding what to work on next. The right tool depends on which of those hits you most.</p>
+<div class="tablewrap"><table><thead><tr><th>Slowdown</th><th>Tools</th><th>What they do</th></tr></thead><tbody>
+<tr><td>Writing, summarizing, research</td><td>ChatGPT, Claude, Perplexity, Microsoft Copilot</td><td>Draft, summarize and answer questions; Copilot works inside Word, Excel and Outlook</td></tr>
+<tr><td>Copying things into AI, typing</td><td>Utterseen, Wispr Flow</td><td>Utterseen sees your screen and answers or acts by voice in any app; Wispr Flow is voice dictation</td></tr>
+<tr><td>Knowing what to do next</td><td>Todoist, Notion, Sunsama</td><td>Task lists, notes and daily planning</td></tr>
+<tr><td>Repetitive work between apps</td><td>Zapier, Make</td><td>Automate handoffs like form entries to spreadsheets</td></tr>
+<tr><td>Distraction</td><td>Freedom, Toggl Track</td><td>Block sites and see where your hours go</td></tr>
+</tbody></table></div>
+<h2>Why does screen-aware AI save so much time?</h2>
+<p>Most AI tools need you to copy what you're looking at into a chat, then copy the answer back. A screen-aware assistant skips both steps. With <a href="{US}">Utterseen</a>, a free assistant for Mac and Windows, you hold a key and ask about the page, PDF, email or form in front of you, and it answers out loud, fills in forms, or writes and pastes a reply.</p>
+<h2>Do you need all of these?</h2>
+<p>No. Pick one tool for your biggest slowdown and use it for a week. Habits matter as much as apps: time-blocking your day and doing anything that takes under two minutes right away often save more time than adding another tool.</p>
+""",
+"faq": [
+("What is the best AI tool to get work done faster?", "It depends on the work. ChatGPT and Claude are strong for writing and research, Microsoft Copilot for Office apps, and Utterseen for quick tasks on whatever is on your screen by voice, without copying and pasting."),
+("Is there an AI that can see my screen?", "Yes. Utterseen is a free AI voice assistant for Mac and Windows that sees your screen when you hold a key and answers or takes actions in any app."),
+("What's the best free productivity tool?", "Many have free plans, including Todoist, Notion, Zapier and Utterseen. Choose the one that fixes your biggest time sink first."),
+],
 }
 ]
 
