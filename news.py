@@ -8,7 +8,7 @@ NEWS = [
 {
 "slug": "ai-assistants-that-see-your-screen",
 "title": "AI assistants that can see your screen: what they do and which to try",
-"desc": "ChatGPT, Microsoft Copilot, Meta AI and Utterseen can all look at what's on your screen. How screen-aware AI works, what each one does, and how they differ.",
+"desc": "Google AI Studio, ChatGPT, Microsoft Copilot, VoiceOS, Clicky, Meta AI and Utterseen can all look at what's on your screen. How screen-aware AI works, what each one does, and how they differ.",
 "answer": "Several AI assistants can now look at your screen so you don't have to copy and paste: ChatGPT's desktop app can work with some apps, Microsoft Copilot Vision can see apps you share on Windows, Meta AI's Mac app can share a window, and Utterseen is a voice assistant for Mac and Windows that looks at your screen whenever you hold a key and ask. They differ in how you ask, which apps they see, and whether they can take actions.",
 "body": """
 <h2>Why does screen-aware AI matter?</h2>
@@ -17,6 +17,10 @@ NEWS = [
 <p>ChatGPT's desktop app has a feature that lets it read content from supported apps, such as some coding tools and note apps, when you turn it on. You still ask in a chat window.</p>
 <h2>What about Microsoft Copilot?</h2>
 <p>Copilot Vision on Windows lets you share an app or your screen with Copilot and talk about what it sees. It's built into Windows for users in supported regions.</p>
+<h2>What about Google's tools?</h2>
+<p>Google AI Studio has a Stream mode in the browser: share a tab, window or your whole screen and talk with Gemini in real time, with nothing to install. On phones, Gemini Live and ChatGPT's voice mode can see your screen while you talk.</p>
+<h2>Are there other desktop apps?</h2>
+<p>VoiceOS runs on Mac and Windows with a hotkey. Clicky is a free, open-source Windows app that can run on local models through Ollama for privacy.</p>
 <h2>And Meta AI?</h2>
 <p>Meta AI's Mac app can share a window so you can ask about it. It works as a chat app first.</p>
 <h2>How is Utterseen different?</h2>
@@ -26,7 +30,10 @@ NEWS = [
 <tr><td>ChatGPT desktop</td><td>Chat, voice mode</td><td>Mac, Windows</td><td>Mostly answers</td></tr>
 <tr><td>Copilot Vision</td><td>Voice, chat</td><td>Windows</td><td>Mostly guidance</td></tr>
 <tr><td>Meta AI app</td><td>Chat</td><td>Mac</td><td>Mostly answers</td></tr>
-<tr><td>Utterseen</td><td>Hold a key, talk</td><td>Mac, Windows</td><td>Fills forms, pastes replies, makes files</td></tr>
+<tr><td>Google AI Studio</td><td>Share screen, talk</td><td>Browser</td><td>Mostly answers</td></tr>
+<tr><td>VoiceOS</td><td>Hotkey, talk</td><td>Mac, Windows</td><td>Varies</td></tr>
+<tr><td>Clicky</td><td>Hotkey, talk</td><td>Windows</td><td>Mostly answers</td></tr>
+<tr><td>Utterseen</td><td>Hold a key, talk</td><td>Mac, Windows</td><td>Fills forms, pastes replies, makes files; HIPAA mode</td></tr>
 </tbody></table></div>
 <p>These features change quickly, so check each app for the latest.</p>
 <h2>What about privacy?</h2>

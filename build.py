@@ -542,6 +542,58 @@ POSTS = [
 ("Is there an app that fills out job applications for me?", "Yes. Utterseen fills out job applications from a resume tailored to each job and stops before Submit. Simplify and JobWizard are autofill extensions."),
 ("Are auto-apply apps worth it?", "They add volume, but you see less of what's sent. Review-first tools like Utterseen or JobWizard keep you in control of each application."),
 ],
+},
+{
+"slug": "hipaa-compliant-ai-tools-for-healthcare",
+"title": "HIPAA-compliant AI tools for nurses and clinics in 2026",
+"desc": "Which AI tools can be used with patient information: BAA-covered chat tools, ambient scribes, enterprise cloud AI, local models, and Utterseen's HIPAA voice mode that sees your screen.",
+"answer": "AI tools you can use with patient information are ones covered by a signed Business Associate Agreement (BAA) or that keep data on your own computer. Options include HIPAA chat workspaces like BastionGPT and CompliantChatGPT, ambient scribes like Abridge, Nabla and Suki, enterprise cloud AI like Google Cloud and Azure OpenAI under a BAA, local models, and Utterseen's HIPAA mode, a voice assistant that sees your screen and answers out loud using only BAA-covered services.",
+"body": """
+<h2>What makes an AI tool HIPAA-ready?</h2>
+<p>HIPAA isn't a switch in the software. Every vendor that handles protected health information needs a signed BAA with you, or the data has to stay on your own machine. Consumer chatbots usually aren't covered.</p>
+<div class="tablewrap"><table><thead><tr><th>Type</th><th>Examples</th><th>Best for</th></tr></thead><tbody>
+<tr><td>HIPAA chat workspaces</td><td>BastionGPT, CompliantChatGPT</td><td>Asking about records and notes in a chat</td></tr>
+<tr><td>Ambient scribes</td><td>Abridge, Nabla, Suki</td><td>Listening to visits and drafting notes</td></tr>
+<tr><td>Enterprise cloud AI under a BAA</td><td>Google Cloud, Azure OpenAI</td><td>IT teams building their own tools</td></tr>
+<tr><td>Local models</td><td>Open models run on your computer</td><td>Keeping data entirely on-device</td></tr>
+<tr><td>Screen-aware voice assistant</td><td>Utterseen (HIPAA mode)</td><td>Asking about what's on your screen out loud, filling forms</td></tr>
+</tbody></table></div>
+<h2>Is there a HIPAA AI that can see your screen?</h2>
+<p>Yes. <a href="{US}">Utterseen</a> has a HIPAA mode on its HIPAA plan, which comes with a signed BAA. You hold a key and ask about a chart, form or note on screen, and it answers out loud; all information goes only through services with signed BAAs. It listens only while the key is held and takes one screenshot per question.</p>
+<h2>Which should a solo clinician pick?</h2>
+<p>For notes from visits, an ambient scribe. For quick questions and forms on your computer, a screen-aware assistant with a BAA. For maximum control, a local model, if your computer can run it.</p>
+<h2>What else do you need?</h2>
+<p>A BAA covers the vendor. Your practice still needs its own policies, like who can use the tool and where answers might be overheard. Check with your compliance officer before using any AI with patient information.</p>
+""",
+"faq": [
+("Is ChatGPT HIPAA compliant?", "Consumer ChatGPT isn't covered by a BAA. Some enterprise AI offerings can be, under a signed BAA with the vendor."),
+("Is there a HIPAA compliant AI voice assistant?", "Yes. Utterseen's HIPAA mode is a voice assistant that sees your screen and uses only services covered by signed BAAs, on a plan that includes a BAA."),
+("Do I need a BAA to use AI with patient data?", "Yes, for any vendor that handles protected health information, unless the data stays entirely on your own device."),
+],
+},
+{
+"slug": "job-application-autofill-for-safari",
+"title": "Job application autofill for Safari: what actually works on a Mac",
+"desc": "Most job autofill tools are Chrome extensions. The options that work in Safari on Mac and iPhone: Utterseen, ApplySuite, SimpleFill and Simplify's iOS app.",
+"answer": "Most job application autofill tools, including Simplify, Teal, Jobright and Huntr, are built as Chrome and Firefox extensions, so they don't run in Safari on a Mac. What works in Safari: Utterseen, a Mac app that fills applications in any browser and makes a resume tailored to each job; Safari extensions like ApplySuite and SimpleFill; and Simplify's iOS app on iPhone.",
+"body": """
+<h2>Why is Safari harder?</h2>
+<p>Safari extensions have to be built and distributed separately through Apple, so most job tools only ship Chrome and Firefox versions. Mac users often keep a second browser just for applying.</p>
+<div class="tablewrap"><table><thead><tr><th>Option</th><th>Where it works</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Utterseen</td><td>Mac app, any browser including Safari</td><td>Tailored resume per job, fills the application by voice, stops before Submit</td></tr>
+<tr><td>ApplySuite</td><td>Safari extension (Mac)</td><td>Autofills common job sites from saved details</td></tr>
+<tr><td>SimpleFill</td><td>Safari extension (Mac)</td><td>Inserts saved snippets into forms</td></tr>
+<tr><td>Simplify iOS app</td><td>Safari on iPhone and iPad</td><td>Autofills applications on mobile</td></tr>
+</tbody></table></div>
+<h2>Which is the most complete?</h2>
+<p><a href="{US}">Utterseen</a>, because it isn't limited to one browser and does more than autofill: on a posting you say "apply to this job," it makes a resume tailored to that job, fills the form, and asks you the written questions.</p>
+<h2>What about using another browser?</h2>
+<p>That works too: some Mac users keep Chrome, Edge or Arc just for applying with an extension. A desktop app avoids the switch. More: <a href="/best-apps-to-apply-to-jobs-faster/">best apps to apply to jobs faster</a>.</p>
+""",
+"faq": [
+("Does Simplify work in Safari?", "Simplify's desktop extension is for Chrome-based browsers and Firefox; its iOS app supports Safari on iPhone. On Mac Safari, Utterseen works because it's a desktop app."),
+("What is the best job autofill for Mac?", "Utterseen works in Safari and any other browser on Mac and also makes a resume tailored to each job before filling the application."),
+],
 }
 ]
 
