@@ -205,6 +205,122 @@ POSTS = [
 ("What are ATS keywords?", "They're the skills and terms from the job posting that applicant tracking systems and recruiters look for. Using the posting's own wording, where true, helps your resume match."),
 ("Can AI tailor my resume?", "Yes. Give it the job posting and your resume and ask it to reorder and reword your existing bullets. Check that every line is still true."),
 ],
+},
+{
+"slug": "ai-homework-help-step-by-step",
+"title": "How to get homework help from AI that actually teaches you",
+"desc": "Use AI like a tutor: get hints and step-by-step explanations for math, science and essays instead of just answers.",
+"answer": "To get homework help from AI that teaches you, ask it to explain one step at a time and wait for you to try the next step, instead of asking for the final answer. When you get stuck, ask for a hint or a similar worked example. That way you can solve the next problem, and the test, on your own.",
+"body": """
+<h2>What should you ask the AI?</h2>
+<p>Instead of "what's the answer," try "walk me through the first step and stop" or "give me a hint, not the answer." For essays, ask it to point out where your argument is weak rather than rewrite it. You do the thinking; the AI fills the gaps.</p>
+<h2>What if you don't understand the explanation?</h2>
+<p>Ask it to explain it a different way: simpler words, an analogy, or "like I'm in ninth grade." Ask for a similar problem with the steps shown, then try your own again. Two or three angles usually make it click.</p>
+<h2>How do you check you actually learned it?</h2>
+<p>Ask for one more problem of the same type and solve it without help. If you can, you've got it. If not, you know exactly which step to go back to.</p>
+<h2>Is it allowed?</h2>
+<p>Using AI to understand material is like using a tutor or office hours. Turning in AI-written answers as your own usually isn't allowed, and some classes limit AI use entirely, so check your teacher's policy.</p>
+<h2>A tutor that sees your homework</h2>
+<p><a href="{US}">Utterseen</a> is a free AI voice assistant for Mac and Windows that sees your screen. With a worksheet, problem set or online homework open, hold a key and ask "help me with number 4"; it explains step by step out loud, like a tutor, without you typing out the problem.</p>
+""",
+"faq": [
+("Can AI solve math homework?", "Many AI tools can solve math problems, but they can make mistakes. Ask for the steps, follow along, and check the answer, so you learn the method and catch errors."),
+("What's the best AI for homework help?", "One that explains step by step and lets you ask follow-up questions. Utterseen does this out loud from whatever homework is on your screen."),
+("Will teachers know I used AI?", "If you only use AI to understand the material and write your own answers, there's nothing to hide. Follow your class policy on AI use."),
+],
+},
+{
+"slug": "read-faster-adhd-dyslexia",
+"title": "Reading tools that help with ADHD and dyslexia",
+"desc": "Free ways to have pages read out loud and explained in plain words on Mac and Windows, plus tips for long readings.",
+"answer": "If long readings are hard with ADHD or dyslexia, have the text read out loud while you follow along, break it into short chunks, and ask for a plain-language explanation of anything dense. Mac and Windows both have free built-in read-aloud features, and AI tools can explain the text in simpler words.",
+"body": """
+<h2>How do you get a page read out loud for free?</h2>
+<p>On a Mac, turn on <b>Speak selection</b> in System Settings, Accessibility, Spoken Content, then select text and press Option-Esc. On Windows, the Microsoft Edge browser has <b>Read aloud</b> for web pages and PDFs, and Narrator reads anything on screen.</p>
+<h2>Why does listening while reading help?</h2>
+<p>Hearing the words while your eyes follow along keeps your place and takes some of the decoding work off. Many people find they get through readings faster and remember more than when reading silently.</p>
+<h2>How do you get through a long reading?</h2>
+<p>Break it into sections and set a goal per section, like "find the main point." After each one, say the main idea out loud in a sentence. Short sections with a clear goal are easier to start and easier to finish.</p>
+<h2>What about dense or confusing text?</h2>
+<p>Ask an AI to explain the paragraph in plain words, or to give you the main point first and then the details. Getting the big picture first makes the details easier to follow.</p>
+<h2>Reading help on any page</h2>
+<p><a href="{US}">Utterseen</a> is a free AI voice assistant for Mac and Windows that sees your screen. Hold a key and ask it to read the page out loud or explain it in plain words; answers come point-first in short sentences. It works in any app, including PDFs, web pages and course sites.</p>
+""",
+"faq": [
+("Is there a free text-to-speech on Mac?", "Yes. Turn on Speak selection under System Settings, Accessibility, Spoken Content. Select text and press Option-Esc to hear it."),
+("How do I make Windows read a PDF out loud?", "Open the PDF in Microsoft Edge and use Read aloud. Narrator, built into Windows, can also read anything on screen."),
+("Can AI simplify a hard reading?", "Yes. Ask for the main point first, then a plain-language explanation of each paragraph. Utterseen can do this out loud for whatever is on your screen."),
+],
+},
+{
+"slug": "take-better-lecture-notes",
+"title": "How to take better lecture notes (and use them to study)",
+"desc": "A simple note-taking method for lectures, whether to type or handwrite, and how to turn notes into quiz questions afterward.",
+"answer": "To take better lecture notes, write the main ideas and examples in your own words instead of copying slides, leave space to add questions, and spend ten minutes after class turning your notes into quiz questions. Notes help most when you use them to test yourself, not just reread.",
+"body": """
+<h2>What should you write down?</h2>
+<p>Main ideas, examples, and anything the professor repeats or says will be on the exam. Skip what's already on the slides you can download. Putting ideas in your own words makes you process them, which is where learning starts.</p>
+<h2>What's the Cornell method?</h2>
+<p>Split the page: notes on the right, a narrow column on the left for questions, and a summary at the bottom. After class, write questions in the left column that your notes answer. Later, cover the right side and quiz yourself from the questions.</p>
+<h2>Should you type or handwrite?</h2>
+<p>Either works if you write in your own words. A 2014 study by Mueller and Oppenheimer found laptop note-takers tended to copy lectures word for word and did worse on concept questions, though later studies found smaller differences. The habit matters more than the tool.</p>
+<h2>What do you do with notes after class?</h2>
+<p>Turn them into questions within a day, then quiz yourself through the week. A set of questions from your own notes is one of the best study guides you can make.</p>
+<h2>Turning notes and slides into quizzes</h2>
+<p><a href="{US}">Utterseen</a> is a free AI voice assistant for Mac and Windows that sees your screen. Open your notes or the lecture slides, hold a key and say "quiz me on this" or "make a study guide," and it works from what's on your screen. It can summarize recorded lectures too.</p>
+""",
+"faq": [
+("Is it better to type or handwrite notes?", "Both work if you summarize in your own words. Copying word for word is the habit to avoid, and it's easier to fall into when typing fast."),
+("What is the Cornell note-taking method?", "A page split into notes, a question column and a summary. You write questions after class and use them to quiz yourself."),
+("Can AI turn my notes into a quiz?", "Yes. Give it your notes and ask for questions. Utterseen can quiz you out loud from notes or slides on your screen."),
+],
+"sources": [("Mueller & Oppenheimer (2014), The Pen Is Mightier Than the Keyboard, Psychological Science", "https://doi.org/10.1177/0956797614524581")],
+},
+{
+"slug": "answer-job-application-questions",
+"title": "How to answer common job application questions fast",
+"desc": "Ready-to-adapt answers for 'Why do you want to work here?', salary expectations, work authorization and other questions that show up on every application.",
+"answer": "To answer job application questions fast, write a reusable answer for each common question once (why this company, why you're a fit, salary expectations, availability) and adapt one or two sentences per job. Keep answers short and specific; most forms are skimmed.",
+"body": """
+<h2>How do you answer "Why do you want to work here?"</h2>
+<p>Two sentences: one specific thing about the company (a product, a mission, how they work) and how it connects to what you want to do. Specific beats flattering. Swap the company detail for each application and keep the rest.</p>
+<h2>How do you answer "Why are you a good fit?"</h2>
+<p>Pick the job's top two requirements and give one real example for each, with a number if you have one. That's it. The form isn't the interview.</p>
+<h2>What do you put for salary expectations?</h2>
+<p>Look up the typical range for the role and city on sites that publish pay data or in the posting itself, since many states now require ranges in job ads. Give a range you'd be happy with, or "open, based on the full role," if the form allows text.</p>
+<h2>What about the yes or no questions?</h2>
+<p>Work authorization, sponsorship, start date, willingness to relocate: these are the same on every form. Keep your answers in one document so you don't have to think about them each time.</p>
+<h2>Filling these in for you</h2>
+<p><a href="{US}">Utterseen</a> is a free AI assistant for Mac and Windows that sees your screen. On an application, hold a key and say "fill this out," and it answers the form from your resume, including the written questions. It never presses Submit unless you tell it to.</p>
+""",
+"faq": [
+("How long should answers on a job application be?", "Short. Two to four sentences for written questions is usually enough. Recruiters skim, so lead with the specific point."),
+("Should I leave salary expectations blank?", "If the field is optional, you can. If required, give a researched range for the role and location, or a flexible answer if text is allowed."),
+("Can AI answer job application questions?", "Yes. It can draft answers from your resume and the job posting. Make sure every claim is true before you submit."),
+],
+},
+{
+"slug": "follow-up-after-job-application",
+"title": "How to follow up on a job application (with examples)",
+"desc": "When to follow up after applying, who to email, and short follow-up messages you can copy.",
+"answer": "Follow up about a week after you apply, with a short email or LinkedIn message to the recruiter or hiring manager: the role, one line on why you're a strong fit, and a question about next steps. One follow-up is good, two is the limit, and keep applying elsewhere while you wait.",
+"body": """
+<h2>When should you follow up?</h2>
+<p>About a week after applying, or a few days after the date the posting said they'd review applications. Earlier can feel pushy; much later and the role may be filled.</p>
+<h2>Who should you contact?</h2>
+<p>The recruiter or hiring manager if you can find them, often on LinkedIn by searching the company and the team. A general careers inbox is a last resort.</p>
+<h2>What should the message say?</h2>
+<p>Keep it under 100 words. Example: "Hi Sam, I applied for the Marketing Coordinator role last week. I've run social campaigns that grew engagement 40% at my last job, and I'd love to bring that to your team. Is there anything else I can send to help with your review?" Swap in your own real result.</p>
+<h2>How many times should you follow up?</h2>
+<p>Once, then a second short note a week or two later at most. If there's no reply, move on. Silence usually means the process stalled or went another way, not that you did something wrong.</p>
+<h2>Writing the follow-up from your screen</h2>
+<p><a href="{US}">Utterseen</a> is a free AI assistant for Mac and Windows that sees your screen. With the job posting or a LinkedIn profile open, hold a key and ask it to write a follow-up message; it drafts one from your resume and can paste it in. It also helps you send more applications in the first place by filling out the forms.</p>
+""",
+"faq": [
+("Is it okay to follow up on a job application?", "Yes. A short, polite follow-up about a week after applying is normal and can get your application looked at."),
+("Should I follow up by email or LinkedIn?", "Either. Use email if you have the recruiter's address; LinkedIn works well when you can find the recruiter or hiring manager there."),
+("What if they don't respond?", "Send at most one more short note, then move on and keep applying. No reply is common and usually not about you."),
+],
 }
 ]
 
